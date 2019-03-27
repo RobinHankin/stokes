@@ -7,15 +7,43 @@
   \item{S}{A multilinear form}
 }
 \details{
-details here
+  Given a k-tensor \eqn{T}, we have
+
+  \deqn{\mathrm{Alt}(T)\left(v_1,\ldots,v_k\right)=
+    \frac{1}{k!}\sum_{\sigma\in S_k}\mathrm{sgn}(\sigma)\cdot
+    T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
+  }{ommitted; see PDF}
+
+  Thus for example if \eqn{k=3}:
+
+    \deqn{\mathrm{Alt}(T)\left(v_1,v_2,v_3\right)=
+      \frac{1}{6}\left(\begin{array}{cc}
+      +T\left(v_1,v_2,v_3\right)&
+      -T\left(v_1,v_3,v_2\right)\cr
+      -T\left(v_2,v_1,v_3\right)&
+      +T\left(v_2,v_3,v_1\right)\cr
+      +T\left(v_3,v_1,v_2\right)&
+      -T\left(v_3,v_2,v_1\right)
+      \end{array}
+      \right)
+    }{ommitted; see PDF}
+
+    and it is reasonably easy to see that \eqn{\mathrm{Alt}(T)}{Alt(T)}
+    is alternating, in the sense that
+
+  \deqn{\mathrm{Alt}(T)\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
+    \mathrm{Alt}(T)\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
+  }{ommitted; see PDF}
+
+
+  
 }
 \value{
-Returns an alternating k-tensor
+Returns an alternating k-tensor.  To coerce to a k-form, use \code{as.kform()}.
 }
+
 \author{Robin K. S. Hankin}
-\seealso{\code{\link{help}}}
+\seealso{\code{\link{kform}}}
 \examples{
-
 Alt(spray(expand.grid(1:4,1:4),rnorm(16)))
-
-} 
+}
