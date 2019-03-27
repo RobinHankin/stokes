@@ -1,24 +1,19 @@
 `as.ktensor` <- function(S){
   stopifnot(is.spray(S))
+  stopifnot(all(index(S)>0))
   class(S) <- c("ktensor","spray")
   return(S)
 }
 
-`ktensor_to_fun` <- function(S){  # NB: *not* the same as as.function(S)!!! NB!!!
-  print("NB: spray_to_fun() is *not* the same as as.function()")
-        
-    stopifnot(is.spray(S))
-    v <- value(S)
-    M <- index(S)
-    k <- seq_len(ncol(M))
-    p <- seq_len(nrow(M))
+`as.function.ktensor` <- function(x, ...){
+    stopifnot(is.spray(x))
+    v <- value(x)
+    M <- index(x)
+    k <- seq_len(ncol(x))
+    p <- seq_len(nrow(x))
     function(E){
       sum(sapply(p,function(i){v[i]*prod(E[cbind(M[i,],k)])}))
     }
-}
-
-`as.function.ktensor` <- function(x,...){
-  ktensor_to_fun(x)
 }
 
 `lose_repeats` <- function(S){

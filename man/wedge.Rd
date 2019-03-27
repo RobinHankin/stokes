@@ -1,5 +1,6 @@
 \name{wedge}
 \alias{wedge}
+\alias{wedge2}
 \title{Wedge products}
 \description{Wedge products of k forms}
 \usage{
