@@ -9,8 +9,8 @@
     stopifnot(is.spray(x))
     v <- value(x)
     M <- index(x)
-    k <- seq_len(ncol(x))
-    p <- seq_len(nrow(x))
+    k <- seq_len(ncol(M))
+    p <- seq_len(nrow(M))
     function(E){
       sum(sapply(p,function(i){v[i]*prod(E[cbind(M[i,],k)])}))
     }
