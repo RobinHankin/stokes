@@ -1,0 +1,10 @@
+Package: wedge
+Type: Package
+Title: exterior calculus
+Version: 1.0
+Depends: spray
+Imports: permutations, partitions, magrittr
+Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
+Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
+Description: R-centric functionality for the exterior calculus.  Differentials, wedge products, etc.
+License: GPL-2

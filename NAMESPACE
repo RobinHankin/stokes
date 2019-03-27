@@ -1,0 +1,11 @@
+exportPattern("^[[:alpha:]]+")
+
+import("magrittr")
+import("spray")
+
+importFrom(partitions,blockparts)
+
+importFrom(permutations,allperms)
+importFrom(permutations,sgn)
+importFrom(permutations,word)
+
