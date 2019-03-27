@@ -49,7 +49,6 @@ cross(S1,S2)
 ## In Relativity, we have things like
 Alt(spray(expand.grid(1:4,1:4),rnorm(16)))
 
-
 M <- matrix(c(
     1,2,
     1,3,
@@ -70,7 +69,15 @@ k3 <- general_kform(1:4,3,c(1,0,0,0))
 k4 <- general_kform(6:9,2,c(1,0,0,0,0,0))
 wedge(k3,k4)
 
-
-
 E <- matrix(rnorm(12),4,3)
 as.function(k1)(E)
+
+
+dx <- kform(1)
+dy <- kform(2)
+dz <- kform(3)
+
+O <- wedge(dx,dy,dz)
+f <- as.function(O)
+M <- matrix(rnorm(9),3,3)
+det(M) - f(M)  # should be small
