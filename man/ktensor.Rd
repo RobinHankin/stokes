@@ -2,6 +2,7 @@
 \alias{ktensor}
 \alias{as.ktensor}
 \alias{as.function.ktensor}
+\alias{cross}
 \title{k-tensors}
 \description{
 Functionality for k-tensors
