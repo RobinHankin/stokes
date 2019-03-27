@@ -115,7 +115,7 @@
   return(out)
 }
 
-`general_kform`  <- function(W,k,coeffs){
+`kform_general`  <- function(W,k,coeffs){
     M <-  kform_basis(length(W),k)
     M[] <- W[M]
     kform(M,coeffs)
