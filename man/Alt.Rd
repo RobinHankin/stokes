@@ -46,4 +46,10 @@ Returns an alternating k-tensor.  To coerce to a k-form, use \code{as.kform()}.
 \seealso{\code{\link{kform}}}
 \examples{
 Alt(spray(expand.grid(1:4,1:4),rnorm(16)))
+
+U <- as.ktensor(spray(matrix(1:4,3,4)))
+Alt(U) - Alt(Alt(U))  # should be zero
+
+
+
 }
