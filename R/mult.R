@@ -18,7 +18,7 @@
 
 `lose_repeats` <- function(S){
     wanted <- apply(index(S),1,function(x){all(table(x)==1)})
-    spray(index(S)[wanted,],value(S)[wanted])
+    spray(index(S)[wanted,,drop=FALSE],value(S)[wanted])
 }
 
 `consolidate` <- function(S){  # S is a spray object corresponding to an alternating form
