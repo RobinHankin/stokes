@@ -31,7 +31,7 @@ include_perms(S)
 \seealso{\code{\link{ktensor}},\code{\link{kform}}}
 \examples{
 
-S <- spray(matrix(c(1,1,2,2,1,3,3,1,3,5),ncol=2,byrow=T),1:5)
+S <- spray(matrix(c(1,1,2,2,1,3,3,1,3,5),ncol=2,byrow=TRUE),1:5)
 lose_repeats(S)
 consolidate(S)
 
