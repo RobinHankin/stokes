@@ -11,14 +11,15 @@ Functionality for dealinng with k-forms.
 }
 \usage{
 kform_basis(n, k, coeffs)
-kform_general()
+kform_general(W,k,coeffs)
 \method{as.function}{kform}(x,...)
 }
 \arguments{
-  \item{n}{}
-  \item{k}{}
-  \item{coeffs}{}
-  \item{x}{}
+  \item{n}{Dimension of the vector space \eqn{V=R^n}}
+  \item{k}{A k-forms maps \eqn{V^k} to \eqn{R}}
+  \item{W}{Integer vector of dimensions}
+  \item{coeffs}{Coefficients of the kform}
+  \item{x}{Object of class k-form}
   \item{...}{Further arguments, currently ignored}
 }
 \details{
@@ -31,8 +32,6 @@ satisfies
   \deqn{\mathrm{Alt}(T)\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
     \mathrm{Alt}(T)\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
   }{ommitted; see PDF}
-
-
   
 Function \code{kform_basis()} is a low-level helper function that
 returns a matrix whose rows constitute a basis for the vector space
