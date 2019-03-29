@@ -14,3 +14,5 @@ importFrom(permutations,word)
 
 S3method("as.function",ktensor)
 S3method("as.function",kform)
+S3method("as.spray",kform)
+S3method(Ops,kform)

@@ -5,6 +5,12 @@
   return(S)
 }
 
+`as.spray.kform` <- function(S){
+  print("here we are at as.spray.kform()")
+  class(S) <-   class(S)[!(class(S) %in% "kform")]
+  return(S)
+}
+
 `as.function.ktensor` <- function(x, ...){
     stopifnot(is.spray(x))
     v <- value(x)
