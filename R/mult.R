@@ -65,8 +65,8 @@
     if(nrow(index(S))==0){  # the zero form
         return(S)
     }
-    
-    return(S %>% consolidate %>% include_perms %>% `/`(factorial(ncol(index(S)))))
+
+    include_perms(consolidate(S))/factorial(ncol(index(S)))
 }
 
 `cross` <- function(S1,S2){  # returns S1\otimes S2
