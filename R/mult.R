@@ -72,6 +72,8 @@
     return(out)
 }
 
+`%X%` <- function(x,y){cross(x,y)}
+
 `wedge` <- function(x, ...) {
    if(nargs()<3){
      wedge2(x,...)
@@ -103,6 +105,8 @@
   kform(M, c(outer(var1,var2)))
 }
 
+`%^%` <- function(x,y){wedge(x,y)}
+
 `kform_basis` <- function(n,k,coeffs){  # just a matrix (a low-level helper function)
     f <- function(x){which(x>0)}
     t(apply(blockparts(rep(1,n),k),2,f))
@@ -116,6 +120,7 @@
 }
 
 `kform_general`  <- function(W,k,coeffs){
+    if(length(W)==1){W <- seq_len(W)}
     M <-  kform_basis(length(W),k)
     M[] <- W[M]
     kform(M,coeffs)

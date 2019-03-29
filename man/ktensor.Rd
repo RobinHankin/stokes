@@ -3,6 +3,7 @@
 \alias{as.ktensor}
 \alias{as.function.ktensor}
 \alias{cross}
+\alias{\%X\%}
 \title{k-tensors}
 \description{
 Functionality for k-tensors
@@ -30,11 +31,10 @@ and
 \deqn{S\left(x_1,\ldots,x_i+{x_i}',\ldots,x_k\right)=S\left(x_1,\ldots,x_i,\ldots,x_k\right)+
 S\left(x_1,\ldots,{x_i}',\ldots,x_k\right).}{ommitted; see PDF}
 Note that this is \emph{not} equivalent to linearity
-over\eqn{V^{nk}}{V^nk} (see examples).
-
+over \eqn{V^{nk}}{V^nk} (see examples).
 
 Given two k-tensor objects \eqn{S,T} we can form the cross product
-\eqn{S\otimes T} defined as
+\eqn{S\otimes T}{S*T}, defined as
 
 \deqn{S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
   S\left(v_1,\ldots v_k\right)\cdot T\left(v_{k+1},\ldots
@@ -44,6 +44,10 @@ Given two k-tensor objects \eqn{S,T} we can form the cross product
 }
 
 \references{Spivak 1961}
+\note{
+The binary form \code{\%X\%} uses uppercase X to avoid clashing with
+\code{\%x\%} which is the Kronecker product in base \R.
+}
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{kform}}
 }
@@ -72,5 +76,8 @@ r1*f(E1) + r2*f(E2) -f(E3) # should be small
 
 ## Note that multilinearity is different from linearity:
 r1*f(E1) + r2*f(E2) - f(r1*E1 + r2*E2)  # not small!
+
+
+
 
 }

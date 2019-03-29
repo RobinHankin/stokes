@@ -1,5 +1,8 @@
 exportPattern("^[[:alpha:]]+")
 
+export("%^%")
+export("%X%")
+
 import("magrittr")
 import("spray")
 

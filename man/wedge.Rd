@@ -1,6 +1,7 @@
 \name{wedge}
 \alias{wedge}
 \alias{wedge2}
+\alias{\%^\%}
 \title{Wedge products}
 \description{Wedge products of k forms}
 \usage{
@@ -34,6 +35,7 @@ dy <- kform(2)
 dz <- kform(3)
 
 wedge(dx,dy,dz)
+dx \%^\% dy \%^\% dz
 
 wedge(k1,k2,kform(3))
 
