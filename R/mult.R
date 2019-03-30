@@ -126,13 +126,14 @@
 `kform` <- function(S){
     stopifnot(is.spray(S))
     stopifnot(all(index(S)>0))
+    S <- consolidate(lose_repeats(S))
     class(S) <- c("kform", "spray")   # This is the only class setter for kform objects
     return(S)
 }
 
 `as.kform` <- function(M,coeffs){
     if(inherits(M,"kform")){return(M)}
-    kform(consolidate(lose_repeats(spray(M,coeffs,addrepeats=TRUE))))
+    return(kform(spray(M,coeffs)))
 }
 
 `kform_general`  <- function(W,k,coeffs){
