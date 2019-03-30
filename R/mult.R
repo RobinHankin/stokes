@@ -1,8 +1,12 @@
-`as.ktensor` <- function(S){
+`ktensor` <- function(S){
   stopifnot(is.spray(S))
   stopifnot(all(index(S)>0))
-  class(S) <- c("ktensor","spray")
+  class(S) <- c("ktensor","spray")  # This is the only place class ktensor is set
   return(S)
+}
+
+`as.ktensor` <- function(M,coeffs){
+  ktensor(spray(M,coeffs))
 }
 
 `as.spray.kform` <- function(S){
@@ -12,7 +16,7 @@
 }
 
 `as.function.ktensor` <- function(x, ...){
-    stopifnot(is.spray(x))
+    stopifnot(inherits(x,"ktensor"))
     v <- value(x)
     M <- index(x)
     k <- seq_len(ncol(M))
@@ -108,7 +112,7 @@
 
   f <- function(i){c(ind1[i[1],,drop=TRUE],ind2[i[2],,drop=TRUE])}
   M <- expand.grid(seq_len(n1),seq_len(n2)) %>% apply(1,f) %>% t
-  kform(M, c(outer(var1,var2)))
+  as.kform(M, c(outer(var1,var2)))
 }
 
 `%^%` <- function(x,y){wedge(x,y)}
@@ -118,18 +122,22 @@
     t(apply(blockparts(rep(1,n),k),2,f))
 }
 
-`kform` <- function(M,coeffs){
-  stopifnot(all(M>0))
-  out <- spray(M,coeffs,addrepeats=TRUE) %>% lose_repeats %>% consolidate
-  class(out) <- c("kform", "spray")   # This is the only class setter for kform objects
-  return(out)
+`kform` <- function(S){
+    stopifnot(is.spray(S))
+    stopifnot(all(index(S)>0))
+    class(S) <- c("kform", "spray")   # This is the only class setter for kform objects
+    return(S)
+}
+
+`as.kform` <- function(M,coeffs){  
+  kform(consolidate(lose_repeats(spray(M,coeffs,addrepeats=TRUE))))
 }
 
 `kform_general`  <- function(W,k,coeffs){
     if(length(W)==1){W <- seq_len(W)}
     M <-  kform_basis(length(W),k)
     M[] <- W[M]
-    kform(M,coeffs)
+    as.kform(M,coeffs)
 }
 
 `as.function.kform` <- function(x,...){

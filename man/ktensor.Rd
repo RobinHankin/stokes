@@ -9,12 +9,14 @@
 Functionality for k-tensors
 }
 \usage{
-as.ktensor(S)
+ktensor(S)
+as.ktensor(M,coeffs)
 \method{as.function}{ktensor}(x,...)
 cross(S1,S2)
 }
 \arguments{
-  \item{S,S1,S2,x}{Object of class spray}
+  \item{M,coeffs}{Matrix of indices and coefficients, as in \code{spray(M,coeffs)}}
+  \item{S,S1,S2,x}{Object of class ktensor}
   \item{...}{Further arguments, currently ignored}
 }
 \details{
@@ -55,7 +57,8 @@ The binary form \code{\%X\%} uses uppercase X to avoid clashing with
 k <- 4
 n <- 5
 no_of_terms <- 3
-S <- as.ktensor(spray(matrix(1+sample(no_of_terms*k)\%\%n,no_of_terms,k),0.5+seq_len(no_of_terms)))
+S  <- ktensor(spray(matrix(1+sample(no_of_terms*k)\%\%n,no_of_terms,k),0.5+seq_len(no_of_terms)))
+S1 <- ktensor(spray(matrix(1+sample(no_of_terms*k)\%\%n,no_of_terms,k),0.5+seq_len(no_of_terms)))
 E <- matrix(rnorm(n*k),n,k)   # random point in V^k
 
 ## Test multilinearity

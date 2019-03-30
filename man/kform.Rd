@@ -60,11 +60,11 @@ Hubbard and Hubbard use the term \dQuote{k-form}, but Spivak does not.
 \seealso{\code{\link{ktensor}}}
 \examples{
 
-kform(cbind(1:5,2:6),rnorm(5))
+as.kform(cbind(1:5,2:6),rnorm(5))
 kform_general(1:4,2,coeffs=1:6)  # used in electromagnetism
 
 
-K1 <- kform(cbind(1:5,2:6),rnorm(5))
+K1 <- as.kform(cbind(1:5,2:6),rnorm(5))
 K2 <- kform_general(5:8,2,1:6)
 wedge(K1,K2)
 
@@ -73,9 +73,6 @@ f <- as.function(wedge(K1,K2))
 E <- matrix(rnorm(32),8,4)
 
 f(E) + f(E[,c(1,3,2,4)])  # should be zero
-
-
-
 
 
 }
