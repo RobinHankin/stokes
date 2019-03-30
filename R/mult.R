@@ -6,7 +6,8 @@
 }
 
 `as.ktensor` <- function(M,coeffs){
-  ktensor(spray(M,coeffs))
+    if(inherits(M,"ktensor")){return(M)}
+    ktensor(spray(M,coeffs))
 }
 
 `as.spray.kform` <- function(S){
@@ -129,8 +130,9 @@
     return(S)
 }
 
-`as.kform` <- function(M,coeffs){  
-  kform(consolidate(lose_repeats(spray(M,coeffs,addrepeats=TRUE))))
+`as.kform` <- function(M,coeffs){
+    if(inherits(M,"kform")){return(M)}
+    kform(consolidate(lose_repeats(spray(M,coeffs,addrepeats=TRUE))))
 }
 
 `kform_general`  <- function(W,k,coeffs){
