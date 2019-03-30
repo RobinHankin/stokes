@@ -6,7 +6,7 @@
 }
 
 `as.ktensor` <- function(M,coeffs){
-    if(inherits(M,"ktensor")){return(M)}
+    if(inherits(M,"spray")){return(ktensor(M))}
     ktensor(spray(M,coeffs))
 }
 
@@ -79,8 +79,7 @@
     M2 <- index(S2)
     jj <- as.matrix(expand.grid(seq_len(nrow(M1)),seq_len(nrow(M2))))
     f <- function(i){c(M1[jj[i,1],],M2[jj[i,2],])}
-    out <- spray(t(sapply(seq_len(nrow(jj)),f)),c(outer(value(S1),value(S2))))
-    return(out)
+    ktensor(spray(t(sapply(seq_len(nrow(jj)),f)),c(outer(value(S1),value(S2)))))
 }
 
 `%X%` <- function(x,y){cross(x,y)}
@@ -132,7 +131,7 @@
 }
 
 `as.kform` <- function(M,coeffs){
-    if(inherits(M,"kform")){return(M)}
+    if(inherits(M,"spray")){return(kform(M))}
     return(kform(spray(M,coeffs)))
 }
 
@@ -154,3 +153,4 @@
       return(out)
     })
 }
+

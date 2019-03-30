@@ -72,7 +72,7 @@
         stop("operator '", .Generic, "' is not implemented for ktensors")
     }
 
-    f <- function(o){as.ktensor(index(o),value(o))}
+    f <- function(o){spray(index(o),value(o))}
     if (lclass && rclass) {
         if (.Generic == "+"){
             return(as.ktensor(f(e1) + f(e2)))
