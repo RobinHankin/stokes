@@ -94,6 +94,9 @@
 
 `wedge2` <- function(F1,F2){
 
+  if(`|`(!inherits(F1,"kform"), !inherits(F2,"kform"))){return(F1*F2)}
+
+
   ## we need to go through F1 and F2 line by line (wedge product is
   ## left- and right- distributive).
   
