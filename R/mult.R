@@ -28,19 +28,34 @@
 }
 
 `lose_repeats` <- function(S){
-    wanted <- apply(index(S),1,function(x){all(table(x)==1)})
-    spray(index(S)[wanted,,drop=FALSE],value(S)[wanted])
+    I <- index(S)
+    if(length(I)>0){  # cannot use nrow(I)==0, as 'I' might be NULL
+      wanted <- apply(I,1,function(x){all(table(x)==1)})
+      out <- spray(I[wanted,,drop=FALSE],value(S)[wanted])
+    } else {
+      out <- S
+    }
+    return(out)
 }
 
 `consolidate` <- function(S){  # S is a spray object corresponding to an alternating form
-    newind <- 0*index(S)
-    change_sign <- numeric(nrow(index(S)))
-    for(i in seq_len(nrow(index(S)))){
-        o <- index(S)[i,]
+    I <- index(S)
+    if(length(I)==0){return(S)}
+    newind <- 0*I
+    change_sign <- numeric(nrow(I))
+    for(i in seq_len(nrow(I))){
+        o <- I[i,]
         newind[i,] <- sort(o)
         change_sign[i] <- sgn(word(rbind(order(o))))
     }
-    spray(newind, value(S)*change_sign, addrepeats=TRUE)  # does a lot of work (potentially)
+
+    out <- spray(newind, value(S)*change_sign, addrepeats=TRUE)  # does a lot of work (potentially)
+    if(length(index(out))==0){ # zero form
+      out <- spray(matrix(0,0,ncol(I)))
+    }
+
+    return(out)
+      
 }
 
 `include_perms` <- function(S){ # S is a spray object
