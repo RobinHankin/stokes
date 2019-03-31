@@ -94,11 +94,6 @@
 
 `wedge2` <- function(F1,F2){
 
-  stopifnot(inherits(F1,'kform'))
-  stopifnot(inherits(F2,'kform'))
-  
-  
-
   ## we need to go through F1 and F2 line by line (wedge product is
   ## left- and right- distributive).
   
