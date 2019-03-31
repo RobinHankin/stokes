@@ -1,4 +1,0 @@
-## Hubbard and Hubbard, 6.7.18 (p629)
-
-library(wedge)
-as.kform(t(apply(blockparts(rep(1,5),4)>0,2,which)))
