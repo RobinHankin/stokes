@@ -26,12 +26,12 @@ A \dfn{ktensor} object \eqn{S} is a map from \eqn{V^k} to the reals
 multilinearity:
 
 \deqn{S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot
-  S\left(v_1,\ldots,v_i,\ldots,v_k\right)}{ommitted; see PDF}
+  S\left(v_1,\ldots,v_i,\ldots,v_k\right)}{omitted; see PDF}
 
 and
 
 \deqn{S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
-S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).}{ommitted; see PDF}
+S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).}{omitted; see PDF}
 Note that this is \emph{not} equivalent to linearity
 over \eqn{V^{nk}}{V^nk} (see examples).
 
@@ -40,7 +40,7 @@ Given two k-tensor objects \eqn{S,T} we can form the cross product
 
 \deqn{S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
   S\left(v_1,\ldots v_k\right)\cdot T\left(v_{k+1},\ldots
-  v_{k+l}\right)}{ommitted; see PDF}
+  v_{k+l}\right)}{omitted; see PDF}
 
 
 }

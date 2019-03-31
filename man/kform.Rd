@@ -31,7 +31,7 @@ satisfies
 
   \deqn{\mathrm{Alt}(T)\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
     \mathrm{Alt}(T)\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
-  }{ommitted; see PDF}
+  }{omitted; see PDF}
   
 Function \code{kform_basis()} is a low-level helper function that
 returns a matrix whose rows constitute a basis for the vector space
@@ -39,13 +39,13 @@ returns a matrix whose rows constitute a basis for the vector space
 
 \deqn{\phi=\sum_{1\leq i_1<\cdots<i_k\leq n}a_{i_1\ldots i_k}
   dx_{i_1}\wedge\cdots\wedge dx_{i_k}
-}{ommitted; see PDF}
+}{omitted; see PDF}
 
 
 and in fact
 
 \deqn{a_{i_1\ldots i_k}=\phi\left(\mathbf{e}_{i_1},\ldots,\mathbf{e}_{i_k}\right)
-}{ommitted; see PDF}
+}{omitted; see PDF}
 
 where \eqn{\mathbf{e}_j,1\leq j\leq k}{e_j,1<=j<=k} is a basis for
 \eqn{V}.

@@ -12,7 +12,7 @@
   \deqn{\mathrm{Alt}(T)\left(v_1,\ldots,v_k\right)=
     \frac{1}{k!}\sum_{\sigma\in S_k}\mathrm{sgn}(\sigma)\cdot
     T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
-  }{ommitted; see PDF}
+  }{omitted; see PDF}
 
   Thus for example if \eqn{k=3}:
 
@@ -26,14 +26,14 @@
       -T\left(v_3,v_2,v_1\right)
       \end{array}
       \right)
-    }{ommitted; see PDF}
+    }{omitted; see PDF}
 
     and it is reasonably easy to see that \eqn{\mathrm{Alt}(T)}{Alt(T)}
     is alternating, in the sense that
 
   \deqn{\mathrm{Alt}(T)\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
     \mathrm{Alt}(T)\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
-  }{ommitted; see PDF}
+  }{omitted; see PDF}
 
 
   
