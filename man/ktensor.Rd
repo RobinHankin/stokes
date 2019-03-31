@@ -25,13 +25,13 @@ A \dfn{ktensor} object \eqn{S} is a map from \eqn{V^k} to the reals
 \eqn{R}, where \eqn{V} is a vector space (here \eqn{R^n}) that satisfies
 multilinearity:
 
-\deqn{S\left(x_1,\ldots,ax_i,\ldots,x_k\right)=a\cdot
-  S\left(x_1,\ldots,x_i,\ldots,x_k\right)}{ommitted; see PDF}
+\deqn{S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot
+  S\left(v_1,\ldots,v_i,\ldots,v_k\right)}{ommitted; see PDF}
 
 and
 
-\deqn{S\left(x_1,\ldots,x_i+{x_i}',\ldots,x_k\right)=S\left(x_1,\ldots,x_i,\ldots,x_k\right)+
-S\left(x_1,\ldots,{x_i}',\ldots,x_k\right).}{ommitted; see PDF}
+\deqn{S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
+S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).}{ommitted; see PDF}
 Note that this is \emph{not} equivalent to linearity
 over \eqn{V^{nk}}{V^nk} (see examples).
 
