@@ -38,8 +38,9 @@ and
 S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).
 \]
 
-If $S\in\mathcal{J}^k(V)$ and $T\in\mathcal{J}^l(V)$, then we may
-define $S\otimes T\in\mathcal{J}^{k+l}(V)$ as
+where $v_i\in V$.  If $S\in\mathcal{J}^k(V)$ and
+$T\in\mathcal{J}^l(V)$, then we may define $S\otimes
+T\in\mathcal{J}^{k+l}(V)$ as
 
 \[
 S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l}\right)=
@@ -147,8 +148,8 @@ S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
 
 
 ```{r}
-S1 <- ktensor(spray(cbind(1:3,2:4)))
-S2 <- as.ktensor(matrix(1:6,2,3),1:2)
+S1 <- ktensor(spray(cbind(1:3,2:4),1:3))
+S2 <- as.ktensor(matrix(1:6,2,3))
 S1
 S2
 ```
@@ -168,22 +169,35 @@ as.function(cross(S1,S2))(matrix(rnorm(30),6,5))
 
 # Alternating forms
 
-An alternating form is a multiliar map $T$ satisfying
+An alternating form is a multilinear map $T$ satisfying
 
 \[
 \mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
     -\mathrm{T}\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
 \]
 
-We write $\Lambda^k(V)$ for the space of all alternating multilinear
-maps from $V^k$ to $\mathbb{R}$.  Spivak gives
+(or, equivalently,
+$\mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_i,\ldots,v_k\right)= 0$).  We
+write $\Lambda^k(V)$ for the space of all alternating multilinear maps
+from $V^k$ to $\mathbb{R}$.  Spivak gives
 $\operatorname{Alt}\colon\mathcal{J}^k(V)\longrightarrow\Lambda^k(V)$
 defined by
 
-\[\mathrm{Alt}(T)\left(v_1,\ldots,v_k\right)=
-    \frac{1}{k!}\sum_{\sigma\in S_k}\mathrm{sgn}(\sigma)\cdot
+\[\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
+    \frac{1}{k!}\sum_{\sigma\in S_k}\operatorname{sgn}(\sigma)\cdot
     T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
 \]
+
+where the sum ranges over all permutations of
+$\left[n\right]=\left\{1,2,\ldots,n\right\}$ and
+$\operatorname{sgn}(\sigma)\in\pm 1$ is the sign of the permutation.
+If $T\in\mathcal{J}^k(V)$ and $\omega\in\Lambda^k(V)$, it is
+straightforward to prove that $\operatorname{Alt}(T)\in\Lambda^k(V)$,
+$\operatorname{Alt}\left(\operatorname{Alt}\left(T\right)\right)=\operatorname{Alt}\left(T\right)$,
+and $\operatorname{Alt}\left(\omega\right)=\omega$.
+
+In the wedge package, this is effected by the ```Alt()``` function:
+
 
 ```{r}
 S1
@@ -200,25 +214,31 @@ as.function(Alt(S1))(E) + as.function(Alt(S1))(Erev)  # should be zero
 
 However, we can see that this form for alternating tensors (here
 called $k$-forms) is inefficient and highly redundant.  The package
-provides ```kform``` objects which are inherently alternating.
+provides ```kform``` objects which are inherently alternating; they are described using  wedge products which are discussed next.
 
-The exterior calculus deals with objects such as $dx_1\wedge dx_2$,
-which is an alternating linear map from
+## Wedge products and the exterior calculus
+
+This section follows the exposition of Hubbard and Hubbard, who
+introduce the exterior calculus starting with a discussion of
+elementary forms.  An elementary form is an object such as $dx_1\wedge
+dx_3$, which is an alternating linear map from
 $\mathbb{R}^n\times\mathbb{R}^n$ to $\mathbb{R}$ with
 
 \[
 \left(
-dx_1\wedge dx_2
+dx_1\wedge dx_3
 \right)\left(
-\begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
-\begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix}
+\begin{pmatrix}a_1\\a_3\\ \vdots\\ a_n\end{pmatrix},
+\begin{pmatrix}b_1\\b_3\\ \vdots\\ b_n\end{pmatrix}
 \right)=\mathrm{det}
-\begin{pmatrix} a_1 & b_1 \\ a_2 & b_2\end{pmatrix}
-=a_1b_2-a_2b_1
+\begin{pmatrix} a_1 & b_1 \\ a_3 & b_3\end{pmatrix}
+=a_1b_3-a_3b_1
 \]
 
-Because such objects are linear, it is possible to consider more
-complicated forms such as $dx_1\wedge dx_2 + 3 dx_2\wedge dx_3$ with
+That this is alternating follows from the properties of the
+determinant.  Because such objects are linear, it is possible to
+consider more complicated forms such as $dx_1\wedge dx_2 + 3
+dx_2\wedge dx_3$ with
 
 \[
 \left(
@@ -239,14 +259,14 @@ $\mathbb{R}$ with
 
 \[
 \left(
-dx_1\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
+dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
 \right)\left(
 \begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
 \begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix},
 \begin{pmatrix}c_1\\c_2\\ \vdots\\ c_n\end{pmatrix}
 \right)=\mathrm{det}
 \begin{pmatrix}
-	a_1 & b_1 & c_1\\
+	a_4 & b_4 & c_4\\
 	a_2 & b_2 & c_2\\
 	a_3 & b_3 & c_3
 \end{pmatrix}
@@ -261,20 +281,90 @@ dx_1\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
 Taking the last form as an example, this has ready R idiom:
 
 ```{r}
-K <- as.kform(matrix(c(1,1,2,2,3,4),2,3),c(1,5))
+M <- matrix(c(4,2,3,1,2,4),2,3,byrow=TRUE)
+M
+K <- as.kform(M,c(1,5))
 K
 ```
 
-Note that the order of the terms has been reversed, as the wedge
-package uses the efficient spray package.  Observe that this does not
-affect the value of the form as addition is commutative.
+Note that the order of the rows in ```K``` is immaterial and indeed in
+some implementations will appear in a different order: the wedge
+package uses the spray package, which in turn utilises the STL map
+class of C++.
 
+Spivak observes that $\Lambda^k(V)$ is spanned by the $n\choose k$
+wedge products of the form
 
+\[
+dx_{i_1}\wedge dx_{i_2}\wedge\ldots\wedge dx_{i_k}\qquad
+1\leq i_i<i_2<\cdots <i_k\leq n
+\]
 
-
+and these products are called elementary forms: every element of the
+space $\Lambda^k(V)$ is a linear combination of elementary forms, as
+illustrated in the package by function ```kform_general()```.
 Consider the following idiom:
 
 
 ```{r}
-kform_general(4,2,1:6)
+Krel <- kform_general(4,2,1:6)
+Krel
+```
+
+Object ```Krel``` is a two-form, specifically a map from
+$\left(\mathbb{R}^4\right)^2$ to $\mathbb{R}$.  Observe that
+```Krel``` has ${4\choose 2}=6$ components, which do not appear in any
+particular order.
+
+## Formal definition of wedge product
+
+Given two alternating forms $\omega,\eta$, Spivak defines the wedge
+product $\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
+
+\[
+\omega\wedge\eta={k+l\choose k\,l}\operatorname{Alt}(\omega\otimes\eta)
+\]
+
+and this is implemented in the package by function ```wedge()```, or,
+more idiomatically, ```%^%```:
+
+```{r}
+M1 <- matrix(c(3,4,5, 4,6,1),2,3,byrow=TRUE)
+K1 <- as.kform(M1,c(2,7))
+K1
+M2 <- cbind(1:5,3:7)
+K2 <- as.kform(M2,1:5)
+K2
+K1 %^% K2
+
+```
+
+See how the wedge product eliminates rows with repeated entries,
+gathers permuted rows together (respecting the sign of the
+permutation), and expresses the result in terms of elementary forms.
+The product is a linear combination of two elementary forms but only
+two coefficients are nonzero out of a possible ${7\choose 5}=21$
+terms.  Note again that the order of the rows in the product is
+arbitrary.
+
+The wedge product has formal properties such as distributivity but by
+far the most interesting one is associativity, which I will
+demonstrate below:
+
+```{r}
+F1 <- as.kform(matrix(c(3,4,5, 4,6,1,3,2,1),3,3,byrow=TRUE))
+F2 <- as.kform(cbind(1:6,3:8),1:6)
+F3 <- kform_general(1:8,2)
+(F1 %^% F2) %^% F3
+F1 %^% (F2 %^% F3)
+```
+
+
+Note carefully in the above that the terms in ```(F1 %^% F2) %^% F3```
+and ```F1 %^% (F2 %^% F3)``` appear in a different order.  They are
+nevertheless algebraically identical:
+
+
+```{r}
+(F1 %^% F2) %^% F3 - F1 %^% (F2 %^% F3)
 ```
