@@ -368,3 +368,43 @@ nevertheless algebraically identical:
 ```{r}
 (F1 %^% F2) %^% F3 - F1 %^% (F2 %^% F3)
 ```
+
+
+## Exterior derivatives
+
+Hubbard and Hubbard define the exterior derivative $d\phi$ (they use a
+bold font, $\mathbf{d}\phi$) of the $k$-form $\phi$ as the
+$(k+1)$-form given by
+
+\[  {d}\phi
+  \left({v}_i,\ldots,{v}_{k+1}\right)
+  =
+  \lim_{h\longrightarrow 0}\frac{1}{h^{k+1}}\int_{\partial
+  P_{x}\left(h{v}_1,\ldots,h{v}_{k+1}\right)}\phi
+\]
+
+which, by their own account, is a rather opaque mathematical idiom.
+However, the definition makes sense and it can be shown that
+
+\[
+    {d}\left(f\,dx_{i_1}\wedge\cdots\wedge dx_{i_k}\right)=
+    {d}f\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k}
+\]
+
+where $f\colon\mathbb{R}^nlongrightarrow\mathbb{R}$ is a scalar
+function of position.  The package provides ```grad()```, which when
+given a vector $x_1,\ldots,x_n$ returns the one-form
+
+
+\[
+\sum_{i=1}^n x_idx_i
+\]
+
+This is useful because $df=\sum_{j=1}^n\left(D_j f\right)\,dx_j$. Thus
+
+```{r}
+grad(c(0.4,0.1,-3.2,1.5))
+```
+
+We can use this to verify the celebrated fact that, for any $k$-form
+$\phi$, $d\left(d\phi\right)=0$:
