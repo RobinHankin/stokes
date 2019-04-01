@@ -3,7 +3,7 @@ title: "Exterior calculus with R"
 author: "Robin K. S. Hankin"
 date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{Exterior calculus}
+  %\VignetteIndexEntry{The exterior calculus}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
