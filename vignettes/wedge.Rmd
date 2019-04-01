@@ -156,9 +156,72 @@ Erev <- E[,2:1]
 as.function(Alt(S1))(E) + as.function(Alt(S1))(Erev)  # should be zero
 ```
 
-However, we can see that this form for alternating tensors is
-inefficient and highly redundant.
+However, we can see that this form for alternating tensors (here
+called $k$-forms) is inefficient and highly redundant.  The package
+provides ```kform``` objects which are inherently alternating.
+
+The exterior calculus deals with objects such as $dx_1\wedge dx_2$,
+which is an alternating linear map from
+$\mathbb{R}^n\times\mathbb{R}^n$ to $\mathbb{R}$ with
+
+\[
+\left(
+dx_1\wedge dx_2
+\right)\left(
+\begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
+\begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix}
+\right)=\mathrm{det}
+\begin{pmatrix} a_1 & b_1 \\ a_2 & b_2\end{pmatrix}
+=a_1b_2-a_2b_1
+\]
+
+Because such objects are linear, it is possible to consider more
+complicated forms such as $dx_1\wedge dx_2 + 3 dx_2\wedge dx_3$ with
+
+\[
+\left(
+dx_1\wedge dx_2 + 3dx_2\wedge dx_3
+\right)\left(
+\begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
+\begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix}
+\right)=\mathrm{det}
+\begin{pmatrix} a_1 & b_1\\ a_2 & b_2\end{pmatrix}
++3\mathrm{det}
+\begin{pmatrix} a_2 & b_2\\ a_3 & b_3\end{pmatrix}
+\]
+
+or even $dx_1\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4$
+which would be a linear map from $\left(\mathbb{R}^n\right)^3$ to
+$\mathbb{R}$ with
+
+
+\[
+\left(
+dx_1\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
+\right)\left(
+\begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
+\begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix},
+\begin{pmatrix}c_1\\c_2\\ \vdots\\ c_n\end{pmatrix}
+\right)=\mathrm{det}
+\begin{pmatrix}
+	a_1 & b_1 & c_1\\
+	a_2 & b_2 & c_2\\
+	a_3 & b_3 & c_3
+\end{pmatrix}
++5\mathrm{det}
+\begin{pmatrix}
+	a_1 & b_1 & c_1\\
+	a_2 & b_2 & c_2\\
+	a_4 & b_4 & c_4
+\end{pmatrix}
+\]
 
 
 
 
+Consider the following idiom:
+
+
+```{r}
+kform_general(4,2,1:6)
+```
