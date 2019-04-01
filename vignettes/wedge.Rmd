@@ -1,0 +1,164 @@
+---
+title: "Exterior calculus with R"
+author: "Robin K. S. Hankin"
+date: "`r Sys.Date()`"
+vignette: >
+  %\VignetteIndexEntry{Exterior calculus}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+# The exterior calculus
+
+Ordinary differential calculus may be generalized to
+arbitrary-dimensional oriented manifolds using the exterior calculus.
+Here I show how the wedge package furnishes functionality for working
+with the exterior calculus, and provide numerical verification of a
+number of theorems.
+
+Notation follows that of Spivak, and Hubbard and Hubbard.
+
+
+```{r,echo=FALSE,print=FALSE,results='hide'}
+require("wedge",quietly=TRUE,warn.conflicts=FALSE)
+```
+
+Recall that a $k$-tensor is a multilinear map $S\colon
+V^k\longrightarrow\mathbb{R}$, where $V=\mathbb{R}^n$ is considered as
+a vector space.  Multilinearity means
+
+
+\[
+S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot S\left(v_1,\ldots,v_i,\ldots,v_k\right)
+\]
+
+and
+
+\[S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
+S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).
+\]
+
+We can test these identities in R using the idiom furnished by the wedge package:
+
+```{r}
+k <- 4
+n <- 5
+no_of_terms <- 3
+S <- as.ktensor(spray(matrix(1+sample(no_of_terms*k)%%n,no_of_terms,k),0.5+seq_len(no_of_terms)))
+S
+```
+
+So $S$ is a 4-tensor, mapping $V^4$ to $\mathbb{R}$, where
+$V=\mathbb{R}^5$.  We will define $E$ to be a random point in $V^k$:
+
+
+```{r}
+E <- matrix(rnorm(n*k),n,k)   # A random point in V^k
+```
+
+Then
+
+```{r}
+f <- as.function(S)
+f(E)
+```
+
+Testing  multilinearity is straightforward in the package:
+```{r}
+
+E1 <- E
+E2 <- E
+E3 <- E
+
+x1 <- rnorm(n)
+x2 <- rnorm(n)
+r1 <- rnorm(1)
+r2 <- rnorm(1)
+
+E1[,2] <- x1
+E2[,2] <- x2
+E3[,2] <- r1*x1 + r2*x2
+```
+
+Then we can verify the multilinearity of $S$:
+
+```{r}
+
+f <- as.function(S)
+c(r1*f(E1) + r2*f(E2), f(E3)) # should match
+```
+
+
+Note that this is *not* equivalent to linearity over $V^{nk}$:
+
+
+```{r}
+E1 <- matrix(rnorm(n*k),n,k)
+E2 <- matrix(rnorm(n*k),n,k)
+c(f(E1+E2),f(E1)+f(E2))
+```
+
+
+Given two k-tensor objects \eqn{S,T} we can form the cross product
+$S\otimes T$, defined as
+
+\[
+S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
+  S\left(v_1,\ldots v_k\right)\cdot T\left(v_{k+1},\ldots
+  v_{k+l}\right)
+\]
+
+
+```{r}
+S1 <- ktensor(spray(cbind(1:3,2:4)))
+S2 <- as.ktensor(matrix(1:6,2,3),1:2)
+S1
+S2
+```
+
+The R idiom for $S1\otimes S2$ would be ```cross()```, or ```%X%```:
+
+
+```{r}
+cross(S1,S2)
+```
+
+Then, for example:
+
+```{r}
+as.function(cross(S1,S2))(matrix(rnorm(30),6,5))
+```
+
+
+# Alternating forms
+
+An alternating form is a multiliar map $T$ satisfying
+
+\[
+\mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
+    -\mathrm{T}\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
+\]
+
+We can convert any multilinear $k$-tensor
+
+
+```{r}
+S1
+Alt(S1)
+```
+
+And verifying that it is in fact alternating is straightforward:
+
+```{r}
+E <- matrix(rnorm(8),4,2)
+Erev <- E[,2:1]
+as.function(Alt(S1))(E) + as.function(Alt(S1))(Erev)  # should be zero
+```
+
+However, we can see that this form for alternating tensors is
+inefficient and highly redundant.
+
+
+
+
