@@ -19,15 +19,14 @@ number of theorems.
 
 Notation follows that of Spivak, and Hubbard and Hubbard.
 
-
 ```{r,echo=FALSE,print=FALSE,results='hide'}
 require("wedge",quietly=TRUE,warn.conflicts=FALSE)
 ```
 
 Recall that a $k$-tensor is a multilinear map $S\colon
 V^k\longrightarrow\mathbb{R}$, where $V=\mathbb{R}^n$ is considered as
-a vector space.  Multilinearity means
-
+a vector space; Spivak denotes the space of multilinear maps as
+$\mathcal{J}^k(V)$.  Formally, multilinearity means
 
 \[
 S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot S\left(v_1,\ldots,v_i,\ldots,v_k\right)
@@ -39,18 +38,46 @@ and
 S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).
 \]
 
-We can test these identities in R using the idiom furnished by the wedge package:
+If $S\in\mathcal{J}^k(V)$ and $T\in\mathcal{J}^l(V)$, then we may
+define $S\otimes T\in\mathcal{J}^{k+l}(V)$ as
+
+\[
+S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l}\right)=
+S\left(v_1,\ldots,v_k\right)\cdot
+T\left(v_1,\ldots,v_l\right)
+\]
+
+
+Spivak observes that $\mathcal{J}^k(V)$ is spanned by the $n^k$
+products of the form
+
+\[
+\phi_{i_1}\otimes\phi_{i_2}\otimes\ldots\otimes\phi_{i_k}\qquad
+1\leq i_i,i_2,\ldots,i_k\leq n
+\]
+
+where $v_1,\ldots,v_k$ is a basis for $V$ and
+$\phi_i\left(v_j\right)=\delta_{ij}$.  The space spanned by suchq
+products has a natural representation in R as an array of dimensions
+$n\times\cdots\times n$.  However, it is more efficient and
+conceptually cleaner to consider a sparse array.  Considering the case
+$n=5,k=4$ 
+
+We can test these identities in R using the idiom furnished by the
+wedge package:
 
 ```{r}
 k <- 4
 n <- 5
-no_of_terms <- 3
-S <- as.ktensor(spray(matrix(1+sample(no_of_terms*k)%%n,no_of_terms,k),0.5+seq_len(no_of_terms)))
+S <- as.ktensor(matrix(c(5,4,1,2,2,5,2,3,1,3,4,3),3,4),0.5 + 1:3)
 S
 ```
 
 So $S$ is a 4-tensor, mapping $V^4$ to $\mathbb{R}$, where
-$V=\mathbb{R}^5$.  We will define $E$ to be a random point in $V^k$:
+$V=\mathbb{R}^5$.  Here we have
+$S=3.5\phi_1\otimes\phi_5\otimes\phi_1\otimes\phi_3+1.5\phi_5\otimes\phi_2\otimes\phi_2\otimes\phi_3+2.5\phi_4\otimes\phi_2\otimes\phi_3\otimes\phi_4$.
+
+We will define $E$ to be a random point in $V^k$:
 
 
 ```{r}
@@ -99,7 +126,6 @@ E2 <- matrix(rnorm(n*k),n,k)
 c(f(E1+E2),f(E1)+f(E2))
 ```
 
-
 Given two k-tensor objects \eqn{S,T} we can form the cross product
 $S\otimes T$, defined as
 
@@ -130,7 +156,6 @@ Then, for example:
 as.function(cross(S1,S2))(matrix(rnorm(30),6,5))
 ```
 
-
 # Alternating forms
 
 An alternating form is a multiliar map $T$ satisfying
@@ -140,8 +165,15 @@ An alternating form is a multiliar map $T$ satisfying
     -\mathrm{T}\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
 \]
 
-We can convert any multilinear $k$-tensor
+We write $\Lambda^k(V)$ for the space of all alternating multilinear
+maps from $V^k$ to $\mathbb{R}$.  Spivak gives
+$\operatorname{Alt}\colon\mathcal{J}^k(V)\longrightarrow\Lambda^k(V)$
+defined by
 
+\[\mathrm{Alt}(T)\left(v_1,\ldots,v_k\right)=
+    \frac{1}{k!}\sum_{\sigma\in S_k}\mathrm{sgn}(\sigma)\cdot
+    T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
+\]
 
 ```{r}
 S1
@@ -213,8 +245,19 @@ dx_1\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
 	a_1 & b_1 & c_1\\
 	a_2 & b_2 & c_2\\
 	a_4 & b_4 & c_4
-\end{pmatrix}
+\end{pmatrix}.
 \]
+
+Taking the last form as an example, this has ready R idiom:
+
+```{r}
+K <- as.kform(matrix(c(1,1,2,2,3,4),2,3),c(1,5))
+K
+```
+
+Note that the order of the terms has been reversed, as the wedge
+package uses the efficient spray package.  Observe that this does not
+affect the value of the form as addition is commutative.
 
 
 
