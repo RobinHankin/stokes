@@ -86,7 +86,7 @@
         return(S)
     }
 
-    include_perms(consolidate(S))/factorial(ncol(index(S)))
+    ktensor(include_perms(consolidate(S))/factorial(ncol(index(S))))
 }
 
 `cross` <- function(S1,S2){  # returns S1\otimes S2
