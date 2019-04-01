@@ -130,7 +130,7 @@
 
 `%^%` <- function(x,y){wedge(x,y)}
 
-`kform_basis` <- function(n,k,coeffs){  # just a matrix (a low-level helper function)
+`kform_basis` <- function(n,k){  # just a matrix (a low-level helper function)
     f <- function(x){which(x>0)}
     t(apply(blockparts(rep(1,n),k),2,f))
 }

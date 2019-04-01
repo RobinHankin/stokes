@@ -10,7 +10,7 @@ Functionality for dealinng with k-forms.
  
 }
 \usage{
-kform_basis(n, k, coeffs)
+kform_basis(n, k)
 kform_general(W,k,coeffs)
 \method{as.function}{kform}(x,...)
 }
