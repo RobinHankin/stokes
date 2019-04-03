@@ -4,7 +4,7 @@
 \description{Converts a k-tensor to alternating form}
 \usage{Alt(S)}
 \arguments{
-  \item{S}{A multilinear form}
+  \item{S}{A multilinear form, an object of class ktensor}
 }
 \details{
   Given a k-tensor \eqn{T}, we have
@@ -35,7 +35,8 @@
     -\mathrm{Alt}(T)\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
   }{omitted; see PDF}
 
-
+  Function \code{Alt()} takes and returns an object of class
+  \code{ktensor}.
   
 }
 \value{

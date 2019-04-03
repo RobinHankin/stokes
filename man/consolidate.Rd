@@ -35,8 +35,7 @@ S <- spray(matrix(c(1,1,2,2,1,3,3,1,3,5),ncol=2,byrow=TRUE),1:5)
 lose_repeats(S)
 consolidate(S)
 
-# include_perms(S) # will fail because of the repeated rows
-
-include_perms(lose_repeats(S))
+\dontrun{include_perms(S)} #  This will fail because of the repeated rows
+include_perms(lose_repeats(S)) # This should work
 
 }

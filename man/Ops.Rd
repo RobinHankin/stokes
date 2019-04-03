@@ -21,8 +21,9 @@
   \dQuote{\code{*}}, and \dQuote{\code{/}}) to the appropriate
   specialist function by coercing to \code{spray} objects.
 
-  For wedge products of kforms, use \code{wedge()} or \code{\%^\%}; and
-  for cross products of ktensors, use \code{cross()} or \code{\%X\%}.
+  For wedge products of \eqn{k}-forms, use \code{wedge()} or
+  \code{\%^\%}; and for cross products of \eqn{k}-tensors, use
+  \code{cross()} or \code{\%X\%}.
 
 }
 

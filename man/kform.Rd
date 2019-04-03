@@ -7,9 +7,8 @@
 \alias{general_kform}
 \title{k-forms}
 \description{
-Functionality for dealinng with k-forms.
- 
-}
+Functionality for dealing with k-forms.
+ }
 \usage{
 as.kform(M,coeffs)
 kform_basis(n, k)
@@ -27,18 +26,18 @@ kform_general(W,k,coeffs)
 }
 \details{
 
-A \dfn{k-form} is an alternating k-tensor.  Recall that a ktensor is a
-multilinear map from \eqn{V^k} to the reals, where \eqn{V=R^n} is a
-vector space, and a multilinear k-tensor \eqn{T} is alternating
-satisfies
+A \dfn{\eqn{k}-form} is an alternating \eqn{k}-tensor.  Recall that a
+\eqn{k}-tensor is a multilinear map from \eqn{V^k} to the reals, where
+\eqn{V=R^n} is a vector space.  A multilinear \eqn{k}-tensor \eqn{T} is
+\dfn{alternating} if it satisfies
 
-  \deqn{\mathrm{Alt}(T)\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
-    \mathrm{Alt}(T)\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
+  \deqn{T\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
+    T\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
   }{omitted; see PDF}
   
 Function \code{kform_basis()} is a low-level helper function that
 returns a matrix whose rows constitute a basis for the vector space
-\eqn{\Lambda^k(R^n)}{L^k(R^n)} of k-tensors:
+\eqn{\Lambda^k(R^n)}{L^k(R^n)} of \eqn{k}-tensors:
 
 \deqn{\phi=\sum_{1\leq i_1<\cdots<i_k\leq n}a_{i_1\ldots i_k}
   dx_{i_1}\wedge\cdots\wedge dx_{i_k}
@@ -57,9 +56,9 @@ where \eqn{\mathbf{e}_j,1\leq j\leq k}{e_j,1<=j<=k} is a basis for
 \references{Hubbard and Hubbard; Spivak}
 \author{Robin K. S. Hankin}
 \note{
-Hubbard and Hubbard use the term \dQuote{k-form}, but Spivak does not.
+  Hubbard and Hubbard use the term \dQuote{\eqn{k}-form}, but Spivak
+  does not.
 }
-
 \seealso{\code{\link{ktensor}}}
 \examples{
 
