@@ -89,7 +89,15 @@
     ktensor(include_perms(consolidate(S))/factorial(ncol(index(S))))
 }
 
-`cross` <- function(S1,S2){  # returns S1\otimes S2
+`cross` <- function(x, ...) {
+   if(nargs()<3){
+     cross2(x,...)
+   } else {
+     cross2(x, Recall(...))
+   }
+}
+
+`cross2` <- function(S1,S2){  # returns S1\otimes S2
     M1 <- index(S1)
     M2 <- index(S2)
     jj <- as.matrix(expand.grid(seq_len(nrow(M1)),seq_len(nrow(M2))))

@@ -2,8 +2,6 @@
 \alias{ktensor}
 \alias{as.ktensor}
 \alias{as.function.ktensor}
-\alias{cross}
-\alias{\%X\%}
 \title{k-tensors}
 \description{
 Functionality for k-tensors
@@ -12,11 +10,10 @@ Functionality for k-tensors
 ktensor(S)
 as.ktensor(M,coeffs)
 \method{as.function}{ktensor}(x,...)
-cross(S1,S2)
 }
 \arguments{
   \item{M,coeffs}{Matrix of indices and coefficients, as in \code{spray(M,coeffs)}}
-  \item{S,S1,S2,x}{Object of class ktensor}
+  \item{x}{Object of class ktensor}
   \item{...}{Further arguments, currently ignored}
 }
 \details{
@@ -51,8 +48,7 @@ The binary form \code{\%X\%} uses uppercase X to avoid clashing with
 \code{\%x\%} which is the Kronecker product in base \R.
 }
 \author{Robin K. S. Hankin}
-\seealso{\code{\link{kform}}
-}
+\seealso{\code{\link{cross}},\code{\link{kform}}}
 \examples{
 k <- 4
 n <- 5
