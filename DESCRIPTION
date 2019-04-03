@@ -10,3 +10,5 @@ Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cr
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Description: The exterior calculus.  Differentials, wedge products, etc.
 License: GPL-2
+URL: https://github.com/RobinHankin/wedge.git
+BugReports: https://github.com/RobinHankin/wedge/issues
