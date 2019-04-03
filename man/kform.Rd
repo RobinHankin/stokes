@@ -1,5 +1,6 @@
 \name{kform}
 \alias{kform}
+\alias{as.kform}
 \alias{kform_basis}
 \alias{as.function.kform}
 \alias{kform_general}
@@ -10,6 +11,7 @@ Functionality for dealinng with k-forms.
  
 }
 \usage{
+as.kform(M,coeffs)
 kform_basis(n, k)
 kform_general(W,k,coeffs)
 \method{as.function}{kform}(x,...)
@@ -18,6 +20,7 @@ kform_general(W,k,coeffs)
   \item{n}{Dimension of the vector space \eqn{V=R^n}}
   \item{k}{A k-forms maps \eqn{V^k} to \eqn{R}}
   \item{W}{Integer vector of dimensions}
+  \item{M}{Index matrix for a kform}
   \item{coeffs}{Coefficients of the kform}
   \item{x}{Object of class k-form}
   \item{...}{Further arguments, currently ignored}

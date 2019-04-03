@@ -1,5 +1,6 @@
 \name{Ops.kform}
 \alias{Ops.kform}
+\alias{Ops.ktensor}
 \alias{Ops}
 \title{Arithmetic Ops Group Methods for kform and ktensor objects}
 \description{
@@ -8,14 +9,17 @@
 }
 \usage{
 \method{Ops}{kform}(e1, e2 = NULL)
+\method{Ops}{ktensor}(e1, e2 = NULL)
 }
 \arguments{
-  \item{e1,e2}{Objects of class \dQuote{\code{kform}}}
+  \item{e1,e2}{Objects of class \code{kform} or \code{ktensor}}
 }
 \details{
-  The function \code{Ops.kform()} passes unary and binary arithmetic
-  operators (\dQuote{\code{+}}, \dQuote{\code{-}}, \dQuote{\code{*}}, and
-  \dQuote{\code{/}}) to the appropriate specialist function.
+
+  The functions \code{Ops.kform()} and \code{Ops.ktensor()} pass unary
+  and binary arithmetic operators (\dQuote{\code{+}}, \dQuote{\code{-}},
+  \dQuote{\code{*}}, and \dQuote{\code{/}}) to the appropriate
+  specialist function by coercing to \code{spray} objects.
 
   For wedge products of kforms, use \code{wedge()} or \code{\%^\%}; and
   for cross products of ktensors, use \code{cross()} or \code{\%X\%}.
