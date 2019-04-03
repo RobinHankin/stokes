@@ -12,7 +12,9 @@ as.ktensor(M,coeffs)
 \method{as.function}{ktensor}(x,...)
 }
 \arguments{
-  \item{M,coeffs}{Matrix of indices and coefficients, as in \code{spray(M,coeffs)}}
+  \item{M,coeffs}{Matrix of indices and coefficients, as in
+    \code{spray(M,coeffs)}}
+  \item{S}{Object of class spray}
   \item{x}{Object of class ktensor}
   \item{...}{Further arguments, currently ignored}
 }
