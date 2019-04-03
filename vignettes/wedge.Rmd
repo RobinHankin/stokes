@@ -564,6 +564,68 @@ as expected.
 
 ## Stokes's theorem
 
+In its most general form, Stokes's theorem states
+
 \[
 \int_{\partial X}\phi=\int_Xd\phi
 \]
+
+where $X\subset\mathbb{R}^n$ is a compact oriented $(k+1)$-dimensional
+manifold with boundary $\partial X$ and $\phi$ is a $k$-form defined
+on a neighborhood of $X$.
+
+We will verify Stokes, following 6.9.5 of Hubbard in which
+
+\[
+\phi=
+\left(x_1-x_2^2+x_3^3-\cdots\pm x_n^n\right)
+\left(
+\sum_{i=1}^n
+dx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n
+\right)
+\]
+
+(a hat indicates that a term is absent), and we wish to evaluate
+$\int_{\partial C_a}\phi$ where $C_a$ is the cube $0\leq x_j\leq a,
+1\leq j\leq n$.  Stokes tells us that this is equal to $\int_{C_a}
+d\phi$, which is given by
+
+\[
+d\phi = \left(
+1+2x_2+\cdots + nx_n^{n-1}\right)
+dx_1\wedge\cdots\wedge dx_n
+\]
+
+and so the volume integral is just
+
+\[
+\sum_{j=1}^n
+\int_{x_1=0}^a
+\int_{x_2=0}^a
+\cdots
+\int_{x_i=0}^a
+jx_j^{j-1}
+dx_1 dx_2\ldots dx_n=
+a^{n-1}\left(a+a^2+\cdots+a^n\right).
+\]
+
+Stokes's theorem, being trivial, is not amenable to direct numerical
+verification but the package does allow slick creation of $\phi$:
+
+```{r}
+phi <- function(x){
+    n <- length(x)
+    sum(x^seq_len(n)*rep_len(c(1,-1),n)) * as.kform(t(apply(diag(n)<1,2,which)))
+}
+phi(1:9)
+```
+
+Further, $d\phi$ is given by
+
+```{r}
+dphi <- function(x){
+    nn <- seq_along(x)
+    sum(nn*x^(nn-1)) * as.kform(seq_along(x))
+}
+dphi(1:9)
+```
