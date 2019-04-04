@@ -10,3 +10,4 @@ test_that("wedge product is associative", {
     expect_true(is.empty(a1-a2))
 })
                 
+      
