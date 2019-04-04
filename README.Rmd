@@ -1,0 +1,119 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# Overview
+
+The wedge package provides functionality for working with the exterior
+calculus.  It includes cross products and wedge products and a variety
+of use-cases.  A vignette is provided in the package.
+
+# Installation
+
+You can install the released version of wedge from [CRAN](https://CRAN.R-project.org) with:
+
+```{r}
+# install.packages("wedge")  # uncomment this to use the package
+library("wedge")
+```
+
+# The ```wedge``` package in use
+
+The package has two main classes of objects, ```kform``` and
+```ktensor``.  We may define a $k$-tensor as follows
+
+```{r ktensor}
+KT <- as.ktensor(cbind(1:4,3:5),1:4)
+KT
+```
+
+We can coerce ```KT``` to a function and then evaluate it:
+
+```{r evaluatektensor}
+KT <- as.ktensor(cbind(1:4,2:5),1:4)
+f <- as.function(KT)
+E <- matrix(rnorm(10),5,2)
+f(E)
+```
+
+Cross products are implemented:
+
+```{r crossprod}
+KT %X% KT
+```
+
+
+## Alternating forms
+
+An alternating form (or $k$-form) is an antisymmetric $k$-tensor; the
+package can convert a general $k$-tensor to alternating form using the
+```Alt()``` function:
+
+
+```{r showalt}
+Alt(KT)
+```
+
+However, the package provides a bespoke representation for $k$-forms
+as objects with class ```kform```.  Such objects may be created using
+the ```as.kform()``` function:
+
+```{r example}
+
+M <- matrix(c(4,2,3,1,2,4),2,3,byrow=TRUE)
+M
+KF <- as.kform(M,c(1,5))
+KF
+```
+
+We may coerce ```KF``` to functional form:
+
+```{r e2}
+f <- as.function(KF)
+E <- matrix(rnorm(12),4,3)
+f(E)
+```
+
+# The wedge product
+
+The wedge product of two $k$-forms is implemented as ```%^%``` or
+```wedge()```:
+
+```{r definekf2}
+KF2 <- kform_general(6:9,2,1:6)
+KF2
+KF %^% KF2
+```
+
+The package can accommodate a number of results from the exterior
+calculus such as elementary forms:
+
+```{r dxdyxz}
+dx <- as.kform(1)
+dy <- as.kform(2)
+dz <- as.kform(3)
+dx %^% dy %^% dz  # element of volume 
+```
+
+A number of useful functions from the exterior calculus are provided,
+such as the gradient of a scalar function:
+
+```{r grad}
+grad(1:6)
+```
+
+The package takes the leg-work out of the exterior calculus:
+
+```{r legwork}
+grad(1:4) %^% grad(1:6)
+```
