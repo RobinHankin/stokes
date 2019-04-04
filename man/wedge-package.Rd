@@ -62,4 +62,14 @@ E <- matrix(rnorm(63),9,7)
 f(E)
 f(E[,7:1])
 
+
+
+## The package blurs the distinction between symbolic and numeric computing:
+dx <- as.kform(1)
+dy <- as.kform(2)
+dz <- as.kform(3)
+
+dx \%^\% dy \%^\% dz
+
+K3 \%^\% dx \%^\% dy \%^\% dz
 }
