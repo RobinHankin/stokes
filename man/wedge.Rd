@@ -32,7 +32,7 @@ k3 <- kform_general(1:6,2)
 a1 <- wedge2(k1,wedge2(k2,k3))
 a2 <- wedge2(wedge2(k1,k2),k3)
 
-#is.zero(a1-a2)  # NB terms of a1, a2 in a different order!
+is.zero(a1-a2)  # NB terms of a1, a2 in a different order!
 
 # This is why wedge(k1,k2,k3) is well-defined.  Can also use \%^\%:
 k1 \%^\% k2 \%^\% k3
