@@ -113,6 +113,8 @@
 
   if(`|`(!inherits(F1,"kform"), !inherits(F2,"kform"))){return(F1*F2)}
 
+  if(is.empty(F1)){return(F1)}
+  if(is.empty(F2)){return(F2)}
 
   ## we need to go through F1 and F2 line by line (wedge product is
   ## left- and right- distributive).
