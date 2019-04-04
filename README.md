@@ -24,7 +24,7 @@ library("wedge")
 The `wedge` package in use
 ==========================
 
-The package has two main classes of objects, `kform` and \``ktensor`. We may define a *k*-tensor as follows
+The package has two main classes of objects, `kform` and `ktensor`. We may define a *k*-tensor as follows
 
 ``` r
 KT <- as.ktensor(cbind(1:4,3:5),1:4)
@@ -45,7 +45,7 @@ KT <- as.ktensor(cbind(1:4,2:5),1:4)
 f <- as.function(KT)
 E <- matrix(rnorm(10),5,2)
 f(E)
-#> [1] 2.515256
+#> [1] 3.577917
 ```
 
 Cross products are implemented:
@@ -89,7 +89,7 @@ Alt(KT)
 #>  1 2  =   0.5
 ```
 
-However, the package provides a bespoke representation for *k*-forms as objects with class `kform`. Such objects may be created using the `as.kform()` function:
+However, the package provides a bespoke and efficient representation for *k*-forms as objects with class `kform`. Such objects may be created using the `as.kform()` function:
 
 ``` r
 
@@ -111,7 +111,7 @@ We may coerce `KF` to functional form:
 f <- as.function(KF)
 E <- matrix(rnorm(12),4,3)
 f(E)
-#> [1] -23.62644
+#> [1] -6.425367
 ```
 
 The wedge product

@@ -30,7 +30,7 @@ library("wedge")
 # The ```wedge``` package in use
 
 The package has two main classes of objects, ```kform``` and
-```ktensor``.  We may define a $k$-tensor as follows
+```ktensor```.  We may define a $k$-tensor as follows
 
 ```{r ktensor}
 KT <- as.ktensor(cbind(1:4,3:5),1:4)
@@ -64,9 +64,9 @@ package can convert a general $k$-tensor to alternating form using the
 Alt(KT)
 ```
 
-However, the package provides a bespoke representation for $k$-forms
-as objects with class ```kform```.  Such objects may be created using
-the ```as.kform()``` function:
+However, the package provides a bespoke and efficient representation
+for $k$-forms as objects with class ```kform```.  Such objects may be
+created using the ```as.kform()``` function:
 
 ```{r example}
 
