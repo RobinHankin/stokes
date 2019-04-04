@@ -166,7 +166,7 @@
     return(function(E){
       out <- 0
       for(i in seq_len(nrow(M))){
-        out <- out + coeffs[i]*det(E[M[i,,drop=TRUE],])
+        out <- out + coeffs[i]*det(E[M[i,,drop=TRUE],,drop=FALSE])
       }
       return(out)
     })
