@@ -1,11 +1,14 @@
 \name{rform}
 \alias{rform}
 \alias{rkform}
-\title{Random kforms}
-\description{Random k-form objects, intended as quick
+\alias{rtensor}
+\alias{rktensor}
+\title{Random kforms and ktensors}
+\description{Random k-form objects and k-tensors, intended as quick
   \dQuote{get you going} examples}
 \usage{
 rform(terms=9,k=3,n=7,coeffs)
+rtensor(terms=9,k=3,n=7,coeffs)
 }
 \arguments{
   \item{terms}{Number of distinct terms}
@@ -26,4 +29,6 @@ dy <- as.kform(2)
 rform() \%^\% dx
 rform() \%^\% dx \%^\% dy
 
+
+rtensor()
 }

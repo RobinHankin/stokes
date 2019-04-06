@@ -176,6 +176,11 @@
     as.kform(spray(matrix(sample(seq_len(n),terms*k,replace=TRUE),terms,k),coeffs,addrepeats=TRUE))
 }
 
+`rtensor` <- function(terms=9,k=3, n=7, coeffs){
+    M <- matrix(sample(seq_len(n),terms*k,replace=TRUE),terms,k)
+    spray(M,coeffs,addrepeats=TRUE)
+}
+    
 `grad` <- function(g){
     kform(spray(cbind(seq_along(g)),g))
 }
