@@ -43,7 +43,7 @@
         if(.Generic == "*"){
             return(as.kform(f(e2)*e1))
         } else if(.Generic == "/"){
-            return(as.kform(f(e2)/e1))
+            stop("kforms are not a field")
         } else {
             stop("Binary operator '", .Generic, "' is not implemented for other <op> kform")
         }
@@ -97,7 +97,7 @@
         if(.Generic == "*"){
             return(as.ktensor(f(e2)*e1))
         } else if(.Generic == "/"){
-            return(as.ktensor(f(e2)/e1))
+            stop("ktensors not a field")
         } else {
             stop("Binary operator '", .Generic, "' is not implemented for other <op> ktensor")
         }
