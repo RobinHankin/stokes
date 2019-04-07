@@ -1,11 +1,17 @@
 library("wedge")
 library("testthat")
 
-test_that("Miscellaneous things", {
+test_that("Miscellaneous wedge functionality", {
 
         dx <- as.kform(1)
         dy <- as.kform(2)
         dz <- as.kform(3)
+
+        expect_true(is.empty(dx %^%  0))
+        expect_true(is.empty(0  %^% dx))
+
+        expect_true(is.empty(Alt(0  %^% dx)))
+        expect_true(is.empty(Alt(dx %^%  0)))
 
         expect_true(is.empty(dx %^% dx))
         expect_true(is.empty(dy %^% dy))
@@ -13,6 +19,10 @@ test_that("Miscellaneous things", {
       
         expect_true(dx %^% dy %^% dz == dy %^% dz %^% dx)
         expect_true(dx %^% dy %^% dz == dz %^% dx %^% dy)
+
+        expect_true(is.empty((dx %^% dx) %^% (dy %^% dz)))
+        expect_true(is.empty((dy %^% dz) %^% (dx %^% dx)))
+
         expect_true(is.empty(dx %^% dy %^% dz - dy %^% dz %^% dx))
         expect_true(is.empty(dx %^% dy %^% dz - dz %^% dx %^% dy))
         expect_true(is.empty(dx %^% dy %^% dz + dx %^% dz %^% dy))
@@ -28,6 +38,10 @@ test_that("Miscellaneous things", {
 
         expect_true(is.empty(grad(1:5) %^% grad(1:5)))
         expect_false(is.empty(grad(1:5) %^% grad(1:6)))
+})
 
-    
+
+test_that("Miscellaneous crossfunctionality", {
+        expect_true(is.empty(as.ktensor(1+diag(5),0)))
+        expect_false(is.empty(as.ktensor(1+diag(5))))
 })
