@@ -10,6 +10,11 @@ test_that("Miscellaneous wedge functionality", {
         expect_true(is.empty(dx %^%  0))
         expect_true(is.empty(0  %^% dx))
 
+        expect_true(arity(dx)                     ==1)
+        expect_true(arity(dx %^% dx)              ==2)
+        expect_true(arity(dx %^% dx %^% dx)       ==3)
+        expect_true(arity(dx %^% dx %^% dx %^% dx)==4)
+        
         expect_true(is.empty(Alt(0  %^% dx)))
         expect_true(is.empty(Alt(dx %^%  0)))
 
@@ -50,4 +55,5 @@ test_that("as.symbolic() functionality", {
         expect_true(is.character(as.symbolic(rtensor())))
         expect_true(is.character(as.symbolic(rform())))
 })
+
 
