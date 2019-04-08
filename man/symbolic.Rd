@@ -16,4 +16,6 @@ as.symbolic(K,symbols=letters,d="")
 
 as.symbolic(rtensor())
 as.symbolic(rform())
+
+as.symbolic(kform_general(3,2,1:3),d="d",symbols=letters[23:26])
 }
