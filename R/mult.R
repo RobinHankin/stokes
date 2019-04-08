@@ -185,3 +185,37 @@
     kform(spray(cbind(seq_along(g)),g))
 }
 
+`.putw` <- function(v,symbols,prodsymb,d){  # eg v=(1,3,4,7)
+  out <- paste(paste(d,symbols[v],sep=""),prodsymb,sep="",collapse="")
+  return(substr(out, 1, nchar(out)-1) )
+}
+
+`as.symbolic` <- function(K,symbols=letters,d=""){
+  if(inherits(K,"kform")){
+    prodsymb <- "^"
+  } else if(inherits(K,"ktensor")){
+    prodsymb <- "*"
+  } else {
+    stop("only takes ktensor or kform objects")
+  }
+  
+  M <- index(K)
+  v <- value(K)
+
+  out <- ""
+  for(i in seq_len(nrow(M))){
+    if(v[i] == 1){
+      jj <- "+"
+    } else if(v[i] == -1){
+      jj <- "-"
+    } else if(v[i] > 0){
+      jj <- paste("+",v[i],sep="")
+    } else if(v[i] < 0){
+      jj <- v[i]
+    } else {
+      stop("this cannot happen")
+    }
+    out <- paste(out, paste(jj,.putw(M[i,],symbols,prodsymb=prodsymb,d=d),sep=" "))
+  }
+  return(noquote(out))
+}

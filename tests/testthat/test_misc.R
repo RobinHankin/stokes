@@ -41,7 +41,13 @@ test_that("Miscellaneous wedge functionality", {
 })
 
 
-test_that("Miscellaneous crossfunctionality", {
+test_that("Miscellaneous cross product functionality", {
         expect_true(is.empty(as.ktensor(1+diag(5),0)))
         expect_false(is.empty(as.ktensor(1+diag(5))))
 })
+
+test_that("as.symbolic() functionality", {
+        expect_true(is.character(as.symbolic(rtensor())))
+        expect_true(is.character(as.symbolic(rform())))
+})
+
