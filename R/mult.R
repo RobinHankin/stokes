@@ -92,6 +92,10 @@
 }
 
 `cross2` <- function(S1,S2){  # returns S1\otimes S2
+    if(is.empty(S1) | is.empty(S2)){
+      return(as.ktensor(cbind(index(S1)[0,],index(S2)[0,])))
+    }
+
     M1 <- index(S1)
     M2 <- index(S2)
     jj <- as.matrix(expand.grid(seq_len(nrow(M1)),seq_len(nrow(M2))))

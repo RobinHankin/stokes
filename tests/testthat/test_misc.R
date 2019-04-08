@@ -49,6 +49,17 @@ test_that("Miscellaneous wedge functionality", {
 test_that("Miscellaneous cross product functionality", {
         expect_true(is.empty(as.ktensor(1+diag(5),0)))
         expect_false(is.empty(as.ktensor(1+diag(5))))
+
+        a  <- as.ktensor(matrix(1,1,2))
+        a0 <- as.ktensor(matrix(1,1,2))
+
+        expect_true(arity(a )==2)
+        expect_true(arity(a0)==2)
+        expect_true(arity(a  %X% a   )==4)
+        expect_true(arity(a  %X% a0  )==4)
+        expect_true(arity(a0 %X% a   )==4)
+        expect_true(arity(a0 %X% a0  )==4)
+        
 })
 
 test_that("as.symbolic() functionality", {
