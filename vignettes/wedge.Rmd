@@ -2,10 +2,9 @@
 title: "Exterior calculus with R"
 author: "Robin K. S. Hankin"
 date: "`r Sys.Date()`"
-vignette: >
-  %\VignetteIndexEntry{The exterior calculus}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: pdf_document
+vignette: |
+  %\VignetteIndexEntry{The exterior calculus} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
 ---
 
 
@@ -138,7 +137,7 @@ E2 <- matrix(rnorm(n*k),n,k)
 c(f(E1+E2),f(E1)+f(E2))
 ```
 
-Given two k-tensor objects \eqn{S,T} we can form the cross product
+Given two k-tensor objects $S,T$ we can form the cross product
 $S\otimes T$, defined as
 
 \[
