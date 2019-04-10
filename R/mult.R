@@ -92,6 +92,10 @@
 }
 
 `cross2` <- function(S1,S2){  # returns S1\otimes S2
+    if(is.empty(S1) | is.empty(S2)){
+      return(as.ktensor(cbind(index(S1)[0,],index(S2)[0,])))
+    }
+
     M1 <- index(S1)
     M2 <- index(S2)
     jj <- as.matrix(expand.grid(seq_len(nrow(M1)),seq_len(nrow(M2))))
@@ -113,8 +117,9 @@
 
   if(`|`(!inherits(F1,"kform"), !inherits(F2,"kform"))){return(F1*F2)}
 
-  if(is.empty(F1)){return(F1)}
-  if(is.empty(F2)){return(F2)}
+  if(is.empty(F1) | is.empty(F2)){
+    return(as.kform(cbind(index(F1)[0,],index(F2)[0,])))
+    }
 
   ## we need to go through F1 and F2 line by line (wedge product is
   ## left- and right- distributive).
