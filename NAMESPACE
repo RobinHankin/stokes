@@ -12,6 +12,7 @@ importFrom(permutations,allperms)
 importFrom(permutations,sgn)
 importFrom(permutations,word)
 importFrom(permutations,as.word)
+importFrom(permutations,is.id)
 
 
 S3method("as.function",ktensor)
