@@ -15,7 +15,7 @@ test_that("Function hodge() behaves itself", {
         if(!is.zero(discrepancy)){
             error <- value(discrepancy)
             expect_true(max(abs(error))<1e-8, info=list(x,discrepancy))
-        } else {
+        } else {  # test successful
             expect_true(TRUE) 
         }
         expect_true(value(x %^% hodge(x,n)) >= 0)
@@ -23,7 +23,8 @@ test_that("Function hodge() behaves itself", {
 
 
     foo2 <- function(x,y){
-        discrepancy <- hodge(x) %^% y - hodge(y) %^% x
+        n <- max(c(index(x),index(y)))
+        discrepancy <- hodge(x,n) %^% y - hodge(y,n) %^% x
         if(!is.zero(discrepancy)){
             error <- value(discrepancy)
             expect_true(max(abs(error))<1e-8, info=list(x,discrepancy))
@@ -32,12 +33,19 @@ test_that("Function hodge() behaves itself", {
         }
     }  # foo2() closes
 
-    foo1(rform())
-    foo1(rform(10,5,11))
-    foo1(rform(10,5,11))
-    foo1(rform(10,5,12))
 
-    foo2(rform(),rform())
-    foo2(rform(10,5,11),rform(10,5,11))
-    foo2(rform(10,2,7),rform(5,3,8))
+    for(i in 1:10){
+      jj <- rform()
+      foo1(jj)
+    }
+
+    for(i in 1:10){
+      x <- rform()
+      y <- rform()
+      foo2(x,y)
+      x <- rform(10,5,11)
+      y <- rform(10,5,11)
+      foo2(x,y)
+    }
+
 })
