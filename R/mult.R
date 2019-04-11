@@ -248,6 +248,6 @@
   } else {
     newindex <- as.matrix(jj)
   }
-  newcoeffs <- apply(cbind(newindex,iK),1,f2)*apply(iK,1,f3)*value(K)
+  newcoeffs <- apply(cbind(iK,newindex),1,f2)*apply(iK,1,f3)*value(K)
   as.kform(newindex,newcoeffs)
 }
