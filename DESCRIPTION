@@ -8,7 +8,7 @@ Suggests:
     Deriv,
     testthat
 VignetteBuilder: knitr
-Imports: permutations, partitions, magrittr
+Imports: permutations (>= 1.0-4), partitions, magrittr
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Description: The exterior calculus.  Differentials, wedge products, etc.
