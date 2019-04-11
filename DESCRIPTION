@@ -2,7 +2,7 @@ Package: wedge
 Type: Package
 Title: The Exterior Calculus
 Version: 1.0
-Depends: spray (>= 1.0-5)
+Depends: spray (>= 1.0-6)
 Suggests: 
     knitr,
     Deriv,
