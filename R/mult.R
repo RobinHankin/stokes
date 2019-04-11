@@ -231,6 +231,13 @@
 }
 
 `hodge` <- function(K, n=max(index(K)), g=rep(1,n)){
+  if(is.empty(K)){
+      if(is.infinite(n)){
+          stop("K is zero but no value of n is supplied")
+      } else {
+          return(kform(spray(matrix(1,0,n-arity(K)),1)))
+      }
+  }
   iK <- index(K)
   f1 <- function(o){seq_len(n)[!seq_len(n) %in% o]}
   f2 <- function(x){sgn(as.word(x))}
