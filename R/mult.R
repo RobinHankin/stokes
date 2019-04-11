@@ -40,8 +40,13 @@
     for(i in seq_len(nrow(I))){
         o <- I[i,]
         newind[i,] <- sort(o)
-        change_sign[i] <- sgn(word(rbind(order(o))))
-    }
+        jj <- word(rbind(order(o)))
+        if(is.id(jj)){
+            change_sign[i] <- 1
+        } else {
+            change_sign[i] <- sgn(jj) # which might be 1
+        }
+    }  # i loop closes
 
     out <- spray(newind, value(S)*change_sign, addrepeats=TRUE)  # does a lot of work (potentially)
     if(length(index(out))==0){ # zero form
