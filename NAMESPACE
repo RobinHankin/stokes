@@ -11,6 +11,7 @@ importFrom(partitions,blockparts)
 importFrom(permutations,allperms)
 importFrom(permutations,sgn)
 importFrom(permutations,word)
+importFrom(permutations,as.word)
 
 
 S3method("as.function",ktensor)

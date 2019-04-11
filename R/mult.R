@@ -224,3 +224,18 @@
   }
   return(noquote(out))
 }
+
+`hodge` <- function(K, n=max(index(K)), g=rep(1,n)){
+  iK <- index(K)
+  f1 <- function(o){seq_len(n)[!seq_len(n) %in% o]}
+  f2 <- function(x){sgn(as.word(x))}
+  f3 <- function(v){prod(g[v])}
+  jj <- apply(iK,1,f1)
+  if(is.matrix(jj)){
+    newindex <- t(jj)
+  } else {
+    newindex <- as.matrix(jj)
+  }
+  newcoeffs <- apply(cbind(newindex,iK),1,f2)*apply(iK,1,f3)*value(K)
+  as.kform(newindex,newcoeffs)
+}
