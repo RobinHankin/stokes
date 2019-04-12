@@ -9,7 +9,7 @@ wedge2(F1,F2)
 wedge(x, ...)
 }
 \arguments{
-  \item{F1,F2,x,...}{k-forms}
+  \item{F1,F2,x,...}{\eqn{k}-forms}
 }
 \details{
 Wedge product of \eqn{k}-forms.  
