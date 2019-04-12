@@ -17,7 +17,7 @@ kform_general(W,k,coeffs)
 }
 \arguments{
   \item{n}{Dimension of the vector space \eqn{V=R^n}}
-  \item{k}{A k-forms maps \eqn{V^k} to \eqn{R}}
+  \item{k}{A \eqn{k}-form maps \eqn{V^k} to \eqn{R}}
   \item{W}{Integer vector of dimensions}
   \item{M}{Index matrix for a \eqn{k}-form}
   \item{coeffs}{Coefficients of the \eqn{k}-form}
