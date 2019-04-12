@@ -2,10 +2,11 @@
 \alias{Ops.kform}
 \alias{Ops.ktensor}
 \alias{Ops}
-\title{Arithmetic Ops Group Methods for kform and ktensor objects}
+\title{Arithmetic Ops Group Methods for \code{kform} and \code{ktensor}
+  objects}
 \description{
-  Allows arithmetic operators to be used for kforms
-  such as addition, multiplication, etc, where defined.
+  Allows arithmetic operators to be used for \eqn{k}-forms and
+  \eqn{k}-tensors such as addition, multiplication, etc, where defined.
 }
 \usage{
 \method{Ops}{kform}(e1, e2 = NULL)
@@ -15,7 +16,6 @@
   \item{e1,e2}{Objects of class \code{kform} or \code{ktensor}}
 }
 \details{
-
   The functions \code{Ops.kform()} and \code{Ops.ktensor()} pass unary
   and binary arithmetic operators (\dQuote{\code{+}}, \dQuote{\code{-}},
   \dQuote{\code{*}}, and \dQuote{\code{/}}) to the appropriate
@@ -24,10 +24,7 @@
   For wedge products of \eqn{k}-forms, use \code{wedge()} or
   \code{\%^\%}; and for cross products of \eqn{k}-tensors, use
   \code{cross()} or \code{\%X\%}.
-
 }
-
-
 \examples{
 ## dx_1 ^ dx_2 + 6dx_5 ^ dx_6:
 as.kform(1) \%^\% as.kform(2) + 6*as.kform(5) \%^\% as.kform(6)
