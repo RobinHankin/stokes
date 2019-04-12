@@ -5,18 +5,18 @@ library("testthat")
 
 test_that("cross product is distributive and associative", {
 
-    foo <- function(terms,k,n){
-        T1 <- rtensor(terms,k,n,rnorm(terms))
-        T2 <- rtensor(terms+1,k,n,rnorm(terms+1))
-        T3 <- rtensor(terms+2,k,n,rnorm(terms+2))
-        
+    foo3 <- function(T1,T2,T3){
         bar <- function(sbi){ # sbi = Should Be Identical
-            for(i in 2:length(sbi)){
-                error <- value(sbi[[1]] - sbi[[i]])
-                expect_true(max(abs(error)) < 1e-8,
-                            info=list(T1,T2,T3))
+          for(i in 2:length(sbi)){
+            error <- value(sbi[[1]] - sbi[[i]])
+            if(length(error)>0){
+              expect_true(max(abs(error)) < 1e-8,
+                          info=list(T1,T2,T3,error))
+            } else {  # test passed
+              expect_true(TRUE)
             }
             return(TRUE)
+          }
         } # bar closes
 
         ## associative:
@@ -33,23 +33,25 @@ test_that("cross product is distributive and associative", {
             cross(T1,T2 + T3)  ,
             T1 %X% (T2 + T3)   ,
             T1 %X% (T2 - (-T3)),
-            T1%X%T2 + T1%X%T3
+            T1 %X% T2 + T1 %X% T3
         ))
             
-    } # foo() closes
+    } # foo3() closes
 
-    foo(4,5,6)
-    foo(4,2,3)
-    foo(4,1,6)
-    foo(8,5,6)
-    foo(4,5,6)
+    for(i in 1:10){
+      terms <- rpois(1,20)
+      k <- sample(3:10,1)
+      n <- k+sample(3:10,1)
+      T1 <- rtensor(terms,k,n,rnorm(terms))
+      T2 <- rtensor(terms+1,k,n,rnorm(terms+1))
+      T3 <- rtensor(terms+2,k,n,rnorm(terms+2))
+      foo3(T1,T2,T3)
+    }
 })
 
 test_that("cross product is in fact a cross product", {
 
-    foo <- function(terms,k,n){
-        T1 <- rtensor(terms,k,n,rnorm(terms))
-        T2 <- rtensor(terms+1,k,n,rnorm(terms+1))    
+    foo2 <- function(T1,T2){
 
         E1 <- matrix(rnorm(k*n),n,k)
         E2 <- matrix(rnorm(k*n),n,k)
@@ -60,17 +62,22 @@ test_that("cross product is in fact a cross product", {
 
         expect_true(max(abs(error)) < 1e-8,
                     info=list(T1,T2))
-    } # foo() closes
+    } # foo2() closes
 
-    foo(4,5,6)
-    foo(4,2,3)
-    foo(4,1,6)
+    for(i in 1:10){
+      terms <- rpois(1,20)
+      k <- sample(3:10,1)
+      n <- k+sample(3:10,1)
+      T1 <- rtensor(terms,k,n,rnorm(terms))
+      T2 <- rtensor(terms+1,k,n,rnorm(terms+1))
+      foo2(T1,T2)
+    }
 })
 
 test_that("ktensors are multilinear", {
 
-    foo <- function(terms,k,n){
-        TT <- rtensor(terms,k,n,rnorm(terms))
+    foo1 <- function(TT){
+
         f <- as.function(TT)
 
         E <- matrix(rnorm(k*n),n,k)
@@ -89,12 +96,16 @@ test_that("ktensors are multilinear", {
             error <- r1*f(E1) + r2*f(E2) -f(E3) # should be small
             expect_true(abs(error) < 1e-8, info=list(TT,E1,E2,E3))
         } # 'i' loop closes, we have gone through each column
-     } # foo() closes
+     } # foo1() closes
 
-    foo(4,5,6)
-    foo(4,2,3)
-    foo(4,1,6)
-    foo(8,5,6)
-    foo(4,5,6)
+
+     for(i in 1:10){
+       terms <- rpois(1,20)
+       k <- sample(3:10,1)
+       n <- k+sample(3:10,1)
+       TT <- rtensor(terms,k,n,rnorm(terms))
+       foo1(TT)
+     }
+
 })
 
