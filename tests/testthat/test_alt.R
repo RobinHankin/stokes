@@ -9,7 +9,7 @@ test_that("Function Alt() behaves itself", {
         S <- rtensor(terms,k,n,rnorm(terms))
         
         discrepancy <- Alt(Alt(S)) - Alt(S)
-        ## 'discrepancy should be zero in theory, but numerical
+        ## discrepancy should be zero in theory, but numerical
         ## roundoff means discrepancy might not be the zero tensor.
 
         if(!is.zero(discrepancy)){
