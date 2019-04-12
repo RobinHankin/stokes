@@ -3,7 +3,7 @@
 \alias{wedge2}
 \alias{\%^\%}
 \title{Wedge products}
-\description{Wedge products of k forms}
+\description{Wedge products of \eqn{k}-forms}
 \usage{
 wedge2(F1,F2)
 wedge(x, ...)
@@ -12,10 +12,10 @@ wedge(x, ...)
   \item{F1,F2,x,...}{k-forms}
 }
 \details{
-Wedge product of k-forms.  
+Wedge product of \eqn{k}-forms.  
 }
 \value{
-Returns a k-form.
+Returns a \eqn{k}-form.
 }
 \author{Robin K. S. Hankin}
 \note{

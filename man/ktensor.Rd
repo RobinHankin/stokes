@@ -4,7 +4,7 @@
 \alias{as.function.ktensor}
 \title{k-tensors}
 \description{
-Functionality for k-tensors
+Functionality for \eqn{k}-tensors
 }
 \usage{
 ktensor(S)
@@ -14,8 +14,8 @@ as.ktensor(M,coeffs)
 \arguments{
   \item{M,coeffs}{Matrix of indices and coefficients, as in
     \code{spray(M,coeffs)}}
-  \item{S}{Object of class spray}
-  \item{x}{Object of class ktensor}
+  \item{S}{Object of class \code{spray}}
+  \item{x}{Object of class \code{ktensor}}
   \item{...}{Further arguments, currently ignored}
 }
 \details{

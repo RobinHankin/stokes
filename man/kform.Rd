@@ -7,7 +7,7 @@
 \alias{general_kform}
 \title{k-forms}
 \description{
-Functionality for dealing with k-forms.
+Functionality for dealing with \eqn{k}-forms.
  }
 \usage{
 as.kform(M,coeffs)
@@ -19,9 +19,9 @@ kform_general(W,k,coeffs)
   \item{n}{Dimension of the vector space \eqn{V=R^n}}
   \item{k}{A k-forms maps \eqn{V^k} to \eqn{R}}
   \item{W}{Integer vector of dimensions}
-  \item{M}{Index matrix for a kform}
-  \item{coeffs}{Coefficients of the kform}
-  \item{x}{Object of class k-form}
+  \item{M}{Index matrix for a \eqn{k}-form}
+  \item{coeffs}{Coefficients of the \eqn{k}-form}
+  \item{x}{Object of class \code{kform}}
   \item{...}{Further arguments, currently ignored}
 }
 \details{

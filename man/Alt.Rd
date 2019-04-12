@@ -1,13 +1,13 @@
 \name{Alt}
 \alias{Alt}
 \title{Alternating multilinear forms}
-\description{Converts a k-tensor to alternating form}
+\description{Converts a \eqn{k}-tensor to alternating form}
 \usage{Alt(S)}
 \arguments{
-  \item{S}{A multilinear form, an object of class ktensor}
+  \item{S}{A multilinear form, an object of class \code{ktensor}}
 }
 \details{
-  Given a k-tensor \eqn{T}, we have
+  Given a \eqn{k}-tensor \eqn{T}, we have
 
   \deqn{\mathrm{Alt}(T)\left(v_1,\ldots,v_k\right)=
     \frac{1}{k!}\sum_{\sigma\in S_k}\mathrm{sgn}(\sigma)\cdot
@@ -40,7 +40,8 @@
   
 }
 \value{
-Returns an alternating k-tensor.  To coerce to a k-form, use \code{as.kform()}.
+  Returns an alternating k-tensor.  To coerce to a \eqn{k}-form,
+  use \code{as.kform()}.
 }
 
 \author{Robin K. S. Hankin}

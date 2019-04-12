@@ -10,7 +10,7 @@ lose_repeats(S)
 include_perms(S)
 }
 \arguments{
-  \item{S}{Object of class spray}
+  \item{S}{Object of class \code{spray}}
 }
 \details{
   Low-level helper functions.

@@ -4,15 +4,15 @@
 \alias{rtensor}
 \alias{rktensor}
 \title{Random kforms and ktensors}
-\description{Random k-form objects and k-tensors, intended as quick
-  \dQuote{get you going} examples}
+\description{Random \eqn{k}-form objects and \eqn{k}-tensors,
+  intended as quick \dQuote{get you going} examples}
 \usage{
 rform(terms=9,k=3,n=7,coeffs)
 rtensor(terms=9,k=3,n=7,coeffs)
 }
 \arguments{
   \item{terms}{Number of distinct terms}
-  \item{k,n}{A kform maps \eqn{V^k} to \eqn{R}, where \eqn{V=R^n}}
+  \item{k,n}{A \eqn{k}-form maps \eqn{V^k} to \eqn{R}, where \eqn{V=R^n}}
   \item{coeffs}{The coefficients of the form; if missing use 1
     (inherited from \code{spray()})}
 }
