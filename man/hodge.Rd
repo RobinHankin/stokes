@@ -3,7 +3,7 @@
 \alias{Hodge}
 \alias{star}
 \title{Hodge star operator}
-\description{Given a \eqn{k}-form, return the its Hodge dual}
+\description{Given a \eqn{k}-form, return its Hodge dual}
 \usage{
 hodge(K, n=max(index(K)), g=rep(1,n))
 }
@@ -13,7 +13,7 @@ hodge(K, n=max(index(K)), g=rep(1,n))
     of the index}
   \item{g}{Diagonal of the metric tensor, defaulting to the standard metric}
 }
-\value{Returns a volume element}
+\value{Returns a \eqn{(n-k)}-form}
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{wedge}}}
 \examples{

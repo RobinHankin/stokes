@@ -19,12 +19,12 @@ include_perms(S)
     \item Function \code{consolidate()} takes rows of a spray object
     that are identical up to a permutation and merges them, respecting
     the sign of the permutation
-    \item Function \code{lose_repeats()} loses rows of a spray object
-    that contain the same entry more than once (which have k-forms
+    \item Function \code{lose_repeats()} deletes rows of a spray object
+    that contain the same entry more than once (which have \eqn{k}-forms
     identically zero)
-    \item Function \code{include_perms()} replaces each row of a spray
-    object with all its permutations, respecting the sign of the
-    permutation
+    \item Function \code{include_perms()} replaces each row of a
+    \code{spray} object with all its permutations, respecting the sign
+    of the permutation
   }
 }
 \author{Robin K. S. Hankin}
