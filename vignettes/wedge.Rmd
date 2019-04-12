@@ -470,7 +470,7 @@ print(df(x) %^% f(x))  # should be zero
 
 We can use the package to verify the celebrated fact that, for any
 $k$-form $\phi$, $d\left(d\phi\right)=0$.  The first step is to define
-a scalar functions ```f1(), f2(), f3()```, all  $0$-forms:
+scalar functions ```f1(), f2(), f3()```, all  $0$-forms:
 
 ```{r}
 f1 <- function(w,x,y,z){w*x*y*z + sin(x) + cos(w)}
@@ -629,3 +629,10 @@ dphi <- function(x){
 }
 dphi(1:9)
 ```
+
+## References
+
+*  J. H. Hubbard and B. B. Hubbard 2015.  _Vector
+      calculus, linear algebra and differential forms: a unified
+      aproach_,  Ithaca, NY.
+*  M. Spivak 1971. _Calculus on manifolds_, Addison-Wesley.
