@@ -237,6 +237,8 @@
       } else {
           return(kform(spray(matrix(1,0,n-arity(K)),1)))
       }
+  } else {  # K not empty
+      stopifnot(n >= max(index(K)))
   }
   iK <- index(K)
   f1 <- function(o){seq_len(n)[!seq_len(n) %in% o]}
