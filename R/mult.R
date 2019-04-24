@@ -182,8 +182,8 @@
     })
 }
 
-`rform` <- function(terms=9, k=3, n=7,coeffs){
-    as.kform(spray(matrix(sample(seq_len(n),terms*k,replace=TRUE),terms,k),coeffs,addrepeats=TRUE))
+`rform` <- function(terms=9, k=3, n=7, coeffs){
+    kform(spray(t(replicate(terms,sample(seq_len(n),k))),coeffs,addrepeats=TRUE))
 }
 
 `rtensor` <- function(terms=9,k=3, n=7, coeffs){

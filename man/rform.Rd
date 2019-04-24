@@ -17,12 +17,18 @@ rtensor(terms=9,k=3,n=7,coeffs)
     (inherited from \code{spray()})}
 }
 \details{
-What you see is what you get, basically.
+  What you see is what you get, basically.
+
+  Note that argument \code{terms} is an upper bound, as the index matrix
+  might contain repeats.  But \code{coeffs} should have length equal to
+  \code{terms}.
+
 }
 \author{Robin K. S. Hankin}
 \examples{
-rform()
 
+rform()
+rform(coeffs=1:9)   # any repeated rows are combined
 
 dx <- as.kform(1)
 dy <- as.kform(2)
