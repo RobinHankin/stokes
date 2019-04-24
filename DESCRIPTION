@@ -1,7 +1,7 @@
 Package: wedge
 Type: Package
 Title: The Exterior Calculus
-Version: 1.0
+Version: 1.0-1
 Depends: spray (>= 1.0-6)
 Suggests: 
     knitr,

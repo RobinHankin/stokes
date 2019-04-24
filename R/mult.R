@@ -253,3 +253,7 @@
   newcoeffs <- apply(cbind(iK,newindex),1,f2)*apply(iK,1,f3)*value(K)
   as.kform(newindex,newcoeffs)
 }
+
+`inner` <- function(M){
+    ktensor(spray(expand.grid(seq_len(nrow(M)),seq_len(ncol(M))),c(M)))
+}
