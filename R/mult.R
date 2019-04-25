@@ -257,3 +257,7 @@
 `inner` <- function(M){
     ktensor(spray(expand.grid(seq_len(nrow(M)),seq_len(ncol(M))),c(M)))
 }
+
+`as.1form` <- function(v){
+    ktensor(spray(cbind(seq_along(v)),v))
+}
