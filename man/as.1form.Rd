@@ -1,13 +1,17 @@
-\name{grad}
+\name{as.1form}
+\alias{as.1form}
 \alias{grad}
-\title{Gradient of a function}
+\title{Coerce vectors to 1-forms}
 \description{
-The exterior derivative of a 0-form (that is, a scalar function)}
+  Given a vector, return the corresponding 1-form; the exterior
+  derivative of a 0-form (that is, a scalar function)
+}
 \usage{
-grad(g)
+as.1form(v)
+grad(v)
 }
 \arguments{
-  \item{g}{A vector with element \eqn{i} being \eqn{\partial f/\partial
+  \item{v}{A vector with element \eqn{i} being \eqn{\partial f/\partial
       x_i}{df/dxi}}
 }
 \details{
@@ -53,17 +57,20 @@ The exterior derivative of a \eqn{k}-form \eqn{\phi}{phi} is a
 
 The entry in square brackets is given by \code{grad()}.  See the
 examples for appropriate R idiom.
-  
+
 }  
 \value{A one-form}
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{kform}}}
 \examples{
 
+as.1form(1:9)  # note ordering of terms
 
-grad(c(0.5,0.6,-0.9))
+
+as.1form(rnorm(20))
 
 grad(c(4,7)) \%^\% grad(1:4)
+
 
 
 

@@ -5,14 +5,12 @@
 \alias{as.function.kform}
 \alias{kform_general}
 \alias{general_kform}
-\alias{as.1form}
 \title{k-forms}
 \description{
 Functionality for dealing with \eqn{k}-forms.
  }
 \usage{
 as.kform(M,coeffs)
-as.1form(v)
 kform_basis(n, k)
 kform_general(W,k,coeffs)
 \method{as.function}{kform}(x,...)
@@ -24,7 +22,6 @@ kform_general(W,k,coeffs)
   \item{M}{Index matrix for a \eqn{k}-form}
   \item{coeffs}{Coefficients of the \eqn{k}-form}
   \item{x}{Object of class \code{kform}}
-  \item{v}{Numeric vector}
   \item{...}{Further arguments, currently ignored}
 }
 \details{
@@ -67,8 +64,6 @@ where \eqn{\mathbf{e}_j,1\leq j\leq k}{e_j,1<=j<=k} is a basis for
 
 as.kform(cbind(1:5,2:6),rnorm(5))
 kform_general(1:4,2,coeffs=1:6)  # used in electromagnetism
-
-as.1form(1:9)  # note ordering of terms
 
 K1 <- as.kform(cbind(1:5,2:6),rnorm(5))
 K2 <- kform_general(5:8,2,1:6)

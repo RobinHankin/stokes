@@ -191,9 +191,10 @@
     ktensor(spray(M,coeffs,addrepeats=TRUE))
 }
     
-`grad` <- function(g){
-    kform(spray(cbind(seq_along(g)),g))
+`as.1form` <- function(v){
+    kform(spray(cbind(seq_along(v)),v))
 }
+`grad` <- as.1form
 
 `.putw` <- function(v,symbols,prodsymb,d){  # eg v=(1,3,4,7)
   out <- paste(paste(d,symbols[v],sep=""),prodsymb,sep="",collapse="")
@@ -258,6 +259,3 @@
     ktensor(spray(expand.grid(seq_len(nrow(M)),seq_len(ncol(M))),c(M)))
 }
 
-`as.1form` <- function(v){
-    kform(spray(cbind(seq_along(v)),v))
-}
