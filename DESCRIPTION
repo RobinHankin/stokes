@@ -1,7 +1,7 @@
 Package: wedge
 Type: Package
 Title: The Exterior Calculus
-Version: 1.0
+Version: 1.0-1
 Depends: spray (>= 1.0-6)
 Suggests: 
     knitr,
@@ -9,9 +9,17 @@ Suggests:
     testthat
 VignetteBuilder: knitr
 Imports: permutations (>= 1.0-4), partitions, magrittr
-Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
+Authors@R: person(
+	   given=c("Robin", "K. S."),
+	   family="Hankin",
+	   role = c("aut","cre"),
+	   email="hankin.robin@gmail.com",
+	   comment = c(ORCID = "0000-0001-5982-0415"))
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
-Description: The exterior calculus.  Differentials, k-forms, wedge products, Stokes's theorem, etc.
+Description: Provides functionality for working with differentials,
+           k-forms, wedge products, Stokes's theorem, and related concepts
+	   from the exterior calculus.  The canonical refererence would be:
+	   M. Spivak (1965). "Calculus on Manifolds", Benjamin Cummings.
 License: GPL-2
 URL: https://github.com/RobinHankin/wedge.git
 BugReports: https://github.com/RobinHankin/wedge/issues

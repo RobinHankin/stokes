@@ -182,8 +182,8 @@
     })
 }
 
-`rform` <- function(terms=9, k=3, n=7,coeffs){
-    as.kform(spray(matrix(sample(seq_len(n),terms*k,replace=TRUE),terms,k),coeffs,addrepeats=TRUE))
+`rform` <- function(terms=9, k=3, n=7, coeffs){
+    kform(spray(t(replicate(terms,sample(seq_len(n),k))),coeffs,addrepeats=TRUE))
 }
 
 `rtensor` <- function(terms=9,k=3, n=7, coeffs){
@@ -237,6 +237,8 @@
       } else {
           return(kform(spray(matrix(1,0,n-arity(K)),1)))
       }
+  } else {  # K not empty
+      stopifnot(n >= max(index(K)))
   }
   iK <- index(K)
   f1 <- function(o){seq_len(n)[!seq_len(n) %in% o]}
@@ -250,4 +252,12 @@
   }
   newcoeffs <- apply(cbind(iK,newindex),1,f2)*apply(iK,1,f3)*value(K)
   as.kform(newindex,newcoeffs)
+}
+
+`inner` <- function(M){
+    ktensor(spray(expand.grid(seq_len(nrow(M)),seq_len(ncol(M))),c(M)))
+}
+
+`as.1form` <- function(v){
+    kform(spray(cbind(seq_along(v)),v))
 }
