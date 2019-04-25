@@ -259,5 +259,5 @@
 }
 
 `as.1form` <- function(v){
-    ktensor(spray(cbind(seq_along(v)),v))
+    kform(spray(cbind(seq_along(v)),v))
 }
