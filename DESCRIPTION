@@ -18,8 +18,9 @@ Authors@R: person(
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Description: Provides functionality for working with differentials,
            k-forms, wedge products, Stokes's theorem, and related concepts
-	   from the exterior calculus.  The canonical reference would be:
-	   M. Spivak (1965). "Calculus on Manifolds", Benjamin Cummings.
+	   from the exterior calculus.  The canonical refererence would be:
+	   M. Spivak (1965, ISBN 0-8053-9021-9). "Calculus on Manifolds",
+	   Benjamin Cummings.
 License: GPL-2
 URL: https://github.com/RobinHankin/wedge.git
 BugReports: https://github.com/RobinHankin/wedge/issues
