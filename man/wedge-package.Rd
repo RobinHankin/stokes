@@ -44,8 +44,12 @@ T1 \%X\% T2
 
 ## A k-form is an alternating k-tensor:
 K1 <- as.kform(cbind(1:5,2:6),rnorm(5))
-K2 <- kform_general(5:8,2,1:6)
+K2 <- kform_general(3:6,2,1:6)
 K3 <- rform(9,3,9,runif(9))
+
+## The distributive law is true
+
+(K1 + K2) \%^\% K3 == K1 \%^\% K3 + K2 \%^\% K3 # TRUE to numerical precision
 
 ## Wedge product is associative (non-trivial):
 (K1 \%^\% K2) \%^\% K3
