@@ -70,12 +70,12 @@ The space spanned by such products has a natural representation in R
 as an array of dimensions $n\times\cdots\times n$.  If ```A``` is such
 an array, then the element ```A[i_1,i_2,...,i_k]``` is the coefficient
 of $\phi_{i_1}\otimes\ldots\otimes\phi_{i_k}$.  However, it is more
-efficient and conceptually cleaner to consider a *sparse* array.
-
-We will consider the case $n=5,k=4$, so we have multilinear maps from
-$\left(\mathbb{R}^5\right)^4$ to $\mathbb{R}$.  We can test algebraic
-identities in R using the idiom furnished by the wedge package.
-Below, we will define
+efficient and conceptually cleaner to consider a *sparse* array, as
+implemented by the ```spray``` package.  We will consider the case
+$n=5,k=4$, so we have multilinear maps from
+$\left(\mathbb{R}^5\right)^4$ to $\mathbb{R}$.  Below, we willtest
+algebraic identities in R using the idiom furnished by the wedge
+package.  For our example we will define
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$
 using a matrix with three rows, one per term, and whose rows
 correspond to each terms's cross products of the $\phi$'s:
@@ -211,7 +211,13 @@ S1
 Alt(S1)
 ```
 
-And verifying that it is in fact alternating is straightforward:
+However, we can see that this form for alternating tensors (here
+called $k$-forms) is inefficient and highly redundant: in this example
+there is a ```1 2``` term and a ```2 1``` term (the coefficients are
+equal and opposite).  In this example we have $k=2$ but in general
+there would be potentially $k!$ essentially repeated terms which
+collectively require only a single coefficient.  Verifying that
+```S1``` is in fact alternating is straightforward:
 
 ```{r}
 E <- matrix(rnorm(8),4,2)
@@ -219,16 +225,17 @@ Erev <- E[,2:1]
 as.function(Alt(S1))(E) + as.function(Alt(S1))(Erev)  # should be zero
 ```
 
-However, we can see that this form for alternating tensors (here
-called $k$-forms) is inefficient and highly redundant.  The package
-provides ```kform``` objects which are inherently alternating; they are described using  wedge products which are discussed next.
+The package provides ```kform``` objects which are inherently
+alternating using a more efficient representation; they are described
+using wedge products which are discussed next.
 
 ## Wedge products and the exterior calculus
 
 This section follows the exposition of Hubbard and Hubbard, who
 introduce the exterior calculus starting with a discussion of
-elementary forms.  An elementary form is an object such as $dx_1\wedge
-dx_3$, which is an alternating linear map from
+elementary forms, which are alternating forms with a particularly
+simple structure.  An elementary form is an object such as $dx_1\wedge
+dx_3$, which is an alternating multilinear map from
 $\mathbb{R}^n\times\mathbb{R}^n$ to $\mathbb{R}$ with
 
 \[
@@ -298,11 +305,9 @@ K
 
 Note that the order of the rows in ```K``` is immaterial and indeed in
 some implementations will appear in a different order: the wedge
-package uses the spray package, which in turn utilises the STL map
-class of C++.
-
-Spivak observes that $\Lambda^k(V)$ is spanned by the $n\choose k$
-wedge products of the form
+package uses the ```spray``` package, which in turn utilises the STL
+map class of C++.  Spivak observes that $\Lambda^k(V)$ is spanned by
+the $n\choose k$ wedge products of the form
 
 \[
 dx_{i_1}\wedge dx_{i_2}\wedge\ldots\wedge dx_{i_k}\qquad
@@ -323,10 +328,8 @@ Krel
 Object ```Krel``` is a two-form, specifically a map from
 $\left(\mathbb{R}^4\right)^2$ to $\mathbb{R}$.  Observe that
 ```Krel``` has ${4\choose 2}=6$ components, which do not appear in any
-particular order.
-
-Addition of such $k$-forms is straightforward in R idiom but
-algebraically nontrivial:
+particular order.  Addition of such $k$-forms is straightforward in R
+idiom but algebraically nontrivial:
 
 ```{r}
 K1 <- as.kform(matrix(1:4,2,2),1:2)
@@ -337,7 +340,7 @@ K1+K2
 ```
 
 In the above, note how the $dx_2\wedge dx_4$ terms combine [to give
-```2 4=6```] and the $dx_1\wedge dx_3$ term vanishes.
+```2 4 = 6```] and the $dx_1\wedge dx_3$ term vanishes.
 
 ## Formal definition of wedge product
 
