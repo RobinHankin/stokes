@@ -325,7 +325,8 @@ $\left(\mathbb{R}^4\right)^2$ to $\mathbb{R}$.  Observe that
 ```Krel``` has ${4\choose 2}=6$ components, which do not appear in any
 particular order.
 
-Addition of such $k$-forms is straightforward in R idiom but nonrtrivial:
+Addition of such $k$-forms is straightforward in R idiom but
+algebraically nontrivial:
 
 ```{r}
 K1 <- as.kform(matrix(1:4,2,2),1:2)
