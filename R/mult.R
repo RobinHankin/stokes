@@ -119,7 +119,7 @@
 }
 
 `wedge2` <- function(F1,F2){
-
+  if(missing(F2)){return(F1)}
   if(`|`(!inherits(F1,"kform"), !inherits(F2,"kform"))){return(F1*F2)}
 
   if(is.empty(F1) | is.empty(F2)){
