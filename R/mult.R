@@ -80,7 +80,7 @@
   ## with a repeated index, as in [1,3,4,1,2] ("1" appears twice).
   ## Then, sort the rows.  Then, sum over all orderings:
 
-    S %<>% lose_repeats
+    S <- lose_repeats(S)
     if(nrow(index(S))==0){  # the zero form
         return(S)
     }
@@ -138,7 +138,7 @@
   n2 <- length(var2)
 
   f <- function(i){c(ind1[i[1],,drop=TRUE],ind2[i[2],,drop=TRUE])}
-  M <- expand.grid(seq_len(n1),seq_len(n2)) %>% apply(1,f) %>% t
+  M <- t(apply(expand.grid(seq_len(n1),seq_len(n2)),1,f))
   as.kform(M, c(outer(var1,var2)))
 }
 
