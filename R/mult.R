@@ -259,3 +259,12 @@
     ktensor(spray(expand.grid(seq_len(nrow(M)),seq_len(ncol(M))),c(M)))
 }
 
+`transform` <- function(omega,M)
+{
+    Reduce(`+`,sapply(seq_along(value(omega)),
+                      function(i){
+                          do.call("wedge",
+                                  apply(
+                                      M[index(omega)[i,,drop=FALSE],,drop=FALSE],1,
+                                      as.1form))*value(omega)[i]},simplify=FALSE))
+}
