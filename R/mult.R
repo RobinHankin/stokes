@@ -268,3 +268,17 @@
                                       M[index(omega)[i,,drop=FALSE],,drop=FALSE],1,
                                       as.1form))*value(omega)[i]},simplify=FALSE))
 }
+
+`issmall` <- function(x,tol=1e-8){  # tests for a kform being either zero or "small"
+    if(is.zero(x)){
+        return(TRUE)
+    } else {
+        error <- value(x)
+        if(all(abs(error)<tol)){
+            return(TRUE)
+        } else {
+            return(FALSE)
+        }
+    }
+}  # issmall() closes
+

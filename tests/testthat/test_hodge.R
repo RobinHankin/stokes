@@ -4,16 +4,6 @@ library("wedge")
 library("testthat")
 library("magrittr")
 
-`issmall` <- function(discrepancy){  # tests for a kform being either zero or "small"
-  if(!is.zero(discrepancy)){
-    error <- value(discrepancy)
-    expect_true(max(abs(error)) < 1e-8, info=list(x,discrepancy))
-  } else {  # test successful
-    expect_true(TRUE)
-  }
-}  # issmall() closes
-
-
 options(warn=999)
 test_that("Function hodge() behaves itself", {
     expect_true(TRUE)
@@ -22,14 +12,14 @@ test_that("Function hodge() behaves itself", {
 
         n <- max(index(x))
         discrepancy <- x %>% hodge(n) %>% hodge(n) %>% hodge(n) %>% hodge(n) - x
-        issmall(discrepancy)
+        expect_true(issmall(discrepancy),info=x)
         expect_true(value(x %^% hodge(x,n)) >= 0)
     } # foo1() closes
 
 
     foo2 <- function(x,y){  # checks that *x^y == *y^x
         n <- max(c(index(x),index(y)))
-        issmall(hodge(x,n) %^% y - hodge(y,n) %^% x)
+        expect_true(issmall(hodge(x,n) %^% y - hodge(y,n) %^% x),info=list(x,y,n))
     }  # foo2() closes
 
 
