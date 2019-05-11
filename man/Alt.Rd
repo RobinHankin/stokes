@@ -37,21 +37,20 @@
 
   Function \code{Alt()} takes and returns an object of class
   \code{ktensor}.
-  
 }
 \value{
-  Returns an alternating k-tensor.  To coerce to a \eqn{k}-form,
+  Returns an alternating \eqn{k}-tensor.  To coerce to a \eqn{k}-form,
+  which is a much more efficient representation, 
   use \code{as.kform()}.
 }
-
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{kform}}}
 \examples{
-Alt(spray(expand.grid(1:4,1:4),rnorm(16)))
 
-U <- ktensor(spray(matrix(1:4,3,4)))
-Alt(U) - Alt(Alt(U))  # should be zero
+p <- as.ktensor(expand.grid(1:3,1:3),rnorm(9))
+p
+Alt(p)
 
-
+issmall(Alt(p) - Alt(Alt(p)))  # should be TRUE
 
 }
