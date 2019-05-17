@@ -97,13 +97,18 @@ omega <- as.kform(matrix(c(1,1,2,3),2,2),c(1,5))
 M <- matrix(1:9,3,3)
 transform(omega,M)
 
+# Demonstrate that the result can be complicated:
+transform(as.kform(1:2),matrix(rnorm(25),5,5))
+
 # Numerical verification:
 o <- rform()
 M <- matrix(rnorm(49),7,7)
 o2 <- transform(transform(o,M),solve(M))
 max(abs(value(o-o2))) # should be small
 
+# Works nicely with pipes:
 \dontrun{
 max(abs(value(o-o \%>\% transform(M) \%>\% transform(solve(M)))))
 }
+
 }
