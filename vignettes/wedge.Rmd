@@ -440,10 +440,11 @@ $(k+1)$-form given by
   P_{x}\left(h{v}_1,\ldots,h{v}_{k+1}\right)}\phi
 \]
 
-which, by their own account, is a rather opaque mathematical idiom,
+which, by their own account, is a rather opaque mathematical idiom.
 However, the definition makes sense and it is consistent with Spivak's
 definition above.  The definition allows one to express the
-fundamental theorem of calculus in a arbitraryily dimensional way.
+fundamental theorem of calculus in an arbitrary number of dimensions
+without modification.
 
 It can be shown that
 
