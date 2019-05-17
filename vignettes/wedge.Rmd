@@ -405,6 +405,30 @@ In the above, note how the $dx_2\wedge dx_4$ terms combine [to give
 
 ## Exterior derivatives
 
+Given a $k$-form $\omega$, Spivak defines the differential of $\omega$
+to be a $(k+1)$-form $d\omega$ as follows.  If
+
+\[
+\omega =
+\sum_{
+i_1 < i_2 <\cdots<i_k}
+\omega_{i_1i_2\ldots i_k}
+dx^{i_1}\wedge
+dx^{i_2}\wedge\cdots\wedge dx^{i_k}
+\]
+
+then
+
+\[
+d\omega =
+\sum_{
+i_1 < i_2 <\cdots<i_k}
+\sum_{\alpha=1}^n D_\alpha\left(\omega_{i_1i_2\ldots i_k}\right)
+\cdot
+dx^{i_1}\wedge
+dx^{i_2}\wedge\cdots\wedge dx^{i_k}
+\]
+
 Hubbard and Hubbard define the exterior derivative $d\phi$ (they use a
 bold font, $\mathbf{d}\phi$) of the $k$-form $\phi$ as the
 $(k+1)$-form given by
@@ -416,8 +440,12 @@ $(k+1)$-form given by
   P_{x}\left(h{v}_1,\ldots,h{v}_{k+1}\right)}\phi
 \]
 
-which, by their own account, is a rather opaque mathematical idiom.
-However, the definition makes sense and it can be shown that
+which, by their own account, is a rather opaque mathematical idiom,
+However, the definition makes sense and it is consistent with Spivak's
+definition above.  The definition allows one to express the
+fundamental theorem of calculus in a arbitraryily dimensional way.
+
+It can be shown that
 
 \[
     {d}\left(f\,dx_{i_1}\wedge\cdots\wedge dx_{i_k}\right)=
