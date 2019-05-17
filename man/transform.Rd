@@ -1,8 +1,8 @@
 \name{transform}
 \alias{transform}
-\title{Transform star operator}
+\title{Linear transforms of \eqn{k}-forms}
 \description{Given a \eqn{k}-form, express it in terms of linear
-  combinations}
+  combinations of the \eqn{dx^i}}
 \usage{transform(omega,M)}
 \arguments{
   \item{omega}{Object of class \code{kform}}
@@ -92,11 +92,12 @@ transformation.  There are a few tests in \code{tests/testthat}.
 \seealso{\code{\link{wedge}}}
 \examples{
 
+# Example in the text:
 omega <- as.kform(matrix(c(1,1,2,3),2,2),c(1,5))
 M <- matrix(1:9,3,3)
 transform(omega,M)
 
-
+# Numerical verification:
 o <- rform()
 M <- matrix(rnorm(49),7,7)
 o2 <- transform(transform(o,M),solve(M))
