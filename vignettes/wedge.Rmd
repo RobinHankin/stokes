@@ -211,13 +211,7 @@ S1
 Alt(S1)
 ```
 
-However, we can see that this form for alternating tensors (here
-called $k$-forms) is inefficient and highly redundant: in this example
-there is a ```1 2``` term and a ```2 1``` term (the coefficients are
-equal and opposite).  In this example we have $k=2$ but in general
-there would be potentially $k!$ essentially repeated terms which
-collectively require only a single coefficient.  Verifying that
-```S1``` is in fact alternating is straightforward:
+Verifying that ```S1``` is in fact alternating is straightforward:
 
 ```{r}
 E <- matrix(rnorm(8),4,2)
@@ -225,9 +219,15 @@ Erev <- E[,2:1]
 as.function(Alt(S1))(E) + as.function(Alt(S1))(Erev)  # should be zero
 ```
 
-The package provides ```kform``` objects which are inherently
-alternating using a more efficient representation; they are described
-using wedge products which are discussed next.
+However, we can see that this form for alternating tensors (here
+called $k$-forms) is inefficient and highly redundant: in this example
+there is a ```1 2``` term and a ```2 1``` term (the coefficients are
+equal and opposite).  In this example we have $k=2$ but in general
+there would be potentially $k!$ essentially repeated terms which
+collectively require only a single coefficient.  The package provides
+```kform``` objects which are inherently alternating using a more
+efficient representation; they are described using wedge products
+which are discussed next.
 
 ## Wedge products and the exterior calculus
 
