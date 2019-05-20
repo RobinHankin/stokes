@@ -26,10 +26,14 @@ kform_general(W,k,coeffs)
 }
 \details{
 
-A \dfn{\eqn{k}-form} is an alternating \eqn{k}-tensor.  Recall that a
-\eqn{k}-tensor is a multilinear map from \eqn{V^k} to the reals, where
-\eqn{V=R^n} is a vector space.  A multilinear \eqn{k}-tensor \eqn{T} is
-\dfn{alternating} if it satisfies
+  A \dfn{\eqn{k}-form} is an alternating \eqn{k}-tensor.  In the
+  \pkg{wedge} package, an object of class \code{kform} is a natural and
+  efficient representation of an alternating \eqn{k}-tensor that allows
+  one to use operations such as wedge products.
+
+  Recall that a \eqn{k}-tensor is a multilinear map from \eqn{V^k} to
+  the reals, where \eqn{V=R^n} is a vector space.  A multilinear
+  \eqn{k}-tensor \eqn{T} is \dfn{alternating} if it satisfies
 
   \deqn{T\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
     T\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
