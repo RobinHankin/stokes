@@ -1,12 +1,18 @@
 \name{transform}
 \alias{transform}
+\alias{stretch}
 \title{Linear transforms of \eqn{k}-forms}
 \description{Given a \eqn{k}-form, express it in terms of linear
   combinations of the \eqn{dx^i}}
-\usage{transform(omega,M)}
+\usage{
+transform(omega,M)
+stretch(omega,d)
+}
 \arguments{
   \item{omega}{Object of class \code{kform}}
   \item{M}{Matrix of transformation}
+  \item{d}{Numeric vector representing the diagonal elements of a
+    diagonal matrix}
 }
 \details{
   Suppose we are given a two-form
@@ -86,6 +92,9 @@ The \code{transform()} function does all this but it is slow.  I am not
 100\% sure that there isn't a much more efficient way to do such a
 transformation.  There are a few tests in \code{tests/testthat}.
 
+Function \code{stretch()} carries out the same operation but for a
+matrix with zero off-diagonal elements.  It is much faster.
+
 }
 \value{Returns a \eqn{k}-form}
 \author{Robin K. S. Hankin}
@@ -105,6 +114,18 @@ o <- rform()
 M <- matrix(rnorm(49),7,7)
 o2 <- transform(transform(o,M),solve(M))
 max(abs(value(o-o2))) # should be small
+
+# Following should be zero:
+transform(as.kform(1),M)-as.kform(matrix(1:7),c(crossprod(M,c(1,rep(0,6)))))
+
+# NB following *not* necessarily zero:
+value(transform(as.kform(1),M)) - crossprod(M,c(1,rep(0,6)))
+
+# Following should be TRUE:
+issmall(transform(o,crossprod(matrix(rnorm(14),2,7))))
+
+stretch(o,seq_len(7))
+stretch(o,c(1,0,1,1,1,1,1))   # kills dimension 2
 
 # Works nicely with pipes:
 \dontrun{

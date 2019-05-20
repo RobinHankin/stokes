@@ -282,3 +282,11 @@
     }
 }  # issmall() closes
 
+
+`stretch` <- function(omega,d){
+  M <- index(omega)
+  d <- d[seq_len(max(M))]
+  M[] <- d[M]  # the meat
+  as.kform(index(omega),value(omega)*apply(M,1,prod))
+}
+  
