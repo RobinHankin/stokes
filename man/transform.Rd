@@ -22,14 +22,14 @@ stretch(omega,d)
 
   and relationships
 
-  \deqn{dx_i=\sum_rM_{ir}dy_r}
+  \deqn{dx_i=\sum_rM_{ir}dy_r}{omitted: see PDF}
 
   then we would have
 
   \deqn{\omega =
     \sum_{i<j}
     a_{ij}\left(\sum_rM_{ir}dy_r\right)\wedge\left(\sum_rM_{jr}dy_r\right)
-  }{omited: see PDF}
+  }{omitted: see PDF}
 
   The general situation would be  a \eqn{k}-form where we would have
   \deqn{
@@ -40,7 +40,7 @@ stretch(omega,d)
   \deqn{\omega =
     \sum_{i_1<\cdots <i_k}\left[
     a_{i_1<\cdots < i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right]
-  }{omited: see PDF}
+  }{omitted: see PDF}
 
 So \eqn{\omega} was given in terms of \eqn{dx_1,\ldots,dx_k} and we have
 expressed it in terms of \eqn{dy_1,\ldots,dy_k}.  So for example if
@@ -113,7 +113,7 @@ transform(as.kform(1:2),matrix(rnorm(25),5,5))
 o <- rform()
 M <- matrix(rnorm(49),7,7)
 o2 <- transform(transform(o,M),solve(M))
-max(abs(value(o-o2))) # should be small
+max(abs(value(o-o2))) # zero to numerical precision
 
 # Following should be zero:
 transform(as.kform(1),M)-as.kform(matrix(1:7),c(crossprod(M,c(1,rep(0,6)))))
