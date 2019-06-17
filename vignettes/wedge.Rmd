@@ -73,7 +73,7 @@ of $\phi_{i_1}\otimes\ldots\otimes\phi_{i_k}$.  However, it is more
 efficient and conceptually cleaner to consider a *sparse* array, as
 implemented by the ```spray``` package.  We will consider the case
 $n=5,k=4$, so we have multilinear maps from
-$\left(\mathbb{R}^5\right)^4$ to $\mathbb{R}$.  Below, we willtest
+$\left(\mathbb{R}^5\right)^4$ to $\mathbb{R}$.  Below, we will test
 algebraic identities in R using the idiom furnished by the wedge
 package.  For our example we will define
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$
@@ -126,22 +126,26 @@ E2[,2] <- x2
 E3[,2] <- r1*x1 + r2*x2
 ```
 
-Then we can verify the multilinearity of $S$:
+Then we can verify the multilinearity of $S$ by coercing to a function
+which is applied to ```E1, E2, E3```:
 
 ```{r}
-
 f <- as.function(S)
-c(r1*f(E1) + r2*f(E2), f(E3)) # should match
+way1 <- r1*f(E1) + r2*f(E2)
+way2 <- f(E3)
+c(way1,way2)
 ```
 
-
-Note that this is *not* equivalent to linearity over $V^{nk}$:
+(that is, identical up to numerical precision).  Note that this is
+*not* equivalent to linearity over $V^{nk}$:
 
 
 ```{r}
 E1 <- matrix(rnorm(n*k),n,k)
 E2 <- matrix(rnorm(n*k),n,k)
-c(f(E1+E2),f(E1)+f(E2))
+way1 <- f(r1*E1+r2*E2)
+way2 <- r1*f(E1)+r2*f(E2)
+c(way1,way2)
 ```
 
 Given two k-tensor objects $S,T$ we can form the cross product
