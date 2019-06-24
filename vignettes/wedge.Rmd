@@ -234,8 +234,10 @@ which are discussed next.
 This section follows the exposition of Hubbard and Hubbard, who
 introduce the exterior calculus starting with a discussion of
 elementary forms, which are alternating forms with a particularly
-simple structure.  An elementary form is an object such as $dx_1\wedge
-dx_3$, which is an alternating multilinear map from
+simple structure.  An elementary form is an alternating multilinear
+map with a particularly simple structure.  An example of an elementary
+form would be $dx_1\wedge dx_3$ [treated as an indivisible entity],
+which is an alternating multilinear map from
 $\mathbb{R}^n\times\mathbb{R}^n$ to $\mathbb{R}$ with
 
 \[
@@ -254,7 +256,7 @@ determinant.  In general of course, $dx_i\wedge dx_j\left(
 \begin{pmatrix}a_1\\ \vdots\\ a_n\end{pmatrix}, \begin{pmatrix}b_1\\
 \vdots\\ b_n\end{pmatrix} \right)=\mathrm{det} \begin{pmatrix} a_i &
 b_i \\ a_j & b_j\end{pmatrix}$.  Because such objects are linear, it
-is possible to consider more complicated forms such as $dx_1\wedge
+is possible to consider sums of elementary forms, such as $dx_1\wedge
 dx_2 + 3 dx_2\wedge dx_3$ with
 
 \[
@@ -314,9 +316,13 @@ map class of C++.
 ## Formal definition of wedge product
 
 In the previous section we defined objects such as "$dx_1\wedge dx_6$"
-as a single entity.  Here I define the wedge product $\wedge$
-formally.  Given two alternating forms $\omega$ and $\eta$, Spivak
-defines the wedge product $\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
+as a single entity.  Here I define the elementary form $dx_i$ and the
+wedge product $\wedge$ formally.  The elementary form $dx_i$ is simply
+a map from $\mathbb{R}^n$ to $\mathbb{R}$ with
+$dx_i\left(x_1,x_2,\ldots,x_n\right)=x_i$.  The wedge product maps two
+alternating forms to another alternating form; given
+$\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$, Spivak defines the
+wedge product $\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
 
 \[
 \omega\wedge\eta={k+l\choose k\,l}\operatorname{Alt}(\omega\otimes\eta)
@@ -336,6 +342,8 @@ K1 %^% K2
 
 ```
 
+(we might write the product as $-35dx_1\wedge dx_4\wedge dx_5\wedge
+dx_6\wedge dx_7 -21dx_1\wedge dx_3\wedge dx_4\wedge dx_5\wedge dx_6$).
 See how the wedge product eliminates rows with repeated entries,
 gathers permuted rows together (respecting the sign of the
 permutation), and expresses the result in terms of elementary forms.
@@ -374,7 +382,7 @@ dx_{i_1}\wedge dx_{i_2}\wedge\ldots\wedge dx_{i_k}\qquad
 1\leq i_i<i_2<\cdots <i_k\leq n
 \]
 
-and these products are called elementary forms: every element of the
+where these products are the elementary forms: every element of the
 space $\Lambda^k(V)$ is a linear combination of elementary forms, as
 illustrated in the package by function ```kform_general()```.
 Consider the following idiom:
