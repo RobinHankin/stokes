@@ -1,5 +1,8 @@
 ---
-output: github_document
+title: "The wedge package: exterior calculus in R"
+output:
+  github_document:
+    pandoc_args: --webtex
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -12,18 +15,41 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+
+
+<!-- badges: start -->
+[![Build Status](https://travis-ci.org/RobinHankin/wedge.svg?branch=master)](https://travis-ci.org/RobinHankin/wedge)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/wedge)](https://cran.r-project.org/package=wedge)
+[![Rdoc](http://www.rdocumentation.org/badges/version/wedge)](http://www.rdocumentation.org/packages/wedge)
+<!-- badges: end -->
+
 # Overview
 
-The wedge package provides functionality for working with the exterior
-calculus.  It includes cross products and wedge products and a variety
-of use-cases.  A vignette is provided in the package.
+The ```wedge``` package provides functionality for working with the
+exterior calculus.  It includes cross products and wedge products and
+a variety of use-cases.  The canonical reference would be M. Spivak
+1971. _Calculus on manifolds_, Addison-Wesley.  A detailed vignette is
+provided in the package.
+
+The package deals with $k$-tensors and $k$-forms.  A $k$-tensor is a
+multilinear map $S\colon V^k\longrightarrow\mathbb{R}$, where
+$V=\mathbb{R}^n$ is considered as a vector space.  Given two
+$k$-tensors $S,T$ the package can calculate their outer product
+$S\otimes T$ using natural R idiom (see below and the vignette for
+details).
+
+A $k$-form is an alternating $k$-tensor, that is a $k$-tensor $\omega$
+with the property that linear dependence of $x_1,\ldots,x_n$ implies
+that $\omega\left(x_1,\ldots,x_n\right)=0$.  Given $k$-forms
+$\omega,\eta$, the package provides R idiom for calculating
+their wedge product $\omega\wedge\eta$.
 
 # Installation
 
 You can install the released version of wedge from [CRAN](https://CRAN.R-project.org) with:
 
-```{r}
-# install.packages("wedge")  # uncomment this to use the package
+```{r, message=FALSE}
+# install.packages("wedge")  # uncomment this to install the package
 library("wedge")
 ```
 
