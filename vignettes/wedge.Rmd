@@ -15,14 +15,8 @@ Ordinary differential calculus may be generalized to
 arbitrary-dimensional oriented manifolds using the exterior calculus.
 Here I show how the wedge package furnishes functionality for working
 with the exterior calculus, and provide numerical verification of a
-number of theorems.
-
-Notation follows that of Spivak, and Hubbard and Hubbard.
-
-```{r,echo=FALSE,print=FALSE,results='hide'}
-require("wedge",quietly=TRUE,warn.conflicts=FALSE)
-require("Deriv",quietly=TRUE,warn.conflicts=FALSE)
-```
+number of theorems.  Notation follows that of Spivak, and Hubbard and
+Hubbard.
 
 Recall that a $k$-tensor is a multilinear map $S\colon
 V^k\longrightarrow\mathbb{R}$, where $V=\mathbb{R}^n$ is considered as
@@ -78,7 +72,15 @@ algebraic identities in R using the idiom furnished by the wedge
 package.  For our example we will define
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$
 using a matrix with three rows, one per term, and whose rows
-correspond to each terms's cross products of the $\phi$'s:
+correspond to each terms's cross products of the $\phi$'s.  We first
+have to load the ```wedge``` library:
+
+```{r,message=FALSE}
+library("wedge")
+```
+
+Then the idiom is straightforward:
+
 
 ```{r}
 k <- 4
@@ -542,9 +544,9 @@ $k$-form $\phi$, $d\left(d\phi\right)=0$.  The first step is to define
 scalar functions ```f1(), f2(), f3()```, all  $0$-forms:
 
 ```{r}
-f1 <- function(w,x,y,z){w*x*y*z + sin(x) + cos(w)}
+f1 <- function(w,x,y,z){x + y^3 + x*y*w*z}
 f2 <- function(w,x,y,z){w^2*x*y*z + sin(w) + w+z}
-f3 <- function(w,x,y,z){w*y + x + (w*z)}
+f3 <- function(w,x,y,z){w*x*y*z + sin(x) + cos(w)}
 ```
 
 Now we need to define elementary $1$-forms:
@@ -589,15 +591,23 @@ phi
 ```
 
 
-Now to evaluate first derivatives of ```f1()``` etc at point $(1,2,3,4)$, using ```Deriv()```:
+Now to evaluate first derivatives of ```f1()``` etc at point
+$(1,2,3,4)$, using ```Deriv()``` from the Deriv package:
 
 ```{r}
+library("Deriv")
 Df1 <- Deriv(f1)(1,2,3,4)
 Df2 <- Deriv(f2)(1,2,3,4)
 Df3 <- Deriv(f3)(1,2,3,4)
 ```
 
-So ```Df1``` etc are numeric vectors of length 4.  Calculating dphi is easy:
+So ```Df1``` etc are numeric vectors of length 4, for example:
+
+```{r}
+Df1
+```
+
+Calculating dphi, or $d\phi$, is easy:
 
 ```
 dphi <-
@@ -617,7 +627,20 @@ Hf2 <- matrix(Deriv(f2,nderiv=2)(1,2,3,4),4,4)
 Hf3 <- matrix(Deriv(f3,nderiv=2)(1,2,3,4),4,4)
 ```
 
-But $dd\phi$ is clearly zero as the Hessians are symmetrical:
+```{r, echo=FALSE}
+rownames(Hf1) <- c("w","x","y","z")
+colnames(Hf1) <- c("w","x","y","z")
+```
+
+For example
+
+```{r}
+Hf1
+```
+
+(note the nonzero diagonal term).  But $dd\phi$ is clearly zero as the
+Hessians are symmetrical:
+
 ```{r}
 ddphi <- # should be zero
   (  
