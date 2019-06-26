@@ -107,25 +107,27 @@ M <- matrix(1:9,3,3)
 transform(omega,M)
 
 # Demonstrate that the result can be complicated:
-transform(as.kform(1:2),matrix(rnorm(25),5,5))
+M <- matrix(rnorm(25),5,5)
+transform(as.kform(1:2),M)
 
 # Numerical verification:
-o <- rform()
-M <- matrix(rnorm(49),7,7)
+o <- rform(terms=2,n=5)
+
 o2 <- transform(transform(o,M),solve(M))
 max(abs(value(o-o2))) # zero to numerical precision
 
 # Following should be zero:
-transform(as.kform(1),M)-as.kform(matrix(1:7),c(crossprod(M,c(1,rep(0,6)))))
-
-# NB following *not* necessarily zero:
-value(transform(as.kform(1),M)) - crossprod(M,c(1,rep(0,6)))
+transform(as.kform(1),M)-as.kform(matrix(1:5),c(crossprod(M,c(1,rep(0,4)))))
 
 # Following should be TRUE:
-issmall(transform(o,crossprod(matrix(rnorm(14),2,7))))
+issmall(transform(o,crossprod(matrix(rnorm(10),2,5))))
 
-stretch(o,seq_len(7))
-stretch(o,c(1,0,1,1,1,1,1))   # kills dimension 2
+# Some stretch() use-cases:
+
+p <- rform()
+p
+stretch(p,seq_len(5))
+stretch(p,c(1,0,1,1,1))   # kills dimension 2
 
 # Works nicely with pipes:
 \dontrun{
