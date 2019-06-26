@@ -27,9 +27,8 @@ knitr::opts_chunk$set(
 
 The ```wedge``` package provides functionality for working with the
 exterior calculus.  It includes cross products and wedge products and
-a variety of use-cases.  The canonical reference would be M. Spivak
-1971. _Calculus on manifolds_, Addison-Wesley.  A detailed vignette is
-provided in the package.
+a variety of use-cases.  The canonical reference would be Spivak (see
+references).  A detailed vignette is provided in the package.
 
 The package deals with $k$-tensors and $k$-forms.  A $k$-tensor is a
 multilinear map $S\colon V^k\longrightarrow\mathbb{R}$, where
@@ -143,3 +142,20 @@ The package takes the leg-work out of the exterior calculus:
 ```{r legwork}
 grad(1:4) %^% grad(1:6)
 ```
+
+
+# References
+
+The most concise reference is
+
+  - Spivak 1971. _Calculus on manifolds_, Addison-Wesley.
+
+But an accessible book would be
+
+  - Hubbard and Hubbard 2015. _Vector calculus, linear algebra, and differential forms: a unified approach_.  Matrix Editions
+
+# Further information
+
+For more detail, see the package vignette
+
+```vignette("wedge")```

@@ -15,9 +15,8 @@ Status](https://travis-ci.org/RobinHankin/wedge.svg?branch=master)](https://trav
 
 The `wedge` package provides functionality for working with the exterior
 calculus. It includes cross products and wedge products and a variety of
-use-cases. The canonical reference would be M. Spivak 1971. *Calculus on
-manifolds*, Addison-Wesley. A detailed vignette is provided in the
-package.
+use-cases. The canonical reference would be Spivak (see references). A
+detailed vignette is provided in the package.
 
 The package deals with ![k](https://latex.codecogs.com/png.latex?k
 "k")-tensors and ![k](https://latex.codecogs.com/png.latex?k "k")-forms.
@@ -84,7 +83,7 @@ KT <- as.ktensor(cbind(1:4,2:5),1:4)
 f <- as.function(KT)
 E <- matrix(rnorm(10),5,2)
 f(E)
-#> [1] -11.78839
+#> [1] -0.1383716
 ```
 
 Cross products are implemented:
@@ -156,7 +155,7 @@ We may coerce `KF` to functional form:
 f <- as.function(KF)
 E <- matrix(rnorm(12),4,3)
 f(E)
-#> [1] 2.615617
+#> [1] -1.895993
 ```
 
 # The wedge product
@@ -230,3 +229,20 @@ grad(1:4) %^% grad(1:6)
 #>  1 6  =    6
 #>  4 6  =   24
 ```
+
+# References
+
+The most concise reference is
+
+  - Spivak 1971. *Calculus on manifolds*, Addison-Wesley.
+
+But an accessible book would be
+
+  - Hubbard and Hubbard 2015. *Vector calculus, linear algebra, and
+    differential forms: a unified approach*. Matrix Editions
+
+# Further information
+
+For more detail, see the package vignette
+
+`vignette("wedge")`
