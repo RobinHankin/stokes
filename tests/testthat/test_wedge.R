@@ -1,5 +1,3 @@
-library("wedge")
-library("testthat")
 
 test_that("wedge product is associative", {
   

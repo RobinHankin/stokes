@@ -1,5 +1,3 @@
-library("wedge")
-library("testthat")
 
 test_that("Miscellaneous wedge functionality", {
 

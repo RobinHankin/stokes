@@ -1,7 +1,3 @@
-library("wedge")
-library("testthat")
-
-
 test_that("ktensor functions are multilinear", {     
 
   `foo` <- function(S,E){

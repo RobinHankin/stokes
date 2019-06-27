@@ -1,9 +1,5 @@
 ## Some tests of hodge()
 
-library("wedge")
-library("testthat")
-library("magrittr")
-
 options(warn=999)
 test_that("Function hodge() behaves itself", {
     expect_true(TRUE)

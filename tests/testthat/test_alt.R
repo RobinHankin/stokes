@@ -1,8 +1,5 @@
 ## Some tests of Alt()
 
-library("wedge")
-library("testthat")
-
 test_that("Function Alt() behaves itself", {
 
     foo <- function(S){

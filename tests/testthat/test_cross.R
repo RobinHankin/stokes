@@ -1,8 +1,5 @@
 ## Some tests of the cross product
 
-library("wedge")
-library("testthat")
-
 test_that("cross product is distributive and associative", {
 
     foo3 <- function(T1,T2,T3){

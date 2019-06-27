@@ -1,5 +1,3 @@
-library("wedge")
-library("testthat")
 
 foo1 <- function(S){
   expect_true(S == +S,info=S)

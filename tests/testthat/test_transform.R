@@ -1,9 +1,5 @@
 ## Some tests of transform()
 
-library("wedge")
-library("testthat")
-library("magrittr")
-
 options(warn=999)
 test_that("Function transform() behaves itself", {
     expect_true(TRUE)

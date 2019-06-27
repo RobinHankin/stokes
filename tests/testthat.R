@@ -1,4 +1,3 @@
-library(testthat)
-library(wedge)
+library("testthat")
 
 test_check("wedge")
