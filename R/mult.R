@@ -301,3 +301,10 @@
     jj[no] <- 0L
     stretch(omega,jj)
 }
+
+`zerotensor` <- function(n){as.ktensor(rep(1,n))*0}
+`zeroform` <- function(n){as.kform(rep(1,n))}
+
+    
+
+    
