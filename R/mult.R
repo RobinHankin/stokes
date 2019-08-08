@@ -305,6 +305,25 @@
 `zerotensor` <- function(n){as.ktensor(rep(1,n))*0}
 `zeroform` <- function(n){as.kform(rep(1,n))}
 
-    
+`contract_elementary` <- function(o,v){
+  out <- zeroform(length(o)-1)
+  for(i in seq_along(o)){
+    out <- out + (-1)^(i+1)*v[o[i]]*as.kform(rbind(o[-i]))
+  }
+  return(out)
+}
+
+`contract` <- function(omega,v){
+  Reduce("+",Map("*", apply(index(omega),1,contract_elementary,v),value(omega))) 
+}
+
+`contractM` <- function(omega,M){
+  M <- cbind(M)
+  out <- omega
+  for(i in seq_len(ncol(M))){
+    out <- contract(out,M[,i])
+  }
+  return(out)
+}
 
     
