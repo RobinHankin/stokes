@@ -313,7 +313,7 @@
   return(out)
 }
 
-`contract` <- function(omega,v){
+`contract` <- function(omega,v,drop=TRUE){
     if(is.vector(v)){
         out <- Reduce("+",Map("*", apply(index(omega),1,contract_elementary,v),value(omega)))
     } else {
@@ -323,6 +323,15 @@
             out <- contract(out,v[,i,drop=TRUE])
         }
     }
+    if(drop){out <- drop(out)}
     return(out)
 }
+
+`scalar` <- function(x){x*kform(spray(matrix(1,1,0)))}
+`0form` <- `scalar`
+
+setGeneric("drop",function(x){standardGeneric("drop")})
+`drop` <- function(x){UseMethod("drop")}
+`drop.kform` <- function(x){ifelse(arity(x)>0, x, value(x))}
+
 
