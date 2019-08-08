@@ -15,7 +15,7 @@ zerotensor(n)
 \author{Robin K. S. Hankin}
 \note{
   Idiom such as \code{as.ktensor(rep(1,n),0)} and
-  \code{as.kform(rep(1,5),0)} and indeed \code{as.kform(1:5,0)} are
+  \code{as.kform(rep(1,5),0)} and indeed \code{as.kform(1:5,0)} is
   incorrect as the arity of the tensor is lost.
 }
 
