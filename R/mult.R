@@ -303,7 +303,7 @@
 }
 
 `zerotensor` <- function(n){as.ktensor(rep(1,n))*0}
-`zeroform` <- function(n){as.kform(rep(1,n))}
+`zeroform` <- function(n){0*as.kform(seq_len(n))}
 
 `contract_elementary` <- function(o,v){
   out <- zeroform(length(o)-1)
