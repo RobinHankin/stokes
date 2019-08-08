@@ -314,16 +314,15 @@
 }
 
 `contract` <- function(omega,v){
-  Reduce("+",Map("*", apply(index(omega),1,contract_elementary,v),value(omega))) 
+    if(is.vector(v)){
+        out <- Reduce("+",Map("*", apply(index(omega),1,contract_elementary,v),value(omega)))
+    } else {
+        stopifnot(is.matrix(v))
+        out <- omega
+        for(i in seq_len(ncol(v))){
+            out <- contract(out,v[,i,drop=TRUE])
+        }
+    }
+    return(out)
 }
 
-`contractM` <- function(omega,M){
-  M <- cbind(M)
-  out <- omega
-  for(i in seq_len(ncol(M))){
-    out <- contract(out,M[,i])
-  }
-  return(out)
-}
-
-    
