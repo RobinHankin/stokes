@@ -45,10 +45,11 @@ chapter 2, page 77).
 \code{\link{wedge}}
 }
 \examples{
-contract(rform(),runif(7))
 contract(as.kform(1:5),1:8)
 contract(as.kform(1),3)   # 0-form
 
+
+## Now some verification:
 o <- rform(2,k=5,n=9,coeffs=runif(2))
 V <- matrix(rnorm(45),ncol=5)
 jj <- c(
@@ -60,5 +61,5 @@ jj <- c(
    as.function(contract(o,V[,1:5]))(V[,-(1:5),drop=FALSE])
 )
 
-max(jj) - min(jj) # should be zero to numerical precision
+max(jj) - min(jj) # zero to numerical precision
 }
