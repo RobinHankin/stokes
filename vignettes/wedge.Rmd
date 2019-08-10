@@ -417,6 +417,55 @@ In the above, note how the $dx_2\wedge dx_4$ terms combine [to give
 ```2 4 = 6```] and the $dx_1\wedge dx_3$ term vanishes.
 
 
+## Contractions
+
+Given a $k$-form $\phi\colon V^k\longrightarrow\mathbb{R}$ and a
+vector $\mathbf{v}\in V$, the _contraction_ $\phi_\mathbf{v}$ of
+$\phi$ and $\mathbf{v}$ is a $k-1$-form with
+
+\[
+  \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
+  \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
+\]
+
+if $k>1$; we specify $\phi_\mathbf{v}=\phi(\mathbf{v})$ if $k=1$.
+Verification is straightforward:
+
+```{r}
+(o <- rform())  # a random 3-form
+V <- matrix(runif(21),ncol=3)
+LHS <- as.function(o)(V)
+RHS <- as.function(contract(o,V[,1]))(V[,-1])
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
+```
+
+It is possible to iterate the contraction process; if we pass a matrix
+$V$ to `contract()` then this is interpreted as repeated contraction
+with the columns of $V$:
+
+```{r}
+as.function(contract(o,V[,1:2]))(V[,-(1:2),drop=FALSE])
+```
+
+If we pass three columns to `contract()` the result is a $0$-form:
+
+```{r}
+contract(o,V)
+```
+
+In the above, the result is coerced to a scalar; in order to work with
+a formal $0$-form (which is represented in the package as a `spray`
+with a zero-column index matrix) we can use the `lose=FALSE` argument:
+
+```{r}
+contract(o,V,lose=FALSE)
+```
+
+
+
+
+
+
 ## Exterior derivatives
 
 Given a $k$-form $\omega$, Spivak defines the differential of $\omega$
