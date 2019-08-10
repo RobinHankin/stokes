@@ -330,7 +330,15 @@
     return(out)
 }
 
-`scalar` <- function(s){s*kform(spray(matrix(1,1,0)))}
+`scalar` <- function(s,lose=FALSE){
+    if(lose){
+        stopifnot(length(s)==1)
+        return(s)
+    } else {
+        return(s*kform(spray(matrix(1,1,0))))
+    }
+}
+    
 `0form` <- `scalar`
 
 setGeneric("lose",function(x){standardGeneric("lose")})

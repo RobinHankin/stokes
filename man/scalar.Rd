@@ -8,14 +8,17 @@
 \title{Lose attributes}
 \description{Scalars: \eqn{0}-forms and \eqn{0}-tensors}
 \usage{
-scalar(s)
-`0form`(s)
+scalar(s,lose=FALSE)
+`0form`(s,lose=FALSE)
 \method{lose}{kform}(x)
 \method{lose}{ktensor}(x)
 }
 \arguments{
   \item{s}{A scalar value; a number}
   \item{x}{Object of class \code{ktensor} or \code{kform}}
+  \item{lose}{In function \code{scalar()}, Boolean with \code{TRUE}
+    meaning to return a normal scalar, and default \code{FALSE} meaning
+    to return a formal \eqn{0}-form}
 }
 \details{
 
