@@ -9,7 +9,8 @@ test_that("Function contract() behaves itself", {
             as.function(contract(o,V[,1,drop=TRUE]))(V[,-1]), # scalar
             as.function(contract(o,V[,1:2]))(V[,-(1:2),drop=FALSE]),
             as.function(contract(o,V[,1:3]))(V[,-(1:3),drop=FALSE]),
-            as.function(contract(o,V[,1:4]))(V[,-(1:4),drop=FALSE])
+            as.function(contract(o,V[,1:4]))(V[,-(1:4),drop=FALSE]),
+            as.function(contract(o,V[,1:4],lose=FALSE))(V[,-(1:4),drop=FALSE])
         )
         
         expect_true(max(jj)-min(jj) < 1e-6)

@@ -123,7 +123,7 @@
   if(`|`(!inherits(F1,"kform"), !inherits(F2,"kform"))){return(F1*F2)}
 
   if(is.empty(F1) | is.empty(F2)){
-    return(as.kform(cbind(index(F1)[0,],index(F2)[0,])))
+    return(zeroform(arity(F1)+arity(F2)))
     }
 
   ## we need to go through F1 and F2 line by line (wedge product is
@@ -158,16 +158,19 @@
     return(S)
 }
 
-`as.kform` <- function(M,coeffs){
+`as.kform` <- function(M,coeffs,lose=TRUE){
     if(inherits(M,"spray")){return(kform(M))}
-    return(kform(spray(M,coeffs)))
+    if(length(c(M))==0){M <- matrix(1,1,0)} # kludge
+    out <- kform(spray(M,coeffs))
+    if(lose){out <- lose(out)}
+    return(out)
 }
 
-`kform_general`  <- function(W,k,coeffs){
+`kform_general`  <- function(W,k,coeffs,lose=TRUE){
     if(length(W)==1){W <- seq_len(W)}
     M <-  kform_basis(length(W),k)
     M[] <- W[M]
-    as.kform(M,coeffs)
+    as.kform(M,coeffs,lose=lose)
 }
 
 `as.function.kform` <- function(x,...){
@@ -303,35 +306,42 @@
 }
 
 `zerotensor` <- function(n){as.ktensor(rep(1,n))*0}
-`zeroform` <- function(n){0*as.kform(seq_len(n))}
+`zeroform` <- function(n){0*as.kform(seq_len(n),lose=FALSE)}
 
 `contract_elementary` <- function(o,v){
   out <- zeroform(length(o)-1)
   for(i in seq_along(o)){
-    out <- out + (-1)^(i+1)*v[o[i]]*as.kform(rbind(o[-i]))
+    out <- out + (-1)^(i+1)*v[o[i]]*as.kform(rbind(o[-i]),lose=FALSE)
   }
   return(out)
 }
 
-`contract` <- function(omega,v,drop=TRUE){
+`contract` <- function(omega,v,lose=TRUE){
     if(is.vector(v)){
         out <- Reduce("+",Map("*", apply(index(omega),1,contract_elementary,v),value(omega)))
     } else {
         stopifnot(is.matrix(v))
         out <- omega
         for(i in seq_len(ncol(v))){
-            out <- contract(out,v[,i,drop=TRUE])
+            out <- contract(out,v[,i,drop=TRUE],lose=FALSE)
         }
     }
-    if(drop){out <- drop(out)}
+    if(lose){out <- lose(out)}
     return(out)
 }
 
-`scalar` <- function(x){x*kform(spray(matrix(1,1,0)))}
+`scalar` <- function(s){s*kform(spray(matrix(1,1,0)))}
 `0form` <- `scalar`
 
-setGeneric("drop",function(x){standardGeneric("drop")})
-`drop` <- function(x){UseMethod("drop")}
-`drop.kform` <- function(x){ifelse(arity(x)>0, x, value(x))}
+setGeneric("lose",function(x){standardGeneric("lose")})
 
+`lose` <- function(x){UseMethod("lose",x)}
+`lose.kform` <- function(x){
+    if(arity(x)==0){
+        return(value(x))
+    } else {
+        return(x)
+    }
+}
 
+`lose.ktensor` <- lose.kform 

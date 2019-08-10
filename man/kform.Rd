@@ -10,9 +10,9 @@
 Functionality for dealing with \eqn{k}-forms.
  }
 \usage{
-as.kform(M,coeffs)
+as.kform(M,coeffs,lose=TRUE)
 kform_basis(n, k)
-kform_general(W,k,coeffs)
+kform_general(W,k,coeffs,lose=TRUE)
 \method{as.function}{kform}(x,...)
 }
 \arguments{
@@ -21,6 +21,9 @@ kform_general(W,k,coeffs)
   \item{W}{Integer vector of dimensions}
   \item{M}{Index matrix for a \eqn{k}-form}
   \item{coeffs}{Coefficients of the \eqn{k}-form}
+  \item{lose}{Boolean, with default \code{TRUE} meaning to coerce a
+    \eqn{0}-form to a scalar and \code{FALSE} meaning to return the
+    formal \eqn{0}-form}
   \item{x}{Object of class \code{kform}}
   \item{...}{Further arguments, currently ignored}
 }
@@ -63,7 +66,7 @@ where \eqn{\mathbf{e}_j,1\leq j\leq k}{e_j,1<=j<=k} is a basis for
   Hubbard and Hubbard use the term \dQuote{\eqn{k}-form}, but Spivak
   does not.
 }
-\seealso{\code{\link{ktensor}}}
+\seealso{\code{\link{ktensor}},\code{\link{lose}}}
 \examples{
 
 as.kform(cbind(1:5,2:6),rnorm(5))

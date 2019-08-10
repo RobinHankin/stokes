@@ -8,7 +8,7 @@ Suggests:
     Deriv,
     testthat
 VignetteBuilder: knitr
-Imports: permutations (>= 1.0-4), partitions, magrittr
+Imports: permutations (>= 1.0-4), partitions, magrittr, methods
 Authors@R: person(
 	   given=c("Robin", "K. S."),
 	   family="Hankin",
