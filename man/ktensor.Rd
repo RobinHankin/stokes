@@ -35,6 +35,10 @@ and
 Note that this is \emph{not} equivalent to linearity over
 \eqn{V^{nk}}{V^nk} (see examples).
 
+In the \pkg{wedge} package, \eqn{k}-tensors are represented as sparse
+arrays (\code{spray} objects), but with a class of \code{c("ktensor",
+"spray")}.  This is a natural and efficient representation for tensors
+that takes advantage of sparsity using \pkg{spray} package features.
 }
 
 \references{Spivak 1961}

@@ -3,7 +3,10 @@
 \alias{lose_repeats}
 \alias{include_perms}
 \title{Various low-level helper functions}
-\description{Various low-level helper functions used in \code{Alt()}}
+\description{
+  Various low-level helper functions used in \code{Alt()} and
+  \code{kform()}
+}
 \usage{
 consolidate(S)
 lose_repeats(S)
@@ -16,11 +19,11 @@ include_perms(S)
   Low-level helper functions.
 
   \itemize{
-    \item Function \code{consolidate()} takes rows of a spray object
-    that are identical up to a permutation and merges them, respecting
+    \item Function \code{consolidate()} takes a spray object, and
+    combines any rows that are identical up to a permutation, respecting
     the sign of the permutation
-    \item Function \code{lose_repeats()} deletes rows of a spray object
-    that contain the same entry more than once (which have \eqn{k}-forms
+    \item Function \code{lose_repeats()} takes a spray object and
+    deletes any rows with a repeated entry (which have \eqn{k}-forms
     identically zero)
     \item Function \code{include_perms()} replaces each row of a
     \code{spray} object with all its permutations, respecting the sign
