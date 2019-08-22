@@ -343,6 +343,14 @@
     
 `0form` <- `scalar`
 
+`is.scalar` <- function(x){
+  return(
+  ((length(x)==1) & is.numeric(x)) ||
+  (inherits(x,"kform") & all(dim(index(x))==c(1,0)))
+  )
+}
+
+
 `volume` <- function(n){as.kform(seq_len(n))}
 
 `is.volume` <- function(S){ (nterms(S) == 1) &&  all(seq_len(arity(S)) == index(volume(S))) }

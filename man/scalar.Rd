@@ -1,5 +1,6 @@
 \name{scalar}
 \alias{scalar}
+\alias{is.scalar}
 \alias{0form}
 \alias{lose}
 \alias{lose.kform}
@@ -9,6 +10,7 @@
 \description{Scalars: \eqn{0}-forms and \eqn{0}-tensors}
 \usage{
 scalar(s,lose=FALSE)
+is.scalar(x)
 `0form`(s,lose=FALSE)
 \method{lose}{kform}(x)
 \method{lose}{ktensor}(x)
