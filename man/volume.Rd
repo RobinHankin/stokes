@@ -30,7 +30,9 @@ then
 
 (see the examples for numerical verification of this).
 
-The zero \eqn{k}-form is not treated as a volume element.
+Neither the zero \eqn{k}-form, nor scalars, are considered to be a
+volume element.
+
 }
 
 \references{Spivak}

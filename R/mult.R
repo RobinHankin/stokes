@@ -353,7 +353,14 @@
 
 `volume` <- function(n){as.kform(seq_len(n))}
 
-`is.volume` <- function(S){ (nterms(S) == 1) &&  all(seq_len(arity(S)) == index(S)) }
+`is.volume` <- function(S){
+  return(
+  (nterms(S) == 1)      &&
+  (nrow(index(S)) == 1) &&
+  (arity(S) > 0)        &&
+  all(seq_len(arity(S)) == index(S))
+  )
+}
 
 setGeneric("lose",function(x){standardGeneric("lose")})
 
