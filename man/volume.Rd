@@ -1,9 +1,16 @@
 \name{volume}
 \alias{volume}
+\alias{is.volume}
 \title{The volume element}
 \description{The volume element in \eqn{n} dimensions}
-\usage{volume(n)}
-\arguments{\item{n}{Dimension of the space}}
+\usage{
+volume(n)
+is.volume(S)
+}
+\arguments{
+  \item{n}{Dimension of the space}
+  \item{S}{Object of class \code{kform}}
+}
 \details{
 
 Spivak phrases it well: \dQuote{If \eqn{V} has dimension \eqn{n}, it
@@ -22,6 +29,8 @@ then
 
 
 (see the examples for numerical verification of this).
+
+The zero \eqn{k}-form is not treated as a volume element.
 }
 
 \references{Spivak}
