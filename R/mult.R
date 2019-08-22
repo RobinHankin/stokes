@@ -237,7 +237,7 @@
 
 `hodge` <- function(K, n=max(index(K)), g=rep(1,n)){
   if(is.empty(K)){
-      if(is.infinite(n)){ # true if index(K) is empty
+      if(missing(n)){ # true if index(K) is empty
           stop("K is zero but no value of n is supplied")
       } else {
           return(kform(spray(matrix(1,0,n-arity(K)),1)))
