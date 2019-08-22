@@ -342,6 +342,8 @@
     
 `0form` <- `scalar`
 
+`volume` <- function(n){as.kform(seq_len(n))}
+
 setGeneric("lose",function(x){standardGeneric("lose")})
 
 `lose` <- function(x){UseMethod("lose",x)}
