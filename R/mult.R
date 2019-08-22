@@ -235,19 +235,29 @@
   return(noquote(out))
 }
 
-`hodge` <- function(K, n=max(index(K)), g=rep(1,n)){
+`hodge` <- function(K, n=max(index(K)), g=rep(1,n), lose=TRUE){
   if(is.empty(K)){
-      if(missing(n)){ # true if index(K) is empty
-          stop("K is zero but no value of n is supplied")
-      } else {
-          return(kform(spray(matrix(1,0,n-arity(K)),1)))
-      }
-  } else {  # K not empty
-      stopifnot(n >= max(index(K)))
-  }
+    if(missing(n)){
+      stop("K is zero but no value of n is supplied")
+    } else {
+      return(kform(spray(matrix(1,0,n-arity(K)),1)))
+    }
+  } else if(is.volume(K)){
+    return(scalar(value(K),lose=lose))
+  } else if(is.scalar(K)){
+    if(missing(n)){
+      stop("K is scalar but no value of n is supplied")
+    } else {
+      return(volume(n)*value(K))
+    }
+  } # weird edge-cases end
+        
+    
+  stopifnot(n >= max(index(K)))
+
   iK <- index(K)
   f1 <- function(o){seq_len(n)[!seq_len(n) %in% o]}
-  f2 <- function(x){sgn(as.word(x))}
+  f2 <- function(x){permutations::sgn(permutations::as.word(x))}
   f3 <- function(v){prod(g[v])}
   jj <- apply(iK,1,f1)
   if(is.matrix(jj)){
@@ -255,9 +265,12 @@
   } else {
     newindex <- as.matrix(jj)
   }
-  if(length(newindex)>0){iK <- cbind(iK,newindex)}
-  newcoeffs <- apply(iK,1,f2)*apply(iK,1,f3)*value(K)
-  as.kform(newindex,newcoeffs)
+  iK <- cbind(iK,newindex)
+  x1 <- apply(iK,1,f2)
+  x2 <- apply(iK,1,f3)
+  x3 <- value(K)
+
+  as.kform(newindex,x1*x2*x3)
 }
 
 `inner` <- function(M){
