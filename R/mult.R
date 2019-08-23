@@ -21,7 +21,7 @@
     }
 }
 
-`lose_repeats` <- function(S){
+`kill_trivial_rows` <- function(S){
     I <- index(S)
     if(length(I)>0){  # cannot use nrow(I)==0, as 'I' might be NULL
       wanted <- apply(I,1,function(x){all(table(x)==1)})
@@ -80,7 +80,7 @@
   ## with a repeated index, as in [1,3,4,1,2] ("1" appears twice).
   ## Then, sort the rows.  Then, sum over all orderings:
 
-    S <- lose_repeats(S)
+    S <- kill_trivial_rows(S)
     if(nrow(index(S))==0){  # the zero form
         return(S)
     }
@@ -153,7 +153,7 @@
 `kform` <- function(S){
     stopifnot(is.spray(S))
     stopifnot(all(index(S)>0))
-    S <- consolidate(lose_repeats(S))
+    S <- consolidate(kill_trivial_rows(S))
     class(S) <- c("kform", "spray")   # This is the only class setter for kform objects
     return(S)
 }
