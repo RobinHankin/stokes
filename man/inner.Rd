@@ -23,7 +23,7 @@ z\right>=a\left<\bold x,\bold y\right>+b\left<\bold x,\bold
 z\right>}{<x,ay+bz>=a<x,y>+b<x,z>}, we see that the inner product is
 indeed a multilinear map, that is, a tensor.
 
-Function \code{inner(m)} returns the $2$-form that maps \eqn{\bold
+Function \code{inner(m)} returns the \eqn{2}-form that maps \eqn{\bold
   x,\bold y}{x,y} to \eqn{\bold x^TM\bold y}{x'My}.
 
 }
@@ -32,10 +32,15 @@ Function \code{inner(m)} returns the $2$-form that maps \eqn{\bold
 \examples{
 
 inner(diag(7))
+inner(matrix(1:9,3,3))
+
+## Compare the following two:
+Alt(inner(matrix(1:9,3,3)))      # An alternating k tensor
+as.kform(inner(matrix(1:9,3,3))) # Same thing coerced to a kform
 
 f <- as.function(inner(diag(7)))
 X <- matrix(rnorm(14),ncol=2)  # random element of (R^7)^2
-f(X) - sum(X[,1]*X[,2]) # should be zero
+f(X) - sum(X[,1]*X[,2]) # zero to numerical precision
 
 ## verify positive-definiteness:
 g <- as.function(inner(crossprod(matrix(rnorm(56),8,7))))
