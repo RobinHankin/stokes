@@ -5,11 +5,11 @@
 \description{Given a \eqn{k}-form, express it in terms of linear
   combinations of the \eqn{dx^i}}
 \usage{
-transform(omega,M)
-stretch(omega,d)
+transform(K,M)
+stretch(K,d)
 }
 \arguments{
-  \item{omega}{Object of class \code{kform}}
+  \item{K}{Object of class \code{kform}}
   \item{M}{Matrix of transformation}
   \item{d}{Numeric vector representing the diagonal elements of a
     diagonal matrix}

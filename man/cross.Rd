@@ -5,11 +5,11 @@
 \title{Cross products of \eqn{k}-tensors}
 \description{Cross products of \eqn{k}-tensors}
 \usage{
-cross(x,...)
-cross2(S1,S2)
+cross(U, ...)
+cross2(U1,U2)
 }
 \arguments{
-  \item{S1,S2,x}{Object of class \code{ktensor}}
+  \item{U,U1,U2}{Object of class \code{ktensor}}
   \item{...}{Further arguments, currently ignored}
 }
 \details{
@@ -38,13 +38,13 @@ The binary form \code{\%X\%} uses uppercase X to avoid clashing with
 }
 \examples{
 M <- cbind(1:4,2:5)
-S1 <- as.ktensor(M,rnorm(4))
-S2 <- as.ktensor(t(M),1:2)
+U1 <- as.ktensor(M,rnorm(4))
+U2 <- as.ktensor(t(M),1:2)
 
-cross(S1, S2)
-cross(S2, S1)
+cross(U1, U2)
+cross(U2, U1)  # not the same!
 
-S1 \%X\% S2 - S2 \%X\% S1
+U1 \%X\% U2 - U2 \%X\% U1
 
 
 }

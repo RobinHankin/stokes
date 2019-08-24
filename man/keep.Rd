@@ -6,11 +6,11 @@
 \title{Keep or drop variables}
 \description{Keep or drop variables}
 \usage{
-keep(omega, yes)
-discard(omega, no)
+keep(K, yes)
+discard(K, no)
 }
 \arguments{
-  \item{omega}{Object of class \code{kform}}
+  \item{K}{Object of class \code{kform}}
   \item{yes,no}{Specification of dimensions to either keep (yes) or discard 
     (no), coerced to a free object}
 }

@@ -23,11 +23,11 @@ of an integer vector corresponding to one row of an index matrix) into
 its contraction with \eqn{\mathbf{v}}{v}.
 }
 \usage{
-contract(omega,v,lose=TRUE)
+contract(K,v,lose=TRUE)
 contract_elementary(o,v)
 }
 \arguments{
-  \item{omega}{A \eqn{k}-form}
+  \item{K}{A \eqn{k}-form}
   \item{o}{Integer-valued vector corresponding to one row of an index
     matrix}
   \item{lose}{Boolean, with default \code{TRUE} meaning to coerce a

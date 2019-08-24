@@ -5,10 +5,10 @@
 \description{Prints \eqn{k}-tensor and \eqn{k}-form objects in symbolic
   form}
 \usage{
-as.symbolic(K,symbols=letters,d="")
+as.symbolic(M,symbols=letters,d="")
 }
 \arguments{
-  \item{K}{Object of class \code{kform} or \code{ktensor}; a map from
+  \item{M}{Object of class \code{kform} or \code{ktensor}; a map from
     \eqn{V^k} to \eqn{R}, where \eqn{V=R^n}}
   \item{symbols}{A character vector giving the names of the symbols}
   \item{d}{String specifying the appearance of the differential operator}

@@ -47,10 +47,10 @@
 \seealso{\code{\link{kform}}}
 \examples{
 
-p <- as.ktensor(expand.grid(1:3,1:3),rnorm(9))
-p
-Alt(p)
+S <- as.ktensor(expand.grid(1:3,1:3),rnorm(9))
+S
+Alt(S)
 
-issmall(Alt(p) - Alt(Alt(p)))  # should be TRUE
+issmall(Alt(S) - Alt(Alt(S)))  # should be TRUE
 
 }

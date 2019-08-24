@@ -3,10 +3,10 @@
 \title{Is a form zero to within numerical precision?}
 \description{Given a \eqn{k}-form, return \code{TRUE} if it is \dQuote{small}}
 \usage{
-issmall(x, tol=1e-8)
+issmall(M, tol=1e-8)
 }
 \arguments{
-  \item{x}{Object of class \code{kform}}
+  \item{M}{Object of class \code{kform} or \code{ktensor}}
   \item{tol}{Small tolerance, defaulting to \code{1e-8}}
 }
 \value{Returns a logical}

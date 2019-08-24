@@ -10,17 +10,17 @@
 \description{Scalars: \eqn{0}-forms and \eqn{0}-tensors}
 \usage{
 scalar(s,lose=FALSE)
-is.scalar(x)
+is.scalar(M)
 `0form`(s,lose=FALSE)
-\method{lose}{kform}(x)
-\method{lose}{ktensor}(x)
+\method{lose}{kform}(M)
+\method{lose}{ktensor}(M)
 }
 \arguments{
   \item{s}{A scalar value; a number}
-  \item{x}{Object of class \code{ktensor} or \code{kform}}
+  \item{M}{Object of class \code{ktensor} or \code{kform}}
   \item{lose}{In function \code{scalar()}, Boolean with \code{TRUE}
     meaning to return a normal scalar, and default \code{FALSE} meaning
-    to return a formal \eqn{0}-form}
+    to return a formal \eqn{0}-form or \eqn{0}-tensor}
 }
 \details{
 

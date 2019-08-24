@@ -12,6 +12,13 @@
 The DESCRIPTION file:
 \packageDESCRIPTION{wedge}
 \packageIndices{wedge}
+
+
+Generally in the package, arguments that are \eqn{k}-forms are denoted
+\code{K}, \eqn{k}-tensors by \code{U}, and spray objects by \code{S}.
+Multilinear maps (which may be either \eqn{k}-forms or \eqn{k}-tensors)
+are denoted by \code{M}.
+
 }
 \author{
 \packageAuthor{wedge}
@@ -32,14 +39,14 @@ Maintainer: \packageMaintainer{wedge}
 }
 \examples{
 ## Some k-tensors:
-T1 <- as.ktensor(matrix(1:15,5,3))
-T2 <- as.ktensor(cbind(1:3,2:4),1:3)
+U1 <- as.ktensor(matrix(1:15,5,3))
+U2 <- as.ktensor(cbind(1:3,2:4),1:3)
 
 ## Coerce a tensor to functional form, here mapping V^3  -> R (here V=R^15):
-as.function(T1)(matrix(rnorm(45),15,3))
+as.function(U1)(matrix(rnorm(45),15,3))
 
 ## Tensor cross-product is cross() or \%X\%:
-T1 \%X\% T2
+U1 \%X\% U2
 
 
 ## A k-form is an alternating k-tensor:

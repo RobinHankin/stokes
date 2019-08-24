@@ -88,24 +88,24 @@
     ktensor(include_perms(consolidate(S))/factorial(ncol(index(S))))
 }
 
-`cross` <- function(x, ...) {
+`cross` <- function(U, ...) {
    if(nargs()<3){
-     cross2(x,...)
+     cross2(U, ...)
    } else {
-     cross2(x, Recall(...))
+     cross2(U, Recall(...))
    }
 }
 
-`cross2` <- function(S1,S2){  # returns S1\otimes S2
-    if(is.empty(S1) | is.empty(S2)){
-      return(as.ktensor(cbind(index(S1)[0,],index(S2)[0,])))
+`cross2` <- function(U1,U2){  # returns U1\otimes U2
+    if(is.empty(U1) | is.empty(U2)){
+      return(as.ktensor(cbind(index(U1)[0,],index(U2)[0,])))
     }
 
-    M1 <- index(S1)
-    M2 <- index(S2)
+    M1 <- index(U1)
+    M2 <- index(U2)
     jj <- as.matrix(expand.grid(seq_len(nrow(M1)),seq_len(nrow(M2))))
     f <- function(i){c(M1[jj[i,1],],M2[jj[i,2],])}
-    ktensor(spray(t(sapply(seq_len(nrow(jj)),f)),c(outer(value(S1),value(S2)))))
+    ktensor(spray(t(sapply(seq_len(nrow(jj)),f)),c(outer(value(U1),value(U2)))))
 }
 
 `%X%` <- function(x,y){cross(x,y)}
@@ -118,21 +118,21 @@
    }
 }
 
-`wedge2` <- function(F1,F2){
-  if(missing(F2)){return(F1)}
-  if(`|`(!inherits(F1,"kform"), !inherits(F2,"kform"))){return(F1*F2)}
+`wedge2` <- function(K1,K2){
+  if(missing(K2)){return(K1)}
+  if(`|`(!inherits(K1,"kform"), !inherits(K2,"kform"))){return(K1*K2)}
 
-  if(is.empty(F1) | is.empty(F2)){
-    return(zeroform(arity(F1)+arity(F2)))
+  if(is.empty(K1) | is.empty(K2)){
+    return(zeroform(arity(K1)+arity(K2)))
     }
 
-  ## we need to go through F1 and F2 line by line (wedge product is
+  ## we need to go through K1 and K2 line by line (wedge product is
   ## left- and right- distributive).
   
-  ind1 <- index(F1)
-  var1 <- value(F1)
-  ind2 <- index(F2)
-  var2 <- value(F2)
+  ind1 <- index(K1)
+  var1 <- value(K1)
+  ind2 <- index(K2)
+  var2 <- value(K2)
   
   n1 <- length(var1)
   n2 <- length(var2)
@@ -173,7 +173,7 @@
     as.kform(M,coeffs,lose=lose)
 }
 
-`as.function.kform` <- function(x,...){
+`as.function.kform` <- function(x, ...){
     M <- index(x)
     coeffs <- value(x)
     return(function(E){
@@ -205,20 +205,20 @@
   return(substr(out, 1, nchar(out)-1) )
 }
 
-`as.symbolic` <- function(K,symbols=letters,d=""){
-  if(inherits(K,"kform")){
+`as.symbolic` <- function(M,symbols=letters,d=""){
+  if(inherits(M,"kform")){
     prodsymb <- "^"
-  } else if(inherits(K,"ktensor")){
+  } else if(inherits(M,"ktensor")){
     prodsymb <- "*"
   } else {
     stop("only takes ktensor or kform objects")
   }
   
-  M <- index(K)
-  v <- value(K)
+  IM <- index(M)
+  v <- value(M)
 
   out <- ""
-  for(i in seq_len(nrow(M))){
+  for(i in seq_len(nrow(IM))){
     if(v[i] == 1){
       jj <- "+"
     } else if(v[i] == -1){
@@ -230,7 +230,7 @@
     } else {
       stop("this cannot happen")
     }
-    out <- paste(out, paste(jj,.putw(M[i,],symbols,prodsymb=prodsymb,d=d),sep=" "))
+    out <- paste(out, paste(jj,.putw(IM[i,],symbols,prodsymb=prodsymb,d=d),sep=" "))
   }
   return(noquote(out))
 }
@@ -277,21 +277,21 @@
     ktensor(spray(expand.grid(seq_len(nrow(M)),seq_len(ncol(M))),c(M)))
 }
 
-`transform` <- function(omega,M)
+`transform` <- function(K,M)
 {
-    Reduce(`+`,sapply(seq_along(value(omega)),
+    Reduce(`+`,sapply(seq_along(value(K)),
                       function(i){
                           do.call("wedge",
                                   apply(
-                                      M[index(omega)[i,,drop=FALSE],,drop=FALSE],1,
-                                      as.1form))*value(omega)[i]},simplify=FALSE))
+                                      M[index(K)[i,,drop=FALSE],,drop=FALSE],1,
+                                      as.1form))*value(K)[i]},simplify=FALSE))
 }
 
-`issmall` <- function(x,tol=1e-8){  # tests for a kform being either zero or "small"
-    if(is.zero(x)){
+`issmall` <- function(M,tol=1e-8){  # tests for a kform being either zero or "small"
+    if(is.zero(M)){
         return(TRUE)
     } else {
-        error <- value(x)
+        error <- value(M)
         if(all(abs(error)<tol)){
             return(TRUE)
         } else {
@@ -301,23 +301,23 @@
 }  # issmall() closes
 
 
-`stretch` <- function(omega,d){
-  M <- index(omega)
+`stretch` <- function(K,d){
+  M <- index(K)
   d <- d[seq_len(max(M))]
   M[] <- d[M]  # the meat
-  as.kform(index(omega),value(omega)*apply(M,1,prod))
+  as.kform(index(K),value(K)*apply(M,1,prod))
 }
   
-`keep` <- function(omega,yes){
-    jj <- rep(0L,max(index(omega)))
+`keep` <- function(K,yes){
+    jj <- rep(0L,max(index(K)))
     jj[yes] <- 1
-    stretch(omega,jj)
+    stretch(K,jj)
 }
 
-`discard` <- function(omega,no){
-    jj <- rep(1L,max(index(omega)))
+`discard` <- function(K,no){
+    jj <- rep(1L,max(index(K)))
     jj[no] <- 0L
-    stretch(omega,jj)
+    stretch(K,jj)
 }
 
 `zerotensor` <- function(n){as.ktensor(rep(1,n))*0}
@@ -331,12 +331,12 @@
   return(out)
 }
 
-`contract` <- function(omega,v,lose=TRUE){
+`contract` <- function(K,v,lose=TRUE){
     if(is.vector(v)){
-        out <- Reduce("+",Map("*", apply(index(omega),1,contract_elementary,v),value(omega)))
+        out <- Reduce("+",Map("*", apply(index(K),1,contract_elementary,v),value(K)))
     } else {
         stopifnot(is.matrix(v))
-        out <- omega
+        out <- K
         for(i in seq_len(ncol(v))){
             out <- contract(out,v[,i,drop=TRUE],lose=FALSE)
         }
@@ -356,33 +356,33 @@
     
 `0form` <- `scalar`
 
-`is.scalar` <- function(x){
+`is.scalar` <- function(M){
   return(
-  ((length(x)==1) & is.numeric(x)) ||
-  (inherits(x,"kform") & all(dim(index(x))==c(1,0)))
+  ((length(M)==1) & is.numeric(M)) ||
+  (inherits(M,"kform") & all(dim(index(M))==c(1,0)))
   )
 }
 
 
 `volume` <- function(n){as.kform(seq_len(n))}
 
-`is.volume` <- function(S){
+`is.volume` <- function(K){
   return(
-  (nterms(S) == 1)      &&
-  (nrow(index(S)) == 1) &&
-  (arity(S) > 0)        &&
-  all(seq_len(arity(S)) == index(S))
+  (nterms(K) == 1)      &&
+  (nrow(index(K)) == 1) &&
+  (arity(K) > 0)        &&
+  all(seq_len(arity(K)) == index(K))
   )
 }
 
 setGeneric("lose",function(x){standardGeneric("lose")})
 
-`lose` <- function(x){UseMethod("lose",x)}
-`lose.kform` <- function(x){
-    if(arity(x)==0){
-        return(value(x))
+`lose` <- function(M){UseMethod("lose",M)}
+`lose.kform` <- function(M){
+    if(arity(M)==0){
+        return(value(M))
     } else {
-        return(x)
+        return(M)
     }
 }
 

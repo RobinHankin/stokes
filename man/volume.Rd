@@ -5,11 +5,11 @@
 \description{The volume element in \eqn{n} dimensions}
 \usage{
 volume(n)
-is.volume(S)
+is.volume(K)
 }
 \arguments{
   \item{n}{Dimension of the space}
-  \item{S}{Object of class \code{kform}}
+  \item{K}{Object of class \code{kform}}
 }
 \details{
 
