@@ -1,5 +1,9 @@
 \name{transform}
 \alias{transform}
+\alias{pullback}
+\alias{pull-back}
+\alias{pushforward}
+\alias{push-forward}
 \alias{stretch}
 \title{Linear transforms of \eqn{k}-forms}
 \description{Given a \eqn{k}-form, express it in terms of linear
@@ -97,6 +101,10 @@ matrix with zero off-diagonal elements.  It is much faster.
 
 }
 \value{Returns a \eqn{k}-form}
+\references{
+  S. H. Weintraub 2019. \emph{Differential forms: theory and practice}.
+  Elsevier.  (Chapter 3)
+}
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{wedge}}}
 \examples{
