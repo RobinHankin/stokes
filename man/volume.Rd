@@ -22,7 +22,7 @@ such a member of \eqn{\Lambda^n(V)}{.} it is not surprising to find it
 in the following theorem:
 
 Let \eqn{v_1,\ldots,v_n}{.} be a basis for \eqn{V} and let
-\eqn{\omega\in\Lambda^n(V)}.  If \eqn{w_i=\sum_{j=1}^n a_{ij}v_j}{.}
+\eqn{\omega\in\Lambda^n(V)}{.}.  If \eqn{w_i=\sum_{j=1}^n a_{ij}v_j}{.}
 then
 
 \deqn{
