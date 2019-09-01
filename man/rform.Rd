@@ -21,7 +21,7 @@ rtensor(terms=9,k=3,n=7,coeffs)
 
   Note that argument \code{terms} is an upper bound, as the index matrix
   might contain repeats.  But \code{coeffs} should have length equal to
-  \code{terms}.
+  \code{terms} (or 1).
 
 }
 \author{Robin K. S. Hankin}
