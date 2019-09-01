@@ -110,9 +110,9 @@ matrix with zero off-diagonal elements.  It is much faster.
 \examples{
 
 # Example in the text:
-omega <- as.kform(matrix(c(1,1,2,3),2,2),c(1,5))
+K <- as.kform(matrix(c(1,1,2,3),2,2),c(1,5))
 M <- matrix(1:9,3,3)
-transform(omega,M)
+transform(K,M)
 
 # Demonstrate that the result can be complicated:
 M <- matrix(rnorm(25),5,5)
