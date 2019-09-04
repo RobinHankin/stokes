@@ -17,8 +17,12 @@ zerotensor(n)
   Idiom such as \code{as.ktensor(rep(1,n),0)} and
   \code{as.kform(rep(1,5),0)} and indeed \code{as.kform(1:5,0)} is
   incorrect as the arity of the tensor is lost.
-}
 
+  A \eqn{0}-form is not the same thing as a zero tensor.  A \eqn{0}-form
+  maps \eqn{V^0} to the reals; a scalar.  A zero tensor maps \eqn{V^k} to
+  zero.
+}
+\seealso{\code{\link{scalar}}}
 \examples{
 
 as.ktensor(1+diag(5)) + zerotensor(5)

@@ -39,9 +39,15 @@ Function \code{lose()} takes an object of class \code{ktensor} or
 Note that function \code{kform()} \emph{always} returns a \code{kform}
 object, it never loses attributes.
 
+A \eqn{0}-form is not the same thing as a zero tensor.  A \eqn{0}-form
+maps \eqn{V^0} to the reals; a scalar.  A zero tensor maps \eqn{V^k} to
+zero.
+
+
 }
 \author{Robin K. S. Hankin}
-\seealso{\code{\link{zeroform}},\code{\link{scalar}}}
+\seealso{\code{\link{zeroform}},\code{\link{lose}}}
+
 \examples{
 
 o <- scalar(5)
