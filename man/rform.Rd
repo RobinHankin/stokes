@@ -35,6 +35,5 @@ dy <- as.kform(2)
 rform() \%^\% dx
 rform() \%^\% dx \%^\% dy
 
-
 rtensor()
 }
