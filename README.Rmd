@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
 [![Build Status](https://travis-ci.org/RobinHankin/wedge.svg?branch=master)](https://travis-ci.org/RobinHankin/wedge)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/wedge)](https://cran.r-project.org/package=wedge)
 [![Rdoc](http://www.rdocumentation.org/badges/version/wedge)](http://www.rdocumentation.org/packages/wedge)
+[![Codecov test coverage](https://codecov.io/gh/RobinHankin/wedge/branch/master/graph/badge.svg)](https://codecov.io/gh/RobinHankin/wedge/branch/master)
 <!-- badges: end -->
 
 # Overview
@@ -50,6 +51,7 @@ You can install the released version of wedge from [CRAN](https://CRAN.R-project
 ```{r, message=FALSE}
 # install.packages("wedge")  # uncomment this to install the package
 library("wedge")
+set.seed(0)
 ```
 
 # The ```wedge``` package in use

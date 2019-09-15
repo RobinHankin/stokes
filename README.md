@@ -9,6 +9,8 @@ The wedge package: exterior calculus in R
 Status](https://travis-ci.org/RobinHankin/wedge.svg?branch=master)](https://travis-ci.org/RobinHankin/wedge)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/wedge)](https://cran.r-project.org/package=wedge)
 [![Rdoc](http://www.rdocumentation.org/badges/version/wedge)](http://www.rdocumentation.org/packages/wedge)
+[![Codecov test
+coverage](https://codecov.io/gh/RobinHankin/wedge/branch/master/graph/badge.svg)](https://codecov.io/gh/RobinHankin/wedge/branch/master)
 <!-- badges: end -->
 
 # Overview
@@ -56,6 +58,7 @@ You can install the released version of wedge from
 ``` r
 # install.packages("wedge")  # uncomment this to install the package
 library("wedge")
+set.seed(0)
 ```
 
 # The `wedge` package in use
@@ -70,10 +73,10 @@ KT <- as.ktensor(cbind(1:4,3:5),1:4)
 #> vector length (arg 2)
 KT
 #>          val
+#>  4 3  =    4
+#>  3 5  =    3
 #>  1 3  =    1
 #>  2 4  =    2
-#>  3 5  =    3
-#>  4 3  =    4
 ```
 
 We can coerce `KT` to a function and then evaluate it:
@@ -83,7 +86,7 @@ KT <- as.ktensor(cbind(1:4,2:5),1:4)
 f <- as.function(KT)
 E <- matrix(rnorm(10),5,2)
 f(E)
-#> [1] -0.1383716
+#> [1] 11.23556
 ```
 
 Cross products are implemented:
@@ -91,22 +94,22 @@ Cross products are implemented:
 ``` r
 KT %X% KT
 #>              val
-#>  3 4 3 4  =    9
-#>  2 3 1 2  =    2
 #>  2 3 2 3  =    4
+#>  1 2 2 3  =    2
+#>  3 4 2 3  =    6
+#>  1 2 1 2  =    1
 #>  3 4 1 2  =    3
 #>  4 5 1 2  =    4
-#>  1 2 1 2  =    1
-#>  1 2 2 3  =    2
 #>  2 3 3 4  =    6
-#>  3 4 2 3  =    6
-#>  4 5 4 5  =   16
-#>  4 5 2 3  =    8
+#>  2 3 1 2  =    2
 #>  1 2 3 4  =    3
-#>  4 5 3 4  =   12
-#>  1 2 4 5  =    4
-#>  2 3 4 5  =    8
 #>  3 4 4 5  =   12
+#>  1 2 4 5  =    4
+#>  4 5 2 3  =    8
+#>  4 5 4 5  =   16
+#>  2 3 4 5  =    8
+#>  4 5 3 4  =   12
+#>  3 4 3 4  =    9
 ```
 
 ## Alternating forms
@@ -120,14 +123,14 @@ convert a general ![k](https://latex.codecogs.com/png.latex?k
 ``` r
 Alt(KT)
 #>           val
-#>  1 2  =   0.5
-#>  2 1  =  -0.5
-#>  4 3  =  -1.5
-#>  2 3  =   1.0
-#>  3 2  =  -1.0
-#>  5 4  =  -2.0
 #>  3 4  =   1.5
+#>  4 3  =  -1.5
+#>  5 4  =  -2.0
 #>  4 5  =   2.0
+#>  2 1  =  -0.5
+#>  3 2  =  -1.0
+#>  2 3  =   1.0
+#>  1 2  =   0.5
 ```
 
 However, the package provides a bespoke and efficient representation for
@@ -145,8 +148,8 @@ M
 KF <- as.kform(M,c(1,5))
 KF
 #>            val
-#>  2 3 4  =    1
 #>  1 2 4  =    5
+#>  2 3 4  =    1
 ```
 
 We may coerce `KF` to functional form:
@@ -155,7 +158,7 @@ We may coerce `KF` to functional form:
 f <- as.function(KF)
 E <- matrix(rnorm(12),4,3)
 f(E)
-#> [1] -1.895993
+#> [1] -5.979544
 ```
 
 # The wedge product
@@ -167,26 +170,26 @@ The wedge product of two ![k](https://latex.codecogs.com/png.latex?k
 KF2 <- kform_general(6:9,2,1:6)
 KF2
 #>          val
-#>  6 7  =    1
-#>  6 8  =    2
 #>  7 9  =    5
-#>  7 8  =    3
-#>  6 9  =    4
 #>  8 9  =    6
+#>  6 9  =    4
+#>  7 8  =    3
+#>  6 8  =    2
+#>  6 7  =    1
 KF %^% KF2
 #>                val
-#>  2 3 4 6 7  =    1
-#>  1 2 4 6 8  =   10
-#>  1 2 4 6 9  =   20
+#>  1 2 4 7 8  =   15
 #>  2 3 4 7 9  =    5
-#>  1 2 4 7 9  =   25
 #>  2 3 4 6 8  =    2
+#>  2 3 4 6 7  =    1
+#>  2 3 4 7 8  =    3
 #>  1 2 4 6 7  =    5
+#>  1 2 4 6 9  =   20
 #>  2 3 4 8 9  =    6
 #>  2 3 4 6 9  =    4
-#>  2 3 4 7 8  =    3
-#>  1 2 4 7 8  =   15
 #>  1 2 4 8 9  =   30
+#>  1 2 4 6 8  =   10
+#>  1 2 4 7 9  =   25
 ```
 
 The package can accommodate a number of results from the exterior
@@ -207,12 +210,12 @@ such as the gradient of a scalar function:
 ``` r
 grad(1:6)
 #>        val
-#>  1  =    1
-#>  2  =    2
-#>  3  =    3
-#>  4  =    4
 #>  5  =    5
 #>  6  =    6
+#>  4  =    4
+#>  3  =    3
+#>  2  =    2
+#>  1  =    1
 ```
 
 The package takes the leg-work out of the exterior calculus:
@@ -220,14 +223,14 @@ The package takes the leg-work out of the exterior calculus:
 ``` r
 grad(1:4) %^% grad(1:6)
 #>          val
-#>  2 5  =   10
-#>  3 5  =   15
-#>  3 6  =   18
-#>  1 5  =    5
 #>  2 6  =   12
 #>  4 5  =   20
+#>  3 5  =   15
+#>  1 5  =    5
+#>  3 6  =   18
 #>  1 6  =    6
 #>  4 6  =   24
+#>  2 5  =   10
 ```
 
 # References
