@@ -1,5 +1,5 @@
 ---
-title: "The wedge package: exterior calculus in R"
+title: "The stokes package: exterior calculus in R"
 output:
   github_document:
     pandoc_args: --webtex
@@ -18,15 +18,15 @@ knitr::opts_chunk$set(
 
 
 <!-- badges: start -->
-[![Build Status](https://travis-ci.org/RobinHankin/wedge.svg?branch=master)](https://travis-ci.org/RobinHankin/wedge)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/wedge)](https://cran.r-project.org/package=wedge)
-[![Rdoc](http://www.rdocumentation.org/badges/version/wedge)](http://www.rdocumentation.org/packages/wedge)
-[![Codecov test coverage](https://codecov.io/gh/RobinHankin/wedge/branch/master/graph/badge.svg)](https://codecov.io/gh/RobinHankin/wedge/branch/master)
+[![Build Status](https://travis-ci.org/RobinHankin/stokes.svg?branch=master)](https://travis-ci.org/RobinHankin/stokes)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/stokes)](https://cran.r-project.org/package=stokes)
+[![Rdoc](http://www.rdocumentation.org/badges/version/stokes)](http://www.rdocumentation.org/packages/stokes)
+[![Codecov test coverage](https://codecov.io/gh/RobinHankin/stokes/branch/master/graph/badge.svg)](https://codecov.io/gh/RobinHankin/stokes/branch/master)
 <!-- badges: end -->
 
 # Overview
 
-The ```wedge``` package provides functionality for working with the
+The ```stokes``` package provides functionality for working with the
 exterior calculus.  It includes cross products and wedge products and
 a variety of use-cases.  The canonical reference would be Spivak (see
 references).  A detailed vignette is provided in the package.
@@ -46,15 +46,15 @@ their wedge product $\omega\wedge\eta$.
 
 # Installation
 
-You can install the released version of wedge from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of stokes from [CRAN](https://CRAN.R-project.org) with:
 
 ```{r, message=FALSE}
-# install.packages("wedge")  # uncomment this to install the package
-library("wedge")
+# install.packages("stokes")  # uncomment this to install the package
+library("stokes")
 set.seed(0)
 ```
 
-# The ```wedge``` package in use
+# The ```stokes``` package in use
 
 The package has two main classes of objects, ```kform``` and
 ```ktensor```.  We may define a $k$-tensor as follows
@@ -160,4 +160,4 @@ But an accessible book would be
 
 For more detail, see the package vignette
 
-```vignette("wedge")```
+```vignette("stokes")```

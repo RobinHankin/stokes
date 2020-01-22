@@ -56,7 +56,7 @@ and in fact
 where \eqn{\mathbf{e}_j,1\leq j\leq k}{e_j,1<=j<=k} is a basis for
 \eqn{V}.
 
-In the \pkg{wedge} package, \eqn{k}-forms are represented as sparse
+In the \pkg{stokes} package, \eqn{k}-forms are represented as sparse
 arrays (\code{spray} objects), but with a class of \code{c("kform",
 "spray")}.  The constructor function (\code{kform()}) ensures that rows
 of the index matrix are strictly nonnegative integers, have no repeated

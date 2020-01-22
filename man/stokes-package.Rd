@@ -1,17 +1,17 @@
-\name{wedge-package}
-\alias{wedge-package}
+\name{stokes-package}
+\alias{stokes-package}
 \docType{package}
 \title{
-\packageTitle{wedge}
+\packageTitle{stokes}
 }
 \description{
-\packageDescription{wedge}
+\packageDescription{stokes}
 }
 \details{
 
 The DESCRIPTION file:
-\packageDESCRIPTION{wedge}
-\packageIndices{wedge}
+\packageDESCRIPTION{stokes}
+\packageIndices{stokes}
 
 
 Generally in the package, arguments that are \eqn{k}-forms are denoted
@@ -21,9 +21,9 @@ are denoted by \code{M}.
 
 }
 \author{
-\packageAuthor{wedge}
+\packageAuthor{stokes}
 
-Maintainer: \packageMaintainer{wedge}
+Maintainer: \packageMaintainer{stokes}
 }
 \references{
   \itemize{

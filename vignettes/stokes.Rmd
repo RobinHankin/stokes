@@ -13,7 +13,7 @@ vignette: >
 
 Ordinary differential calculus may be generalized to
 arbitrary-dimensional oriented manifolds using the exterior calculus.
-Here I show how the wedge package furnishes functionality for working
+Here I show how the stokes package furnishes functionality for working
 with the exterior calculus, and provide numerical verification of a
 number of theorems.  Notation follows that of Spivak, and Hubbard and
 Hubbard.
@@ -68,15 +68,15 @@ efficient and conceptually cleaner to consider a *sparse* array, as
 implemented by the ```spray``` package.  We will consider the case
 $n=5,k=4$, so we have multilinear maps from
 $\left(\mathbb{R}^5\right)^4$ to $\mathbb{R}$.  Below, we will test
-algebraic identities in R using the idiom furnished by the wedge
+algebraic identities in R using the idiom furnished by the stokes
 package.  For our example we will define
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$
 using a matrix with three rows, one per term, and whose rows
 correspond to each terms's cross products of the $\phi$'s.  We first
-have to load the ```wedge``` library:
+have to load the ```stokes``` library:
 
 ```{r,message=FALSE}
-library("wedge")
+library("stokes")
 ```
 
 Then the idiom is straightforward:
@@ -209,7 +209,7 @@ straightforward to prove that $\operatorname{Alt}(T)\in\Lambda^k(V)$,
 $\operatorname{Alt}\left(\operatorname{Alt}\left(T\right)\right)=\operatorname{Alt}\left(T\right)$,
 and $\operatorname{Alt}\left(\omega\right)=\omega$.
 
-In the wedge package, this is effected by the ```Alt()``` function:
+In the stokes package, this is effected by the ```Alt()``` function:
 
 
 ```{r}
@@ -315,7 +315,7 @@ K
 ```
 
 Note that the order of the rows in ```K``` is immaterial and indeed in
-some implementations will appear in a different order: the wedge
+some implementations will appear in a different order: the stokes
 package uses the ```spray``` package, which in turn utilises the STL
 map class of C++.
 

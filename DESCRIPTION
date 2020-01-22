@@ -1,4 +1,4 @@
-Package: wedge
+Package: stokes
 Type: Package
 Title: The Exterior Calculus
 Version: 1.0-3
@@ -23,5 +23,5 @@ Description: Provides functionality for working with differentials,
 	   M. Spivak (1965, ISBN:0-8053-9021-9). "Calculus on Manifolds",
 	   Benjamin Cummings.
 License: GPL-2
-URL: https://github.com/RobinHankin/wedge.git
-BugReports: https://github.com/RobinHankin/wedge/issues
+URL: https://github.com/RobinHankin/stokes.git
+BugReports: https://github.com/RobinHankin/stokes/issues
