@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 
 # Overview
 
-The ```stokes``` package provides functionality for working with the
+The `stokes` package provides functionality for working with the
 exterior calculus.  It includes cross products and wedge products and
 a variety of use-cases.  The canonical reference would be Spivak (see
 references).  A detailed vignette is provided in the package.
@@ -54,17 +54,17 @@ library("stokes")
 set.seed(0)
 ```
 
-# The ```stokes``` package in use
+# The `stokes` package in use
 
-The package has two main classes of objects, ```kform``` and
-```ktensor```.  We may define a $k$-tensor as follows
+The package has two main classes of objects, `kform` and
+`ktensor`.  We may define a $k$-tensor as follows
 
 ```{r ktensor}
 KT <- as.ktensor(cbind(1:4,3:5),1:4)
 KT
 ```
 
-We can coerce ```KT``` to a function and then evaluate it:
+We can coerce `KT` to a function and then evaluate it:
 
 ```{r evaluatektensor}
 KT <- as.ktensor(cbind(1:4,2:5),1:4)
@@ -84,7 +84,7 @@ KT %X% KT
 
 An alternating form (or $k$-form) is an antisymmetric $k$-tensor; the
 package can convert a general $k$-tensor to alternating form using the
-```Alt()``` function:
+`Alt()` function:
 
 
 ```{r showalt}
@@ -92,8 +92,8 @@ Alt(KT)
 ```
 
 However, the package provides a bespoke and efficient representation
-for $k$-forms as objects with class ```kform```.  Such objects may be
-created using the ```as.kform()``` function:
+for $k$-forms as objects with class `kform`.  Such objects may be
+created using the `as.kform()` function:
 
 ```{r example}
 
@@ -103,7 +103,7 @@ KF <- as.kform(M,c(1,5))
 KF
 ```
 
-We may coerce ```KF``` to functional form:
+We may coerce `KF` to functional form:
 
 ```{r e2}
 f <- as.function(KF)
@@ -113,8 +113,8 @@ f(E)
 
 # The wedge product
 
-The wedge product of two $k$-forms is implemented as ```%^%``` or
-```wedge()```:
+The wedge product of two $k$-forms is implemented as `%^%` or
+`wedge()`:
 
 ```{r definekf2}
 KF2 <- kform_general(6:9,2,1:6)
@@ -160,4 +160,4 @@ But an accessible book would be
 
 For more detail, see the package vignette
 
-```vignette("stokes")```
+`vignette("stokes")`
