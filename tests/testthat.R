@@ -1,3 +1,3 @@
 library("testthat")
 
-test_check("wedge")
+test_check("stokes")
