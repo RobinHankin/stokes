@@ -21,7 +21,8 @@ Description: Provides functionality for working with differentials,
 	   from the exterior calculus.  Functionality for Grassman algebra
 	   is provided. The canonical reference would be:
 	   M. Spivak (1965, ISBN:0-8053-9021-9). "Calculus on Manifolds",
-	   Benjamin Cummings.
+	   Benjamin Cummings.  The stokes package was formerly known as the
+	   wedge package.
 License: GPL-2
 URL: https://github.com/RobinHankin/stokes.git
 BugReports: https://github.com/RobinHankin/stokes/issues
