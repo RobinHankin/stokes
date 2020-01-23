@@ -61,11 +61,11 @@ S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k}
 \]
 
 The space spanned by such products has a natural representation in R
-as an array of dimensions $n\times\cdots\times n$.  If ```A``` is such
-an array, then the element ```A[i_1,i_2,...,i_k]``` is the coefficient
+as an array of dimensions $n\times\cdots\times n$.  If `A` is such
+an array, then the element `A[i_1,i_2,...,i_k]` is the coefficient
 of $\phi_{i_1}\otimes\ldots\otimes\phi_{i_k}$.  However, it is more
 efficient and conceptually cleaner to consider a *sparse* array, as
-implemented by the ```spray``` package.  We will consider the case
+implemented by the `spray` package.  We will consider the case
 $n=5,k=4$, so we have multilinear maps from
 $\left(\mathbb{R}^5\right)^4$ to $\mathbb{R}$.  Below, we will test
 algebraic identities in R using the idiom furnished by the stokes
@@ -73,7 +73,7 @@ package.  For our example we will define
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$
 using a matrix with three rows, one per term, and whose rows
 correspond to each terms's cross products of the $\phi$'s.  We first
-have to load the ```stokes``` library:
+have to load the `stokes` package:
 
 ```{r,message=FALSE}
 library("stokes")
@@ -96,8 +96,8 @@ $5^4=625$ elements, all but three of which are zero.  So $S$ is a
 4-tensor, mapping $V^4$ to $\mathbb{R}$, where $V=\mathbb{R}^5$.  Here
 we have
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$.
-Note that in some implementations the row order of object ```S``` will
-differ from that of ```M```.  We will define $E$ to be a random point
+Note that in some implementations the row order of object `S` will
+differ from that of `M`.  We will define $E$ to be a random point
 in $V^k$ in terms of a matrix:
 
 ```{r}
@@ -129,7 +129,7 @@ E3[,2] <- r1*x1 + r2*x2
 ```
 
 Then we can verify the multilinearity of $S$ by coercing to a function
-which is applied to ```E1, E2, E3```:
+which is applied to `E1, E2, E3`:
 
 ```{r}
 f <- as.function(S)
@@ -167,7 +167,7 @@ S1
 S2
 ```
 
-The R idiom for $S1\otimes S2$ would be ```cross()```, or ```%X%```:
+The R idiom for $S1\otimes S2$ would be `cross()`, or `%X%`:
 
 
 ```{r}
@@ -209,7 +209,7 @@ straightforward to prove that $\operatorname{Alt}(T)\in\Lambda^k(V)$,
 $\operatorname{Alt}\left(\operatorname{Alt}\left(T\right)\right)=\operatorname{Alt}\left(T\right)$,
 and $\operatorname{Alt}\left(\omega\right)=\omega$.
 
-In the stokes package, this is effected by the ```Alt()``` function:
+In the stokes package, this is effected by the `Alt()` function:
 
 
 ```{r}
@@ -217,7 +217,7 @@ S1
 Alt(S1)
 ```
 
-Verifying that ```S1``` is in fact alternating is straightforward:
+Verifying that `S1` is in fact alternating is straightforward:
 
 ```{r}
 E <- matrix(rnorm(8),4,2)
@@ -227,11 +227,11 @@ as.function(Alt(S1))(E) + as.function(Alt(S1))(Erev)  # should be zero
 
 However, we can see that this form for alternating tensors (here
 called $k$-forms) is inefficient and highly redundant: in this example
-there is a ```1 2``` term and a ```2 1``` term (the coefficients are
+there is a `1 2` term and a `2 1` term (the coefficients are
 equal and opposite).  In this example we have $k=2$ but in general
 there would be potentially $k!$ essentially repeated terms which
 collectively require only a single coefficient.  The package provides
-```kform``` objects which are inherently alternating using a more
+`kform` objects which are inherently alternating using a more
 efficient representation; they are described using wedge products
 which are discussed next.
 
@@ -314,9 +314,9 @@ K <- as.kform(M,c(1,5))
 K
 ```
 
-Note that the order of the rows in ```K``` is immaterial and indeed in
+Note that the order of the rows in `K` is immaterial and indeed in
 some implementations will appear in a different order: the stokes
-package uses the ```spray``` package, which in turn utilises the STL
+package uses the `spray` package, which in turn utilises the STL
 map class of C++.
 
 ## Formal definition of wedge product
@@ -334,8 +334,8 @@ wedge product $\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
 \omega\wedge\eta={k+l\choose k\,l}\operatorname{Alt}(\omega\otimes\eta)
 \]
 
-and this is implemented in the package by function ```wedge()```, or,
-more idiomatically, ```%^%```:
+and this is implemented in the package by function `wedge()`, or,
+more idiomatically, `%^%`:
 
 ```{r}
 M1 <- matrix(c(3,4,5, 4,6,1),2,3,byrow=TRUE)
@@ -345,7 +345,6 @@ M2 <- cbind(1:5,3:7)
 K2 <- as.kform(M2,1:5)
 K2
 K1 %^% K2
-
 ```
 
 (we might write the product as $-35dx_1\wedge dx_4\wedge dx_5\wedge
@@ -371,8 +370,8 @@ F1 %^% (F2 %^% F3)
 ```
 
 
-Note carefully in the above that the terms in ```(F1 %^% F2) %^% F3```
-and ```F1 %^% (F2 %^% F3)``` appear in a different order.  They are
+Note carefully in the above that the terms in `(F1 %^% F2) %^% F3`
+and `F1 %^% (F2 %^% F3)` appear in a different order.  They are
 nevertheless algebraically identical:
 
 
@@ -390,7 +389,7 @@ dx_{i_1}\wedge dx_{i_2}\wedge\ldots\wedge dx_{i_k}\qquad
 
 where these products are the elementary forms: every element of the
 space $\Lambda^k(V)$ is a linear combination of elementary forms, as
-illustrated in the package by function ```kform_general()```.
+illustrated in the package by function `kform_general()`.
 Consider the following idiom:
 
 
@@ -399,9 +398,9 @@ Krel <- kform_general(4,2,1:6)
 Krel
 ```
 
-Object ```Krel``` is a two-form, specifically a map from
+Object `Krel` is a two-form, specifically a map from
 $\left(\mathbb{R}^4\right)^2$ to $\mathbb{R}$.  Observe that
-```Krel``` has ${4\choose 2}=6$ components, which do not appear in any
+`Krel` has ${4\choose 2}=6$ components, which do not appear in any
 particular order.  Addition of such $k$-forms is straightforward in R
 idiom but algebraically nontrivial:
 
@@ -414,7 +413,7 @@ K1+K2
 ```
 
 In the above, note how the $dx_2\wedge dx_4$ terms combine [to give
-```2 4 = 6```] and the $dx_1\wedge dx_3$ term vanishes.
+`2 4 = 6`] and the $dx_1\wedge dx_3$ term vanishes.
 
 ## Print methods
 
@@ -551,7 +550,7 @@ It can be shown that
 \]
 
 where $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is a scalar
-function of position.  The package provides ```grad()```, which when
+function of position.  The package provides `grad()`, which when
 given a vector $x_1,\ldots,x_n$ returns the one-form
 
 
@@ -565,7 +564,7 @@ This is useful because $df=\sum_{j=1}^n\left(D_j f\right)\,dx_j$. Thus
 grad(c(0.4,0.1,-3.2,1.5))
 ```
 
-We will use the ```grad()``` function to verify that, in
+We will use the `grad()` function to verify that, in
 $\mathbb{R}^n$, a certain $(k-1)$-form has zero work function.
 Motivated by the fact that
 
@@ -600,7 +599,7 @@ So, for example:
 f(1:5)
 ```
 
-Then we can use the ```grad()``` function to calculate $d\omega$,
+Then we can use the `grad()` function to calculate $d\omega$,
 using the quotient law to express the derivatives analytically:
 
 ```{r}
@@ -628,7 +627,7 @@ print(df(x) %^% f(x))  # should be zero
 
 We can use the package to verify the celebrated fact that, for any
 $k$-form $\phi$, $d\left(d\phi\right)=0$.  The first step is to define
-scalar functions ```f1(), f2(), f3()```, all  $0$-forms:
+scalar functions `f1(), f2(), f3()`, all  $0$-forms:
 
 ```{r}
 f1 <- function(w,x,y,z){x + y^3 + x*y*w*z}
@@ -660,7 +659,7 @@ phi <-
 ```
 
 We can use slightly slicker R idiom by defining elementary forms
-```e1,e2,e3``` and then defining phi to be a linear sum, weighted with
+`e1,e2,e3` and then defining phi to be a linear sum, weighted with
 $0$-forms given by the (scalar) functions:
 
 ```{r}
@@ -678,8 +677,8 @@ phi
 ```
 
 
-Now to evaluate first derivatives of ```f1()``` etc at point
-$(1,2,3,4)$, using ```Deriv()``` from the Deriv package:
+Now to evaluate first derivatives of `f1()` etc at point
+$(1,2,3,4)$, using `Deriv()` from the Deriv package:
 
 ```{r}
 library("Deriv")
@@ -688,7 +687,7 @@ Df2 <- Deriv(f2)(1,2,3,4)
 Df3 <- Deriv(f3)(1,2,3,4)
 ```
 
-So ```Df1``` etc are numeric vectors of length 4, for example:
+So `Df1` etc are numeric vectors of length 4, for example:
 
 ```{r}
 Df1
