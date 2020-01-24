@@ -698,9 +698,9 @@ phi <-
   )
 ```
 
-We can use slightly slicker R idiom by defining elementary forms
-`e1,e2,e3` and then defining phi to be a linear sum, weighted with
-$0$-forms given by the (scalar) functions:
+We could use slightly slicker R idiom by defining elementary forms
+`e1,e2,e3` and then defining `phi` to be a linear sum, weighted with
+$0$-forms given by the (scalar) functions `f1,f2,f3`:
 
 ```{r}
 e1 <- dw %^% dx
@@ -733,15 +733,16 @@ So `Df1` etc are numeric vectors of length 4, for example:
 Df1
 ```
 
-Calculating dphi, or $d\phi$, is easy:
+To calculate `dphi`, or $d\phi$, we can use function `grad()`:
 
-```
+```{r}
 dphi <-
   (
     +grad(Df1) %^% e1
     +grad(Df2) %^% e2
     +grad(Df3) %^% e3
   )
+dphi
 ```
 
 Now work on the differential of the differential.  First evaluate
@@ -764,8 +765,9 @@ For example
 Hf1
 ```
 
-(note the nonzero diagonal term).  But $dd\phi$ is clearly zero as the
-Hessians are symmetrical:
+(note the matrix is symmetric; also note carefully the nonzero
+diagonal term).  But $dd\phi$ is clearly zero as the Hessians are
+symmetrical:
 
 ```{r}
 ddphi <- # should be zero
@@ -838,6 +840,19 @@ phi <- function(x){
 phi(1:9)
 ```
 
+(recall that `phi` is a function that maps $\mathbb{R}^9$ to 8-forms.
+Here we choose $\left(1,2,\ldots,9\right)\in\mathbb{R}^9$ and
+`phi(1:9)` as shown above is the resulting 8-form.  Thus, if we write
+$\phi_{1:9}$ for `phi(1:9)` we would have
+$\phi_{1:9}\colon\left(\mathbb{R}^9\right)^8\longrightarrow\mathbb{R}$,
+with package idiom as follows:
+
+```{r}
+f <- as.function(phi(1:9))
+E <- matrix(runif(72),9,8)   # (R^9)^8
+f(E)
+```
+
 Further, $d\phi$ is given by
 
 ```{r}
@@ -846,6 +861,17 @@ dphi <- function(x){
     sum(nn*x^(nn-1)) * as.kform(seq_along(x))
 }
 dphi(1:9)
+```
+
+(observe that `dphi(1:9)` is a 9-form, with
+$d\phi_{1:9}\colon\left(\mathbb{R}^9\right)^9\longrightarrow\mathbb{R}$).  Numerically:
+
+```{r}
+f <- as.function(dphi(1:9))
+f(diag(9))
+E <- matrix(runif(81),9,9)
+f(E)
+det(E)*f(diag(9))  # should match f(E)
 ```
 
 ## References
