@@ -48,7 +48,7 @@ Spivak observes that $\mathcal{J}^k(V)$ is spanned by the $n^k$
 products of the form
 
 \[
-\phi_{i_1}\otimes\phi_{i_2}\otimes\ldots\otimes\phi_{i_k}\qquad
+\phi_{i_1}\otimes\phi_{i_2}\otimes\cdots\otimes\phi_{i_k}\qquad
 1\leq i_i,i_2,\ldots,i_k\leq n
 \]
 
@@ -57,7 +57,7 @@ $\phi_i\left(v_j\right)=\delta_{ij}$; we can therefore write
 
 \[
 S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k} 
-\phi_{i_1}\otimes\ldots\otimes\phi_{i_k}.
+\phi_{i_1}\otimes\cdots\otimes\phi_{i_k}.
 \]
 
 The space spanned by such products has a natural representation in R
@@ -369,7 +369,7 @@ $\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$, Spivak defines the
 wedge product $\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
 
 \[
-\omega\wedge\eta={k+l\choose k\,l}\operatorname{Alt}(\omega\otimes\eta)
+\omega\wedge\eta={k+l\choose k\quad l}\operatorname{Alt}(\omega\otimes\eta)
 \]
 
 and this is implemented in the package by function `wedge()`, or,
