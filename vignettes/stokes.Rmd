@@ -11,12 +11,12 @@ vignette: >
 
 # The exterior calculus
 
-Ordinary differential calculus may be generalized to
+Ordinary differential calculus may be formalized and generalized to
 arbitrary-dimensional oriented manifolds using the exterior calculus.
-Here I show how the stokes package furnishes functionality for working
-with the exterior calculus, and provide numerical verification of a
-number of theorems.  Notation follows that of Spivak, and Hubbard and
-Hubbard.
+Here I show how the `stokes` package furnishes functionality for
+working with the exterior calculus, and provide numerical verification
+of a number of theorems.  Notation follows that of Spivak, and Hubbard
+and Hubbard.
 
 Recall that a $k$-tensor is a multilinear map $S\colon
 V^k\longrightarrow\mathbb{R}$, where $V=\mathbb{R}^n$ is considered as
