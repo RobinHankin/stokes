@@ -52,7 +52,7 @@ The exterior derivative of a \eqn{k}-form \eqn{\phi}{phi} is a
   \deqn{
     \mathbf{d}\phi=
     \sum_{1\leq i_i<\cdots<i_k\leq n}
-    [\sum_{j=1}^nD_ja_{i_1\ldots i_k}dx_j]\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k}
+    [\sum_{j=1}^nD_ja_{i_1\ldots i_k}dx_j]\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k.}
   }{omitted; see PDF}
 
 The entry in square brackets is given by \code{grad()}.  See the
