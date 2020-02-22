@@ -30,7 +30,7 @@ Maintainer: \packageMaintainer{stokes}
     \item J. H. Hubbard and B. B. Hubbard 2015.  \emph{Vector
       calculus, linear algebra and differential forms: a unified
       aproach}.  Ithaca, NY.
-    \item M. Spivak 1971. \emph{Calculus on manifolds}.
+    \item M. Spivak 1971. \emph{Calculus on manifolds},
     Addison-Wesley.
   }
 }
