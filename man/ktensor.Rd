@@ -40,7 +40,10 @@ arrays (\code{spray} objects), but with a class of \code{c("ktensor",
 "spray")}.  This is a natural and efficient representation for tensors
 that takes advantage of sparsity using \pkg{spray} package features.
 }
-
+\value{
+  All functions documented here return a \code{ktensor} object
+  except \code{as.function.ktensor()}, which returns a function.
+}
 \references{Spivak 1961}
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{cross}},\code{\link{kform}},\code{\link{wedge}}}

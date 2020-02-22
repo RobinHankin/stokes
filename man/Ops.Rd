@@ -25,6 +25,11 @@
   \code{\%^\%}; and for cross products of \eqn{k}-tensors, use
   \code{cross()} or \code{\%X\%}.
 }
+
+\value{All functions documented here return an object of class \code{kform} or
+  \code{ktensor}.
+}
+
 \examples{
 ## dx_1 ^ dx_2 + 6dx_5 ^ dx_6:
 as.kform(1) \%^\% as.kform(2) + 6*as.kform(5) \%^\% as.kform(6)

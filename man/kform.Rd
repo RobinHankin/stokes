@@ -63,6 +63,10 @@ of the index matrix are strictly nonnegative integers, have no repeated
 entries, and are strictly increasing.
 
 }
+\value{
+  All functions documented here return a \code{kform} object except
+  \code{as.function.kform()}, which returns a function.
+}
 \references{Hubbard and Hubbard; Spivak}
 \author{Robin K. S. Hankin}
 \note{

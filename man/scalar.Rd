@@ -42,8 +42,11 @@ object, it never loses attributes.
 A \eqn{0}-form is not the same thing as a zero tensor.  A \eqn{0}-form
 maps \eqn{V^0} to the reals; a scalar.  A zero tensor maps \eqn{V^k} to
 zero.
-
-
+}
+\value{
+  The functions documented here return an object of class
+  \code{kform} or \code{ktensor}, except for \code{is.scalar()}, which
+  returns a Boolean.
 }
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{zeroform}},\code{\link{lose}}}

@@ -3,7 +3,23 @@
 \alias{contract_elementary}
 \title{Contractions of \eqn{k}-forms}
 \description{
-
+  A contraction is a natural linear map from \eqn{k}-forms to \eqn{k-1}-forms.
+}
+\usage{
+contract(K,v,lose=TRUE)
+contract_elementary(o,v)
+}
+\arguments{
+  \item{K}{A \eqn{k}-form}
+  \item{o}{Integer-valued vector corresponding to one row of an index
+    matrix}
+  \item{lose}{Boolean, with default \code{TRUE} meaning to coerce a
+    \eqn{0}-form to a scalar and \code{FALSE} meaning to return the
+    formal \eqn{0}-form}
+  \item{v}{A vector; in function \code{contract()}, if a matrix,
+    interpret each column as a vector to contract with}
+}
+\details{  
   Given a \eqn{k}-form \eqn{\phi}{phi} and a vector \eqn{\mathbf{v}}{v},
 the \dfn{contraction} \eqn{\phi_\mathbf{v}}{phi_v} of \eqn{\phi}{phi}
 and \eqn{\mathbf{v}}{v} is a \eqn{k-1}-form with
@@ -22,20 +38,7 @@ that translates elementary \eqn{k}-forms with coefficient 1 (in the form
 of an integer vector corresponding to one row of an index matrix) into
 its contraction with \eqn{\mathbf{v}}{v}.
 }
-\usage{
-contract(K,v,lose=TRUE)
-contract_elementary(o,v)
-}
-\arguments{
-  \item{K}{A \eqn{k}-form}
-  \item{o}{Integer-valued vector corresponding to one row of an index
-    matrix}
-  \item{lose}{Boolean, with default \code{TRUE} meaning to coerce a
-    \eqn{0}-form to a scalar and \code{FALSE} meaning to return the
-    formal \eqn{0}-form}
-  \item{v}{A vector; in function \code{contract()}, if a matrix,
-    interpret each column as a vector to contract with}
-}
+\value{Returns an object of class \code{kform}.}
 \references{
 
 Steven H. Weintraub 2014. \dQuote{Differential forms: theory and

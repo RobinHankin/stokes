@@ -31,6 +31,7 @@ include_perms(S)
     of the permutation
   }
 }
+\value{The functions documented here all return a \code{spray} object.}
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{ktensor}},\code{\link{kform}}}
 \examples{

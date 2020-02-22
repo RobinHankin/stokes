@@ -22,7 +22,10 @@ rtensor(terms=9,k=3,n=7,coeffs)
   Note that argument \code{terms} is an upper bound, as the index matrix
   might contain repeats.  But \code{coeffs} should have length equal to
   \code{terms} (or 1).
-
+}
+\value{
+  All functions documented here return an object of class \code{kform} or
+  \code{ktensor}.
 }
 \author{Robin K. S. Hankin}
 \examples{

@@ -13,6 +13,7 @@ as.symbolic(M,symbols=letters,d="")
   \item{symbols}{A character vector giving the names of the symbols}
   \item{d}{String specifying the appearance of the differential operator}
 }
+\value{Returns a noquote character string.}
 \author{Robin K. S. Hankin}
 \examples{
 

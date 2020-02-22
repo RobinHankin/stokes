@@ -16,7 +16,8 @@ hodge(K, n=max(index(K)), g=rep(1,n), lose=TRUE)
   \item{lose}{Boolean, with default \code{TRUE} meaning to coerce to a
     scalar if appropriate}
 }
-\value{Returns a \eqn{(n-k)}-form}
+\value{Given a \eqn{k}-form, in an \eqn{n}-dimensional space, returns a
+  \eqn{(n-k)}-form.}
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{wedge}}}
 \examples{

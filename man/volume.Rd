@@ -36,7 +36,10 @@ Neither the zero \eqn{k}-form, nor scalars, are considered to be a
 volume element.
 
 }
-
+\value{
+  Function \code{volume()} returns an object of class \code{kform};
+  function \code{is.volume()} returns a Boolean.
+}
 \references{Spivak}
 \author{Robin K. S. Hankin}
 \seealso{

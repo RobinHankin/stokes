@@ -27,7 +27,7 @@ can take any number of arguments (the result is well-defined because the
 cross product is associative); it uses \code{cross2()} as a low-level
 helper function.
 }
-
+\value{The functions documented here all return a \code{spray} object.}
 \references{Spivak 1961}
 \note{
 The binary form \code{\%X\%} uses uppercase X to avoid clashing with

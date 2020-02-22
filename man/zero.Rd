@@ -22,6 +22,7 @@ zerotensor(n)
   maps \eqn{V^0} to the reals; a scalar.  A zero tensor maps \eqn{V^k} to
   zero.
 }
+\value{Returns an object of class \code{kform} or \code{ktensor}.}
 \seealso{\code{\link{scalar}}}
 \examples{
 

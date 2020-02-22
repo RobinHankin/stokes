@@ -100,7 +100,10 @@ Function \code{stretch()} carries out the same operation but for a
 matrix with zero off-diagonal elements.  It is much faster.
 
 }
-\value{Returns a \eqn{k}-form}
+\value{
+  The functions documented here return an object of class
+  \code{kform}.
+} 
 \references{
   S. H. Weintraub 2019. \emph{Differential forms: theory and practice}.
   Elsevier.  (Chapter 3)
