@@ -43,61 +43,17 @@ stretch(K,d)
 
   \deqn{\omega =
     \sum_{i_1<\cdots <i_k}\left[
-    a_{i_1<\cdots < i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right]
+    a_{i_1<\cdots < i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right].
   }{omitted: see PDF}
-
-So \eqn{\omega} was given in terms of \eqn{dx_1,\ldots,dx_k} and we have
-expressed it in terms of \eqn{dy_1,\ldots,dy_k}.  So for example if
-
-\deqn{\omega=
-  dx_1\wedge dx_2 + 5dx_1\wedge dx_3}{ommited: see PDF
-}
-
-and
-
-\deqn{
-  \left(
-  \begin{array}{l}
-  dx_1\\
-  dx_2\\
-  dx_3
-  \end{array}
-  \right)=
-\left(
-\begin{array}{ccc}
-1 & 4 & 7\\
-2 & 5 & 8\\
-3 & 6 & 9\\
-\end{array}
-\right)  \left(
-  \begin{array}{l}
-  dy_1\\ dy_2\\   dy_3
-  \end{array}
-  \right)
-}{omitted; see PDF}
-
-then
-
-\deqn{\begin{array}{ccl}
-  \omega &=& 
-\left(1dy_1+4dy_2+7dy_3\right)\wedge
-\left(2dy_1+5dy_2+8dy_3\right)+
-5\left(1dy_1+4dy_2+7dy_3\right)\wedge
-\left(3dy_1+6dy_2+9dy_3\right)
-\\
-&=&2dy_1\wedge dy_1+5dy_1\wedge dy_2+\cdots+
-5\cdot 7\cdot 6dx_3\wedge dx_2+
-5\cdot 7\cdot 9dx_3\wedge dx_3+\\
-&=& -33dy_1\wedge dy_2-66dy_1\wedge dy_3-33dy_2\wedge dy_3
-\end{array}
-}{omitted; see PDF}
 
 The \code{transform()} function does all this but it is slow.  I am not
 100\% sure that there isn't a much more efficient way to do such a
-transformation.  There are a few tests in \code{tests/testthat}.
+transformation.  There are a few tests in \code{tests/testthat} and a
+discussion in the \code{stokes} vignette.
 
 Function \code{stretch()} carries out the same operation but for a
-matrix with zero off-diagonal elements.  It is much faster.
+matrix with zero off-diagonal elements.  It is much faster than
+\code{transform()}.
 
 }
 \value{
@@ -139,10 +95,5 @@ p <- rform()
 p
 stretch(p,seq_len(5))
 stretch(p,c(1,0,1,1,1))   # kills dimension 2
-
-# Works nicely with pipes:
-\dontrun{
-max(abs(value(o-o \%>\% transform(M) \%>\% transform(solve(M)))))
-}
 
 }
