@@ -18,8 +18,7 @@ kform_general(W,k,coeffs,lose=TRUE)
   \item{n}{Dimension of the vector space \eqn{V=R^n}}
   \item{k}{A \eqn{k}-form maps \eqn{V^k} to \eqn{R}}
   \item{W}{Integer vector of dimensions}
-  \item{M}{Index matrix for a \eqn{k}-form}
-  \item{coeffs}{Coefficients of the \eqn{k}-form}
+  \item{M,coeffs}{Index matrix and coefficients for a \eqn{k}-form}
   \item{S}{Object of class \code{spray}}
   \item{lose}{Boolean, with default \code{TRUE} meaning to coerce a
     \eqn{0}-form to a scalar and \code{FALSE} meaning to return the
