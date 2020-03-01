@@ -40,7 +40,10 @@ S <- spray(matrix(c(1,1,2,2,1,3,3,1,3,5),ncol=2,byrow=TRUE),1:5)
 kill_trivial_rows(S)
 consolidate(S)
 
-\dontrun{include_perms(S)} #  This will fail because of the repeated rows
+## Function include_perms() expects no trivial rows:
+
+\dontrun{include_perms(S)} #  fails (row 1 and row 3 are repeated)
+
 include_perms(kill_trivial_rows(S)) # This should work
 
 }
