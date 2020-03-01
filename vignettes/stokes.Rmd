@@ -607,14 +607,35 @@ then
 Function `transform()` function does all this but it is slow.  I am
 not 100\% sure that there isn't a much more efficient way to do such a
 transformation.  There are a few tests in `tests/testthat`.
-The functionality works nicely with magrittr pipes:
+
+
+```{r}
+(o <- 2 * as.kform(2) %^% as.kform(4) %^% as.kform(5))
+M <- matrix(rnorm(25),5,5)
+```
+
+Then we will transform according to matrix `M` and then transform
+according to the matrix inverse; the functionality works nicely with
+magrittr pipes:
 
 ```{r}
 library("magrittr")
-(o <- rform(terms=2,n=5))
-M <- matrix(rnorm(25),5,5)
-o %>% transform(M) %>% transform(solve(M))
+(o %<>% transform(M) %>% transform(solve(M)))
 ```
+
+See how the result is equal to the original $k$-form $2dy_2\wedge
+dy_4\wedge dy_5$, except for some numerical roundoff error.  In this
+case the extra rows have values small enough for the print method to
+print an exact zero, but not sufficiently small to be eliminated by
+the `spray` internals.  The `spray` package version 1.0-8 does not
+have the capability of removing small entries (this will be available
+in 1.0-9); but in the meantime we can do this:
+
+```{r}
+as.kform(index(o),zapsmall(value(o)))
+```
+
+returning us to the original value of `o`.
 
 ## Exterior derivatives
 
