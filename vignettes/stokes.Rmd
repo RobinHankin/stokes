@@ -963,14 +963,22 @@ dphi(1:9)
 ```
 
 (observe that `dphi(1:9)` is a 9-form, with
-$d\phi_{1:9}\colon\left(\mathbb{R}^9\right)^9\longrightarrow\mathbb{R}$).  Numerically:
+$d\phi_{1:9}\colon\left(\mathbb{R}^9\right)^9\longrightarrow\mathbb{R}$).
+Now consider Spivak's theorem 4.6 (page 82), which in this context
+states that a 9-form is proportional to the determinant of the
+$9\times 9$ matrix formed from its arguments, with constant of
+proportionality equal to the form evaluated on the identity matrix
+$I_9$ [formally and more generally, if $v_1,\ldots,v_n$ is a basis for
+$V$, $\omega\in\Lambda^n(V)$ and $w_i=\sum a_{ij}v_j$ then
+$\omega\left(w_1,\ldots,w_n\right) =
+\det\left(a_{ij}\right)\cdot\omega\left(v_1,\ldots v_n\right)$].
+Numerically:
 
 ```{r}
 f <- as.function(dphi(1:9))
-f(diag(9))
 E <- matrix(runif(81),9,9)
 f(E)
-det(E)*f(diag(9))  # should match f(E)
+det(E)*f(diag(9))  # should match f(E) by Spivak's 4.6
 ```
 
 ## References
