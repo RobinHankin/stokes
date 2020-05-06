@@ -387,3 +387,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
 }
 
 `lose.ktensor` <- lose.kform 
+
+`zap` <- function(X){UseMethod("zap",X)}
+`zap.kform` <- function(X){kform(spray::zap(X))}
+`zap.ktensor` <- function(X){ktensor(spray::zap(X))}

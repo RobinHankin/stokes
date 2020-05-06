@@ -1,12 +1,13 @@
 Package: stokes
 Type: Package
 Title: The Exterior Calculus
-Version: 1.0-5
-Depends: spray (>= 1.0-8)
+Version: 1.0-7
+Depends: spray (>= 1.0-9)
 Suggests: 
     knitr,
     Deriv,
-    testthat
+    testthat,
+    mathjaxr
 VignetteBuilder: knitr
 Imports: permutations (>= 1.0-4), partitions, magrittr, methods
 Authors@R: person(
@@ -25,3 +26,4 @@ Description: Provides functionality for working with differentials,
 License: GPL-2
 URL: https://github.com/RobinHankin/stokes.git
 BugReports: https://github.com/RobinHankin/stokes/issues
+RdMacros: mathjaxr
