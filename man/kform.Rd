@@ -6,7 +6,9 @@
 \alias{kform_general}
 \alias{general_kform}
 \title{k-forms}
-\description{Functionality for dealing with \eqn{k}-forms}
+\description{\loadmathjax
+  Functionality for dealing with \eqn{k}-forms
+}
 \usage{
 kform(S)
 as.kform(M,coeffs,lose=TRUE)
@@ -15,8 +17,8 @@ kform_general(W,k,coeffs,lose=TRUE)
 \method{as.function}{kform}(x,...)
 }
 \arguments{
-  \item{n}{Dimension of the vector space \eqn{V=R^n}}
-  \item{k}{A \eqn{k}-form maps \eqn{V^k} to \eqn{R}}
+  \item{n}{Dimension of the vector space \mjeqn{V=R^n}{V=R^n}}
+  \item{k}{A \eqn{k}-form maps \mjeqn{V^k}{V^k} to \eqn{R}}
   \item{W}{Integer vector of dimensions}
   \item{M,coeffs}{Index matrix and coefficients for a \eqn{k}-form}
   \item{S}{Object of class \code{spray}}
@@ -34,33 +36,30 @@ kform_general(W,k,coeffs,lose=TRUE)
   the reals, where \eqn{V=R^n} is a vector space.  A multilinear
   \eqn{k}-tensor \eqn{T} is \dfn{alternating} if it satisfies
 
-  \deqn{T\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
+  \mjdeqn{T\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
     T\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
-  }{omitted; see PDF}
+  }{omitted; see latex}
   
-Function \code{kform_basis()} is a low-level helper function that
-returns a matrix whose rows constitute a basis for the vector space
-\eqn{\Lambda^k(R^n)}{L^k(R^n)} of \eqn{k}-tensors:
+  Function \code{kform_basis()} is a low-level helper function that
+  returns a matrix whose rows constitute a basis for the vector space
+  \mjeqn{\Lambda^k(R^n)}{L^k(R^n)} of \eqn{k}-tensors:
+  
+  \mjdeqn{\phi=\sum_{1\leq i_1 < \cdots < i_k\leq n} a_{i_1\ldots i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}}{omitted; see latex}
 
-\deqn{\phi=\sum_{1\leq i_1<\cdots<i_k\leq n}a_{i_1\ldots i_k}
-  dx_{i_1}\wedge\cdots\wedge dx_{i_k}
-}{omitted; see PDF}
+  and indeed we have:
 
-
-and in fact
-
-\deqn{a_{i_1\ldots i_k}=\phi\left(\mathbf{e}_{i_1},\ldots,\mathbf{e}_{i_k}\right)
-}{omitted; see PDF}
-
-where \eqn{\mathbf{e}_j,1\leq j\leq k}{e_j,1<=j<=k} is a basis for
-\eqn{V}.
-
-In the \pkg{stokes} package, \eqn{k}-forms are represented as sparse
-arrays (\code{spray} objects), but with a class of \code{c("kform",
-"spray")}.  The constructor function (\code{kform()}) ensures that rows
-of the index matrix are strictly nonnegative integers, have no repeated
-entries, and are strictly increasing.
-
+  \mjdeqn{a_{i_1\ldots i_k}=\phi\left(\mathbf{e}_{i_1},\ldots,\mathbf{e}_{i_k}\right)
+  }{omitted; see latex}
+  
+  where \mjeqn{\mathbf{e}_j,1\leq j\leq k}{e_j,1<=j<=k} is a basis for
+  \eqn{V}.
+  
+  In the \pkg{stokes} package, \eqn{k}-forms are represented as sparse
+  arrays (\code{spray} objects), but with a class of \code{c("kform",
+    "spray")}.  The constructor function (\code{kform()}) ensures that rows
+  of the index matrix are strictly nonnegative integers, have no repeated
+  entries, and are strictly increasing.
+  
 }
 \value{
   All functions documented here return a \code{kform} object except
