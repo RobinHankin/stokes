@@ -8,7 +8,7 @@
 \title{Linear transforms of \eqn{k}-forms}
 \description{\loadmathjax
   Given a \eqn{k}-form, express it in terms of linear
-  combinations of the \eqn{dx^i}}
+  combinations of the \mjeqn{dx_i}{dx_i}}
 \usage{
 transform(K,M)
 stretch(K,d)
@@ -23,7 +23,7 @@ stretch(K,d)
   Suppose we are given a two-form
 
   \mjdeqn{
-    \omega=\sum_{i<j}a_{ij}dx_i\wedge dx_j}{omitted: see latex}
+    \omega=\sum_{i < j}a_{ij}dx_i\wedge dx_j}{omitted: see latex}
 
   and relationships
 
@@ -32,7 +32,7 @@ stretch(K,d)
   then we would have
 
   \mjdeqn{\omega =
-    \sum_{i<j}
+    \sum_{i < j}
     a_{ij}\left(\sum_rM_{ir}dy_r\right)\wedge\left(\sum_rM_{jr}dy_r\right).
   }{omitted: see latex}
 
