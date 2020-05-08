@@ -2,7 +2,9 @@
 \alias{volume}
 \alias{is.volume}
 \title{The volume element}
-\description{The volume element in \eqn{n} dimensions}
+\description{\loadmathjax
+  The volume element in \eqn{n} dimensions
+}
 \usage{
 volume(n)
 is.volume(K)
@@ -15,20 +17,19 @@ is.volume(K)
 
 Spivak phrases it well (theorem 4.6, page 82):
 
-If \eqn{V} has dimension \eqn{n}, it follows that \eqn{\Lambda^n(V)}{.}
-has dimension 1. Thus all alternating \eqn{n}-tensors on \eqn{V} are
-multiples of any non-zero one.  Since the determinant is an example of
-such a member of \eqn{\Lambda^n(V)}{.} it is not surprising to find it
-in the following theorem:
+If \eqn{V} has dimension \eqn{n}, it follows that
+\mjeqn{\Lambda^n(V)}{.} has dimension 1. Thus all alternating
+\eqn{n}-tensors on \eqn{V} are multiples of any non-zero one.  Since the
+determinant is an example of such a member of \mjeqn{\Lambda^n(V)}{.} it
+is not surprising to find it in the following theorem:
 
-Let \eqn{v_1,\ldots,v_n}{.} be a basis for \eqn{V} and let
-\eqn{\omega\in\Lambda^n(V)}{.}.  If \eqn{w_i=\sum_{j=1}^n a_{ij}v_j}{.}
-then
+Let \mjeqn{v_1,\ldots,v_n}{v_1,...,v_n} be a basis for \eqn{V} and let
+\mjeqn{\omega\in\Lambda^n(V)}{.}.  If \mjeqn{w_i=\sum_{j=1}^n
+a_{ij}v_j}{.}  then
 
-\deqn{
+\mjdeqn{
   \omega\left(w_1,\ldots,w_n\right)=\det\left(a_{ij}\right)\cdot\omega\left(v_1,\ldots
-  v_n\right)}{ommitted; see PDF}
-
+  v_n\right)}{omitted; see PDF}
 
 (see the examples for numerical verification of this).
 

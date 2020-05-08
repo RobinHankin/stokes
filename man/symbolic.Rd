@@ -2,14 +2,15 @@
 \alias{symbolic}
 \alias{as.symbolic}
 \title{Symbolic form}
-\description{Prints \eqn{k}-tensor and \eqn{k}-form objects in symbolic
-  form}
+\description{\loadmathjax
+  Prints \eqn{k}-tensor and \eqn{k}-form objects in symbolic form
+}
 \usage{
 as.symbolic(M,symbols=letters,d="")
 }
 \arguments{
   \item{M}{Object of class \code{kform} or \code{ktensor}; a map from
-    \eqn{V^k} to \eqn{R}, where \eqn{V=R^n}}
+    \mjeqn{V^k}{V^k} to \eqn{R}, where \mjeqn{V=R^n}{V=R^n}}
   \item{symbols}{A character vector giving the names of the symbols}
   \item{d}{String specifying the appearance of the differential operator}
 }
