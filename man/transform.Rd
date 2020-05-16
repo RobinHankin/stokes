@@ -94,7 +94,7 @@ issmall(transform(o,crossprod(matrix(rnorm(10),2,5))))
 
 p <- rform()
 p
-stretch(p,seq_len(5))
+stretch(p,seq_len(7))
 stretch(p,c(1,0,1,1,1))   # kills dimension 2
 
 }
