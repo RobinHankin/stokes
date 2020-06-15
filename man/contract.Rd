@@ -2,7 +2,7 @@
 \alias{contract}
 \alias{contract_elementary}
 \title{Contractions of \eqn{k}-forms}
-\description{
+\description{\loadmathjax
   A contraction is a natural linear map from \eqn{k}-forms to \eqn{k-1}-forms.
 }
 \usage{
@@ -20,18 +20,18 @@ contract_elementary(o,v)
     interpret each column as a vector to contract with}
 }
 \details{  
-  Given a \eqn{k}-form \eqn{\phi}{phi} and a vector \eqn{\mathbf{v}}{v},
-the \dfn{contraction} \eqn{\phi_\mathbf{v}}{phi_v} of \eqn{\phi}{phi}
-and \eqn{\mathbf{v}}{v} is a \eqn{k-1}-form with
+  Given a \eqn{k}-form \mjeqn{\phi}{phi} and a vector \mjeqn{\mathbf{v}}{v},
+the \dfn{contraction} \eqn{\phi_\mathbf{v}}{phi_v} of \mjeqn{\phi}{phi}
+and \mjeqn{\mathbf{v}}{v} is a \mjseqn{k-1}-form with
 
-\deqn{
+\mjdeqn{
   \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
   \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
   }{
 ommitted; see PDF}
 
-if \eqn{k>1}; we specify
-\eqn{\phi_\mathbf{v}=\phi(\mathbf{v})}{phi_v=phi(v)} if \eqn{k=1}.
+if \mjseqn{k>1}; we specify
+\mjeqn{\phi_\mathbf{v}=\phi(\mathbf{v})}{phi_v=phi(v)} if \mjseqn{k=1}.
 
 Function \code{contract_elementary()} is a low-level helper function
 that translates elementary \eqn{k}-forms with coefficient 1 (in the form
