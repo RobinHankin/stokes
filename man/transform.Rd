@@ -6,8 +6,9 @@
 \alias{push-forward}
 \alias{stretch}
 \title{Linear transforms of \eqn{k}-forms}
-\description{Given a \eqn{k}-form, express it in terms of linear
-  combinations of the \eqn{dx^i}}
+\description{\loadmathjax
+  Given a \eqn{k}-form, express it in terms of linear
+  combinations of the \mjeqn{dx_i}{dx_i}}
 \usage{
 transform(K,M)
 stretch(K,d)
@@ -21,30 +22,30 @@ stretch(K,d)
 \details{
   Suppose we are given a two-form
 
-  \deqn{
-    \omega=\sum_{i<j}a_{ij}dx_i\wedge dx_j}{omitted: see PDF}
+  \mjdeqn{
+    \omega=\sum_{i < j}a_{ij}dx_i\wedge dx_j}{omitted: see latex}
 
   and relationships
 
-  \deqn{dx_i=\sum_rM_{ir}dy_r}{omitted: see PDF}
+  \mjdeqn{dx_i=\sum_rM_{ir}dy_r}{omitted: see latex}
 
   then we would have
 
-  \deqn{\omega =
-    \sum_{i<j}
-    a_{ij}\left(\sum_rM_{ir}dy_r\right)\wedge\left(\sum_rM_{jr}dy_r\right)
-  }{omitted: see PDF}
+  \mjdeqn{\omega =
+    \sum_{i < j}
+    a_{ij}\left(\sum_rM_{ir}dy_r\right)\wedge\left(\sum_rM_{jr}dy_r\right).
+  }{omitted: see latex}
 
   The general situation would be  a \eqn{k}-form where we would have
-  \deqn{
-    \omega=\sum_{i_1<\cdots<i_k}a_{i_1\ldots i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}}{omitted: see PDF}
+  \mjdeqn{
+    \omega=\sum_{i_1 < \cdots < i_k}a_{i_1\ldots i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}}{omitted: see latex}
 
   giving
 
-  \deqn{\omega =
-    \sum_{i_1<\cdots <i_k}\left[
-    a_{i_1<\cdots < i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right].
-  }{omitted: see PDF}
+  \mjdeqn{\omega =
+    \sum_{i_1 < \cdots < i_k}\left[
+    a_{i_1 < \cdots < i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right].
+  }{omitted: see latex}
 
 The \code{transform()} function does all this but it is slow.  I am not
 100\% sure that there isn't a much more efficient way to do such a
@@ -93,7 +94,7 @@ issmall(transform(o,crossprod(matrix(rnorm(10),2,5))))
 
 p <- rform()
 p
-stretch(p,seq_len(5))
+stretch(p,seq_len(7))
 stretch(p,c(1,0,1,1,1))   # kills dimension 2
 
 }

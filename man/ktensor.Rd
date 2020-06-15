@@ -3,7 +3,7 @@
 \alias{as.ktensor}
 \alias{as.function.ktensor}
 \title{k-tensors}
-\description{
+\description{\loadmathjax
 Functionality for \eqn{k}-tensors
 }
 \usage{
@@ -24,16 +24,16 @@ A \dfn{\eqn{k}-tensor} object \eqn{S} is a map from \eqn{V^k} to the
 reals \eqn{R}, where \eqn{V} is a vector space (here \eqn{R^n}) that
 satisfies multilinearity:
 
-\deqn{S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot
-  S\left(v_1,\ldots,v_i,\ldots,v_k\right)}{omitted; see PDF}
+\mjdeqn{S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot
+  S\left(v_1,\ldots,v_i,\ldots,v_k\right)}{omitted; see latex}
 
 and
 
-\deqn{S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
-  S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).}{omitted; see PDF}
+\mjdeqn{S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
+  S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).}{omitted; see latex}
 
 Note that this is \emph{not} equivalent to linearity over
-\eqn{V^{nk}}{V^nk} (see examples).
+\mjeqn{V^{nk}}{V^nk} (see examples).
 
 In the \pkg{stokes} package, \eqn{k}-tensors are represented as sparse
 arrays (\code{spray} objects), but with a class of \code{c("ktensor",

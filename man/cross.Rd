@@ -3,7 +3,8 @@
 \alias{cross2}
 \alias{\%X\%}
 \title{Cross products of \eqn{k}-tensors}
-\description{Cross products of \eqn{k}-tensors}
+\description{\loadmathjax
+  Cross products of \eqn{k}-tensors}
 \usage{
 cross(U, ...)
 cross2(U1,U2)
@@ -17,9 +18,9 @@ cross2(U1,U2)
 Given a \eqn{k}-tensor object \eqn{S} and an \eqn{l}-tensor \eqn{T}, we
 can form the cross product \eqn{S\otimes T}{S \%X\% T}, defined as
 
-\deqn{S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
+\mjdeqn{S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
   S\left(v_1,\ldots v_k\right)\cdot T\left(v_{k+1},\ldots
-  v_{k+l}\right).}{omitted; see PDF}
+  v_{k+l}\right).}{omitted; see latex}
 
 Package idiom for this includes \code{cross(S,T)} and \code{S \%X\% T};
 note that the cross product is not commutative.  Function \code{cross()}

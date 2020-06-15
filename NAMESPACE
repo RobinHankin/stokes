@@ -22,3 +22,8 @@ S3method(Ops,kform)
 S3method(Ops,ktensor)
 S3method("lose",kform)
 S3method("lose",ktensor)
+S3method("zap",kform)
+S3method("zap",ktensor)
+
+S3method("print",kform)
+S3method("print",ktensor)
