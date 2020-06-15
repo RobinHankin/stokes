@@ -1,6 +1,8 @@
 \name{kform}
 \alias{kform}
 \alias{as.kform}
+\alias{is.kform}
+\alias{is.form}
 \alias{kform_basis}
 \alias{as.function.kform}
 \alias{kform_general}
@@ -14,6 +16,7 @@ kform(S)
 as.kform(M,coeffs,lose=TRUE)
 kform_basis(n, k)
 kform_general(W,k,coeffs,lose=TRUE)
+is.kform(x)
 \method{as.function}{kform}(x,...)
 }
 \arguments{

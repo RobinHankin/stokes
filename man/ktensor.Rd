@@ -1,6 +1,8 @@
 \name{ktensor}
 \alias{ktensor}
 \alias{as.ktensor}
+\alias{is.ktensor}
+\alias{is.tensor}
 \alias{as.function.ktensor}
 \title{k-tensors}
 \description{\loadmathjax
@@ -9,6 +11,7 @@ Functionality for \eqn{k}-tensors
 \usage{
 ktensor(S)
 as.ktensor(M,coeffs)
+is.ktensor(x)
 \method{as.function}{ktensor}(x,...)
 }
 \arguments{

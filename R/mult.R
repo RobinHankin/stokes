@@ -6,12 +6,15 @@
 }
 
 `as.ktensor` <- function(M,coeffs){
-    if(inherits(M,"spray")){return(ktensor(M))}
+    if(is.spray(M)){return(ktensor(M))}
     ktensor(spray(M,coeffs))
 }
 
+`is.ktensor` <- function(x){inherits(x,"ktensor")}
+`is.kform` <- function(x){inherits(x,"kform")}
+
 `as.function.ktensor` <- function(x, ...){
-    stopifnot(inherits(x,"ktensor"))
+    stopifnot(is.ktensor(x))
     v <- value(x)
     M <- index(x)
     k <- seq_len(ncol(M))
@@ -120,7 +123,7 @@
 
 `wedge2` <- function(K1,K2){
   if(missing(K2)){return(K1)}
-  if(`|`(!inherits(K1,"kform"), !inherits(K2,"kform"))){return(K1*K2)}
+  if(`|`(!is.kform(K1),!is.kform(K2))){return(K1*K2)}
 
   if(is.empty(K1) | is.empty(K2)){
     return(zeroform(arity(K1)+arity(K2)))
@@ -159,7 +162,7 @@
 }
 
 `as.kform` <- function(M,coeffs,lose=TRUE){
-    if(inherits(M,"spray")){return(kform(M))}
+    if(is.spray(M)){return(kform(M))}
     if(length(c(M))==0){M <- matrix(1,1,0)} # kludge
     out <- kform(spray(M,coeffs))
     if(lose){out <- lose(out)}
@@ -206,9 +209,9 @@
 }
 
 `as.symbolic` <- function(M,symbols=letters,d=""){
-  if(inherits(M,"kform")){
+  if(is.kform(M)){
     prodsymb <- "^"
-  } else if(inherits(M,"ktensor")){
+  } else if(is.ktensor(M)){
     prodsymb <- "*"
   } else {
     stop("only takes ktensor or kform objects")
@@ -359,7 +362,7 @@
 `is.scalar` <- function(M){
   return(
   ((length(M)==1) & is.numeric(M)) ||
-  (inherits(M,"kform") & all(dim(index(M))==c(1,0)))
+  (is.kform(M) & all(dim(index(M))==c(1,0)))
   )
 }
 
