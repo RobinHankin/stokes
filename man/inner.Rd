@@ -20,7 +20,7 @@ The inner product of two vectors \mjeqn{\mathbf{x}}{x} and
 be \mjeqn{\mathbf{x}^TM\mathbf{y}}{x'My} where \mjeqn{M}{M} is a
 positive-definite matrix.  Noting that inner products are symmetric,
 that is
-\mjeqn{\left<\mathbf{x},\mathbf{y}\right>=\left<\mathbf{x},\mathbf{y}\right>}{<x,y>=<y,x>}
+\mjeqn{\left<\mathbf{x},\mathbf{y}\right>=\left<\mathbf{y},\mathbf{x}\right>}{<x,y>=<y,x>}
 (we are considering the real case only), and multilinear, that is
 \mjeqn{\left<\mathbf{x},a\mathbf{y}+b\mathbf{z}\right>=a\left<\mathbf{x},\mathbf{y}\right>+b\left<\mathbf{x},\mathbf{z}\right>}{<x,ay+bz>=a<x,y>+b<x,z>},
 we see that the inner product is indeed a multilinear map, that is, a
