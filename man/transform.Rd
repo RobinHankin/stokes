@@ -44,7 +44,7 @@ stretch(K,d)
 
   \mjdeqn{\omega =
     \sum_{i_1 < \cdots < i_k}\left[
-    a_{i_1 < \cdots < i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right].
+    a_{i_1,\ldots, i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right].
   }{omitted: see latex}
 
 The \code{transform()} function does all this but it is slow.  I am not
@@ -52,9 +52,8 @@ The \code{transform()} function does all this but it is slow.  I am not
 transformation.  There are a few tests in \code{tests/testthat} and a
 discussion in the \code{stokes} vignette.
 
-Function \code{stretch()} carries out the same operation but for a
-matrix with zero off-diagonal elements.  It is much faster than
-\code{transform()}.
+Function \code{stretch()} carries out the same operation but for \eqn{M}
+a diagonal matrix.  It is much faster than \code{transform()}.
 
 }
 \value{
