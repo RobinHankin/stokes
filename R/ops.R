@@ -28,6 +28,9 @@
             return(f(e1) == f(e2))
         } else if(.Generic == "!="){
             return(f(e1) != f(e2))
+        } else if(.Generic == "*"){
+            ## stop('To multiply two kforms, use the wedge product "%^%"')
+            return(wedge(e1,e2))
         } else {
             stop("Binary operator '", .Generic, "' is not implemented for kforms")
         }
@@ -82,6 +85,9 @@
             return(f(e1) == f(e2))
         } else if(.Generic == "!="){
             return(f(e1) != f(e2))
+        } else if(.Generic == "*"){
+            ## stop('To multiply two ktensors, use the cross product "%X%"')
+            return(cross(e1,e2))
         } else {
             stop("Binary operator '", .Generic, "' is not implemented for ktensors")
         }

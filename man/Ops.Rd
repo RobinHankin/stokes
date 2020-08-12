@@ -29,7 +29,13 @@
 \value{All functions documented here return an object of class \code{kform} or
   \code{ktensor}.
 }
-
+\author{Robin K. S. Hankin}
+\note{
+  A plain asterisk, \dQuote{\code{*}}, given two kforms or two ktensors,
+  will return the wedge product or the cross product respectively, on
+  the grounds that the idiom has only one natural interpretation.  But
+  its use is discouraged.
+}
 \examples{
 ## dx_1 ^ dx_2 + 6dx_5 ^ dx_6:
 as.kform(1) \%^\% as.kform(2) + 6*as.kform(5) \%^\% as.kform(6)
