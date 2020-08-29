@@ -13,5 +13,5 @@ r_packages:
   - mathjaxr
 
 after_success:
-  - Rscript -e 'library(covr); codecov(line_exclusions=list("R/ops.R" = c(50:53,104:107), "R/mult.R" = 231))'
+  - Rscript -e 'library(covr); codecov(line_exclusions=list("R/ops.R" = c(50:53,104:107), "R/mult.R" = c(231,234)))'
   
