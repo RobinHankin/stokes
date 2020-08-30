@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Some tests of zap()
 
 options(warn=999)
@@ -78,4 +77,3 @@ test_that("zap works as expected", {
 
 })
 
->>>>>>> refs/remotes/origin/master
