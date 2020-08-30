@@ -1,41 +1,6 @@
 ## Some tests of zap()
 
-options(warn=999)
-test_that("Function zap() behaves itself", {
-    expect_true(TRUE)
-
-    fooform2 <- function(x,y){  # checks that zap() works
-      if(is.zero(x %^% y)){return(TRUE)}
-      expect_false(x+1e-100*y == x)
-      expect_false(x*1e-100+y == y)
-      expect_true(zap(x+1e-100*y) == x)
-      expect_true(zap(x*1e-100+y) == y)
-
-    }  # fooform2() closes
-
-    footensor2 <- function(x,y){
-      if(x==y){return(TRUE)}
-      
-      expect_false(x+1e-100*y == x)
-      expect_false(x*1e-100+y == y)
-      expect_true(zap(x+1e-100*y) == x)
-      expect_true(zap(x*1e-100+y) == y)
-    } # footensor2() closes
-
-
-    for(i in 1:10){
-      x <- rform()
-      y <- rform()
-      fooform2(x,y)
-      x <- rtensor()
-      y <- rtensor()
-      footensor2(x,y)
-
-    }
-})
-=======
 test_that("zap works as expected", {     
-
 
     checker1 <- function(a){
         expect_true(a == zap(a))
@@ -49,6 +14,7 @@ test_that("zap works as expected", {
         expect_true(zap(b + small*a) == b)
     }
 
+
     a <- as.kform(matrix(1:9,3,3))
     b <- as.kform(matrix(c(1,2,6,4,5,3,7,8,9),3,3))
 
@@ -57,8 +23,6 @@ test_that("zap works as expected", {
 
     checker2(a,b)
     checker2(b,a)
-    
-
 
 
     
@@ -71,9 +35,6 @@ test_that("zap works as expected", {
 
     checker2(a,b)
     checker2(b,a)
-    
-
-
 
 })
 
