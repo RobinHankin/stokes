@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Some tests of the print methods
 
 options(warn=999)
@@ -29,4 +28,3 @@ test_that("print methods work as expected", {
     }
 })
 
->>>>>>> refs/remotes/origin/master
