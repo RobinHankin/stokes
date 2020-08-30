@@ -6,7 +6,7 @@ test_that("coverage of Ops.kform()", {
     expect_error(!a)
     expect_error(a&a)
     expect_false(a != a)
-    expect_error(a*a)
+    expect_silent(a*a)
     expect_error(a/a)
     expect_error(a + 4)
     expect_error(a - 4)

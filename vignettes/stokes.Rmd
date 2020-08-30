@@ -847,7 +847,7 @@ dphi
 Now work on the differential of the differential.  First evaluate
 the Hessians (4x4 numeric matrices) at the same point:
 
-```{r}
+```{r} 
 Hf1 <- matrix(Deriv(f1,nderiv=2)(1,2,3,4),4,4)
 Hf2 <- matrix(Deriv(f2,nderiv=2)(1,2,3,4),4,4)
 Hf3 <- matrix(Deriv(f3,nderiv=2)(1,2,3,4),4,4)
@@ -869,11 +869,13 @@ diagonal term).  But $dd\phi$ is clearly zero as the Hessians are
 symmetrical:
 
 ```{r}
+ij <- expand.grid(seq_len(nrow(Hf1)),seq_len(ncol(Hf1)))
+
 ddphi <- # should be zero
   (  
-    +as.kform(which(!is.na(Hf1),arr.ind=TRUE),c(Hf1))
-    +as.kform(which(!is.na(Hf2),arr.ind=TRUE),c(Hf2))
-    +as.kform(which(!is.na(Hf3),arr.ind=TRUE),c(Hf3))
+    +as.kform(ij,c(Hf1))
+    +as.kform(ij,c(Hf2))
+    +as.kform(ij,c(Hf3))
   )
 
 ddphi
