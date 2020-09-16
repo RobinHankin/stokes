@@ -2,7 +2,7 @@ Package: stokes
 Type: Package
 Title: The Exterior Calculus
 Version: 1.0-7
-Depends: spray (>= 1.0-9)
+Depends: spray (>= 1.0-11)
 Suggests: 
     knitr,
     Deriv,
