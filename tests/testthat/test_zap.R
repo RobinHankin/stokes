@@ -1,5 +1,6 @@
-test_that("zap works as expected", {     
+## Some tests of zap()
 
+test_that("zap works as expected", {     
 
     checker1 <- function(a){
         expect_true(a == zap(a))
@@ -13,6 +14,7 @@ test_that("zap works as expected", {
         expect_true(zap(b + small*a) == b)
     }
 
+
     a <- as.kform(matrix(1:9,3,3))
     b <- as.kform(matrix(c(1,2,6,4,5,3,7,8,9),3,3))
 
@@ -21,8 +23,6 @@ test_that("zap works as expected", {
 
     checker2(a,b)
     checker2(b,a)
-    
-
 
 
     
@@ -35,9 +35,6 @@ test_that("zap works as expected", {
 
     checker2(a,b)
     checker2(b,a)
-    
-
-
 
 })
 
