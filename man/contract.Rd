@@ -54,7 +54,7 @@ contract(as.kform(1),3)   # 0-form
 
 
 ## Now some verification:
-o <- rform(2,k=5,n=9,coeffs=runif(2))
+o <- kform(spray(t(replicate(2, sample(9,5))), runif(2)))
 V <- matrix(rnorm(45),ncol=5)
 jj <- c(
    as.function(o)(V),

@@ -190,12 +190,14 @@
 }
 
 `rform` <- function(terms=9, k=3, n=7, coeffs){
-    kform(spray(t(replicate(terms,sample(seq_len(n),k))),coeffs,addrepeats=TRUE))
+  if(missing(coeffs)){coeffs <- seq_len(terms)}
+  kform(spray(t(replicate(terms,sample(seq_len(n),k))),seq_len(terms),addrepeats=TRUE))
 }
 
 `rtensor` <- function(terms=9,k=3, n=7, coeffs){
+    if(missing(coeffs)){coeffs <- seq_len(terms)}
     M <- matrix(sample(seq_len(n),terms*k,replace=TRUE),terms,k)
-    ktensor(spray(M,coeffs,addrepeats=TRUE))
+    ktensor(spray(M,seq_len(terms),addrepeats=TRUE))
 }
     
 `as.1form` <- function(v){

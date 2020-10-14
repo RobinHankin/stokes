@@ -13,15 +13,15 @@ rtensor(terms=9,k=3,n=7,coeffs)
 \arguments{
   \item{terms}{Number of distinct terms}
   \item{k,n}{A \eqn{k}-form maps \eqn{V^k} to \eqn{R}, where \eqn{V=R^n}}
-  \item{coeffs}{The coefficients of the form; if missing use 1
-    (inherited from \code{spray()})}
+  \item{coeffs}{The coefficients of the form; if missing use
+    \code{seq_len(terms)}}
 }
 \details{
   What you see is what you get, basically.
 
   Note that argument \code{terms} is an upper bound, as the index matrix
-  might contain repeats.  But \code{coeffs} should have length equal to
-  \code{terms} (or 1).
+  might contain repeats which are combined.
+
 }
 \value{
   All functions documented here return an object of class \code{kform} or
@@ -31,7 +31,6 @@ rtensor(terms=9,k=3,n=7,coeffs)
 \examples{
 
 rform()
-rform(coeffs=1:9)   # any repeated rows are combined
 
 dx <- as.kform(1)
 dy <- as.kform(2)
