@@ -13,7 +13,7 @@
     if(is.zero(x)){
         cat(paste("The zero alternating linear map with arity ",arity(x),";\n",sep=""))
     } else {
-        cat(paste("A linear map from V^",arity(x)," to R with V=R^",max(index(x)),":\n",sep=""))
+        cat(paste("An alternating linear map from V^",arity(x)," to R with V=R^",max(index(x)),":\n",sep=""))
     }
     class(x) <- "spray"
     print(x,...)
