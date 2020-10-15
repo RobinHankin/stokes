@@ -30,16 +30,17 @@ or multivariate polynomial form
   \eqn{R}, where \eqn{n} is the largest element in the index matrix.
   However, such a map naturally furnishes a map from \eqn{R^m} to
   \eqn{R} provided that \eqn{m\geq n}{m>=n} via the natural projection
-  from \eqn{R^n} to \eqn{R^m}.  Formally this would be,
+  from \eqn{R^n} to \eqn{R^m}.  Formally this would be
   \mjeqn{\left(x_1,\ldots,x_n\right)\mapsto\left(x_1,\ldots,x_n,0,\ldots,0\right)\in
   R^m}{equation omitted}.  In the case of the zero \eqn{k}-form or
   \eqn{k}-tensor, \dQuote{\code{n}} is to be interpreted as \dQuote{any
-  \eqn{n\geq 0}{n>=0}}.  } \examples{
+    \eqn{n\geq 0}{n>=0}}.
+}
+
+\examples{
 
 rform()
 rtensor()
-
-
 
 ## spray print options work:
 options(polyform = TRUE)
@@ -50,7 +51,5 @@ rtensor()
 options(polyform = FALSE)
 
 }
-
-
 
 \keyword{symbolmath}
