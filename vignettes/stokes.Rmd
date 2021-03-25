@@ -61,9 +61,9 @@ S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k}
 \]
 
 The space spanned by such products has a natural representation in R
-as an array of dimensions $n\times\cdots\times n$.  If `A` is such
-an array, then the element `A[i_1,i_2,...,i_k]` is the coefficient
-of $\phi_{i_1}\otimes\ldots\otimes\phi_{i_k}$.  However, it is more
+as an array of dimensions $n\times\cdots\times n=n^k$.  If `A` is such
+an array, then the element `A[i_1,i_2,...,i_k]` is the coefficient of
+$\phi_{i_1}\otimes\ldots\otimes\phi_{i_k}$.  However, it is more
 efficient and conceptually cleaner to consider a *sparse* array, as
 implemented by the `spray` package.  We will consider the case
 $n=5,k=4$, so we have multilinear maps from
@@ -123,12 +123,17 @@ f(E)
 ### Vector space structure of tensors
 
 Tensors have a natural vector space structure; they may be added and
-subtracted, and multiplied by a scalar, as for any other vectors.
-Thus:
+subtracted, and multiplied by a scalar, the same as any other vector
+space.  Below, we define a new tensor $S_1$ and work with $2S-3S_1$:
 
 ```{r}
 S1 <- as.ktensor(1+diag(4),1:4)
 2*S-3*S1
+```
+
+We may verify that tensors are linear using package idiom:
+
+```{r}
 way1 <- as.function(2*S-3*S1)(E)
 way2 <- 2*as.function(S)(E) -3*as.function(S1)(E)
 c(way1,way2)
@@ -278,8 +283,7 @@ which are discussed next.
 This section follows the exposition of Hubbard and Hubbard, who
 introduce the exterior calculus starting with a discussion of
 elementary forms, which are alternating forms with a particularly
-simple structure.  An elementary form is an alternating multilinear
-map with a particularly simple structure.  An example of an elementary
+simple structure.  An example of an elementary
 form would be $dx_1\wedge dx_3$ [treated as an indivisible entity],
 which is an alternating multilinear map from
 $\mathbb{R}^n\times\mathbb{R}^n$ to $\mathbb{R}$ with
@@ -346,24 +350,64 @@ Defining $K$ has ready R idiom in which we define a matrix whose rows
 correspond to the differentials in each term:
 
 ```{r}
-M <- matrix(c(4,2,3,1,2,4),2,3,byrow=TRUE)
+M <- matrix(c(4,2,3,1,4,2),2,3,byrow=TRUE)
 M
 K <- as.kform(M,c(1,5))
 K
 ```
 
-Note that the order of the rows in `K` is immaterial and indeed in
-some implementations will appear in a different order: the stokes
-package uses the `spray` package, which in turn utilises the STL
-map class of C++.
+Function `as.kform()` takes each row of `M` and places the elements in
+increasing order; the coefficient will change sign if the permutation
+is odd.  Note that the order of the rows in `K` is immaterial and
+indeed in some implementations will appear in a different order: the
+stokes package uses the `spray` package, which in turn utilises the
+STL map class of C++.
+
+## Formal definition of dx
+
+In the previous section we defined objects such as "$dx_1\wedge dx_6$"
+as a single entity.  Here I define the elementary form $dx_i$ formally
+and in the next section discuss the wedge product $\wedge$.  The
+elementary form $dx_i$ is simply a map from $\mathbb{R}^n$ to
+$\mathbb{R}$ with $dx_i\left(x_1,x_2,\ldots,x_n\right)=x_i$.  Observe
+that $dx_i$ is an alternating form, even though we cannot swap
+arguments (because there is only one).  Package idiom for creating an
+elementary form appears somewhat cryptic at first sight, but is
+consistent (it is easier to understand package idiom for creating more
+complicated alternating forms, as in the next section).  Suppose we
+wish to work with $dx_3$:
+
+```{r}
+dx3 <- as.kform(matrix(3,1,1),1)
+dx3
+```
+
+Interpretation of the output above is not obvious (it is easier to
+understand the output from more complicated alternating forms, as in
+the next section), but for the moment observe that $dx_3$ is indeed an
+alternating form, mapping $\mathbb{R}^n$ to $\mathbb{R}$ with
+$dx_i\left(x_1,x_2,\ldots,x_n\right)=x_i$.  Thus, for example:
+
+
+```{r}
+as.function(dx3)(c(14,15,16))
+as.function(dx3)(c(14,15,16,17,18))  # idiom can deal with arbitrary vectors
+```
+
+and we see that $dx_3$ picks out the third element of a vector.  These
+are linear: we may add and subtract these elementary forms:
+
+
+
+```{r}
+dx5 <- as.kform(matrix(5,1,1),1)
+as.function(dx3 + 2*dx5)(1:10)  # picks out element 3 + 2*element 5
+```
 
 ## Formal definition of wedge product
 
-In the previous section we defined objects such as "$dx_1\wedge dx_6$"
-as a single entity.  Here I define the elementary form $dx_i$ and the
-wedge product $\wedge$ formally.  The elementary form $dx_i$ is simply
-a map from $\mathbb{R}^n$ to $\mathbb{R}$ with
-$dx_i\left(x_1,x_2,\ldots,x_n\right)=x_i$.  The wedge product maps two
+
+The wedge product maps two
 alternating forms to another alternating form; given
 $\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$, Spivak defines the
 wedge product $\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
@@ -407,9 +451,10 @@ F1 %^% (F2 %^% F3)
 ```
 
 
-Note carefully in the above that the terms in `(F1 %^% F2) %^% F3`
-and `F1 %^% (F2 %^% F3)` appear in a different order.  They are
-nevertheless algebraically identical:
+Note carefully in the above that the terms in `(F1 %^% F2) %^% F3` and
+`F1 %^% (F2 %^% F3)` appear in a different order.  They are
+nevertheless algebraically identical, as we may demonstrate by
+calculating their difference:
 
 
 ```{r}
@@ -444,15 +489,15 @@ particular order.  Addition of such $k$-forms is straightforward in R
 idiom but algebraically nontrivial:
 
 ```{r}
-K1 <- as.kform(matrix(1:4,2,2),1:2)
+K1 <- as.kform(matrix(1:4,2,2),c(1,109))
 K2 <- as.kform(matrix(c(1,3,7,8,2,4),ncol=2,byrow=TRUE),c(-1,5,4))
 K1
 K2
 K1+K2
 ```
 
-In the above, note how the $dx_2\wedge dx_4$ terms combine [to give
-`2 4 = 6`] and the $dx_1\wedge dx_3$ term vanishes.
+In the above, note how the $dx_2\wedge dx_4$ terms combine [to give `2
+4 = 113`] and the $dx_1\wedge dx_3$ term vanishes by cancellation.
 
 ## Print methods
 
@@ -663,9 +708,13 @@ dx^{i_1}\wedge
 dx^{i_2}\wedge\cdots\wedge dx^{i_k}
 \]
 
-Hubbard and Hubbard define the exterior derivative $d\phi$ (they use a
-bold font, $\mathbf{d}\phi$) of the $k$-form $\phi$ as the
-$(k+1)$-form given by
+
+where $D_if(a)=\lim_{h\longrightarrow
+0}\frac{f(a^1,\ldots,a^i+h,\ldots,a^n)-f(a^1,\ldots,a^i,\ldots,a^n)}{h}$
+is the ordinary $i^\mathrm{th}$ partial derivative (Spivak, p25).
+Hubbard and Hubbard take a conceptually distinct approach and define
+the exterior derivative $d\phi$ (they use a bold font,
+$\mathbf{d}\phi$) of the $k$-form $\phi$ as the $(k+1)$-form given by
 
 \[  {d}\phi
   \left({v}_i,\ldots,{v}_{k+1}\right)
@@ -688,9 +737,8 @@ It can be shown that
 \]
 
 where $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is a scalar
-function of position.  The package provides `grad()`, which when
-given a vector $x_1,\ldots,x_n$ returns the one-form
-
+function of position.  The package provides `grad()` which, when given
+a vector $x_1,\ldots,x_n$ returns the one-form
 
 \[
 \sum_{i=1}^n x_idx_i
