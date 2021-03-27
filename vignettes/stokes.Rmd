@@ -56,7 +56,7 @@ where $v_1,\ldots,v_k$ is a basis for $V$ and
 $\phi_i\left(v_j\right)=\delta_{ij}$; we can therefore write
 
 \[
-S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k} 
+S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k}
 \phi_{i_1}\otimes\cdots\otimes\phi_{i_k}.
 \]
 
@@ -102,7 +102,7 @@ implementation using the `STL map` class and is discussed in more
 detail in the `mvp` package.
 
 
-### Package idiom for evaluation of a tensor 
+### Package idiom for evaluation of a tensor
 
 First, we will define $E$ to be a random point in $V^k$ in terms of a
 matrix:
@@ -141,10 +141,10 @@ c(way1,way2)
 
 (that is, identical up to numerical precision).
 
-### Numerical verification of multilinearity in the package 
+### Numerical verification of multilinearity in the package
 
 Testing multilinearity is straightforward in the package.  To do this,
-we need to define three three matrices `E1,E2,E3` corresponding to
+we need to define three matrices `E1,E2,E3` corresponding to
 points in $\left(\mathbb{R}^5\right)^4$ which are identical except for
 one column.  In `E3`, this column is a linear combination of the
 corresponding column in `E2` and `E3`:
@@ -420,12 +420,20 @@ and this is implemented in the package by function `wedge()`, or,
 more idiomatically, `%^%`:
 
 ```{r}
-M1 <- matrix(c(3,4,5, 4,6,1),2,3,byrow=TRUE)
+M1 <- matrix(c(3,5,4, 4,6,1),2,3,byrow=TRUE)
 K1 <- as.kform(M1,c(2,7))
 K1
 M2 <- cbind(1:5,3:7)
 K2 <- as.kform(M2,1:5)
 K2
+```
+
+In symbolic notation, `K1` is equal to $7dx_1\wedge dx_4\wedge dx_6
+-2dx_3\wedge dx_4\wedge dx_5$. and `K2` is $dx_1\wedge dx_3+
+2dx_2\wedge dx_4+ 3dx_3\wedge dx_5+ 4dx_4\wedge dx_6+ 5dx_5\wedge
+dx_7$.  Package idiom for wedge prodcuts is straightforward:
+
+```{r}
 K1 %^% K2
 ```
 
@@ -449,7 +457,6 @@ F3 <- kform_general(1:8,2)
 (F1 %^% F2) %^% F3
 F1 %^% (F2 %^% F3)
 ```
-
 
 Note carefully in the above that the terms in `(F1 %^% F2) %^% F3` and
 `F1 %^% (F2 %^% F3)` appear in a different order.  They are
@@ -475,7 +482,6 @@ Formally, multilinearity means every element of the space
 $\Lambda^k(V)$ is a linear combination of elementary forms, as
 illustrated in the package by function `kform_general()`.  Consider
 the following idiom:
-
 
 ```{r}
 Krel <- kform_general(4,2,1:6)
@@ -636,7 +642,7 @@ then
 
 \[
 \begin{array}{ccl}
-  \omega &=& 
+  \omega &=&
 \left(1dy_1+4dy_2+7dy_3\right)\wedge
 \left(2dy_1+5dy_2+8dy_3\right)+
 5\left(1dy_1+4dy_2+7dy_3\right)\wedge
@@ -895,7 +901,7 @@ dphi
 Now work on the differential of the differential.  First evaluate
 the Hessians (4x4 numeric matrices) at the same point:
 
-```{r} 
+```{r}
 Hf1 <- matrix(Deriv(f1,nderiv=2)(1,2,3,4),4,4)
 Hf2 <- matrix(Deriv(f2,nderiv=2)(1,2,3,4),4,4)
 Hf3 <- matrix(Deriv(f3,nderiv=2)(1,2,3,4),4,4)
@@ -920,7 +926,7 @@ symmetrical:
 ij <- expand.grid(seq_len(nrow(Hf1)),seq_len(ncol(Hf1)))
 
 ddphi <- # should be zero
-  (  
+  (
     +as.kform(ij,c(Hf1))
     +as.kform(ij,c(Hf2))
     +as.kform(ij,c(Hf3))
