@@ -4,7 +4,8 @@
 \title{Coerce vectors to 1-forms}
 \description{\loadmathjax
   Given a vector, return the corresponding 1-form; the exterior
-  derivative of a 0-form (that is, a scalar function)
+  derivative of a 0-form (that is, a scalar function).  Function
+  \code{grad()} is a synonym.
 }
 \usage{
 as.1form(v)
