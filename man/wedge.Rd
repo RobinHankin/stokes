@@ -15,7 +15,7 @@ wedge(x, ...)
 Wedge product of \eqn{k}-forms.  
 }
 \value{
-  The functions documented here returns an object of class
+  The functions documented here return an object of class
   \code{kform}.
 }
 \author{Robin K. S. Hankin}
