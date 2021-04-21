@@ -20,7 +20,6 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Build Status](https://travis-ci.org/RobinHankin/stokes.svg?branch=master)](https://travis-ci.org/RobinHankin/stokes)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/stokes)](https://cran.r-project.org/package=stokes)
-[![Rdoc](http://www.rdocumentation.org/badges/version/stokes)](http://www.rdocumentation.org/packages/stokes)
 [![Codecov test coverage](https://codecov.io/gh/RobinHankin/stokes/branch/master/graph/badge.svg)](https://codecov.io/gh/RobinHankin/stokes/branch/master)
 <!-- badges: end -->
 
