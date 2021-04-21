@@ -8,6 +8,7 @@ Suggests:
     Deriv,
     testthat,
     mathjaxr,
+    markdown,
     rmarkdown
 VignetteBuilder: knitr
 Imports: permutations (>= 1.0-4), partitions, magrittr, methods
