@@ -1,0 +1,218 @@
+---
+title: "The `Alt()` function in the `stokes` package"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("stokes")
+set.seed(0)
+```
+
+```{r}
+Alt
+```
+
+Function `Alt()` converts a $k$-tensor to alternating form (see
+`kform.Rd`).  Given a $k$-tensor $T$, we follow Spivak [p78] and
+define $\operatorname{Alt}(T)$ as follows:
+
+\[
+\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
+    \frac{1}{k!}\sum_{\sigma\in S_k}\mathrm{sgn}(\sigma)\cdot
+    T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
+\]
+
+where $S_k$ is the set of all permutations of numbers $1$ to $k$ and
+$\operatorname{sgn}\sigma$ is the sign of permutation $\sigma$ for any
+$\sigma\in S_k$.  Thus for example if $k=3$ we have
+
+\[\operatorname{Alt}(T)\left(v_1,v_2,v_3\right)=
+      \frac{1}{6}\left(\begin{array}{cc}
+      +T\left(v_1,v_2,v_3\right)&
+      -T\left(v_1,v_3,v_2\right)\cr
+      -T\left(v_2,v_1,v_3\right)&
+      +T\left(v_2,v_3,v_1\right)\cr
+      +T\left(v_3,v_1,v_2\right)&
+      -T\left(v_3,v_2,v_1\right)
+      \end{array}
+      \right)
+\]
+
+Package idiom is straightforward:
+
+
+```{r}
+S <- as.ktensor(rbind(1:3),c(5))
+Alt(S)
+```
+
+and we can see the pattern clearly, observing in passing that the
+order of the rows is arbitrary.  Observing that $\operatorname{Alt}$
+is linear, we might apply it to a more complicated tensor, here with
+two terms:
+
+```{r}
+S <- as.ktensor(rbind(1:3,c(2,2,3)),c(1,1000))
+S
+Alt(S)
+```
+
+Here `Alt(S)` is an alternating form.  Note that the `2 2 3` term
+(with coefficient 1000) disappears: the even permutations (being
+positive) cancel out the odd permutations (being negative) in pairs.
+This must be the case for an alternating map by definition.  We can
+see this by considering $T$, a linear map corresponding to the second
+row of `S` above, that is, `[2 2 3]`.  We have
+
+\[
+T(v_1,v_2,v_3) = (v_1\cdot e_2)(v_1\cdot e_2)(v_1\cdot e_3)x
+\]
+
+(where $x\in\mathbb{R}$ is any real number and the dot is dot
+product), and so
+
+\[
+T(v_2,v_1,v_3) = (v_1\cdot e_2)(v_1\cdot e_1)(v_1\cdot e_3)x = T(v_1,v_2,v_3).
+\]
+
+Thus if we require $T$ to be alternating [that is, $T(v_2,v_1,v_3) =
+-T(v_1,v_2,v_3)$], we must have $x=0$, which is why the `[2 2 3]` term
+with coefficient 1000 vanishes (such terms are killed in the function
+by applying `kill_trivial_rows()`).  We can check that terms with
+repeated entries are correctly discarded:
+
+```{r}
+S <- as.ktensor(matrix(c(1,4,1,1,3,2,1,1,4,2,3,3,2,1,1,3,4,3,2,1),ncol=4),1:5)
+S
+Alt(S)
+```
+
+We can verify that the value of `Alt()` is in fact alternating as follows:
+
+
+```{r}
+S <- rtensor(k=5,n=9)
+S
+AS <- Alt(S)
+V <- matrix(rnorm(45),ncol=5) # element of (R^9)^5
+```
+
+Then we swap a couple of columns of $V$ to verify that $AS$ is in fact alternating:
+
+```{r}
+V_even <- V[,c(1,2,5,3,4)]  # an even permutation
+V_odd  <- V[,c(2,1,5,3,4)]  # an odd permutation
+V_rep  <- V[,c(2,1,5,2,4)]  # not a permutation
+c(as.function(AS)(V),as.function(AS)(V_even))   # should be identical (even permutation)
+c(as.function(AS)(V),as.function(AS)(V_odd))    # should differ in sign only (odd permutation)
+as.function(AS)(V_rep)                          # should be zero
+```
+
+# Further properties of `Alt()`
+
+In his theorem 4.3, Spivak proves the following statements:
+
+* If $T$ is a tensor, then $\operatorname{Alt}(T)$ is alternating
+* If $\omega$ is alternating [he writes $\omega\in\Lambda^k(V)$] then
+  $\operatorname{Alt}(\omega)=\omega$
+* If $T$ is a tensor, then
+  $\operatorname{Alt}(\operatorname{Alt}(T))=\operatorname{Alt}(T)$.
+
+We have demonstrated the first point above.  For the second, we need
+to construct a tensor that is alternating, and then show that `Alt()` does not change it:
+
+```{r}
+P <- as.ktensor(1+diag(2),c(-7,7))
+P
+P == Alt(P)
+```
+
+Idempotence is also easy:
+
+
+```{r}
+P <- rtensor() *6 # the "6" avoids numerical round-off issues
+Alt(Alt(P))==Alt(P)   # should be TRUE
+```
+
+# Wedge product
+
+Spivak defines the wedge product as follows.  Given alternating forms
+$\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$ we have
+
+\[
+\omega\wedge\eta=\frac{(k+l)!}{k!l!}\operatorname{Alt}(\omega\otimes\eta)
+\]
+
+So for example:
+
+```{r}
+omega <- as.ktensor(2+diag(2),c(-7,7))
+eta   <- Alt(rtensor(2))*30
+omega
+eta
+f <- as.function(Alt(omega %X% eta))
+```
+
+(the tensor itself is quite long, having 60 nonzero components).  We
+may verify that `f()` is in fact alternating:
+
+```{r}
+V <-  matrix(rnorm(35),ncol=5)
+c(f(V),f(V[,c(2:1,3:5)]))
+```
+
+## Further further properties of `Alt()`
+
+
+Spivak goes on to prove the following three statements.  If $S,T$ are
+tensors and $\omega,\eta,\theta$ are alternating tensors of arity
+$k,l,m$ respectively, then
+
+* If $\operatorname{Alt}(S)=0$, then $\operatorname{Alt}(S\otimes T)=\operatorname{Alt}(T\otimes S)=0$.
+* $\operatorname{Alt}(\operatorname{Alt}(\omega\otimes\eta)\otimes\theta)
+  =\operatorname{Alt}(\omega\otimes\eta\otimes\theta)=
+  \operatorname{Alt}(\omega\otimes\operatorname{Alt}(\eta\otimes\theta))$
+* $(\omega\wedge\eta)\wedge\theta = \omega\wedge(\eta\wedge\theta) =
+  \frac{(k+l+m)!}{k!l!m!}\operatorname{Alt}(\omega\otimes\eta\otimes\theta)$.
+
+Taking the points in turn.  Firstly $\operatorname{Alt}(S\otimes T)=\operatorname{Alt}(T\otimes S)=0$:
+
+```{r}
+(S <- as.ktensor(rbind(c(1,2,3,3),c(1,1,2,3)),1000:1001)) 
+Alt(S)  # each row of S includes repeats
+T <- rtensor()
+c(is.zero(Alt(S %X% T)), is.zero(Alt(T %X% S)))
+```
+
+
+secondly,
+  $\operatorname{Alt}(\operatorname{Alt}(\omega\otimes\eta)\otimes\theta)
+  =\operatorname{Alt}(\omega\otimes\eta\otimes\theta)=
+  \operatorname{Alt}(\omega\otimes\operatorname{Alt}(\eta\otimes\theta))$:
+  
+```{r probablytakesalongtime,cache=TRUE}
+omega <- Alt(as.ktensor(rbind(1:3),6))
+eta <- Alt(as.ktensor(rbind(4:5),60))
+theta <- Alt(as.ktensor(rbind(6:7),14))
+
+omega
+eta
+theta
+
+f1 <- as.function(Alt(Alt(omega %X% eta) %X% theta))
+f2 <- as.function(Alt(omega %X% eta %X% theta))
+f3 <- as.function(Alt(omega %X% Alt(eta %X% theta)))
+V <- matrix(rnorm(9*14),ncol=9)
+c(f1(V),f2(V),f3(V))
+```
+
+Verifying the third identity $(\omega\wedge\eta)\wedge\theta =
+  \omega\wedge(\eta\wedge\theta) =
+  \frac{(k+l+m)!}{k!l!m!}\operatorname{Alt}(\omega\otimes\eta\otimes\theta)$
+  needs functionality which is not implemented in version 1.0-7.
+
+
+
+
