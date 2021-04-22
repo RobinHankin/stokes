@@ -124,6 +124,7 @@
 
 `wedge2` <- function(K1,K2){
   if(missing(K2)){return(K1)}
+  if(is.ktensor(K1) | is.ktensor(K2)){stop("wedge product only defined for kforms")}
   if(`|`(!is.kform(K1),!is.kform(K2))){return(K1*K2)}
 
   if(is.empty(K1) | is.empty(K2)){
