@@ -83,12 +83,12 @@
   ## with a repeated index, as in [1,3,4,1,2] ("1" appears twice).
   ## Then, sort the rows.  Then, sum over all orderings:
 
-    S <- kill_trivial_rows(S)
-    if(nrow(index(S))==0){  # the zero form
-        return(S)
+  out <- kill_trivial_rows(S)
+    if(nrow(index(out))==0){  # the zero form
+        return(S*0)
     }
 
-    ktensor(include_perms(consolidate(S))/factorial(ncol(index(S))))
+    ktensor(include_perms(consolidate(out))/factorial(ncol(index(out))))
 }
 
 `cross` <- function(U, ...) {
