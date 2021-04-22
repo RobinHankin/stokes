@@ -15,6 +15,7 @@
 
 `as.function.ktensor` <- function(x, ...){
     stopifnot(is.ktensor(x))
+    if(is.zero(x)){return(function(E){0})}
     v <- value(x)
     M <- index(x)
     k <- seq_len(ncol(M))
