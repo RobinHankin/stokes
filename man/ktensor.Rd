@@ -42,6 +42,10 @@ In the \pkg{stokes} package, \eqn{k}-tensors are represented as sparse
 arrays (\code{spray} objects), but with a class of \code{c("ktensor",
 "spray")}.  This is a natural and efficient representation for tensors
 that takes advantage of sparsity using \pkg{spray} package features.
+
+Function \code{as.ktensor()} will coerce a \eqn{k}-form to a $k$-tensor
+via \code{kform_to_ktensor()}. 
+
 }
 \value{
   All functions documented here return a \code{ktensor} object

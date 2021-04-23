@@ -211,8 +211,16 @@ c(f1(V),f2(V),f3(V))
 Verifying the third identity $(\omega\wedge\eta)\wedge\theta =
   \omega\wedge(\eta\wedge\theta) =
   \frac{(k+l+m)!}{k!l!m!}\operatorname{Alt}(\omega\otimes\eta\otimes\theta)$
-  needs functionality which is not implemented in version 1.0-7.
+  needs us to coerce from a $k$-form to a $k$-tensor:
 
+```{r asktensor,cache=TRUE}
+omega <- rform(2,2,19)
+eta <- rform(3,2,19)
+theta <- rform(2,2,19)
 
+a1 <- as.ktensor(omega %^% (eta %^% theta))
+a2 <- as.ktensor((omega %^% eta) %^% theta)
+a3 <- Alt(as.ktensor(omega) %X% as.ktensor(eta) %X% as.ktensor(theta))*90
 
-
+c(is.zero(a1-a2),is.zero(a1-a3),is.zero(a2-a3))
+```

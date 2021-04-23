@@ -6,8 +6,13 @@
 }
 
 `as.ktensor` <- function(M,coeffs){
-    if(is.spray(M)){return(ktensor(M))}
-    ktensor(spray(M,coeffs))
+    if(is.kform(M)){
+        return(kform_to_ktensor(M))
+    } else if(is.spray(M)){
+        return(ktensor(M))
+    } else {
+        return(ktensor(spray(M,coeffs)))
+    }
 }
 
 `is.ktensor` <- function(x){inherits(x,"ktensor")}
@@ -398,3 +403,12 @@ setGeneric("lose",function(x){standardGeneric("lose")})
 `zap` <- function(X){UseMethod("zap",X)}
 `zap.kform` <- function(X){kform(spray::zap(X))}
 `zap.ktensor` <- function(X){ktensor(spray::zap(X))}
+
+`kform_to_ktensor` <- function(S){
+    stopifnot(is.kform(S))
+    if(is.zero(S)){
+        return(as.ktensor(index(S),0))
+    } else {
+        return(as.ktensor(include_perms(as.spray(unclass(S)))))
+    }
+}
