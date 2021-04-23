@@ -5,6 +5,7 @@ export("%X%")
 
 import("magrittr")
 import("spray")
+import("mathjaxr")
 
 importFrom(partitions,blockparts)
 

@@ -7,11 +7,10 @@ Suggests:
     knitr,
     Deriv,
     testthat,
-    mathjaxr,
     markdown,
     rmarkdown
 VignetteBuilder: knitr
-Imports: permutations (>= 1.0-4), partitions, magrittr, methods
+Imports: permutations (>= 1.0-4), partitions, magrittr, methods, mathjaxr
 Authors@R: person(
 	   given=c("Robin", "K. S."),
 	   family="Hankin",
