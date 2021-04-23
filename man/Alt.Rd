@@ -37,12 +37,14 @@
     -\mathrm{Alt}(T)\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
   }{omitted; see latex}
 
-  Function \code{Alt()} takes and returns an object of class
-  \code{ktensor}.
-}
+  Function \code{Alt()} is intended to take and return an object of
+  class \code{ktensor}; but if given a \code{kform} object, it just
+  returns its argument unchanged.
+
+} 
 \value{
-  Returns an alternating \eqn{k}-tensor.  To coerce to a \eqn{k}-form,
-  which is a much more efficient representation, 
+  Returns an alternating \eqn{k}-tensor.  To work with \eqn{k}-forms,
+  which are a much more efficient representation of alternating tensors,
   use \code{as.kform()}.
 }
 \author{Robin K. S. Hankin}

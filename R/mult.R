@@ -89,6 +89,7 @@
   ## with a repeated index, as in [1,3,4,1,2] ("1" appears twice).
   ## Then, sort the rows.  Then, sum over all orderings:
 
+  if(is.kform(S)){return(S)}
   out <- kill_trivial_rows(S)
     if(nrow(index(out))==0){  # the zero form
         return(S*0)
