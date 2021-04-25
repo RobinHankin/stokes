@@ -81,7 +81,7 @@
     return(out)  # should be in alternating form
 }
     
-`Alt` <- function(S){ # Returns Alt(S), an alternating multilinear
+`Alt` <- function(S,give_kform=FALSE){ # Returns Alt(S), an alternating multilinear
                       # function (mathematically equivalent to a form,
                       # but including redundancy)
 
@@ -90,6 +90,7 @@
   ## Then, sort the rows.  Then, sum over all orderings:
 
   if(is.kform(S)){return(S)}
+  if(give_kform){return(kform(S)/factorial(arity(S)))}
   out <- kill_trivial_rows(S)
     if(nrow(index(out))==0){  # the zero form
         return(S*0)

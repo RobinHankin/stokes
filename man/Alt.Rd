@@ -4,9 +4,14 @@
 \description{\loadmathjax
   Converts a \eqn{k}-tensor to alternating form
 }
-\usage{Alt(S)}
+\usage{Alt(S,give_kform)}
 \arguments{
   \item{S}{A multilinear form, an object of class \code{ktensor}}
+  \item{give_kform}{Boolean, with default \code{FALSE} meaning to return
+    an alternating \eqn{k}-tensor [that is, an object of class
+    \code{ktensor} that happens to be alternating] and \code{TRUE}
+    meaning to return a \eqn{k}-form [that is, an object of class
+    \code{kform}]} 
 }
 \details{
   Given a \eqn{k}-tensor \eqn{T}, we have
@@ -39,7 +44,7 @@
 
   Function \code{Alt()} is intended to take and return an object of
   class \code{ktensor}; but if given a \code{kform} object, it just
-  returns its argument unchanged.
+  returns its argument unchanged.  
 
 } 
 \value{
@@ -57,4 +62,8 @@ Alt(S)
 
 issmall(Alt(S) - Alt(Alt(S)))  # should be TRUE
 
+a <- rtensor()
+a
+V <- matrix(rnorm(21),ncol=3)
+c(as.function(Alt(a))(V), as.function(Alt(a,give_kform=TRUE))(V)) # should match
 }

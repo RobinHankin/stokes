@@ -43,7 +43,7 @@ Package idiom is straightforward:
 
 
 ```{r}
-S <- as.ktensor(rbind(c(1,7,8)))*6
+S <- as.ktensor(rbind(c(1,7,8)))*6  # the "6" is to stop rounding error
 S
 Alt(S)
 ```
@@ -79,8 +79,8 @@ row of `S` above, that is, `[2 2 3]`.  We have
 T(v_1,v_2,v_3) = (v_1\cdot e_2)(v_1\cdot e_2)(v_1\cdot e_3)x
 \]
 
-(where $x\in\mathbb{R}$ is any real number and the dot is dot
-product), and so
+(where $x\in\mathbb{R}$ is any real number and the dot product), and
+so
 
 \[
 T(v_2,v_1,v_3) = (v_1\cdot e_2)(v_1\cdot e_1)(v_1\cdot e_3)x = T(v_1,v_2,v_3).
@@ -106,8 +106,10 @@ S
 Alt(S)
 ```
 
-We can verify that `Alt()` does indeed return an alternating tensor as
-follows:
+We should verify that `Alt()` does indeed return an alternating tensor
+for complicated tensors (this is trivial algebraically because
+$\operatorname{Alt}(\cdot)$ is linear, but it is always good to
+check):
 
 ```{r}
 S <- rtensor(k=5,n=9)
@@ -241,4 +243,25 @@ a2 <- as.ktensor((omega %^% eta) %^% theta)
 a3 <- Alt(as.ktensor(omega) %X% as.ktensor(eta) %X% as.ktensor(theta))*90
 
 c(is.zero(a1-a2),is.zero(a1-a3),is.zero(a2-a3))
+```
+
+# Argument `give_kform`
+
+Function `Alt()` takes a Boolean argument `give_kform`.  We have been
+using `Alt()` with `give_kform` taking its default value of `FALSE`,
+which means that it returns an object of class `ktensor`.  However, an
+alternating form can be much more efficiently represented as an object
+of class `kform`, and this is returned if `give_kform` is `TRUE`:
+
+```{r}
+(rand_tensor <- rtensor(k=5,n=9)*120)
+S1 <- Alt(rand_tensor)  # 720 terms, too long to print
+(SA1 <- Alt(rand_tensor,give_kform=TRUE))
+```
+
+Verification:
+
+```{r}
+V <- matrix(rnorm(45),ncol=5)
+c(as.function(S1)(V),as.function(SA1)(V)) # should match
 ```
