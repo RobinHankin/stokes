@@ -43,8 +43,8 @@ arrays (\code{spray} objects), but with a class of \code{c("ktensor",
 "spray")}.  This is a natural and efficient representation for tensors
 that takes advantage of sparsity using \pkg{spray} package features.
 
-Function \code{as.ktensor()} will coerce a \eqn{k}-form to a $k$-tensor
-via \code{kform_to_ktensor()}. 
+Function \code{as.ktensor()} will coerce a \eqn{k}-form to a
+\eqn{k}-tensor via \code{kform_to_ktensor()}.
 
 }
 \value{
