@@ -293,6 +293,7 @@
 
 `transform` <- function(K,M)
 {
+    if(is.zero(K)){return(K)}
     Reduce(`+`,sapply(seq_along(value(K)),
                       function(i){
                           do.call("wedge",
