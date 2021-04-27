@@ -18,6 +18,12 @@ test_that("coverage of functionality in mult.R", {
      expect_silent(as.symbolic(as.ktensor(+S)))
      expect_silent(as.symbolic(as.ktensor(-S)))
 
+     expect_silent(as.symbolic(as.ktensor(+S*0)))
+     expect_silent(as.symbolic(as.ktensor(-S*0)))
+
+     expect_silent(as.ktensor(as.ktensor(S)))
+
+
      expect_silent(hodge(as.kform(S)))
      expect_error(hodge(0*volume(5)))
      expect_silent(hodge(volume(5)))
@@ -43,6 +49,9 @@ test_that("coverage of functionality in mult.R", {
 
      expect_silent(zerotensor(5))
      expect_error(zerotensor(-5))
+
+     expect_silent(as.kform(K))
+     expect_silent(as.ktensor(K))
 
 
 })

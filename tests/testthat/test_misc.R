@@ -41,6 +41,11 @@ test_that("Miscellaneous wedge functionality", {
 
         expect_true(is.empty(grad(1:5) %^% grad(1:5)))
         expect_false(is.empty(grad(1:5) %^% grad(1:6)))
+
+
+        expect_true(as.function(0*rtensor(k=3,n=7))(matrix(rnorm(21),ncol=3))==0)
+        expect_true(as.function(as.ktensor(0*rform(k=3,n=7)))(matrix(rnorm(21),ncol=3))==0)
+
 })
 
 

@@ -38,6 +38,11 @@ for(i in 1:10){
   foo(rform(),rform(),rform())
 }
 
+expect_error(rform(  ) %^% rtensor())
+expect_error(rtensor() %^% rform()  )
+expect_error(rtensor() %^% rtensor())
+
+
 })
 
       

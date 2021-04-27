@@ -2,6 +2,7 @@ test_that("ktensor functions are multilinear", {
 
   `foo` <- function(S,E){
     f <- as.function(S)     
+    expect_true(as.function(S*0)(E)==0)
     ## change one column at a time:
     for(i in seq_len(ncol(E))){
       

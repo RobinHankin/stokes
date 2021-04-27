@@ -14,6 +14,9 @@ test_that("Function transform() behaves itself", {
         o <-  rform(terms=3,k=2,n=5,coeffs=rnorm(3))
         M <- matrix(rnorm(25),5,5)
         foo(o,M)
-        
+        foo(o*0,M)
     }
+
+
+
 })
