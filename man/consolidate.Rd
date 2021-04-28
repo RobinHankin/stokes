@@ -31,7 +31,7 @@ kform_to_ktensor(S)
     \item Function \code{include_perms()} replaces each row of a
     \code{spray} object with all its permutations, respecting the sign
     of the permutation
-    \item Function \code{ktensor_to_kform()} will coerce a \eqn{k}-form
+    \item Function \code{ktensor_to_kform()} coerces a \eqn{k}-form
     to a \eqn{k}-tensor
   }
 }
