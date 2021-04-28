@@ -62,23 +62,23 @@
       out <- spray(matrix(0,0,ncol(I)))
     }
 
-    return(out)
-      
+    return(out)     
 }
 
 `include_perms` <- function(S){ # S is a spray object
+    S <- kill_trivial_rows(S) # not strictly necessary (trivial rows get killed below); here for efficiency
     k <- ncol(index(S))
     p <- allperms(k)
 
-    f <- function(v,x){ # v is a vector, one row of an index matrix; x is its coeff
-        spray(matrix(v[p],nrow(p),k),sgn(p)*x)
+    outmat <- matrix(0L,nrow(p)*nterms(S),k)
+    outvec <- seq_len(nrow(outmat))
+    for(i in seq_len(nrow(index(S)))){
+      jj <- seq(from=1+(i-1)*factorial(k), to=i*factorial(k))
+      outmat[jj,] <- matrix(index(S)[i,,drop=TRUE][p],nrow(p),k,byrow=FALSE)
+      outvec[jj ] <- sgn(p)*value(S)[i]
     }
 
-    out <- f(index(S)[1,,drop=TRUE],value(S)[1]) # do the first row first, then...
-    for(i in seq_len(nrow(index(S)))[-1]){  # ...do the other rows
-        out <- out + f(index(S)[i,,drop=TRUE],value(S)[i])
-    }
-    return(out)  # should be in alternating form
+    return(spray(outmat,outvec,addrepeats=TRUE))  # should be  alternating
 }
     
 `Alt` <- function(S,give_kform=FALSE){ # Returns Alt(S), an alternating multilinear

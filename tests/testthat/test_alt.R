@@ -23,4 +23,10 @@ test_that("Function Alt() behaves itself", {
         S <- rtensor(terms,k,n,rnorm(terms))
         foo(S)
     }
+
+    # test that issue  #48 has been resolved:
+    foo(as.ktensor(matrix(c(4,2,4,3,4,2,2,3,3),3,3),1:3))
+
+
+
 })
