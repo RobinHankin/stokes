@@ -1,0 +1,96 @@
+---
+title: "The `inner()` function in the `stokes` package"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("stokes")
+library("emulator")
+set.seed(0)
+```
+
+```{r}
+inner
+```
+
+Function `inner()` returns the inner product corresponding to a
+matrix.
+
+The inner product of two vectors ${\bf x}$ and ${\bf y}$ is usually
+written $\left\langle\mathbf{x},\mathbf{y}\right\rangle$ or
+$\mathbf{x}\cdot\mathbf{y}$ but the most general form would be
+$\mathbf{x}^TM\mathbf{y}$ where $M$ is a matrix.
+
+The inner product of two vectors $\mathbf{x}$ and $\mathbf{y}$ is
+usually written $\left\langle\mathbf{x},\mathbf{y}\right\rangle$ or
+$\mathbf{x}\cdot\mathbf{y}$, but the most general form would be
+$\mathbf{x}^TM\mathbf{y}$ where $M$ is a matrix.  Noting that inner
+products are multilinear, that is $\left\langle\mathbf{x},a\mathbf{y}
++
+b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle
++ b\left\langle\mathbf{x},\mathbf{z}\right\rangle$ and $\left\langle
+a\mathbf{x} +
+b\mathbf{y},\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{z}\right\rangle
++ b\left\langle\mathbf{y},\mathbf{z}\right\rangle$ we see that the
+inner product is indeed a multilinear map, that is, a tensor.
+
+We can start with the simplest inner product, the identity matrix:
+
+```{r}
+inner(diag(7))
+```
+
+Note how the rows of the tensor appear in arbitrary order.  Verify:
+
+```{r}
+x <- rnorm(7)
+y <- rnorm(7)
+V <- cbind(x,y)
+c(as.function(inner(diag(7)))(V),sum(x*y))  # should match
+```
+
+A more stringent test would be to use a general matrix:
+
+```{r}
+M <- matrix(rnorm(49),7,7)
+f <- as.function(inner(M))
+c(f(V),quad.3form(M,x,y)) # should match
+```
+
+(function `emulator::quad.3form()` evaluates matrix products
+efficiently; `quad.form(M,x,y)` returns $x^TMy$).  Of course, we would
+expect `inner()` to be a homomorphism:
+
+
+```{r}
+M1 <- matrix(rnorm(49),7,7)
+M2 <- matrix(rnorm(49),7,7)
+g <- as.function(inner(M1+M2))
+c(g(V),quad.3form(M1+M2,x,y)) # should match
+```
+
+Now, if the matrix is symmetric the corresponding inner product should also be symmetric:
+
+```{r}
+h <- as.function(inner(M1 + t(M1)))
+c(h(V), h(V[,2:1]))  # should match
+```
+
+Also positive-definite matrix should return a positive quadratic form:
+
+```{r}
+M3 <- crossprod(matrix(rnorm(56),8,7))  # 7x7 pos-def matrix
+as.function(inner(M3))(kronecker(rnorm(7),t(c(1,1))))>0  # should be TRUE
+```
+
+## Alternating forms
+
+The inner product on an antisymmetric matrix should be alternating:
+
+```{r}
+jj <- matrix(rpois(49,lambda=3.2),7,7)
+M <- jj-t(jj) # M is antisymmetric
+f <- as.function(inner(M))
+c(f(V),f(V[,2:1])) # differ in sign
+```
