@@ -15,20 +15,18 @@
 
 The inner product of two vectors \mjeqn{\mathbf{x}}{x} and
 \mjeqn{\mathbf{y}}{y} is usually written
-\mjeqn{\left<\mathbf{x},\mathbf{y}\right>}{<x,y>} or
+\mjeqn{\left\langle\mathbf{x},\mathbf{y}\right\rangle}{<x,y>} or
 \mjeqn{\mathbf{x}\cdot\mathbf{y}}{x.y}, but the most general form would
-be \mjeqn{\mathbf{x}^TM\mathbf{y}}{x'My} where \mjeqn{M}{M} is a
-positive-definite matrix.  Noting that inner products are symmetric,
-that is
-\mjeqn{\left<\mathbf{x},\mathbf{y}\right>=\left<\mathbf{y},\mathbf{x}\right>}{<x,y>=<y,x>}
-(we are considering the real case only), and multilinear, that is
-\mjeqn{\left<\mathbf{x},a\mathbf{y}+b\mathbf{z}\right>=a\left<\mathbf{x},\mathbf{y}\right>+b\left<\mathbf{x},\mathbf{z}\right>}{<x,ay+bz>=a<x,y>+b<x,z>},
+be \mjeqn{\mathbf{x}^TM\mathbf{y}}{x'My} where \mjeqn{M}{M} is a matrix.
+Noting that inner products are multilinear, that is
+\mjeqn{\left\langle\mathbf{x},a\mathbf{y}+b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle+b\left\langle\mathbf{x},\mathbf{z}\right\rangle}{<x,ay+bz>=a<x,y>+b<y,z>}
+and \mjeqn{\left\langle
+a\mathbf{x}+b\mathbf{y},\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{z}\right\rangle+b\left\langle\mathbf{x},\mathbf{z}\right\rangle}{<x,ay+bz>=a<x,y>+b<x,z>},
 we see that the inner product is indeed a multilinear map, that is, a
 tensor.
 
-Given a square matrix \code{m} with entries \mjeqn{M_{ij}}{M_ij},
-function \code{inner(m)} returns the \eqn{2}-form that maps
-\mjeqn{\mathbf{x},\mathbf{y}}{x,y} to
+Given a square matrix \mjseqn{M}, function \code{inner(M)} returns the
+\eqn{2}-form that maps \mjeqn{\mathbf{x},\mathbf{y}}{x,y} to
 \mjeqn{\mathbf{x}^TM\mathbf{y}}{x'My}.
 
 }
