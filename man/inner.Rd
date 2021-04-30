@@ -21,7 +21,7 @@ be \mjeqn{\mathbf{x}^TM\mathbf{y}}{x'My} where \mjeqn{M}{M} is a matrix.
 Noting that inner products are multilinear, that is
 \mjeqn{\left\langle\mathbf{x},a\mathbf{y}+b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle+b\left\langle\mathbf{x},\mathbf{z}\right\rangle}{<x,ay+bz>=a<x,y>+b<y,z>}
 and \mjeqn{\left\langle
-a\mathbf{x}+b\mathbf{y},\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{z}\right\rangle+b\left\langle\mathbf{x},\mathbf{z}\right\rangle}{<x,ay+bz>=a<x,y>+b<x,z>},
+a\mathbf{x}+b\mathbf{y},\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{z}\right\rangle+b\left\langle\mathbf{y},\mathbf{z}\right\rangle}{<x,ay+bz>=a<x,y>+b<y,z>},
 we see that the inner product is indeed a multilinear map, that is, a
 tensor.
 
