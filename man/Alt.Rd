@@ -44,7 +44,9 @@
 
   Function \code{Alt()} is intended to take and return an object of
   class \code{ktensor}; but if given a \code{kform} object, it just
-  returns its argument unchanged.  
+  returns its argument unchanged.
+
+  See also the `Alt` vignette which contains more details and examples.
 
 } 
 \value{

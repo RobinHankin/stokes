@@ -1,6 +1,11 @@
 ---
 title: "The `inner()` function in the `stokes` package"
+author: "Robin K. S. Hankin"
 output: html_document
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{inner}
+  %\usepackage[utf8]{inputenc}
 ---
 
 ```{r setup, include=FALSE}
