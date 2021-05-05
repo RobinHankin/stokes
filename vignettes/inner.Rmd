@@ -15,6 +15,9 @@ library("emulator")
 set.seed(0)
 ```
 
+# The `inner()` function in the `stokes` package
+
+
 ```{r}
 inner
 ```
@@ -22,18 +25,11 @@ inner
 Function `inner()` returns the inner product corresponding to a
 matrix.
 
-The inner product of two vectors ${\bf x}$ and ${\bf y}$ is usually
-written $\left\langle\mathbf{x},\mathbf{y}\right\rangle$ or
-$\mathbf{x}\cdot\mathbf{y}$ but the most general form would be
-$\mathbf{x}^TM\mathbf{y}$ where $M$ is a matrix.
-
 The inner product of two vectors $\mathbf{x}$ and $\mathbf{y}$ is
 usually written $\left\langle\mathbf{x},\mathbf{y}\right\rangle$ or
 $\mathbf{x}\cdot\mathbf{y}$, but the most general form would be
 $\mathbf{x}^TM\mathbf{y}$ where $M$ is a matrix.  Noting that inner
-products are multilinear, that is $\left\langle\mathbf{x},a\mathbf{y}
-+
-b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle
+products are multilinear, that is $\left\langle\mathbf{x},a\mathbf{y}+b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle
 + b\left\langle\mathbf{x},\mathbf{z}\right\rangle$ and $\left\langle
 a\mathbf{x} +
 b\mathbf{y},\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{z}\right\rangle

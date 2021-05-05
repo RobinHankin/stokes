@@ -14,6 +14,8 @@ library("stokes")
 set.seed(0)
 ```
 
+# The `Alt()` function in the `stokes` package
+
 ```{r}
 Alt
 ```
