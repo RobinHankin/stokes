@@ -99,14 +99,6 @@
     ktensor(include_perms(consolidate(out))/factorial(ncol(index(out))))
 }
 
-`spraycross` <- function(U1,U2){
-    M1 <- index(U1)
-    M2 <- index(U2)
-    jj <- as.matrix(expand.grid(seq_len(nrow(M1)),seq_len(nrow(M2))))
-    f <- function(i){c(M1[jj[i,1],],M2[jj[i,2],])}
-    spray(t(sapply(seq_len(nrow(jj)),f)),c(outer(value(U1),value(U2))))
-}
-
 `cross` <- function(U, ...) {
    if(nargs()<3){
      cross2(U, ...)
@@ -119,22 +111,8 @@
     if(is.empty(U1) | is.empty(U2)){
       return(as.ktensor(cbind(index(U1)[0,],index(U2)[0,])))
     }
-
-    M1 <- index(U1)
-    M2 <- index(U2)
-    jj <- as.matrix(expand.grid(seq_len(nrow(M1)),seq_len(nrow(M2))))
-    f <- function(i){c(M1[jj[i,1],],M2[jj[i,2],])}
-    ktensor(spray(t(sapply(seq_len(nrow(jj)),f)),c(outer(value(U1),value(U2)))))
-}
-
-`cross2new` <- function(U1,U2){  # returns U1\otimes U2
-    if(is.empty(U1) | is.empty(U2)){
-      return(as.ktensor(cbind(index(U1)[0,],index(U2)[0,])))
-    }
     return(ktensor(spraycross(U1,U2)))
 }
-
-
 
 `%X%` <- function(x,y){cross(x,y)}
 
@@ -147,31 +125,6 @@
 }
 
 `wedge2` <- function(K1,K2){
-  if(missing(K2)){return(K1)}
-  if(is.ktensor(K1) | is.ktensor(K2)){stop("wedge product only defined for kforms")}
-  if(`|`(!is.kform(K1),!is.kform(K2))){return(K1*K2)}
-
-  if(is.empty(K1) | is.empty(K2)){
-    return(zeroform(arity(K1)+arity(K2)))
-    }
-
-  ## we need to go through K1 and K2 line by line (wedge product is
-  ## left- and right- distributive).
-  
-  ind1 <- index(K1)
-  var1 <- value(K1)
-  ind2 <- index(K2)
-  var2 <- value(K2)
-  
-  n1 <- length(var1)
-  n2 <- length(var2)
-
-  f <- function(i){c(ind1[i[1],,drop=TRUE],ind2[i[2],,drop=TRUE])}
-  M <- t(apply(expand.grid(seq_len(n1),seq_len(n2)),1,f))
-  as.kform(M, c(outer(var1,var2)))
-}
-
-`wedge2new` <- function(K1,K2){
   if(missing(K2)){return(K1)}
   if(is.ktensor(K1) | is.ktensor(K2)){stop("wedge product only defined for kforms")}
   if(`|`(!is.kform(K1),!is.kform(K2))){return(K1*K2)}
