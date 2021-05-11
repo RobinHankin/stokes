@@ -99,7 +99,7 @@
     ktensor(include_perms(consolidate(out))/factorial(ncol(index(out))))
 }
 
-`spraycross2` <- function(U1,U2){
+`spraycross` <- function(U1,U2){
     M1 <- index(U1)
     M2 <- index(U2)
     jj <- as.matrix(expand.grid(seq_len(nrow(M1)),seq_len(nrow(M2))))
