@@ -88,7 +88,7 @@ Both are equivalent to
 ```
 
 We can see that `y` is a more compact and efficient representation of
-`ty`: both are alternating tensors but `y` has alternatigness built in
+`ty`: both are alternating tensors but `y` has alternatingness built in
 to its evaluation, while `ty` is alternating by virtue of including
 all permutations of its arguments, with the sign of the permutation.
 
@@ -97,25 +97,24 @@ We can evaluate Spivak's formula (but without the combinatorical term)
 for $x\wedge y$ by coercing to ktensors and using `cross()`:
 
 ```{r}
-cross(as.ktensor(x),as.ktensor(y))
+(z <- cross(as.ktensor(x),as.ktensor(y)))
 ```
 
-Above, each coefficient is equal to 35 ($=5\times 7$), and we have
-$2!3!=12$ rows.  We will take line 7 as representative because it has
-all the entries in increasing order.
+Above, each coefficient is equal to $\pm 35$ (the sign coming from the
+sign of the permutation), and we have $2!3!=12$ rows.  We can now
+calculate $\operatorname{Alt}(z)$, which would have $5!=120$ rows, one
+per permutation of $[5]$, each with coefficient $\pm\frac{12\times
+35}{5!}=\pm 3.5$.
+
+We define $x\wedge y$ to be $\frac{5!}{3!2!}\operatorname{Alt}(z)$, so
+each coefficient would be $\pm\frac{5!}{3!2!}\cdot\frac{12\times
+35}{5!}=35$.  To represent $x\wedge y$ as an alternating form (that
+is, an object of class `kform`), we need a `kform` object with
+_single_ index entry `1 2 3 4 7`.  This would need coefficient 35, and
+indeed this is what we see:
+
 
 ```{r}
-(z <- ktensor(spray(cbind(1,2,3,4,7),35)))
+wedge(x,y)
 ```
-
-We see that $\operatorname{Alt}(z)$ would have $5!=120$ lines, each
-coefficient being $35/120$.  So $\operatorname{Alt}(x\otimes y)$ would
-also have $5!=120$ lines, each with coefficient $35/120\times
-12$=3.5$.
-
-To represent $x\wedge y$ as an alternating form (that is, an object of
-class `kform`), we need a `kform` object with _single_ index entry `1
-2 3 4 7`.  However,
-
-
 
