@@ -1,0 +1,121 @@
+---
+title: "`wedge()` and related functions in the `stokes` package"
+author: "Robin K. S. Hankin"
+output: html_document
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{wedge}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("stokes")
+library("emulator")
+set.seed(0)
+```
+
+```{r}
+wedge
+wedge2
+```
+
+Function `wedge()` returns the wedge product of any number of kforms,
+function `wedge2()` returns the wedge product of two kforms.  Spivak
+gives us:
+
+\[
+\omega\wedge\eta=\frac{\left(k+l\right)!}{k!l!}\operatorname{Alt}(\omega\otimes\eta),\qquad\omega\in\Lambda^k(V),\eta\in\Lambda^l(V)
+\]
+
+Function `wedge2()` implements this, although the idiom is somewhat
+opaque, especially the combinatorial coefficient.
+
+
+## Digression: function `spraycross()`
+
+Function `spraycross()` is part of the `spray` package and gives a
+cross product of sparse arrays:
+
+```{r}
+(a <- spray(matrix(1:4,2,2),c(2,5)))
+(b <- spray(matrix(c(10,11,12,13),2,2),c(7,11)))
+spraycross(a,b)
+spraycross(b,a)
+```
+
+Observe that `spraycross()` (and by association `wedge()`)is
+associative and distributive but not commutative.
+
+### Cut to the chase: `wedge2()`
+
+Function `wedge2()` takes two kforms and we will start with a very
+simple example:
+
+```{r}
+(x <- as.kform(cbind(1,2),5))
+(y <- as.kform(cbind(3,4,7),7))
+wedge2(x,y)
+```
+
+It looks like the combinatorial term has not been included but it has.
+We will express `x` and `y` as tensors and show how the combinatorial
+term arises.
+
+```{r}
+(ty <- as.ktensor(y))   # "ty" = tensor 'y'
+```
+
+As functions, `y` and `ty` are identical:
+
+```{r}
+(M <- matrix(round(rnorm(21),2),7,3))
+as.function(y)(M)
+as.function(ty)(M)
+```
+
+Both are equivalent to
+
+```{r}
+7*(
+ +M[3,1]*M[4,2]*M[7,3] 
+ -M[3,1]*M[4,3]*M[7,2] 
+ -M[3,2]*M[4,1]*M[7,3] 
+ +M[3,2]*M[4,3]*M[7,1] 
+ +M[3,3]*M[4,1]*M[7,2]
+ -M[3,3]*M[4,2]*M[7,1]
+ )
+```
+
+We can see that `y` is a more compact and efficient representation of
+`ty`: both are alternating tensors but `y` has alternatigness built in
+to its evaluation, while `ty` is alternating by virtue of including
+all permutations of its arguments, with the sign of the permutation.
+
+
+We can evaluate Spivak's formula (but without the combinatorical term)
+for $x\wedge y$ by coercing to ktensors and using `cross()`:
+
+```{r}
+cross(as.ktensor(x),as.ktensor(y))
+```
+
+Above, each coefficient is equal to 35 ($=5\times 7$), and we have
+$2!3!=12$ rows.  We will take line 7 as representative because it has
+all the entries in increasing order.
+
+```{r}
+(z <- ktensor(spray(cbind(1,2,3,4,7),35)))
+```
+
+We see that $\operatorname{Alt}(z)$ would have $5!=120$ lines, each
+coefficient being $35/120$.  So $\operatorname{Alt}(x\otimes y)$ would
+also have $5!=120$ lines, each with coefficient $35/120\times
+12$=3.5$.
+
+To represent $x\wedge y$ as an alternating form (that is, an object of
+class `kform`), we need a `kform` object with _single_ index entry `1
+2 3 4 7`.  However,
+
+
+
