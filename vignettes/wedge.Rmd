@@ -59,17 +59,18 @@ wedge2(x,y)
 ```
 
 It looks like the combinatorial term has not been included but it has.
-We will express `x` and `y` as tensors and show how the combinatorial
-term arises.
+We will express `x` and `y` as tensors (objects of class `ktensor`)
+and show how the combinatorial term arises.
 
 ```{r}
+ tx <- as.ktensor(x)    # "tx" = tensor 'x'
 (ty <- as.ktensor(y))   # "ty" = tensor 'y'
 ```
 
 As functions, `y` and `ty` are identical:
 
 ```{r}
-(M <- matrix(round(rnorm(21),2),7,3))
+M <- matrix(round(rnorm(21),2),7,3) # member of (R^7)^3
 as.function(y)(M)
 as.function(ty)(M)
 ```
@@ -128,3 +129,4 @@ wedge(x,y)
 
 So to conclude, the combinatorial term is present in the R idiom, it
 is just difficult to see at first glance.
+
