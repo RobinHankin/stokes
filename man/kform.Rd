@@ -64,6 +64,9 @@ is.kform(x)
     T\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
   }{omitted; see latex}
   
+  In the package, an object of class \code{kform} is an efficient
+  representation of an alternating tensor.
+  
   Function \code{kform_basis()} is a low-level helper function that
   returns a matrix whose rows constitute a basis for the vector space
   \mjeqn{\Lambda^k(R^n)}{L^k(R^n)} of \eqn{k}-forms:
@@ -82,7 +85,8 @@ is.kform(x)
 }
 \value{
   All functions documented here return a \code{kform} object except
-  \code{as.function.kform()}, which returns a function.
+  \code{as.function.kform()}, which returns a function, and
+  \code{is.kform()}, which returns a Boolean.
 }
 \references{Hubbard and Hubbard; Spivak}
 \author{Robin K. S. Hankin}
