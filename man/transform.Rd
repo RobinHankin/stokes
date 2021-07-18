@@ -81,7 +81,7 @@ transform(as.kform(1:2),M)
 o <- rform(terms=2,n=5)
 
 o2 <- transform(transform(o,M),solve(M))
-max(abs(value(o-o2))) # zero to numerical precision
+max(abs(coeffs(o-o2))) # zero to numerical precision
 
 # Following should be zero:
 transform(as.kform(1),M)-as.kform(matrix(1:5),c(crossprod(M,c(1,rep(0,4)))))
@@ -94,6 +94,6 @@ issmall(transform(o,crossprod(matrix(rnorm(10),2,5))))
 p <- rform()
 p
 stretch(p,seq_len(7))
-stretch(p,c(1,0,1,1,1))   # kills dimension 2
+stretch(p,c(1,0,0,1,1,1,1))   # kills dimensions 2 and 3
 
 }

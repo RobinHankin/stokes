@@ -179,7 +179,7 @@ write
 \begin{eqnarray}
 \omega\wedge\eta &=& (5\phi_{128}+6\phi_{137})\wedge (2\phi_{235}+3\phi_{356})\\
 &=& 10\phi_{128}\wedge\phi_{235} + 15\phi_{128}\wedge\phi_{356} +
-     12\phi_{137}\wedge\phi_{235} + 18\phi_{137}\wedge\phi_{356}\\
+    12\phi_{137}\wedge\phi_{235} + 18\phi_{137}\wedge\phi_{356}\\
 &=&
 10\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_2\wedge\phi_3\wedge\phi_5 + 
 15\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_3\wedge\phi_5\wedge\phi_6\\&{}&\qquad + 
@@ -200,7 +200,10 @@ wedge(omega,eta)
 
 See how function `wedge()` does the legwork.
 
-# Neat examples
+```{r}
+
+```
+
 
 Consider the following:
 

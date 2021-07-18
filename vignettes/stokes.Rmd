@@ -683,7 +683,7 @@ have the capability of removing small entries (this will be available
 in 1.0-9); but in the meantime we can do this:
 
 ```{r}
-as.kform(index(o),zapsmall(value(o)))
+as.kform(index(o),zapsmall(coeffs(o)))
 ```
 
 returning us to the original value of `o`.

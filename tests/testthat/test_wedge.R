@@ -14,7 +14,7 @@ test_that("wedge product is associative", {
   for(i in 2:length(jj)){
     discrepancy <- jj[[1]] - jj[[i]]
     if(!is.zero(discrepancy)){
-      error <- value(discrepancy)
+      error <- coeffs(discrepancy)
       expect_true(max(abs(error))<1e-8, info=list(K1,K2,K3,discrepancy))
     } else {
       expect_true(TRUE) 

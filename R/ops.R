@@ -9,7 +9,7 @@
         if (.Generic == "+") {
             return(as.kform(e1))
         } else if (.Generic == "-") {
-            return(as.kform(spray(index(e1),-value(e1))))
+            return(as.kform(spray(index(e1),-coeffs(e1))))
         } else {
             stop("Unary operator '", .Generic, "' is not implemented for kforms")
         }
@@ -18,7 +18,7 @@
         stop("operator '", .Generic, "' is not implemented for kforms")
     }
 
-    f <- function(o){spray(index(o),value(o))}
+    f <- function(o){spray(index(o),coeffs(o))}
     if (lclass && rclass) {
         if (.Generic == "+"){
             return(as.kform(f(e1) + f(e2)))
@@ -66,7 +66,7 @@
         if (.Generic == "+") {
             return(e1)
         } else if (.Generic == "-") {
-            return(as.ktensor(spray(index(e1),-value(e1))))
+            return(as.ktensor(spray(index(e1),-coeffs(e1))))
         } else {
             stop("Unary operator '", .Generic, "' is not implemented for ktensors")
         }
@@ -75,7 +75,7 @@
         stop("operator '", .Generic, "' is not implemented for ktensors")
     }
 
-    f <- function(o){spray(index(o),value(o))}
+    f <- function(o){spray(index(o),coeffs(o))}
     if (lclass && rclass) {
         if (.Generic == "+"){
             return(as.ktensor(f(e1) + f(e2)))

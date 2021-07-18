@@ -5,7 +5,7 @@ test_that("cross product is distributive and associative", {
     foo3 <- function(T1,T2,T3){
         bar <- function(sbi){ # sbi = Should Be Identical
           for(i in 2:length(sbi)){
-            error <- value(sbi[[1]] - sbi[[i]])
+            error <- coeffs(sbi[[1]] - sbi[[i]])
             if(length(error)>0){
               expect_true(max(abs(error)) < 1e-8,
                           info=list(T1,T2,T3,error))

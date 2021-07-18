@@ -8,7 +8,7 @@ test_that("Function Alt() behaves itself", {
         ## roundoff means discrepancy might not be the zero tensor.
 
         if(!is.zero(discrepancy)){
-            error <- value(discrepancy)
+            error <- coeffs(discrepancy)
             expect_true(max(abs(error))<1e-8,info=dput(S))
         } else {
             expect_true(TRUE) 
