@@ -9,7 +9,7 @@ test_that("Function hodge() behaves itself", {
         n <- max(index(x))
         discrepancy <- x %>% hodge(n) %>% hodge(n) %>% hodge(n) %>% hodge(n) - x
         expect_true(issmall(discrepancy),info=x)
-        expect_true(coeffs(x %^% hodge(x,n)) >= 0)
+        expect_true(all(coeffs(x %^% hodge(x,n)) >= 0))
     } # foo1() closes
 
 
