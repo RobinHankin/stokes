@@ -2,6 +2,9 @@ The stokes package: exterior calculus in R
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# clifford <img src="man/figures/stokes.png" width = "150" align="right" />
+
 <!-- badges: start -->
 
 [![Build
@@ -70,10 +73,10 @@ KT <- as.ktensor(cbind(1:4,3:5),1:4)
 KT
 #> A linear map from V^2 to R with V=R^5:
 #>          val
-#>  4 3  =    4
-#>  3 5  =    3
-#>  2 4  =    2
 #>  1 3  =    1
+#>  2 4  =    2
+#>  3 5  =    3
+#>  4 3  =    4
 ```
 
 We can coerce `KT` to a function and then evaluate it:
@@ -92,22 +95,22 @@ Cross products are implemented:
 KT %X% KT
 #> A linear map from V^4 to R with V=R^5:
 #>              val
-#>  1 2 1 2  =    1
-#>  2 3 1 2  =    2
 #>  3 4 3 4  =    9
-#>  2 3 4 5  =    8
-#>  1 2 2 3  =    2
-#>  1 2 4 5  =    4
-#>  4 5 4 5  =   16
-#>  2 3 3 4  =    6
-#>  4 5 3 4  =   12
-#>  1 2 3 4  =    3
-#>  3 4 4 5  =   12
-#>  3 4 2 3  =    6
-#>  4 5 2 3  =    8
-#>  3 4 1 2  =    3
+#>  2 3 1 2  =    2
 #>  2 3 2 3  =    4
+#>  3 4 1 2  =    3
 #>  4 5 1 2  =    4
+#>  1 2 1 2  =    1
+#>  1 2 2 3  =    2
+#>  2 3 3 4  =    6
+#>  3 4 2 3  =    6
+#>  4 5 4 5  =   16
+#>  4 5 2 3  =    8
+#>  1 2 3 4  =    3
+#>  4 5 3 4  =   12
+#>  1 2 4 5  =    4
+#>  2 3 4 5  =    8
+#>  3 4 4 5  =   12
 ```
 
 ## Alternating forms
@@ -123,14 +126,14 @@ form using the `Alt()` function:
 Alt(KT)
 #> A linear map from V^2 to R with V=R^5:
 #>           val
-#>  5 4  =  -2.0
-#>  4 5  =   2.0
-#>  3 4  =   1.5
+#>  1 2  =   0.5
 #>  2 1  =  -0.5
-#>  4 3  =  -1.5
+#>  3 4  =   1.5
 #>  2 3  =   1.0
 #>  3 2  =  -1.0
-#>  1 2  =   0.5
+#>  5 4  =  -2.0
+#>  4 3  =  -1.5
+#>  4 5  =   2.0
 ```
 
 However, the package provides a bespoke and efficient representation for
@@ -148,8 +151,8 @@ KF <- as.kform(M,c(1,5))
 KF
 #> An alternating linear map from V^3 to R with V=R^4:
 #>            val
-#>  1 2 4  =    5
 #>  2 3 4  =    1
+#>  1 2 4  =    5
 ```
 
 We may coerce `KF` to functional form:
@@ -172,26 +175,26 @@ KF2 <- kform_general(6:9,2,1:6)
 KF2
 #> An alternating linear map from V^2 to R with V=R^9:
 #>          val
-#>  8 9  =    6
-#>  7 9  =    5
-#>  6 9  =    4
-#>  7 8  =    3
-#>  6 8  =    2
 #>  6 7  =    1
+#>  6 8  =    2
+#>  7 9  =    5
+#>  7 8  =    3
+#>  6 9  =    4
+#>  8 9  =    6
 KF %^% KF2
 #> An alternating linear map from V^5 to R with V=R^9:
 #>                val
-#>  1 2 4 6 7  =    5
-#>  1 2 4 6 8  =   10
-#>  2 3 4 6 8  =    2
-#>  2 3 4 7 8  =    3
-#>  2 3 4 6 9  =    4
-#>  1 2 4 6 9  =   20
 #>  2 3 4 6 7  =    1
+#>  1 2 4 6 8  =   10
+#>  1 2 4 6 9  =   20
 #>  2 3 4 7 9  =    5
-#>  1 2 4 7 8  =   15
-#>  2 3 4 8 9  =    6
 #>  1 2 4 7 9  =   25
+#>  2 3 4 6 8  =    2
+#>  1 2 4 6 7  =    5
+#>  2 3 4 8 9  =    6
+#>  2 3 4 6 9  =    4
+#>  2 3 4 7 8  =    3
+#>  1 2 4 7 8  =   15
 #>  1 2 4 8 9  =   30
 ```
 
@@ -215,12 +218,12 @@ such as the gradient of a scalar function:
 grad(1:6)
 #> An alternating linear map from V^1 to R with V=R^6:
 #>        val
-#>  6  =    6
-#>  5  =    5
-#>  4  =    4
-#>  3  =    3
-#>  2  =    2
 #>  1  =    1
+#>  2  =    2
+#>  3  =    3
+#>  4  =    4
+#>  5  =    5
+#>  6  =    6
 ```
 
 The package takes the leg-work out of the exterior calculus:
@@ -229,14 +232,14 @@ The package takes the leg-work out of the exterior calculus:
 grad(1:4) %^% grad(1:6)
 #> An alternating linear map from V^2 to R with V=R^6:
 #>          val
-#>  4 5  =   20
-#>  1 5  =    5
 #>  2 5  =   10
 #>  3 5  =   15
-#>  2 6  =   12
-#>  4 6  =   24
 #>  3 6  =   18
+#>  1 5  =    5
+#>  2 6  =   12
+#>  4 5  =   20
 #>  1 6  =    6
+#>  4 6  =   24
 ```
 
 # References
