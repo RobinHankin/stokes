@@ -54,16 +54,17 @@ contract(as.kform(1),3)   # 0-form
 
 
 ## Now some verification:
-o <- kform(spray(t(replicate(2, sample(9,5))), runif(2)))
-V <- matrix(rnorm(45),ncol=5)
+o <- kform(spray(t(replicate(2, sample(9,4))), runif(2)))
+V <- matrix(rnorm(36),ncol=4)
 jj <- c(
    as.function(o)(V),
    as.function(contract(o,V[,1,drop=TRUE]))(V[,-1]), # scalar
    as.function(contract(o,V[,1:2]))(V[,-(1:2),drop=FALSE]),
    as.function(contract(o,V[,1:3]))(V[,-(1:3),drop=FALSE]),
-   as.function(contract(o,V[,1:4]))(V[,-(1:4),drop=FALSE]),
-   as.function(contract(o,V[,1:5],lose=FALSE))(V[,-(1:5),drop=FALSE])
+   as.function(contract(o,V[,1:4],lose=FALSE))(V[,-(1:4),drop=FALSE])
 )
 
+print(jj)
 max(jj) - min(jj) # zero to numerical precision
+
 }
