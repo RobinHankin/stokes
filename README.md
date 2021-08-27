@@ -3,12 +3,12 @@ The stokes package: exterior calculus in R
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# clifford <img src="man/figures/stokes.png" width = "150" align="right" />
+# <img src="man/figures/stokes.png" width = "150" align="right" />
 
 <!-- badges: start -->
 
 [![Build
-Status](https://travis-ci.org/RobinHankin/stokes.svg?branch=master)](https://travis-ci.org/RobinHankin/stokes)
+Status](https://travis-ci.com/RobinHankin/stokes.svg?branch=master)](https://travis-ci.com/RobinHankin/stokes)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/stokes)](https://cran.r-project.org/package=stokes)
 [![Codecov test
 coverage](https://codecov.io/gh/RobinHankin/stokes/branch/master/graph/badge.svg)](https://codecov.io/gh/RobinHankin/stokes/branch/master)
