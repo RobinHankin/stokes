@@ -34,8 +34,10 @@ opaque, especially the combinatorial coefficient.
 
 ## Digression: function `spraycross()`
 
-Function `spraycross()` is part of the `spray` package and gives a
-cross product of sparse arrays:
+Function `wedge()` is essentially a convenience wrapper for
+`spraycross()`.  Function `spraycross()` it is part of the `spray`
+package and gives a cross product of sparse arrays, interpreted as
+multivariate polynomials:
 
 ```{r}
 (a <- spray(matrix(1:4,2,2),c(2,5)))
@@ -194,18 +196,8 @@ $\omega\wedge\omega=0$ for _any_ alternating form).  Package idiom
 would be:
 
 ```{r}
-eta <-as.kform(rbind(c(2,3,5),c(3,5,6)),2:3)
+eta <- as.kform(rbind(c(2,3,5),c(3,5,6)),2:3)
 wedge(omega,eta)
 ```
 
 See how function `wedge()` does the legwork.
-
-```{r}
-
-```
-
-
-Consider the following:
-
-```{r}
-```
