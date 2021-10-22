@@ -46,7 +46,9 @@
   class \code{ktensor}; but if given a \code{kform} object, it just
   returns its argument unchanged.
 
-  See also the `Alt` vignette which contains more details and examples.
+
+  A short vignette is provided with the package: type
+  \code{vignette("Alt")} at the commandline.
 
 } 
 \value{

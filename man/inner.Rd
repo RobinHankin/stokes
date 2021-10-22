@@ -29,8 +29,8 @@ Given a square matrix \mjseqn{M}, function \code{inner(M)} returns the
 \eqn{2}-form that maps \mjeqn{\mathbf{x},\mathbf{y}}{x,y} to
 \mjeqn{\mathbf{x}^TM\mathbf{y}}{x'My}.
 
-See also the \code{inner} vignette which contains more details and
-examples.
+A short vignette is provided with the package: type
+\code{vignette("inner")} at the commandline.
 
 }
 \author{Robin K. S. Hankin}

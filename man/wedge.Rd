@@ -23,6 +23,10 @@ Wedge product of \eqn{k}-forms.
   In general use, use \code{wedge()} or \code{\%^\%}.  Function
   \code{wedge()} uses low-level helper function \code{wedge2()}, which
   takes only two arguments.
+
+  A short vignette is provided with the package: type
+  \code{vignette("wedge")} at the commandline.
+
 }
 \examples{
 

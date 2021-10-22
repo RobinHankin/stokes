@@ -15,8 +15,9 @@ library("emulator")
 set.seed(0)
 ```
 
-# The `inner()` function in the `stokes` package
-
+<p style="text-align: right;">
+![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+</p>
 
 ```{r}
 inner

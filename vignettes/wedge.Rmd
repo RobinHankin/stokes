@@ -15,6 +15,10 @@ library("emulator")
 set.seed(0)
 ```
 
+<p style="text-align: right;">
+![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+</p>
+
 ```{r}
 wedge
 wedge2
@@ -29,7 +33,7 @@ gives us:
 \]
 
 Function `wedge2()` implements this, although the idiom is somewhat
-opaque, especially the combinatorial coefficient.
+opaque, especially the combinatorial coefficient $(k+l)!/(k!l!)$.
 
 
 ## Digression: function `spraycross()`

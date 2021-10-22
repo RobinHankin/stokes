@@ -8,6 +8,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+<p style="text-align: right;">
+![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+</p>
 
 # The exterior calculus
 

@@ -14,7 +14,9 @@ library("stokes")
 set.seed(0)
 ```
 
-# The `Alt()` function in the `stokes` package
+<p style="text-align: right;">
+![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+</p>
 
 ```{r}
 Alt
