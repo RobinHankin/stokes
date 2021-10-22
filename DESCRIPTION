@@ -11,7 +11,7 @@ Suggests:
     rmarkdown,
     emulator
 VignetteBuilder: knitr
-Imports: permutations (>= 1.0-4), partitions, magrittr, methods, mathjaxr, disordR (>= 0.0-6)
+Imports: permutations (>= 1.0-4), partitions, magrittr, methods, mathjaxr, disordR (>= 0.0-8)
 Authors@R: person(
 	   given=c("Robin", "K. S."),
 	   family="Hankin",
