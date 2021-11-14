@@ -113,4 +113,15 @@
         stop("this cannot happen")
     }
 }
-    
+
+"coeffs<-.kform" <- function(S,value){
+    class(S) <- "spray"
+    coeffs(S) <- value
+    kform(S)
+}
+
+"coeffs<-.ktensor" <- function(S,value){
+    class(S) <- "spray"
+    coeffs(S) <- value
+    ktensor(S)
+}
