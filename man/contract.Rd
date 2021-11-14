@@ -28,7 +28,7 @@ and \mjeqn{\mathbf{v}}{v} is a \mjseqn{k-1}-form with
   \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
   \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
   }{
-ommitted; see PDF}
+omitted; see PDF}
 
 if \mjseqn{k>1}; we specify
 \mjeqn{\phi_\mathbf{v}=\phi(\mathbf{v})}{phi_v=phi(v)} if \mjseqn{k=1}.

@@ -16,7 +16,7 @@ discard(K, no)
 }
 \details{
   Function \code{keep(omega,yes)} keeps the terms specified and
-  \code{discard(omega,no)} discards the terms specifed.  It is not clear
+  \code{discard(omega,no)} discards the terms specified.  It is not clear
   to me what these functions mean from a mathematical perspective.
 }
 \value{The functions documented here all return a \code{kform} object.}

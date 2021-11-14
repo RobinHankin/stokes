@@ -37,7 +37,7 @@ is.kform(x)
   \pkg{stokes} package, \eqn{k}-forms are represented as sparse arrays
   (\code{spray} objects), but with a class of \code{c("kform",
   "spray")}.  The constructor function \code{kform()} takes a
-  \code{spray} object andn returns a \code{kform} object: it ensures
+  \code{spray} object and returns a \code{kform} object: it ensures
   that rows of the index matrix are strictly nonnegative integers, have
   no repeated entries, and are strictly increasing.  Function
   \code{as.kform()} is more user-friendly.
