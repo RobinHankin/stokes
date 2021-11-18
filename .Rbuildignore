@@ -2,4 +2,7 @@
 ^\.Rproj\.user$
 ^README\.Rmd
 ^\.travis\.yml$
-inst/Alt_cache
+^inst/stokes_stickermaker.R$
+^inst/stokes_theorem.pdf$
+^inst/stokes_theorem.png$
+^inst/stokes_theorem.tex$
