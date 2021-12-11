@@ -31,5 +31,3 @@ S3method("zap",ktensor)
 S3method("print",kform)
 S3method("print",ktensor)
 
-S3method("coeffs<-",kform)
-S3method("coeffs<-",ktensor)
