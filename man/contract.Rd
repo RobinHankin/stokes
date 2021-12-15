@@ -21,7 +21,7 @@ contract_elementary(o,v)
 }
 \details{  
   Given a \eqn{k}-form \mjeqn{\phi}{phi} and a vector \mjeqn{\mathbf{v}}{v},
-the \dfn{contraction} \eqn{\phi_\mathbf{v}}{phi_v} of \mjeqn{\phi}{phi}
+the \dfn{contraction} \mjeqn{\phi_\mathbf{v}}{phi_v} of \mjeqn{\phi}{phi}
 and \mjeqn{\mathbf{v}}{v} is a \mjseqn{k-1}-form with
 
 \mjdeqn{
@@ -42,8 +42,7 @@ its contraction with \eqn{\mathbf{v}}{v}.
 \references{
 
 Steven H. Weintraub 2014. \dQuote{Differential forms: theory and
-practice}, Elsevier (contractions defined in Definition 2.2.23 in
-chapter 2, page 77).
+practice}, Elsevier (Definition 2.2.23, chapter 2, page 77).
 
 }
 \author{Robin K. S. Hankin}
@@ -53,18 +52,18 @@ contract(as.kform(1:5),1:8)
 contract(as.kform(1),3)   # 0-form
 
 
-## Now some verification:
-o <- kform(spray(t(replicate(2, sample(9,4))), runif(2)))
-V <- matrix(rnorm(36),ncol=4)
-jj <- c(
-   as.function(o)(V),
-   as.function(contract(o,V[,1,drop=TRUE]))(V[,-1]), # scalar
-   as.function(contract(o,V[,1:2]))(V[,-(1:2),drop=FALSE]),
-   as.function(contract(o,V[,1:3]))(V[,-(1:3),drop=FALSE]),
-   as.function(contract(o,V[,1:4],lose=FALSE))(V[,-(1:4),drop=FALSE])
-)
+## Now some verification [takes ~10s to run]:
+#o <- kform(spray(t(replicate(2, sample(9,4))), runif(2)))
+#V <- matrix(rnorm(36),ncol=4)
+#jj <- c(
+#   as.function(o)(V),
+#   as.function(contract(o,V[,1,drop=TRUE]))(V[,-1]), # scalar
+#   as.function(contract(o,V[,1:2]))(V[,-(1:2),drop=FALSE]),
+#   as.function(contract(o,V[,1:3]))(V[,-(1:3),drop=FALSE]),
+#   as.function(contract(o,V[,1:4],lose=FALSE))(V[,-(1:4),drop=FALSE])
+#)
 
-print(jj)
-max(jj) - min(jj) # zero to numerical precision
+#print(jj)
+#max(jj) - min(jj) # zero to numerical precision
 
 }
