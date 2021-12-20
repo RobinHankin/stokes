@@ -673,8 +673,7 @@ according to the matrix inverse; the functionality works nicely with
 magrittr pipes:
 
 ```{r}
-library("magrittr")
-(o %<>% transform(M) %>% transform(solve(M)))
+zap(o |> transform(M) |> transform(solve(M)))
 ```
 
 See how the result is equal to the original $k$-form $2dy_2\wedge

@@ -6,7 +6,7 @@ test_that("Function transform() behaves itself", {
 
     foo <- function(x,M){  # checks that transform(transform(x,M),solve(M)) == x
         xt <- transform(transform(x,M),solve(M))
-        discrepancy <- x %>% transform(M) %>% transform(solve(M)) - x
+        discrepancy <- x |> transform(M) |> transform(solve(M)) - x
         expect_true(issmall(discrepancy),info=list(x,M))
     } # foo() closes
 
