@@ -37,7 +37,7 @@ rtensor() \%X\% rtensor()
 
 dx <- as.kform(1)
 dy <- as.kform(2)
-rform() \%^\% dx
-rform() \%^\% dx \%^\% dy
+rform() ^ dx
+rform() ^ dx ^ dy
 
 }

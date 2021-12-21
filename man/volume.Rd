@@ -47,7 +47,7 @@ volume element.
 \code{\link{zeroform}},\code{\link{as.1form}}}
 \examples{
 
-as.kform(1) \%^\% as.kform(2) \%^\% as.kform(3)  == volume(3)  # should be TRUE
+as.kform(1) ^ as.kform(2) ^ as.kform(3)  == volume(3)  # should be TRUE
 
 o <- volume(5)
 M <- matrix(runif(25),5,5)

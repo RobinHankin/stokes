@@ -7,9 +7,9 @@ test_that("wedge product is associative", {
       wedge(K1,K2,K3)         ,
       wedge(wedge(K1,K2),K3)  ,
       wedge(K1,wedge(K2,K3))  ,
-      K1 %^% K2 %^% K3        ,
-      K1 %^% (K2 %^% K3)      ,
-      (K1 %^% K2) %^% K3
+      K1 ^ K2 ^ K3        ,
+      K1 ^ (K2 ^ K3)      ,
+      (K1 ^ K2) ^ K3
   )
   for(i in 2:length(jj)){
     discrepancy <- jj[[1]] - jj[[i]]
@@ -38,9 +38,9 @@ for(i in 1:10){
   foo(rform(),rform(),rform())
 }
 
-expect_error(rform(  ) %^% rtensor())
-expect_error(rtensor() %^% rform()  )
-expect_error(rtensor() %^% rtensor())
+expect_error(rform(  ) ^ rtensor())
+expect_error(rtensor() ^ rform()  )
+expect_error(rtensor() ^ rtensor())
 
 
 })

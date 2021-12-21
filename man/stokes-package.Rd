@@ -56,15 +56,15 @@ K3 <- rform(9,3,9,runif(9))
 
 ## The distributive law is true
 
-(K1 + K2) \%^\% K3 == K1 \%^\% K3 + K2 \%^\% K3 # TRUE to numerical precision
+(K1 + K2) ^ K3 == K1 ^ K3 + K2 ^ K3 # TRUE to numerical precision
 
 ## Wedge product is associative (non-trivial):
-(K1 \%^\% K2) \%^\% K3
-K1 \%^\% (K2 \%^\% K3)
+(K1 ^ K2) ^ K3
+K1 ^ (K2 ^ K3)
 
 
 ## k-forms can be coerced to a function and wedge product:
-f <- as.function(K1 \%^\% K2 \%^\% K3)
+f <- as.function(K1 ^ K2 ^ K3)
 
 ## E is a a random point in V^k:
 E <- matrix(rnorm(63),9,7)
@@ -80,7 +80,7 @@ dx <- as.kform(1)
 dy <- as.kform(2)
 dz <- as.kform(3)
 
-dx \%^\% dy \%^\% dz
+dx ^ dy ^ dz
 
-K3 \%^\% dx \%^\% dy \%^\% dz
+K3 ^ dx ^ dy ^ dz
 }

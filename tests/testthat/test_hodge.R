@@ -15,7 +15,7 @@ test_that("Function hodge() behaves itself", {
 
     foo2 <- function(x,y){  # checks that *x^y == *y^x
         n <- max(c(index(x),index(y)))
-        expect_true(issmall(hodge(x,n) %^% y - hodge(y,n) %^% x),info=list(x,y,n))
+        expect_true(issmall(hodge(x,n) ^ y - hodge(y,n) ^ x),info=list(x,y,n))
     }  # foo2() closes
 
 

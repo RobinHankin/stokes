@@ -166,7 +166,7 @@ f(E)
 
 The wedge product of two
 ![k](https://latex.codecogs.com/png.latex?k "k")-forms is implemented as
-`%^%` or `wedge()`:
+`^` or `wedge()`:
 
 ``` r
 KF2 <- kform_general(6:9,2,1:6)
@@ -179,7 +179,7 @@ KF2
 #>  7 8  =    3
 #>  6 8  =    2
 #>  6 7  =    1
-KF %^% KF2
+KF ^ KF2
 #> An alternating linear map from V^5 to R with V=R^9:
 #>                val
 #>  1 2 4 6 7  =    5
@@ -203,7 +203,7 @@ calculus such as elementary forms:
 dx <- as.kform(1)
 dy <- as.kform(2)
 dz <- as.kform(3)
-dx %^% dy %^% dz  # element of volume 
+dx ^ dy ^ dz  # element of volume 
 #> An alternating linear map from V^3 to R with V=R^3:
 #>            val
 #>  1 2 3  =    1
@@ -227,7 +227,7 @@ grad(1:6)
 The package takes the leg-work out of the exterior calculus:
 
 ``` r
-grad(1:4) %^% grad(1:6)
+grad(1:4) ^ grad(1:6)
 #> An alternating linear map from V^2 to R with V=R^6:
 #>          val
 #>  4 5  =   20

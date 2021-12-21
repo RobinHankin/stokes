@@ -112,13 +112,13 @@ f(E)
 
 # The wedge product
 
-The wedge product of two $k$-forms is implemented as `%^%` or
+The wedge product of two $k$-forms is implemented as `^` or
 `wedge()`:
 
 ```{r definekf2}
 KF2 <- kform_general(6:9,2,1:6)
 KF2
-KF %^% KF2
+KF ^ KF2
 ```
 
 The package can accommodate a number of results from the exterior
@@ -128,7 +128,7 @@ calculus such as elementary forms:
 dx <- as.kform(1)
 dy <- as.kform(2)
 dz <- as.kform(3)
-dx %^% dy %^% dz  # element of volume 
+dx ^ dy ^ dz  # element of volume 
 ```
 
 A number of useful functions from the exterior calculus are provided,
@@ -141,7 +141,7 @@ grad(1:6)
 The package takes the leg-work out of the exterior calculus:
 
 ```{r legwork}
-grad(1:4) %^% grad(1:6)
+grad(1:4) ^ grad(1:6)
 ```
 
 

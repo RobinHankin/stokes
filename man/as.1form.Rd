@@ -70,7 +70,7 @@ as.1form(1:9)  # note ordering of terms
 
 as.1form(rnorm(20))
 
-grad(c(4,7)) \%^\% grad(1:4)
+grad(c(4,7)) ^ grad(1:4)
 
 
 

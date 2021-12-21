@@ -38,7 +38,7 @@
 }
 \examples{
 ## dx_1 ^ dx_2 + 6dx_5 ^ dx_6:
-as.kform(1) \%^\% as.kform(2) + 6*as.kform(5) \%^\% as.kform(6)
+as.kform(1) ^ as.kform(2) + 6*as.kform(5) ^ as.kform(6)
 
 k1 <- kform_general(4,2,rnorm(6))
 k2 <- kform_general(4,2,rnorm(6))

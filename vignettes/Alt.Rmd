@@ -247,8 +247,8 @@ omega <- rform(2,2,19)
 eta <- rform(3,2,19)
 theta <- rform(2,2,19)
 
-a1 <- as.ktensor(omega %^% (eta %^% theta))
-a2 <- as.ktensor((omega %^% eta) %^% theta)
+a1 <- as.ktensor(omega ^ (eta ^ theta))
+a2 <- as.ktensor((omega ^ eta) ^ theta)
 a3 <- Alt(as.ktensor(omega) %X% as.ktensor(eta) %X% as.ktensor(theta))*90
 
 c(is.zero(a1-a2),is.zero(a1-a3),is.zero(a2-a3))

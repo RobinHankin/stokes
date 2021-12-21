@@ -5,3 +5,7 @@
 - `is.zero(0)` now true [no need to `drop()`!]
 - `as.one()` added
 - dependency on magrittr removed; `%>%` is now `|>`
+
+# stokes 1.1-1
+
+- Can use `^` in place of `%^%`

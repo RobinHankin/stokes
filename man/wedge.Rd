@@ -20,7 +20,7 @@ Wedge product of \eqn{k}-forms.
 }
 \author{Robin K. S. Hankin}
 \note{
-  In general use, use \code{wedge()} or \code{\%^\%}.  Function
+  In general use, use \code{wedge()} or \code{^} or \code{\%^\%}.  Function
   \code{wedge()} uses low-level helper function \code{wedge2()}, which
   takes only two arguments.
 
@@ -39,6 +39,6 @@ a2 <- wedge2(wedge2(k1,k2),k3)
 
 is.zero(a1-a2)  # NB terms of a1, a2 in a different order!
 
-# This is why wedge(k1,k2,k3) is well-defined.  Can also use \%^\%:
-k1 \%^\% k2 \%^\% k3
+# This is why wedge(k1,k2,k3) is well-defined.  Can also use ^:
+k1 ^ k2 ^ k3
 }
