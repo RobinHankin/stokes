@@ -5,8 +5,9 @@
 \title{Arithmetic Ops Group Methods for \code{kform} and \code{ktensor}
   objects}
 \description{
-  Allows arithmetic operators to be used for \eqn{k}-forms and
-  \eqn{k}-tensors such as addition, multiplication, etc, where defined.
+  Allows arithmetic operators to be used for \mjseqn{k}-forms and
+  \mjseqn{k}-tensors such as addition, multiplication, etc, where
+  defined.
 }
 \usage{
 \method{Ops}{kform}(e1, e2 = NULL)
@@ -21,13 +22,13 @@
   \dQuote{\code{*}}, and \dQuote{\code{/}}) to the appropriate
   specialist function by coercing to \code{spray} objects.
 
-  For wedge products of \eqn{k}-forms, use \code{wedge()} or
-  \code{\%^\%}; and for cross products of \eqn{k}-tensors, use
+  For wedge products of \mjseqn{k}-forms, use \code{wedge()} or
+  \code{\%^\%}; and for cross products of \mjseqn{k}-tensors, use
   \code{cross()} or \code{\%X\%}.
 }
 
-\value{All functions documented here return an object of class \code{kform} or
-  \code{ktensor}.
+\value{All functions documented here return an object of class
+  \code{kform} or \code{ktensor}.
 }
 \author{Robin K. S. Hankin}
 \note{
@@ -39,18 +40,17 @@
   In the package the caret (\dQuote{\code{^}}) is reserved for the wedge
   product; note that \code{\%^\%} is also acceptable.  Of course, if
   \code{S} is a \code{kform} object, it is very tempting to interpret
-  \dQuote{\code{a^3}} as something like \dQuote{\code{S} to the power
+  \dQuote{\code{S^3}} as something like \dQuote{\code{S} to the power
   3}.  Further, if we interpret a caret as a power, idiom such as
-  \dQuote{\code{2^a}} becomes meaningless.
+  \dQuote{\code{2^S}} becomes meaningless.
 
-  But powers do not make sense for alternating forms: \code{a \%^\%
-  a} is zero identically.  Here the caret is interpreted consistently as
-  a wedge product, and if one of the factors is numeric it is
-  interpreted as a zero-form (that is, a scalar).  Thus \code{a^2 == 2^a
-  == a+a}.
+  But powers do not make sense for alternating forms: \code{a \%^\% a}
+  is zero identically.  Here the caret is interpreted consistently as a
+  wedge product, and if one of the factors is numeric it is interpreted
+  as a zero-form (that is, a scalar).  Thus \code{a^2 == 2^a == a+a}.
 
-Powers are not implemented for ktensors on
-  the grounds that a ktensor to the power zero is not defined.
+  Powers are not implemented for ktensors on the grounds that a ktensor
+  to the power zero is not defined.
   
 }
 \examples{

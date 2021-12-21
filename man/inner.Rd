@@ -10,7 +10,7 @@
 \arguments{
   \item{M}{square matrix}
 }
-\value{Returns a \eqn{k}-tensor, an inner product}
+\value{Returns a \mjseqn{k}-tensor, an inner product}
 \details{
 
 The inner product of two vectors \mjeqn{\mathbf{x}}{x} and
@@ -26,7 +26,7 @@ we see that the inner product is indeed a multilinear map, that is, a
 tensor.
 
 Given a square matrix \mjseqn{M}, function \code{inner(M)} returns the
-\eqn{2}-form that maps \mjeqn{\mathbf{x},\mathbf{y}}{x,y} to
+\mjseqn{2}-form that maps \mjeqn{\mathbf{x},\mathbf{y}}{x,y} to
 \mjeqn{\mathbf{x}^TM\mathbf{y}}{x'My}.
 
 A short vignette is provided with the package: type

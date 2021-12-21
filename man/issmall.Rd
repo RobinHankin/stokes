@@ -1,7 +1,8 @@
 \name{issmall}
 \alias{issmall}
 \title{Is a form zero to within numerical precision?}
-\description{Given a \eqn{k}-form, return \code{TRUE} if it is \dQuote{small}}
+\description{\loadmathjax
+  Given a \mjseqn{k}-form, return \code{TRUE} if it is \dQuote{small}}
 \usage{
 issmall(M, tol=1e-8)
 }

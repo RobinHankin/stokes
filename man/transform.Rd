@@ -7,7 +7,7 @@
 \alias{stretch}
 \title{Linear transforms of \eqn{k}-forms}
 \description{\loadmathjax
-  Given a \eqn{k}-form, express it in terms of linear
+  Given a \mjseqn{k}-form, express it in terms of linear
   combinations of the \mjeqn{dx_i}{dx_i}}
 \usage{
 transform(K,M)
@@ -36,7 +36,7 @@ stretch(K,d)
     a_{ij}\left(\sum_rM_{ir}dy_r\right)\wedge\left(\sum_rM_{jr}dy_r\right).
   }{omitted: see latex}
 
-  The general situation would be  a \eqn{k}-form where we would have
+  The general situation would be  a \mjseqn{k}-form where we would have
   \mjdeqn{
     \omega=\sum_{i_1 < \cdots < i_k}a_{i_1\ldots i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}}{omitted: see latex}
 
@@ -52,7 +52,7 @@ The \code{transform()} function does all this but it is slow.  I am not
 transformation.  There are a few tests in \code{tests/testthat} and a
 discussion in the \code{stokes} vignette.
 
-Function \code{stretch()} carries out the same operation but for \eqn{M}
+Function \code{stretch()} carries out the same operation but for \mjseqn{M}
 a diagonal matrix.  It is much faster than \code{transform()}.
 
 }

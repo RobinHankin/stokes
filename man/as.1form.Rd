@@ -12,13 +12,13 @@ as.1form(v)
 grad(v)
 }
 \arguments{
-  \item{v}{A vector with element \eqn{i} being \eqn{\partial f/\partial
+  \item{v}{A vector with element \mjseqn{i} being \mjeqn{\partial f/\partial
       x_i}{df/dxi}}
 }
 \details{
 
-The exterior derivative of a \eqn{k}-form \mjeqn{\phi}{phi} is a
-\eqn{(k+1)}-form \mjeqn{\mathbf{d}\phi}{d phi} given by
+The exterior derivative of a \mjseqn{k}-form \mjeqn{\phi}{phi} is a
+\mjseqn{(k+1)}-form \mjeqn{\mathbf{d}\phi}{d phi} given by
 
 \mjdeqn{
   \mathbf{d}\phi
@@ -42,7 +42,7 @@ The exterior derivative of a \eqn{k}-form \mjeqn{\phi}{phi} is a
     \mathbf{d}f=\sum_{j=1}^n\left(D_j f\right)\,dx_j
   }{omitted; see latex}
   
-  to calculate differentials  of general \eqn{k}-forms. Specifically, if
+  to calculate differentials  of general \mjseqn{k}-forms. Specifically, if
 
   \mjdeqn{
     \phi=\sum_{1\leq i_i < \cdots < i_k\leq n} a_{i_1\ldots

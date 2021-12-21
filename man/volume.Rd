@@ -3,7 +3,7 @@
 \alias{is.volume}
 \title{The volume element}
 \description{\loadmathjax
-  The volume element in \eqn{n} dimensions
+  The volume element in \mjseqn{n} dimensions
 }
 \usage{
 volume(n)
@@ -17,13 +17,13 @@ is.volume(K)
 
 Spivak phrases it well (theorem 4.6, page 82):
 
-If \eqn{V} has dimension \eqn{n}, it follows that
+If \mjseqn{V} has dimension \mjseqn{n}, it follows that
 \mjeqn{\Lambda^n(V)}{.} has dimension 1. Thus all alternating
-\eqn{n}-tensors on \eqn{V} are multiples of any non-zero one.  Since the
+\mjseqn{n}-tensors on \mjseqn{V} are multiples of any non-zero one.  Since the
 determinant is an example of such a member of \mjeqn{\Lambda^n(V)}{.} it
 is not surprising to find it in the following theorem:
 
-Let \mjeqn{v_1,\ldots,v_n}{v_1,...,v_n} be a basis for \eqn{V} and let
+Let \mjeqn{v_1,\ldots,v_n}{v_1,...,v_n} be a basis for \mjseqn{V} and let
 \mjeqn{\omega\in\Lambda^n(V)}{.}.  If \mjeqn{w_i=\sum_{j=1}^n
 a_{ij}v_j}{.}  then
 
@@ -33,7 +33,7 @@ a_{ij}v_j}{.}  then
 
 (see the examples for numerical verification of this).
 
-Neither the zero \eqn{k}-form, nor scalars, are considered to be a
+Neither the zero \mjseqn{k}-form, nor scalars, are considered to be a
 volume element.
 
 }
