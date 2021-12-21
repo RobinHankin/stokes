@@ -17,6 +17,9 @@ importFrom(permutations,is.id)
 importFrom(methods, new)  # not needed but is included to suppress a pointless R CMD check warning
 
 importFrom(disordR,elements)
+importFrom(disordR,is.disord)
+importFrom(disordR,hash)
+importFrom(disordR,consistent)
 
 S3method("as.function",ktensor)
 S3method("as.function",kform)
@@ -30,3 +33,5 @@ S3method("zap",ktensor)
 S3method("print",kform)
 S3method("print",ktensor)
 
+S3method("coeffs<-",kform)
+S3method("coeffs<-",ktensor)

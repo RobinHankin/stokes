@@ -397,3 +397,28 @@ setGeneric("lose",function(x){standardGeneric("lose")})
         return(as.ktensor(include_perms(as.spray(unclass(S)))))
     }
 }
+
+`coeffs<-.kform` <- function(S,value){
+    jj <- coeffs(S)
+    if(is.disord(value)){
+        stopifnot(consistent(coeffs(S),value))
+        if((!identical(hash(jj),hash(value))) & (length(value)>1)){stop("length > 1")}
+        jj <- value
+    } else {
+        jj[] <- value  # the meat
+    }
+    return(kform(spray(index(S),elements(jj))))
+}
+
+`coeffs<-.ktensor` <- function(S,value){
+    jj <- coeffs(S)
+    if(is.disord(value)){
+        stopifnot(consistent(coeffs(S),value))
+        if((!identical(hash(jj),hash(value))) & (length(value)>1)){stop("length > 1")}
+        jj <- value
+    } else {
+        jj[] <- value  # the meat
+    }
+    return(ktensor(spray(index(S),elements(jj))))
+}
+
