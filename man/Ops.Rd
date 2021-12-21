@@ -31,10 +31,11 @@
 }
 \author{Robin K. S. Hankin}
 \note{
-  A plain asterisk, \dQuote{\code{*}}, given two kforms or two ktensors,
-  will return the wedge product or the cross product respectively, on
-  the grounds that the idiom has only one natural interpretation.  But
-  its use is discouraged.
+
+  A plain asterisk, \dQuote{\code{*}}, given two ktensors, will return
+  the cross product, on the grounds that the idiom has only one natural
+  interpretation.  But its use is discouraged.
+
 }
 \examples{
 ## dx_1 ^ dx_2 + 6dx_5 ^ dx_6:
