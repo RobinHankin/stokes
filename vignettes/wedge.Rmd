@@ -77,8 +77,7 @@ As functions, `y` and `ty` are identical:
 
 ```{r}
 M <- matrix(round(rnorm(21),2),7,3) # member of (R^7)^3
-as.function(y)(M)
-as.function(ty)(M)
+c(as.function(y)(M),as.function(ty)(M))
 ```
 
 Both are equivalent to

@@ -3,7 +3,8 @@
 \alias{as.symbolic}
 \title{Symbolic form}
 \description{\loadmathjax
-  Prints \mjseqn{k}-tensor and \mjseqn{k}-form objects in symbolic form
+  Returns a character string representing \mjseqn{k}-tensor and
+  \mjseqn{k}-form objects in symbolic form
 }
 \usage{
 as.symbolic(M,symbols=letters,d="")
@@ -16,6 +17,8 @@ as.symbolic(M,symbols=letters,d="")
 }
 \value{Returns a noquote character string.}
 \author{Robin K. S. Hankin}
+\note{The print method uses a different system.}
+\seealso{\code{\link{print.stokes}}}
 \examples{
 
 as.symbolic(rtensor())

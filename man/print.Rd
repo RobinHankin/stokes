@@ -35,8 +35,14 @@ or multivariate polynomial form
   \mjeqn{\left(x_1,\ldots,x_n\right)\mapsto\left(x_1,\ldots,x_n,0,\ldots,0\right)\in
   R^m}{equation omitted}.  In the case of the zero \mjseqn{k}-form or
   \mjseqn{k}-tensor, \dQuote{\code{n}} is to be interpreted as
-  \dQuote{any \mjeqn{n\geq 0}{n>=0}}.  }
+  \dQuote{any \mjeqn{n\geq 0}{n>=0}}.
 
+
+  Function \code{as.symbolic()} gives an alternate way of displaying
+  \mjseqn{k}-forms.
+
+}
+\seealso{\code{\link{as.symbolic}}}
 \examples{
 
 rform()

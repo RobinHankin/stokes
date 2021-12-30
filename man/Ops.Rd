@@ -37,7 +37,7 @@
   the cross product, on the grounds that the idiom has only one natural
   interpretation.  But its use is discouraged.
 
-  In the package the caret (\dQuote{\code{^}}) is reserved for the wedge
+  In the package the caret (\dQuote{\code{^}}) evaluates the wedge
   product; note that \code{\%^\%} is also acceptable.  Of course, if
   \code{S} is a \code{kform} object, it is very tempting to interpret
   \dQuote{\code{S^3}} as something like \dQuote{\code{S} to the power
@@ -47,7 +47,8 @@
   But powers do not make sense for alternating forms: \code{a \%^\% a}
   is zero identically.  Here the caret is interpreted consistently as a
   wedge product, and if one of the factors is numeric it is interpreted
-  as a zero-form (that is, a scalar).  Thus \code{a^2 == 2^a == a+a}.
+  as a zero-form (that is, a scalar).  Thus \code{a^2 == 2^a == a+a},
+  and indeed \code{a^n==a*n}.
 
   Powers are not implemented for ktensors on the grounds that a ktensor
   to the power zero is not defined.
