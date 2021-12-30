@@ -4,8 +4,12 @@
     } else {
         cat(paste("A linear map from V^",arity(x)," to R with V=R^",max(index(x)),":\n",sep=""))
     }
-    class(x) <- "spray"
-    print(x,...)
+    if(isTRUE(getOption("stokes_symbolic_print"))){
+        cat(as.symbolic(x,d="d",symbols=as.character(seq_len(max(index(x))))),"\n")
+    } else {
+        class(x) <- "spray"
+        print(x,...)
+    }
     return(invisible(x))
 }
 
@@ -15,7 +19,11 @@
     } else {
         cat(paste("An alternating linear map from V^",arity(x)," to R with V=R^",max(index(x)),":\n",sep=""))
     }
-    class(x) <- "spray"
-    print(x,...)
+    if(isTRUE(getOption("stokes_symbolic_print"))){
+        cat(as.symbolic(x,d="d",symbols=as.character(seq_len(max(index(x))))),"\n")
+    } else {
+        class(x) <- "spray"
+        print(x,...)
+    }
     return(invisible(x))
 }

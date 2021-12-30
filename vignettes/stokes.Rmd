@@ -542,6 +542,15 @@ Note that the wedge product $\wedge$, although implemented in package
 idiom as `^` or `%^%`, appears in the symbolic representation as an
 ascii caret, `^`.
 
+We can alter the default print method with the `stokes_symbolic_print`
+option, which uses `as.symbolic()`:
+
+```{r}
+options(stokes_symbolic_print = TRUE)
+K
+options(stokes_symbolic_print = FALSE) # restore default
+```
+
 
 ## Contractions
 

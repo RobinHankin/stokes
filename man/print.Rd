@@ -37,8 +37,12 @@ or multivariate polynomial form
   \mjseqn{k}-tensor, \dQuote{\code{n}} is to be interpreted as
   \dQuote{any \mjeqn{n\geq 0}{n>=0}}.
 
+  By default, the print method uses the \pkg{spray} print methods, and
+  as such respects the \code{polyform} option.
 
-  Function \code{as.symbolic()} gives an alternate way of displaying
+  However, the print method is sensitive to the
+  \code{stokes_symbolic_print} option.  If \code{TRUE}, it uses
+  \code{as.symbolic()} to give an alternate way of displaying
   \mjseqn{k}-forms.
 
 }
