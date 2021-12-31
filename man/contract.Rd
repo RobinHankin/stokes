@@ -30,8 +30,8 @@ and \mjeqn{\mathbf{v}}{v} is a \mjseqn{k-1}-form with
   }{
 omitted; see PDF}
 
-if \mjseqn{k>1}; we specify
-\mjeqn{\phi_\mathbf{v}=\phi(\mathbf{v})}{phi_v=phi(v)} if \mjseqn{k=1}.
+provided \mjseqn{k>1}; if \mjseqn{k=1} we specify
+\mjeqn{\phi_\mathbf{v}=\phi(\mathbf{v})}{phi_v=phi(v)}.
 
 Function \code{contract_elementary()} is a low-level helper function
 that translates elementary \mjseqn{k}-forms with coefficient 1 (in the form
