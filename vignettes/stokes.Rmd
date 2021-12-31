@@ -548,8 +548,16 @@ option, which uses `as.symbolic()`:
 ```{r}
 options(stokes_symbolic_print = TRUE)
 K
+```
+
+This print option works nicely with the `d()` function for elementary
+forms:
+
+```{r}
+(d(1) + d(5)) ^ (d(3)-5*d(2)) ^ d(7)
 options(stokes_symbolic_print = FALSE) # restore default
 ```
+
 
 
 ## Contractions
