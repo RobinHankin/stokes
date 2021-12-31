@@ -160,6 +160,8 @@
     return(out)
 }
 
+`d` <- function(i){as.kform(i)}
+
 `kform_general`  <- function(W,k,coeffs,lose=TRUE){
     if(length(W)==1){W <- seq_len(W)}
     M <-  kform_basis(length(W),k)
@@ -421,4 +423,3 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     }
     return(ktensor(spray(index(S),elements(jj))))
 }
-

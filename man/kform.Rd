@@ -7,6 +7,7 @@
 \alias{as.function.kform}
 \alias{kform_general}
 \alias{general_kform}
+\alias{d}
 \title{k-forms}
 \description{\loadmathjax
   Functionality for dealing with \mjseqn{k}-forms
@@ -17,10 +18,12 @@ as.kform(M,coeffs,lose=TRUE)
 kform_basis(n, k)
 kform_general(W,k,coeffs,lose=TRUE)
 is.kform(x)
+d(i)
 \method{as.function}{kform}(x,...)
 }
 \arguments{
   \item{n}{Dimension of the vector space \mjeqn{V=R^n}{V=R^n}}
+  \item{i}{Integer}
   \item{k}{A \mjseqn{k}-form maps \mjeqn{V^k}{V^k} to \mjseqn{R}}
   \item{W}{Integer vector of dimensions}
   \item{M,coeffs}{Index matrix and coefficients for a \mjseqn{k}-form}
@@ -54,6 +57,7 @@ is.kform(x)
     that span the space of alternating tensors.
     \item\code{is.kform()} returns \code{TRUE} if its argument is a
     \code{kform} object.
+    \item{\code{d()}} is an easily-typed synonym for \code{as.kform()}
   }
   
   Recall that a \mjseqn{k}-tensor is a multilinear map from \mjseqn{V^k} to
@@ -102,13 +106,15 @@ kform_general(1:4,2,coeffs=1:6)  # used in electromagnetism
 
 K1 <- as.kform(cbind(1:5,2:6),rnorm(5))
 K2 <- kform_general(5:8,2,1:6)
-wedge(K1,K2)
+K1^K2  # or wedge(K1,K2)
 
 
 f <- as.function(wedge(K1,K2))
 E <- matrix(rnorm(32),8,4)
+f(E) + f(E[,c(1,3,2,4)])  # should be zero by alternating property
 
-f(E) + f(E[,c(1,3,2,4)])  # should be zero
-
+options(stokes_symbolic_print = TRUE)
+(d(5)+d(7)) ^ (d(2)^d(5) + 6*d(4)^d(7))
+options(stokes_symbolic_print = FALSE)
 
 }
