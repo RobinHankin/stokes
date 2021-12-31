@@ -75,7 +75,7 @@ algebraic identities in R using the idiom furnished by the stokes
 package.  For our example we will define
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$
 using a matrix with three rows, one per term, and whose rows
-correspond to each terms's cross products of the $\phi$'s.  We first
+correspond to each term's cross products of the $\phi$'s.  We first
 have to load the `stokes` package:
 
 ```{r,message=FALSE}
@@ -434,7 +434,7 @@ K2
 In symbolic notation, `K1` is equal to $7dx_1\wedge dx_4\wedge dx_6
 -2dx_3\wedge dx_4\wedge dx_5$. and `K2` is $dx_1\wedge dx_3+
 2dx_2\wedge dx_4+ 3dx_3\wedge dx_5+ 4dx_4\wedge dx_6+ 5dx_5\wedge
-dx_7$.  Package idiom for wedge prodcuts is straightforward:
+dx_7$.  Package idiom for wedge products is straightforward:
 
 ```{r}
 K1 ^ K2
@@ -785,7 +785,7 @@ d\frac{1}{\left(x_1^2+\ldots +x_n^2\right)^{n/2}}\sum_{i=1}^{n}(-1)^{i-1}
 x_idx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n
 \]
 
-(where a hat indicates the absence of a term), and show analyically
+(where a hat indicates the absence of a term), and show analytically
 that $d\omega=0$.  Here I show this using R idiom.  The first thing is
 to define a function that implements the hat:
 
@@ -1052,5 +1052,5 @@ det(E)*f(diag(9))  # should match f(E) by Spivak's 4.6
 
 *  J. H. Hubbard and B. B. Hubbard 2015.  _Vector
       calculus, linear algebra and differential forms: a unified
-      aproach_,  Ithaca, NY.
+      approach_,  Ithaca, NY.
 *  M. Spivak 1971. _Calculus on manifolds_, Addison-Wesley.
