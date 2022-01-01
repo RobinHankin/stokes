@@ -37,6 +37,9 @@ Function \code{contract_elementary()} is a low-level helper function
 that translates elementary \mjseqn{k}-forms with coefficient 1 (in the form
 of an integer vector corresponding to one row of an index matrix) into
 its contraction with \mjeqn{\mathbf{v}}{v}.
+
+There is an extensive vignette in the package,
+\code{vignette("contract")}.
 }
 \value{Returns an object of class \code{kform}.}
 \references{

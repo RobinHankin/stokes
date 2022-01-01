@@ -1,0 +1,197 @@
+---
+title: "`contract()` and related functions in the `stokes` package"
+author: "Robin K. S. Hankin"
+output: html_document
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{contract}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("stokes")
+set.seed(0)
+```
+
+<p style="text-align: right;">
+![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+</p>
+
+```{r}
+contract
+contract_elementary
+```
+
+## Contractions
+
+Given a $k$-form $\phi\colon V^k\longrightarrow\mathbb{R}$ and a
+vector $\mathbf{v}\in V$, the _contraction_ $\phi_\mathbf{v}$ of
+$\phi$ and $\mathbf{v}$ is a $k-1$-form with
+
+\[
+  \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
+  \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
+\]
+
+provided $k>1$; if $k=1$ we specify
+$\phi_\mathbf{v}=\phi(\mathbf{v})$.  Function `contract_elementary()`
+is a low-level helper function that translates elementary $k$-forms
+with coefficient 1 (in the form of an integer vector corresponding to
+one row of an index matrix) into its contraction with $\mathbf{v}$;
+function `contract()` is the user-friendly front end.
+
+We will start with some simple examples.  I will use `phi` and $\phi$
+to represent the same object.
+
+```{r label=simpleexample}
+(phi <- as.kform(1:5))
+```
+
+Thus $k=5$ and we have $\phi=dx^1\wedge dx^2\wedge dx^3\wedge
+dx^4\wedge dx^5$.  We have that $\phi$ is a linear alternating map
+with
+
+$$\phi\left(\begin{bmatrix}1\\0\\0\\0\\0\end{bmatrix},
+\begin{bmatrix}0\\1\\0\\0\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\1\\0\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\0\\1\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix}, \right)=1$$.
+
+The contraction of $\phi$ with any vector $\mathbf{v}$ is thus a
+$4$-form mapping $V^4$ to the reals with
+$\phi_\mathbf{v}\left(\mathbf{v}^1,\mathbf{v}^2,\mathbf{v}^3,\mathbf{v}^4\right)=\phi\left(\mathbf{v},\mathbf{v}^1,\mathbf{v}^2,\mathbf{v}^3,\mathbf{v}^4\right)$.
+
+Taking the simplest case first, if $\mathbf{v}=(1,0,0,0,0)$ then
+
+```{r label=contract10000}
+v <- c(1,0,0,0,0)
+contract(phi,v)
+```
+
+that is, a linear alternating map from $V^4$ to the reals with
+
+$$\phi_\mathbf{v}\left(
+\begin{bmatrix}0\\1\\0\\0\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\1\\0\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\0\\1\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix}\right)=1$$.
+
+(the contraction has the first argument of $\phi$ understood to be
+$\mathbf{v}=(1,0,0,0,0)$).  Now consider $\mathbf{w}=(0,1,0,0,0)$:
+
+```{r label=contract01000}
+w <- c(0,1,0,0,0)
+contract(phi,w)
+```
+
+$$\phi_\mathbf{w}\left(
+\begin{bmatrix}0\\0\\1\\0\\0\end{bmatrix},
+\begin{bmatrix}1\\0\\0\\0\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\0\\1\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix}\right)=1
+\qquad\mbox{or}\qquad
+\phi_\mathbf{w}\left(
+\begin{bmatrix}1\\0\\0\\0\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\1\\0\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\0\\1\\0\end{bmatrix},
+\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix}\right)=-1$$.
+
+Contraction is linear, so we may use more complicated vectors:
+
+```{r complicatedvectors}
+contract(phi,c(1,3,0,0,0))
+contract(phi,1:5)
+```
+
+We can check numerically that the contraction is linear in its vector
+argument: $\phi_{a\mathbf{v}+b\mathbf{w}}=
+a\phi_\mathbf{v}+b\phi_\mathbf{w}$.
+
+
+```{r label=verifylinearityinv}
+a <- 1.23
+b <- -0.435
+v <- 1:5
+w <- c(-3, 2.2, 1.1, 2.1, 1.8)
+
+contract(phi,a*v + b*w) == a*contract(phi,v) + b*contract(phi,w)
+```
+
+We also have linearity in the alternating form:
+$(a\phi+b\psi)_\mathbf{v}=a\phi_\mathbf{v} + b\psi_\mathbf{v}$.
+
+```{r label=verifylinearityinphi}
+(phi <- rform(2,5))
+(psi <- rform(2,5))
+a <- 7
+b <- 13
+v <- 1:7
+contract(a*phi + b*psi,v) == a*contract(phi,v) + b*contract(psi,v)
+```
+
+It is of course possible to contract a contraction.  If $\phi$ is a
+$k$-form, then $\left(\phi_\mathbf{v}\right)_\mathbf{w}$ is a $k-2$
+form with
+
+$$
+\left(\phi_\mathbf{u}\right)_\mathbf{v}\left(\mathbf{w}^1,\ldots,\mathbf{w}^{k-2}\right)=\phi\left(\mathbf{u},\mathbf{v},\mathbf{w}^1,\ldots,\mathbf{w}^{k-2}\right)
+$$
+
+And this is straightforward to realise in the package:
+
+```{r label=straight}
+(phi <- rform(2,5))
+u <- c(1,3,2,4,5,4,6)
+v <- c(8,6,5,3,4,3,2)
+contract(contract(phi,u),v)
+```
+
+But `contract()` allows us to perform both contractions in one
+operation: if we pass a matrix $M$ to `contract()` then this is
+interpreted as repeated contraction with the columns of $M$:
+
+```{r bothatonce}
+M <- cbind(u,v)
+contract(contract(phi,u),v) == contract(phi,M)
+```
+
+We can verify directly that the system works as intended.  The lines
+below strip successively more columns from argument `V` and contract
+with them:
+
+```{r verifydirect}
+(o <- kform(spray(t(replicate(2, sample(9,4))), runif(2))))
+V <- matrix(rnorm(36),ncol=4)
+jj <- c(
+   as.function(o)(V),
+   as.function(contract(o,V[,1,drop=TRUE]))(V[,-1]), # scalar
+   as.function(contract(o,V[,1:2]))(V[,-(1:2),drop=FALSE]),
+   as.function(contract(o,V[,1:3]))(V[,-(1:3),drop=FALSE]),
+   as.function(contract(o,V[,1:4],lose=FALSE))(V[,-(1:4),drop=FALSE])
+)
+print(jj)
+max(jj) - min(jj) # zero to numerical precision
+```
+
+and above we see agreement to within numerical precision.  If we pass
+three columns to `contract()` the result is a $0$-form:
+
+```{r label=getazeroform}
+contract(o,V)
+```
+
+In the above, the result is coerced to a scalar which is returned in
+the form of a `disord` object; in order to work with a formal $0$-form
+(which is represented in the package as a `spray` with a zero-column
+index matrix) we can use the `lost=FALSE` argument:
+
+```{r doanothercontractnolose}
+contract(o,V,lose=FALSE)
+```
+
+thus returning a $0$-form.
+
+
+
+
