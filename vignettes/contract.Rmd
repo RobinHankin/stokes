@@ -190,8 +190,16 @@ index matrix) we can use the `lost=FALSE` argument:
 contract(o,V,lose=FALSE)
 ```
 
-thus returning a $0$-form.
+thus returning a $0$-form.  If we iteratively contract a
+$k$-dimensional $k$-form, we return the determinant, and this may be
+verified as follows:
 
-
+```{r}
+o <- as.kform(1:5)
+V <- matrix(rnorm(25),5,5)
+LHS <- det(V)
+RHS <- contract(o,V)
+c(LHS,RHS,LHS-RHS)
+```
 
 
