@@ -341,7 +341,7 @@
         }
     }
     if(lose){out <- lose(out)}
-    return(out)
+    return(disordR::drop(out))
 }
 
 `scalar` <- function(s,lose=FALSE){
