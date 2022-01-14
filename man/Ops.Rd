@@ -42,7 +42,8 @@
   \code{S} is a \code{kform} object, it is very tempting to interpret
   \dQuote{\code{S^3}} as something like \dQuote{\code{S} to the power
   3}.  Further, if we interpret a caret as a power, idiom such as
-  \dQuote{\code{2^S}} becomes meaningless.
+  \dQuote{\code{2^S}} becomes meaningless.  See also the note at
+  \code{Ops.clifford} in the \pkg{clifford} package.
 
   But powers do not make sense for alternating forms: \code{a \%^\% a}
   is zero identically.  Here the caret is interpreted consistently as a
