@@ -2,6 +2,8 @@
 \alias{print.stokes}
 \alias{print.kform}
 \alias{print.ktensor}
+\alias{stokes_symbolic_print}
+\alias{polyform}
 \title{Print methods for \eqn{k}-tensors and \eqn{k}-forms}
 \description{\loadmathjax
   Print methods for
@@ -38,12 +40,12 @@ or multivariate polynomial form
   \dQuote{any \mjeqn{n\geq 0}{n>=0}}.
 
   By default, the print method uses the \pkg{spray} print methods, and
-  as such respects the \code{polyform} option.
-
-  However, the print method is sensitive to the
-  \code{stokes_symbolic_print} option.  If \code{TRUE}, it uses
+  as such respects the \code{polyform} option.  But this can be
+  misleading because \pkg{spray} interprets objects as multivariate
+  polynomials not differential forms.  Use the
+  \code{stokes_symbolic_print} option instead.  If \code{TRUE}, it uses
   \code{as.symbolic()} to give an alternate way of displaying
-  \mjseqn{k}-forms.
+  \mjseqn{k}-forms.  More detail is given at \code{symbolic.Rd}.
 
 }
 \seealso{\code{\link{as.symbolic}}}
