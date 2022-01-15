@@ -66,7 +66,15 @@ Let us consider in particular the 1-forms \mjeqn{d\pi^i}{omitted; see
     \omega=\sum_{i_1 < \cdots < i_k}\omega_{i_1,\ldots,i_k}
     dx^{i_1}\wedge\cdots\wedge dx^{i_k}.}{omitted.}
 
-  Function \code{as.symbolic()} uses this format.
+  Function \code{as.symbolic()} uses this format.  For completeness, we
+  add (p77) that k-tensors may be expressed in the form
+
+  \mjdeqn{
+    \sum_{i_1,\ldots, i_k=1}^n a_{i_1,\ldots,i_k}\cdot
+\phi_{i_1}\otimes\cdots\otimes\phi_{i_k}.}{omitted.}
+
+and this form is used for k-tensors.
+
 
   }
 \value{Returns a noquote character string.}

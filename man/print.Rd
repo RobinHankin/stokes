@@ -42,10 +42,11 @@ or multivariate polynomial form
   By default, the print method uses the \pkg{spray} print methods, and
   as such respects the \code{polyform} option.  But this can be
   misleading because \pkg{spray} interprets objects as multivariate
-  polynomials not differential forms.  Use the
-  \code{stokes_symbolic_print} option instead.  If \code{TRUE}, it uses
-  \code{as.symbolic()} to give an alternate way of displaying
-  \mjseqn{k}-forms.  More detail is given at \code{symbolic.Rd}.
+  polynomials not differential forms (and in particular uses the caret
+  to signify powers).  Use the \code{stokes_symbolic_print} option
+  instead.  If \code{TRUE}, it uses \code{as.symbolic()} to give an
+  alternate way of displaying \mjseqn{k}-forms.  More detail is given at
+  \code{symbolic.Rd}.
 
 }
 \seealso{\code{\link{as.symbolic}}}
