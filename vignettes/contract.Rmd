@@ -56,12 +56,11 @@ $$\phi\left(\begin{bmatrix}1\\0\\0\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\1\\0\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\0\\1\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\0\\0\\1\\0\end{bmatrix},
-\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix}, \right)=1$$.
+\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix} \right)=1$$.
 
 The contraction of $\phi$ with any vector $\mathbf{v}$ is thus a
 $4$-form mapping $V^4$ to the reals with
 $\phi_\mathbf{v}\left(\mathbf{v}^1,\mathbf{v}^2,\mathbf{v}^3,\mathbf{v}^4\right)=\phi\left(\mathbf{v},\mathbf{v}^1,\mathbf{v}^2,\mathbf{v}^3,\mathbf{v}^4\right)$.
-
 Taking the simplest case first, if $\mathbf{v}=(1,0,0,0,0)$ then
 
 ```{r label=contract10000}
