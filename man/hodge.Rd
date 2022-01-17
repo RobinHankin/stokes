@@ -28,9 +28,18 @@ hodge(rform())
 hodge(kform_general(4,2),g=c(-1,1,1,1))
 
 
+M <- matrix(rnorm(30),6,5)
+hodge(Reduce(`^`,sapply(seq_len(5),function(i){as.1form(M[,i])},simplify=FALSE)))
+
+
+
 ## Some edge-cases:
 hodge(zero(5),9)
 hodge(volume(5))
 hodge(volume(5),lose=TRUE)
 hodge(scalar(7),n=9)
+
+
+
+
 }

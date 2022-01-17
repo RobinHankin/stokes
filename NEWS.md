@@ -9,3 +9,9 @@
 # stokes 1.1-1
 
 - Can use `^` in place of `%^%`
+
+# stokes 1.1-2
+
+- vector_cross_product() implemented
+- new vignette
+

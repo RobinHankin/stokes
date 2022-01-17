@@ -423,3 +423,9 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     }
     return(ktensor(spray(index(S),elements(jj))))
 }
+
+`vector_cross_product` <- function(M){
+    n <- nrow(M)
+    stopifnot(n==ncol(M)+1)
+    (-1)^n*sapply(seq_len(n),function(i){(-1)^i*det(M[-i,])})
+}
