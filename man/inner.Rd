@@ -27,7 +27,8 @@ tensor.
 
 Given a square matrix \mjseqn{M}, function \code{inner(M)} returns the
 \mjseqn{2}-form that maps \mjeqn{\mathbf{x},\mathbf{y}}{x,y} to
-\mjeqn{\mathbf{x}^TM\mathbf{y}}{x'My}.
+\mjeqn{\mathbf{x}^TM\mathbf{y}}{x'My}.  Non-square matrices are
+effectively padded with zeros.
 
 A short vignette is provided with the package: type
 \code{vignette("inner")} at the commandline.
