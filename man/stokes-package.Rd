@@ -1,5 +1,6 @@
 \name{stokes-package}
 \alias{stokes-package}
+\alias{stokes}
 \docType{package}
 \title{
 \packageTitle{stokes}
@@ -12,7 +13,6 @@
 The DESCRIPTION file:
 \packageDESCRIPTION{stokes}
 \packageIndices{stokes}
-
 
 Generally in the package, arguments that are \mjseqn{k}-forms are
 denoted \code{K}, \mjseqn{k}-tensors by \code{U}, and spray objects by
