@@ -49,7 +49,7 @@ the package provides R idiom for calculating their wedge product
 
 # Installation
 
-You can install the released version of stokes from
+You can install the released version of `stokes` from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
@@ -60,24 +60,26 @@ set.seed(0)
 
 # The `stokes` package in use
 
-The package has two main classes of objects, `kform` and `ktensor`. We
-may define a ![k](https://latex.codecogs.com/png.latex?k "k")-tensor as
-follows
+The package has two main classes of objects, `kform` and `ktensor`. In
+the package, we can create a
+![k](https://latex.codecogs.com/png.latex?k "k")-tensor by supplying
+function `as.ktensor()` a matrix of indices and a vector of coefficents,
+for example:
 
 ``` r
-KT <- as.ktensor(cbind(1:4,3:5),1:4)
-#> Warning in cbind(1:4, 3:5): number of rows of result is not a multiple of vector
-#> length (arg 2)
-KT
-#> A linear map from V^2 to R with V=R^5:
-#>          val
-#>  4 3  =    4
-#>  3 5  =    3
-#>  2 4  =    2
-#>  1 3  =    1
+jj <- as.ktensor(rbind(1:3,2:4),1:2)
+jj
+#> A linear map from V^3 to R with V=R^4:
+#>            val
+#>  2 3 4  =    2
+#>  1 2 3  =    1
 ```
 
-We can coerce `KT` to a function and then evaluate it:
+Above, object `jj` is equal to
+![dx_1\\otimes dx_2\\otimes dx_3 + 2dx_2\\otimes dx_3\\otimes dx_4](https://latex.codecogs.com/png.latex?dx_1%5Cotimes%20dx_2%5Cotimes%20dx_3%20%2B%202dx_2%5Cotimes%20dx_3%5Cotimes%20dx_4 "dx_1\otimes dx_2\otimes dx_3 + 2dx_2\otimes dx_3\otimes dx_4")
+(see Spivak, p76 for details).
+
+We can coerce tensors to a function and then evaluate it:
 
 ``` r
 KT <- as.ktensor(cbind(1:4,2:5),1:4)
@@ -110,6 +112,9 @@ KT %X% KT
 #>  2 3 2 3  =    4
 #>  4 5 1 2  =    4
 ```
+
+Above we see
+![{\\mathrm KT}\\otimes{\\mathrm KT}](https://latex.codecogs.com/png.latex?%7B%5Cmathrm%20KT%7D%5Cotimes%7B%5Cmathrm%20KT%7D "{\mathrm KT}\otimes{\mathrm KT}").
 
 ## Alternating forms
 
@@ -153,6 +158,8 @@ KF
 #>  2 3 4  =    1
 ```
 
+Above, we see that `KF` is equal to
+![dx_2\\wedge dx_3\\wedge dx_4 + 5dx_1\\wedge dx_2\\wedge dx_4](https://latex.codecogs.com/png.latex?dx_2%5Cwedge%20dx_3%5Cwedge%20dx_4%20%2B%205dx_1%5Cwedge%20dx_2%5Cwedge%20dx_4 "dx_2\wedge dx_3\wedge dx_4 + 5dx_1\wedge dx_2\wedge dx_4").
 We may coerce `KF` to functional form:
 
 ``` r
@@ -161,6 +168,11 @@ E <- matrix(rnorm(12),4,3)
 f(E)
 #> [1] -5.979544
 ```
+
+Above, we evaluate `KF` at a point in
+![\\left({\\mathbb R^4}\\right)^3](https://latex.codecogs.com/png.latex?%5Cleft%28%7B%5Cmathbb%20R%5E4%7D%5Cright%29%5E3 "\left({\mathbb R^4}\right)^3")
+\[the three columns of matrix `E` are each interpreted as vectors in
+![{\\mathbb R}^4](https://latex.codecogs.com/png.latex?%7B%5Cmathbb%20R%7D%5E4 "{\mathbb R}^4")\].
 
 # The wedge product
 
@@ -246,7 +258,7 @@ The most concise reference is
 
 -   Spivak 1971. *Calculus on manifolds*, Addison-Wesley.
 
-But an accessible book would be
+But a more leisurely book would be
 
 -   Hubbard and Hubbard 2015. *Vector calculus, linear algebra, and
     differential forms: a unified approach*. Matrix Editions
