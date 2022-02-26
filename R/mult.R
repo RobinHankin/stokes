@@ -365,11 +365,12 @@
 
 `volume` <- function(n){as.kform(seq_len(n))}
 
-`is.volume` <- function(K){
+`is.volume` <- function(K,n=max(index(K))){
   return(
   (nterms(K) == 1)      &&
   (nrow(index(K)) == 1) &&
   (arity(K) > 0)        &&
+  n == max(index(K))    && 
   all(seq_len(arity(K)) == index(K))
   )
 }

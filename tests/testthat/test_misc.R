@@ -46,6 +46,22 @@ test_that("Miscellaneous wedge functionality", {
         expect_true(as.function(0*rtensor(k=3,n=7))(matrix(rnorm(21),ncol=3))==0)
         expect_true(as.function(as.ktensor(0*rform(k=3,n=7)))(matrix(rnorm(21),ncol=3))==0)
 
+        expect_true(is.volume(dx))
+        expect_true(is.volume(dx,1))
+        expect_false(is.volume(dx,2))
+
+        expect_false(is.volume(dy))
+        expect_false(is.volume(dy,1))
+        expect_false(is.volume(dy,2))
+
+        expect_true(is.volume(dx ^ dy))
+
+        expect_false(is.volume(dy ^ dx,1))
+        expect_true (is.volume(dy ^ dx,2))
+        expect_false(is.volume(dy ^ dx,3))
+
+        expect_true(all(sapply(1:10,function(n){is.volume(d(seq_len(n)))})))
+
 })
 
 

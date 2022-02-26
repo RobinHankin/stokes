@@ -7,7 +7,7 @@
 }
 \usage{
 volume(n)
-is.volume(K)
+is.volume(K,n=max(index(K)))
 }
 \arguments{
   \item{n}{Dimension of the space}
@@ -53,5 +53,8 @@ o <- volume(5)
 M <- matrix(runif(25),5,5)
 det(M) - as.function(o)(M)   # should be zero
 
+
+is.volume(d(1) ^ d(2) ^ d(3) ^ d(4))
+all(sapply(1:10,function(n){is.volume(d(seq_len(n)))}))  # should be TRUE
 
 }
