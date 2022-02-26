@@ -6,7 +6,8 @@
 
   Returns a character string representing \mjseqn{k}-tensor and
   \mjseqn{k}-form objects in symbolic form.  Used by the print method if
-  option \code{stokes_symbolic_print} is \code{TRUE}.
+  either option \code{stokes_symbolic_print} or \code{usedx} are
+  \code{TRUE}.
 
 }
 \usage{
@@ -79,7 +80,7 @@ and this form is used for k-tensors.
   }
 \value{Returns a noquote character string.}
 \author{Robin K. S. Hankin}
-\seealso{\code{\link{print.stokes}}}
+\seealso{\code{\link{print.stokes}},\code{\link{dx}}}
 \examples{
 
 as.symbolic(rtensor())

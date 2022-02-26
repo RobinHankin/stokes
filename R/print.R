@@ -21,7 +21,9 @@
     } else {
         cat(paste("An alternating linear map from V^",arity(x)," to R with V=R^",m,":\n",sep=""))
     }
-    if(isTRUE(getOption("stokes_symbolic_print"))){
+    if(isTRUE(getOption("usedx"))){
+        cat(as.symbolic(x,d="d",symbols=letters[24:26]),"\n")  # dx dy dz
+    } else if(isTRUE(getOption("stokes_symbolic_print"))){
         cat(as.symbolic(x,d="d",symbols=as.character(seq_len(m))),"\n")
     } else {
         class(x) <- "spray"

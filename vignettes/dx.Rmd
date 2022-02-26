@@ -1,0 +1,160 @@
+---
+title: "Objects `dx`, `dy`, and `dz` in the `stokes` package"
+author: "Robin K. S. Hankin"
+output: html_document
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{dx}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("stokes")
+set.seed(0)
+```
+
+<p style="text-align: right;">
+![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+</p>
+
+```{r}
+dx <- d(1)
+dy <- d(2)
+dz <- d(3)
+```
+
+Convenience objects `dx`, `dy`, and `dz` are discussed here.
+
+Spivak, in a memorable passage, states (p89):
+
+"If $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is differentiable,
+then $Df(p)\in\Lambda^1(\mathbb{R}^n)$.  By a minor modification we
+therefore obtain a $1$-form $df$, defined by
+
+$$df(p)(v_p)=Df(p)(v).$$
+
+Let us consider in particular the $1$-forms $d\pi^i$ ^[Spivak
+introduces the $\pi^i$ notation on page 11: "if
+$\pi\colon\mathbb{R}^n\longrightarrow\mathbb{R}^n$ is the identity
+function, $\pi(x)=x$, then [its components are] $\pi^i(x)=x^i$; the
+function $\pi^i$ is called the $i^\mathrm{th}$ *projection function*"]
+It is customary to let $x^i$ denote the _function_ $\pi^i$ (on
+$\mathbb{R}^3$ we often denote $x^1$, $x^2$, and $x^3$ by $x$, $y$,
+and $z$) $\ldots$ Since
+$dx^i(p)(v_p)=d\pi^i(p)(v_p)=D\pi^i(p)(v)=v^i$, we see that
+$dx^1(p),\ldots,dx^n(p)$ is just the dual basis to $(e_1)_p,\ldots,
+(e_n)_p$".
+
+Spivak goes on to observe that every $k$-form $\omega$ can be written
+$\omega=\sum_{i_1 < \cdots < i_k}\omega_{i_1,\ldots
+i_k}dx^{i_1}\wedge\cdots\wedge dx^{i_k}$.  If working in
+$\mathbb{R}^3$, we have three elementary forms $dx$, $dy$, and $dz$;
+in the package we have the pre-defined objects `dx`, `dy`, and `dz`.
+These are convenient for reproducing textbook results.  We start with
+some illustrations of the package print method.
+
+```{r}
+dx
+```
+
+This is somewhat opaque and difficult to understand.  It is easier to
+start with a more complicated example: take $dx\wedge dy -7dx\wedge dz
++ 3dy\wedge dz$:
+
+```{r}
+dx^dy -7*dx^dz + 3*dy^dz
+```
+
+We see three rows for the three elementary components.  Taking the row
+with coefficient $-7$ [which would be $-7dx\wedge dz$], this maps
+$\left(\mathbb{R}^3\right)^2$ to $\mathbb{R}$ and we have
+
+$$(-7dx\wedge dz)\left(\begin{pmatrix} u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}\right)=
+-7\det\begin{pmatrix}u_1&v_1\\u_3&v_3\end{pmatrix}$$
+
+Armed with this familiar fact, we can interpret $dx$ as a map from
+$\left(\mathbb{R}^3\right)^1$ to $\mathbb{R}$ with
+
+$$dx\left(\begin{pmatrix} u_1\\u_2\\u_3\end{pmatrix}
+\right)=
+\det\begin{pmatrix}u_1\end{pmatrix}=u_1$$
+
+or, in other words, $dx$ picks out the first component of its vector
+(as the print method gives, albeit obscurely).  This is easily shown
+in the package:
+
+```{r coercedxtoafunction}
+as.function(dx)(c(113,3,6))
+```
+
+We might want to verify that $dx\wedge dy=-dy\wedge dx$:
+
+```{r dxdyequalsminusdydx}
+dx ^ dy == -dy ^ dx
+```
+
+# Elementary forms and the print method
+
+The print method is configurable and can display kforms in symbolic
+form.  For working with `dx dy dz` we may set option `usedx`:
+
+```{r setusedx}
+options(usedx = TRUE)
+```
+
+Then the results of calculations are more natural:
+
+```{r showdxwithusedx}
+dx
+dx^dy + 56*dy^dz
+```
+
+However, this setting can be confusing if we work with $dx^i,i>3$, for
+the print method runs out of alphabet:
+
+```{r}
+rform()
+```
+
+
+## The Hodge dual
+
+Function `hodge()` returns the Hodge dual:
+
+```{r hodgedxdydz}
+hodge(dx^dy + 13*dy^dz)
+```
+
+Note that calling `hodge(dx)` can be confusing:
+
+```{r hodgedx}
+hodge(dx)
+```
+
+This returns a scalar because `dx` is interpreted as a one-form on
+one-dimensional space, which is a scalar form.  One usually wants the
+result in three dimensions:
+
+```{r hodgedx3}
+hodge(dx,3)
+```
+
+## Other ways to create the elementary one-forms
+
+It is possible to create these objects using package idiom:
+
+```{r}
+d(1) == dx
+```
+
+
+### Package dataset
+
+Following lines create `dx.rda`, residing in the `data/` directory of
+the package.
+
+```{r,label=savedxdydz}
+save(dx,dy,dz,file="dx.rda")
+```
