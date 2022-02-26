@@ -389,7 +389,7 @@ Interpretation of the output above is not obvious (it is easier to
 understand the output from more complicated alternating forms, as in
 the next section), but for the moment observe that $dx_3$ is indeed an
 alternating form, mapping $\mathbb{R}^n$ to $\mathbb{R}$ with
-$dx_i\left(x_1,x_2,\ldots,x_n\right)=x_i$.  Thus, for example:
+$dx_3\left(x_1,x_2,\ldots,x_n\right)=x_3$.  Thus, for example:
 
 
 ```{r}
