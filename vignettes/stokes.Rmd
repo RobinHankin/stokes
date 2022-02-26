@@ -574,7 +574,7 @@ $\phi$ and $\mathbf{v}$ is a $k-1$-form with
 if $k>1$; we specify $\phi_\mathbf{v}=\phi(\mathbf{v})$ if $k=1$.
 Verification is straightforward:
 
-```{r}
+```{r lookatfunc}
 (o <- rform())  # a random 3-form
 V <- matrix(runif(21),ncol=3)
 LHS <- as.function(o)(V)
@@ -586,13 +586,13 @@ It is possible to iterate the contraction process; if we pass a matrix
 $V$ to `contract()` then this is interpreted as repeated contraction
 with the columns of $V$:
 
-```{r}
+```{r coerceotoafunction}
 as.function(contract(o,V[,1:2]))(V[,-(1:2),drop=FALSE])
 ```
 
 If we pass three columns to `contract()` the result is a $0$-form:
 
-```{r}
+```{r contractovlosetrue}
 contract(o,V)
 ```
 
@@ -600,7 +600,7 @@ In the above, the result is coerced to a scalar; in order to work with
 a formal $0$-form (which is represented in the package as a `spray`
 with a zero-column index matrix) we can use the `lose=FALSE` argument:
 
-```{r}
+```{r contractovlosefalse}
 contract(o,V,lose=FALSE)
 ```
 
@@ -675,12 +675,20 @@ then
 \end{array}
 \]
 
-Function `transform()` function does all this but it is slow.  I am
-not 100\% sure that there isn't a much more efficient way to do such a
-transformation.  There are a few tests in `tests/testthat`.
+Function `transform()` function does all this:
 
+```{r usetransform}
+options(usedx=TRUE)   # uses dx etc in print method
+transform(dx^dy+5*dx^dz, matrix(1:9,3,3))
+options(usedx=FALSE)  # revert to default
+```
 
-```{r}
+However, it is slow and I am not 100\% sure that there isn't a much
+more efficient way to do such a transformation.  There are a few tests
+in `tests/testthat`.  Here I show that transformations may be inverted
+using matrix inverses:
+
+```{r defineoandM}
 (o <- 2 * as.kform(2) ^ as.kform(4) ^ as.kform(5))
 M <- matrix(rnorm(25),5,5)
 ```
@@ -689,23 +697,20 @@ Then we will transform according to matrix `M` and then transform
 according to the matrix inverse; the functionality works nicely with
 magrittr pipes:
 
-```{r}
-zap(o |> transform(M) |> transform(solve(M)))
+```{r transformbackandforward}
+o |> transform(M) |> transform(solve(M))
+```
+
+Above we see many rows with values small enough for the print method
+to print an exact zero, but not sufficiently small to be eliminated by
+the `spray` internals.  We can remove the small entries with `zap()`:
+
+```{r zapsmallroundofferrors}
+o |> transform(M) |> transform(solve(M)) |> zap()
 ```
 
 See how the result is equal to the original $k$-form $2dy_2\wedge
-dy_4\wedge dy_5$, except for some numerical roundoff error.  In this
-case the extra rows have values small enough for the print method to
-print an exact zero, but not sufficiently small to be eliminated by
-the `spray` internals.  The `spray` package version 1.0-8 does not
-have the capability of removing small entries (this will be available
-in 1.0-9); but in the meantime we can do this:
-
-```{r}
-as.kform(index(o),zapsmall(coeffs(o)))
-```
-
-returning us to the original value of `o`.
+dy_4\wedge dy_5$.
 
 ## Exterior derivatives
 
