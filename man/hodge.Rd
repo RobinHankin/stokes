@@ -40,6 +40,11 @@ hodge(volume(5),lose=TRUE)
 hodge(scalar(7),n=9)
 
 
+dx <- d(1)
+dy <- d(2)
+dz <- d(3)
+
+hodge(dx,3) == dy^dz
 
 
 }

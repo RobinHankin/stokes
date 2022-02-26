@@ -240,7 +240,7 @@
     } else {
       return(kform(spray(matrix(1,0,n-arity(K)),1)))
     }
-  } else if(is.volume(K)){
+  } else if(is.volume(K,n)){
     return(scalar(coeffs(K),lose=lose))
   } else if(is.scalar(K)){
     if(missing(n)){

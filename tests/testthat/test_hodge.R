@@ -1,4 +1,4 @@
-## Some tests of hodge()
+## Some tests of hodge() ... see also test_misc.R which looks at issue #61
 
 options(warn=999)
 test_that("Function hodge() behaves itself", {

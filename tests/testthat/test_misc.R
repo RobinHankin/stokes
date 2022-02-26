@@ -62,6 +62,21 @@ test_that("Miscellaneous wedge functionality", {
 
         expect_true(all(sapply(1:10,function(n){is.volume(d(seq_len(n)))})))
 
+        expect_true(hodge(dx,3) == dy^dz)
+        expect_true(is.scalar(hodge(dx,lose=FALSE)))
+        expect_true(hodge(dx,lose=TRUE) == 1)
+
+        expect_true(hodge(dx,2) == dy)
+        expect_true(hodge(dx,3) == dy^dz)
+
+        expect_true(hodge(dy,2) == -dx)
+        expect_true(hodge(dy,3) == -dx^dz)
+        expect_error(hodge(dy,1))
+
+        expect_true(hodge(dz,3) == dx^dy)
+
+
+
 })
 
 
