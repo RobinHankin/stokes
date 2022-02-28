@@ -11,7 +11,7 @@
         } else if (.Generic == "-") {
             return(as.kform(spray(index(e1),-coeffs(e1))))
         } else {
-            stop("Unary operator '", .Generic, "' is not implemented for kforms")
+            stop("unary operator '", .Generic, "' is not implemented for kforms")
         }
     }
     if (!is.element(.Generic, c("+", "-", "*", "/", "==", "!=", "^"))){
@@ -31,7 +31,7 @@
         } else if(.Generic == "^"){
             return(wedge2(e1,e2))
         } else {
-            stop("Binary operator '", .Generic, "' is not implemented for kforms")
+            stop("binary operator '", .Generic, "' is not implemented for kforms")
         }
     } else if(lclass & !rclass){
         if(.Generic == "*"){
@@ -41,7 +41,7 @@
         } else if(.Generic == "^"){
             return(as.kform(f(e1)*e2))
         } else {
-            stop("Binary operator '", .Generic, "' is not implemented for kform <op> other ")
+            stop("binary operator '", .Generic, "' is not implemented for kform <op> other ")
         }
     } else if(!lclass & rclass){
         if(.Generic == "*"){
@@ -51,7 +51,7 @@
         } else if(.Generic == "^"){
             return(as.kform(e1*f(e2)))
         } else {
-            stop("Binary operator '", .Generic, "' is not implemented for other <op> kform")
+            stop("binary operator '", .Generic, "' is not implemented for other <op> kform")
         }
     } else if ((!lclass) & (!rclass)){
         stop("odd---neither argument has class kform?")
@@ -71,7 +71,7 @@
         } else if (.Generic == "-") {
             return(as.ktensor(spray(index(e1),-coeffs(e1))))
         } else {
-            stop("Unary operator '", .Generic, "' is not implemented for ktensors")
+            stop("unary operator '", .Generic, "' is not implemented for ktensors")
         }
     }
     if (!is.element(.Generic, c("+", "-", "*", "/", "==", "!="))){
@@ -92,7 +92,7 @@
             ## stop('To multiply two ktensors, use the cross product "%X%"')
             return(cross(e1,e2))
         } else {
-            stop("Binary operator '", .Generic, "' is not implemented for ktensors")
+            stop("binary operator '", .Generic, "' is not implemented for ktensors")
         }
     } else if(lclass & !rclass){
         if(.Generic == "*"){
@@ -100,7 +100,7 @@
         } else if(.Generic == "/"){
             return(as.ktensor(f(e1)/e2))
         } else {
-            stop("Binary operator '", .Generic, "' is not implemented for ktensor <op> other ")
+            stop("binary operator '", .Generic, "' is not implemented for ktensor <op> other ")
         }
     } else if(!lclass & rclass){
         if(.Generic == "*"){
@@ -108,7 +108,7 @@
         } else if(.Generic == "/"){
             stop("ktensors not a field")
         } else {
-            stop("Binary operator '", .Generic, "' is not implemented for other <op> ktensor")
+            stop("binary operator '", .Generic, "' is not implemented for other <op> ktensor")
         }
     } else if ((!lclass) & (!rclass)){
         stop("odd---neither argument has class ktensor?")

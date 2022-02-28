@@ -4,7 +4,7 @@
   class(S) <- c("ktensor","spray")  # This is the only place class ktensor is set
   return(S)
 }
-
+sssss
 `as.ktensor` <- function(M,coeffs){
     if(is.kform(M)){
         return(kform_to_ktensor(M))
@@ -236,7 +236,7 @@
 `hodge` <- function(K, n=max(index(K)), g=rep(1,n), lose=TRUE){
   if(is.empty(K)){
     if(missing(n)){
-      stop("K is zero but no value of n is supplied")
+      stop("'K' is zero but no value of 'n' is supplied")
     } else {
       return(kform(spray(matrix(1,0,n-arity(K)),1)))
     }
@@ -244,7 +244,7 @@
     return(scalar(coeffs(K),lose=lose))
   } else if(is.scalar(K)){
     if(missing(n)){
-      stop("K is scalar but no value of n is supplied")
+      stop("'K' is scalar but no value of 'n' is supplied")
     } else {
       return(volume(n)*coeffs(K))
     }
@@ -430,3 +430,35 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     stopifnot(n==ncol(M)+1)
     (-1)^n*sapply(seq_len(n),function(i){(-1)^i*det(M[-i,])})
 }
+
+`kinner` <- function(o1,o2,n,M){
+    stopifnot(arity(o1) == arity(o2))
+    k <- arity(o1)
+    if(missing(n)){n <- max(c(index(o1),index(o2)))}
+    if(missing(M)){M <- diag(nrow=n)}
+
+    out <- 0
+    
+    k <- arity(o1)
+    c1 <- elements(coeffs(o1))
+    c2 <- elements(coeffs(o2))
+    for(no1 in seq_len(nterms(o1))){
+        for(no2 in seq_len(nterms(o2))){
+            MM <- matrix(0,k,k)
+            for(i in seq_len(k)){
+                for(j in seq_len(k)){
+                    MM[i,j] <- MM[i,j] + M[index(o1)[no1,i], index(o2)[no2,j]]
+                }
+            }
+            out <- out + det(MM)*c1[no1]*c2[no2]
+        } # o2 terms loop closes
+    } # o1 terms loop closes
+    return(out)
+}
+
+    
+       
+
+  
+
+
