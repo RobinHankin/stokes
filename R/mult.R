@@ -4,7 +4,7 @@
   class(S) <- c("ktensor","spray")  # This is the only place class ktensor is set
   return(S)
 }
-sssss
+
 `as.ktensor` <- function(M,coeffs){
     if(is.kform(M)){
         return(kform_to_ktensor(M))
@@ -233,7 +233,7 @@ sssss
   return(noquote(out))
 }
 
-`hodge` <- function(K, n=max(index(K)), g=rep(1,n), lose=TRUE){
+`hodge` <- function(K, n=max(index(K)), lose=TRUE){
   if(is.empty(K)){
     if(missing(n)){
       stop("'K' is zero but no value of 'n' is supplied")
@@ -256,7 +256,6 @@ sssss
   iK <- index(K)
   f1 <- function(o){seq_len(n)[!seq_len(n) %in% o]}
   f2 <- function(x){permutations::sgn(permutations::as.word(x))}
-  f3 <- function(v){prod(g[v])}
   jj <- apply(iK,1,f1)
   if(is.matrix(jj)){
     newindex <- t(jj)
@@ -265,10 +264,9 @@ sssss
   }
   iK <- cbind(iK,newindex)
   x1 <- apply(iK,1,f2)
-  x2 <- apply(iK,1,f3)
   x3 <- elements(coeffs(K))
 
-  as.kform(newindex,x1*x2*x3)
+  as.kform(newindex,x1*x3)
 }
 
 `inner` <- function(M){

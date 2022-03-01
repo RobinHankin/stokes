@@ -6,14 +6,12 @@
 \description{\loadmathjax
   Given a \mjseqn{k}-form, return its Hodge dual}
 \usage{
-hodge(K, n=max(index(K)), g=rep(1,n), lose=TRUE)
+hodge(K, n=max(index(K)), lose=TRUE)
 }
 \arguments{
   \item{K}{Object of class \code{kform}}
   \item{n}{Dimensionality of space, defaulting the the largest element
     of the index}
-  \item{g}{Diagonal of the metric tensor, defaulting to the standard
-    metric}
   \item{lose}{Boolean, with default \code{TRUE} meaning to coerce to a
     scalar if appropriate}
 }
@@ -24,9 +22,6 @@ hodge(K, n=max(index(K)), g=rep(1,n), lose=TRUE)
 \examples{
 
 hodge(rform())
-
-hodge(kform_general(4,2),g=c(-1,1,1,1))
-
 
 M <- matrix(rnorm(30),6,5)
 hodge(Reduce(`^`,sapply(seq_len(5),function(i){as.1form(M[,i])},simplify=FALSE)))
