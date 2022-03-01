@@ -429,11 +429,10 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     (-1)^n*sapply(seq_len(n),function(i){(-1)^i*det(M[-i,])})
 }
 
-`kinner` <- function(o1,o2,n,M){
+`kinner` <- function(o1,o2,M){
     stopifnot(arity(o1) == arity(o2))
     k <- arity(o1)
-    if(missing(n)){n <- max(c(index(o1),index(o2)))}
-    if(missing(M)){M <- diag(nrow=n)}
+    if(missing(M)){M <- diag(nrow=max(c(index(o1),index(o2))))}
 
     out <- 0
     
