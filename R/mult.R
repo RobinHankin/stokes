@@ -184,7 +184,7 @@
 
 `rform` <- function(terms=9, k=3, n=7, coeffs){
   if(missing(coeffs)){coeffs <- seq_len(terms)}
-  kform(spray(t(replicate(terms,sample(seq_len(n),k))),seq_len(terms),addrepeats=TRUE))
+  kform(spray(t(replicate(terms,sample(seq_len(n),k))),coeffs,addrepeats=TRUE))
 }
 
 `rtensor` <- function(terms=9,k=3, n=7, coeffs){
