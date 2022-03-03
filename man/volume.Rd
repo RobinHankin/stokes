@@ -7,7 +7,7 @@
 }
 \usage{
 volume(n)
-is.volume(K,n=max(index(K)))
+is.volume(K,n=dovs(K))
 }
 \arguments{
   \item{n}{Dimension of the space}
@@ -44,7 +44,8 @@ volume element.
 \references{Spivak}
 \author{Robin K. S. Hankin}
 \seealso{
-\code{\link{zeroform}},\code{\link{as.1form}}}
+  \code{\link{zeroform}},\code{\link{as.1form}},\code{\link{dovs}}
+}
 \examples{
 
 as.kform(1) ^ as.kform(2) ^ as.kform(3)  == volume(3)  # should be TRUE

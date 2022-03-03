@@ -233,7 +233,7 @@
   return(noquote(out))
 }
 
-`hodge` <- function(K, n=max(index(K)), g, lose=TRUE){
+`hodge` <- function(K, n=dovs(K), g, lose=TRUE){
     if(missing(g)){g <- rep(1,n)}
 
     if(is.empty(K)){
@@ -253,7 +253,7 @@
     } # weird edge-cases end
     
     
-    stopifnot(n >= max(index(K)))
+    stopifnot(n >= dovs(K))
     
     f1 <- function(o){seq_len(n)[!seq_len(n) %in% o]}
     f2 <- function(x){permutations::sgn(permutations::as.word(x))}
@@ -311,13 +311,13 @@
 }
   
 `keep` <- function(K,yes){
-    jj <- rep(0L,max(index(K)))
+    jj <- rep(0L,dovs(K))
     jj[yes] <- 1
     stretch(K,jj)
 }
 
 `discard` <- function(K,no){
-    jj <- rep(1L,max(index(K)))
+    jj <- rep(1L,dovs(K))
     jj[no] <- 0L
     stretch(K,jj)
 }
@@ -368,12 +368,12 @@
 
 `volume` <- function(n){as.kform(seq_len(n))}
 
-`is.volume` <- function(K,n=max(index(K))){
+`is.volume` <- function(K,n=dovs(K)){
   return(
   (nterms(K) == 1)      &&
   (nrow(index(K)) == 1) &&
   (arity(K) > 0)        &&
-  n == max(index(K))    && 
+  n == dovs(K)    && 
   all(seq_len(arity(K)) == index(K))
   )
 }
@@ -458,5 +458,4 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     return(out)
 }
 
-
-
+`dovs` <- function(K){max(index(K))}

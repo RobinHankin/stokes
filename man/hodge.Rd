@@ -6,7 +6,7 @@
 \description{\loadmathjax
   Given a \mjseqn{k}-form, return its Hodge dual}
 \usage{
-hodge(K, n=max(index(K)), g, lose=TRUE)
+hodge(K, n=dovs(K), g, lose=TRUE)
 }
 \arguments{
   \item{K}{Object of class \code{kform}}
