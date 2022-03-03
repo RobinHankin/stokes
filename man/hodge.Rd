@@ -6,12 +6,14 @@
 \description{\loadmathjax
   Given a \mjseqn{k}-form, return its Hodge dual}
 \usage{
-hodge(K, n=max(index(K)), lose=TRUE)
+hodge(K, n=max(index(K)), g=rep(1,n), lose=TRUE)
 }
 \arguments{
   \item{K}{Object of class \code{kform}}
   \item{n}{Dimensionality of space, defaulting the the largest element
     of the index}
+  \item{g}{Diagonal of the metric tensor, defaulting to the standard
+    metric.  Currently, only entres of \mjeqn{\pm 1}{+/-1} are accepted}
   \item{lose}{Boolean, with default \code{TRUE} meaning to coerce to a
     scalar if appropriate}
 }
@@ -23,9 +25,12 @@ hodge(K, n=max(index(K)), lose=TRUE)
 
 hodge(rform())
 
-M <- matrix(rnorm(30),6,5)
-hodge(Reduce(`^`,sapply(seq_len(5),function(i){as.1form(M[,i])},simplify=FALSE)))
+a <- rform()
+a == a |> hodge() |> hodge()   # should be TRUE
 
+Faraday <- kform_general(4,2,runif(6)) # Faraday electromagnetic tensor
+minsk <- c(-1,1,1,1)  # Minkowski metric
+Faraday==Faraday |> hodge(g=minsk) |> hodge(g=minsk)
 
 hodge(dx,3) == dy^dz
 

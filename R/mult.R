@@ -233,40 +233,45 @@
   return(noquote(out))
 }
 
-`hodge` <- function(K, n=max(index(K)), lose=TRUE){
-  if(is.empty(K)){
-    if(missing(n)){
-      stop("'K' is zero but no value of 'n' is supplied")
-    } else {
-      return(kform(spray(matrix(1,0,n-arity(K)),1)))
-    }
-  } else if(is.volume(K,n)){
-    return(scalar(coeffs(K),lose=lose))
-  } else if(is.scalar(K)){
-    if(missing(n)){
-      stop("'K' is scalar but no value of 'n' is supplied")
-    } else {
-      return(volume(n)*coeffs(K))
-    }
-  } # weird edge-cases end
-        
+`hodge` <- function(K, n=max(index(K)), g=rep(1,n), lose=TRUE){
+    if(missing(g)){g <- rep(1,n)}
+
+    if(is.empty(K)){
+        if(missing(n)){
+            stop("'K' is zero but no value of 'n' is supplied")
+        } else {
+            return(kform(spray(matrix(1,0,n-arity(K)),1)))
+        }
+    } else if(is.volume(K,n)){
+        return(scalar(coeffs(K),lose=lose))
+    } else if(is.scalar(K)){
+        if(missing(n)){
+            stop("'K' is scalar but no value of 'n' is supplied")
+        } else {
+            return(volume(n)*coeffs(K))
+        }
+    } # weird edge-cases end
     
-  stopifnot(n >= max(index(K)))
-
-  iK <- index(K)
-  f1 <- function(o){seq_len(n)[!seq_len(n) %in% o]}
-  f2 <- function(x){permutations::sgn(permutations::as.word(x))}
-  jj <- apply(iK,1,f1)
-  if(is.matrix(jj)){
-    newindex <- t(jj)
-  } else {
-    newindex <- as.matrix(jj)
-  }
-  iK <- cbind(iK,newindex)
-  x1 <- apply(iK,1,f2)
-  x3 <- elements(coeffs(K))
-
-  as.kform(newindex,x1*x3)
+    
+    stopifnot(n >= max(index(K)))
+    
+    f1 <- function(o){seq_len(n)[!seq_len(n) %in% o]}
+    f2 <- function(x){permutations::sgn(permutations::as.word(x))}
+    f3 <- function(v){prod(g[v])}
+    
+    iK <- index(K)
+    jj <- apply(iK,1,f1)
+    if(is.matrix(jj)){
+        newindex <- t(jj)
+    } else {
+        newindex <- as.matrix(jj)
+    }
+    
+    x_coeffs <- elements(coeffs(K))
+    x_metric <- apply(iK,1,f3)
+    x_sign <- apply(cbind(iK,newindex),1,f2)  # get the sign 
+    
+    as.kform(newindex,x_metric*x_coeffs*x_sign)
 }
 
 `inner` <- function(M){
@@ -453,9 +458,5 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     return(out)
 }
 
-    
-       
-
-  
 
 
