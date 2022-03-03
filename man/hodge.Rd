@@ -6,14 +6,15 @@
 \description{\loadmathjax
   Given a \mjseqn{k}-form, return its Hodge dual}
 \usage{
-hodge(K, n=max(index(K)), g=rep(1,n), lose=TRUE)
+hodge(K, n=max(index(K)), g, lose=TRUE)
 }
 \arguments{
   \item{K}{Object of class \code{kform}}
   \item{n}{Dimensionality of space, defaulting the the largest element
     of the index}
-  \item{g}{Diagonal of the metric tensor, defaulting to the standard
-    metric.  Currently, only entres of \mjeqn{\pm 1}{+/-1} are accepted}
+  \item{g}{Diagonal of the metric tensor, with missing default being the
+    standard metric of the identity matrix.  Currently, only entries of
+    \mjeqn{\pm 1}{+/-1} are accepted}
   \item{lose}{Boolean, with default \code{TRUE} meaning to coerce to a
     scalar if appropriate}
 }

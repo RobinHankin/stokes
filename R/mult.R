@@ -233,7 +233,7 @@
   return(noquote(out))
 }
 
-`hodge` <- function(K, n=max(index(K)), g=rep(1,n), lose=TRUE){
+`hodge` <- function(K, n=max(index(K)), g, lose=TRUE){
     if(missing(g)){g <- rep(1,n)}
 
     if(is.empty(K)){
