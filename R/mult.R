@@ -185,7 +185,7 @@
 `rform` <- function(terms=9, k=3, n=7, coeffs, ensure=TRUE){
   if(missing(coeffs)){coeffs <- seq_len(terms)}
   ind <- t(replicate(terms,sample(seq_len(n),k)))
-  if(ensure & all(ind)<n){ind[sample(ind==max(ind),1)] <- n}
+  if(ensure & all(ind)<n){ind[sample(which(ind==max(ind)),1)] <- n}
   kform(spray(ind,coeffs,addrepeats=TRUE))
 }
 
