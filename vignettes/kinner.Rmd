@@ -17,9 +17,8 @@ library("emulator")
 set.seed(1)
 ```
 
-<p style="text-align: right;">
-![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
-</p>
+\hfill![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+
 
 ```{r}
 kinner
