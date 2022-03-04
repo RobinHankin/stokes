@@ -1,0 +1,81 @@
+---
+title: "The `kinner()` function in the `stokes` package"
+author: "Robin K. S. Hankin"
+output:
+  pdf_document:
+    extra_dependencies: ["blkarray", "bigstrut"]
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{kinner}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("stokes")
+library("emulator")
+set.seed(1)
+```
+
+<p style="text-align: right;">
+![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+</p>
+
+```{r}
+kinner
+```
+
+Given two $k$-forms $\alpha,\beta$, function `kinner()` returns an
+inner product $\left\langle\cdot,\cdot\right\rangle$ of $\alpha$ and
+$\beta$.  If $\alpha=\alpha_1\wedge\cdots\wedge\alpha_k$ and
+$\beta=\beta_1\wedge\cdots\wedge\beta_k$, and we have an inner product
+$\left\langle\alpha_i,\beta_j\right\rangle$ then
+
+$$\left\langle\cdot,\cdot\right\rangle=
+\det\left(\left\langle\alpha_i,\beta_j\right\rangle_{ij}\right)$$
+
+We extend this inner product by bilinearity to the whole of
+$\Lambda^k(V)$.
+
+# Some simple examples
+
+[Michael Penn](https://www.youtube.com/watch?v=vDRfADusqYQ&list=PL22w63XsKjqzQZtDZO_9s2HEMRJnaOTX7&index=20&ab_channel=MichaelPenn) uses a metric of
+
+
+$$\begin{bmatrix} 
+1&0&0&0\\ 
+0&1&0&0\\
+0&0&-1&0\\
+0&0&0&-1
+\end{bmatrix}
+$$
+
+and shows that
+
+$$
+\begin{blockarray}{ccccc}
+ & dt\wedge dx & dt\wedge dy & dt\wedge dz & dx\wedge dy \\
+\begin{block}{c[cccc]}
+dt\wedge dx & 0&0& 0  &0\bigstrut[t] \\
+dt\wedge dy & 0&0& 0  &0 \\
+dt\wedge dz & 0&0& 0  &0\bigstrut[b]\\
+dx\wedge dy & 0&0& 0  &0\bigstrut[b]\\
+dx\wedge dz & 0&0& 0  &0\bigstrut[b]\\
+dy\wedge dz & 0&0& 0  &0\bigstrut[b]\\
+\end{block}
+\end{blockarray}
+$$
+
+$$
+\begin{blockarray}{ccccccc}
+ & dt\wedge dx & dt\wedge dy & dt\wedge dz & dx\wedge dy & dx\wedge dz& dy\wedge dz\\
+\begin{block}{c[cccccc]}
+dt\wedge dx & -1 &  0 &  0 &0&0&0\bigstrut[t] \\
+dt\wedge dy &  0 & -1 &  0 &0&0&0 \\
+dt\wedge dz &  0 &  0 & -1 &0&0&0\bigstrut[b]\\
+dx\wedge dy &  0 &  0 &  0 &1&0&0\bigstrut[b]\\
+dx\wedge dz &  0 &  0 &  0 &0&1&0\bigstrut[b]\\
+dy\wedge dz &  0 &  0 &  0 &0&0&1\bigstrut[b]\\
+\end{block}
+\end{blockarray}
+$$
