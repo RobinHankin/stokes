@@ -6,8 +6,8 @@
 
   Returns a character string representing \mjseqn{k}-tensor and
   \mjseqn{k}-form objects in symbolic form.  Used by the print method if
-  either option \code{stokes_symbolic_print} or \code{usedx} or
-  \code{usetxyz} are \code{TRUE}.
+  either option \code{kform_symbolic_print} or
+  \code{ktensor_symbolic_print} is non-null.
 
 }
 \usage{

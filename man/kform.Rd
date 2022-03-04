@@ -113,8 +113,8 @@ f <- as.function(wedge(K1,K2))
 E <- matrix(rnorm(32),8,4)
 f(E) + f(E[,c(1,3,2,4)])  # should be zero by alternating property
 
-options(stokes_symbolic_print = TRUE)
+options(kform_symbolic_print = 'd')
 (d(5)+d(7)) ^ (d(2)^d(5) + 6*d(4)^d(7))
-options(stokes_symbolic_print = FALSE)
+options(kform_symbolic_print = NULL)  # revert to default
 
 }

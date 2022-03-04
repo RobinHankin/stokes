@@ -5,7 +5,7 @@
     } else {
         cat(paste("A linear map from V^",arity(x)," to R with V=R^",m,":\n",sep=""))
     }
-    if(isTRUE(getOption("stokes_symbolic_print"))){
+    if(isTRUE(getOption("ktensor_symbolic_print"))){
         cat(as.symbolic(x,d="d",symbols=as.character(seq_len(m))),"\n")
     } else {
         class(x) <- "spray"
@@ -21,12 +21,13 @@
     } else {
         cat(paste("An alternating linear map from V^",arity(x)," to R with V=R^",m,":\n",sep=""))
     }
-    if(isTRUE(getOption("usedx"))){
-        cat(as.symbolic(x,d="d",symbols=letters[24:26]),"\n")  # dx dy dz
-    } else if(isTRUE(getOption("usetxyz"))){
-        cat(as.symbolic(x,d="d",symbols=c("t","x","y","z")),"\n")  # dt dx dy dz
-    } else if(isTRUE(getOption("stokes_symbolic_print"))){
-        cat(as.symbolic(x,d="d",symbols=as.character(seq_len(m))),"\n")
+    po <- getOption("kform_symbolic_print") # po == print option
+    if(!is.null(po)){
+        switch(po,
+               dx = cat(as.symbolic(x,d="d",symbols=letters[24:26]),"\n"),       # dx dy dz
+               txyz = cat(as.symbolic(x,d="d",symbols=c("t","x","y","z")),"\n"), # dt dx dy dz
+               cat(as.symbolic(x,d="d",symbols=as.character(seq_len(m))),"\n")   # default symbolic
+               )
     } else {
         class(x) <- "spray"
         print(x,...)

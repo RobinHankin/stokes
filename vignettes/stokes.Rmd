@@ -382,6 +382,7 @@ wish to work with $dx_3$:
 
 ```{r}
 dx3 <- as.kform(matrix(3,1,1),1)
+options(kform_symbolic_print = NULL) # revert to default print method
 dx3
 ```
 
@@ -398,9 +399,8 @@ as.function(dx3)(c(14,15,16,17,18))  # idiom can deal with arbitrary vectors
 ```
 
 and we see that $dx_3$ picks out the third element of a vector.  These
-are linear: we may add and subtract these elementary forms:
-
-
+are linear in the sense that we may add and subtract these elementary
+forms:
 
 ```{r}
 dx5 <- as.kform(matrix(5,1,1),1)
@@ -410,10 +410,9 @@ as.function(dx3 + 2*dx5)(1:10)  # picks out element 3 + 2*element 5
 ## Formal definition of wedge product
 
 
-The wedge product maps two
-alternating forms to another alternating form; given
-$\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$, Spivak defines the
-wedge product $\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
+The wedge product maps two alternating forms to another alternating
+form; given $\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$, Spivak
+defines the wedge product $\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
 
 \[
 \omega\wedge\eta={k+l\choose k\quad l}\operatorname{Alt}(\omega\otimes\eta)
@@ -542,11 +541,11 @@ Note that the wedge product $\wedge$, although implemented in package
 idiom as `^` or `%^%`, appears in the symbolic representation as an
 ascii caret, `^`.
 
-We can alter the default print method with the `stokes_symbolic_print`
+We can alter the default print method with the `kform_symbolic_print`
 option, which uses `as.symbolic()`:
 
 ```{r}
-options(stokes_symbolic_print = TRUE)
+options(kform_symbolic_print = "d")
 K
 ```
 
@@ -555,7 +554,7 @@ forms:
 
 ```{r}
 (d(1) + d(5)) ^ (d(3)-5*d(2)) ^ d(7)
-options(stokes_symbolic_print = FALSE) # restore default
+options(kform_symbolic_print = NULL) # restore default
 ```
 
 
@@ -678,9 +677,9 @@ then
 Function `transform()` function does all this:
 
 ```{r usetransform}
-options(usedx=TRUE)   # uses dx etc in print method
+options(kform_symbolic_print = "dx")   # uses dx etc in print method
 transform(dx^dy+5*dx^dz, matrix(1:9,3,3))
-options(usedx=FALSE)  # revert to default
+options(kform_symbolic_print = NULL) # revert to default
 ```
 
 However, it is slow and I am not 100\% sure that there isn't a much

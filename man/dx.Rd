@@ -28,11 +28,11 @@ Option \code{usedx} is useful for working with these objects.
 dx
 hodge(dx,3)
 
-options(usedx = TRUE)  # shows dx dy dz
+options(kform_symbolic_print = 'dx')  # shows dx dy dz
 dx^dy
 hodge(dx,3)
 
-options(usedx = FALSE) # revert to default
+options(kform_symbolic_print = NULL)  # # revert to default
 
 
 }

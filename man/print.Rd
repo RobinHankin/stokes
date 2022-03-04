@@ -43,12 +43,15 @@ or multivariate polynomial form
   as such respects the \code{polyform} option.  But this can be
   misleading because \pkg{spray} interprets objects as multivariate
   polynomials not differential forms (and in particular uses the caret
-  to signify powers).  Use the \code{stokes_symbolic_print} option
-  instead.  If \code{TRUE}, it uses \code{as.symbolic()} to give an
-  alternate way of displaying \mjseqn{k}-forms.  Also, experimental
-  option \code{usedx} or \code{usetxyz} will result in output like
-  \dQuote{\code{dx ^ dz}}.  More detail is given at \code{symbolic.Rd}
-  and the \code{dx} vignette.
+  to signify powers).  Use the \code{ktensor_symbolic_print} or the
+  \code{kform_symbolic_print} options instead.  If non-null,
+  \code{as.symbolic()} is used to give an alternate way of displaying
+  \mjseqn{k}-tensors and \mjseqn{k}-forms.  Set
+  \code{kform_symbolic_print} to \dQuote{\code{dx}} for output like
+  \dQuote{\code{dx ^ dz}} and \dQuote{\code{txyz}} for output like
+  \dQuote{\code{dt ^ dx}}, useful in relativistic physics with a
+  Minkowski metric.  More detail is given at \code{symbolic.Rd} and the
+  \code{dx} vignette.
 
 }
 \seealso{\code{\link{as.symbolic}}}

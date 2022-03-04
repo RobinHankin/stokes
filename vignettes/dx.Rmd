@@ -98,10 +98,11 @@ dx ^ dy == -dy ^ dx
 # Elementary forms and the print method
 
 The print method is configurable and can display kforms in symbolic
-form.  For working with `dx dy dz` we may set option `usedx`:
+form.  For working with `dx dy dz` we may set option
+`kform_symbolic_print` to `dx`:
 
 ```{r setusedx}
-options(usedx = TRUE)
+options(kform_symbolic_print = 'dx')
 ```
 
 Then the results of calculations are more natural:
@@ -114,9 +115,11 @@ dx^dy + 56*dy^dz
 However, this setting can be confusing if we work with $dx^i,i>3$, for
 the print method runs out of alphabet:
 
-```{r}
+```{r runsoutofalphabet}
 rform()
 ```
+
+Above, we see the use of `NA` because there is no defined symbol.
 
 
 ## The Hodge dual
