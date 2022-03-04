@@ -1,0 +1,136 @@
+---
+title: "The `hodge()` function in the `stokes` package"
+author: "Robin K. S. Hankin"
+output: html_document
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{hodge}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("stokes")
+library("emulator")
+set.seed(1)
+```
+
+<p style="text-align: right;">
+![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+</p>
+
+```{r}
+hodge
+```
+
+Given a $k$-form $\omega$, function `hodge()` returns its Hodge dual
+$*\omega$ or $\star\omega$.  Formally, if $V={\mathbb R}^n$, and
+$\Lambda^k(V)$ is the space of alternating linear maps from $V^k$ to
+${\mathbb R}$, then
+$\star\colon\Lambda^k(V)\longrightarrow\Lambda^{n-k}(V)$.
+
+To define the Hodge dual, we need an inner product
+$\left\langle\cdot,\cdot\right\rangle$ [function `kinner()` in the
+package] and, given this and $\beta\in\Lambda^k(V)$ we define
+$\star\beta$ to be the (unique) $n-k$-form satisfying the fundamental
+relation:
+
+$$
+\alpha\wedge\left(\star\beta\right)=\left\langle\alpha,\beta\right\rangle\omega,$$
+
+for every $\alpha\in\Lambda^k(V)$.  Here $\omega=e_1\wedge
+e_2\wedge\cdots\wedge e_n$ is the unit $n$-vector of $\Lambda^n(V)$.
+Taking determinants of this relation shows the following.
+
+If we use multi-index notation so $e_I=e_{i_1}\wedge\cdots\wedge
+e_{i_k}$ with $I=\left\lbrace i_1,\cdots,i_k\right\rbrace$, then
+
+$$\star e_I=(-1)^{\sigma(I)}e_J$$
+
+where $J=\left\lbrace
+j_i,\ldots,j_k\right\rbrace=[n]\backslash\left\lbrace
+i_1,\ldots,i_k\right\rbrace$ is the complement of $I$, and
+$(-1)^{\sigma(I)}$ is the sign of the permutation $\sigma(I)=i_1\cdots
+i_kj_1\cdots j_{n-k}$.  We extend to the whole of $\Lambda^k(V)$ using
+linearity.
+
+Package idiom is straightforward:
+
+```{r}
+(o <- rform())
+hodge(o)
+```
+
+We verify that the fundamental relation holds by direct inspection:
+
+```{r}
+o ^ hodge(o)
+kinner(o,o)*volume(dovs(o))
+```
+
+showing agreement.  We may work more formally by defining a function
+that returns `TRUE` if the left and right hand sides match
+
+```{r}
+diff <- function(a,b){a^hodge(b) ==  kinner(a,b)*volume(dovs(a))}
+```
+
+and call it with random $k$-forms:
+
+```{r}
+diff(rform(),rform())
+```
+
+Or even
+
+```{r}
+all(replicate(10,diff(rform(),rform())))
+```
+
+## Small-dimensional vector spaces
+
+We can work in three dimensions in which case we have three linearly
+independent $1$-forms: $dx$, $dy$, and $dz$.  To work in this system
+it is better to use `dx` print method:
+
+```{r}
+options(kform_symbolic_print = "dx")
+hodge(dx,3)
+```
+
+
+# Non positive-definite metrics
+
+The inner product $\left\langle\alpha,\beta\right\rangle$ above may be
+generalized by defining it on decomposable vectors
+$\alpha=\alpha_1\wedge\cdots\wedge\alpha_k$ and
+$\beta=\beta_1\wedge\cdots\wedge\beta_k$ as
+
+$$\left\langle\alpha,\beta\right\rangle=
+\det\left(\left\langle\alpha_i,\beta_j\right\rangle_{i,j}\right)$$
+
+where $\left\langle\alpha_i,\beta_j\right\rangle=\pm\delta_ij$ is an
+inner product on $\Lambda^1(V)$ [the inner product is given by
+`kinner()`].  The resulting Hodge star operator is implemented in the
+package and one can specify the metric.
+For example, if we consider the Minkowski metric this would be
+$-1,1,1,1$.
+
+To work with $2$-forms in relativistic physics, it is often preferable
+to use bespoke print method `usetxyz`:
+
+
+```{r}
+o <- kform_general(4,2,1:6)
+o
+options(kform_symbolic_print = "txyz")
+o
+```
+
+Function `hodge()` takes a `g` argument to specify the metric:
+
+```{r}
+hodge(o)
+hodge(o,g=c(-1,1,1,1))
+hodge(o)-hodge(o,g=c(-1,1,1,1))
+```
