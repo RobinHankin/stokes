@@ -23,6 +23,8 @@
     }
     if(isTRUE(getOption("usedx"))){
         cat(as.symbolic(x,d="d",symbols=letters[24:26]),"\n")  # dx dy dz
+    } else if(isTRUE(getOption("usetxyz"))){
+        cat(as.symbolic(x,d="d",symbols=c("t","x","y","z")),"\n")  # dt dx dy dz
     } else if(isTRUE(getOption("stokes_symbolic_print"))){
         cat(as.symbolic(x,d="d",symbols=as.character(seq_len(m))),"\n")
     } else {

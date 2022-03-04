@@ -46,9 +46,9 @@ or multivariate polynomial form
   to signify powers).  Use the \code{stokes_symbolic_print} option
   instead.  If \code{TRUE}, it uses \code{as.symbolic()} to give an
   alternate way of displaying \mjseqn{k}-forms.  Also, experimental
-  option \code{usedx} will result in output like \dQuote{\code{dx ^
-  dz}}.  More detail is given at \code{symbolic.Rd} and the \code{dx}
-  vignette.
+  option \code{usedx} or \code{usetxyz} will result in output like
+  \dQuote{\code{dx ^ dz}}.  More detail is given at \code{symbolic.Rd}
+  and the \code{dx} vignette.
 
 }
 \seealso{\code{\link{as.symbolic}}}

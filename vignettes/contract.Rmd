@@ -200,5 +200,3 @@ LHS <- det(V)
 RHS <- contract(o,V)
 c(LHS,RHS,LHS-RHS)
 ```
-
-
