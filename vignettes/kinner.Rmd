@@ -103,3 +103,12 @@ Slightly slicker:
 ```{r}
 outer(p,p,Vectorize(function(i,j){kinner(do(i),do(j),M=mink)}))
 ```
+
+# Tidyup
+
+It is important to remove the `dt`, `dx`, `dt`, `dx` as created above
+because they will interfere with the other vignettes:
+
+```{r removedtdxdydz}
+rm(dt,dx,dy,dz)
+```
