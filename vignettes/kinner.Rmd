@@ -41,41 +41,66 @@ $\Lambda^k(V)$.
 
 [Michael Penn](https://www.youtube.com/watch?v=vDRfADusqYQ&list=PL22w63XsKjqzQZtDZO_9s2HEMRJnaOTX7&index=20&ab_channel=MichaelPenn) uses a metric of
 
-
-$$\begin{bmatrix} 
-1&0&0&0\\ 
-0&1&0&0\\
-0&0&-1&0\\
-0&0&0&-1
-\end{bmatrix}
 $$
+\begin{blockarray}{crrrr}
+& dt & dx & dy & dz\\
+\begin{block}{c[rrrr]}
+dt &  1 &  0 &  0 & 0 \bigstrut[t] \\
+dx &  0 & -1 &  0 & 0 \\
+dy &  0 &  0 & -1 & 0 \bigstrut[b]\\
+dz &  0 &  0 &  0 &-1 \bigstrut[b]\\
+\end{block}
+\end{blockarray}
+$$
+
 
 and shows that
 
 $$
-\begin{blockarray}{ccccc}
- & dt\wedge dx & dt\wedge dy & dt\wedge dz & dx\wedge dy \\
-\begin{block}{c[cccc]}
-dt\wedge dx & 0&0& 0  &0\bigstrut[t] \\
-dt\wedge dy & 0&0& 0  &0 \\
-dt\wedge dz & 0&0& 0  &0\bigstrut[b]\\
-dx\wedge dy & 0&0& 0  &0\bigstrut[b]\\
-dx\wedge dz & 0&0& 0  &0\bigstrut[b]\\
-dy\wedge dz & 0&0& 0  &0\bigstrut[b]\\
+\begin{blockarray}{crrrrrrr}
+ & dt\wedge dx & dt\wedge dy & dt\wedge dz & dx\wedge dy & dx\wedge dz& dy\wedge dz\\
+ \begin{block}{c[rrrrrrr]}
+dt\wedge dx & -1 &  0 &  0 &0&0&0&\bigstrut[t] \\
+dt\wedge dy &  0 & -1 &  0 &0&0&0& \\
+dt\wedge dz &  0 &  0 & -1 &0&0&0&\bigstrut[b]\\
+dx\wedge dy &  0 &  0 &  0 &1&0&0&\bigstrut[b]\\
+dx\wedge dz &  0 &  0 &  0 &0&1&0&\bigstrut[b]\\
+dy\wedge dz &  0 &  0 &  0 &0&0&1&\bigstrut[b]\\
 \end{block}
 \end{blockarray}
 $$
 
-$$
-\begin{blockarray}{ccccccc}
- & dt\wedge dx & dt\wedge dy & dt\wedge dz & dx\wedge dy & dx\wedge dz& dy\wedge dz\\
-\begin{block}{c[cccccc]}
-dt\wedge dx & -1 &  0 &  0 &0&0&0\bigstrut[t] \\
-dt\wedge dy &  0 & -1 &  0 &0&0&0 \\
-dt\wedge dz &  0 &  0 & -1 &0&0&0\bigstrut[b]\\
-dx\wedge dy &  0 &  0 &  0 &1&0&0\bigstrut[b]\\
-dx\wedge dz &  0 &  0 &  0 &0&1&0\bigstrut[b]\\
-dy\wedge dz &  0 &  0 &  0 &0&0&1\bigstrut[b]\\
-\end{block}
-\end{blockarray}
-$$
+so, for example, $\left\langle dt\wedge dx,dt\wedge
+dx\right\rangle=-1$ and $\left\langle dt\wedge dx,dt\wedge
+dy\right\rangle=0$.  We can reproduce this relatively easily in the
+package as follows.  First we need to over-write the default values of
+`dx`, `dy`, and `dz` (which are defined in three dimensions) and
+define `dt dx dy dz`:
+
+```{r}
+dt <- d(1)
+dx <- d(2)
+dy <- d(3)
+dz <- d(4)
+p <- c("dt^dx","dt^dy","dt^dz","dx^dy","dx^dz","dy^dz")
+
+mink <- diag(c(1,-1,-1,-1)) # Minkowski metric
+
+M <- matrix(NA,6,6)
+rownames(M) <- p
+colnames(M) <- p
+
+do <- function(x){eval(parse(text=x))}
+for(i in seq_len(6)){
+  for(j in seq_len(6)){
+    M[i,j] <- kinner(do(p[i]),do(p[j]),M=mink)
+  }
+}	
+M
+```
+
+Slightly slicker:
+
+```{r}
+outer(p,p,Vectorize(function(i,j){kinner(do(i),do(j),M=mink)}))
+```
