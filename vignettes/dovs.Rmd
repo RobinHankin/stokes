@@ -1,0 +1,112 @@
+---
+title: "The `dovs()` function in the `stokes` package: the dimension of the underlying vector space"
+author: "Robin K. S. Hankin"
+output: html_vignette
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{dovs}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("stokes")
+library("emulator")
+set.seed(0)
+```
+
+<p style="text-align: right;">
+![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+</p>
+
+```{r}
+dovs
+```
+
+Function `dovs()` returns the dimensionality of the underlying vector
+space of a $k$-form.  Recall that a $k$-form is an alternating linear
+map from $V^k$ to $\mathbb{R}$, where $V=\mathbb{R}^n$.  Function
+`dovs()` returns $n$.  The function is, as seen above, very simple but
+its use is not entirely straightforward in the context of `stokes`
+idiom.
+
+Consider the following:
+
+
+```{r}
+set.seed(0)
+a <- rform(n=4,k=2)
+a
+```
+
+Now object `a` is notionally a map from $\left(\mathbb{R}^4\right)^2$
+to $\mathbb{R}$:
+
+```{r}
+f <- as.function(a)
+(M <- matrix(1:8,4,2))
+f(M)
+```
+
+However, `a` can equally be considered to be a map from
+$\left(\mathbb{R}^5\right)^2$ to $\mathbb{R}$:
+
+
+```{r}
+f <- as.function(a)
+(M <- matrix(1:10,5,2))
+f(M)
+```
+
+If we view $a$ [or indeed `f()`] in this way, that is
+$a\colon\left(\mathbb{R}^5\right)^2\longrightarrow\mathbb{R}$, we
+observe that $e_5$, that is $\left(0,0,0,0,1\right)^T$, maps to zero:
+
+```{r}
+(M <- cbind(c(0,0,0,0,1),runif(5)))
+f(M)
+```
+
+(and of course, because `a` is alternating, we could have put $e_5$ in
+the second column with the same result).  The $k$form `a` returns zero
+because the index matrix of `a` does not include the number 5.
+
+Most of the time, this does not matter.  However, consider this:
+
+```{r}
+dx
+```
+
+Now, _we_ know that `dx` is supposed to be a map from
+$\left(\mathbb{R}^3\right)^1$ to $\mathbb{R}$; but:
+
+```{r}
+dovs(dx)
+```
+
+So according to `stokes`,
+$\operatorname{dx}\colon\left(\mathbb{R}^1\right)^1\longrightarrow\mathbb{R}$.
+This does not really matter numerically, until we consider the Hodge
+star operator.  We know that
+$\star\operatorname{dx}=\operatorname{dy}\wedge\operatorname{dz}$, but
+
+```{r}
+hodge(dx)
+```
+
+R gives, correctly, that the Hodge star of $\operatorname{dx}$ is the
+zero-dimensional volume element (otherwise known as ''1'').  To get
+the right answer, we need to specify `dovs` explicitly:
+
+
+```{r}
+hodge(dx,3)
+```
+
+Actually this looks a lot better with a more appropriate print method:
+
+```{r}
+options(kform_symbolic_print="dx")
+hodge(dx,3)
+```
+
