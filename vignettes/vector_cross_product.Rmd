@@ -12,8 +12,12 @@ vignette: >
 ![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
 </p>
 
-```{r results="hide",include=FALSE}
-library("stokes",quietly=TRUE)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(rmarkdown.html_vignette.check_title = FALSE)
+library("stokes")
+library("emulator")
+set.seed(1)
 ```
 
 ```{r}
