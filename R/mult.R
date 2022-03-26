@@ -280,7 +280,7 @@
     ktensor(spray(expand.grid(seq_len(nrow(M)),seq_len(ncol(M))),c(M)))
 }
 
-`transform` <- function(K,M)
+`pullback` <- function(K,M)
 {
     if(is.zero(K)){return(K)}
     Reduce(`+`,sapply(seq_along(coeffs(K)),
