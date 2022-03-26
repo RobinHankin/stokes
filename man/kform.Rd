@@ -65,7 +65,7 @@ d(i)
   \mjseqn{k}-tensor \mjseqn{T} is \dfn{alternating} if it satisfies
 
   \mjdeqn{T\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
-    T\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
+    -T\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
   }{omitted; see latex}
   
   In the package, an object of class \code{kform} is an efficient
