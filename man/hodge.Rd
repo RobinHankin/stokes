@@ -18,9 +18,13 @@ hodge(K, n=dovs(K), g, lose=TRUE)
   \item{lose}{Boolean, with default \code{TRUE} meaning to coerce to a
     scalar if appropriate}
 }
-\value{Given a \mjseqn{k}-form, in an \mjseqn{n}-dimensional space, returns a
-  \mjseqn{(n-k)}-form.}
+\value{Given a \mjseqn{k}-form, in an \mjseqn{n}-dimensional space,
+  return a \mjseqn{(n-k)}-form.}
 \author{Robin K. S. Hankin}
+\note{Most authors write the Hodge dual of \mjeqn{\psi}{omitted} as
+  \mjeqn{*\psi}{omitted} or \mjeqn{\star\psi}{omitted}, but Weintraub
+  uses \mjeqn{\psi *}{omitted}.
+}
 \seealso{\code{\link{wedge}}}
 \examples{
 
@@ -37,6 +41,7 @@ hodge(dx,3) == dy^dz
 
 
 ## Some edge-cases:
+hodge(scalar(1),2)
 hodge(zero(5),9)
 hodge(volume(5))
 hodge(volume(5),lose=TRUE)
