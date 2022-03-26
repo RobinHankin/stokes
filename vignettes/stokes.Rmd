@@ -603,7 +603,7 @@ with a zero-column index matrix) we can use the `lose=FALSE` argument:
 contract(o,V,lose=FALSE)
 ```
 
-## Transformations
+## Transformations and pullback
 
 Suppose we are given a two-form $\omega=\sum_{i<j}a_{ij}dx_i\wedge
 dx_j$ and relationships $dx_i=\sum_rM_{ir}dy_r$, then we would have
@@ -674,11 +674,11 @@ then
 \end{array}
 \]
 
-Function `transform()` function does all this:
+Function `pullback()` function does all this:
 
 ```{r usetransform}
 options(kform_symbolic_print = "dx")   # uses dx etc in print method
-transform(dx^dy+5*dx^dz, matrix(1:9,3,3))
+pullback(dx^dy+5*dx^dz, matrix(1:9,3,3))
 options(kform_symbolic_print = NULL) # revert to default
 ```
 
@@ -697,7 +697,7 @@ according to the matrix inverse; the functionality works nicely with
 magrittr pipes:
 
 ```{r transformbackandforward}
-o |> transform(M) |> transform(solve(M))
+o |> pullback(M) |> pullback(solve(M))
 ```
 
 Above we see many rows with values small enough for the print method
@@ -705,7 +705,7 @@ to print an exact zero, but not sufficiently small to be eliminated by
 the `spray` internals.  We can remove the small entries with `zap()`:
 
 ```{r zapsmallroundofferrors}
-o |> transform(M) |> transform(solve(M)) |> zap()
+o |> pullback(M) |> pullback(solve(M)) |> zap()
 ```
 
 See how the result is equal to the original $k$-form $2dy_2\wedge
