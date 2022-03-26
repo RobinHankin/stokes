@@ -10,7 +10,7 @@
   Given a \mjseqn{k}-form, express it in terms of linear
   combinations of the \mjeqn{dx_i}{dx_i}}
 \usage{
-transform(K,M)
+pullback(K,M)
 stretch(K,d)
 }
 \arguments{
@@ -20,6 +20,7 @@ stretch(K,d)
     diagonal matrix}
 }
 \details{
+
   Suppose we are given a two-form
 
   \mjdeqn{
