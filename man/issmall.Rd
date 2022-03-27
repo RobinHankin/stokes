@@ -17,7 +17,7 @@ issmall(M, tol=1e-8)
 o <- kform_general(4,2,runif(6))
 M <- matrix(rnorm(36),6,6)
 
-discrepancy <- o - transform(transform(o,M),solve(M))
+discrepancy <- o - pullback(pullback(o,M),solve(M))
 
 issmall(discrepancy)  # should be TRUE
 is.zero(discrepancy)  # might be FALSE

@@ -1,12 +1,12 @@
-## Some tests of transform()
+## Some tests of pullback()
 
 options(warn=999)
-test_that("Function transform() behaves itself", {
+test_that("Function pullback() behaves itself", {
     expect_true(TRUE)
 
-    foo <- function(x,M){  # checks that transform(transform(x,M),solve(M)) == x
-        xt <- transform(transform(x,M),solve(M))
-        discrepancy <- x |> transform(M) |> transform(solve(M)) - x
+    foo <- function(x,M){  # checks that pullback(pullback(x,M),solve(M)) == x
+        xt <- pullback(pullback(x,M),solve(M))
+        discrepancy <- x |> pullback(M) |> pullback(solve(M)) - x
         expect_true(issmall(discrepancy),info=list(x,M))
     } # foo() closes
 
