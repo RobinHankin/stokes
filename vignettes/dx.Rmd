@@ -29,7 +29,13 @@ Convenience objects `dx`, `dy`, and `dz` are discussed here.
 
 Spivak, in a memorable passage, states (p89):
 
-"If $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is differentiable,
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Fields and forms</b></p>
+<p style='margin-left:1em;'>
+
+If $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is differentiable,
 then $Df(p)\in\Lambda^1(\mathbb{R}^n)$.  By a minor modification we
 therefore obtain a $1$-form $df$, defined by
 
@@ -45,7 +51,13 @@ $\mathbb{R}^3$ we often denote $x^1$, $x^2$, and $x^3$ by $x$, $y$,
 and $z$) $\ldots$ Since
 $dx^i(p)(v_p)=d\pi^i(p)(v_p)=D\pi^i(p)(v)=v^i$, we see that
 $dx^1(p),\ldots,dx^n(p)$ is just the dual basis to $(e_1)_p,\ldots,
-(e_n)_p$".
+(e_n)_p$.
+
+</p>
+<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Page 89</i>
+</p></span>
+</div>
+
 
 Spivak goes on to observe that every $k$-form $\omega$ can be written
 $\omega=\sum_{i_1 < \cdots < i_k}\omega_{i_1,\ldots
@@ -162,3 +174,4 @@ the package.
 ```{r,label=savedxdydz}
 save(dx,dy,dz,file="dx.rda")
 ```
+
