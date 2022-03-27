@@ -26,7 +26,7 @@
         switch(po,
                dx   = cat(as.symbolic(x,d="d",symbols=letters[24:26]),"\n"),       # dx dy dz
                txyz = cat(as.symbolic(x,d="d",symbols=c("t","x","y","z")),"\n"), # dt dx dy dz
-                      cat(as.symbolic(x,d="dx",symbols=as.character(seq_len(m))),"\n")   # default symbolic
+                      cat(as.symbolic(x,d="dx",symbols=as.character(seq_len(m))),"\n")   # default symbolic, dx1^dx2
                )
     } else {
         class(x) <- "spray"

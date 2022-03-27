@@ -29,7 +29,7 @@ An alternating linear map from V^3 to R with V=R^6:
            val
  2 4 6  =    2
  1 3 5  =    1
-> options(stokes_symbolic_print=TRUE)
+> options(stokes_symbolic_print="dn")
 > a
 An alternating linear map from V^3 to R with V=R^6:
  +2 dx2^dx4^dx6 + dx1^dx3^dx5 
