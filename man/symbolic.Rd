@@ -29,14 +29,14 @@ An alternating linear map from V^3 to R with V=R^6:
            val
  2 4 6  =    2
  1 3 5  =    1
-> options(stokes_symbolic_print=T)
+> options(stokes_symbolic_print=TRUE)
 > a
 An alternating linear map from V^3 to R with V=R^6:
- +2 d2^d4^d6 + d1^d3^d5 
+ +2 dx2^dx4^dx6 + dx1^dx3^dx5 
 > 
 }
 
-Above, \dQuote{\code{d2}} is interpreted as \mjeqn{dx^2}{omitted}.
+Above, \dQuote{\code{dx2}} is interpreted as \mjeqn{dx^2}{omitted}.
 Spivak (p89), in archetypically terse writing, states:
 
 A function \mjseqn{f} is considered to be a 0-form and

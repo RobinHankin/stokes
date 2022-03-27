@@ -24,9 +24,9 @@
     po <- getOption("kform_symbolic_print") # po == print option
     if(!is.null(po)){
         switch(po,
-               dx = cat(as.symbolic(x,d="d",symbols=letters[24:26]),"\n"),       # dx dy dz
+               dx   = cat(as.symbolic(x,d="d",symbols=letters[24:26]),"\n"),       # dx dy dz
                txyz = cat(as.symbolic(x,d="d",symbols=c("t","x","y","z")),"\n"), # dt dx dy dz
-               cat(as.symbolic(x,d="d",symbols=as.character(seq_len(m))),"\n")   # default symbolic
+                      cat(as.symbolic(x,d="dx",symbols=as.character(seq_len(m))),"\n")   # default symbolic
                )
     } else {
         class(x) <- "spray"
