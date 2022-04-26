@@ -20,7 +20,6 @@
 
 and secondly, we extend to the whole of \mjeqn{\Lambda^k(V)}{omitted}
 through linearity.
-
 }
 
 \usage{
@@ -32,9 +31,17 @@ kinner(o1,o2,M)
 }
 \value{Returns a real number}
 \author{Robin K. S. Hankin}
+\note{There is a vignette available: type \code{vignette("kinner")} at
+  the command line.
+}
 \seealso{\code{\link{hodge}}}
 \examples{
 
-2+2
+a <- (2*dx)^(3*dy)
+b <- (5*dx)^(7*dy)
+
+kinner(a,b)
+det(matrix(c(2*5,0,0,3*7),2,2))  # mathematically identical, slight numerical mismatch
+
 
 }
