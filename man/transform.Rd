@@ -21,6 +21,10 @@ stretch(K,d)
 }
 \details{
 
+  Function \code{pullback()} calculates the pullback of a function.  A
+  vignette is provided at \file{pullback.Rmd}.
+
+
   Suppose we are given a two-form
 
   \mjdeqn{
