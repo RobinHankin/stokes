@@ -18,7 +18,7 @@ or multivariate polynomial form
   \item{x}{\mjseqn{k}-form or \mjseqn{k}-tensor}
   \item{...}{Further arguments (currently ignored)}
 }
-\details{\loadmathjax
+\details{
   The print method is designed to tell the user that an object is a
   tensor or a \mjseqn{k}-form.  It prints a message to this effect (with
   special dispensation for zero tensors), then calls the \code{spray}
