@@ -59,14 +59,21 @@
 \seealso{\code{\link{kform}}}
 \examples{
 
+
+(X <- ktensor(spray(rbind(1:3),6)))
+Alt(X)
+Alt(X,give_kform=TRUE)
+
 S <- as.ktensor(expand.grid(1:3,1:3),rnorm(9))
 S
 Alt(S)
 
-issmall(Alt(S) - Alt(Alt(S)))  # should be TRUE
+issmall(Alt(S) - Alt(Alt(S)))  # should be TRUE; Alt() is idempotent
 
 a <- rtensor()
-a
 V <- matrix(rnorm(21),ncol=3)
-c(as.function(Alt(a))(V), as.function(Alt(a,give_kform=TRUE))(V)) # should match
+LHS <- as.function(Alt(a))(V)
+RHS <- as.function(Alt(a,give_kform=TRUE))(V)
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
+
 }

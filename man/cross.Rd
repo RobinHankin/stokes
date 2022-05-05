@@ -38,14 +38,22 @@ The binary form \code{\%X\%} uses uppercase X to avoid clashing with
 \seealso{\code{\link{ktensor}}
 }
 \examples{
-M <- cbind(1:4,2:5)
-U1 <- as.ktensor(M,rnorm(4))
-U2 <- as.ktensor(t(M),1:2)
 
-cross(U1, U2)
-cross(U2, U1)  # not the same!
+(A <- ktensor(spray(matrix(c(1,1,2,2,3,3),2,3,byrow=TRUE),1:2)))
+(B <- ktensor(spray(10+matrix(4:9,3,2),5:7)))
+cross(A,B)
 
-U1 \%X\% U2 - U2 \%X\% U1
+A \%X\% B - B \%X\% A
+
+
+Va <- matrix(rnorm(9),3,3)
+Vb <- matrix(rnorm(38),19,2)
+
+LHS <- as.function(A \%X\% B)(cbind(rbind(Va,matrix(0,19-3,3)),Vb))
+RHS <-  as.function(A)(Va) * as.function(B)(Vb)
+
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
+
 
 
 }

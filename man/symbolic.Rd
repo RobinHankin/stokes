@@ -8,11 +8,8 @@
   \mjseqn{k}-form objects in symbolic form.  Used by the print method if
   either option \code{kform_symbolic_print} or
   \code{ktensor_symbolic_print} is non-null.
-
 }
-\usage{
-as.symbolic(M,symbols=letters,d="")
-}
+\usage{as.symbolic(M,symbols=letters,d="")}
 \arguments{
   \item{M}{Object of class \code{kform} or \code{ktensor}; a map from
     \mjeqn{V^k}{V^k} to \mjseqn{R}, where \mjeqn{V=R^n}{V=R^n}}
@@ -21,22 +18,6 @@ as.symbolic(M,symbols=letters,d="")
 }
 \details{
 
-\preformatted{  
-> a <- kform(spray(matrix(1:6,2,3),1:2))
-> options(stokes_symbolic_print=F)
-> a
-An alternating linear map from V^3 to R with V=R^6:
-           val
- 2 4 6  =    2
- 1 3 5  =    1
-> options(stokes_symbolic_print="dn")
-> a
-An alternating linear map from V^3 to R with V=R^6:
- +2 dx2^dx4^dx6 + dx1^dx3^dx5 
-> 
-}
-
-Above, \dQuote{\code{dx2}} is interpreted as \mjeqn{dx^2}{omitted}.
 Spivak (p89), in archetypically terse writing, states:
 
 A function \mjseqn{f} is considered to be a 0-form and
@@ -76,15 +57,11 @@ Let us consider in particular the 1-forms \mjeqn{d\pi^i}{omitted; see
 
 and this form is used for k-tensors.
 
-
-  }
+}
 \value{Returns a noquote character string.}
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{print.stokes}},\code{\link{dx}}}
 \examples{
-
-as.symbolic(rtensor())
-as.symbolic(rform())
-
-as.symbolic(kform_general(3,2,1:3),d="d",symbols=letters[23:26])
+(o <- kform_general(3,2,1:3))
+as.symbolic(o,d="d",symbols=letters[23:26])
 }

@@ -28,11 +28,12 @@
 \author{Robin K. S. Hankin}
   
 \examples{
-a <- kform_general(5,2,1:10)
+(a <- kform_general(5,2,1:10))
 coeffs(a) # a disord object
 coeffs(a)[coeffs(a)\%\%2==1] <- 100  # replace every odd coeff with 100
+a
 
-
+coeffs(a*0)
 }
 
 \keyword{symbolmath}

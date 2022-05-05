@@ -28,14 +28,14 @@ hodge(K, n=dovs(K), g, lose=TRUE)
 \seealso{\code{\link{wedge}}}
 \examples{
 
-hodge(rform())
 
-a <- rform()
-a == a |> hodge() |> hodge()   # should be TRUE
+(o <- kform_general(5,2,1:10))
+hodge(o)
 
 Faraday <- kform_general(4,2,runif(6)) # Faraday electromagnetic tensor
 minsk <- c(-1,1,1,1)  # Minkowski metric
-Faraday==Faraday |> hodge(g=minsk) |> hodge(g=minsk)
+hodge(Faraday,g=minsk)
+Faraday==Faraday|>hodge(g=minsk)|>hodge(g=minsk)|>hodge(g=minsk)|>hodge(g=minsk)
 
 hodge(dx,3) == dy^dz
 
@@ -46,8 +46,6 @@ hodge(zero(5),9)
 hodge(volume(5))
 hodge(volume(5),lose=TRUE)
 hodge(scalar(7),n=9)
-
-
 
 
 

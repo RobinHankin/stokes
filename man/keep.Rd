@@ -24,7 +24,8 @@ discard(K, no)
 \seealso{\code{\link{lose}}}
 \examples{
 
-keep(kform_general(7,3),1:4)   # keeps only terms with dimensions 1-4
-discard(kform_general(7,3),1)  # loses any term with a "1" in the index
+(o <- kform_general(7,3,seq_len(choose(7,3))))
+keep(o,1:4)   # keeps only terms with dimensions 1-4
+discard(o,1:2)  # loses any term with a "1" in the index
 
 }
