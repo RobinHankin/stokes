@@ -26,8 +26,19 @@ zerotensor(n)
 \seealso{\code{\link{scalar}}}
 \examples{
 
-as.ktensor(1+diag(5)) + zerotensor(5)
-as.kform(matrix(1:6,2,3)) + zeroform(3)
+zerotensor(5)
+zeroform(3)
+
+
+x <- rform()
+x == x + zeroform(3)  # should be true
+
+y <- tensor()
+y == y+zerotensor(3)  # should be true
+
+
+
+
 
 ## Following idiom is plausible but fails because as.ktensor(coeffs=0)
 ## and as.kform(coeffs=0) do not retain arity:
