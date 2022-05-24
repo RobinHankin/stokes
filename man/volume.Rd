@@ -48,7 +48,13 @@ volume element.
 }
 \examples{
 
-as.kform(1) ^ as.kform(2) ^ as.kform(3)  == volume(3)  # should be TRUE
+
+dx^dy^dz == volume(3) 
+
+p <- 1
+for(i in 1:7){p <- p ^ as.kform(i)}
+p
+p == volume(7)  # should be TRUE
 
 o <- volume(5)
 M <- matrix(runif(25),5,5)
@@ -56,6 +62,6 @@ det(M) - as.function(o)(M)   # should be zero
 
 
 is.volume(d(1) ^ d(2) ^ d(3) ^ d(4))
-all(sapply(1:10,function(n){is.volume(d(seq_len(n)))}))  # should be TRUE
+is.volume(d(1:9))
 
 }
