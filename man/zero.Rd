@@ -30,7 +30,7 @@ zerotensor(5)
 zeroform(3)
 
 
-x <- rform(k=3))
+x <- rform(k=3)
 x == x + zeroform(3)  # should be true
 
 y <- rtensor(k=3)
