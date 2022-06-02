@@ -109,6 +109,8 @@ K2 <- kform_general(5:8,2,1:6)
 K1^K2  # or wedge(K1,K2)
 
 
+d(sample(9)) # coeff is +/-1 depending on even/odd permutation of 1:9
+
 f <- as.function(wedge(K1,K2))
 E <- matrix(rnorm(32),8,4)
 f(E) + f(E[,c(1,3,2,4)])  # should be zero by alternating property
