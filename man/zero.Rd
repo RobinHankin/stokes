@@ -31,10 +31,12 @@ zeroform(3)
 
 
 x <- rform(k=3)
-x == x + zeroform(3)  # should be true
+x*0 == zerform(3)       # should be true
+x   == x + zeroform(3)  # should be true
 
 y <- rtensor(k=3)
-y == y+zerotensor(3)  # should be true
+y*0 == zerotensor(3)    # should be true
+y   == y+zerotensor(3)  # should be true
 
 
 ## Following idiom is plausible but fails because as.ktensor(coeffs=0)
