@@ -33,9 +33,22 @@
 \author{Robin K. S. Hankin}
 \note{
 
-  A plain asterisk, \dQuote{\code{*}}, given two ktensors, will return
-  the cross product, on the grounds that the idiom has only one natural
-  interpretation.  But its use is discouraged.
+  A plain asterisk, \dQuote{\code{*}} behaves differently for ktensors
+  and kforms.  Given two ktensors \code{T1}, \code{T2}, then
+  \dQuote{\code{T1*T2}} will return the their tensor cross product.
+  This on the grounds that the idiom has only one natural
+  interpretation.  But its use is discouraged (use \code{\%X\%} or
+  \code{cross()} instead).  An asterisk can also be used to multiply a
+  tensor by a scalar, as in \code{T1*5}.
+
+  An asterisk cannot be used to multiply two kforms \code{K1},
+  \code{K2}, as in \code{K1*K2}, which will always return an error.
+  This on the grounds that it has no sensible interpretation in general
+  and you probably meant to use a wedge product, \code{K1^K2}.  Note
+  that multiplication by scalars is acceptable, as in \code{K1*6}.
+  Further note that \code{K1*K2} returns an error even if one or both is
+  a 0-form (or scalar), as in \code{K1*scalar(3)}.  This behaviour may
+  change in the future.
 
   In the package the caret (\dQuote{\code{^}}) evaluates the wedge
   product; note that \code{\%^\%} is also acceptable.  Of course, if
