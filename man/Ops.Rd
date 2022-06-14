@@ -20,14 +20,13 @@
 \details{
   The functions \code{Ops.kform()} and \code{Ops.ktensor()} pass unary
   and binary arithmetic operators (\dQuote{\code{+}}, \dQuote{\code{-}},
-  \dQuote{\code{*}}, and \dQuote{\code{/}}) to the appropriate
-  specialist function by coercing to \code{spray} objects.
+  \dQuote{\code{*}}, \dQuote{\code{/}} and \dQuote{\code{^}}) to the
+  appropriate specialist function by coercing to \code{spray} objects.
 
   For wedge products of \mjseqn{k}-forms, use \code{wedge()} or
-  \code{\%^\%}; and for cross products of \mjseqn{k}-tensors, use
-  \code{cross()} or \code{\%X\%}.
+  \code{\%^\%} or \code{^}; and for cross products of
+  \mjseqn{k}-tensors, use \code{cross()} or \code{\%X\%}.
 }
-
 \value{All functions documented here return an object of class
   \code{kform} or \code{ktensor}.
 }
