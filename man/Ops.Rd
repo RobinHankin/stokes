@@ -5,7 +5,7 @@
 \alias{Ops}
 \title{Arithmetic Ops Group Methods for \code{kform} and \code{ktensor}
   objects}
-\description{
+\description{\loadmathjax
   Allows arithmetic operators to be used for \mjseqn{k}-forms and
   \mjseqn{k}-tensors such as addition, multiplication, etc, where
   defined.
