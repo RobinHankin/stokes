@@ -51,7 +51,7 @@ maps \mjseqn{V^k} to zero.
   returns a Boolean.
 }
 \author{Robin K. S. Hankin}
-\seealso{\code{\link{zeroform}},\code{\link{lose}}}
+\seealso{\code{\link{zeroform}}}
 
 \examples{
 
