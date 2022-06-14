@@ -1,5 +1,6 @@
 \name{Ops.kform}
 \alias{Ops.kform}
+\alias{Ops.stokes}
 \alias{Ops.ktensor}
 \alias{Ops}
 \title{Arithmetic Ops Group Methods for \code{kform} and \code{ktensor}
@@ -52,20 +53,31 @@
 
   In the package the caret (\dQuote{\code{^}}) evaluates the wedge
   product; note that \code{\%^\%} is also acceptable.  Of course, if
-  \code{S} is a \code{kform} object, it is very tempting to interpret
-  \dQuote{\code{S^3}} as something like \dQuote{\code{S} to the power
-  3}.  Further, if we interpret a caret as a power, idiom such as
-  \dQuote{\code{2^S}} becomes meaningless.  See also the note at
-  \code{Ops.clifford} in the \pkg{clifford} package.
+  \code{S} is a \code{kform} object, it is very tempting [but
+  inccorrect!] to interpret \dQuote{\code{S^3}} as something like
+  \dQuote{\code{S} to the power 3}. In package idiom,
+  \dQuote{\code{S^3}} is interpreted as \code{S*3 = S+S+S}.  Further, if
+  we interpret a caret as a power, idiom such as \dQuote{\code{2^S}}
+  becomes meaningless.  See also the note at \code{Ops.clifford} in the
+  \pkg{clifford} package.
 
-  But powers do not make sense for alternating forms: \code{a \%^\% a}
-  is zero identically.  Here the caret is interpreted consistently as a
-  wedge product, and if one of the factors is numeric it is interpreted
-  as a zero-form (that is, a scalar).  Thus \code{a^2 == 2^a == a+a},
-  and indeed \code{a^n==a*n}.
+  Powers simply do not make sense for alternating forms: \code{a \%^\%
+  a} is zero identically.  Here the caret is interpreted consistently as
+  a wedge product, and if one of the factors is numeric it is
+  interpreted as a zero-form (that is, a scalar).  Thus \code{a^2 == 2^a
+  == a+a}, and indeed \code{a^n==a*n}.
 
   Powers are not implemented for ktensors on the grounds that a ktensor
   to the power zero is not defined.
+
+  Note that one has to take care with order of operations, as package
+  idiom is not quite associative if we mix \code{^} with \code{*}:
+
+  \code{dx ^ (6*dy)} is perfectly acceptable, but
+
+  \code{(dx ^ 6)*dy)} will return an error, as will the unbracketed form
+  \code{dx ^ 6 * dy}.  In the second case we attempt to use an asterisk
+  to multiply two k-forms, which triggers the error.
   
 }
 \examples{
