@@ -42,9 +42,8 @@ y   == y+zerotensor(3)  # should be true
 ## Following idiom is plausible but fails because as.ktensor(coeffs=0)
 ## and as.kform(coeffs=0) do not retain arity:
 
-\dontrun{ 
-as.ktensor(1+diag(5)) +  as.ktensor(rep(1,5),0)   # fails
-as.kform(matrix(1:6,2,3)) + as.kform(1:3,0)   # also fails
-}
+## as.ktensor(1+diag(5)) +  as.ktensor(rep(1,5),0)   # fails
+## as.kform(matrix(1:6,2,3)) + as.kform(1:3,0)   # also fails
+
 
 }
