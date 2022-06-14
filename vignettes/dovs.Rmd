@@ -27,9 +27,9 @@ dovs
 Function `dovs()` returns the dimensionality of the underlying vector
 space of a $k$-form.  Recall that a $k$-form is an alternating linear
 map from $V^k$ to $\mathbb{R}$, where $V=\mathbb{R}^n$.  Function
-`dovs()` returns $n$.  The function is, as seen above, very simple but
-its use is not entirely straightforward in the context of `stokes`
-idiom.
+`dovs()` returns $n$ [compare `arity()`, which returns $k$].  The
+function is, as seen above, very simple but its use is not entirely
+straightforward in the context of `stokes` idiom.
 
 Consider the following:
 
@@ -61,7 +61,9 @@ f(M)
 
 If we view $a$ [or indeed `f()`] in this way, that is
 $a\colon\left(\mathbb{R}^5\right)^2\longrightarrow\mathbb{R}$, we
-observe that $e_5$, that is $\left(0,0,0,0,1\right)^T$, maps to zero:
+observe that $e_5=\left(0,0,0,0,1\right)^T$ maps to zero in the sense
+that $f(e_5,\mathbf{v})=f(\mathbf{v},e_5)=0$, for any
+$\mathbf{v}\in\mathbb{R}^5$:
 
 ```{r}
 (M <- cbind(c(0,0,0,0,1),runif(5)))
@@ -69,9 +71,9 @@ f(M)
 ```
 
 (and of course, because `a` is alternating, we could have put $e_5$ in
-the second column with the same result).  The $k$form `a` returns zero
-because the index matrix of `a` does not include the number 5.
-
+the second column with the same result).  Above we see that the
+$k$-form `a`, evaluated with $e_5$ as one of its arguments returns
+zero because the index matrix of `a` does not include the number 5.
 Most of the time, this does not matter.  However, consider this:
 
 ```{r}
@@ -95,10 +97,13 @@ $\star\operatorname{dx}=\operatorname{dy}\wedge\operatorname{dz}$, but
 hodge(dx)
 ```
 
-R gives, correctly, that the Hodge star of $\operatorname{dx}$ is the
-zero-dimensional volume element (otherwise known as ''1'').  To get
-the right answer, we need to specify `dovs` explicitly:
-
+Above we see the package giving, correctly, that the Hodge star of
+$\operatorname{dx}$ is the zero-dimensional volume element (otherwise
+known as ''1'').  To get the answer appropriate if $\operatorname{dx}$
+is considered as a map from $\left(\mathbb{R}^3\right)^1$ to
+$\mathbb{R}$ [that is,
+$\operatorname{dx}\colon\left(\mathbb{R}^3\right)^1\longrightarrow\mathbb{R}$],
+we need to specify `dovs` explicitly:
 
 ```{r}
 hodge(dx,3)
