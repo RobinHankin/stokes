@@ -61,11 +61,11 @@
   becomes meaningless.  See also the note at \code{Ops.clifford} in the
   \pkg{clifford} package.
 
-  Powers simply do not make sense for alternating forms: \code{a \%^\%
-  a} is zero identically.  Here the caret is interpreted consistently as
+  Powers simply do not make sense for alternating forms: \code{S \%^\%
+  S} is zero identically.  Here the caret is interpreted consistently as
   a wedge product, and if one of the factors is numeric it is
-  interpreted as a zero-form (that is, a scalar).  Thus \code{a^2 == 2^a
-  == a+a}, and indeed \code{a^n==a*n}.
+  interpreted as a zero-form (that is, a scalar).  Thus \code{S^2 == 2^S
+  == S+S}, and indeed \code{S^n==S*n}.
 
   Powers are not implemented for ktensors on the grounds that a ktensor
   to the power zero is not defined.
