@@ -133,7 +133,7 @@
     return(zeroform(arity(K1)+arity(K2)))
     }
 
-  kform(spraycross(K1,K2))
+  kform(spraycross(K1,K2)) # the meat
 }
 
 `%^%` <- function(x,y){wedge(x,y)}

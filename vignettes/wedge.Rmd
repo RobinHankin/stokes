@@ -24,6 +24,8 @@ wedge
 wedge2
 ```
 
+[the meat of `wedge2()` is `kform(spraycross(K1, K2))`].
+
 Function `wedge()` returns the wedge product of any number of kforms,
 function `wedge2()` returns the wedge product of two kforms.  Spivak
 gives us:
@@ -50,7 +52,7 @@ spraycross(a,b)
 spraycross(b,a)
 ```
 
-Observe that `spraycross()` (and by association `wedge()`)is
+Observe that `spraycross()` (and by association `wedge()`) is
 associative and distributive but not commutative.
 
 ### Cut to the chase: `wedge2()`
