@@ -31,7 +31,7 @@ zeroform(3)
 
 
 x <- rform(k=3)
-x*0 == zerform(3)       # should be true
+x*0 == zeroform(3)       # should be true
 x   == x + zeroform(3)  # should be true
 
 y <- rtensor(k=3)
