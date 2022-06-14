@@ -40,13 +40,16 @@ or multivariate polynomial form
   \dQuote{any \mjeqn{n\geq 0}{n>=0}}.
 
   By default, the print method uses the \pkg{spray} print methods, and
-  as such respects the \code{polyform} option.  But this can be
-  misleading because \pkg{spray} interprets objects as multivariate
-  polynomials not differential forms (and in particular uses the caret
-  to signify powers).  Use the \code{ktensor_symbolic_print} or the
-  \code{kform_symbolic_print} options instead.  If non-null,
-  \code{as.symbolic()} is used to give an alternate way of displaying
-  \mjseqn{k}-tensors and \mjseqn{k}-forms.  Set
+  as such respects the \code{polyform} option.  However, setting
+  \code{polyform} to \code{TRUE} can give misleading output, because
+  \pkg{spray} interprets objects as multivariate polynomials not
+  differential forms (and in particular uses the caret to signify
+  powers).
+
+  It is much better to use options \code{ktensor_symbolic_print} or
+  \code{kform_symbolic_print} instead.  If these options are non-null,
+  the print method uses \code{as.symbolic()} to give an alternate way of
+  displaying \mjseqn{k}-tensors and \mjseqn{k}-forms.  Set
   \code{kform_symbolic_print} to \dQuote{\code{dx}} for output like
   \dQuote{\code{dx ^ dz}} and \dQuote{\code{txyz}} for output like
   \dQuote{\code{dt ^ dx}}, useful in relativistic physics with a
