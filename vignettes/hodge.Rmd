@@ -99,6 +99,8 @@ options(kform_symbolic_print = "dx")
 hodge(dx,3)
 ```
 
+This is further discussed in the `dovs` vignette.
+
 
 # Non positive-definite metrics
 
