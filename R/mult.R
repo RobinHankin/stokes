@@ -349,16 +349,21 @@
     return(disordR::drop(out))
 }
 
-`scalar` <- function(s,lose=FALSE){
+`scalar` <- function(s,kform=TRUE,lose=FALSE){
     if(lose){
         stopifnot(length(s)==1)
         return(s)
     } else {
-        return(s*kform(spray(matrix(1,1,0))))
+        if(kform){
+            return(s*kform(spray(matrix(1,1,0))))
+        } else {
+            return(s*ktensor(spray(matrix(1,1,0))))
+        }
     }
 }
     
-`0form` <- `scalar`
+`0form` <- function(s,lose=FALSE){scalar(s,kform=TRUE,lose=lose)}
+`0tensor` <- function(s,lose=FALSE){scalar(s,kform=FALSE,lose=lose)}
 
 `is.scalar` <- function(M){
   return(

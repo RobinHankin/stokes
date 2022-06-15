@@ -15,3 +15,12 @@
 - vector_cross_product() implemented
 - new vignette
 
+# stokes 1.1-3
+
+- bugfix
+- more vignettes
+
+# stokes 1.1-4
+
+- New function `0tensor()`
+

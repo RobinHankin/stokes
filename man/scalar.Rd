@@ -2,22 +2,26 @@
 \alias{scalar}
 \alias{is.scalar}
 \alias{0form}
+\alias{0tensor}
 \alias{lose}
 \alias{lose.kform}
 \alias{lose.ktensor}
 \alias{drop}
-\title{Lose attributes}
+\title{Scalars and losing attributes}
 \description{\loadmathjax
   Scalars: \mjseqn{0}-forms and \mjseqn{0}-tensors}
 \usage{
-scalar(s,lose=FALSE)
+scalar(s,kform=TRUE,lose=FALSE)
 is.scalar(M)
 `0form`(s,lose=FALSE)
+`0tensor`(s,lose=FALSE)
 \method{lose}{kform}(M)
 \method{lose}{ktensor}(M)
 }
 \arguments{
   \item{s}{A scalar value; a number}
+  \item{kform}{Boolean with default \code{TRUE} meaning to return a
+    kform and \code{FALSE} meaning to return a ktensor}
   \item{M}{Object of class \code{ktensor} or \code{kform}}
   \item{lose}{In function \code{scalar()}, Boolean with \code{TRUE}
     meaning to return a normal scalar, and default \code{FALSE} meaning
@@ -32,7 +36,8 @@ people would call a plain old scalar.  Such forms are created by a
 couple of constructions in the package, specifically \code{scalar()},
 \code{kform_general(1,0)} and \code{contract()}.  These functions take a
 \code{lose} argument that behaves much like the \code{drop} argument in
-base extraction.
+base extraction.  Functions `0form()` and `0tensor()` are wrappers for
+`scalar()`.
 
 Function \code{lose()} takes an object of class \code{ktensor} or
 \code{kform} and, if of arity zero, returns the coefficient.
