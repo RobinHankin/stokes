@@ -157,6 +157,8 @@ result in three dimensions:
 hodge(dx,3)
 ```
 
+This is further discussed in the `dovs` vignette.
+
 ## Other ways to create the elementary one-forms
 
 It is possible to create these objects using package idiom:
