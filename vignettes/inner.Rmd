@@ -50,7 +50,9 @@ Note how the rows of the tensor appear in arbitrary order.  Verify:
 x <- rnorm(7)
 y <- rnorm(7)
 V <- cbind(x,y)
-c(as.function(inner(diag(7)))(V),sum(x*y))  # should match
+LHS <- as.function(inner(diag(7)))(V)
+RHS <- sum(x*y)
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```
 
 A more stringent test would be to use a general matrix:
@@ -58,7 +60,9 @@ A more stringent test would be to use a general matrix:
 ```{r}
 M <- matrix(rnorm(49),7,7)
 f <- as.function(inner(M))
-c(f(V),quad.3form(M,x,y)) # should match
+LHS <- f(V)
+RHS <- quad.3form(M,x,y)
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```
 
 (function `emulator::quad.3form()` evaluates matrix products
@@ -70,17 +74,22 @@ expect `inner()` to be a homomorphism:
 M1 <- matrix(rnorm(49),7,7)
 M2 <- matrix(rnorm(49),7,7)
 g <- as.function(inner(M1+M2))
-c(g(V),quad.3form(M1+M2,x,y)) # should match
+LHS <- g(V)
+RHS <- quad.3form(M1+M2,x,y)
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```
 
 Now, if the matrix is symmetric the corresponding inner product should also be symmetric:
 
 ```{r}
 h <- as.function(inner(M1 + t(M1)))
-c(h(V), h(V[,2:1]))  # should match
+LHS <- h(V)
+RHS <- h(V[,2:1])
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```
 
-Also positive-definite matrix should return a positive quadratic form:
+Also a positive-definite matrix should return a positive quadratic
+form:
 
 ```{r}
 M3 <- crossprod(matrix(rnorm(56),8,7))  # 7x7 pos-def matrix
@@ -95,5 +104,7 @@ The inner product on an antisymmetric matrix should be alternating:
 jj <- matrix(rpois(49,lambda=3.2),7,7)
 M <- jj-t(jj) # M is antisymmetric
 f <- as.function(inner(M))
-c(f(V),f(V[,2:1])) # differ in sign
+LHS <- f(V)
+RHS <- -f(V[,2:1])   # NB negative as we are checking for an alternating form
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS) 
 ```
