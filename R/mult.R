@@ -466,3 +466,33 @@ setGeneric("lose",function(x){standardGeneric("lose")})
 }
 
 `dovs` <- function(K){max(index(K))}
+
+
+`summary.kform` <- function(object, ...){
+  class(object) <- "spray"
+  out <- spray::summary(object)
+  class(out) <- "summary.kform"
+  return(out)
+}
+
+`summary.ktensor` <- function(object, ...){
+  class(object) <- "spray"
+  out <- spray::summary(object)
+  class(out) <- "summary.ktensor"
+  return(out)
+}
+
+`print.summary.kform` <- function(x,...){
+  cat("A kform object.  Summary of coefficients: \n\n")
+  print(x[[1]])
+  cat("\n\nRepresentative selection of index and coefficients:\n\n")
+  print(kform(x[[2]]))
+}
+
+`print.summary.ktensor` <- function(x,...){
+  cat("A ktensor object.  Summary of coefficients: \n\n")
+  print(x[[1]])
+  cat("\n\nRepresentative selection of index and coefficients:\n\n")
+  print(ktensor(x[[2]]))
+}
+
