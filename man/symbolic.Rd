@@ -64,4 +64,8 @@ and this form is used for k-tensors.
 \examples{
 (o <- kform_general(3,2,1:3))
 as.symbolic(o,d="d",symbols=letters[23:26])
+
+(a <- rform(n=50))
+as.symbolic(a,symbols=state.abb)
+
 }

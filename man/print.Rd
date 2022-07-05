@@ -49,27 +49,41 @@ or multivariate polynomial form
   It is much better to use options \code{ktensor_symbolic_print} or
   \code{kform_symbolic_print} instead.  If these options are non-null,
   the print method uses \code{as.symbolic()} to give an alternate way of
-  displaying \mjseqn{k}-tensors and \mjseqn{k}-forms.  Set
+  displaying \mjseqn{k}-tensors and \mjseqn{k}-forms.  The generic
+  non-null value would be \dQuote{\code{x}} which gives output like
+  \dQuote{\code{dx1 ^ dx2}}.  However, it has two special values: set
   \code{kform_symbolic_print} to \dQuote{\code{dx}} for output like
   \dQuote{\code{dx ^ dz}} and \dQuote{\code{txyz}} for output like
   \dQuote{\code{dt ^ dx}}, useful in relativistic physics with a
-  Minkowski metric.  More detail is given at \code{symbolic.Rd} and the
+  Minkowski metric.  See the examples.
+
+  More detail is given at \code{symbolic.Rd} and the
   \code{dx} vignette.
 
 }
 \seealso{\code{\link{as.symbolic}}}
 \examples{
 
-rform()
-rtensor()
+a <- rform()
+a
 
-## spray print options work:
-options(polyform = TRUE)
-rtensor()
+options(kform_symbolic_print = "x")
+a
 
 
-## reset to default 
-options(polyform = FALSE)
+options(kform_symbolic_print = "dx")
+kform(spray(kform_basis(3,2),1:3))
+
+
+kform(spray(kform_basis(4,2),1:6))  # runs out of symbols
+
+
+options(kform_symbolic_print = "txyz")
+kform(spray(kform_basis(4,2),1:6))  # standard notation
+
+
+options(kform_symbolic_print = NULL) # revert to default
+a
 
 }
 
