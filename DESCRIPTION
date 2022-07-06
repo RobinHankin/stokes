@@ -1,7 +1,7 @@
 Package: stokes
 Type: Package
 Title: The Exterior Calculus
-Version: 1.1-4
+Version: 1.1-5
 Depends: spray (>= 1.0-20), R (>= 3.5.0)
 Suggests: 
     knitr,
@@ -21,8 +21,7 @@ Authors@R: person(
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Description: Provides functionality for working with tensors, alternating
            tensors, wedge products, Stokes's theorem, and related concepts
-	   from the exterior calculus.  Functionality for Grassman algebra
-	   is provided.  The canonical reference would be:
+	   from the exterior calculus.  The canonical reference would be
 	   M. Spivak (1965, ISBN:0-8053-9021-9) "Calculus on Manifolds".
 License: GPL-2
 LazyData: yes
