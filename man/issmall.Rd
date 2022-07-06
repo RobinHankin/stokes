@@ -14,10 +14,12 @@ issmall(M, tol=1e-8)
 \author{Robin K. S. Hankin}
 \examples{
 
-o <- kform_general(4,2,runif(6))
-M <- matrix(rnorm(36),6,6)
+o <- kform_general(3,2,runif(3))
+M <- matrix(rnorm(9),3,3)
 
 discrepancy <- o - pullback(pullback(o,M),solve(M))
+
+discrepancy # print method might imply coefficents are zeros
 
 issmall(discrepancy)  # should be TRUE
 is.zero(discrepancy)  # might be FALSE

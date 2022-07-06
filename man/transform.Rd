@@ -83,7 +83,7 @@ M <- matrix(rnorm(25),5,5)
 pullback(as.kform(1:2),M)
 
 # Numerical verification:
-o <- rform(terms=2,n=5)
+o <- volume(3)
 
 o2 <- pullback(pullback(o,M),solve(M))
 max(abs(coeffs(o-o2))) # zero to numerical precision
