@@ -20,7 +20,7 @@ Authors@R: person(
 	   comment = c(ORCID = "0000-0001-5982-0415"))
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Description: Provides functionality for working with tensors, alternating
-           tensors, wedge products, Stokes's theorem, and related concepts
+           forms, wedge products, Stokes's theorem, and related concepts
 	   from the exterior calculus.  The canonical reference would be
 	   M. Spivak (1965, ISBN:0-8053-9021-9) "Calculus on Manifolds".
 License: GPL-2
