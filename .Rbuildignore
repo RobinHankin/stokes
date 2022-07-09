@@ -6,3 +6,4 @@
 ^inst/stokes_theorem.pdf$
 ^inst/stokes_theorem.png$
 ^inst/stokes_theorem.tex$
+^vignettes/*.html$
