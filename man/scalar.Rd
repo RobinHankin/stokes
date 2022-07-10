@@ -45,9 +45,30 @@ Function \code{lose()} takes an object of class \code{ktensor} or
 Note that function \code{kform()} \emph{always} returns a \code{kform}
 object, it never loses attributes.
 
-A \mjseqn{0}-form is not the same thing as a zero tensor.  A
-\mjseqn{0}-form maps \mjseqn{V^0} to the reals; a scalar.  A zero tensor
-maps \mjseqn{V^k} to zero.
+There is a slight terminological problem.  A \mjseqn{k}-form maps
+\mjseqn{k} vectors to the reals: so a \mjseqn{0}-form maps \mjseqn{0}
+vectors to the reals.  This is what anyone on the planet would call a
+scalar.  Similarly, a \mjseqn{0}-tensor maps \mjseqn{0} vectors to the
+reals, and so is a scalar.  Mathematically, there is no difference
+between \mjseqn{0}-forms and \mjseqn{0}-tensors, but the package makes a
+distinction:
+
+\preformatted{
+> scalar(5,kform=TRUE)
+An alternating linear map from V^0 to R with V=R^0:
+     val
+  =    5
+> scalar(5,kform=FALSE)
+A linear map from V^0 to R with V=R^0:
+     val
+  =    5
+> 
+}
+
+Compare zero tensors and zero forms.  A zero tensor maps \mjseqn{V^k} to
+the real number zero, and a zero form is an alternating tensor mapping
+\mjseqn{V^k} to zero (so a zero tensor is necessarily alternating).  See
+\code{zero.Rd}.
 
 }
 \value{

@@ -367,11 +367,12 @@
 
 `is.scalar` <- function(M){
   return(
-  ((length(M)==1) & is.numeric(M)) ||
-  (is.kform(M) & all(dim(index(M))==c(1,0)))
+      is.zero(M)                                   || 
+      ((length(M)==1) & is.numeric(M))             || 
+      (is.kform(M)   & all(dim(index(M))==c(1,0))) || 
+      (is.ktensor(M) & all(dim(index(M))==c(1,0)))
   )
 }
-
 
 `volume` <- function(n){as.kform(seq_len(n))}
 
@@ -465,7 +466,10 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     return(out)
 }
 
-`dovs` <- function(K){max(index(K))}
+`dovs` <- function(K){
+    if(is.zero(K)){return(0)}
+    
+    max(index(K))}
 
 
 `summary.kform` <- function(object, ...){

@@ -18,9 +18,10 @@ zerotensor(n)
   \code{as.kform(rep(1,5),0)} and indeed \code{as.kform(1:5,0)} is
   incorrect as the arity of the tensor is lost.
 
-  A \mjseqn{0}-form is not the same thing as a zero tensor.  A \mjseqn{0}-form
-  maps \mjseqn{V^0} to the reals; a scalar.  A zero tensor maps \mjseqn{V^k} to
-  zero.
+  A \mjseqn{0}-form is not the same thing as a zero tensor.  A
+  \mjseqn{0}-form maps \mjseqn{V^0} to the reals; a scalar.  A zero
+  tensor maps \mjseqn{V^k} to zero.  Some discussion is given at
+  \code{scalar.Rd}.
 }
 \value{Returns an object of class \code{kform} or \code{ktensor}.}
 \seealso{\code{\link{scalar}}}
