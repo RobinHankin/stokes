@@ -8,6 +8,10 @@ A \mjseqn{k}-form \mjeqn{\omega\in\Lambda^k(V)}{omitted} maps
 Function \code{dovs()} returns \mjseqn{n}, the dimensionality of the
 underlying vector space.  The function itself is almost trivial,
 returning the maximum of the index matrix.
+
+Special dispensation is given for zero-forms and zero tensors, which
+return zero.
+
 }
 \usage{dovs(K)}
 \arguments{\item{K}{A \mjseqn{k}-form}}

@@ -467,9 +467,12 @@ setGeneric("lose",function(x){standardGeneric("lose")})
 }
 
 `dovs` <- function(K){
-    if(is.zero(K)){return(0)}
-    
-    max(index(K))}
+    if(is.zero(K) || is.scalar(K)){
+        return(0)
+    } else {
+        return(max(index(K)))
+    }
+}
 
 
 `summary.kform` <- function(object, ...){
