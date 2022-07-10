@@ -14,7 +14,7 @@ return zero.
 
 }
 \usage{dovs(K)}
-\arguments{\item{K}{A \mjseqn{k}-form}}
+\arguments{\item{K}{A \mjseqn{k}-form} or \mjseqn{k}-tensor}
 \value{Returns a non-negative integer}
 \author{Robin K. S. Hankin}
 \examples{
