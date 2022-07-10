@@ -362,8 +362,8 @@
     }
 }
     
-`0form` <- function(s,lose=FALSE){scalar(s,kform=TRUE,lose=lose)}
-`0tensor` <- function(s,lose=FALSE){scalar(s,kform=FALSE,lose=lose)}
+`0form` <- function(s=1,lose=FALSE){scalar(s,kform=TRUE,lose=lose)}
+`0tensor` <- function(s=1,lose=FALSE){scalar(s,kform=FALSE,lose=lose)}
 
 `is.scalar` <- function(M){
   return(

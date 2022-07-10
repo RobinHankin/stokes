@@ -1,5 +1,6 @@
 exportPattern("^[[:alpha:]]+")
-
+export("0form")
+export("0tensor")
 export("%^%")
 export("%X%")
 
