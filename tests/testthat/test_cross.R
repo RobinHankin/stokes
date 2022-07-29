@@ -1,6 +1,6 @@
-## Some tests of the cross product
+## Some tests of the tensor product
 
-test_that("cross product is distributive and associative", {
+test_that("Tensor product is distributive and associative", {
 
     foo3 <- function(T1,T2,T3){
         bar <- function(sbi){ # sbi = Should Be Identical
@@ -18,16 +18,16 @@ test_that("cross product is distributive and associative", {
 
         ## associative:
         bar(list(
-            cross(T1,T2,T3)         ,
-            cross(cross(T1,T2),T3)  ,
-            cross(T1,cross(T2,T3))  ,
+            tensorprod(T1,T2,T3)         ,
+            tensorprod(tensorprod(T1,T2),T3)  ,
+            tensorprod(T1,tensorprod(T2,T3))  ,
             T1 %X% T2 %X% T3        ,
             T1 %X% (T2 %X% T3)      ,
             (T1 %X% T2) %X% T3
         ))
         ## distributive:
         bar(list(
-            cross(T1,T2 + T3)  ,
+            tensorprod(T1,T2 + T3)  ,
             T1 %X% (T2 + T3)   ,
             T1 %X% (T2 - (-T3)),
             T1 %X% T2 + T1 %X% T3
@@ -46,7 +46,7 @@ test_that("cross product is distributive and associative", {
     }
 })
 
-test_that("cross product is in fact a cross product", {
+test_that("tensorprod() is in fact a tensor product", {
 
     foo2 <- function(T1,T2){
 

@@ -89,8 +89,8 @@
         } else if(.Generic == "!="){
             return(f(e1) != f(e2))
         } else if(.Generic == "*"){
-            ## stop('To multiply two ktensors, use the cross product "%X%"')
-            return(cross(e1,e2))
+            ## stop('To multiply two ktensors, use the tensor product "%X%"')
+            return(tensorprod2(e1,e2))
         } else {
             stop("binary operator '", .Generic, "' is not implemented for ktensors")
         }

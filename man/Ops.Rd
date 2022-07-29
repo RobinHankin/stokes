@@ -24,8 +24,8 @@
   appropriate specialist function by coercing to \code{spray} objects.
 
   For wedge products of \mjseqn{k}-forms, use \code{wedge()} or
-  \code{\%^\%} or \code{^}; and for cross products of
-  \mjseqn{k}-tensors, use \code{cross()} or \code{\%X\%}.
+  \code{\%^\%} or \code{^}; and for tensor products of
+  \mjseqn{k}-tensors, use \code{tensorprod()} or \code{\%X\%}.
 }
 \value{All functions documented here return an object of class
   \code{kform} or \code{ktensor}.
@@ -35,11 +35,11 @@
 
   A plain asterisk, \dQuote{\code{*}} behaves differently for ktensors
   and kforms.  Given two ktensors \code{T1}, \code{T2}, then
-  \dQuote{\code{T1*T2}} will return the their tensor cross product.
-  This on the grounds that the idiom has only one natural
-  interpretation.  But its use is discouraged (use \code{\%X\%} or
-  \code{cross()} instead).  An asterisk can also be used to multiply a
-  tensor by a scalar, as in \code{T1*5}.
+  \dQuote{\code{T1*T2}} will return the their tensor product.  This on
+  the grounds that the idiom has only one natural interpretation.  But
+  its use is discouraged (use \code{\%X\%} or \code{tensorprod()}
+  instead).  An asterisk can also be used to multiply a tensor by a
+  scalar, as in \code{T1*5}.
 
   An asterisk cannot be used to multiply two kforms \code{K1},
   \code{K2}, as in \code{K1*K2}, which will always return an error.

@@ -54,7 +54,7 @@ Function \code{as.ktensor()} will coerce a \mjseqn{k}-form to a
 }
 \references{Spivak 1961}
 \author{Robin K. S. Hankin}
-\seealso{\code{\link{cross}},\code{\link{kform}},\code{\link{wedge}}}
+\seealso{\code{\link{tensorprod}},\code{\link{kform}},\code{\link{wedge}}}
 \examples{
 
 ktensor(rspray(4,powers=1:4))

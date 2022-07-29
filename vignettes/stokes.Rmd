@@ -85,7 +85,7 @@ algebraic identities in R using the idiom furnished by the stokes
 package.  For our example we will define
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$
 using a matrix with three rows, one per term, and whose rows
-correspond to each term's cross products of the $\phi$'s.  We first
+correspond to each term's tensor products of the $\phi$'s.  We first
 have to load the `stokes` package:
 
 ```{r,message=FALSE}
@@ -200,9 +200,9 @@ RHS <- r1*f(E1)+r2*f(E2)
 c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
 ```
 
-### Cross product of general tensors
+### Tensor product of general tensors
 
-Given two k-tensor objects $S,T$ we can form the cross product
+Given two k-tensor objects $S,T$ we can form the tensor product
 $S\otimes T$, defined as
 
 \[
@@ -211,25 +211,25 @@ S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
   v_{k+l}\right)
 \]
 
-We will calculate the cross product of two tensors `S1,S2` defined as follows:
+We will calculate the tensor product of two tensors `S1,S2` defined as follows:
 
 ```{r}
 (S1 <- ktensor(spray(cbind(1:3,2:4),1:3)))
 (S2 <- as.ktensor(matrix(1:6,2,3)))
 ```
 
-The R idiom for $S1\otimes S2$ would be `cross()`, or `%X%`:
+The R idiom for $S1\otimes S2$ would be `tensorprod()`, or `%X%`:
 
 
 ```{r}
-cross(S1,S2)
+tensorprod(S1,S2)
 ```
 
 Then, for example:
 
 ```{r}
 E <- matrix(rnorm(30),6,5)
-LHS <- as.function(cross(S1,S2))(E)
+LHS <- as.function(tensorprod(S1,S2))(E)
 RHS <- as.function(S1)(E[,1:2]) * as.function(S2)(E[,3:5])
 c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
 ```

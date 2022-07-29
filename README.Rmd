@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 # Overview
 
 The `stokes` package provides functionality for working with the
-exterior calculus.  It includes cross products and wedge products and
+exterior calculus.  It includes tensor products and wedge products and
 a variety of use-cases.  The canonical reference would be Spivak (see
 references).  A detailed vignette is provided in the package.
 
@@ -78,9 +78,9 @@ E <- matrix(rnorm(10),5,2)
 f(E)
 ```
 
-Cross products are implemented:
+Tensor products are implemented:
 
-```{r crossprod}
+```{r tensorprod}
 KT %X% KT
 ```
 

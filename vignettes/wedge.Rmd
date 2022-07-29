@@ -42,7 +42,7 @@ opaque, especially the combinatorial coefficient $(k+l)!/(k!l!)$.
 
 Function `wedge()` is essentially a convenience wrapper for
 `spraycross()`.  Function `spraycross()` it is part of the `spray`
-package and gives a cross product of sparse arrays, interpreted as
+package and gives a tensor product of sparse arrays, interpreted as
 multivariate polynomials:
 
 ```{r}
@@ -102,10 +102,10 @@ all permutations of its arguments, with the sign of the permutation.
 
 
 We can evaluate Spivak's formula (but without the combinatorical term)
-for $x\wedge y$ by coercing to ktensors and using `cross()`:
+for $x\wedge y$ by coercing to ktensors and using `tensorprod()`:
 
 ```{r}
-(z <- cross(as.ktensor(x),as.ktensor(y)))
+(z <- tensorprod(as.ktensor(x),as.ktensor(y)))
 ```
 
 Above, each coefficient is equal to $\pm 35$ (the sign coming from the

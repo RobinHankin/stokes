@@ -45,7 +45,7 @@ U2 <- as.ktensor(cbind(1:3,2:4),1:3)
 ## Coerce a tensor to functional form, here mapping V^3  -> R (here V=R^15):
 as.function(U1)(matrix(rnorm(45),15,3))
 
-## Tensor cross-product is cross() or \%X\%:
+## Tensor product is tensorprod() or \%X\%:
 U1 \%X\% U2
 
 

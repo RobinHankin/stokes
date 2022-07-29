@@ -99,22 +99,22 @@
     ktensor(include_perms(consolidate(out))/factorial(ncol(index(out))))
 }
 
-`cross` <- function(U, ...) {
+`tensorprod` <- function(U, ...) {
    if(nargs()<3){
-     cross2(U, ...)
+     tensorprod2(U, ...)
    } else {
-     cross2(U, Recall(...))
+     tensorprod2(U, Recall(...))
    }
 }
 
-`cross2` <- function(U1,U2){  # returns U1\otimes U2
+`tensorprod2` <- function(U1,U2){  # returns U1\otimes U2
     if(is.empty(U1) | is.empty(U2)){
       return(as.ktensor(cbind(index(U1)[0,],index(U2)[0,])))
     }
     return(ktensor(spraycross(U1,U2)))
 }
 
-`%X%` <- function(x,y){cross(x,y)}
+`%X%` <- function(x,y){tensorprod2(x,y)}
 
 `wedge` <- function(x, ...) {
    if(nargs()<3){

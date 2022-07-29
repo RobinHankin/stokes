@@ -79,8 +79,7 @@ test_that("Miscellaneous wedge functionality", {
 
 })
 
-
-test_that("Miscellaneous cross product functionality", {
+test_that("Miscellaneous tensor functionality", {
         expect_true(is.empty(as.ktensor(1+diag(5),0)))
         expect_false(is.empty(as.ktensor(1+diag(5))))
 
