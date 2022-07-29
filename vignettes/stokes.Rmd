@@ -230,7 +230,7 @@ Then, for example:
 ```{r}
 E <- matrix(rnorm(30),6,5)
 way1 <- as.function(cross(S1,S2))(E)
-way2 <- as.function(S1)(E) * as.function(S2)(E)
+way2 <- as.function(S1)(E[,1:2]) * as.function(S2)(E[,3:5])
 c(way2,way2,way1-way2)
 ```
 
