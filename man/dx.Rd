@@ -12,9 +12,9 @@ running script \file{vignettes/dx.Rmd}, which includes some further
 discussion and technical documentation and creates file \file{dx.rda}
 which resides in the \code{data/} directory.
 
-The default method includes options to print these objects more
-intuitively than the default.  Use
-\preformatted{options(kform_symbolic_print = "dx")}.
+The default print method is a little opaque for these objects.  To print
+them more intuitively, use \preformatted{options(kform_symbolic_print =
+"dx")}.
 
 }
 \usage{data(dx)}
@@ -30,6 +30,8 @@ dx
 hodge(dx)
 hodge(dx,3)
 
+
+dx  # default print method, not particularly intelligible
 options(kform_symbolic_print = 'dx')  # shows dx dy dz
 dx
 dx^dz
