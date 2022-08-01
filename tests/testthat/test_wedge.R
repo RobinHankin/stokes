@@ -42,6 +42,10 @@ expect_error(rform(  ) ^ rtensor())
 expect_error(rtensor() ^ rform()  )
 expect_error(rtensor() ^ rtensor())
 
+expect_error(wedge2(rform(),rtensor()))
+expect_error(wedge2(rtensor(),rform()))
+expect_error(wedge2(rtensor(),rtensor()))
+expect_silent(wedge2(3,3))
 
 })
 
