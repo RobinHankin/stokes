@@ -503,3 +503,4 @@ setGeneric("lose",function(x){standardGeneric("lose")})
   print(ktensor(x[[2]]))
 }
 
+setGeneric("sort")
