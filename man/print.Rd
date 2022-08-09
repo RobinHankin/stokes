@@ -3,6 +3,8 @@
 \alias{print.kform}
 \alias{print.ktensor}
 \alias{stokes_symbolic_print}
+\alias{kform_symbolic_print}
+\alias{ktensor_symbolic_print}
 \alias{polyform}
 \title{Print methods for \eqn{k}-tensors and \eqn{k}-forms}
 \description{\loadmathjax

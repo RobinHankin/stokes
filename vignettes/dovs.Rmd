@@ -27,12 +27,10 @@ dovs
 Function `dovs()` returns the dimensionality of the underlying vector
 space of a $k$-form.  Recall that a $k$-form is an alternating linear
 map from $V^k$ to $\mathbb{R}$, where $V=\mathbb{R}^n$.  Function
-`dovs()` returns $n$ [compare `arity()`, which returns $k$].  The
-function is, as seen above, very simple but its use is not entirely
-straightforward in the context of `stokes` idiom.
-
-Consider the following:
-
+`dovs()` returns $n$ [compare `arity()`, which returns $k$].  As seen
+above, the function is very simple, essentially being `max(index(K))`,
+but its use is not entirely straightforward in the context of `stokes`
+idiom.  Consider the following:
 
 ```{r}
 set.seed(0)
@@ -52,29 +50,31 @@ f(M)
 However, `a` can equally be considered to be a map from
 $\left(\mathbb{R}^5\right)^2$ to $\mathbb{R}$:
 
-
 ```{r}
 f <- as.function(a)
-(M <- matrix(1:10,5,2))
+(M <- matrix(c(1,2,3,4,1454,6,7,8,9,-9564),ncol=2))  # row 5 large numbers
 f(M)
 ```
 
 If we view $a$ [or indeed `f()`] in this way, that is
 $a\colon\left(\mathbb{R}^5\right)^2\longrightarrow\mathbb{R}$, we
-observe that $e_5=\left(0,0,0,0,1\right)^T$ maps to zero in the sense
-that $f(e_5,\mathbf{v})=f(\mathbf{v},e_5)=0$, for any
-$\mathbf{v}\in\mathbb{R}^5$:
+observe that row 5 is ignored: $e_5=\left(0,0,0,0,1\right)^T$ maps to
+zero in the sense that $f(e_5,\mathbf{v})=f(\mathbf{v},e_5)=0$, for
+any $\mathbf{v}\in\mathbb{R}^5$.
 
 ```{r}
 (M <- cbind(c(0,0,0,0,1),runif(5)))
 f(M)
 ```
 
-(and of course, because `a` is alternating, we could have put $e_5$ in
-the second column with the same result).  Above we see that the
-$k$-form `a`, evaluated with $e_5$ as one of its arguments returns
-zero because the index matrix of `a` does not include the number 5.
-Most of the time, this does not matter.  However, consider this:
+(above we see that rows 1-4 of `M` are ignored because of the zero in
+column 1; row 5 is ignored because the index of `a` does not include
+the number 5).  Because `a` is alternating, we could have put $e_5$ in
+the second column with the same result).  Alternatively we see that
+the $k$-form `a`, evaluated with $e_5$ as one of its arguments,
+returns zero because the index matrix of `a` does not include the
+number 5.  Most of the time, this kind of consideration does not
+matter.  However, consider this:
 
 ```{r}
 dx
