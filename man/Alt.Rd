@@ -24,12 +24,12 @@
   Thus for example if \mjseqn{k=3}:
 
     \mjdeqn{\mathrm{Alt}(T)\left(v_1,v_2,v_3\right)=
-      \frac{1}{6}\left(\begin{array}{cc}
-      +T\left(v_1,v_2,v_3\right)&
+      \frac{1}{6}\left(\begin{array}{c}
+      +T\left(v_1,v_2,v_3\right)\quad
       -T\left(v_1,v_3,v_2\right)\cr
-      -T\left(v_2,v_1,v_3\right)&
+      -T\left(v_2,v_1,v_3\right)\quad
       +T\left(v_2,v_3,v_1\right)\cr
-      +T\left(v_3,v_1,v_2\right)&
+      +T\left(v_3,v_1,v_2\right)\quad
       -T\left(v_3,v_2,v_1\right)
       \end{array}
       \right)
