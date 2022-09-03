@@ -13,14 +13,18 @@ discussion and technical documentation and creates file \file{dx.rda}
 which resides in the \code{data/} directory.
 
 The default print method is a little opaque for these objects.  To print
-them more intuitively, use \preformatted{options(kform_symbolic_print =
-"dx")}.
+them more intuitively, use
+
+\preformatted{options(kform_symbolic_print = "dx")}
+
+which is documented at \code{print.Rd}.
 
 }
 \usage{data(dx)}
 \details{See the vignette for an extended discussion.}
 \references{
-  \itemize{\item  M. Spivak 1971. _Calculus on manifolds_, Addison-Wesley}
+  \itemize{\item M. Spivak 1971. \emph{Calculus on manifolds},
+  Addison-Wesley}
 }
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{d}},\code{\link{print.kform}}}

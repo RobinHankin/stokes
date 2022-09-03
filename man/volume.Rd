@@ -41,7 +41,10 @@ volume element.
   Function \code{volume()} returns an object of class \code{kform};
   function \code{is.volume()} returns a Boolean.
 }
-\references{Spivak}
+\references{
+  \itemize{\item M. Spivak 1971. \emph{Calculus on manifolds},
+  Addison-Wesley}
+}
 \author{Robin K. S. Hankin}
 \seealso{
   \code{\link{zeroform}},\code{\link{as.1form}},\code{\link{dovs}}
