@@ -478,6 +478,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
 `summary.kform` <- function(object, ...){
   class(object) <- "spray"
   out <- spray::summary(object)
+  out[[3]] <- nterms(object)
   class(out) <- "summary.kform"
   return(out)
 }
@@ -485,19 +486,20 @@ setGeneric("lose",function(x){standardGeneric("lose")})
 `summary.ktensor` <- function(object, ...){
   class(object) <- "spray"
   out <- spray::summary(object)
+  out[[3]] <- nterms(object)
   class(out) <- "summary.ktensor"
   return(out)
 }
 
 `print.summary.kform` <- function(x,...){
-  cat("A kform object.  Summary of coefficients: \n\n")
+  cat(paste("A kform object with ", x[[3]], " terms.  Summary of coefficients: \n\n",sep=""))
   print(x[[1]])
   cat("\n\nRepresentative selection of index and coefficients:\n\n")
   print(kform(x[[2]]))
 }
 
 `print.summary.ktensor` <- function(x,...){
-  cat("A ktensor object.  Summary of coefficients: \n\n")
+  cat(paste("A ktensor object with ", x[[3]], " terms.  Summary of coefficients: \n\n",sep=""))
   print(x[[1]])
   cat("\n\nRepresentative selection of index and coefficients:\n\n")
   print(ktensor(x[[2]]))
