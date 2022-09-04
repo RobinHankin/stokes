@@ -138,6 +138,7 @@ Above we see an unhelpful representation.  To work with $2$-forms in
 relativistic physics, it is often preferable to use bespoke print
 method `usetxyz`:
 
+```{r}
 options(kform_symbolic_print = "txyz")
 o
 ```
