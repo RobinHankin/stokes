@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
 library("stokes")
 library("emulator")
+options(polyform = FALSE)
 set.seed(1)
 ```
 
@@ -55,7 +56,11 @@ $(-1)^{\sigma(I)}$ is the sign of the permutation $\sigma(I)=i_1\cdots
 i_kj_1\cdots j_{n-k}$.  We extend to the whole of $\Lambda^k(V)$ using
 linearity.
 
-Package idiom is straightforward:
+Package idiom for calculating the Hodge dual is straightforward:
+
+```{r, include = FALSE}
+options(kform_symbolic_print = NULL)
+```
 
 ```{r}
 (o <- rform())
@@ -119,16 +124,25 @@ package and one can specify the metric.
 For example, if we consider the Minkowski metric this would be
 $-1,1,1,1$.
 
-To work with $2$-forms in relativistic physics, it is often preferable
-to use bespoke print method `usetxyz`:
+## Print methods for the Minkowski metric
 
+The standard print method is not particularly suitable for working
+with the Minkowski metric:
 
 ```{r}
-o <- kform_general(4,2,1:6)
-o
+options(kform_symbolic_print = NULL)  # default print method
+(o <- kform_general(4,2,1:6))
+```
+
+Above we see an unhelpful representation.  To work with $2$-forms in
+relativistic physics, it is often preferable to use bespoke print
+method `usetxyz`:
+
 options(kform_symbolic_print = "txyz")
 o
 ```
+
+## Specifying the Minkowski metric
 
 Function `hodge()` takes a `g` argument to specify the metric:
 
@@ -136,4 +150,9 @@ Function `hodge()` takes a `g` argument to specify the metric:
 hodge(o)
 hodge(o,g=c(-1,1,1,1))
 hodge(o)-hodge(o,g=c(-1,1,1,1))
+```
+
+
+```{r reset_default_print_method, include=FALSE}
+options(kform_symbolic_print = NULL)
 ```
