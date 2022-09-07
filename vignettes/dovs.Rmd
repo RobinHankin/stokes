@@ -116,3 +116,6 @@ options(kform_symbolic_print="dx")
 hodge(dx,3)
 ```
 
+```{r reset_default_print_method, include=FALSE}
+options(kform_symbolic_print = NULL)
+```

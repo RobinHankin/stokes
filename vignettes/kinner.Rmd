@@ -113,3 +113,8 @@ because they will interfere with the other vignettes:
 ```{r removedtdxdydz}
 rm(dt,dx,dy,dz)
 ```
+
+
+```{r reset_default_print_method, include=FALSE}
+options(kform_symbolic_print = NULL)
+```
