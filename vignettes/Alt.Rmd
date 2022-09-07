@@ -261,17 +261,31 @@ Function `Alt()` takes a Boolean argument `give_kform`.  We have been
 using `Alt()` with `give_kform` taking its default value of `FALSE`,
 which means that it returns an object of class `ktensor`.  However, an
 alternating form can be much more efficiently represented as an object
-of class `kform`, and this is returned if `give_kform` is `TRUE`:
+of class `kform`, and this is returned if `give_kform` is `TRUE`. Here
+I verify that the two options return identical objects:
 
 ```{r}
 (rand_tensor <- rtensor(k=5,n=9)*120)
-S1 <- Alt(rand_tensor)  # 720 terms, too long to print
+S1 <- Alt(rand_tensor)  # 120 terms, too long to print all of it
+summary(S1)
+```
+
+Above, we see that `S1` is a rather extensive object, with 120 terms.
+However, if argument `give_kform = TRUE` is passed to `Alt()` we get a
+`kform` object which is much more succinct:
+
+
+```{r}
 (SA1 <- Alt(rand_tensor,give_kform=TRUE))
 ```
 
-Verification:
+Verification that objects `S1` and `SA1` are the same object:
 
 ```{r}
 V <- matrix(rnorm(45),ncol=5)
-c(as.function(S1)(V),as.function(SA1)(V)) # should match
+LHS <- as.function(S1)(V)
+RHS <- as.function(SA1)(V)
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```
+
+Above we see agreement to within numerical error.

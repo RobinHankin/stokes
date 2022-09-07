@@ -24,3 +24,6 @@
 
 - New function `0tensor()`
 
+# stokes 1.1-6
+
+- Improvements to summary print methods
