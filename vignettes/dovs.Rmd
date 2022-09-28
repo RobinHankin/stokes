@@ -52,7 +52,7 @@ $\left(\mathbb{R}^5\right)^2$ to $\mathbb{R}$:
 
 ```{r}
 f <- as.function(a)
-(M <- matrix(c(1,2,3,4,1454,6,7,8,9,-9564),ncol=2))  # row 5 large numbers
+(M <- matrix(c(1,2,3,4,1454,5,6,7,8,-9564),ncol=2))  # row 5 large numbers
 f(M)
 ```
 
@@ -70,7 +70,7 @@ f(M)
 (above we see that rows 1-4 of `M` are ignored because of the zero in
 column 1; row 5 is ignored because the index of `a` does not include
 the number 5).  Because `a` is alternating, we could have put $e_5$ in
-the second column with the same result).  Alternatively we see that
+the second column with the same result.  Alternatively we see that
 the $k$-form `a`, evaluated with $e_5$ as one of its arguments,
 returns zero because the index matrix of `a` does not include the
 number 5.  Most of the time, this kind of consideration does not
@@ -99,7 +99,7 @@ hodge(dx)
 
 Above we see the package giving, correctly, that the Hodge star of
 $\operatorname{dx}$ is the zero-dimensional volume element (otherwise
-known as ''1'').  To get the answer appropriate if $\operatorname{dx}$
+known as "1").  To get the answer appropriate if $\operatorname{dx}$
 is considered as a map from $\left(\mathbb{R}^3\right)^1$ to
 $\mathbb{R}$ [that is,
 $\operatorname{dx}\colon\left(\mathbb{R}^3\right)^1\longrightarrow\mathbb{R}$],
