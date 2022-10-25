@@ -17,7 +17,7 @@
 \usepackage{microtype}      % microtypography
 \usepackage{lipsum}		% Can be removed after putting your text content
 \usepackage{graphicx}
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
 \usepackage{doi}
 \usepackage{wrapfig}
 
@@ -68,6 +68,9 @@ pdfkeywords={Stokes's theorem, exterior calculus, differential forms}
 
 
 
+\SweaveOpts{}
+
+
 \section{Introduction}
 
 \setlength{\intextsep}{0pt}
@@ -91,50 +94,52 @@ V^k\longrightarrow\mathbb{R}$, where $V=\mathbb{R}^n$ is considered as
 a vector space; Spivak denotes the space of multilinear maps as
 $\mathcal{J}^k(V)$.  Formally, multilinearity means
 
-\[
+\begin{equation}
 S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot S\left(v_1,\ldots,v_i,\ldots,v_k\right)
-\]
+\end{equation}
 
 and
 
-\[S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
+\begin{equation}
+S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
 S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).
-\]
+\end{equation}
 
 where $v_i\in V$ and $a\in\mathbb{R}$.  If $S\in\mathcal{J}^k(V)$ and
 $T\in\mathcal{J}^l(V)$, then we may define $S\otimes
 T\in\mathcal{J}^{k+l}(V)$ as
 
-\[
+\begin{equation}
 S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l}\right)=
 S\left(v_1,\ldots,v_k\right)\cdot
 T\left(v_1,\ldots,v_l\right)
-\]
+\end{equation}
 
 
 Spivak observes that $\mathcal{J}^k(V)$ is spanned by the $n^k$
 products of the form
 
-\[
+\begin{equation}
 \phi_{i_1}\otimes\phi_{i_2}\otimes\cdots\otimes\phi_{i_k}\qquad
 1\leq i_i,i_2,\ldots,i_k\leq n
-\]
+\end{equation}
 
 where $v_1,\ldots,v_k$ is a basis for $V$ and
 $\phi_i\left(v_j\right)=\delta_{ij}$; we can therefore write
 
-\[
+\begin{equation}
 S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k}
 \phi_{i_1}\otimes\cdots\otimes\phi_{i_k}.
-\]
+\end{equation}
 
 The space spanned by such products has a natural representation in R
 as an array of dimensions $n\times\cdots\times n=n^k$.  If {\tt A} is
 such an array, then the element {\tt A[i\_1,i\_2,...,i\_k]} is the
 coefficient of $\phi_{i_1}\otimes\ldots\otimes\phi_{i\_k}$.  However,
 it is more efficient and conceptually cleaner to consider a {\em
-sparse} array, as implemented by the {\tt spray} package.  We will
-consider the case $n=5,k=4$, so we have multilinear maps from
+sparse} array, as implemented by the {\tt spray}
+package~\citep{hankin2022_spray}.  We will consider the case
+$n=5,k=4$, so we have multilinear maps from
 $\left(\mathbb{R}^5\right)^4$ to $\mathbb{R}$.  Below, we will test
 algebraic identities in R using the idiom furnished by the stokes
 package.  For our example we will define
@@ -262,11 +267,11 @@ c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
 Given two k-tensor objects $S,T$ we can form the tensor product
 $S\otimes T$, defined as
 
-\[
+\begin{equation}\label{definition_of_tensor_cross_product}
 S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
   S\left(v_1,\ldots v_k\right)\cdot T\left(v_{k+1},\ldots
   v_{k+l}\right)
-\]
+\end{equation}
 
 We will calculate the tensor product of two tensors {\tt S1,S2}
 defined as follows:
@@ -277,7 +282,9 @@ defined as follows:
 @ 
 
 
-The R idiom for $S1\otimes S2$ would be {\tt tensorprod()}, or {\tt \%X\%}:
+The R idiom for $S1\otimes S2$ as per
+equation~\ref{definition_of_tensor_cross_product} would be {\tt
+tensorprod()}, or {\tt \%X\%}:
 
 <<>>=
 tensorprod(S1,S2)
@@ -299,10 +306,10 @@ c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
 
 An alternating form is a multilinear map $T$ satisfying
 
-\[
+\begin{equation}\label{definition_of_alternating}
 \mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
     -\mathrm{T}\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
-\]
+\end{equation}
 
 (or, equivalently,
 $\mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_i,\ldots,v_k\right)= 0$).  We
@@ -311,10 +318,10 @@ from $V^k$ to $\mathbb{R}$.  Spivak gives
 $\operatorname{Alt}\colon\mathcal{J}^k(V)\longrightarrow\Lambda^k(V)$
 defined by
 
-\[\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
+\begin{equation}\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
     \frac{1}{k!}\sum_{\sigma\in S_k}\operatorname{sgn}(\sigma)\cdot
     T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
-\]
+\end{equation}
 
 where the sum ranges over all permutations of
 $\left[n\right]=\left\{1,2,\ldots,n\right\}$ and
@@ -322,9 +329,8 @@ $\operatorname{sgn}(\sigma)\in\pm 1$ is the sign of the permutation.
 If $T\in\mathcal{J}^k(V)$ and $\omega\in\Lambda^k(V)$, it is
 straightforward to prove that $\operatorname{Alt}(T)\in\Lambda^k(V)$,
 $\operatorname{Alt}\left(\operatorname{Alt}\left(T\right)\right)=\operatorname{Alt}\left(T\right)$,
-and $\operatorname{Alt}\left(\omega\right)=\omega$.
-
-In the stokes package, this is effected by the {\tt Alt()} function:
+and $\operatorname{Alt}\left(\omega\right)=\omega$.  In the stokes
+package, this is effected by the {\tt Alt()} function:
 
 
 <<>>=
@@ -333,8 +339,9 @@ Alt(S1)
 @ 
 
 
-
-Verifying that {\tt S1} is in fact alternating is straightforward:
+Verifying that {\tt Alt(S1)} is in fact alternating is
+straightforward, essentially by directly evaluating
+Equation~\ref{definition_of_alternating}:
 
 <<>>=
 E <- matrix(rnorm(8),4,2)
@@ -363,7 +370,7 @@ form would be $dx_1\wedge dx_3$ [treated as an indivisible entity],
 which is an alternating multilinear map from
 $\mathbb{R}^n\times\mathbb{R}^n$ to $\mathbb{R}$ with
 
-\[
+\begin{equation}
 \left(
 dx_1\wedge dx_3
 \right)\left(
@@ -372,7 +379,7 @@ dx_1\wedge dx_3
 \right)=\mathrm{det}
 \begin{pmatrix} a_1 & b_1 \\ a_3 & b_3\end{pmatrix}
 =a_1b_3-a_3b_1
-\]
+\end{equation}
 
 That this is alternating follows from the properties of the
 determinant.  In general of course, $dx_i\wedge dx_j\left(
@@ -382,7 +389,7 @@ b_i \\ a_j & b_j\end{pmatrix}$.  Because such objects are linear, it
 is possible to consider sums of elementary forms, such as $dx_1\wedge
 dx_2 + 3 dx_2\wedge dx_3$ with
 
-\[
+\begin{equation}
 \left(
 dx_1\wedge dx_2 + 3dx_2\wedge dx_3
 \right)\left(
@@ -392,13 +399,13 @@ dx_1\wedge dx_2 + 3dx_2\wedge dx_3
 \begin{pmatrix} a_1 & b_1\\ a_2 & b_2\end{pmatrix}
 +3\mathrm{det}
 \begin{pmatrix} a_2 & b_2\\ a_3 & b_3\end{pmatrix}
-\]
+\end{equation}
 
 or even $K=dx_1\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4$
 which would be a linear map from $\left(\mathbb{R}^n\right)^3$ to
 $\mathbb{R}$ with
 
-\[
+\begin{equation}
 \left(
 dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
 \right)\left(
@@ -417,7 +424,7 @@ dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
 	a_2 & b_2 & c_2\\
 	a_4 & b_4 & c_4
 \end{pmatrix}.
-\]
+\end{equation}
 
 
 Defining $K$ has ready R idiom in which we define a matrix whose rows
@@ -435,8 +442,10 @@ Function {\tt as.kform()} takes each row of {\tt M} and places the
 elements in increasing order; the coefficient will change sign if the
 permutation is odd.  Note that the order of the rows in {\tt K} is
 immaterial and indeed in some implementations will appear in a
-different order: the stokes package uses the {\tt spray} package,
-which in turn utilises the {\tt STL} map class of {\tt C++}.
+different order: the stokes package uses the {\tt spray}
+package~\citep{hankin2022_spray} which in turn utilises the {\tt STL}
+map class of {\tt C++}; the corresponding R idiom conforms to {\tt
+disordR} discipline~\citep{hankin2022_disordR}.
 
 \subsection{Formal definition of $dx$}
 
@@ -486,12 +495,18 @@ as.function(dx3 + 2*dx5)(1:10)  # picks out element 3 + 2*element 5
 \subsection{Formal definition of wedge product}
 
 The wedge product maps two alternating forms to another alternating
-form; given $\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$, Spivak
+form; formally we write
+$\wedge\colon\Lambda^k(V)\times\Lambda^l(V)\longrightarrow\Lambda^{k+l}(V)$.
+Given $\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$, Spivak
 defines the wedge product $\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
 
-\[
+\begin{equation}\label{definition_of_wedge_product}
 \omega\wedge\eta={k+l\choose k\quad l}\operatorname{Alt}(\omega\otimes\eta)
-\]
+\end{equation}
+
+The package includes an extensive numerically-oriented discussion of
+Equation~\ref{definition_of_wedge_product} and its implementation in
+the {\tt wedge} vignette.
 
 \subsubsection{Evaluation of the wedge product using package idiom}
 
@@ -520,7 +535,8 @@ gathers permuted rows together (respecting the sign of the
 permutation), and expresses the result in terms of elementary forms.
 The product is a linear combination of two elementary forms; note that
 only two coefficients out of a possible ${7\choose 5}=21$ are nonzero.
-Note again that the order of the rows in the product is arbitrary.
+Note again that the order of the rows in the product is arbitrary, as
+per {\tt disordR} discipline.
 
 \subsubsection{Associativity of the wedge product}
 
@@ -552,10 +568,10 @@ Above we see that the two forms are identical.
 Spivak observes that $\Lambda^k(V)$ is spanned by
 the $n\choose k$ wedge products of the form
 
-\[
+\begin{equation}
 dx_{i_1}\wedge dx_{i_2}\wedge\ldots\wedge dx_{i_k}\qquad
 1\leq i_i<i_2<\cdots <i_k\leq n
-\]
+\end{equation}
 
 where these products are the elementary forms (compare
 $\mathcal{J}^k(V)$, which is spanned by $n^k$ elementary forms).
@@ -646,10 +662,10 @@ Given a $k$-form $\phi\colon V^k\longrightarrow\mathbb{R}$ and a
 vector $\mathbf{v}\in V$, the {\em contraction} $\phi_\mathbf{v}$ of
 $\phi$ and $\mathbf{v}$ is a $k-1$-form with
 
-\[
+\begin{equation}
   \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
   \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
-\]
+\end{equation}
 
 if $k>1$; we specify $\phi_\mathbf{v}=\phi(\mathbf{v})$ if $k=1$.
 Verification is straightforward:
@@ -693,35 +709,35 @@ contract(o,V,lose=FALSE)
 Suppose we are given a two-form $\omega=\sum_{i<j}a_{ij}dx_i\wedge
 dx_j$ and relationships $dx_i=\sum_rM_{ir}dy_r$, then we would have
 
-\[
+\begin{equation}
 \omega =
     \sum_{i<j}
     a_{ij}\left(\sum_rM_{ir}dy_r\right)\wedge\left(\sum_rM_{jr}dy_r\right).
-\]
+\end{equation}
 
   The general situation would be  a $k$-form where we would have
 
-\[
+\begin{equation}
 \omega=\sum_{i_1<\cdots<i_k}a_{i_1\ldots i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}
-\]
+\end{equation}
 
 giving
 
-\[\omega =
+\begin{equation}\omega =
     \sum_{i_1<\cdots <i_k}\left[
     a_{i_1<\cdots < i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right].
-\]
+\end{equation}
 
 So $\omega$ was given in terms of $dx_1,\ldots,dx_k$ and we have
 expressed it in terms of $dy_1,\ldots,dy_k$.  So for example if
 
-\[
+\begin{equation}
 \omega=
-  dx_1\wedge dx_2 + 5dx_1\wedge dx_3\]
+  dx_1\wedge dx_2 + 5dx_1\wedge dx_3\end{equation}
 
 and
 
-\[
+\begin{equation}
   \left(
   \begin{array}{l}
   dx_1\\
@@ -740,11 +756,11 @@ and
   dy_1\\ dy_2\\   dy_3
   \end{array}
   \right)
-\]
+\end{equation}
 
 then
 
-\[
+\begin{equation}
 \begin{array}{ccl}
   \omega &=&
 \left(1dy_1+4dy_2+7dy_3\right)\wedge
@@ -757,7 +773,7 @@ then
 5\cdot 7\cdot 9dx_3\wedge dx_3+\\
 &=& -33dy_1\wedge dy_2-66dy_1\wedge dy_3-33dy_2\wedge dy_3
 \end{array}
-\]
+\end{equation}
 
 Function {\tt pullback()} does all this:
 
@@ -803,18 +819,18 @@ dy_4\wedge dy_5$.
 Given a $k$-form $\omega$, Spivak defines the differential of $\omega$
 to be a $(k+1)$-form $d\omega$ as follows.  If
 
-\[
+\begin{equation}
 \omega =
 \sum_{
 i_1 < i_2 <\cdots<i_k}
 \omega_{i_1i_2\ldots i_k}
 dx^{i_1}\wedge
 dx^{i_2}\wedge\cdots\wedge dx^{i_k}
-\]
+\end{equation}
 
 then
 
-\[
+\begin{equation}
 d\omega =
 \sum_{
 i_1 < i_2 <\cdots<i_k}
@@ -822,45 +838,34 @@ i_1 < i_2 <\cdots<i_k}
 \cdot
 dx^{i_1}\wedge
 dx^{i_2}\wedge\cdots\wedge dx^{i_k}
-\]
+\end{equation}
 
 
 where $D_if(a)=\lim_{h\longrightarrow
 0}\frac{f(a^1,\ldots,a^i+h,\ldots,a^n)-f(a^1,\ldots,a^i,\ldots,a^n)}{h}$
 is the ordinary $i^\mathrm{th}$ partial derivative (Spivak, p25).
-\cite{hubbard2015} take a conceptually distinct approach and define
-the exterior derivative $d\phi$ (they use a bold font,
-$\mathbf{d}\phi$) of the $k$-form $\phi$ as the $(k+1)$-form given by
+This definition allows one to express the fundamental theorem of
+calculus in an arbitrary number of dimensions without modification.
+If $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is a scalar function
+of position, it can be shown that
 
-\[  {d}\phi
-  \left({v}_i,\ldots,{v}_{k+1}\right)
-  =
-  \lim_{h\longrightarrow 0}\frac{1}{h^{k+1}}\int_{\partial
-  P_{x}\left(h{v}_1,\ldots,h{v}_{k+1}\right)}\phi
-\]
-
-which, by their own account, is a rather opaque mathematical idiom.
-However, the definition makes sense and it is consistent with Spivak's
-definition above.  The definition allows one to express the
-fundamental theorem of calculus in an arbitrary number of dimensions
-without modification.
-
-It can be shown that
-
-\[
+\begin{equation}\label{definition_of_d}
     {d}\left(f\,dx_{i_1}\wedge\cdots\wedge dx_{i_k}\right)=
     {d}f\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k}
-\]
+\end{equation}
 
-where $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is a scalar
-function of position.  The package provides {\tt grad()} which, when given
-a vector $x_1,\ldots,x_n$ returns the one-form
+The package provides {\tt grad()} which, when given a vector
+$x_1,\ldots,x_n$ returns the one-form
 
-\[
+\begin{equation}
 \sum_{i=1}^n x_idx_i
-\]
+\end{equation}
 
-This is useful because $df=\sum_{j=1}^n\left(D_j f\right)\,dx_j$. Thus
+This is useful because $df=\sum_{j=1}^n\left(D_j f\right)\,dx_j$; we
+see that $df$ is a one-form that corresponds to the gradient $\nabla
+f$ of $f$ in elementary calculus: given a vector $u$ at point $p$ the
+correspondence would be $\left(\nabla f\right)\cdot u=
+df\left(u\right)$.  Thus
 
 <<>>=
 grad(c(0.4,0.1,-3.2,1.5))
@@ -869,29 +874,30 @@ grad(c(0.4,0.1,-3.2,1.5))
 
 We will use the {\tt grad()} function to verify that, in
 $\mathbb{R}^n$, a certain $(k-1)$-form has zero work function.
-Motivated by the fact that
+Following Hubbard and Hubbard~\cite{hubbard2015}, we observe that
 
-\[
+\begin{equation}
 F_3=\frac{1}{\left(x^2+y^2+z^2\right)^{3/2}}
 \begin{pmatrix}x\\y\\z\end{pmatrix}
-\]
+\end{equation}
 
-is a divergenceless velocity field in $\mathbb{R}^3$, H\&H go on to
-define [page 548, equation 6.7.16]
+is a divergenceless velocity field in $\mathbb{R}^3$, and thus motivated
+define
 
-\[
+\begin{equation}
 \omega_n=
 d\frac{1}{\left(x_1^2+\ldots +x_n^2\right)^{n/2}}\sum_{i=1}^{n}(-1)^{i-1}
 x_idx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n
-\]
+\end{equation}
 
-(where a hat indicates the absence of a term), and show analytically
-that $d\omega=0$.  Here I show this using R idiom.  The first thing is
-to define a function that implements the hat:
-
+(where a hat indicates the absence of a term).  Hubbard and Hubbard
+show analytically that $d\omega=0$.  Here I verify this reasoning
+numerically, using package idiom.  First we define a function that
+implements the wedge product
+$dx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n$:
 
 <<>>=
-f <- function(x){
+hat <- function(x){
     n <- length(x)
     as.kform(t(apply(diag(n)<1,2,which)))
 }
@@ -901,7 +907,7 @@ f <- function(x){
 So, for example:
 
 <<>>=
-f(1:5)
+hat(1:5)
 @ 
 
 Then we can use the {\tt grad()} function to calculate $d\omega$,
@@ -923,11 +929,14 @@ df(1:5)
 @ 
 
 
-Now we can use the wedge product of the two parts to show that the exterior derivative is zero:
+Now we can use the wedge product of the two parts (as per
+equation~\ref{definition_of_d}) to show that the exterior derivative
+of $\omega_n$, evaluated at a random point in $\mathcal{R}^n$, is
+zero:
 
 <<>>=
 x <- rnorm(9)
-print(df(x) ^ f(x))  # should be zero
+print(df(x) ^ hat(x))  # should be zero
 @ 
 
 
@@ -1062,9 +1071,9 @@ Above we see that $dd\phi$ is zero, as expected.
 
 In its most general form, Stokes's theorem states
 
-\[
+\begin{equation}
 \int_{\partial X}\phi=\int_Xd\phi
-\]
+\end{equation}
 
 where $X\subset\mathbb{R}^n$ is a compact oriented $(k+1)$-dimensional
 manifold with boundary $\partial X$ and $\phi$ is a $k$-form defined
@@ -1072,29 +1081,29 @@ on a neighborhood of $X$.
 
 We will verify Stokes, following 6.9.5 of \cite{hubbard2015} in which
 
-\[
+\begin{equation}
 \phi=
 \left(x_1-x_2^2+x_3^3-\cdots\pm x_n^n\right)
 \left(
 \sum_{i=1}^n
 dx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n
 \right)
-\]
+\end{equation}
 
 (a hat indicates that a term is absent), and we wish to evaluate
 $\int_{\partial C_a}\phi$ where $C_a$ is the cube $0\leq x_j\leq a,
 1\leq j\leq n$.  Stokes tells us that this is equal to $\int_{C_a}
 d\phi$, which is given by
 
-\[
+\begin{equation}
 d\phi = \left(
 1+2x_2+\cdots + nx_n^{n-1}\right)
 dx_1\wedge\cdots\wedge dx_n
-\]
+\end{equation}
 
 and so the volume integral is just
 
-\[
+\begin{equation}
 \sum_{j=1}^n
 \int_{x_1=0}^a
 \int_{x_2=0}^a
@@ -1103,7 +1112,7 @@ and so the volume integral is just
 jx_j^{j-1}
 dx_1 dx_2\ldots dx_n=
 a^{n-1}\left(a+a^2+\cdots+a^n\right).
-\]
+\end{equation}
 
 Stokes's theorem, being trivial, is not amenable to direct numerical
 verification but the package does allow slick creation of $\phi$:
