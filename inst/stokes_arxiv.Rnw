@@ -83,9 +83,9 @@ Ordinary differential calculus may be formalized and generalized to
 arbitrary-dimensional oriented manifolds using the exterior calculus.
 Here I introduce the {\tt stokes} package, written in the R computing
 language~\citep{rcore2022}, which furnishes functionality for working
-with the exterior calculus.  I go on to use it to give numerical
-verification of a number of theorems.  Notation follows that of
-\cite{spivak1965}.
+with the exterior calculus.  I give numerical verification of a number
+of theorems using the package.  Notation follows that of
+Spivak~\cite{spivak1965}.
 
 \section{Tensors}
 
@@ -141,8 +141,8 @@ sparse} array, as implemented by the {\tt spray}
 package~\citep{hankin2022_spray}.  We will consider the case
 $n=5,k=4$, so we have multilinear maps from
 $\left(\mathbb{R}^5\right)^4$ to $\mathbb{R}$.  Below, we will test
-algebraic identities in R using the idiom furnished by the stokes
-package.  For our example we will define
+algebraic identities in R using the idiom furnished by the {\tt
+stokes} package.  For our example we will define
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$
 using a matrix with three rows, one per term, and whose rows
 correspond to each term's tensor products of the $\phi$'s.  We first
@@ -171,7 +171,8 @@ $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otime
 Note that in some implementations the row order of object {\tt S} will
 differ from that of {\tt M}; this phenomenon is due to the underlying
 C implementation using the {\tt STL map} class and is discussed in
-more detail in the {\tt mvp} and {\tt disordR} packages.
+more detail in the {\tt spray} and {\tt disordR}
+packages~\cite{hankin2022_disordR,hankin2022_spray}.
 
 
 \subsection{Package idiom for evaluation of a tensor}
