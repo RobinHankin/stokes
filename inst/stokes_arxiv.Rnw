@@ -56,17 +56,14 @@ pdfkeywords={Stokes's theorem, exterior calculus, differential forms}
 \maketitle
 
 \begin{abstract}
-  In this short article I introduce the {\tt stokes} package.
-  Stokes's generalized integral theorem, viz $\int_{\partial
-    X}\phi=\int_Xd\phi$, is demonstrated here using {\tt stokes},
-  which provides functionality for working with tensors, alternating
-  forms, wedge products, and related concepts from the exterior
-  calculus.  The package uses {\tt spray} objects and follows {\tt
-    disordR} discipline; it is available on CRAN at
+  In this short article I introduce the {\tt stokes} package which
+  provides functionality for working with tensors, alternating forms,
+  wedge products, and related concepts from the exterior calculus.
+  Notation and spirit follow Spivak.  Stokes's generalized integral
+  theorem, viz $\int_{\partial X}\phi=\int_Xd\phi$, is demonstrated
+  here using the package; it is available on CRAN at\\
   \url{https://CRAN.R-project.org/package=stokes}.
 \end{abstract}
-
-
 
 \SweaveOpts{}
 
@@ -1170,6 +1167,16 @@ c(LHS=LHS,RHS=RHS,diff=LHS-RHS) # LHS==RHS, according to Spivak's 4.6
 @ 
 
 Above we see agreement to within numerical precision.
+
+\section{Conclusions and further work}
+
+The {\tt stokes} package furnishes functionality for working with
+tensors, alternating forms, and related concepts from the exterior
+calculus.  Theorems including Stokes's generalized integral theorem
+were verified numerically.  Further work might include working with
+Stokes's theorem expressed in Clifford algebra
+formalism~\cite{hankin2022_clifford,hestenes1987}, following
+Klausen~\cite{klausen2022}.
 
 \bibliographystyle{apalike}
 \bibliography{stokes}
