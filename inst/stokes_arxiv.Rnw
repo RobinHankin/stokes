@@ -1131,9 +1131,8 @@ $\phi_{1:9}\colon\left(\mathbb{R}^9\right)^8\longrightarrow\mathbb{R}$,
 with package idiom as follows:
 
 <<>>=
-f <- as.function(phi(1:9))
 E <- matrix(runif(72),9,8)   # (R^9)^8
-f(E)
+as.function(phi(1:9))(E)
 @ 
 
 Further, $d\phi$ is given by
