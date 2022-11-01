@@ -929,7 +929,7 @@ df(1:5)
 
 Now we can use the wedge product of the two parts (as per
 equation~\ref{definition_of_d}) to show that the exterior derivative
-of $\omega_n$, evaluated at a random point in $\mathcal{R}^n$, is
+of $\omega_n$, evaluated at a random point in $\mathbb{R}^n$, is
 zero:
 
 <<>>=
