@@ -29,3 +29,4 @@
 - Improvements to summary print methods
 - citation points to arXiv preprint
 - tweaks to vignettes
+- remove overlooked dependence on pracma
