@@ -23,19 +23,43 @@ set.seed(0)
 Alt
 ```
 
-Function `Alt()` converts a $k$-tensor to alternating form (see
-`kform.Rd`).  Given a $k$-tensor $T$, we follow Spivak [p78] and
-define $\operatorname{Alt}(T)$ as follows:
+Spivak, in a memorable passage, states:
 
-\[
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p>
+
+A $k$-tensor $\omega\in{\mathcal J}(V)$ is called <strong>alternating</strong> if
+
+$$
+ \omega(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k)=
+-\omega(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k)\qquad\mbox{for all $v_1,\ldots,v_k\in V$.}
+$$
+
+$\ldots$ The set of all alternating $k$-tensors is clearly a subspace
+$\Lambda^k(V)$ of ${\mathcal J}^k(V)$.  Since it requires considerable
+work to produce the determinant, it is not surprising that alternating
+$k$-tensors are difficult to write down.  There is, however, a uniform
+way of expressing all of them.  Recal lthat the sign of a permutation
+$\sigma$, denoted $\operatorname{sgn}\sigma$, is $+1$ if $\sigma$ is
+even and $-1$ if $\sigma$ is odd.  If $T\in{\mathcal J}^k(V)$, we
+define $\operatorname{Alt}(T)$ by
+
+$$
 \operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
     \frac{1}{k!}\sum_{\sigma\in S_k}\mathrm{sgn}(\sigma)\cdot
     T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
-\]
+$$	
 
-where $S_k$ is the set of all permutations of numbers $1$ to $k$ and
-$\operatorname{sgn}\sigma$ is the sign of permutation $\sigma$ for any
-$\sigma\in S_k$.  Thus for example if $k=3$ we have
+where $S_k$ is the set of all permutations of numbers $1$ to $k$.
+
+</p>
+<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Page 78</i>
+</p></span>
+</div>
+
+
+For example, if $k=3$ we have
 
 \[\operatorname{Alt}(T)\left(v_1,v_2,v_3\right)=
       \frac{1}{6}\left(\begin{array}{cc}
@@ -49,7 +73,9 @@ $\sigma\in S_k$.  Thus for example if $k=3$ we have
       \right)
 \]
 
-Package idiom is straightforward:
+
+In the `stokes` package, function `Alt()` performs this operation on a
+given $k$-tensor $T$.  Idiom is straightforward:
 
 
 ```{r}
