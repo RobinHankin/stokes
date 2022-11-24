@@ -57,7 +57,7 @@ for $V$ has also been given, it follows that there is a unique
 $\omega\in\Lambda^n(V)$ such that
 $\omega\left(v_1,\ldots,v_n\right)=1$ whenever $v_1,\ldots,v_n$ is an
 orthornormal basis such that $\left[v_1,\ldots,v_n\right]=\mu$.  This
-unique $\omega$ is called the *volume element* ov $V$, determined by
+unique $\omega$ is called the *volume element* of $V$, determined by
 the inner product $T$ and orientation $\mu$.  Note that
 $\operatorname{det}$ is the volume element of $\mathbb{R}^n$
 determined by the usual inner product and usual orientation, and that
@@ -94,13 +94,13 @@ RHS <- det(A)
 c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```
 
-Now we create $w_1,\ldots,w_n$, another orthonormal set.  We verify as
-follows:
+Now we create $w_1,\ldots,w_n$, another orthonormal set.  We may
+verify by generating a random orthogonal matrix and permutiting its
+rows:
 
 ```{r}
-ro <- function (n){ qr.Q(qr(matrix(rnorm(n*n),n,n))) }  # random orthogonal matrix
-M1 <- ro(7)
-M2 <- M1[c(2,1,3,4,5,6,7),]
+M1 <- qr.Q(qr(matrix(rnorm(49),7,7)))  # M1: a random orthogonal matrix
+M2 <- M1[c(2,1,3,4,5,6,7),]            # M2: (odd) permutation of rows of M1
 c(f(M1),f(M2))
 ```
 
