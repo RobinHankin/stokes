@@ -4,6 +4,7 @@
 ^\.travis\.yml$
 ^inst/stokes_stickermaker.R$
 ^inst/stokes_theorem.pdf$
-^inst/stokes_theorem.png$
+^inst/stokes.png$
 ^inst/stokes_theorem.tex$
+^inst/stokes_theorem.Rnw$
 ^vignettes/*.html$
