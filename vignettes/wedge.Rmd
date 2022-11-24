@@ -26,16 +26,32 @@ wedge2
 
 [the meat of `wedge2()` is `kform(spraycross(K1, K2))`].
 
-Function `wedge()` returns the wedge product of any number of kforms,
-function `wedge2()` returns the wedge product of two kforms.  Spivak
-gives us:
+Spivak, in a memorable passage, states:
 
-\[
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+
+$\ldots$ we would like a theorem analogous to 4.1 [the dimensionality
+of $k$-fold tensor products is $n^k$].  Of course, if
+$\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$, then
+$\omega\otimes\eta$ is usually not in $\Lambda^{k+l}(V)$.  We will
+therefore define a new product, the <strong>wedge</strong> product
+$\omega\wedge\eta\in\Lambda^{k+l}(V)$ by
+
+$$
 \omega\wedge\eta=\frac{\left(k+l\right)!}{k!l!}\operatorname{Alt}(\omega\otimes\eta),\qquad\omega\in\Lambda^k(V),\eta\in\Lambda^l(V)
-\]
+$$
 
-Function `wedge2()` implements this, although the idiom is somewhat
-opaque, especially the combinatorial coefficient $(k+l)!/(k!l!)$.
+(The reason for the strange coefficient will appear later).
+</p>
+<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Page 79</i>
+</p></span>
+</div>
+
+Function `wedge()` returns the wedge product of any number of
+$k$-forms.  Function `wedge2()` returns the wedge product of two
+$k$-forms, although the idiom is somewhat opaque, especially the
+"strange" combinatorial coefficient $(k+l)!/(k!l!)$.
 
 
 ## Digression: function `spraycross()`
