@@ -24,14 +24,37 @@ set.seed(0)
 inner
 ```
 
-Function `inner()` returns the inner product corresponding to a
-matrix.
+Spivak, in a memorable passage, states:
 
-The inner product of two vectors $\mathbf{x}$ and $\mathbf{y}$ is
-usually written $\left\langle\mathbf{x},\mathbf{y}\right\rangle$ or
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p>
+
+The reader is already familiar with certain tensors, aside from
+members of $V^*$.  The first example is the inner product
+$\left\langle{,}\right\rangle\in{\mathcal J}^2(\mathbb{R}^n)$.  On the
+grounds that any good mathematical commodity is worth generalizing, we
+define an <strong>inner product</strong> on $V$ to be a 2-tensor $T$
+such that $T$ is <strong>symmetric</strong>, that is $T(v,w)=T(w,v)$
+for $v,w\in V$ and such that $T$ is
+<strong>positive-definite</strong>, that is, $T(v,v) > 0$ if $v\neq
+0$.  We distinguish $\left\langle{,}\right\rangle$ as the
+<strong>usual inner product</strong> on $\mathbb{R}^n$.
+
+</p>
+<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Page 77</i>
+</p></span>
+</div>
+
+Function `inner()` returns the inner product corresponding to a matrix
+$M$.  Spivak's definition requires $M$ to be positive-definite, but
+that is not necessary in the package.  The inner product of two
+vectors $\mathbf{x}$ and $\mathbf{y}$ is usually written
+$\left\langle\mathbf{x},\mathbf{y}\right\rangle$ or
 $\mathbf{x}\cdot\mathbf{y}$, but the most general form would be
-$\mathbf{x}^TM\mathbf{y}$ where $M$ is a matrix.  Noting that inner
-products are multilinear, that is $\left\langle\mathbf{x},a\mathbf{y}+b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle
+$\mathbf{x}^TM\mathbf{y}$.  Noting that inner products are
+multilinear, that is
+$\left\langle\mathbf{x},a\mathbf{y}+b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle
 + b\left\langle\mathbf{x},\mathbf{z}\right\rangle$ and $\left\langle
 a\mathbf{x} +
 b\mathbf{y},\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{z}\right\rangle
