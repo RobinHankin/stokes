@@ -27,3 +27,5 @@
 # stokes 1.1-6
 
 - Improvements to summary print methods
+- citation points to arXiv preprint
+- tweaks to vignettes
