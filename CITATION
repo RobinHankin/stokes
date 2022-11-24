@@ -1,9 +1,0 @@
-bibentry(bibtype = "misc",
-         title = "Stokes's theorem in R",
-         author = c(person(c("Robin", "K.", "S."), "Hankin")),
-         year = "2022", publisher = "arXiv",
-         doi = "10.48550/ARXIV.2210.17008",
-         )
-  
-
-
