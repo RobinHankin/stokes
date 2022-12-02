@@ -21,9 +21,12 @@ Authors@R: person(
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Description: Provides functionality for working with tensors, alternating
            forms, wedge products, Stokes's theorem, and related concepts
-	   from the exterior calculus.  Uses 'disordR' discipline.  The
+	   from the exterior calculus.   Uses 'disordR' discipline
+	   (Hankin, 2022, <doi:10.48550/ARXIV.2210.03856>).  The
 	   canonical reference would be M. Spivak
-	   (1965, ISBN:0-8053-9021-9) "Calculus on Manifolds".
+	   (1965, ISBN:0-8053-9021-9) "Calculus on Manifolds".  To cite
+	   the package in publications please use Hankin (2022)
+           <doi:10.48550/ARXIV.2210.17008>.
 License: GPL-2
 LazyData: yes
 URL: https://github.com/RobinHankin/stokes
