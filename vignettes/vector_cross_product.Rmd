@@ -26,44 +26,37 @@ vector_cross_product
 
 # The vector cross product
 
-Given two vectors $\mathbf{u},\mathbf{v}\in\mathbb{R}^3$ with
-$\mathbf{u}=(u_1,u_2,u_3)$ and $\mathbf{v}=(v_1,v_2,v_3)$ then the
-standard vector cross product $\mathbf{u}\times\mathbf{v}$ is given by
-the mnemonic
+Spivak (p83) considers the standard vector cross product
+$\mathbf{u}\times\mathbf{v}=\mathrm{det} \begin{pmatrix} i & j & k \\
+u_1&u_2&u_3\\ v_1&v_2&v_3 \end{pmatrix}$ and places it in a more
+general and rigorous context.  In a memorable passage, he states:
 
-\[
-\mathbf{u}\times\mathbf{v}=
-\mathrm{det}
-\begin{pmatrix} i & j & k \\ u_1&u_2&u_3\\ v_1&v_2&v_3
-\end{pmatrix}
-\]
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p>
 
-so $\mathbf{w}=\mathbf{u}\times\mathbf{v}$ has components
-$w_1=u_2v_3-u_3v_2$, and so on.  Spivak (p83) gives a more rigorous
-definition and places it in a more general context.  If
-$\mathbf{v}_1,\ldots,\mathbf{v}_{n-1}\in\mathbb{R}^n$ and
-$\phi\in\Lambda^1\left(\mathbb{R}^n\right)$ is defined by
+If $v_1,\ldots,v_{n-1}\in\mathbb{R}^n$ and $\phi$ is defined by
 
-\[
-\phi(\mathbf{w})=\mathrm{det}
-\begin{pmatrix} 
-\mathbf{v}_1\\
-\vdots\\
-\mathbf{v}_n\\
-\mathbf{w}
-\end{pmatrix}
-=
-\mathrm{det}
-\begin{pmatrix} 
-v_1^1&\ldots& v_1^n\\
-\vdots&\ddots&\vdots\\
-v_{n-1}^1&\ldots& v_{n-1}^n\\
-w_{n-1}&\ldots& w_{n-1}
-\end{pmatrix}
-\]
+$$
+\phi(w)=\det\left(\begin{array}{c}v_1\\ \vdots\\ v_{n-1}\\w\end{array}\right)
+$$
 
-then there is a unique $\mathbf{z}\in\mathbb{R}^n$ such that
-$\left\langle\mathbf{w},\mathbf{z}\right\rangle=\phi(\mathbf{w})$.
+then $\phi\in\Lambda^1\left(\mathbb{R}^n\right)$; therefore there is a
+unique $z\in\mathbb{R}^n$ such that
+
+$$
+\left\langle w,z\right\rangle=\phi(w)=
+\det\left(\begin{array}{c}v_1\\ \vdots\\ v_{n-1}\\w\end{array}\right).
+$$	
+
+This $z$ is denoted $v_1\times\ldots\times v_{n-1}$ and is called the
+*cross product* of $v_1,\ldots,v_{n-1}$.
+
+</p>
+<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Pages 83-84</i>
+</p></span>
+</div>
+
 The reason that $\mathbf{w}$ is at the bottom rather than the top is
 that it ensures that the the $n$-tuple
 $(\mathbf{v}_1,\ldots,\mathbf{v}_{n-1},\mathbf{w})$ has positive
