@@ -30,3 +30,7 @@
 - citation points to arXiv preprint
 - tweaks to vignettes
 - remove overlooked dependence on pracma
+
+# stokes 1.1-7
+
+- consistentification of the stokes vignette

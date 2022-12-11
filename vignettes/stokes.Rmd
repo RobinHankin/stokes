@@ -2,6 +2,7 @@
 title: "Exterior calculus with R"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: stokes.bib
 vignette: >
   %\VignetteIndexEntry{The exterior calculus}
   %\VignetteEngine{knitr::rmarkdown}
@@ -16,20 +17,19 @@ library("stokes")
 set.seed(1)
 ```
 
-
-
 <p style="text-align: right;">
 ![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
 </p>
 
 # The exterior calculus
 
-Ordinary differential calculus may be formalized and generalized to
-arbitrary-dimensional oriented manifolds using the exterior calculus.
-Here I show how the `stokes` package furnishes functionality for
-working with the exterior calculus, and provide numerical verification
-of a number of theorems.  Notation follows that of Spivak, and Hubbard
-and Hubbard.
+To cite the `stokes` package in publications please use
+[@hankin2022_stokes].  Ordinary differential calculus may be
+formalized and generalized to arbitrary-dimensional oriented manifolds
+using the exterior calculus.  Here I show how the `stokes` package
+furnishes functionality for working with the exterior calculus, and
+provide numerical verification of a number of theorems.  Notation
+follows that of @spivak1965, and @hubbard2015.
 
 Recall that a $k$-tensor is a multilinear map $S\colon
 V^k\longrightarrow\mathbb{R}$, where $V=\mathbb{R}^n$ is considered as
@@ -111,9 +111,9 @@ we have
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$.
 Note that in some implementations the row order of object `S` will
 differ from that of `M`; this phenomenon is due to the underlying `C`
-implementation using the `STL map` class and is discussed in more
-detail in the `mvp` package.
-
+implementation using the `STL map` class; see the `disordR` package
+[@hankin2022_disordR] and is discussed in more detail in the `mvp`
+package [@hankin2022_mvp].
 
 ### Package idiom for evaluation of a tensor
 
@@ -1071,8 +1071,3 @@ det(E)*f(diag(9))  # should match f(E) by Spivak's 4.6
 ```
 
 ## References
-
-*  J. H. Hubbard and B. B. Hubbard 2015.  _Vector
-      calculus, linear algebra and differential forms: a unified
-      approach_,  Ithaca, NY.
-*  M. Spivak 1971. _Calculus on manifolds_, Addison-Wesley.

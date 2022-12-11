@@ -1,0 +1,24 @@
+To create stokes_arxiv.pdf, first  use Sweave:
+
+R CMD Sweave stokes_arxiv.Rnw
+
+this will create stokes_arxiv.tex
+
+To process this with latex, you will need various auxiliary files such
+as arxiv.sty and orcid.pdf.  These are not under version control, you
+will have to find these on the web.  File stokes.png (the hex sticker)
+is in the man/figures directory. and stokes.bib is in vignettes/
+directory.  Copy these files to this directory, inst/
+
+There are two distinct versions of stokes.bib, which use slightly
+different markup.
+
+
+Then to create stokes_arxiv.pdf:
+
+pdflatex stokes_arxiv
+bibtex   stokes_arxiv
+pdflatex stokes_arxiv
+pdflatex stokes_arxiv
+
+should work.
