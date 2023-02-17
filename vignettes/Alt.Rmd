@@ -40,7 +40,7 @@ $\ldots$ The set of all alternating $k$-tensors is clearly a subspace
 $\Lambda^k(V)$ of ${\mathcal J}^k(V)$.  Since it requires considerable
 work to produce the determinant, it is not surprising that alternating
 $k$-tensors are difficult to write down.  There is, however, a uniform
-way of expressing all of them.  Recal lthat the sign of a permutation
+way of expressing all of them.  Recall that the sign of a permutation
 $\sigma$, denoted $\operatorname{sgn}\sigma$, is $+1$ if $\sigma$ is
 even and $-1$ if $\sigma$ is odd.  If $T\in{\mathcal J}^k(V)$, we
 define $\operatorname{Alt}(T)$ by
