@@ -69,7 +69,10 @@ each of $v_1,\ldots,v_n$.
 </p></span>
 </div>
 
-We will take $n=7$ as an example:
+In the `stokes` package, function `volume(n)` returns the volume
+element on the usual basis, that is,
+$\omega\left(e_1,\ldots,e_n\right)$.  We will take $n=7$ as an
+example:
 
 
 ```{r}
