@@ -65,12 +65,11 @@
   Powers are not implemented for ktensors on the grounds that a ktensor
   to the power zero is not defined.
 
-  Note that one has to take care with order of operations, as package
-  idiom is not quite associative if we mix \code{^} with \code{*}.  For
-  example, \code{dx ^ (6*dy)} is perfectly acceptable; but \code{(dx ^
-  6)*dy)} will return an error, as will the unbracketed form \code{dx ^
-  6 * dy}.  In the second case we attempt to use an asterisk to multiply
-  two k-forms, which triggers the error. 
+  Note that one has to take care with order of operations if we mix
+  \code{^} with \code{*}.  For example, \code{dx ^ (6*dy)} is perfectly
+  acceptable; but \code{(dx ^ 6)*dy)} will return an error, as will the
+  unbracketed form \code{dx ^ 6 * dy}.  In the second case we attempt to
+  use an asterisk to multiply two k-forms, which triggers the error.
   
 }
 \examples{
