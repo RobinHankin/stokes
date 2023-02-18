@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
 library("stokes")
 library("emulator")
+library("permutations")
 options(polyform = FALSE)
 set.seed(1)
 ```
@@ -56,40 +57,108 @@ $(-1)^{\sigma(I)}$ is the sign of the permutation $\sigma(I)=i_1\cdots
 i_kj_1\cdots j_{n-k}$.  We extend to the whole of $\Lambda^k(V)$ using
 linearity.
 
-Package idiom for calculating the Hodge dual is straightforward:
+Package idiom for calculating the Hodge dual is straightforward, being
+simply `hodge()`.
 
 ```{r, include = FALSE}
 options(kform_symbolic_print = NULL)
 ```
 
+
+## The Hodge dual on basis elements of $\Lambda^k(V)$
+
+We start by demonstrating `hodge()` on basis elements of
+$\Lambda^k(V)$.  Recall that if $\left\lbrace
+e_1,\ldots,e_n\right\rbrace$ is a basis of vector space
+$V=\mathbb{R}^n$, then
+$\left\lbrace\omega_1,\ldots,\omega_k\right\rbrace$ is a basis of
+$\Lambda^1(V)$, where $\omega_i(e_j)=\delta_{ij}$.  A basis of
+$\Lambda^k(V)$ is given by the set
+
+\[
+\bigcup_{1\leqslant i_1 < \cdots < i_k\leqslant n}
+\bigwedge_{j=1}^k\omega_{i_j}
+=
+\left\lbrace
+\left.\omega_{i_1}\wedge\cdots\wedge\omega_{i_k}
+\right|1\leqslant i_1 < \cdots < i_k\leqslant n
+\right\rbrace.
+\]
+
+This means that basis elements are things like
+$\omega_2\wedge\omega_6\wedge\omega_7$.  f $V=\mathbb{R}^9$, what is
+$\star\omega_2\wedge\omega_6\wedge\omega_7$?
+
+
 ```{r}
+(a <- d(2) ^ d(6) ^ d(7))
+hodge(a,9)
+```
+
+See how $\star a$ has index entries 1-9 except $2,6,7$ (from $a$).
+The (numerical) sign is negative because the permution has negative
+(permutational) sign.  We can verify this using the `permutations`
+package:
+
+```{r,label=useperm}
+p <- c(2,6,7,  1,3,4,5,8,9)
+(pw <- as.word(p))
+print_word(pw)
+sgn(pw)
+```
+
+
+Above we see the sign of the permutation is negative.  More succinct
+idiom would be
+
+```{r,label=shorthodge}
+hodge(d(c(2,6,7)),9)
+```
+
+The second argument to `hodge()` is needed if the largest index $i_k$
+of the first argument is less than $n$; the default value is indeed
+$n$.  In the example above, this is $7$:
+
+```{r label=defaulthodge}
+hodge(d(c(2,6,7)))
+```
+
+Above we see the result if $V=\mathbb{R}^7$.
+
+## More complicated examples
+
+The hodge operator is linear and it is interesting to verify this.
+
+```{r,defineo}
 (o <- rform())
 hodge(o)
 ```
 
 We verify that the fundamental relation holds by direct inspection:
 
-```{r}
+```{r verifyhodgeo}
 o ^ hodge(o)
 kinner(o,o)*volume(dovs(o))
 ```
 
-showing agreement.  We may work more formally by defining a function
-that returns `TRUE` if the left and right hand sides match
+showing agreement (above, we use function `volume()` in lieu of
+calculating the permutation's sign explicitly.  See the `volume`
+vignette for more details).  We may work more formally by defining a
+function that returns `TRUE` if the left and right hand sides match
 
-```{r}
+```{r defdif}
 diff <- function(a,b){a^hodge(b) ==  kinner(a,b)*volume(dovs(a))}
 ```
 
 and call it with random $k$-forms:
 
-```{r}
+```{r calldefdif}
 diff(rform(),rform())
 ```
 
 Or even
 
-```{r}
+```{r alldefdif}
 all(replicate(10,diff(rform(),rform())))
 ```
 
