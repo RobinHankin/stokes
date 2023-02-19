@@ -337,7 +337,7 @@
 
 `contract` <- function(K,v,lose=TRUE){
     if(is.vector(v)){
-        out <- Reduce("+",Map("*", apply(index(K),1,contract_elementary,v),coeffs(K)))
+        out <- Reduce("+",Map("*", apply(index(K),1,contract_elementary,v),elements(coeffs(K))))
     } else {
         stopifnot(is.matrix(v))
         out <- K
