@@ -55,6 +55,10 @@ contract(as.kform(1:5),1:8)
 contract(as.kform(1),3)   # 0-form
 
 
+
+contract_elementary(c(1,2,5),c(1,2,10,11,71))
+
+
 ## Now some verification [takes ~10s to run]:
 #o <- kform(spray(t(replicate(2, sample(9,4))), runif(2)))
 #V <- matrix(rnorm(36),ncol=4)

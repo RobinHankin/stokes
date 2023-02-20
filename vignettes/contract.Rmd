@@ -12,6 +12,8 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
 library("stokes")
+library("disordR")
+library("magrittr")
 set.seed(0)
 ```
 
@@ -109,7 +111,7 @@ argument: $\phi_{a\mathbf{v}+b\mathbf{w}}=
 a\phi_\mathbf{v}+b\phi_\mathbf{w}$.
 
 
-```{r label=verifylinearityinv}
+```{r label=verifylinearityinv,cache=TRUE}
 a <- 1.23
 b <- -0.435
 v <- 1:5
@@ -151,7 +153,7 @@ But `contract()` allows us to perform both contractions in one
 operation: if we pass a matrix $M$ to `contract()` then this is
 interpreted as repeated contraction with the columns of $M$:
 
-```{r bothatonce}
+```{r bothatonce,cache=TRUE}
 M <- cbind(u,v)
 contract(contract(phi,u),v) == contract(phi,M)
 ```
@@ -160,7 +162,7 @@ We can verify directly that the system works as intended.  The lines
 below strip successively more columns from argument `V` and contract
 with them:
 
-```{r verifydirect}
+```{r verifydirect,cache=TRUE}
 (o <- kform(spray(t(replicate(2, sample(9,4))), runif(2))))
 V <- matrix(rnorm(36),ncol=4)
 jj <- c(
@@ -194,7 +196,7 @@ thus returning a $0$-form.  If we iteratively contract a
 $k$-dimensional $k$-form, we return the determinant, and this may be
 verified as follows:
 
-```{r}
+```{r,label=verifydeterminant}
 o <- as.kform(1:5)
 V <- matrix(rnorm(25),5,5)
 LHS <- det(V)
@@ -203,3 +205,153 @@ c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```
 
 Above we see agreement to within numerical error.
+
+## Contraction from first principles
+
+Suppose we wish to contract $\phi=dx^{i_1}\wedge\cdots\wedge dx^{i_k}$
+with vector $\mathbf{v}=(v_1\mathbf{e}_1,\ldots,v_k\mathbf{e}_k)$.
+Thus we seek $\phi_\mathbf{v}$ with
+$\phi_\mathbf{v}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right) =
+dx^{i_1}\wedge\cdots\wedge
+dx^{i_k}\left(\mathbf{v},\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)$.
+Writing $\mathbf{v}=v_1\mathbf{e}_1+\cdots+\mathbf{e}_k$, we have
+
+\begin{eqnarray}
+\phi_\mathbf{v}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right) &=&
+dx^{i_1}\wedge\cdots\wedge
+dx^{i_k}\left(\mathbf{v},\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)\\&=& 
+dx^{i_1}\wedge\cdots\wedge dx^{i_k}\left(v_1\mathbf{e}_1+\cdots+v_k\mathbf{e}_k,\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)\\&=& 
+v_1 dx^{i_1}\wedge\cdots\wedge dx^{i_k}\left(\mathbf{e}_1,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)+\cdots+
+v_k dx^{i_1}\wedge\cdots\wedge dx^{i_k}\left(\mathbf{e}_k,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right).
+\end{eqnarray}
+
+where we have exploited linearity.  To evaluate this it is easiest and
+most efficient  to express  $\phi$ as  $\bigwedge_{j=1}^kdx^{i_j}$ and
+cycle  through the  index $j$,  and  use various  properties of  wedge
+products:
+
+\begin{eqnarray}
+dx^{i_1}\wedge\cdots\wedge dx^{i_k} &=&
+(-1)^{j-1} dx^{i_j}\wedge\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{i_j}}\wedge\cdots\wedge dx^{i-k}\right)\\ &=&
+(-1)^{j-1} k\operatorname{Alt}\left(dx^{i_j}\otimes\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{i_j}}\wedge\cdots\wedge dx^{i-k}\right)\right)
+\end{eqnarray}
+
+(above, a hat indicates a term's being omitted).  From this, we see
+that a $l\not\in I\longrightarrow\phi=0$ (where $L=\left\lbrace
+i_1,\ldots i_k\right\rbrace$ is the index set of $\phi$), for all the
+$dx^p$ terms kill $\mathbf{e}_l$.  On the other hand, if
+$l\in I\longrightarrow\phi=0$, we have
+
+\begin{eqnarray}
+\phi_{\mathbf{e}_l}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right) &=&
+\left(dx^{l}\wedge\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
+dx^{i_k}\right)\right)\left(\mathbf{e}_l,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)\\ &=&
+(-1)^{l-1}k\left(dx^{l}\otimes\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
+dx^{i_k}\right)\right)\left(\mathbf{e}_l,\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)\right)\\ &=&
+(-1)^{l-1}k\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
+dx^{i_k}\right)\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)
+\end{eqnarray}
+
+## Worked example using `contract_elementary()`
+
+Function `contract_elementary()` is a bare-bones low-level no-frills
+helper function that returns $\phi_\mathbf{v}$ for $\phi$ an
+elementary form of the form $dx^{i_1}\wedge\cdots\wedge dx^{i_k}$.
+Suppose we wish to contract $\phi=dx^1\wedge dx^2\wedge dx^5$ with
+vector $\mathbf{v}=(1,2,10,11,71)^T$.
+
+Thus we seek $\phi_\mathbf{v}$ with
+$\phi_\mathbf{v}\left(\mathbf{v}_1,\mathbf{v}_2 \right)=dx^1\wedge
+dx^2\wedge dx^5\left(\mathbf{v},\mathbf{v}_1,\mathbf{v}_2\right)$.
+Writing $\mathbf{v}=v_1\mathbf{e}_1+\cdots+v_5\mathbf{e}_5$ we have
+
+\begin{eqnarray}
+\phi_\mathbf{v}\left(\mathbf{v}_1,\mathbf{v}_2 \right)                         &=&
+dx^1\wedge dx^2\wedge dx^5\left(\mathbf{v},\mathbf{v}_1,\mathbf{v}_2\right)\\  &=&
+dx^1\wedge dx^2\wedge dx^5\left(v_1\mathbf{e}_1+\cdots+v_5\mathbf{e}_5,\mathbf{v}_1,\mathbf{v}_2\right)\\&=&
+v_1 dx^1\wedge dx^2\wedge dx^5\left(\mathbf{e}_1,\mathbf{v}_1,\mathbf{v}_2\right)+
+v_2 dx^1\wedge dx^2\wedge dx^5\left(\mathbf{e}_2,\mathbf{v}_1,\mathbf{v}_2\right)\\
+&{}&\qquad +v_3dx^1\wedge dx^2\wedge dx^5\left(\mathbf{e}_3,\mathbf{v}_1,\mathbf{v}_2\right)+
+v_4 dx^1\wedge dx^2\wedge dx^5\left(\mathbf{e}_4,\mathbf{v}_1,\mathbf{v}_2\right)\\
+&{}&\qquad\qquad +v_5dx^1\wedge dx^2\wedge dx^5\left(\mathbf{e}_5,\mathbf{v}_1,\mathbf{v}_2\right)\\&=&
+v_1 dx^2\wedge dx^5\left(\mathbf{v}_1,\mathbf{v}_2\right)-
+v_2 dx^1\wedge dx^5\left(\mathbf{v}_1,\mathbf{v}_2\right)+0+0+
+v_5 dx^1\wedge dx^2\left(\mathbf{v}_1,\mathbf{v}_2\right)
+\end{eqnarray}
+
+(above, the zero terms are because the vectors $\mathbf{e}_3$ and
+$\mathbf{e}_4$ are killed by $dx^1\wedge dx^2\wedge dx^5$).  We can
+see that the way to evaluate the contraction is to go through the
+terms of $\phi$ [that is, $dx^1$, $dx^2$, and $dx^5$] in turn, and sum
+the resulting expressions:
+
+
+```{r,fromfirst}
+o <- c(1,2,5)
+v <- c(1,2,10,11,71)
+(
+(-1)^(1+1) * as.kform(o[-1])*v[o[1]] + 
+(-1)^(2+1) * as.kform(o[-2])*v[o[2]] +
+(-1)^(3+1) * as.kform(o[-3])*v[o[3]]
+)
+```
+
+This is performed more succinctly by `contract_elementary()`:
+
+
+```{r, label=ceex}
+contract_elementary(o,v)
+```
+
+
+## The "meat" of `contract()`
+
+Given a vector `v`, and `kform` object `K`, the meat of `contract()` would be
+
+
+```
+Reduce("+", Map("*", apply(index(K), 1, contract_elementary, v), elements(coeffs(K))))
+```
+
+
+I will show this in operation with simple but nontrivial arguments.
+
+
+```{r,label=meatcontract}
+(K <- as.kform(spray(matrix(c(1,2,3,6,2,4,5,7),2,4,byrow=TRUE),1:2)))
+v <- 1:7
+```
+
+Then the inside bit would be
+
+```{r,label=insidebitofmeat}
+apply(index(K), 1, contract_elementary, v)
+```
+
+Above we see a two-element list, one for each elementary term of `K`.
+We then use base R's `Map()` function to multiply each one by the appropriate coefficient:
+
+
+```{r usemap}
+Map("*", apply(index(K), 1, contract_elementary, v), elements(coeffs(K)))
+```
+
+And finally use `Reduce()` to sum the terms:
+
+```{r usereduce}
+Reduce("+",Map("*", apply(index(K), 1, contract_elementary, v), elements(coeffs(K))))
+```
+
+However, it might be conceptually easier to use `magrittr` pipes to
+give an equivalent definition:
+
+```{r usemagrittr}
+K                                %>%
+index                              %>%
+apply(1,contract_elementary,v)       %>%
+Map("*", ., K %>% coeffs %>% elements) %>%
+Reduce("+",.)
+```
+
+Well it might be clearer to Hadley but frankly YMMV.
+
