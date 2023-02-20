@@ -9,7 +9,8 @@ Suggests:
     testthat,
     markdown,
     rmarkdown,
-    emulator
+    emulator,
+    magrittr
 VignetteBuilder: knitr
 Imports: permutations (>= 1.0-4), partitions, methods, mathjaxr, disordR (>= 0.0-8)
 Authors@R: person(
