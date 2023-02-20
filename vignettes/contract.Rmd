@@ -132,6 +132,39 @@ v <- 1:7
 contract(a*phi + b*psi,v) == a*contract(phi,v) + b*contract(psi,v)
 ```
 
+## Contraction of products
+
+Weintraub gives us the following theorem, for any $k$-form  $\phi$ and $l$-form $\psi$:
+
+\[
+\left(\phi\wedge\psi\right)_\mathbf{v} = 
+\phi_\mathbf{v}\psi + (-1)^k\phi\wedge\psi_\mathbf{v}.\]
+
+We can verify this numerically with $k=4,l=5$:
+
+```{r label=verifycross}
+phi <- rform(terms=5,k=3,n=9)
+psi <- rform(terms=9,k=4,n=9)
+v <- sample(1:100,9)
+contract(phi^psi,v) ==  contract(phi,v) ^ psi - phi ^ contract(psi,v)
+```
+
+The theorem is verified.  We note in passing that the object itself is quite complicated:
+
+```{r,label=quitecomplicated}
+summary(contract(phi^psi,v))
+```
+
+We may also switch $\phi$ and $\psi$, remembering to change the sign:
+
+```{r, label=signswitch}
+contract(psi^phi,v) ==  contract(psi,v) ^ phi + psi ^ contract(phi,v)
+```
+
+
+## Repeated contraction
+
+
 It is of course possible to contract a contraction.  If $\phi$ is a
 $k$-form, then $\left(\phi_\mathbf{v}\right)_\mathbf{w}$ is a $k-2$
 form with
@@ -355,3 +388,8 @@ Reduce("+",.)
 
 Well it might be clearer to Hadley but frankly YMMV.
 
+
+## References
+
+* M. Spivak 1968.  _Calculus on manifolds_.  Perseus Books
+* S. T. Weintraub 2014. _Differential forms: theory and practice_.  Elsevier.
