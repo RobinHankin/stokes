@@ -57,7 +57,7 @@ The exterior derivative of a \mjseqn{k}-form \mjeqn{\phi}{phi} is a
   }{omitted; see latex}
 
 The entry in square brackets is given by \code{grad()}.  See the
-examples for appropriate R idiom.
+examples for appropriate \R idiom.
 
 }  
 \value{A one-form}
