@@ -270,10 +270,10 @@ dx^{i_1}\wedge\cdots\wedge dx^{i_k} &=&
 \end{eqnarray}
 
 (above, a hat indicates a term's being omitted).  From this, we see
-that a $l\not\in I\longrightarrow\phi=0$ (where $L=\left\lbrace
+that $l\not\in L\longrightarrow\phi=0$ (where $L=\left\lbrace
 i_1,\ldots i_k\right\rbrace$ is the index set of $\phi$), for all the
-$dx^p$ terms kill $\mathbf{e}_l$.  On the other hand, if
-$l\in I\longrightarrow\phi=0$, we have
+$dx^p$ terms kill $\mathbf{e}_l$.  On the other hand, if $l\in L$ we
+have
 
 \begin{eqnarray}
 \phi_{\mathbf{e}_l}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right) &=&
