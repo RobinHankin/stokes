@@ -12,9 +12,11 @@ returning the maximum of the index matrix.
 Special dispensation is given for zero-forms and zero tensors, which
 return zero.
 
+Vignette \code{dovs} provides more discussion.
+
 }
 \usage{dovs(K)}
-\arguments{\item{K}{A \mjseqn{k}-form} or \mjseqn{k}-tensor}
+\arguments{\item{K}{A \mjseqn{k}-form or \mjseqn{k}-tensor}}
 \value{Returns a non-negative integer}
 \author{Robin K. S. Hankin}
 \examples{
