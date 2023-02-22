@@ -42,10 +42,10 @@ or multivariate polynomial form
   \dQuote{any \mjeqn{n\geq 0}{n>=0}}.  See also \code{dovs()}.
   
 
-  By default, the print method uses the \pkg{spray} print methods, and
-  as such respects the \code{polyform} option.  However, setting
+  By default, the print method uses the \CRANpkg{spray} print methods,
+  and as such respects the \code{polyform} option.  However, setting
   \code{polyform} to \code{TRUE} can give misleading output, because
-  \pkg{spray} interprets objects as multivariate polynomials not
+  \code{spray} objects are interpreted as multivariate polynomials not
   differential forms (and in particular uses the caret to signify
   powers).
 

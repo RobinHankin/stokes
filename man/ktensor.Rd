@@ -38,11 +38,11 @@ and
 Note that this is \emph{not} equivalent to linearity over
 \mjeqn{V^{nk}}{V^nk} (see examples).
 
-In the \pkg{stokes} package, \mjseqn{k}-tensors are represented as
+In the \CRANpkg{stokes} package, \mjseqn{k}-tensors are represented as
 sparse arrays (\code{spray} objects), but with a class of
 \code{c("ktensor", "spray")}.  This is a natural and efficient
 representation for tensors that takes advantage of sparsity using
-\pkg{spray} package features.
+\CRANpkg{spray} package features.
 
 Function \code{as.ktensor()} will coerce a \mjseqn{k}-form to a
 \mjseqn{k}-tensor via \code{kform_to_ktensor()}.

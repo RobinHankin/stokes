@@ -16,13 +16,13 @@
 }
 \description{
   Extract and manipulate coefficients of ktensor and kform objects;
-  this using the methods of the \pkg{spray} package.
+  this using the methods of the \CRANpkg{spray} package.
 }
 \details{
   To see the coefficients of a \code{kform} or \code{ktensor} object,
   use \code{coeffs()}, which returns a \code{disord} object (this is
   actually \code{spray::coeffs()}).  Replacement methods also use the
-  methods of the \pkg{spray} package.
+  methods of the \CRANpkg{spray} package.
   
 }
 \author{Robin K. S. Hankin}

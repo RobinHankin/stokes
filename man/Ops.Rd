@@ -60,7 +60,7 @@
   is a \code{kform} object, it is very tempting [but incorrect] to
   interpret \dQuote{\code{S^3}} as something like \dQuote{\code{S} to
   the power 3}.  See also the note at \code{Ops.clifford} in the
-  \pkg{clifford} package.
+  \CRANpkg{clifford} package.
 
   Powers are not implemented for ktensors on the grounds that a ktensor
   to the power zero is not defined.

@@ -39,12 +39,12 @@ e(i,n)
 \details{
 
   A \dfn{\mjseqn{k}-form} is an alternating \mjseqn{k}-tensor.  In the
-  \pkg{stokes} package, \mjseqn{k}-forms are represented as sparse arrays
+  package, \mjseqn{k}-forms are represented as sparse arrays
   (\code{spray} objects), but with a class of \code{c("kform",
   "spray")}.  The constructor function \code{kform()} takes a
-  \code{spray} object and returns a \code{kform} object: it ensures
-  that rows of the index matrix are strictly nonnegative integers, have
-  no repeated entries, and are strictly increasing.  Function
+  \code{spray} object and returns a \code{kform} object: it ensures that
+  rows of the index matrix are strictly nonnegative integers, have no
+  repeated entries, and are strictly increasing.  Function
   \code{as.kform()} is more user-friendly.
 
   \itemize{
