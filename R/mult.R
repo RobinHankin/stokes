@@ -162,6 +162,12 @@
 
 `d` <- function(i){as.kform(i)}
 
+`e` <- function(i,n=i){
+    out <- numeric(n)
+    out[i] <- 1
+    return(out)
+}
+
 `kform_general`  <- function(W,k,coeffs,lose=TRUE){
     if(length(W)==1){W <- seq_len(W)}
     M <-  kform_basis(length(W),k)

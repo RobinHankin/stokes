@@ -8,6 +8,7 @@
 \alias{kform_general}
 \alias{general_kform}
 \alias{d}
+\alias{e}
 \title{k-forms}
 \description{\loadmathjax
   Functionality for dealing with \mjseqn{k}-forms
@@ -19,6 +20,7 @@ kform_basis(n, k)
 kform_general(W,k,coeffs,lose=TRUE)
 is.kform(x)
 d(i)
+e(i,n)
 \method{as.function}{kform}(x,...)
 }
 \arguments{
@@ -92,7 +94,8 @@ d(i)
 \value{
   All functions documented here return a \code{kform} object except
   \code{as.function.kform()}, which returns a function, and
-  \code{is.kform()}, which returns a Boolean.
+  \code{is.kform()}, which returns a Boolean, and \code{e()}, which
+  returns a conjugate basis to that of \code{d()}.
 }
 \references{Hubbard and Hubbard; Spivak}
 \author{Robin K. S. Hankin}

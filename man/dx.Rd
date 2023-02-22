@@ -3,7 +3,7 @@
 \alias{dy}
 \alias{dz}
 \docType{data}
-\title{Elementary forms}
+\title{Elementary forms in three-dimensional space}
 \description{
 
 Objects \code{dx}, \code{dy} and \code{dz} are the three elementary
@@ -21,7 +21,8 @@ which is documented at \code{print.Rd}.
 
 }
 \usage{data(dx)}
-\details{See the vignette for an extended discussion.}
+\details{See vignettes \code{dx} and \code{exeyez} for an extended
+  discussion; a use-case is given in \code{vector_cross_product}.}
 \references{
   \itemize{\item M. Spivak 1971. \emph{Calculus on manifolds},
   Addison-Wesley}
@@ -40,6 +41,11 @@ options(kform_symbolic_print = 'dx')  # shows dx dy dz
 dx
 dx^dz
 hodge(dx,3)
+
+as.function(dx)(i)
+
+
+
 
 options(kform_symbolic_print = NULL)  # revert to default
 

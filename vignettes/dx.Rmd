@@ -25,7 +25,8 @@ dy <- d(2)
 dz <- d(3)
 ```
 
-Convenience objects `dx`, `dy`, and `dz` are discussed here.
+Convenience objects `dx`, `dy`, and `dz` are discussed here.  The
+conjugate basis vectors `i`, `j` and `k` are discussed in `ijk.Rmd`.
 
 Spivak, in a memorable passage, states (p89):
 
@@ -166,6 +167,8 @@ It is possible to create these objects using package idiom:
 ```{r}
 d(1) == dx
 ```
+
+## Basis vectors 
 
 
 ### Package dataset

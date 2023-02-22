@@ -27,7 +27,7 @@ vector_cross_product
 # The vector cross product
 
 Spivak (p83) considers the standard vector cross product
-$\mathbf{u}\times\mathbf{v}=\mathrm{det} \begin{pmatrix} i & j & k \\
+$\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i & j & k \\
 u_1&u_2&u_3\\ v_1&v_2&v_3 \end{pmatrix}$ and places it in a more
 general and rigorous context.  In a memorable passage, he states:
 
@@ -141,6 +141,43 @@ H - as.1form(vector_cross_product(M))  # zero to numerical precision.
 Above, note that the output of `vector_cross_product()` is a 1-form
 (rather than an R vector), so has to be coerced to a 1-form.
 
+##  Use of the `contract()` function
+
+Taking Spivak's definition at face value, we could define the vector
+cross product $\mathbf{u}\times\mathbf{v}$ of three-vectors
+$\mathbf{u}$ and $\mathbf{v}$ as a map from the tangent space to the
+reals, with
+$\left(\mathbf{u}\times\mathbf{v}\right)(\mathbf{w})=\left(I_\mathbf{u}\right)_\mathbf{v}(\mathbf{w})$,
+where $I$ is the 3-volume element and subscripts refer to contraction.
+This is easy to implement in the package.  Suppose we wish to take the
+vector cross product of $\mathbf{u}=\left(1,4,2\right)^T$ and
+$\mathbf{v}=\left(2,1,5\right)^T$:
+
+```{r label=definevcp}
+u <- c(1,4,2)
+v <- c(2,1,5)
+(vcp <- contract(volume(3),cbind(u,v)))
+dovs(vcp)
+```
+
+Object `vcp` is the vector cross product of $\mathbf{u}$ and
+$\mathbf{v}$, but written a as a one-form.  We can see the mnemonic in
+operation by coercing `vcp` to a function:
+
+
+```{r}
+ucv  <- as.function(vcp)
+```
+
+and then evaluating this on the three basis vectors of $\mathbb{R}^3$:
+
+```{r label=faila}
+c(ucv(ex),ucv(ey),ucv(ez))
+```
+
+
+and we see agreement with the mnemonic
+$\det\begin{pmatrix}i&j&k\\1&4&2\\2&1&5\end{pmatrix}$.
 
 ## Reference
 

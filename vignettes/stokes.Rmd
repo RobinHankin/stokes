@@ -1063,11 +1063,21 @@ $\omega\left(w_1,\ldots,w_n\right) =
 \det\left(a_{ij}\right)\cdot\omega\left(v_1,\ldots v_n\right)$].
 Numerically:
 
+
 ```{r}
 f <- as.function(dphi(1:9))
 E <- matrix(runif(81),9,9)
 f(E)
 det(E)*f(diag(9))  # should match f(E) by Spivak's 4.6
+```
+
+```{r,tidyup,include=FALSE}
+i <- 0
+j <- 0
+k <- 0
+rm(i)
+rm(j)
+rm(k)
 ```
 
 ## References
