@@ -146,11 +146,12 @@ Above, note that the output of `vector_cross_product()` is a 1-form
 Taking Spivak's definition at face value, we could define the vector
 cross product $\mathbf{u}\times\mathbf{v}$ of three-vectors
 $\mathbf{u}$ and $\mathbf{v}$ as a map from the tangent space to the
-reals, with
-$\left(\mathbf{u}\times\mathbf{v}\right)(\mathbf{w})=\left(I_\mathbf{u}\right)_\mathbf{v}(\mathbf{w})$,
-where $I$ is the 3-volume element and subscripts refer to contraction.
-This is easy to implement in the package.  Suppose we wish to take the
-vector cross product of $\mathbf{u}=\left(1,4,2\right)^T$ and
+reals, with $\left(\mathbf{u}\times\mathbf{v}\right)(\mathbf{w})=
+\left(\mathbf{u}\times\mathbf{v}\right)\cdot\mathbf{w}
+=\left(I_\mathbf{u}\right)_\mathbf{v}(\mathbf{w})$, where $I$ is the
+3-volume element and subscripts refer to contraction.  This is easy to
+implement in the package.  Suppose we wish to take the vector cross
+product of $\mathbf{u}=\left(1,4,2\right)^T$ and
 $\mathbf{v}=\left(2,1,5\right)^T$:
 
 ```{r label=definevcp}
