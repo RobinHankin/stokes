@@ -1,10 +1,6 @@
-## NLME book
 bibentry(bibtype = "misc",
          title = "Stokes's theorem in R",
-         author = personList(
-          person(given = c("Robin","K","S"),
-		family = "Hankin",
-		email="hankin.robin@gmail.com")),
+         author = person("Robin K. S. Hankin"),
          year = "2022", publisher = "arXiv",
          doi = "10.48550/ARXIV.2210.17008",
          url = "https://arxiv.org/abs/2210.17008"
