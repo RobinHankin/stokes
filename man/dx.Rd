@@ -42,9 +42,7 @@ dx
 dx^dz
 hodge(dx,3)
 
-as.function(dx)(ei)
-
-
+as.function(dx)(ex)
 
 
 options(kform_symbolic_print = NULL)  # revert to default
