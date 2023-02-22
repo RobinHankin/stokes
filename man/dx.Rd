@@ -42,7 +42,7 @@ dx
 dx^dz
 hodge(dx,3)
 
-as.function(dx)(i)
+as.function(dx)(ei)
 
 
 
