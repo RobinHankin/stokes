@@ -422,7 +422,6 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     jj <- coeffs(S)
     if(is.disord(value)){
         stopifnot(consistent(coeffs(S),value))
-        if((!identical(hash(jj),hash(value))) & (length(value)>1)){stop("length > 1")}
         jj <- value
     } else {
         jj[] <- value  # the meat
@@ -434,7 +433,6 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     jj <- coeffs(S)
     if(is.disord(value)){
         stopifnot(consistent(coeffs(S),value))
-        if((!identical(hash(jj),hash(value))) & (length(value)>1)){stop("length > 1")}
         jj <- value
     } else {
         jj[] <- value  # the meat
