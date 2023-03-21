@@ -8,8 +8,6 @@ The stokes package: exterior calculus in R
 <!-- badges: start -->
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/stokes)](https://cran.r-project.org/package=stokes)
-[![Codecov test
-coverage](https://codecov.io/gh/RobinHankin/stokes/branch/master/graph/badge.svg)](https://codecov.io/gh/RobinHankin/stokes/branch/master)
 <!-- badges: end -->
 
 # Overview
