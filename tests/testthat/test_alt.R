@@ -35,5 +35,6 @@ test_that("Function Alt() behaves itself", {
 
     # test that issue  #48 has been resolved:
     foo(as.ktensor(matrix(c(4,2,4,3,4,2,2,3,3),3,3),1:3))
+    expect_silent(Alt(spray(rbind(1:3,2:4),1:2),give_kform=TRUE))
 
 })

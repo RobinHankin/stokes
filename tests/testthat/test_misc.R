@@ -8,9 +8,9 @@ test_that("Miscellaneous wedge functionality", {
         expect_true(is.empty(dx ^  0))
         expect_true(is.empty(0  ^ dx))
 
-        expect_true(arity(dx)                     ==1)
-        expect_true(arity(dx ^ dx)              ==2)
-        expect_true(arity(dx ^ dx ^ dx)       ==3)
+        expect_true(arity(dx)               ==1)
+        expect_true(arity(dx ^ dx)          ==2)
+        expect_true(arity(dx ^ dx ^ dx)     ==3)
         expect_true(arity(dx ^ dx ^ dx ^ dx)==4)
         
         expect_true(is.empty(Alt(0  ^ dx)))
@@ -75,7 +75,11 @@ test_that("Miscellaneous wedge functionality", {
 
         expect_true(hodge(dz,3) == dx^dy)
 
+        expect_true(coeffs(scalar(5)) == 5)
 
+
+        expect_true(identical(`0form`(5),scalar(5)))
+        expect_true(identical(`0tensor`(5),scalar(5,kform=FALSE)))
 
 })
 
