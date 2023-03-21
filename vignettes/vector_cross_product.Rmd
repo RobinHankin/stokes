@@ -98,7 +98,7 @@ vector_cross_product(matrix(rnorm(30),6,5))
 
 We can demonstrate that the function has the correct orientation.  We
 need to ensure that the vectors
-$\mathbf{v}_1,\mathbf{v}_n,\mathbf{v}_1\times\cdots\times\mathbf{v}_n$
+$\mathbf{v}_1,\ldots,\mathbf{v}_n,\mathbf{v}_1\times\cdots\times\mathbf{v}_n$
 constitute a right-handed basis:
 
 ```{r}
@@ -121,27 +121,47 @@ all(sapply(sample(3:10,100,replace=TRUE),f))
 The cross product has a coordinate-free definition as the Hodge
 conjugate of the wedge product of its arguments.  This is not used in
 function `vector_cross_product()` because it is computationally
-inefficient and (I think) prone to numerical roundoff errors.
-We may verify that the definitions agree:
-
-```{r}
-M <- cbind(c(0,5,-2,1),c(0,1,1,0),c(2,2,2,3))
-vector_cross_product(M)
-hodge(as.1form(M[,1]) ^ as.1form(M[,2])^ as.1form(M[,3]))
-```
+inefficient and (I think) prone to numerical roundoff errors.  We may
+verify that the definitions agree, using a six-dimensional test case:
 
 ```{r}
 set.seed(2)
 M <- matrix(rnorm(30),6,5)
-vector_cross_product(M)
-H <- hodge(as.1form(M[,1]) ^ as.1form(M[,2]) ^ as.1form(M[,3]) ^ as.1form(M[,4]) ^ as.1form(M[,5]))
-H - as.1form(vector_cross_product(M))  # zero to numerical precision.
+(ans1 <- vector_cross_product(M))
 ```
 
-Above, note that the output of `vector_cross_product()` is a 1-form
-(rather than an R vector), so has to be coerced to a 1-form.
+We can see that `vector_cross_product()` returns an R vector.  To
+verify that this is correct, we compare the output with the value
+calculated directly with the wedge product:
 
-##  Use of the `contract()` function
+```{r}
+hodge(as.1form(M[,1]) ^ as.1form(M[,2]) ^ as.1form(M[,3]) ^ as.1form(M[,4]) ^ as.1form(M[,5]))
+```
+
+Actually it is possible to produce the same answer using slightly
+slicker idiom:
+
+```{r}
+(ans2 <- hodge(Reduce(`^`,lapply(1:5,function(i){as.1form(M[,i])}))))
+```
+
+[again note the different order in the output].  Above, we see that
+the output of `vector_cross_product()` [`ans1`] is an ordinary R
+vector, but the direct result [`ans2`] is a 1-form.  In order to
+compare these, we first need to coerce `ans1` to a 1-form and then
+subtract:
+
+```{r}
+(diff <- as.1form(ans1) - ans2)
+coeffs(diff)
+```
+
+Above we see that `ans1` and `ans2` match to within numerical
+precision.
+
+##  Vector cross products in 3 dimensions
+
+### Use of the `contract()` function
 
 Taking Spivak's definition at face value, we could define the vector
 cross product $\mathbf{u}\times\mathbf{v}$ of three-vectors
@@ -173,12 +193,27 @@ ucv  <- as.function(vcp)
 and then evaluating this on the three basis vectors of $\mathbb{R}^3$:
 
 ```{r label=faila}
-c(ucv(ex),ucv(ey),ucv(ez))
+c(i=ucv(ex), j=ucv(ey), k=ucv(ez))
 ```
 
 
 and we see agreement with the mnemonic
 $\det\begin{pmatrix}i&j&k\\1&4&2\\2&1&5\end{pmatrix}$.
+
+It is possible to recreate the vector cross product more directly in
+the package, but we need to coerce the R vectors `c(1,4,2)` and
+`c(2,1,5)` to alternating $k$-forms first, using `as.1form()`.  Taking
+a wedge product gives us a two-form, and to revert to a one form we
+need to take the hodge dual:
+
+```{r}
+hodge(as.1form(c(1,4,2)) ^ as.1form(c(2,1,5)))
+```
+
+Above, note the order of the lines, being implementation-specific as
+per `disordR` discipline, may appear in a different order but the form
+should agree with the previous results.
+
 
 ## Reference
 
