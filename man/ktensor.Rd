@@ -57,7 +57,6 @@ Function \code{as.ktensor()} will coerce a \mjseqn{k}-form to a
 \seealso{\code{\link{tensorprod}},\code{\link{kform}},\code{\link{wedge}}}
 \examples{
 
-ktensor(rspray(4,powers=1:4))
 as.ktensor(cbind(1:4,2:5,3:6),1:4)
 
 

@@ -1,8 +1,8 @@
 Package: stokes
 Type: Package
 Title: The Exterior Calculus
-Version: 1.1-8
-Depends: spray (>= 1.0-21), R (>= 3.5.0)
+Version: 1.2-0
+Depends: R (>= 3.5.0)
 Suggests: 
     knitr,
     Deriv,
@@ -12,7 +12,7 @@ Suggests:
     emulator,
     magrittr
 VignetteBuilder: knitr
-Imports: permutations (>= 1.1-2), partitions, methods, mathjaxr, disordR (>= 0.0-8)
+Imports: permutations (>= 1.1-2), partitions, methods, mathjaxr, disordR (>= 0.0-8), spray (>= 1.0-21)
 Authors@R: person(
 	   given=c("Robin", "K. S."),
 	   family="Hankin",

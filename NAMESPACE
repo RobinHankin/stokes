@@ -4,8 +4,19 @@ export("0tensor")
 export("%^%")
 export("%X%")
 
-import("spray")
+
 import("mathjaxr")
+
+importFrom("spray","spray")
+importFrom("spray","as.spray")
+importFrom("spray","index")
+importFrom("spray","coeffs")
+importFrom("spray","coeffs<-")
+importFrom("spray","is.spray")
+importFrom("spray","arity")
+importFrom("spray","is.zero")
+importFrom("spray","spraycross")
+importFrom("spray","zero")
 
 importFrom(partitions,blockparts)
 
@@ -35,6 +46,7 @@ S3method("zap",ktensor)
 S3method("print",kform)
 S3method("print",ktensor)
 
+S3method("coeffs<-",spray)
 S3method("coeffs<-",kform)
 S3method("coeffs<-",ktensor)
 
