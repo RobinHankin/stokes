@@ -11,9 +11,8 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
-library("stokes")
-library("emulator")
 library("permutations")
+library("stokes")
 options(polyform = FALSE)
 set.seed(1)
 ```
