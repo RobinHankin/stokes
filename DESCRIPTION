@@ -12,7 +12,7 @@ Suggests:
     emulator,
     magrittr
 VignetteBuilder: knitr
-Imports: permutations (>= 1.1-2), partitions, methods, mathjaxr, disordR (>= 0.0-8), spray (>= 1.0-21)
+Imports: permutations (>= 1.1-2), partitions, methods, mathjaxr, disordR (>= 0.9-7), spray (>= 1.0-21)
 Authors@R: person(
 	   given=c("Robin", "K. S."),
 	   family="Hankin",
