@@ -19,7 +19,7 @@ set.seed(0)
 ![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
 </p>
 
-```{r}
+```{r showdovspackagedefinition}
 dovs
 ```
 
@@ -31,7 +31,7 @@ above, the function is very simple, essentially being `max(index(K))`,
 but its use is not entirely straightforward in the context of `stokes`
 idiom.  Consider the following:
 
-```{r}
+```{r showrform}
 set.seed(0)
 a <- rform(n=4,k=2)
 a
@@ -40,7 +40,7 @@ a
 Now object `a` is notionally a map from $\left(\mathbb{R}^4\right)^2$
 to $\mathbb{R}$:
 
-```{r}
+```{r coerceatofunction}
 f <- as.function(a)
 (M <- matrix(1:8,4,2))
 f(M)
@@ -49,7 +49,7 @@ f(M)
 However, `a` can equally be considered to be a map from
 $\left(\mathbb{R}^5\right)^2$ to $\mathbb{R}$:
 
-```{r}
+```{r evaluatef}
 f <- as.function(a)
 (M <- matrix(c(1,2,3,4,1454,5,6,7,8,-9564),ncol=2))  # row 5 large numbers
 f(M)
@@ -61,7 +61,7 @@ observe that row 5 is ignored: $e_5=\left(0,0,0,0,1\right)^T$ maps to
 zero in the sense that $f(e_5,\mathbf{v})=f(\mathbf{v},e_5)=0$, for
 any $\mathbf{v}\in\mathbb{R}^5$.
 
-```{r}
+```{r fonM}
 (M <- cbind(c(0,0,0,0,1),runif(5)))
 f(M)
 ```
@@ -75,14 +75,14 @@ returns zero because the index matrix of `a` does not include the
 number 5.  Most of the time, this kind of consideration does not
 matter.  However, consider this:
 
-```{r}
+```{r dxalone}
 dx
 ```
 
 Now, _we_ know that `dx` is supposed to be a map from
 $\left(\mathbb{R}^3\right)^1$ to $\mathbb{R}$; but:
 
-```{r}
+```{r dovsdx}
 dovs(dx)
 ```
 
@@ -92,7 +92,7 @@ This does not really matter numerically, until we consider the Hodge
 star operator.  We know that
 $\star\operatorname{dx}=\operatorname{dy}\wedge\operatorname{dz}$, but
 
-```{r}
+```{r hodgedx}
 hodge(dx)
 ```
 
@@ -104,13 +104,13 @@ $\mathbb{R}$ [that is,
 $\operatorname{dx}\colon\left(\mathbb{R}^3\right)^1\longrightarrow\mathbb{R}$],
 we need to specify `dovs` explicitly:
 
-```{r}
+```{r hodgedx3}
 hodge(dx,3)
 ```
 
 Actually this looks a lot better with a more appropriate print method:
 
-```{r}
+```{r hodgeoptions}
 options(kform_symbolic_print="dx")
 hodge(dx,3)
 ```
