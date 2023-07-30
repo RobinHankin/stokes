@@ -19,7 +19,7 @@ library("stokes")
 set.seed(1)
 ```
 
-```{r}
+```{r showvectorcrossproductpackagedefinition}
 vector_cross_product
 ```
 
@@ -70,17 +70,32 @@ mnemonic for $\mathbf{u}=(u_1,u_2,u_3)$, $\mathbf{v}=(v_1,v_2,v_3)$:
 i&j&k\\
 u_1&u_2&u_3\\
 v_1&v_2&v_3
-\end{pmatrix}
+\end{pmatrix}.
+\]
+
+This is (universal) shorthand for the formal definition of the cross
+product, although sometimes it is better to return to Spivak's
+formulation and, writing $\mathbf{w}=(w_1,w_2,w_3)$, use the
+definition directly obtaining
+
+\[
+(\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}=
+\mathrm{det}
+\begin{pmatrix}
+w_1&w_2&w_3\\
+u_1&u_2&u_3\\
+v_1&v_2&v_3
+\end{pmatrix}.
 \]
 
 
 ## R implementation {-}
 
-The R function \code{vector_cross_product()} takes a matrix with $n$
-rows and $n-1$ columns: the transpose of the work above.  This is
-because `stokes` (and `R`) convention is to interpret _columns_ of a
-matrix as vectors.  If we wanted to take the cross product of
-$\mathbf{u}=(5,-2,1)$ with $\mathbf{v}=(1,2,0)$:
+In the package, R function `vector_cross_product()` takes a matrix
+with $n$ rows and $n-1$ columns: the transpose of the work above.
+This is because `stokes` (and `R`) convention is to interpret
+_columns_ of a matrix as vectors.  If we wanted to take the cross
+product of $\mathbf{u}=(5,-2,1)$ with $\mathbf{v}=(1,2,0)$:
 
 ```{r}
 (M <- cbind(c(5,-2,1),c(1,2,0)))
@@ -104,7 +119,8 @@ constitute a right-handed basis:
 det(cbind(M,vector_cross_product(M)))>0
 ```
 
-So it is right-handed in this case.  Here is a more severe test:
+So it is right-handed in this case.  Here is a more severe test of the
+right-handedness::
 
 ```{r}
 f <- function(n){
@@ -114,6 +130,20 @@ f <- function(n){
 
 all(sapply(sample(3:10,100,replace=TRUE),f))
 ```
+
+Above, we see that in each case the vectors are right-handed.  We may
+further verify that the rules for determinants are being obeyed by
+taking a dot product as follows:
+
+```{r verifyalternatingproperty}
+M <- matrix(rnorm(42),7,6)
+crossprod(M,vector_cross_product(M))
+```
+
+Writing $M=[v_1,\ldots,v_6]$, $v_i\in\mathbb{R}^7$, we see that the
+dot product of $v_i\cdot v_1\times\cdots\times v_6$ vanishes (up to
+numerical precision), as the determinants in question have two identical
+columns.
 
 ### Vector products and Hodge 
 
