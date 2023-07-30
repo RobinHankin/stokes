@@ -221,21 +221,39 @@ $\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$ we have
 
 So for example:
 
-```{r}
+```{r label = omegatensoreta}
 omega <- as.ktensor(2+diag(2),c(-7,7))
-eta   <- Alt(rtensor(2))*30
+eta <- Alt(ktensor(6*spray(matrix(c(1,2,3,1,4,7,4,5,6),3,3,byrow=TRUE),1:3)))
 omega
 eta
+```
+
+Above we see that `omega` is alternating by construction, and `eta` is
+alternating by virtue of `Alt()`.  Thus tensor $\omega\wedge\eta$ is
+defined as per Spivak's definition, and we may calculate it directly:
+
+```{r label=omegawedgeetadirect}
+Alt(omega %X% eta,give_kform = TRUE)
 f <- as.function(Alt(omega %X% eta))
 ```
 
-(the tensor itself is quite long, having 60 nonzero components).  We
-may verify that `f()` is in fact alternating:
+Observe that the tensor $\omega\otimes\eta$ (which would be returned
+if the default argument `give_kform=FALSE` was sent to `Alt()`) is
+quite long, having $2\cdot 5!=240$ nonzero components, which is why it
+is not printed in full.  We may verify that `f()` is alternating by
+evaluating it on a randomly chosen point in
+$\left(\mathbb{R}^7\right)^5$:
 
 ```{r}
 V <-  matrix(rnorm(35),ncol=5)
 c(f(V),f(V[,c(2:1,3:5)]))
 ```
+
+Above we see a verification that `f()` is fact alternating: writing
+the matrix `V` in terms of its five vectors as
+$V=\left[v_1,v_2,v_3,v_4,v_5\right]$, where $v_i\in\mathbb{R}^7$, we
+see that
+$f{\left(v_1,v_2,v_3,v_4,v_5\right)}=-f{\left(v_2,v_1,v_3,v_4,v_5\right)}$.
 
 ## Further further properties of `Alt()`
 
