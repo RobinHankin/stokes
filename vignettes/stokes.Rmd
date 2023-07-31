@@ -37,13 +37,14 @@ a vector space; Spivak denotes the space of multilinear maps as
 $\mathcal{J}^k(V)$.  Formally, multilinearity means
 
 \[
-S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot S\left(v_1,\ldots,v_i,\ldots,v_k\right)
+S{\left(v_1,\ldots,av_i,\ldots,v_k\right)} = a\cdot S{\left(v_1,\ldots,v_i,\ldots,v_k\right)}
 \]
 
 and
 
-\[S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
-S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).
+\[
+S{\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)}=S{\left(v_1,\ldots,v_i,\ldots,x_v\right)}+
+S{\left(v_1,\ldots,{v_i}',\ldots,v_k\right)}.
 \]
 
 where $v_i\in V$.  If $S\in\mathcal{J}^k(V)$ and
@@ -51,11 +52,10 @@ $T\in\mathcal{J}^l(V)$, then we may define $S\otimes
 T\in\mathcal{J}^{k+l}(V)$ as
 
 \[
-S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l}\right)=
-S\left(v_1,\ldots,v_k\right)\cdot
-T\left(v_1,\ldots,v_l\right)
+S\otimes T{\left(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l}\right)}=
+S{\left(v_1,\ldots,v_k\right)}\cdot
+T{\left(v_1,\ldots,v_l\right)}.
 \]
-
 
 Spivak observes that $\mathcal{J}^k(V)$ is spanned by the $n^k$
 products of the form
@@ -66,7 +66,7 @@ products of the form
 \]
 
 where $v_1,\ldots,v_k$ is a basis for $V$ and
-$\phi_i\left(v_j\right)=\delta_{ij}$; we can therefore write
+$\phi_i{\left(v_j\right)}=\delta_{ij}$; we can therefore write
 
 \[
 S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k}
@@ -206,9 +206,9 @@ Given two k-tensor objects $S,T$ we can form the tensor product
 $S\otimes T$, defined as
 
 \[
-S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
-  S\left(v_1,\ldots v_k\right)\cdot T\left(v_{k+1},\ldots
-  v_{k+l}\right)
+S\otimes T{\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)}=
+  S{\left(v_1,\ldots v_k\right)} \cdot T{\left(v_{k+1},\ldots
+  v_{k+l}\right)}
 \]
 
 We will calculate the tensor product of two tensors `S1,S2` defined as follows:
@@ -241,12 +241,12 @@ c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
 An alternating form is a multilinear map $T$ satisfying
 
 \[
-\mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
-    -\mathrm{T}\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
+T{\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)}=
+    -T{\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)}
 \]
 
 (or, equivalently,
-$\mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_i,\ldots,v_k\right)= 0$).  We
+$T{\left(v_1,\ldots,v_i,\ldots,v_i,\ldots,v_k\right)}= 0$).  We
 write $\Lambda^k(V)$ for the space of all alternating multilinear maps
 from $V^k$ to $\mathbb{R}$.  Spivak gives
 $\operatorname{Alt}\colon\mathcal{J}^k(V)\longrightarrow\Lambda^k(V)$
@@ -254,7 +254,7 @@ defined by
 
 \[\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
     \frac{1}{k!}\sum_{\sigma\in S_k}\operatorname{sgn}(\sigma)\cdot
-    T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
+    T{\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)}
 \]
 
 where the sum ranges over all permutations of
@@ -382,7 +382,7 @@ In the previous section we defined objects such as "$dx_1\wedge dx_6$"
 as a single entity.  Here I define the elementary form $dx_i$ formally
 and in the next section discuss the wedge product $\wedge$.  The
 elementary form $dx_i$ is simply a map from $\mathbb{R}^n$ to
-$\mathbb{R}$ with $dx_i\left(x_1,x_2,\ldots,x_n\right)=x_i$.  Observe
+$\mathbb{R}$ with $dx_i{\left(x_1,x_2,\ldots,x_n\right)}=x_i$.  Observe
 that $dx_i$ is an alternating form, even though we cannot swap
 arguments (because there is only one).  Package idiom for creating an
 elementary form appears somewhat cryptic at first sight, but is
@@ -400,7 +400,7 @@ Interpretation of the output above is not obvious (it is easier to
 understand the output from more complicated alternating forms, as in
 the next section), but for the moment observe that $dx_3$ is indeed an
 alternating form, mapping $\mathbb{R}^n$ to $\mathbb{R}$ with
-$dx_3\left(x_1,x_2,\ldots,x_n\right)=x_3$.  Thus, for example:
+$dx_3{\left(x_1,x_2,\ldots,x_n\right)}=x_3$.  Thus, for example:
 
 
 ```{r showdx3beingused}
@@ -576,8 +576,8 @@ vector $\mathbf{v}\in V$, the _contraction_ $\phi_\mathbf{v}$ of
 $\phi$ and $\mathbf{v}$ is a $k-1$-form with
 
 \[
-  \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
-  \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
+  \phi_\mathbf{v}{\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)} =
+  \phi{\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)}
 \]
 
 if $k>1$; we specify $\phi_\mathbf{v}=\phi(\mathbf{v})$ if $k=1$.
@@ -771,7 +771,7 @@ without modification.
 It can be shown that
 
 \[
-    d\left(f\,dx_{i_1}\wedge\cdots\wedge dx_{i_k}\right)=
+    d{\left(f\,dx_{i_1}\wedge\cdots\wedge dx_{i_k}\right)}=
     df\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k}
 \]
 
