@@ -46,9 +46,9 @@ even and $-1$ if $\sigma$ is odd.  If $T\in{\mathcal J}^k(V)$, we
 define $\operatorname{Alt}(T)$ by
 
 $$
-\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
+\operatorname{Alt}(T){\left(v_1,\ldots,v_k\right)}=
     \frac{1}{k!}\sum_{\sigma\in S_k}\mathrm{sgn}(\sigma)\cdot
-    T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
+    T{\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)}
 $$	
 
 where $S_k$ is the set of all permutations of numbers $1$ to $k$.
@@ -63,12 +63,12 @@ For example, if $k=3$ we have
 
 \[\operatorname{Alt}(T)\left(v_1,v_2,v_3\right)=
       \frac{1}{6}\left(\begin{array}{cc}
-      +T\left(v_1,v_2,v_3\right)&
-      -T\left(v_1,v_3,v_2\right)\cr
-      -T\left(v_2,v_1,v_3\right)&
-      +T\left(v_2,v_3,v_1\right)\cr
-      +T\left(v_3,v_1,v_2\right)&
-      -T\left(v_3,v_2,v_1\right)
+      +T{\left(v_1,v_2,v_3\right)}&
+      -T{\left(v_1,v_3,v_2\right)}\cr
+      -T{\left(v_2,v_1,v_3\right)}&
+      +T{\left(v_2,v_3,v_1\right)}\cr
+      +T{\left(v_3,v_1,v_2\right)}&
+      -T{\left(v_3,v_2,v_1\right)}
       \end{array}
       \right)
 \]

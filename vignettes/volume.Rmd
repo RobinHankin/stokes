@@ -34,25 +34,25 @@ Spivak, in a memorable passage, states (p83):
 The fact that $\operatorname{dim}\Lambda^n\left(\mathbb{R}^n\right)=1$
 is probably not new to you, since $\operatorname{det}$ is often
 defined as the unique element
-$\omega\in\Lambda^n\left(\mathbb{R}^n\right)$ such that
-$\omega\left(e_1,\ldots,e_n\right)=1$.  For a general vector space $V$
+$\omega\in\Lambda^n{\left(\mathbb{R}^n\right)}$ such that
+$\omega{\left(e_1,\ldots,e_n\right)}=1$.  For a general vector space $V$
 there is no extra criterion of this sort to distinguish a particular
-$\omega\in\Lambda^n\left(\mathbb{R}^n\right)$.  Suppose, however, that
+$\omega\in\Lambda^n{\left(\mathbb{R}^n\right)}$.  Suppose, however, that
 an inner product $T$ for $V$ is given.  If $v_1,\ldots,v_n$ and
 $w_1,\ldots, w_n$ are two bases which are orthonormal with respect to
 $T$, and the matrix $A=\left(a_{ij}\right)$ is defined by
 $w_i=\sum_{j=1}^n a_{ij}v_j$, then
 
-$$\delta_{ij}=T\left(w_i,w_j\right)=
-\sum_{k,l=1}^n a_{ik}a_{jl}T\left(v_k,v_l\right)=
+$$\delta_{ij}=T{\left(w_i,w_j\right)}=
+\sum_{k,l=1}^n a_{ik}a_{jl}\,T{\left(v_k,v_l\right)}=
 \sum_{k=1}^n a_{ik}a_{jk}.$$
 
 \noindent In other words, if $A^T$ denotes the transpose of the matrix
 $A$, then we have $A\cdot A^T=I$, so $\operatorname{det}A=\pm 1$.  It
 follows from Theorem 4-6 [see vignette `det.Rmd`] that if
 $\omega\in\Lambda^n(V)$ satisfies
-$\omega\left(v_1,\ldots,v_n\right)=\pm 1$, then
-$\omega\left(w_1,\ldots,w_n\right)=\pm 1$.  If an orientation $\mu$
+$\omega{\left(v_1,\ldots,v_n\right)}=\pm 1$, then
+$\omega{\left(w_1,\ldots,w_n\right)}=\pm 1$.  If an orientation $\mu$
 for $V$ has also been given, it follows that there is a unique
 $\omega\in\Lambda^n(V)$ such that
 $\omega\left(v_1,\ldots,v_n\right)=1$ whenever $v_1,\ldots,v_n$ is an
@@ -71,7 +71,7 @@ each of $v_1,\ldots,v_n$.
 
 In the `stokes` package, function `volume(n)` returns the volume
 element on the usual basis, that is,
-$\omega\left(e_1,\ldots,e_n\right)$.  We will take $n=7$ as an
+$\omega{\left(e_1,\ldots,e_n\right)}$.  We will take $n=7$ as an
 example:
 
 
@@ -86,8 +86,8 @@ f <- as.function(V)
 f(diag(7))
 ```
 
-Above, we see that $\omega\left(e_1,\ldots,e_n\right)=1$.  To verify
-that $V\left(v_1,\ldots,v_n\right)=\operatorname{det}(A)$, where
+Above, we see that $\omega{\left(e_1,\ldots,e_n\right)}=1$.  To verify
+that $V{\left(v_1,\ldots,v_n\right)}=\operatorname{det}(A)$, where
 $A_{ij}=\left(v_i\right)_j$:
 
 ```{r}
