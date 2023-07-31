@@ -2,6 +2,7 @@
 title: "Function `vector_cross_product()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: stokes.bib
 vignette: >
   %\VignetteIndexEntry{vector cross product}
   %\VignetteEngine{knitr::rmarkdown}
@@ -16,6 +17,7 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
 library("stokes")
+library("permutations")
 set.seed(1)
 ```
 
@@ -25,7 +27,7 @@ vector_cross_product
 
 # The vector cross product
 
-Spivak (p83) considers the standard vector cross product
+@spivak1965, p83, considers the standard vector cross product
 $\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i & j & k \\
 u_1&u_2&u_3\\ v_1&v_2&v_3 \end{pmatrix}$ and places it in a more
 general and rigorous context.  In a memorable passage, he states:
@@ -110,6 +112,8 @@ vector_cross_product(matrix(rnorm(30),6,5))
 
 # Verification
 
+## Orientation
+
 We can demonstrate that the function has the correct orientation.  We
 need to ensure that the vectors
 $\mathbf{v}_1,\ldots,\mathbf{v}_n,\mathbf{v}_1\times\cdots\times\mathbf{v}_n$
@@ -141,11 +145,96 @@ crossprod(M,vector_cross_product(M))
 ```
 
 Writing $M=[v_1,\ldots,v_6]$, $v_i\in\mathbb{R}^7$, we see that the
-dot product of $v_i\cdot v_1\times\cdots\times v_6$ vanishes (up to
-numerical precision), as the determinants in question have two identical
-columns.
+dot product $v_i\cdot v_1\times\cdots\times v_6$ as implemented by
+`crossprod()` vanishes (up to numerical precision), as the
+determinants in question have two identical columns.
 
-### Vector products and Hodge 
+## Immediate properties
+
+Spivak gives the following properties:
+
+\[
+\mathbf{v}_{\sigma(1)}\times\cdots\times\mathbf{v}_{\sigma(n)} =
+\operatorname{sgn}\sigma\cdot
+\mathbf{v}_{1}\times\cdots\times\mathbf{v}_{n}
+\]
+
+\[
+\mathbf{v}_{1}
+\times\cdots\times
+a\mathbf{v}_i
+\times\cdots\times
+\mathbf{v}_{n} =
+a\cdot
+\mathbf{v}_{1}
+\times\cdots\times
+\mathbf{v}_i
+\times\cdots\times
+\mathbf{v}_{n}
+\]
+
+\[
+\mathbf{v}_{1}
+\times\cdots\times
+\left(\mathbf{v}_i+{\mathbf{v}'}_i\right)
+\times\cdots\times
+\mathbf{v}_{n} =
+\mathbf{v}_{1}
+\times\cdots\times
+\mathbf{v}_i
+\times\cdots\times
+\mathbf{v}_{n}
++
+\mathbf{v}_{1}
+\times\cdots\times
+{\mathbf{v}'}_i
+\times\cdots\times
+\mathbf{v}_{n}
+\]
+
+For the first we use a permutation `sigma` from the `permutations`
+package [@hankin2020] with a sign of $-1$:
+
+```{r verifyspivakfirst}
+M <- matrix(rnorm(30),6,5)
+sigma <- as.cycle("(12)(345)")
+sgn(sigma)
+Mdash <- M[,as.function(sigma)(seq_len(5))]
+vector_cross_product(M) + vector_cross_product(Mdash)
+```
+
+Above we see that the the two vector cross products add to zero (up to
+numerical precision), as they should because `sigma` is an odd
+permutation.  For the second:
+
+```{r verifyspivaksecond}
+Mdash <- M
+Mdash[,3] <- pi*Mdash[,3]
+vector_cross_product(Mdash) - vector_cross_product(M) * pi
+```
+
+Above we see that the second product is $\pi$ times the first (to
+numerical precision), by linearity of the vector cross product.  For
+the third:
+
+```{r verifyspivakthird}
+M1 <- M
+M2 <- M
+Msum <- M
+v1 <- runif(6)
+v2 <- runif(6)
+M1[,3] <- v1
+M2[,3] <- v2
+Msum[,3] <- v1+v2
+vector_cross_product(M1) + vector_cross_product(M2) - vector_cross_product(Msum)
+```
+
+Above we see that the sum of the first two products is equal to that
+of the third (up to numerical precision), again by linearity of the
+vector cross product.
+
+
+## Vector products and Hodge 
 
 The cross product has a coordinate-free definition as the Hodge
 conjugate of the wedge product of its arguments.  This is not used in
@@ -240,12 +329,9 @@ hodge(as.1form(c(1,4,2)) ^ as.1form(c(2,1,5)))
 ```
 
 Above, note the order of the lines, being implementation-specific as
-per `disordR` discipline, may appear in a different order but the form
+per `disordR` discipline [@hankin2022_disordR], may appear in a different order but the form
 should agree with the previous results.
 
 
-## Reference
-
-*  M. Spivak 1971. _Calculus on manifolds_, Addison-Wesley.
-
+## References
 
