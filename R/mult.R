@@ -18,8 +18,6 @@
 `is.ktensor` <- function(x){inherits(x,"ktensor")}
 `is.kform` <- function(x){inherits(x,"kform")}
 
-
-
 `spray` <- function(M,x,addrepeats=FALSE){spray::spray(M,x,addrepeats=addrepeats)}
 `as.spray` <- function(arg1, arg2, addrepeats=FALSE, offbyone=FALSE){
     spray::as.spray(arg1, arg2, addrepeats=FALSE, offbyone=FALSE)
@@ -31,7 +29,7 @@
 
 `coeffs<-` <- function(S,value){UseMethod("coeffs<-")}
 `coeffs<-.spray` <- function(S,value){spray::`coeffs<-`(S,value)}
-`zero` <- function(d){spray::spray(matrix(0,0,d),numeric(0))}
+#`zero` <- function(n){spray::spray(matrix(0,0,n),numeric(0))}
 
 `as.function.ktensor` <- function(x, ...){
     stopifnot(is.ktensor(x))

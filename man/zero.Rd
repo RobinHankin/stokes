@@ -1,6 +1,9 @@
 \name{zero}
+\alias{zero}
 \alias{zeroform}
 \alias{zerotensor}
+\alias{is.zero}
+\alias{is.empty}
 \title{Zero tensors and zero forms}
 \description{\loadmathjax
 Correct idiom for generating zero \mjseqn{k}-tensors and \mjseqn{k}-forms
@@ -8,9 +11,12 @@ Correct idiom for generating zero \mjseqn{k}-tensors and \mjseqn{k}-forms
 \usage{
 zeroform(n)
 zerotensor(n)
+is.zero(x)
+is.empty(x)
 }
 \arguments{
   \item{n}{Arity of the \mjseqn{k}-form or \mjseqn{k}-tensor}
+  \item{x}{Object to be tested for zero}
 }
 \author{Robin K. S. Hankin}
 \note{
