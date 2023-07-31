@@ -93,11 +93,12 @@ v_1&v_2&v_3
 
 ## R implementation {-}
 
-In the package, R function `vector_cross_product()` takes a matrix
-with $n$ rows and $n-1$ columns: the transpose of the work above.
-This is because `stokes` (and `R`) convention is to interpret
-_columns_ of a matrix as vectors.  If we wanted to take the cross
-product of $\mathbf{u}=(5,-2,1)$ with $\mathbf{v}=(1,2,0)$:
+In the package [@hankin2022_stokes], R function
+`vector_cross_product()` takes a matrix with $n$ rows and $n-1$
+columns: the transpose of the work above.  This is because `stokes`
+(and `R`) convention is to interpret _columns_ of a matrix as vectors.
+If we wanted to take the cross product of $\mathbf{u}=(5,-2,1)$ with
+$\mathbf{v}=(1,2,0)$:
 
 ```{r}
 (M <- cbind(c(5,-2,1),c(1,2,0)))
