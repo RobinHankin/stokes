@@ -459,6 +459,8 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     (-1)^n*sapply(seq_len(n),function(i){(-1)^i*det(M[-i,])})
 }
 
+`vcp3` <- function(u,v){hodge(as.1form(u) ^ as.1form(v))}
+
 `kinner` <- function(o1,o2,M){
     stopifnot(arity(o1) == arity(o2))
     k <- arity(o1)
