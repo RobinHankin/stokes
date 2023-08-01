@@ -34,3 +34,12 @@
 # stokes 1.1-7
 
 - consistentification of the stokes vignette
+
+# stokes 1.2-0
+
+- arXiv preprint cited
+- minor documentation improvements
+- consistentifciation of the zero object
+- spray package now imported rather than attached
+- coverage increased
+- three-dimensional vector cross product redefined and discussed in vignette `vector_cross_product`
