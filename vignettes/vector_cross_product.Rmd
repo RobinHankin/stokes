@@ -2,6 +2,7 @@
 title: "Function `vector_cross_product()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: stokes.bib
 vignette: >
   %\VignetteIndexEntry{vector cross product}
   %\VignetteEngine{knitr::rmarkdown}
@@ -16,16 +17,17 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
 library("stokes")
+library("permutations")
 set.seed(1)
 ```
 
-```{r}
+```{r showvectorcrossproductpackagedefinition}
 vector_cross_product
 ```
 
 # The vector cross product
 
-Spivak (p83) considers the standard vector cross product
+@spivak1965, p83, considers the standard vector cross product
 $\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i & j & k \\
 u_1&u_2&u_3\\ v_1&v_2&v_3 \end{pmatrix}$ and places it in a more
 general and rigorous context.  In a memorable passage, he states:
@@ -70,17 +72,33 @@ mnemonic for $\mathbf{u}=(u_1,u_2,u_3)$, $\mathbf{v}=(v_1,v_2,v_3)$:
 i&j&k\\
 u_1&u_2&u_3\\
 v_1&v_2&v_3
-\end{pmatrix}
+\end{pmatrix}.
+\]
+
+This is (universal) shorthand for the formal definition of the cross
+product, although sometimes it is better to return to Spivak's
+formulation and, writing $\mathbf{w}=(w_1,w_2,w_3)$, use the
+definition directly obtaining
+
+\[
+(\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}=
+\mathrm{det}
+\begin{pmatrix}
+w_1&w_2&w_3\\
+u_1&u_2&u_3\\
+v_1&v_2&v_3
+\end{pmatrix}.
 \]
 
 
 ## R implementation {-}
 
-The R function \code{vector_cross_product()} takes a matrix with $n$
-rows and $n-1$ columns: the transpose of the work above.  This is
-because `stokes` (and `R`) convention is to interpret _columns_ of a
-matrix as vectors.  If we wanted to take the cross product of
-$\mathbf{u}=(5,-2,1)$ with $\mathbf{v}=(1,2,0)$:
+In the package [@hankin2022_stokes], R function
+`vector_cross_product()` takes a matrix with $n$ rows and $n-1$
+columns: the transpose of the work above.  This is because `stokes`
+(and `R`) convention is to interpret _columns_ of a matrix as vectors.
+If we wanted to take the cross product of $\mathbf{u}=(5,-2,1)$ with
+$\mathbf{v}=(1,2,0)$:
 
 ```{r}
 (M <- cbind(c(5,-2,1),c(1,2,0)))
@@ -95,6 +113,8 @@ vector_cross_product(matrix(rnorm(30),6,5))
 
 # Verification
 
+## Orientation
+
 We can demonstrate that the function has the correct orientation.  We
 need to ensure that the vectors
 $\mathbf{v}_1,\ldots,\mathbf{v}_n,\mathbf{v}_1\times\cdots\times\mathbf{v}_n$
@@ -104,7 +124,8 @@ constitute a right-handed basis:
 det(cbind(M,vector_cross_product(M)))>0
 ```
 
-So it is right-handed in this case.  Here is a more severe test:
+So it is right-handed in this case.  Here is a more severe test of the
+right-handedness::
 
 ```{r}
 f <- function(n){
@@ -115,7 +136,106 @@ f <- function(n){
 all(sapply(sample(3:10,100,replace=TRUE),f))
 ```
 
-### Vector products and Hodge 
+Above, we see that in each case the vectors are right-handed.  We may
+further verify that the rules for determinants are being obeyed by
+taking a dot product as follows:
+
+```{r verifyalternatingproperty}
+M <- matrix(rnorm(42),7,6)
+crossprod(M,vector_cross_product(M))
+```
+
+Writing $M=[v_1,\ldots,v_6]$, $v_i\in\mathbb{R}^7$, we see that the
+dot product $v_i\cdot v_1\times\cdots\times v_6$ as implemented by
+`crossprod()` vanishes (up to numerical precision), as the
+determinants in question have two identical columns.
+
+## Immediate properties
+
+Spivak gives the following properties:
+
+\[
+\mathbf{v}_{\sigma(1)}\times\cdots\times\mathbf{v}_{\sigma(n)} =
+\operatorname{sgn}\sigma\cdot
+\mathbf{v}_{1}\times\cdots\times\mathbf{v}_{n}
+\]
+
+\[
+\mathbf{v}_{1}
+\times\cdots\times
+a\mathbf{v}_i
+\times\cdots\times
+\mathbf{v}_{n} =
+a\cdot
+\mathbf{v}_{1}
+\times\cdots\times
+\mathbf{v}_i
+\times\cdots\times
+\mathbf{v}_{n}
+\]
+
+\[
+\mathbf{v}_{1}
+\times\cdots\times
+\left(\mathbf{v}_i+{\mathbf{v}'}_i\right)
+\times\cdots\times
+\mathbf{v}_{n} =
+\mathbf{v}_{1}
+\times\cdots\times
+\mathbf{v}_i
+\times\cdots\times
+\mathbf{v}_{n}
++
+\mathbf{v}_{1}
+\times\cdots\times
+{\mathbf{v}'}_i
+\times\cdots\times
+\mathbf{v}_{n}
+\]
+
+For the first we use a permutation `sigma` from the `permutations`
+package [@hankin2020] with a sign of $-1$:
+
+```{r verifyspivakfirst}
+M <- matrix(rnorm(30),6,5)
+sigma <- as.cycle("(12)(345)")
+sgn(sigma)
+Mdash <- M[,as.function(sigma)(seq_len(5))]
+vector_cross_product(M) + vector_cross_product(Mdash)
+```
+
+Above we see that the the two vector cross products add to zero (up to
+numerical precision), as they should because `sigma` is an odd
+permutation.  For the second:
+
+```{r verifyspivaksecond}
+Mdash <- M
+Mdash[,3] <- pi*Mdash[,3]
+vector_cross_product(Mdash) - vector_cross_product(M) * pi
+```
+
+Above we see that the second product is $\pi$ times the first (to
+numerical precision), by linearity of the vector cross product.  For
+the third:
+
+```{r verifyspivakthird}
+M1 <- M
+M2 <- M
+Msum <- M
+v1 <- runif(6)
+v2 <- runif(6)
+M1[,3] <- v1
+M2[,3] <- v2
+Msum[,3] <- v1+v2
+vector_cross_product(M1) + vector_cross_product(M2) - vector_cross_product(Msum)
+```
+
+Above we see that the sum of the first two products is equal to that
+of the third (up to numerical precision), again by linearity of the
+vector cross product.
+
+
+## Vector products and Hodge 
 
 The cross product has a coordinate-free definition as the Hodge
 conjugate of the wedge product of its arguments.  This is not used in
@@ -160,62 +280,89 @@ precision.
 
 ##  Vector cross products in 3 dimensions
 
-### Use of the `contract()` function
-
 Taking Spivak's definition at face value, we could define the vector
 cross product $\mathbf{u}\times\mathbf{v}$ of three-vectors
 $\mathbf{u}$ and $\mathbf{v}$ as a map from the tangent space to the
 reals, with $\left(\mathbf{u}\times\mathbf{v}\right)(\mathbf{w})=
 \left(\mathbf{u}\times\mathbf{v}\right)\cdot\mathbf{w}
 =\left(I_\mathbf{u}\right)_\mathbf{v}(\mathbf{w})$, where $I$ is the
-3-volume element and subscripts refer to contraction.  This is easy to
-implement in the package.  Suppose we wish to take the vector cross
-product of $\mathbf{u}=\left(1,4,2\right)^T$ and
+3-volume element and subscripts refer to contraction.  Package idiom
+for this would be:
+
+```{r showalternativevcp,eval=FALSE}
+function(u,v){contract(volume(3),cbind(u,v))}
+```
+
+However, note that 3D vector cross products are implemented in the
+package as function `vcp3()`, which uses different idiom:
+
+```{r showvcp3}
+body(vcp3)
+```   
+
+This is preferable on the grounds that coercion to a 1-form is
+explicit.  Suppose we wish to take the vector cross product of
+$\mathbf{u}=\left(1,4,2\right)^T$ and
 $\mathbf{v}=\left(2,1,5\right)^T$:
 
 ```{r label=definevcp}
 u <- c(1,4,2)
 v <- c(2,1,5)
-(vcp <- contract(volume(3),cbind(u,v)))
-dovs(vcp)
+(p <- vcp3(u,v))  # 'p' for (cross) product
 ```
 
-Object `vcp` is the vector cross product of $\mathbf{u}$ and
-$\mathbf{v}$, but written a as a one-form.  We can see the mnemonic in
-operation by coercing `vcp` to a function:
+Above, note the order of the lines is implementation-specific as per
+`disordR` discipline [@hankin2022_disordR], but the form itself should
+agree with basis vector evaluation given below.  Object `p` is the
+vector cross product of $\mathbf{u}$ and $\mathbf{v}$, but is given as
+a one-form.  We can see the mnemonic in operation by coercing `p` to a
+function and then evaluating this on the three basis vectors of
+$\mathbb{R}^3$:
 
-
-```{r}
-ucv  <- as.function(vcp)
-```
-
-and then evaluating this on the three basis vectors of $\mathbb{R}^3$:
-
-```{r label=faila}
+```{r label=ucvijk}
+ucv  <- as.function(p)
 c(i=ucv(ex), j=ucv(ey), k=ucv(ez))
 ```
 
-
 and we see agreement with the mnemonic
-$\det\begin{pmatrix}i&j&k\\1&4&2\\2&1&5\end{pmatrix}$.
+$\det\begin{pmatrix}i&j&k\\1&4&2\\2&1&5\end{pmatrix}$.  Further, we
+may evaluate the triple cross product
+$(\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}$ by evaluating `ucv()` at
+$\mathbf{w}$.
 
-It is possible to recreate the vector cross product more directly in
-the package, but we need to coerce the R vectors `c(1,4,2)` and
-`c(2,1,5)` to alternating $k$-forms first, using `as.1form()`.  Taking
-a wedge product gives us a two-form, and to revert to a one form we
-need to take the hodge dual:
-
-```{r}
-hodge(as.1form(c(1,4,2)) ^ as.1form(c(2,1,5)))
+```{r label=ucvw}
+w <- c(1,-3,2)
+ucv(w)
 ```
 
-Above, note the order of the lines, being implementation-specific as
-per `disordR` discipline, may appear in a different order but the form
-should agree with the previous results.
+This shows agreement with the elementary mnemonic
+$\det\begin{pmatrix}1&-3&2\\1&4&2\\2&1&5\end{pmatrix}=7$, as expected
+from linearity.
 
+## Vector cross product identities
 
-## Reference
+The following identities are standard results:
 
-*  M. Spivak 1971. _Calculus on manifolds_, Addison-Wesley.
+$$
+\begin{aligned}
+\mathbf{u}\times(\mathbf{v}\times\mathbf{w}) &= \mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{w}(\mathbf{u}\cdot\mathbf{v})\\
+(\mathbf{u}\times\mathbf{v})\times\mathbf{w} &= \mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{u}(\mathbf{v}\cdot\mathbf{w})\\
+(\mathbf{u}\times\mathbf{v})\times(\mathbf{u}\times\mathbf{w}) &= (\mathbf{u}\cdot(\mathbf{v}\times\mathbf{w}))\mathbf{u}  \\
+(\mathbf{u}\times\mathbf{v})\cdot(\mathbf{w}\times\mathbf{x})  &= (\mathbf{u}\cdot\mathbf{w})(\mathbf{v}\cdot\mathbf{x}) -
+                                                                  (\mathbf{u}\cdot\mathbf{x})(\mathbf{v}\cdot\mathbf{w})
+\end{aligned}
+$$
 
+We may verify all four together:
+
+```{r}
+x <- c(-6,5,7)  # u,v,w as before
+c(
+  hodge(as.1form(u) ^ vcp3(v,w))        == as.1form(v*sum(w*u) - w*sum(u*v)),
+  hodge(vcp3(u,v) ^ as.1form(w))        == as.1form(v*sum(w*u) - u*sum(v*w)),
+  as.1form(as.function(vcp3(v,w))(u)*u) == hodge(vcp3(u,v) ^ vcp3(u,w))     ,
+  hodge(hodge(vcp3(u,v)) ^ vcp3(w,x))   == sum(u*w)*sum(v*x) - sum(u*x)*sum(v*w)
+)		  
+```
+## References
 

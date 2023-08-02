@@ -37,13 +37,14 @@ a vector space; Spivak denotes the space of multilinear maps as
 $\mathcal{J}^k(V)$.  Formally, multilinearity means
 
 \[
-S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot S\left(v_1,\ldots,v_i,\ldots,v_k\right)
+S{\left(v_1,\ldots,av_i,\ldots,v_k\right)} = a\cdot S{\left(v_1,\ldots,v_i,\ldots,v_k\right)}
 \]
 
 and
 
-\[S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
-S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).
+\[
+S{\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)}=S{\left(v_1,\ldots,v_i,\ldots,x_v\right)}+
+S{\left(v_1,\ldots,{v_i}',\ldots,v_k\right)}.
 \]
 
 where $v_i\in V$.  If $S\in\mathcal{J}^k(V)$ and
@@ -51,11 +52,10 @@ $T\in\mathcal{J}^l(V)$, then we may define $S\otimes
 T\in\mathcal{J}^{k+l}(V)$ as
 
 \[
-S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l}\right)=
-S\left(v_1,\ldots,v_k\right)\cdot
-T\left(v_1,\ldots,v_l\right)
+S\otimes T{\left(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l}\right)}=
+S{\left(v_1,\ldots,v_k\right)}\cdot
+T{\left(v_1,\ldots,v_l\right)}.
 \]
-
 
 Spivak observes that $\mathcal{J}^k(V)$ is spanned by the $n^k$
 products of the form
@@ -66,7 +66,7 @@ products of the form
 \]
 
 where $v_1,\ldots,v_k$ is a basis for $V$ and
-$\phi_i\left(v_j\right)=\delta_{ij}$; we can therefore write
+$\phi_i{\left(v_j\right)}=\delta_{ij}$; we can therefore write
 
 \[
 S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k}
@@ -88,14 +88,14 @@ using a matrix with three rows, one per term, and whose rows
 correspond to each term's tensor products of the $\phi$'s.  We first
 have to load the `stokes` package:
 
-```{r,message=FALSE}
+```{r,label=loadstokeslibrary,message=FALSE}
 library("stokes")
 ```
 
 Then the idiom is straightforward:
 
 
-```{r}
+```{r label=straightforwardidiom}
 k <- 4
 n <- 5
 M <- matrix(c(5,1,1,1, 1,1,2,3, 1,3,4,2),3,4,byrow=TRUE)
@@ -120,7 +120,7 @@ package [@hankin2022_mvp].
 First, we will define $E$ to be a random point in $V^k$ in terms of a
 matrix:
 
-```{r}
+```{r setupsetseed}
 set.seed(0)
 (E <- matrix(rnorm(n*k),n,k))   # A random point in V^k
 ```
@@ -128,7 +128,7 @@ set.seed(0)
 Recall that $n=5$, $k=4$, so $E\in\left(\mathbb{R}^5\right)^4$.  We
 can evaluate $S$ at $E$ as follows:
 
-```{r}
+```{r showfandfE}
 f <- as.function(S)
 f(E)
 ```
@@ -139,14 +139,14 @@ Tensors have a natural vector space structure; they may be added and
 subtracted, and multiplied by a scalar, the same as any other vector
 space.  Below, we define a new tensor $S_1$ and work with $2S-3S_1$:
 
-```{r}
+```{r simpletensorarith}
 S1 <- as.ktensor(1+diag(4),1:4)
 2*S-3*S1
 ```
 
 We may verify that tensors are linear using package idiom:
 
-```{r}
+```{r verifylinearity}
 LHS <- as.function(2*S-3*S1)(E)
 RHS <- 2*as.function(S)(E) -3*as.function(S1)(E)
 c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
@@ -162,7 +162,7 @@ points in $\left(\mathbb{R}^5\right)^4$ which are identical except for
 one column.  In `E3`, this column is a linear combination of the
 corresponding column in `E2` and `E3`:
 
-```{r}
+```{r E1E2E3columns}
 
 E1 <- E
 E2 <- E
@@ -181,7 +181,7 @@ E3[,2] <- r1*x1 + r2*x2
 Then we can verify the multilinearity of $S$ by coercing to a function
 which is applied to `E1, E2, E3`:
 
-```{r}
+```{r asfuncS}
 f <- as.function(S)
 LHS <- r1*f(E1) + r2*f(E2)
 RHS <- f(E3)
@@ -192,7 +192,7 @@ c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
 *not* equivalent to linearity over $V^{nk}$:
 
 
-```{r}
+```{r E1E2matrix}
 E1 <- matrix(rnorm(n*k),n,k)
 E2 <- matrix(rnorm(n*k),n,k)
 LHS <- f(r1*E1+r2*E2)
@@ -206,14 +206,14 @@ Given two k-tensor objects $S,T$ we can form the tensor product
 $S\otimes T$, defined as
 
 \[
-S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
-  S\left(v_1,\ldots v_k\right)\cdot T\left(v_{k+1},\ldots
-  v_{k+l}\right)
+S\otimes T{\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)}=
+  S{\left(v_1,\ldots v_k\right)} \cdot T{\left(v_{k+1},\ldots
+  v_{k+l}\right)}
 \]
 
 We will calculate the tensor product of two tensors `S1,S2` defined as follows:
 
-```{r}
+```{r S1S2tensors}
 (S1 <- ktensor(spray(cbind(1:3,2:4),1:3)))
 (S2 <- as.ktensor(matrix(1:6,2,3)))
 ```
@@ -221,13 +221,13 @@ We will calculate the tensor product of two tensors `S1,S2` defined as follows:
 The R idiom for $S1\otimes S2$ would be `tensorprod()`, or `%X%`:
 
 
-```{r}
+```{r S1S2tensorprod}
 tensorprod(S1,S2)
 ```
 
 Then, for example:
 
-```{r}
+```{r tensorS1S2verify}
 E <- matrix(rnorm(30),6,5)
 LHS <- as.function(tensorprod(S1,S2))(E)
 RHS <- as.function(S1)(E[,1:2]) * as.function(S2)(E[,3:5])
@@ -241,12 +241,12 @@ c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
 An alternating form is a multilinear map $T$ satisfying
 
 \[
-\mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
-    -\mathrm{T}\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
+T{\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)}=
+    -T{\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)}
 \]
 
 (or, equivalently,
-$\mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_i,\ldots,v_k\right)= 0$).  We
+$T{\left(v_1,\ldots,v_i,\ldots,v_i,\ldots,v_k\right)}= 0$).  We
 write $\Lambda^k(V)$ for the space of all alternating multilinear maps
 from $V^k$ to $\mathbb{R}$.  Spivak gives
 $\operatorname{Alt}\colon\mathcal{J}^k(V)\longrightarrow\Lambda^k(V)$
@@ -254,7 +254,7 @@ defined by
 
 \[\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
     \frac{1}{k!}\sum_{\sigma\in S_k}\operatorname{sgn}(\sigma)\cdot
-    T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
+    T{\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)}
 \]
 
 where the sum ranges over all permutations of
@@ -268,14 +268,14 @@ and $\operatorname{Alt}\left(\omega\right)=\omega$.
 In the stokes package, this is effected by the `Alt()` function:
 
 
-```{r}
+```{r showAltS1}
 S1
 Alt(S1)
 ```
 
 Verifying that `S1` is in fact alternating is straightforward:
 
-```{r}
+```{r verifyAltisAlt}
 E <- matrix(rnorm(8),4,2)
 Erev <- E[,2:1]
 as.function(Alt(S1))(E) + as.function(Alt(S1))(Erev)  # should be zero
@@ -362,7 +362,7 @@ dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
 Defining $K$ has ready R idiom in which we define a matrix whose rows
 correspond to the differentials in each term:
 
-```{r}
+```{r usedifferentials}
 M <- matrix(c(4,2,3,1,4,2),2,3,byrow=TRUE)
 M
 K <- as.kform(M,c(1,5))
@@ -382,7 +382,7 @@ In the previous section we defined objects such as "$dx_1\wedge dx_6$"
 as a single entity.  Here I define the elementary form $dx_i$ formally
 and in the next section discuss the wedge product $\wedge$.  The
 elementary form $dx_i$ is simply a map from $\mathbb{R}^n$ to
-$\mathbb{R}$ with $dx_i\left(x_1,x_2,\ldots,x_n\right)=x_i$.  Observe
+$\mathbb{R}$ with $dx_i{\left(x_1,x_2,\ldots,x_n\right)}=x_i$.  Observe
 that $dx_i$ is an alternating form, even though we cannot swap
 arguments (because there is only one).  Package idiom for creating an
 elementary form appears somewhat cryptic at first sight, but is
@@ -390,7 +390,7 @@ consistent (it is easier to understand package idiom for creating more
 complicated alternating forms, as in the next section).  Suppose we
 wish to work with $dx_3$:
 
-```{r}
+```{r dx3inmatrixform}
 dx3 <- as.kform(matrix(3,1,1),1)
 options(kform_symbolic_print = NULL) # revert to default print method
 dx3
@@ -400,10 +400,10 @@ Interpretation of the output above is not obvious (it is easier to
 understand the output from more complicated alternating forms, as in
 the next section), but for the moment observe that $dx_3$ is indeed an
 alternating form, mapping $\mathbb{R}^n$ to $\mathbb{R}$ with
-$dx_3\left(x_1,x_2,\ldots,x_n\right)=x_3$.  Thus, for example:
+$dx_3{\left(x_1,x_2,\ldots,x_n\right)}=x_3$.  Thus, for example:
 
 
-```{r}
+```{r showdx3beingused}
 as.function(dx3)(c(14,15,16))
 as.function(dx3)(c(14,15,16,17,18))  # idiom can deal with arbitrary vectors
 ```
@@ -412,7 +412,7 @@ and we see that $dx_3$ picks out the third element of a vector.  These
 are linear in the sense that we may add and subtract these elementary
 forms:
 
-```{r}
+```{r dx5askform}
 dx5 <- as.kform(matrix(5,1,1),1)
 as.function(dx3 + 2*dx5)(1:10)  # picks out element 3 + 2*element 5
 ```
@@ -431,7 +431,7 @@ defines the wedge product $\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
 and this is implemented in the package by function `wedge()`, or,
 more idiomatically, `^`:
 
-```{r}
+```{r M1K1M2K2}
 M1 <- matrix(c(3,5,4, 4,6,1),2,3,byrow=TRUE)
 K1 <- as.kform(M1,c(2,7))
 K1
@@ -445,7 +445,7 @@ In symbolic notation, `K1` is equal to $7dx_1\wedge dx_4\wedge dx_6
 2dx_2\wedge dx_4+ 3dx_3\wedge dx_5+ 4dx_4\wedge dx_6+ 5dx_5\wedge
 dx_7$.  Package idiom for wedge products is straightforward:
 
-```{r}
+```{r K1wedgeK2}
 K1 ^ K2
 ```
 
@@ -462,7 +462,7 @@ The wedge product has formal properties such as distributivity but by
 far the most interesting one is associativity, which I will
 demonstrate below:
 
-```{r}
+```{r F1F2F3kforms}
 F1 <- as.kform(matrix(c(3,4,5, 4,6,1,3,2,1),3,3,byrow=TRUE))
 F2 <- as.kform(cbind(1:6,3:8),1:6)
 F3 <- kform_general(1:8,2)
@@ -476,7 +476,7 @@ nevertheless algebraically identical, as we may demonstrate by
 calculating their difference:
 
 
-```{r}
+```{r wedgearithmeticF1F2F3}
 (F1 ^ F2) ^ F3 - F1 ^ (F2 ^ F3)
 ```
 
@@ -495,7 +495,7 @@ $\Lambda^k(V)$ is a linear combination of elementary forms, as
 illustrated in the package by function `kform_general()`.  Consider
 the following idiom:
 
-```{r}
+```{r kformgeneralandrel}
 Krel <- kform_general(4,2,1:6)
 Krel
 ```
@@ -506,7 +506,7 @@ $\left(\mathbb{R}^4\right)^2$ to $\mathbb{R}$.  Observe that
 particular order.  Addition of such $k$-forms is straightforward in R
 idiom but algebraically nontrivial:
 
-```{r}
+```{r addkformsnontrivial}
 K1 <- as.kform(matrix(1:4,2,2),c(1,109))
 K2 <- as.kform(matrix(c(1,3,7,8,2,4),ncol=2,byrow=TRUE),c(-1,5,4))
 K1
@@ -523,14 +523,14 @@ Although the spray form used above is probably the most direct and natural
 representation of differential forms in  numerical work, sometimes we need
 a more algebraic print method.
 
-```{r}
+```{r definetensorU}
 U <- ktensor(spray(cbind(1:4,2:5),1:4))
 U
 ```
 
 we can represent this more algebraically using the `as.symbolic()` function:
 
-```{r}
+```{r coerceUsymbolic}
 as.symbolic(U)
 ```
 
@@ -541,7 +541,7 @@ takes $(a,b,c,d,e)$ to `b`, and so on.  The asterisk `*` represents
 the tensor product $\otimes$.  Alternating forms work similarly but
 $k$-forms have different defaults:
 
-```{r}
+```{r showassymbolicK}
 K <- kform_general(3,2,1:3)
 K
 as.symbolic(K,d="d",symbols=letters[23:26])
@@ -554,7 +554,7 @@ ascii caret, `^`.
 We can alter the default print method with the `kform_symbolic_print`
 option, which uses `as.symbolic()`:
 
-```{r}
+```{r useprintmethodsymbolic}
 options(kform_symbolic_print = "d")
 K
 ```
@@ -562,7 +562,7 @@ K
 This print option works nicely with the `d()` function for elementary
 forms:
 
-```{r}
+```{r printshowofelementaryforms}
 (d(1) + d(5)) ^ (d(3)-5*d(2)) ^ d(7)
 options(kform_symbolic_print = NULL) # restore default
 ```
@@ -576,8 +576,8 @@ vector $\mathbf{v}\in V$, the _contraction_ $\phi_\mathbf{v}$ of
 $\phi$ and $\mathbf{v}$ is a $k-1$-form with
 
 \[
-  \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
-  \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
+  \phi_\mathbf{v}{\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)} =
+  \phi{\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)}
 \]
 
 if $k>1$; we specify $\phi_\mathbf{v}=\phi(\mathbf{v})$ if $k=1$.
@@ -771,8 +771,8 @@ without modification.
 It can be shown that
 
 \[
-    {d}\left(f\,dx_{i_1}\wedge\cdots\wedge dx_{i_k}\right)=
-    {d}f\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k}
+    d{\left(f\,dx_{i_1}\wedge\cdots\wedge dx_{i_k}\right)}=
+    df\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k}
 \]
 
 where $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is a scalar
@@ -785,7 +785,7 @@ a vector $x_1,\ldots,x_n$ returns the one-form
 
 This is useful because $df=\sum_{j=1}^n\left(D_j f\right)\,dx_j$. Thus
 
-```{r}
+```{r showgradinuse}
 grad(c(0.4,0.1,-3.2,1.5))
 ```
 
@@ -812,7 +812,7 @@ that $d\omega=0$.  Here I show this using R idiom.  The first thing is
 to define a function that implements the hat:
 
 
-```{r}
+```{r definefofakform}
 f <- function(x){
     n <- length(x)
     as.kform(t(apply(diag(n)<1,2,which)))
@@ -821,14 +821,14 @@ f <- function(x){
 
 So, for example:
 
-```{r}
+```{r exampleuseoff}
 f(1:5)
 ```
 
 Then we can use the `grad()` function to calculate $d\omega$,
 using the quotient law to express the derivatives analytically:
 
-```{r}
+```{r definedfanduseit}
 df  <- function(x){
     n <- length(x)
     S <- sum(x^2)
@@ -838,13 +838,13 @@ df  <- function(x){
 ```
 
 Thus
-```{r}
+```{r dfevaluatedatonetofive}
 df(1:5)
 ```
 
 Now we can use the wedge product of the two parts to show that the exterior derivative is zero:
 
-```{r}
+```{r dfevaluatedatrandompoint}
 x <- rnorm(9)
 print(df(x) ^ f(x))  # should be zero
 ```
@@ -855,7 +855,7 @@ We can use the package to verify the celebrated fact that, for any
 $k$-form $\phi$, $d\left(d\phi\right)=0$.  The first step is to define
 scalar functions `f1(), f2(), f3()`, all  $0$-forms:
 
-```{r}
+```{r definef1f2f3usingarith}
 f1 <- function(w,x,y,z){x + y^3 + x*y*w*z}
 f2 <- function(w,x,y,z){w^2*x*y*z + sin(w) + w+z}
 f3 <- function(w,x,y,z){w*x*y*z + sin(x) + cos(w)}
@@ -863,7 +863,7 @@ f3 <- function(w,x,y,z){w*x*y*z + sin(x) + cos(w)}
 
 Now we need to define elementary $1$-forms:
 
-```{r}
+```{r definedwdxdydzofkforms}
 dw <- as.kform(1)
 dx <- as.kform(2)
 dy <- as.kform(3)
@@ -875,7 +875,7 @@ I will demonstrate the theorem by defining a $2$-form which is the sum
 of three elementary two-forms, evaluated at a particular point in
 $\mathbb{R}^4$:
 
-```{r}
+```{r definephi}
 phi <-
   (
     +f1(1,2,3,4) ^ dw ^ dx
@@ -888,7 +888,7 @@ We could use slightly slicker R idiom by defining elementary forms
 `e1,e2,e3` and then defining `phi` to be a linear sum, weighted with
 $0$-forms given by the (scalar) functions `f1,f2,f3`:
 
-```{r}
+```{r e1e2e3usingwedge}
 e1 <- dw ^ dx
 e2 <- dw ^ dy
 e3 <- dy ^ dz
@@ -906,7 +906,7 @@ phi
 Now to evaluate first derivatives of `f1()` etc at point
 $(1,2,3,4)$, using `Deriv()` from the Deriv package:
 
-```{r}
+```{r demonstrateDerivpackage}
 library("Deriv")
 Df1 <- Deriv(f1)(1,2,3,4)
 Df2 <- Deriv(f2)(1,2,3,4)
@@ -915,13 +915,13 @@ Df3 <- Deriv(f3)(1,2,3,4)
 
 So `Df1` etc are numeric vectors of length 4, for example:
 
-```{r}
+```{r showDf1fromderiv}
 Df1
 ```
 
 To calculate `dphi`, or $d\phi$, we can use function `grad()`:
 
-```{r}
+```{r calculatedphi}
 dphi <-
   (
     +grad(Df1) ^ e1
@@ -934,20 +934,20 @@ dphi
 Now work on the differential of the differential.  First evaluate
 the Hessians (4x4 numeric matrices) at the same point:
 
-```{r}
+```{r diffofdiff}
 Hf1 <- matrix(Deriv(f1,nderiv=2)(1,2,3,4),4,4)
 Hf2 <- matrix(Deriv(f2,nderiv=2)(1,2,3,4),4,4)
 Hf3 <- matrix(Deriv(f3,nderiv=2)(1,2,3,4),4,4)
 ```
 
-```{r, echo=FALSE}
+```{r setrownames, echo=FALSE}
 rownames(Hf1) <- c("w","x","y","z")
 colnames(Hf1) <- c("w","x","y","z")
 ```
 
 For example
 
-```{r}
+```{r Hf1showexample}
 Hf1
 ```
 
@@ -955,7 +955,7 @@ Hf1
 diagonal term).  But $dd\phi$ is clearly zero as the Hessians are
 symmetrical:
 
-```{r}
+```{r ddphishouldbezero}
 ij <- expand.grid(seq_len(nrow(Hf1)),seq_len(ncol(Hf1)))
 
 ddphi <- # should be zero
@@ -1020,7 +1020,7 @@ a^{n-1}\left(a+a^2+\cdots+a^n\right).
 Stokes's theorem, being trivial, is not amenable to direct numerical
 verification but the package does allow slick creation of $\phi$:
 
-```{r}
+```{r slickcreationofphi}
 phi <- function(x){
     n <- length(x)
     sum(x^seq_len(n)*rep_len(c(1,-1),n)) * as.kform(t(apply(diag(n)<1,2,which)))
@@ -1035,7 +1035,7 @@ $\phi_{1:9}$ for `phi(1:9)` we would have
 $\phi_{1:9}\colon\left(\mathbb{R}^9\right)^8\longrightarrow\mathbb{R}$,
 with package idiom as follows:
 
-```{r}
+```{r useslickdefforf}
 f <- as.function(phi(1:9))
 E <- matrix(runif(72),9,8)   # (R^9)^8
 f(E)
@@ -1043,7 +1043,7 @@ f(E)
 
 Further, $d\phi$ is given by
 
-```{r}
+```{r dphiusingpowerdef}
 dphi <- function(x){
     nn <- seq_along(x)
     sum(nn*x^(nn-1)) * as.kform(seq_along(x))
@@ -1064,7 +1064,7 @@ $\omega\left(w_1,\ldots,w_n\right) =
 Numerically:
 
 
-```{r}
+```{r verifyfEbothways}
 f <- as.function(dphi(1:9))
 E <- matrix(runif(81),9,9)
 f(E)

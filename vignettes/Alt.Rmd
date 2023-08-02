@@ -46,9 +46,9 @@ even and $-1$ if $\sigma$ is odd.  If $T\in{\mathcal J}^k(V)$, we
 define $\operatorname{Alt}(T)$ by
 
 $$
-\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
+\operatorname{Alt}(T){\left(v_1,\ldots,v_k\right)}=
     \frac{1}{k!}\sum_{\sigma\in S_k}\mathrm{sgn}(\sigma)\cdot
-    T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
+    T{\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)}
 $$	
 
 where $S_k$ is the set of all permutations of numbers $1$ to $k$.
@@ -63,12 +63,12 @@ For example, if $k=3$ we have
 
 \[\operatorname{Alt}(T)\left(v_1,v_2,v_3\right)=
       \frac{1}{6}\left(\begin{array}{cc}
-      +T\left(v_1,v_2,v_3\right)&
-      -T\left(v_1,v_3,v_2\right)\cr
-      -T\left(v_2,v_1,v_3\right)&
-      +T\left(v_2,v_3,v_1\right)\cr
-      +T\left(v_3,v_1,v_2\right)&
-      -T\left(v_3,v_2,v_1\right)
+      +T{\left(v_1,v_2,v_3\right)}&
+      -T{\left(v_1,v_3,v_2\right)}\cr
+      -T{\left(v_2,v_1,v_3\right)}&
+      +T{\left(v_2,v_3,v_1\right)}\cr
+      +T{\left(v_3,v_1,v_2\right)}&
+      -T{\left(v_3,v_2,v_1\right)}
       \end{array}
       \right)
 \]
@@ -148,7 +148,7 @@ repeated entries are correctly discarded by taking the
 $\operatorname{Alt}$ of a tensor all of whose entries include at least
 one repeat:
 
-```{r}
+```{r altonerepeat}
 S <- as.ktensor(matrix(c(
 3,2,1,1,
 1,4,1,4,
@@ -165,7 +165,7 @@ for complicated tensors (this is trivial algebraically because
 $\operatorname{Alt}(\cdot)$ is linear, but it is always good to
 check):
 
-```{r}
+```{r altcheckcomplicatedcase}
 S <- rtensor(k=5,n=9)
 S
 AS <- Alt(S)
@@ -175,7 +175,7 @@ V <- matrix(rnorm(45),ncol=5) # element of (R^9)^5
 Then we swap columns of $V$, using both even and odd permutations, to
 verify that $\operatorname{Alt}(S)$ is in fact alternating:
 
-```{r}
+```{r verifyevenandodd}
 V_even <- V[,c(1,2,5,3,4)]  # an even permutation
 V_odd  <- V[,c(2,1,5,3,4)]  # an odd permutation
 V_rep  <- V[,c(2,1,5,2,4)]  # not a permutation
@@ -197,7 +197,7 @@ In his theorem 4.3, Spivak proves the following statements:
 We have demonstrated the first point above.  For the second, we need
 to construct a tensor that is alternating, and then show that `Alt()` does not change it:
 
-```{r}
+```{r verifyaltofalternating}
 P <- as.ktensor(1+diag(2),c(-7,7))
 P
 P == Alt(P)
@@ -205,7 +205,7 @@ P == Alt(P)
 
 The third point, idempotence is also easy:
 
-```{r}
+```{r verifyidempotence}
 P <- rtensor()*6 # the "6" avoids numerical round-off issues
 Alt(Alt(P))==Alt(P)   # should be TRUE
 ```
@@ -221,21 +221,39 @@ $\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$ we have
 
 So for example:
 
-```{r}
+```{r label = omegatensoreta}
 omega <- as.ktensor(2+diag(2),c(-7,7))
-eta   <- Alt(rtensor(2))*30
+eta <- Alt(ktensor(6*spray(matrix(c(1,2,3,1,4,7,4,5,6),3,3,byrow=TRUE),1:3)))
 omega
 eta
+```
+
+Above we see that `omega` is alternating by construction, and `eta` is
+alternating by virtue of `Alt()`.  Thus tensor $\omega\wedge\eta$ is
+defined as per Spivak's definition, and we may calculate it directly:
+
+```{r label=omegawedgeetadirect}
+Alt(omega %X% eta,give_kform = TRUE)
 f <- as.function(Alt(omega %X% eta))
 ```
 
-(the tensor itself is quite long, having 60 nonzero components).  We
-may verify that `f()` is in fact alternating:
+Observe that the tensor $\omega\otimes\eta$ (which would be returned
+if the default argument `give_kform=FALSE` was sent to `Alt()`) is
+quite long, having $2\cdot 5!=240$ nonzero components, which is why it
+is not printed in full.  We may verify that `f()` is alternating by
+evaluating it on a randomly chosen point in
+$\left(\mathbb{R}^7\right)^5$:
 
-```{r}
+```{r label=defineV}
 V <-  matrix(rnorm(35),ncol=5)
 c(f(V),f(V[,c(2:1,3:5)]))
 ```
+
+Above we see a verification that `f()` is fact alternating: writing
+the matrix `V` in terms of its five vectors as
+$V=\left[v_1,v_2,v_3,v_4,v_5\right]$, where $v_i\in\mathbb{R}^7$, we
+see that
+$f{\left(v_1,v_2,v_3,v_4,v_5\right)}=-f{\left(v_2,v_1,v_3,v_4,v_5\right)}$.
 
 ## Further further properties of `Alt()`
 
@@ -253,13 +271,12 @@ $k,l,m$ respectively, then
 
 Taking the points in turn.  Firstly $\operatorname{Alt}(S\otimes T)=\operatorname{Alt}(T\otimes S)=0$:
 
-```{r}
+```{r label=firstpoint}
 (S <- as.ktensor(rbind(c(1,2,3,3),c(1,1,2,3)),1000:1001)) 
 Alt(S)  # each row of S includes repeats
 T <- rtensor()
 c(is.zero(Alt(S %X% T)), is.zero(Alt(T %X% S)))
 ```
-
 
 secondly,
   $\operatorname{Alt}(\operatorname{Alt}(\omega\otimes\eta)\otimes\theta)
@@ -308,7 +325,7 @@ alternating form can be much more efficiently represented as an object
 of class `kform`, and this is returned if `give_kform` is `TRUE`. Here
 I verify that the two options return identical objects:
 
-```{r}
+```{r altrand}
 (rand_tensor <- rtensor(k=5,n=9)*120)
 S1 <- Alt(rand_tensor)  # 120 terms, too long to print all of it
 summary(S1)
@@ -319,13 +336,13 @@ However, if argument `give_kform = TRUE` is passed to `Alt()` we get a
 `kform` object which is much more succinct:
 
 
-```{r}
+```{r altrandgiveTRUE}
 (SA1 <- Alt(rand_tensor,give_kform=TRUE))
 ```
 
 Verification that objects `S1` and `SA1` are the same object:
 
-```{r}
+```{r verifyS1SA1}
 V <- matrix(rnorm(45),ncol=5)
 LHS <- as.function(S1)(V)
 RHS <- as.function(SA1)(V)

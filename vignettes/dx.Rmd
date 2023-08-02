@@ -19,7 +19,7 @@ set.seed(0)
 ![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
 </p>
 
-```{r}
+```{r label=definedxdydz}
 dx <- d(1)
 dy <- d(2)
 dz <- d(3)
@@ -46,10 +46,10 @@ Let us consider in particular the $1$-forms $d\pi^i$ ^[Spivak
 introduces the $\pi^i$ notation on page 11: "if
 $\pi\colon\mathbb{R}^n\longrightarrow\mathbb{R}^n$ is the identity
 function, $\pi(x)=x$, then [its components are] $\pi^i(x)=x^i$; the
-function $\pi^i$ is called the $i^\mathrm{th}$ *projection function*"]
-It is customary to let $x^i$ denote the _function_ $\pi^i$ (on
-$\mathbb{R}^3$ we often denote $x^1$, $x^2$, and $x^3$ by $x$, $y$,
-and $z$) $\ldots$ Since
+function $\pi^i$ is called the $i^\mathrm{th}$ *projection
+function*"].  It is customary to let $x^i$ denote the _function_
+$\pi^i$ (on $\mathbb{R}^3$ we often denote $x^1$, $x^2$, and $x^3$ by
+$x$, $y$, and $z$) $\ldots$ Since
 $dx^i(p)(v_p)=d\pi^i(p)(v_p)=D\pi^i(p)(v)=v^i$, we see that
 $dx^1(p),\ldots,dx^n(p)$ is just the dual basis to $(e_1)_p,\ldots,
 (e_n)_p$.
@@ -68,7 +68,7 @@ in the package we have the pre-defined objects `dx`, `dy`, and `dz`.
 These are convenient for reproducing textbook results.  We start with
 some illustrations of the package print method.
 
-```{r}
+```{r label=showdx}
 dx
 ```
 
@@ -76,7 +76,7 @@ This is somewhat opaque and difficult to understand.  It is easier to
 start with a more complicated example: take $dx\wedge dy -7dx\wedge dz
 + 3dy\wedge dz$:
 
-```{r}
+```{r label=morecomplicatedcombination}
 dx^dy -7*dx^dz + 3*dy^dz
 ```
 

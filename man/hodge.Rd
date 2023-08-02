@@ -42,7 +42,7 @@ hodge(dx,3) == dy^dz
 
 ## Some edge-cases:
 hodge(scalar(1),2)
-hodge(zero(5),9)
+hodge(zeroform(5),9)
 hodge(volume(5))
 hodge(volume(5),lose=TRUE)
 hodge(scalar(7),n=9)

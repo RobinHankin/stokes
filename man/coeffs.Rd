@@ -12,10 +12,17 @@
 \alias{value<-}
 \alias{coeffs<-,ktensor-method}
 \alias{coeffs<-,kform-method}
+\alias{spray}
+\alias{as.spray}
+\alias{nterms}
 \title{Extract and manipulate coefficients}
 \description{
   Extract and manipulate coefficients of ktensor and kform objects;
   this using the methods of the \CRANpkg{spray} package.
+
+  Functions \code{as.spray()} and \code{nterms()} are imoported from
+  \CRANpkg{spray}.
+
 }
 \details{
   To see the coefficients of a \code{kform} or \code{ktensor} object,
