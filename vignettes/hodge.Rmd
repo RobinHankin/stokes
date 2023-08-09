@@ -25,10 +25,9 @@ set.seed(1)
 hodge
 ```
 
-Given a $k$-form $\omega$, function `hodge()` returns its Hodge dual
-$*\omega$ or $\star\omega$.  Formally, if $V={\mathbb R}^n$, and
-$\Lambda^k(V)$ is the space of alternating linear maps from $V^k$ to
-${\mathbb R}$, then
+Given a $k$-form $\beta$, function `hodge()` returns its Hodge dual
+$\star\beta$.  Formally, if $V={\mathbb R}^n$, and $\Lambda^k(V)$ is
+the space of alternating linear maps from $V^k$ to ${\mathbb R}$, then
 $\star\colon\Lambda^k(V)\longrightarrow\Lambda^{n-k}(V)$.
 
 To define the Hodge dual, we need an inner product
@@ -54,15 +53,12 @@ j_i,\ldots,j_k\right\rbrace=[n]\backslash\left\lbrace
 i_1,\ldots,i_k\right\rbrace$ is the complement of $I$, and
 $(-1)^{\sigma(I)}$ is the sign of the permutation $\sigma(I)=i_1\cdots
 i_kj_1\cdots j_{n-k}$.  We extend to the whole of $\Lambda^k(V)$ using
-linearity.
-
-Package idiom for calculating the Hodge dual is straightforward, being
-simply `hodge()`.
+linearity.  Package idiom for calculating the Hodge dual is
+straightforward, being simply `hodge()`.
 
 ```{r, include = FALSE}
 options(kform_symbolic_print = NULL)
 ```
-
 
 ## The Hodge dual on basis elements of $\Lambda^k(V)$
 
