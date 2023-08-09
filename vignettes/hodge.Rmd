@@ -21,7 +21,7 @@ set.seed(1)
 ![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
 </p>
 
-```{r}
+```{r showhodgefirst}
 hodge
 ```
 
@@ -174,6 +174,51 @@ hodge(dx,3)
 
 This is further discussed in the `dovs` vignette.
 
+## Vector cross product identities
+
+The three dimensional vector cross product
+$\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i & j & k \\
+u_1&u_2&u_3\\ v_1&v_2&v_3 \end{pmatrix}$ is a standard part of
+elementary vector calculus.  In the package the idiom is as follows:
+
+```{r showvcp}
+vcp3
+```
+
+revealing the formal definition of cross product as
+$\mathbf{u}\times\mathbf{v}=\star{\left(\mathbf{u}\wedge\mathbf{v}\right)}$.
+There are several elementary identities that are satisfied by the
+cross product:
+
+$$
+\begin{aligned}
+\mathbf{u}\times(\mathbf{v}\times\mathbf{w}) &= \mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{w}(\mathbf{u}\cdot\mathbf{v})\\
+(\mathbf{u}\times\mathbf{v})\times\mathbf{w} &= \mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{u}(\mathbf{v}\cdot\mathbf{w})\\
+(\mathbf{u}\times\mathbf{v})\times(\mathbf{u}\times\mathbf{w}) &= (\mathbf{u}\cdot(\mathbf{v}\times\mathbf{w}))\mathbf{u}  \\
+(\mathbf{u}\times\mathbf{v})\cdot(\mathbf{w}\times\mathbf{x})  &= (\mathbf{u}\cdot\mathbf{w})(\mathbf{v}\cdot\mathbf{x}) -
+                                                                  (\mathbf{u}\cdot\mathbf{x})(\mathbf{v}\cdot\mathbf{w})
+\end{aligned}
+$$
+
+We may verify all four together:
+
+```{r}
+u <- c(1,4,2)
+v <- c(2,1,5)
+w <- c(1,-3,2)
+x <- c(-6,5,7)
+c(
+  hodge(as.1form(u) ^ vcp3(v,w))        == as.1form(v*sum(w*u) - w*sum(u*v)),
+  hodge(vcp3(u,v) ^ as.1form(w))        == as.1form(v*sum(w*u) - u*sum(v*w)),
+  as.1form(as.function(vcp3(v,w))(u)*u) == hodge(vcp3(u,v) ^ vcp3(u,w))     ,
+  hodge(hodge(vcp3(u,v)) ^ vcp3(w,x))   == sum(u*w)*sum(v*x) - sum(u*x)*sum(v*w)
+)		  
+```
+
+Above, note the use of the hodge operator to define triple vector
+cross products.  For example we have
+$\mathbf{u}\times\left(\mathbf{v}\times\mathbf{w}\right)=
+\star\left(\mathbf{u}\wedge\star\left(\mathbf{v}\wedge\mathbf{w}\right)\right)$.
 
 # Non positive-definite metrics
 
