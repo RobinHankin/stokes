@@ -31,6 +31,7 @@ hodge(K, n=dovs(K), g, lose=TRUE)
 
 (o <- kform_general(5,2,1:10))
 hodge(o)
+o == hodge(hodge(o))
 
 Faraday <- kform_general(4,2,runif(6)) # Faraday electromagnetic tensor
 minsk <- c(-1,1,1,1)  # Minkowski metric
