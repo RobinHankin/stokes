@@ -254,28 +254,31 @@ verify that this is correct, we compare the output with the value
 calculated directly with the wedge product:
 
 ```{r}
-hodge(as.1form(M[,1]) ^ as.1form(M[,2]) ^ as.1form(M[,3]) ^ as.1form(M[,4]) ^ as.1form(M[,5]))
+(jj <- as.1form(M[,1]) ^ as.1form(M[,2]) ^ as.1form(M[,3]) ^ as.1form(M[,4]) ^ as.1form(M[,5]))
+(ans2 <- hodge(jj))
 ```
 
+Above we see agreement between `ans1` and `ans2` although the elements
+might appear in a different order (as per disordR discipline).
 Actually it is possible to produce the same answer using slightly
 slicker idiom:
 
 ```{r}
-(ans2 <- hodge(Reduce(`^`,lapply(1:5,function(i){as.1form(M[,i])}))))
+(ans3 <- hodge(Reduce(`^`,lapply(1:5,function(i){as.1form(M[,i])}))))
 ```
 
 [again note the different order in the output].  Above, we see that
 the output of `vector_cross_product()` [`ans1`] is an ordinary R
 vector, but the direct result [`ans2`] is a 1-form.  In order to
-compare these, we first need to coerce `ans1` to a 1-form and then
+compare these, we first need to coerce `ans2` to a 1-form and then
 subtract:
 
 ```{r}
-(diff <- as.1form(ans1) - ans2)
+(diff <- as.1form(ans1) - ans3)
 coeffs(diff)
 ```
 
-Above we see that `ans1` and `ans2` match to within numerical
+Above we see that `ans1` and `ans3` match to within numerical
 precision.
 
 ##  Vector cross products in 3 dimensions
