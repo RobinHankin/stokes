@@ -34,9 +34,14 @@ hodge(o)
 o == hodge(hodge(o))
 
 Faraday <- kform_general(4,2,runif(6)) # Faraday electromagnetic tensor
-minsk <- c(-1,1,1,1)  # Minkowski metric
-hodge(Faraday,g=minsk)
-Faraday==Faraday|>hodge(g=minsk)|>hodge(g=minsk)|>hodge(g=minsk)|>hodge(g=minsk)
+mink <- c(-1,1,1,1)  # Minkowski metric
+hodge(Faraday,g=mink)
+
+Faraday  == Faraday |>
+      hodge(g=mink) |>
+      hodge(g=mink) |>
+      hodge(g=mink) |>
+      hodge(g=mink)
 
 hodge(dx,3) == dy^dz
 
