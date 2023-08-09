@@ -49,7 +49,7 @@ e_{i_k}$ with $I=\left\lbrace i_1,\cdots,i_k\right\rbrace$, then
 $$\star e_I=(-1)^{\sigma(I)}e_J$$
 
 where $J=\left\lbrace
-j_i,\ldots,j_k\right\rbrace=[n]\backslash\left\lbrace
+j_i,\ldots,j_k\right\rbrace=[n]\setminus\left\lbrace
 i_1,\ldots,i_k\right\rbrace$ is the complement of $I$, and
 $(-1)^{\sigma(I)}$ is the sign of the permutation $\sigma(I)=i_1\cdots
 i_kj_1\cdots j_{n-k}$.  We extend to the whole of $\Lambda^k(V)$ using
