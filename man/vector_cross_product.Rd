@@ -14,18 +14,14 @@
     u x v = (u_2 v_3 - u_3v_2, u_2 v_3 - u_3 v_2, u_2 v_3 - u_3 v_2).
   }
 
-Function \code{vcp3()} is a convenience wrapper for the conventional
-elementary three-dimensional cross product of
-\mjeqn{\mathbf{u},\mathbf{v}\in\mathbb{R}^3}{omitted}, written
-\mjeqn{\mathbf{u}\times\mathbf{v}}{omitted}.
-
-However, this may easily be generalized to a product from
+Function \code{vcp3()} is a convenience wrapper for this.  However, the
+vector cross product may easily be generalized to a product of
 \mjseqn{n-1}-tuples of vectors in \mjeqn{\mathbb{R}^3}{R^n}, given by
-function \code{vector_cross_product()}.
+package function \code{vector_cross_product()}.
 
 Vignette \code{vector_cross_product}, supplied with the package, gives
-an extensive discussion including verification of vector cross product
-identities.
+an extensive discussion of vector cross products, including formal
+definitions and verification of identities.
 
 }
 \usage{
