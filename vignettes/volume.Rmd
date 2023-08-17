@@ -62,7 +62,7 @@ the inner product $T$ and orientation $\mu$.  Note that
 $\operatorname{det}$ is the volume element of $\mathbb{R}^n$
 determined by the usual inner product and usual orientation, and that
 $\left|\operatorname{det}\left(v_1,\ldots,v_n\right)\right|$ is the
-volume of the parallelipiped spanned by the line segments from $0$ to
+volume of the parallelepiped spanned by the line segments from $0$ to
 each of $v_1,\ldots,v_n$.
 </p>
 <p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Page 89</i>
