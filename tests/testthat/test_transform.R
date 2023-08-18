@@ -11,7 +11,7 @@ test_that("Function pullback() behaves itself", {
       it <- it+1
     }
     if(missing(default)){
-      stop("no good value found, try increasing maxit (or relaxing ftest()")
+      stop("no good value found; try increasing maxit, or relaxing ftest()")
     } else {
       return(default)
     }
