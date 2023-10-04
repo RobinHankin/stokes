@@ -58,8 +58,8 @@ This $z$ is denoted $v_1\times\ldots\times v_{n-1}$ and is called the
 </p></span>
 </div>
 
-The reason that $\mathbf{w}$ is at the bottom rather than the top is
-that it ensures that the the $n$-tuple
+The reason for $\mathbf{w}$ being at the bottom rather than the top is
+to ensure that the $n$-tuple
 $(\mathbf{v}_1,\ldots,\mathbf{v}_{n-1},\mathbf{w})$ has positive
 orientation with respect to the standard basis vectors of
 $\mathbb{R}^n$.  In $\mathbb{R}^3$ we get the standard elementary
