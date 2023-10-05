@@ -9,23 +9,27 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-<p style="text-align: right;">
-![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
-</p>
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+```
+
 
 ```{r setup, include=FALSE}
+set.seed(0)
 knitr::opts_chunk$set(echo = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
 library("stokes")
 library("permutations")
-set.seed(1)
+knit_print.function <- function(x, ...){dput(x)}
+registerS3method(
+  "knit_print", "function", knit_print.function,
+  envir = asNamespace("knitr")
+)
 ```
 
-```{r showvectorcrossproductpackagedefinition}
+```{r, label=showfunc}
 vector_cross_product
 ```
-
-# The vector cross product
 
 @spivak1965, p83, considers the standard vector cross product
 $\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i & j & k \\
@@ -100,14 +104,14 @@ columns: the transpose of the work above.  This is because `stokes`
 If we wanted to take the cross product of $\mathbf{u}=(5,-2,1)$ with
 $\mathbf{v}=(1,2,0)$:
 
-```{r}
+```{r label=521120}
 (M <- cbind(c(5,-2,1),c(1,2,0)))
 vector_cross_product(M)
 ```
 
 But of course we can work with higher dimensional spaces:
 
-```{r}
+```{r label=rnorm30}
 vector_cross_product(matrix(rnorm(30),6,5))
 ```
 
@@ -120,14 +124,14 @@ need to ensure that the vectors
 $\mathbf{v}_1,\ldots,\mathbf{v}_n,\mathbf{v}_1\times\cdots\times\mathbf{v}_n$
 constitute a right-handed basis:
 
-```{r}
+```{r label=checkrighthand}
 det(cbind(M,vector_cross_product(M)))>0
 ```
 
 So it is right-handed in this case.  Here is a more severe test of the
 right-handedness::
 
-```{r}
+```{r label=severecheck}
 f <- function(n){
   M <- matrix(rnorm(n^2+n),n+1,n)
   det(cbind(M,vector_cross_product(M)))>0
@@ -243,7 +247,7 @@ function `vector_cross_product()` because it is computationally
 inefficient and (I think) prone to numerical roundoff errors.  We may
 verify that the definitions agree, using a six-dimensional test case:
 
-```{r}
+```{r label=sixdimcheck}
 set.seed(2)
 M <- matrix(rnorm(30),6,5)
 (ans1 <- vector_cross_product(M))
@@ -253,7 +257,7 @@ We can see that `vector_cross_product()` returns an R vector.  To
 verify that this is correct, we compare the output with the value
 calculated directly with the wedge product:
 
-```{r}
+```{r label=wedgeprodcheck}
 (jj <- as.1form(M[,1]) ^ as.1form(M[,2]) ^ as.1form(M[,3]) ^ as.1form(M[,4]) ^ as.1form(M[,5]))
 (ans2 <- hodge(jj))
 ```
@@ -263,7 +267,7 @@ might appear in a different order (as per disordR discipline).
 Actually it is possible to produce the same answer using slightly
 slicker idiom:
 
-```{r}
+```{r label=slickcheck}
 (ans3 <- hodge(Reduce(`^`,lapply(1:5,function(i){as.1form(M[,i])}))))
 ```
 
@@ -273,7 +277,7 @@ vector, but the direct result [`ans2`] is a 1-form.  In order to
 compare these, we first need to coerce `ans2` to a 1-form and then
 subtract:
 
-```{r}
+```{r label=subtract1form}
 (diff <- as.1form(ans1) - ans3)
 coeffs(diff)
 ```
@@ -358,7 +362,7 @@ $$
 
 We may verify all four together:
 
-```{r}
+```{r label=verifyallfour}
 x <- c(-6,5,7)  # u,v,w as before
 c(
   hodge(as.1form(u) ^ vcp3(v,w))        == as.1form(v*sum(w*u) - w*sum(u*v)),
