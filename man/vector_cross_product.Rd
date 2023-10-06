@@ -35,7 +35,11 @@ vcp3(u,v)
 }
 \value{Returns a vector}
 \details{
-See vignette \code{vector_cross_product}
+
+A joint function profile for \code{vector_cross_product()} and
+\code{vcp3()} is given with the package at
+\code{vignette("vector_cross_product")}.
+
 }
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{cross}}}
