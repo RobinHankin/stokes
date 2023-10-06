@@ -1,5 +1,5 @@
 ---
-title: "Function `vector_cross_product()` in the `stokes` package"
+title: "Functions `vector_cross_product()` and `vcp3()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
 bibliography: stokes.bib
@@ -27,14 +27,39 @@ registerS3method(
 )
 ```
 
-```{r, label=showfunc}
+```{r, label=showfunc1,comment=""}
 vector_cross_product
 ```
 
-@spivak1965, p83, considers the standard vector cross product
-$\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i & j & k \\
+```{r setup2, include=FALSE}
+knit_print.function <- function(x, ...){
+a <- capture.output(print(x))
+paste(gsub(" " ,"",a[seq(from=1,to=length(a)-2)]),collapse="")
+}
+registerS3method(
+  "knit_print", "function", knit_print.function,
+  envir = asNamespace("knitr")
+)
+```
+
+```{r, label=showfunc2,comment=""}
+vcp3
+```
+
+To cite the `stokes` package in publications, please use
+@hankin2022_stokes.  The *vector cross product* of two vectors
+$\mathbf{u},\mathbf{v}\in\mathbb{R}^3$, denoted
+$\mathbf{u}\times\mathbf{v}$, is defined in elementary mechanics as
+$|\mathbf{u}||\mathbf{v}|\sin(\theta)\,\mathbf{n}$, where $\theta$ is
+the angle between $\mathbf{u}$ and $\mathbf{v}$, and $\mathbf{n}$ is
+the unit vector perpendicular to $\mathbf{u}$ and $\mathbf{v}$ such
+that $(\mathbf{u},\mathbf{v},\mathbf{n})$ is positively oriented.
+Vector cross products find wide applications in physics, engineering,
+and computer science.  @spivak1965 considers the standard vector cross
+product $\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i & j & k \\
 u_1&u_2&u_3\\ v_1&v_2&v_3 \end{pmatrix}$ and places it in a more
 general and rigorous context.  In a memorable passage, he states:
+
 
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
@@ -97,7 +122,7 @@ v_1&v_2&v_3
 
 ## R implementation {-}
 
-In the package [@hankin2022_stokes], R function
+In the `stokes` package [@hankin2022_stokes], R function
 `vector_cross_product()` takes a matrix with $n$ rows and $n-1$
 columns: the transpose of the work above.  This is because `stokes`
 (and `R`) convention is to interpret _columns_ of a matrix as vectors.
@@ -304,7 +329,7 @@ However, note that 3D vector cross products are implemented in the
 package as function `vcp3()`, which uses different idiom:
 
 ```{r showvcp3}
-body(vcp3)
+vcp3
 ```   
 
 This is preferable on the grounds that coercion to a 1-form is
