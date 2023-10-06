@@ -1,7 +1,8 @@
 ---
-title: "`wedge()` and related functions in the `stokes` package"
+title: "Functions `wedge()` and `wedge2()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: stokes.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{wedge}
@@ -9,24 +10,29 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+set.seed(0)
 library("stokes")
 library("spray")  # needed for spraycross()
-set.seed(0)
+options(rmarkdown.html_vignette.check_title = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
+knit_print.function <- function(x, ...){dput(x)}
+registerS3method(
+  "knit_print", "function", knit_print.function,
+  envir = asNamespace("knitr")
+)
 ```
 
-<p style="text-align: right;">
-![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
-</p>
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+```
 
-```{r}
+```{r, label=showwedge,comment=""}
 wedge
 wedge2
 ```
 
-[the meat of `wedge2()` is `kform(spraycross(K1, K2))`].
-
-Spivak, in a memorable passage, states:
+To cite the `stokes` package in publications, please use
+@hankin2022_stokes.  In a memorable passage, @spivak1965 states:
 
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
@@ -57,9 +63,10 @@ $k$-forms, although the idiom is somewhat opaque, especially the
 ## Digression: function `spraycross()`
 
 Function `wedge()` is essentially a convenience wrapper for
-`spraycross()`.  Function `spraycross()` it is part of the `spray`
-package and gives a tensor product of sparse arrays, interpreted as
-multivariate polynomials:
+`spraycross()`; the meat of `wedge2()` is the last line:
+`kform(spraycross(K1, K2))`.  Function `spraycross()` is part of the
+`spray` package and gives a tensor product of sparse arrays,
+interpreted as multivariate polynomials:
 
 ```{r}
 (a <- spray(matrix(1:4,2,2),c(2,5)))
@@ -165,7 +172,7 @@ $\omega,\omega_i\in\Lambda^k(V)$ and $\eta,\eta_i\in\Lambda^l(V)$ then
 \end{eqnarray}
 
 (that is, the wedge product is left- and right- distributive); if
-$a\in\mathcal{R}$ then
+$a\in\mathbb{R}$ then
 
 \begin{equation}
 a\omega\wedge\eta = \omega\wedge a\eta=a(\omega\wedge\eta)
@@ -173,15 +180,16 @@ a\omega\wedge\eta = \omega\wedge a\eta=a(\omega\wedge\eta)
 
 and
 \begin{equation}
-\omega\wedge\eta = (-1)^{kl}\eta\wedge\omega\\\
+\omega\wedge\eta = (-1)^{kl}\eta\wedge\omega.
 \end{equation}
 
 These rules make expansion of wedge products possible by expressing a
-general kform in terms of basis for $\Lambda^k(V)$.  Spivak tells us
-that, if $v_1,\ldots,v_k$ is a basis for $V$, then the set of all
+general kform in terms of a basis for $\Lambda^k(V)$.  @spivak1965
+tells us that, if $v_1,\ldots,v_k$ is a basis for $V$, then the set of
+all
 
 \begin{equation}
-\phi_{i_1}\wedge\phi_{i_2}\wedge\cdots\wedge\phi_{i_k}\qquad 1\leq i_1 < \cdots < i_n\leq n
+\phi_{i_1}\wedge\phi_{i_2}\wedge\cdots\wedge\phi_{i_k}\qquad 1\leq i_1 < \cdots < i_k\leq n
 \end{equation}
 
 is a basis for $\Lambda^k(V)$ where $\phi_i(v_j)=\delta_{ij}$.  The
@@ -222,3 +230,5 @@ wedge(omega,eta)
 ```
 
 See how function `wedge()` does the legwork.
+
+# References

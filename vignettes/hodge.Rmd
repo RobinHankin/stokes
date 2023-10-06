@@ -2,6 +2,7 @@
 title: "The `hodge()` function in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: stokes.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{hodge}
@@ -9,28 +10,34 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-options(rmarkdown.html_vignette.check_title = FALSE)
+set.seed(0)
 library("permutations")
 library("stokes")
+options(rmarkdown.html_vignette.check_title = FALSE)
 options(polyform = FALSE)
-set.seed(1)
+knitr::opts_chunk$set(echo = TRUE)
+knit_print.function <- function(x, ...){dput(x)}
+registerS3method(
+  "knit_print", "function", knit_print.function,
+  envir = asNamespace("knitr")
+)
 ```
 
-<p style="text-align: right;">
-![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
-</p>
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+```
 
-```{r showhodgefirst}
+```{r, label=showhodge,comment=""}
 hodge
 ```
 
-Given a $k$-form $\beta$, function `hodge()` returns its Hodge dual
-$\star\beta$.  Formally, if $V={\mathbb R}^n$, and $\Lambda^k(V)$ is
-the space of alternating linear maps from $V^k$ to ${\mathbb R}$, then
-$\star\colon\Lambda^k(V)\longrightarrow\Lambda^{n-k}(V)$.
-
-To define the Hodge dual, we need an inner product
+To cite the `stokes` package in publications, please use
+@hankin2022_stokes.  Given a $k$-form $\beta$, function `hodge()`
+returns its Hodge dual $\star\beta$.  Formally, if $V={\mathbb R}^n$,
+and $\Lambda^k(V)$ is the space of alternating linear maps from $V^k$
+to ${\mathbb R}$, then
+$\star\colon\Lambda^k(V)\longrightarrow\Lambda^{n-k}(V)$.  To define
+the Hodge dual, we need an inner product
 $\left\langle\cdot,\cdot\right\rangle$ [function `kinner()` in the
 package] and, given this and $\beta\in\Lambda^k(V)$ we define
 $\star\beta$ to be the (unique) $n-k$-form satisfying the fundamental
@@ -41,10 +48,9 @@ $$
 
 for every $\alpha\in\Lambda^k(V)$.  Here $\omega=e_1\wedge
 e_2\wedge\cdots\wedge e_n$ is the unit $n$-vector of $\Lambda^n(V)$.
-Taking determinants of this relation shows the following.
-
-If we use multi-index notation so $e_I=e_{i_1}\wedge\cdots\wedge
-e_{i_k}$ with $I=\left\lbrace i_1,\cdots,i_k\right\rbrace$, then
+Taking determinants of this relation shows the following.  If we use
+multi-index notation so $e_I=e_{i_1}\wedge\cdots\wedge e_{i_k}$ with
+$I=\left\lbrace i_1,\cdots,i_k\right\rbrace$, then
 
 $$\star e_I=(-1)^{\sigma(I)}e_J$$
 
@@ -56,7 +62,7 @@ i_kj_1\cdots j_{n-k}$.  We extend to the whole of $\Lambda^k(V)$ using
 linearity.  Package idiom for calculating the Hodge dual is
 straightforward, being simply `hodge()`.
 
-```{r, include = FALSE}
+```{r, label=setsymbprint,include = FALSE}
 options(kform_symbolic_print = NULL)
 ```
 
@@ -85,7 +91,7 @@ $\omega_2\wedge\omega_6\wedge\omega_7$.  f $V=\mathbb{R}^9$, what is
 $\star\omega_2\wedge\omega_6\wedge\omega_7$?
 
 
-```{r}
+```{r,label=simpexamp}
 (a <- d(2) ^ d(6) ^ d(7))
 hodge(a,9)
 ```
@@ -226,12 +232,11 @@ $\beta=\beta_1\wedge\cdots\wedge\beta_k$ as
 $$\left\langle\alpha,\beta\right\rangle=
 \det\left(\left\langle\alpha_i,\beta_j\right\rangle_{i,j}\right)$$
 
-where $\left\langle\alpha_i,\beta_j\right\rangle=\pm\delta_ij$ is an
+where $\left\langle\alpha_i,\beta_j\right\rangle=\pm\delta_{ij}$ is an
 inner product on $\Lambda^1(V)$ [the inner product is given by
 `kinner()`].  The resulting Hodge star operator is implemented in the
-package and one can specify the metric.
-For example, if we consider the Minkowski metric this would be
-$-1,1,1,1$.
+package and one can specify the metric.  For example, if we consider
+the Minkowski metric this would be $-1,1,1,1$.
 
 ## Print methods for the Minkowski metric
 
@@ -266,3 +271,5 @@ hodge(o)-hodge(o,g=c(-1,1,1,1))
 ```{r reset_default_print_method, include=FALSE}
 options(kform_symbolic_print = NULL)
 ```
+
+# References

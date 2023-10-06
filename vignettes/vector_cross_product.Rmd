@@ -46,6 +46,10 @@ registerS3method(
 vcp3
 ```
 
+```{r, resetdefaults,include=FALSE}
+
+```
+
 To cite the `stokes` package in publications, please use
 @hankin2022_stokes.  The *vector cross product* of two vectors
 $\mathbf{u},\mathbf{v}\in\mathbb{R}^3$, denoted

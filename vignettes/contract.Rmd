@@ -1,7 +1,8 @@
 ---
-title: "`contract()` and related functions in the `stokes` package"
+title: "Functions `contract()` and `contract_elementary()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: stokes.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{contract}
@@ -9,29 +10,34 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-options(rmarkdown.html_vignette.check_title = FALSE)
+set.seed(0)
 library("stokes")
 library("spray")
 library("disordR")
 library("magrittr")
-set.seed(0)
+knitr::opts_chunk$set(echo = TRUE)
+options(rmarkdown.html_vignette.check_title = FALSE)
+knit_print.function <- function(x, ...){dput(x)}
+registerS3method(
+  "knit_print", "function", knit_print.function,
+  envir = asNamespace("knitr")
+)
 ```
 
-<p style="text-align: right;">
-![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
-</p>
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+```
 
-```{r}
+```{r,label=showcontract,comment=""}
 contract
 contract_elementary
 ```
 
-## Contractions
-
-Given a $k$-form $\phi\colon V^k\longrightarrow\mathbb{R}$ and a
-vector $\mathbf{v}\in V$, the _contraction_ $\phi_\mathbf{v}$ of
-$\phi$ and $\mathbf{v}$ is a $k-1$-form with
+To cite the `stokes` package in publications, please use
+@hankin2022_stokes.  Given a $k$-form $\phi\colon
+V^k\longrightarrow\mathbb{R}$ and a vector $\mathbf{v}\in V$, the
+_contraction_ $\phi_\mathbf{v}$ of $\phi$ and $\mathbf{v}$ is a
+$k-1$-form with
 
 \[
   \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
@@ -39,14 +45,14 @@ $\phi$ and $\mathbf{v}$ is a $k-1$-form with
 \]
 
 provided $k>1$; if $k=1$ we specify
-$\phi_\mathbf{v}=\phi(\mathbf{v})$.  Function `contract_elementary()`
-is a low-level helper function that translates elementary $k$-forms
-with coefficient 1 (in the form of an integer vector corresponding to
-one row of an index matrix) into its contraction with $\mathbf{v}$;
-function `contract()` is the user-friendly front end.
-
-We will start with some simple examples.  I will use `phi` and $\phi$
-to represent the same object.
+$\phi_\mathbf{v}=\phi(\mathbf{v})$.  If @spivak1965 does discuss this,
+I have forgotten it.  Function `contract_elementary()` is a low-level
+helper function that translates elementary $k$-forms with coefficient
+1 (in the form of an integer vector corresponding to one row of an
+index matrix) into its contraction with $\mathbf{v}$; function
+`contract()` is the user-friendly front end.  We will start with some
+simple examples.  I will use `phi` and $\phi$ to represent the same
+object.
 
 ```{r label=simpleexample}
 (phi <- as.kform(1:5))
@@ -135,7 +141,8 @@ contract(a*phi + b*psi,v) == a*contract(phi,v) + b*contract(psi,v)
 
 ## Contraction of products
 
-Weintraub gives us the following theorem, for any $k$-form  $\phi$ and $l$-form $\psi$:
+@weintraub2014 gives us the following theorem, for any $k$-form $\phi$
+and $l$-form $\psi$:
 
 \[
 \left(\phi\wedge\psi\right)_\mathbf{v} = 
@@ -392,5 +399,3 @@ Well it might be clearer to Hadley but frankly YMMV.
 
 ## References
 
-* M. Spivak 1968.  _Calculus on manifolds_.  Perseus Books
-* S. T. Weintraub 2014. _Differential forms: theory and practice_.  Elsevier.

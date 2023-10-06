@@ -2,6 +2,7 @@
 title: "The `Alt()` function in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: stokes.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Alt}
@@ -9,21 +10,27 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
+set.seed(0)
+library("stokes")
 options(rmarkdown.html_vignette.check_title = FALSE)
 knitr::opts_chunk$set(echo = TRUE)
-library("stokes")
-set.seed(0)
+knit_print.function <- function(x, ...){dput(x)}
+registerS3method(
+  "knit_print", "function", knit_print.function,
+  envir = asNamespace("knitr")
+)
 ```
 
-<p style="text-align: right;">
-![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
-</p>
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+```
 
-```{r}
+```{r, label=showAlt,comment=""}
 Alt
 ```
 
-Spivak, in a memorable passage, states:
+To cite the `stokes` package in publications, please use
+@hankin2022_stokes.  In a memorable passage, @spivak1965 states:
 
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
@@ -350,3 +357,5 @@ c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```
 
 Above we see agreement to within numerical error.
+
+## References

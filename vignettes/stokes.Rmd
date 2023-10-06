@@ -9,6 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+# The `stokes` package
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -17,11 +18,9 @@ library("stokes")
 set.seed(1)
 ```
 
-<p style="text-align: right;">
-![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
-</p>
-
-# The exterior calculus
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+```
 
 To cite the `stokes` package in publications please use
 [@hankin2022_stokes].  Ordinary differential calculus may be

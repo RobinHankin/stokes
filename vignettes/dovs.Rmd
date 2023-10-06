@@ -1,7 +1,8 @@
 ---
-title: "The `dovs()` function in the `stokes` package: the dimension of the underlying vector space"
+title: "Function `dovs()` function in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: stokes.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{dovs}
@@ -9,27 +10,34 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-options(rmarkdown.html_vignette.check_title = FALSE)
-library("stokes")
 set.seed(0)
+library("stokes")
+options(rmarkdown.html_vignette.check_title = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
+knit_print.function <- function(x, ...){dput(x)}
+registerS3method(
+  "knit_print", "function", knit_print.function,
+  envir = asNamespace("knitr")
+)
 ```
 
-<p style="text-align: right;">
-![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
-</p>
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+```
 
-```{r showdovspackagedefinition}
+```{r, label=showAlt,comment=""}
 dovs
 ```
 
-Function `dovs()` returns the dimensionality of the underlying vector
-space of a $k$-form.  Recall that a $k$-form is an alternating linear
-map from $V^k$ to $\mathbb{R}$, where $V=\mathbb{R}^n$.  Function
-`dovs()` returns $n$ [compare `arity()`, which returns $k$].  As seen
-above, the function is very simple, essentially being `max(index(K))`,
-but its use is not entirely straightforward in the context of `stokes`
-idiom.  Consider the following:
+To cite the `stokes` package in publications, please use
+@hankin2022_stokes.  Function `dovs()` returns the dimensionality of
+the underlying vector space of a $k$-form.  Recall that a $k$-form is
+an alternating linear map from $V^k$ to $\mathbb{R}$, where
+$V=\mathbb{R}^n$ [@spivak1965].  Function `dovs()` returns $n$
+[compare `arity()`, which returns $k$].  As seen above, the function
+is very simple, essentially being `max(index(K))`, but its use is not
+entirely straightforward in the context of `stokes` idiom.  Consider
+the following:
 
 ```{r showrform}
 set.seed(0)
@@ -118,3 +126,5 @@ hodge(dx,3)
 ```{r reset_default_print_method, include=FALSE}
 options(kform_symbolic_print = NULL)
 ```
+
+# References

@@ -2,6 +2,7 @@
 title: "Objects `dx`, `dy`, and `dz` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: stokes.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{dx}
@@ -9,15 +10,16 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
+set.seed(0)
+library("stokes")
 knitr::opts_chunk$set(echo = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
-library("stokes")
-set.seed(0)
 ```
 
-<p style="text-align: right;">
-![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
-</p>
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+```
+
 
 ```{r label=definedxdydz}
 dx <- d(1)
@@ -25,10 +27,12 @@ dy <- d(2)
 dz <- d(3)
 ```
 
-Convenience objects `dx`, `dy`, and `dz` are discussed here.  The
-conjugate basis vectors `i`, `j` and `k` are discussed in `ijk.Rmd`.
-
-Spivak, in a memorable passage, states (p89):
+To cite the `stokes` package in publications, please use
+@hankin2022_stokes.  Convenience objects `dx`, `dy`, and `dz`,
+corresponding to elementary differential forms, are discussed here.
+The conjugate basis vectors `i`, `j` and `k` are discussed in
+`ijk.Rmd`, and basis vectors $e_1$, $e_2$, $e_2$ are discussed in
+`ex.Rmd`.  @spivak1965, in a memorable passage, states (p89):
 
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
@@ -180,3 +184,4 @@ the package.
 save(dx,dy,dz,file="dx.rda")
 ```
 
+# References

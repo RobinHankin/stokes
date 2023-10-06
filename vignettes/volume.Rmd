@@ -2,6 +2,7 @@
 title: "Function `volume()` in the Stokes package"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: stokes.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{volume}
@@ -9,21 +10,27 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-options(rmarkdown.html_vignette.check_title = FALSE)
-library("stokes")
 set.seed(0)
+library("stokes")
+options(rmarkdown.html_vignette.check_title = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
+knit_print.function <- function(x, ...){dput(x)}
+registerS3method(
+  "knit_print", "function", knit_print.function,
+  envir = asNamespace("knitr")
+)
 ```
 
-<p style="text-align: right;">
-![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
-</p>
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+```
 
-```{r}
+```{r, label=showvol,comment=""}
 volume
 ```
 
-Spivak, in a memorable passage, states (p83):
+To cite the `stokes` package in publications, please use
+@hankin2022_stokes.  @spivak1965, in a memorable passage, states:
 
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
@@ -98,7 +105,7 @@ c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```
 
 Now we create $w_1,\ldots,w_n$, another orthonormal set.  We may
-verify by generating a random orthogonal matrix and permutiting its
+verify by generating a random orthogonal matrix and permuting its
 rows:
 
 ```{r}
@@ -109,3 +116,5 @@ c(f(M1),f(M2))
 
 Above we see that the volume element of `M1` and `M2` are $\pm1$ to
 within numerical precision.
+
+# References
