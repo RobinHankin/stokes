@@ -29,10 +29,9 @@ ez <- e(3,3)
 
 To cite the `stokes` package in publications, please use
 @hankin2022_stokes.  Convenience objects `ex`, `ey`, and `ez` are
-discussed here.  Elementary forms `dx`, `dy` and `dz` are discussed in
-`dx.Rmd`, and conjugate basis vectors `i`, `j` and `k` are discussed
-in `ijk.Rmd`.  The dual basis to $(dx,dy,dz)$ is, depending on
-context, written $(e_x,e_y,e_z)$, or $(i,j,k)$ or sometimes
+discussed here (related package functionality is discussed in
+`dx.Rmd`).  The dual basis to $(dx,dy,dz)$ is, depending on context,
+written $(e_x,e_y,e_z)$, or $(i,j,k)$ or sometimes
 $\left(\frac{\partial}{\partial x},\frac{\partial}{\partial
 x},\frac{\partial}{\partial x}\right)$.  Here they are denoted `ex`,
 `ey`, and `ez` (rather than `i`,`j`,`k` which cause problems in the

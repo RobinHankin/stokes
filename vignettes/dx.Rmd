@@ -29,10 +29,9 @@ dz <- d(3)
 
 To cite the `stokes` package in publications, please use
 @hankin2022_stokes.  Convenience objects `dx`, `dy`, and `dz`,
-corresponding to elementary differential forms, are discussed here.
-The conjugate basis vectors `i`, `j` and `k` are discussed in
-`ijk.Rmd`, and basis vectors $e_1$, $e_2$, $e_2$ are discussed in
-`ex.Rmd`.  @spivak1965, in a memorable passage, states (p89):
+corresponding to elementary differential forms, are discussed here
+(basis vectors $e_1$, $e_2$, $e_2$ are discussed in `ex.Rmd`).
+@spivak1965, in a memorable passage, states (p89):
 
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
