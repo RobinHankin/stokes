@@ -20,7 +20,7 @@
   Extract and manipulate coefficients of ktensor and kform objects;
   this using the methods of the \CRANpkg{spray} package.
 
-  Functions \code{as.spray()} and \code{nterms()} are imoported from
+  Functions \code{as.spray()} and \code{nterms()} are imported from
   \CRANpkg{spray}.
 
 }

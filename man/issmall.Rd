@@ -19,7 +19,7 @@ M <- matrix(rnorm(9),3,3)
 
 discrepancy <- o - pullback(pullback(o,M),solve(M))
 
-discrepancy # print method might imply coefficents are zeros
+discrepancy # print method might imply coefficients are zeros
 
 issmall(discrepancy)  # should be TRUE
 is.zero(discrepancy)  # might be FALSE
