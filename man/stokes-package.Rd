@@ -27,11 +27,13 @@ Maintainer: \packageMaintainer{stokes}
 }
 \references{
   \itemize{
-    \item J. H. Hubbard and B. B. Hubbard 2015.  \emph{Vector
-      calculus, linear algebra and differential forms: a unified
-      approach}.  Ithaca, NY.
     \item M. Spivak 1971. \emph{Calculus on manifolds},
     Addison-Wesley.
+    \item R. K. S. Hankin 2022.  \dQuote{Disordered vectors in \R:
+    introducing the \CRANpkg{disordR} package.}
+    \url{https://arxiv.org/abs/2210.03856}.
+    \item R. K. S. Hankin 2022.  \dQuote{Sparse arrays in \R: the
+    \CRANpkg{spray} package.  \url{https://arxiv.org/abs/2210.03856}.}
   }
 }
 \keyword{ package }
