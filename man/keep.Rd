@@ -2,7 +2,6 @@
 \alias{keep}
 \alias{discard}
 \alias{retain}
-\alias{drop.free}
 \title{Keep or drop variables}
 \description{Keep or drop variables}
 \usage{
@@ -12,7 +11,7 @@ discard(K, no)
 \arguments{
   \item{K}{Object of class \code{kform}}
   \item{yes,no}{Specification of dimensions to either keep (yes) or discard 
-    (no), coerced to a free object}
+    (no)}
 }
 \details{
   Function \code{keep(omega,yes)} keeps the terms specified and
