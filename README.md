@@ -61,7 +61,7 @@ set.seed(0)
 The package has two main classes of objects, `kform` and `ktensor`. In
 the package, we can create a
 ![k](https://latex.codecogs.com/png.latex?k "k")-tensor by supplying
-function `as.ktensor()` a matrix of indices and a vector of coefficents,
+function `as.ktensor()` a matrix of indices and a vector of coefficients,
 for example:
 
 ``` r
