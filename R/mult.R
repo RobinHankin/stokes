@@ -455,6 +455,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
 }
 
 `vector_cross_product` <- function(M){
+    stopifnot(is.matrix(M))
     n <- nrow(M)
     stopifnot(n==ncol(M)+1)
     (-1)^n*sapply(seq_len(n),function(i){(-1)^i*det(M[-i,,drop=FALSE])})
@@ -526,3 +527,4 @@ setGeneric("lose",function(x){standardGeneric("lose")})
 }
 
 setGeneric("sort")
+
