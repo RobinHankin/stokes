@@ -83,7 +83,7 @@ $$
 \det\left(\begin{array}{c}v_1\\ \vdots\\ v_{n-1}\\w\end{array}\right).
 $$	
 
-This $z$ is denoted $v_1\times\ldots\times v_{n-1}$ and is called the
+This $z$ is denoted $v_1\times\cdots\times v_{n-1}$ and is called the
 *cross product* of $v_1,\ldots,v_{n-1}$.
 
 </p>
