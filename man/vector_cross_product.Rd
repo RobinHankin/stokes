@@ -16,7 +16,7 @@
 
 Function \code{vcp3()} is a convenience wrapper for this.  However, the
 vector cross product may easily be generalized to a product of
-\mjseqn{n-1}-tuples of vectors in \mjeqn{\mathbb{R}^3}{R^n}, given by
+\mjseqn{n-1}-tuples of vectors in \mjeqn{\mathbb{R}^n}{R^n}, given by
 package function \code{vector_cross_product()}.
 
 Vignette \code{vector_cross_product}, supplied with the package, gives

@@ -44,6 +44,7 @@
 }
 
 `kill_trivial_rows` <- function(S){
+    
     I <- index(S)
     if(length(I)>0){  # cannot use nrow(I)==0, as 'I' might be NULL
       wanted <- apply(I,1,function(x){all(table(x)==1)})
@@ -456,7 +457,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
 `vector_cross_product` <- function(M){
     n <- nrow(M)
     stopifnot(n==ncol(M)+1)
-    (-1)^n*sapply(seq_len(n),function(i){(-1)^i*det(M[-i,])})
+    (-1)^n*sapply(seq_len(n),function(i){(-1)^i*det(M[-i,,drop=FALSE])})
 }
 
 `vcp3` <- function(u,v){hodge(as.1form(u) ^ as.1form(v))}

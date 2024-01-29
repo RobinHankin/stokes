@@ -144,6 +144,17 @@ But of course we can work with higher dimensional spaces:
 vector_cross_product(matrix(rnorm(30),6,5))
 ```
 
+In the case $n=2$ the vector cross product becomes a unary operator of
+a _single_ vector $\left(u,v\right)\in\mathbb{R}^2$, returning its
+argument rotated counterclockwise by $\pi/2$; we might write
+${\times}{\left(u,v\right)=\left(-v,u\right)}$.  Numerically:
+
+```{r showvectorcrossproductunary}
+vector_cross_product(rbind(3,7))
+```
+
+
+
 # Verification
 
 ## Orientation

@@ -1,7 +1,7 @@
 Package: stokes
 Type: Package
 Title: The Exterior Calculus
-Version: 1.2-0
+Version: 1.2-1
 Depends: R (>= 3.5.0)
 Suggests: 
     knitr,
@@ -10,7 +10,8 @@ Suggests:
     markdown,
     rmarkdown,
     emulator,
-    magrittr
+    magrittr,
+    covr
 VignetteBuilder: knitr
 Imports: permutations (>= 1.1-2), partitions, methods, mathjaxr, disordR (>= 0.9-7), spray (>= 1.0-24)
 Authors@R: person(
