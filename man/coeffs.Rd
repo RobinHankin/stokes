@@ -47,6 +47,11 @@ coeffs(a)[coeffs(a)\%\%2==1] <- 100  # replace every odd coeff with 100
 a
 
 coeffs(a*0)
+
+a <- rform()
+a[coeffs(a) < 5]         # experimental
+a[coeffs(a) > 3] <- 99   # experimental
+
 }
 
 \keyword{symbolmath}
