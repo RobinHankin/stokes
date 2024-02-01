@@ -55,5 +55,3 @@ S3method("print",summary.kform)
 S3method("summary",ktensor)
 S3method("print",summary.ktensor)
 
-S3method("[",kform)
-S3method("[<-",)
