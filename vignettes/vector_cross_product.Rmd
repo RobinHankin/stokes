@@ -13,7 +13,6 @@ vignette: >
 knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
 ```
 
-
 ```{r setup, include=FALSE}
 set.seed(0)
 knitr::opts_chunk$set(echo = TRUE)
@@ -57,16 +56,16 @@ $\mathbf{u}\times\mathbf{v}$, is defined in elementary mechanics as
 $|\mathbf{u}||\mathbf{v}|\sin(\theta)\,\mathbf{n}$, where $\theta$ is
 the angle between $\mathbf{u}$ and $\mathbf{v}$, and $\mathbf{n}$ is
 the unit vector perpendicular to $\mathbf{u}$ and $\mathbf{v}$ such
-that $(\mathbf{u},\mathbf{v},\mathbf{n})$ is positively oriented.
-Vector cross products find wide applications in physics, engineering,
-and computer science.  @spivak1965 considers the standard vector cross
-product $\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i & j & k \\
-u_1&u_2&u_3\\ v_1&v_2&v_3 \end{pmatrix}$ and places it in a more
-general and rigorous context.  In a memorable passage, he states:
+that $(\mathbf{u},\mathbf{v},\mathbf{n})$ is positively
+oriented. Vector cross products find wide applications in physics,
+engineering, and computer science. @spivak1965 considers the standard
+vector cross product $\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i
+& j & k \\ u_1&u_2&u_3\\ v_1&v_2&v_3 \end{pmatrix}$ and places it in a
+more general and rigorous context. In a memorable passage, he states:
 
-
-<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+::: {.warning style="padding:0.1em; background-color:#E9D8FD; color:#69337A"}
 <span>
+
 <p>
 
 If $v_1,\ldots,v_{n-1}\in\mathbb{R}^n$ and $\phi$ is defined by
@@ -81,15 +80,21 @@ unique $z\in\mathbb{R}^n$ such that
 $$
 \left\langle w,z\right\rangle=\phi(w)=
 \det\left(\begin{array}{c}v_1\\ \vdots\\ v_{n-1}\\w\end{array}\right).
-$$	
+$$
 
 This $z$ is denoted $v_1\times\cdots\times v_{n-1}$ and is called the
 *cross product* of $v_1,\ldots,v_{n-1}$.
 
 </p>
-<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Pages 83-84</i>
-</p></span>
-</div>
+
+<p style="margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia">
+
+<b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books). Pages 83-84</i>
+
+</p>
+
+</span>
+:::
 
 The reason for $\mathbf{w}$ being at the bottom rather than the top is
 to ensure that the $n$-tuple
@@ -98,7 +103,7 @@ orientation with respect to the standard basis vectors of
 $\mathbb{R}^n$.  In $\mathbb{R}^3$ we get the standard elementary
 mnemonic for $\mathbf{u}=(u_1,u_2,u_3)$, $\mathbf{v}=(v_1,v_2,v_3)$:
 
-\[
+$$
 \mathbf{u}\times\mathbf{v}=
 \mathrm{det}
 \begin{pmatrix}
@@ -106,14 +111,14 @@ i&j&k\\
 u_1&u_2&u_3\\
 v_1&v_2&v_3
 \end{pmatrix}.
-\]
+$$
 
 This is (universal) shorthand for the formal definition of the cross
 product, although sometimes it is better to return to Spivak's
 formulation and, writing $\mathbf{w}=(w_1,w_2,w_3)$, use the
 definition directly obtaining
 
-\[
+$$
 (\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}=
 \mathrm{det}
 \begin{pmatrix}
@@ -121,17 +126,16 @@ w_1&w_2&w_3\\
 u_1&u_2&u_3\\
 v_1&v_2&v_3
 \end{pmatrix}.
-\]
-
+$$
 
 ## R implementation {-}
 
 In the `stokes` package [@hankin2022_stokes], R function
 `vector_cross_product()` takes a matrix with $n$ rows and $n-1$
-columns: the transpose of the work above.  This is because `stokes`
-(and `R`) convention is to interpret _columns_ of a matrix as vectors.
-If we wanted to take the cross product of $\mathbf{u}=(5,-2,1)$ with
-$\mathbf{v}=(1,2,0)$:
+columns: the transpose of the work above. This is because `stokes`
+(and `R`) convention is to interpret *columns* of a matrix as
+vectors. If we wanted to take the cross product of
+$\mathbf{u}=(5,-2,1)$ with $\mathbf{v}=(1,2,0)$:
 
 ```{r label=521120}
 (M <- cbind(c(5,-2,1),c(1,2,0)))
@@ -145,21 +149,16 @@ vector_cross_product(matrix(rnorm(30),6,5))
 ```
 
 In the case $n=2$ the vector cross product becomes a unary operator of
-a _single_ vector $\left(u,v\right)\in\mathbb{R}^2$, returning its
-argument rotated counterclockwise by $\pi/2$; we might write
-${\times}{\left(u,v\right)=\left(-v,u\right)}$.  Numerically:
-
-```{r showvectorcrossproductunary}
-vector_cross_product(rbind(3,7))
-```
-
+a *single* vector $\left(u,v\right)\in\mathbb{R}^2$, returning its
+argument rotated counterclockwise by $\pi/2$; this case is discussed
+at the end, along with $n=1$.
 
 
 # Verification
 
 ## Orientation
 
-We can demonstrate that the function has the correct orientation.  We
+We can demonstrate that the function has the correct orientation. We
 need to ensure that the vectors
 $\mathbf{v}_1,\ldots,\mathbf{v}_n,\mathbf{v}_1\times\cdots\times\mathbf{v}_n$
 constitute a right-handed basis:
@@ -168,8 +167,7 @@ constitute a right-handed basis:
 det(cbind(M,vector_cross_product(M)))>0
 ```
 
-So it is right-handed in this case.  Here is a more severe test of the
-right-handedness::
+So it is right-handed in this case. Here is a more severe test of the right-handedness::
 
 ```{r label=severecheck}
 f <- function(n){
@@ -237,8 +235,7 @@ a\cdot
 \mathbf{v}_{n}
 \]
 
-For the first we use a permutation `sigma` from the `permutations`
-package [@hankin2020] with a sign of $-1$:
+For the first we use a permutation `sigma` from the `permutations` package [@hankin2020] with a sign of $-1$:
 
 ```{r verifyspivakfirst}
 M <- matrix(rnorm(30),6,5)
@@ -248,9 +245,7 @@ Mdash <- M[,as.function(sigma)(seq_len(5))]
 vector_cross_product(M) + vector_cross_product(Mdash)
 ```
 
-Above we see that the the two vector cross products add to zero (up to
-numerical precision), as they should because `sigma` is an odd
-permutation.  For the second:
+Above we see that the the two vector cross products add to zero (up to numerical precision), as they should because `sigma` is an odd permutation. For the second:
 
 ```{r verifyspivaksecond}
 Mdash <- M
@@ -258,9 +253,7 @@ Mdash[,3] <- pi*Mdash[,3]
 vector_cross_product(Mdash) - vector_cross_product(M) * pi
 ```
 
-Above we see that the second product is $\pi$ times the first (to
-numerical precision), by linearity of the vector cross product.  For
-the third:
+Above we see that the second product is $\pi$ times the first (to numerical precision), by linearity of the vector cross product. For the third:
 
 ```{r verifyspivakthird}
 M1 <- M
@@ -274,18 +267,11 @@ Msum[,3] <- v1+v2
 vector_cross_product(M1) + vector_cross_product(M2) - vector_cross_product(Msum)
 ```
 
-Above we see that the sum of the first two products is equal to that
-of the third (up to numerical precision), again by linearity of the
-vector cross product.
+Above we see that the sum of the first two products is equal to that of the third (up to numerical precision), again by linearity of the vector cross product.
 
+## Vector products and Hodge
 
-## Vector products and Hodge 
-
-The cross product has a coordinate-free definition as the Hodge
-conjugate of the wedge product of its arguments.  This is not used in
-function `vector_cross_product()` because it is computationally
-inefficient and (I think) prone to numerical roundoff errors.  We may
-verify that the definitions agree, using a six-dimensional test case:
+The cross product has a coordinate-free definition as the Hodge conjugate of the wedge product of its arguments. This is not used in function `vector_cross_product()` because it is computationally inefficient and (I think) prone to numerical roundoff errors. We may verify that the definitions agree, using a six-dimensional test case:
 
 ```{r label=sixdimcheck}
 set.seed(2)
@@ -293,64 +279,43 @@ M <- matrix(rnorm(30),6,5)
 (ans1 <- vector_cross_product(M))
 ```
 
-We can see that `vector_cross_product()` returns an R vector.  To
-verify that this is correct, we compare the output with the value
-calculated directly with the wedge product:
+We can see that `vector_cross_product()` returns an R vector. To verify that this is correct, we compare the output with the value calculated directly with the wedge product:
 
 ```{r label=wedgeprodcheck}
 (jj <- as.1form(M[,1]) ^ as.1form(M[,2]) ^ as.1form(M[,3]) ^ as.1form(M[,4]) ^ as.1form(M[,5]))
 (ans2 <- hodge(jj))
 ```
 
-Above we see agreement between `ans1` and `ans2` although the elements
-might appear in a different order (as per disordR discipline).
-Actually it is possible to produce the same answer using slightly
-slicker idiom:
+Above we see agreement between `ans1` and `ans2` although the elements might appear in a different order (as per disordR discipline). Actually it is possible to produce the same answer using slightly slicker idiom:
 
 ```{r label=slickcheck}
 (ans3 <- hodge(Reduce(`^`,lapply(1:5,function(i){as.1form(M[,i])}))))
 ```
 
-[again note the different order in the output].  Above, we see that
-the output of `vector_cross_product()` [`ans1`] is an ordinary R
-vector, but the direct result [`ans2`] is a 1-form.  In order to
-compare these, we first need to coerce `ans2` to a 1-form and then
-subtract:
+[again note the different order in the output]. Above, we see that the output of `vector_cross_product()` [`ans1`] is an ordinary R vector, but the direct result [`ans2`] is a 1-form. In order to compare these, we first need to coerce `ans2` to a 1-form and then subtract:
 
 ```{r label=subtract1form}
 (diff <- as.1form(ans1) - ans3)
 coeffs(diff)
 ```
 
-Above we see that `ans1` and `ans3` match to within numerical
-precision.
+Above we see that `ans1` and `ans3` match to within numerical precision.
 
-##  Vector cross products in 3 dimensions
+## Vector cross products in 3 dimensions
 
-Taking Spivak's definition at face value, we could define the vector
-cross product $\mathbf{u}\times\mathbf{v}$ of three-vectors
-$\mathbf{u}$ and $\mathbf{v}$ as a map from the tangent space to the
-reals, with $\left(\mathbf{u}\times\mathbf{v}\right)(\mathbf{w})=
-\left(\mathbf{u}\times\mathbf{v}\right)\cdot\mathbf{w}
-=\left(I_\mathbf{u}\right)_\mathbf{v}(\mathbf{w})$, where $I$ is the
-3-volume element and subscripts refer to contraction.  Package idiom
-for this would be:
+Taking Spivak's definition at face value, we could define the vector cross product $\mathbf{u}\times\mathbf{v}$ of three-vectors $\mathbf{u}$ and $\mathbf{v}$ as a map from the tangent space to the reals, with $\left(\mathbf{u}\times\mathbf{v}\right)(\mathbf{w})= \left(\mathbf{u}\times\mathbf{v}\right)\cdot\mathbf{w} =\left(I_\mathbf{u}\right)_\mathbf{v}(\mathbf{w})$, where $I$ is the 3-volume element and subscripts refer to contraction. Package idiom for this would be:
 
 ```{r showalternativevcp,eval=FALSE}
 function(u,v){contract(volume(3),cbind(u,v))}
 ```
 
-However, note that 3D vector cross products are implemented in the
-package as function `vcp3()`, which uses different idiom:
+However, note that 3D vector cross products are implemented in the package as function `vcp3()`, which uses different idiom:
 
 ```{r showvcp3}
 vcp3
-```   
+```
 
-This is preferable on the grounds that coercion to a 1-form is
-explicit.  Suppose we wish to take the vector cross product of
-$\mathbf{u}=\left(1,4,2\right)^T$ and
-$\mathbf{v}=\left(2,1,5\right)^T$:
+This is preferable on the grounds that coercion to a 1-form is explicit. Suppose we wish to take the vector cross product of $\mathbf{u}=\left(1,4,2\right)^T$ and $\mathbf{v}=\left(2,1,5\right)^T$:
 
 ```{r label=definevcp}
 u <- c(1,4,2)
@@ -358,33 +323,21 @@ v <- c(2,1,5)
 (p <- vcp3(u,v))  # 'p' for (cross) product
 ```
 
-Above, note the order of the lines is implementation-specific as per
-`disordR` discipline [@hankin2022_disordR], but the form itself should
-agree with basis vector evaluation given below.  Object `p` is the
-vector cross product of $\mathbf{u}$ and $\mathbf{v}$, but is given as
-a one-form.  We can see the mnemonic in operation by coercing `p` to a
-function and then evaluating this on the three basis vectors of
-$\mathbb{R}^3$:
+Above, note the order of the lines is implementation-specific as per `disordR` discipline [@hankin2022_disordR], but the form itself should agree with basis vector evaluation given below. Object `p` is the vector cross product of $\mathbf{u}$ and $\mathbf{v}$, but is given as a one-form. We can see the mnemonic in operation by coercing `p` to a function and then evaluating this on the three basis vectors of $\mathbb{R}^3$:
 
 ```{r label=ucvijk}
 ucv  <- as.function(p)
 c(i=ucv(ex), j=ucv(ey), k=ucv(ez))
 ```
 
-and we see agreement with the mnemonic
-$\det\begin{pmatrix}i&j&k\\1&4&2\\2&1&5\end{pmatrix}$.  Further, we
-may evaluate the triple cross product
-$(\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}$ by evaluating `ucv()` at
-$\mathbf{w}$.
+and we see agreement with the mnemonic $\det\begin{pmatrix}i&j&k\\1&4&2\\2&1&5\end{pmatrix}$. Further, we may evaluate the triple cross product $(\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}$ by evaluating `ucv()` at $\mathbf{w}$.
 
 ```{r label=ucvw}
 w <- c(1,-3,2)
 ucv(w)
 ```
 
-This shows agreement with the elementary mnemonic
-$\det\begin{pmatrix}1&-3&2\\1&4&2\\2&1&5\end{pmatrix}=7$, as expected
-from linearity.
+This shows agreement with the elementary mnemonic $\det\begin{pmatrix}1&-3&2\\1&4&2\\2&1&5\end{pmatrix}=7$, as expected from linearity.
 
 ## Vector cross product identities
 
@@ -411,5 +364,80 @@ c(
   hodge(hodge(vcp3(u,v)) ^ vcp3(w,x))   == sum(u*w)*sum(v*x) - sum(u*x)*sum(v*w)
 )		  
 ```
-## References
 
+## Edge-cases
+
+Function `vector_cross_product()` takes a matrix with $n$ rows and
+$n-1$ columns.  Here I consider the cases $n=2$ and $n=1$.  Firstly,
+$n=2$.  Going back to Spivak's definition, we see that the cross
+product is a unary operation which takes a single vector
+$\mathbf{v}\in\mathbb{R}^2$; we might write
+${\times}(\mathbf{v})={\times}(v_1,v_2)$.  Formally we define
+
+$$
+\phi(w)=
+\mathrm{det}
+\begin{pmatrix}
+v_1&v_2\\
+w_1&w_2
+\end{pmatrix}
+$$
+
+and seek a vector $\mathbf{z}=(z_1,z_2)\in\mathbb{R}^2$ such that
+$\left\langle\mathbf{w},\mathbf{z}\right\rangle=\phi(\mathbf{w})$.
+Thus $\phi(\mathbf{w})=v_1w_2-v_2w_1$ and we see
+$\mathbf{z}=(-v_2,v_1)$.  Numerically:
+
+
+```{r showunaryvectorcrossproduct}
+vector_cross_product(rbind(4,7))
+```
+
+We see that the vector cross product of a single vector
+$\mathbf{v}\in\mathbb{R}^2$ is vector $\mathbf{v}$ rotated by $\pi/2$
+counterclockwise; the dot product of $\mathbf{v}$ with
+${\times}{\left(\mathbf{v}\right)}$ is zero.
+
+Now we try the even more peculiar case $n=1$, corresponding to a
+matrix with one row and _zero_ columns.  Formally, the cross product
+is a _nullary_ operation which takes zero vectors
+$\mathbf{v}\in\mathbb{R}^1$ and returns a "vector"
+$\mathbf{z}\in\mathbb{R}^1$.  The vector cross product in the case
+$n=1$ is thus a scalar.  Again following Spivak we see that $\phi$ is
+a map from $\mathbb{R}^1$ to the reals, with
+$\phi(w_1)=\det(w_1)=w_1$; we then seek $z_1\in\mathbb{R}$ such that
+$\phi(w_1)=\left\langle w_1,z_1\right\rangle$; so $w_1z_1=w_1$ and
+then $z_1=1$.  Matrices with zero columns and one row are easily
+created in R:
+
+```{r createzerobyonematrix}
+M <- matrix(data=NA,nrow=1,ncol=0)
+M
+dput(M)
+```
+
+Function `vector_cross_product()` takes such an argument:
+
+```{r try vectorcrossproductzerobyone}
+vector_cross_product(M)
+```
+
+thus returning scalar 1 as intended.  Examining the body of
+`vector_cross_product` at the head of the document we see that the
+function boils down to returning the determinant of
+
+```{r showzerobyzeromatrix}
+M[-1,,drop=FALSE]
+```
+
+The determinant of a zero-by-zero matrix is equal to 1 [any zero by
+zero matrix maps $\left\lbrace 0\right\rbrace$ to itself and is thus
+the identity map, which has by definition a determinant of 1].
+Numerically:
+
+```{r calculatedetermiantofzerobyzeromatrix}
+det(matrix(NA,0,0))
+```
+
+
+## References
