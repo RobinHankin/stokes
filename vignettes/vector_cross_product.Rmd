@@ -245,7 +245,9 @@ Mdash <- M[,as.function(sigma)(seq_len(5))]
 vector_cross_product(M) + vector_cross_product(Mdash)
 ```
 
-Above we see that the the two vector cross products add to zero (up to numerical precision), as they should because `sigma` is an odd permutation. For the second:
+Above we see that the the two vector cross products add to zero (up to
+numerical precision), as they should because `sigma` is an odd
+permutation. For the second:
 
 ```{r verifyspivaksecond}
 Mdash <- M
@@ -253,7 +255,9 @@ Mdash[,3] <- pi*Mdash[,3]
 vector_cross_product(Mdash) - vector_cross_product(M) * pi
 ```
 
-Above we see that the second product is $\pi$ times the first (to numerical precision), by linearity of the vector cross product. For the third:
+Above we see that the second product is $\pi$ times the first (to
+numerical precision), by linearity of the vector cross product.  For
+the third:
 
 ```{r verifyspivakthird}
 M1 <- M
@@ -267,11 +271,17 @@ Msum[,3] <- v1+v2
 vector_cross_product(M1) + vector_cross_product(M2) - vector_cross_product(Msum)
 ```
 
-Above we see that the sum of the first two products is equal to that of the third (up to numerical precision), again by linearity of the vector cross product.
+Above we see that the sum of the first two products is equal to that
+of the third (up to numerical precision), again by linearity of the
+vector cross product.
 
 ## Vector products and Hodge
 
-The cross product has a coordinate-free definition as the Hodge conjugate of the wedge product of its arguments. This is not used in function `vector_cross_product()` because it is computationally inefficient and (I think) prone to numerical roundoff errors. We may verify that the definitions agree, using a six-dimensional test case:
+The cross product has a coordinate-free definition as the Hodge
+conjugate of the wedge product of its arguments.  This is not used in
+function `vector_cross_product()` because it is computationally
+inefficient and (I think) prone to numerical roundoff errors.  We may
+verify that the definitions agree, using a six-dimensional test case:
 
 ```{r label=sixdimcheck}
 set.seed(2)
@@ -279,20 +289,29 @@ M <- matrix(rnorm(30),6,5)
 (ans1 <- vector_cross_product(M))
 ```
 
-We can see that `vector_cross_product()` returns an R vector. To verify that this is correct, we compare the output with the value calculated directly with the wedge product:
+We can see that `vector_cross_product()` returns an R vector.  To
+verify that this is correct, we compare the output with the value
+calculated directly with the wedge product:
 
 ```{r label=wedgeprodcheck}
 (jj <- as.1form(M[,1]) ^ as.1form(M[,2]) ^ as.1form(M[,3]) ^ as.1form(M[,4]) ^ as.1form(M[,5]))
 (ans2 <- hodge(jj))
 ```
 
-Above we see agreement between `ans1` and `ans2` although the elements might appear in a different order (as per disordR discipline). Actually it is possible to produce the same answer using slightly slicker idiom:
+Above we see agreement between `ans1` and `ans2` although the elements
+might appear in a different order (as per `disordR`
+discipline).  Actually it is possible to produce the same answer using
+slightly slicker idiom:
 
 ```{r label=slickcheck}
 (ans3 <- hodge(Reduce(`^`,lapply(1:5,function(i){as.1form(M[,i])}))))
 ```
 
-[again note the different order in the output]. Above, we see that the output of `vector_cross_product()` [`ans1`] is an ordinary R vector, but the direct result [`ans2`] is a 1-form. In order to compare these, we first need to coerce `ans2` to a 1-form and then subtract:
+[again note the different order in the output].  Above, we see that
+the output of `vector_cross_product()` [`ans1`] is an ordinary R
+vector, but the direct result [`ans2`] is a 1-form.  In order to
+compare these, we first need to coerce `ans2` to a 1-form and then
+subtract:
 
 ```{r label=subtract1form}
 (diff <- as.1form(ans1) - ans3)
@@ -303,19 +322,30 @@ Above we see that `ans1` and `ans3` match to within numerical precision.
 
 ## Vector cross products in 3 dimensions
 
-Taking Spivak's definition at face value, we could define the vector cross product $\mathbf{u}\times\mathbf{v}$ of three-vectors $\mathbf{u}$ and $\mathbf{v}$ as a map from the tangent space to the reals, with $\left(\mathbf{u}\times\mathbf{v}\right)(\mathbf{w})= \left(\mathbf{u}\times\mathbf{v}\right)\cdot\mathbf{w} =\left(I_\mathbf{u}\right)_\mathbf{v}(\mathbf{w})$, where $I$ is the 3-volume element and subscripts refer to contraction. Package idiom for this would be:
+Taking Spivak's definition at face value, we could define the vector
+cross product $\mathbf{u}\times\mathbf{v}$ of three-vectors
+$\mathbf{u}$ and $\mathbf{v}$ as a map from the tangent space to the
+reals, with $\left(\mathbf{u}\times\mathbf{v}\right)(\mathbf{w})=
+\left(\mathbf{u}\times\mathbf{v}\right)\cdot\mathbf{w}
+=\left(I_\mathbf{u}\right)_\mathbf{v}(\mathbf{w})$, where $I$ is the
+3-volume element and subscripts refer to contraction. Package idiom
+for this would be:
 
 ```{r showalternativevcp,eval=FALSE}
 function(u,v){contract(volume(3),cbind(u,v))}
 ```
 
-However, note that 3D vector cross products are implemented in the package as function `vcp3()`, which uses different idiom:
+However, note that 3D vector cross products are implemented in the
+package as function `vcp3()`, which uses different idiom:
 
 ```{r showvcp3}
 vcp3
 ```
 
-This is preferable on the grounds that coercion to a 1-form is explicit. Suppose we wish to take the vector cross product of $\mathbf{u}=\left(1,4,2\right)^T$ and $\mathbf{v}=\left(2,1,5\right)^T$:
+This is preferable on the grounds that coercion to a 1-form is
+explicit.  Suppose we wish to take the vector cross product of
+$\mathbf{u}=\left(1,4,2\right)^T$ and
+$\mathbf{v}=\left(2,1,5\right)^T$:
 
 ```{r label=definevcp}
 u <- c(1,4,2)
@@ -323,21 +353,33 @@ v <- c(2,1,5)
 (p <- vcp3(u,v))  # 'p' for (cross) product
 ```
 
-Above, note the order of the lines is implementation-specific as per `disordR` discipline [@hankin2022_disordR], but the form itself should agree with basis vector evaluation given below. Object `p` is the vector cross product of $\mathbf{u}$ and $\mathbf{v}$, but is given as a one-form. We can see the mnemonic in operation by coercing `p` to a function and then evaluating this on the three basis vectors of $\mathbb{R}^3$:
+Above, note the order of the lines is implementation-specific as per
+`disordR` discipline [@hankin2022_disordR], but the form itself should
+agree with basis vector evaluation given below.  Object `p` is the
+vector cross product of $\mathbf{u}$ and $\mathbf{v}$, but is given as
+a one-form.  We can see the mnemonic in operation by coercing `p` to a
+function and then evaluating this on the three basis vectors of
+$\mathbb{R}^3$:
 
 ```{r label=ucvijk}
 ucv  <- as.function(p)
 c(i=ucv(ex), j=ucv(ey), k=ucv(ez))
 ```
 
-and we see agreement with the mnemonic $\det\begin{pmatrix}i&j&k\\1&4&2\\2&1&5\end{pmatrix}$. Further, we may evaluate the triple cross product $(\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}$ by evaluating `ucv()` at $\mathbf{w}$.
+and we see agreement with the mnemonic
+$\det\begin{pmatrix}i&j&k\\1&4&2\\2&1&5\end{pmatrix}$. Further, we may
+evaluate the triple cross product
+$(\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}$ by evaluating `ucv()` at
+$\mathbf{w}$.
 
 ```{r label=ucvw}
 w <- c(1,-3,2)
 ucv(w)
 ```
 
-This shows agreement with the elementary mnemonic $\det\begin{pmatrix}1&-3&2\\1&4&2\\2&1&5\end{pmatrix}=7$, as expected from linearity.
+This shows agreement with the elementary mnemonic
+$\det\begin{pmatrix}1&-3&2\\1&4&2\\2&1&5\end{pmatrix}=7$, as expected
+from linearity.
 
 ## Vector cross product identities
 
