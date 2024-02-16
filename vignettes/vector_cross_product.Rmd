@@ -275,13 +275,22 @@ Above we see that the sum of the first two products is equal to that
 of the third (up to numerical precision), again by linearity of the
 vector cross product.
 
-## Vector products and Hodge
+## Vector products and the Hodge star operator
 
 The cross product has a coordinate-free definition as the Hodge
-conjugate of the wedge product of its arguments.  This is not used in
-function `vector_cross_product()` because it is computationally
-inefficient and (I think) prone to numerical roundoff errors.  We may
-verify that the definitions agree, using a six-dimensional test case:
+conjugate of the wedge product of its arguments.  In $d$ dimensions:
+
+
+
+\[
+\mathbf{v}_1\times\cdots\times\mathbf{v}_{d-1}={\star}\left(
+\mathbf{v}_1\wedge\cdots\wedge\mathbf{v}_{d-1}\right).
+\]
+
+This is not used in function `vector_cross_product()` because it is
+computationally inefficient and (I think) prone to numerical roundoff
+errors.  We may verify that the definitions agree, using a
+six-dimensional test case:
 
 ```{r label=sixdimcheck}
 set.seed(2)
@@ -299,9 +308,9 @@ calculated directly with the wedge product:
 ```
 
 Above we see agreement between `ans1` and `ans2` although the elements
-might appear in a different order (as per `disordR`
-discipline).  Actually it is possible to produce the same answer using
-slightly slicker idiom:
+might appear in a different order (as per `disordR` discipline).
+Actually it is possible to produce the same answer using slightly
+slicker idiom:
 
 ```{r label=slickcheck}
 (ans3 <- hodge(Reduce(`^`,lapply(1:5,function(i){as.1form(M[,i])}))))
