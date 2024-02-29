@@ -4,7 +4,7 @@
 \description{\loadmathjax
 
 A \mjseqn{k}-form \mjeqn{\omega\in\Lambda^k(V)}{omitted} maps
-\mjseqn{V^k} to the reals, where \mjeqn{V=\mathcal{R}^n}{omitted}.
+\mjseqn{V^k} to the reals, where \mjeqn{V=\mathbb{R}^n}{V=R^n}.
 Function \code{dovs()} returns \mjseqn{n}, the dimensionality of the
 underlying vector space.  The function itself is almost trivial,
 returning the maximum of the index matrix.

@@ -51,13 +51,13 @@ Let us consider in particular the 1-forms
     \mathrm{d}x^{i_1}\wedge\cdots\wedge\mathrm{d}x^{i_k}.}{omitted.}
 
   Function \code{as.symbolic()} uses this format.  For completeness, we
-  add (p77) that k-tensors may be expressed in the form
+  add (p77) that \mjseqn{k}-tensors may be expressed in the form
 
   \mjdeqn{
     \sum_{i_1,\ldots, i_k=1}^n a_{i_1,\ldots,i_k}\cdot
 \phi_{i_1}\otimes\cdots\otimes\phi_{i_k}.}{omitted.}
 
-and this form is used for k-tensors.
+and this form is used for \mjseqn{k}-tensors.
 
 }
 \value{Returns a \dQuote{noquote} character string.}

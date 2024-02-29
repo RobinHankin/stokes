@@ -24,9 +24,9 @@ e(i,n)
 \method{as.function}{kform}(x,...)
 }
 \arguments{
-  \item{n}{Dimension of the vector space \mjeqn{V=R^n}{V=R^n}}
+  \item{n}{Dimension of the vector space \mjeqn{V=\mathbb{R}^n}{V=R^n}}
   \item{i}{Integer}
-  \item{k}{A \mjseqn{k}-form maps \mjeqn{V^k}{V^k} to \mjseqn{R}}
+  \item{k}{A \mjseqn{k}-form maps \mjeqn{V^k}{V^k} to \mjeqn{\mathbb{R}}{R}}
   \item{W}{Integer vector of dimensions}
   \item{M,coeffs}{Index matrix and coefficients for a \mjseqn{k}-form}
   \item{S}{Object of class \code{spray}}
@@ -54,7 +54,7 @@ e(i,n)
     user-friendly  than \code{kform()}.
     \item\code{kform_basis()} is a low-level helper function that 
     returns a matrix whose rows constitute a basis for the vector space
-    \mjeqn{\Lambda^k(R^n)}{L^k(R^n)} of \mjseqn{k}-forms.
+    \mjeqn{\Lambda^k(\mathbb{R}^n)}{L^k(R^n)} of \mjseqn{k}-forms.
     \item\code{kform_general()} returns a \code{kform} object with terms
     that span the space of alternating tensors.
     \item\code{is.kform()} returns \code{TRUE} if its argument is a
@@ -65,9 +65,10 @@ e(i,n)
     example, \code{d(1:3)=dx^dy^dz}, the volume form.
   }
   
-  Recall that a \mjseqn{k}-tensor is a multilinear map from \mjseqn{V^k} to
-  the reals, where \mjseqn{V=R^n} is a vector space.  A multilinear
-  \mjseqn{k}-tensor \mjseqn{T} is \dfn{alternating} if it satisfies
+  Recall that a \mjseqn{k}-tensor is a multilinear map from \mjseqn{V^k}
+  to the reals, where \mjeqn{V=\mathbb{R}^n}{V=R^n} is a vector space.
+  A multilinear \mjseqn{k}-tensor \mjseqn{T} is \dfn{alternating} if it
+  satisfies
 
   \mjdeqn{T\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
     -T\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
@@ -78,9 +79,10 @@ e(i,n)
   
   Function \code{kform_basis()} is a low-level helper function that
   returns a matrix whose rows constitute a basis for the vector space
-  \mjeqn{\Lambda^k(R^n)}{L^k(R^n)} of \mjseqn{k}-forms:
+  \mjeqn{\Lambda^k(\mathbb{R}^n)}{L^k(R^n)} of \mjseqn{k}-forms:
   
-  \mjdeqn{\phi=\sum_{1\leq i_1 < \cdots < i_k\leq n} a_{i_1\ldots i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}}{omitted; see latex}
+  \mjdeqn{\phi=\sum_{1\leq i_1 < \cdots < i_k\leq n} a_{i_1\ldots
+      i_k}\mathrm{d}x_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}}{omitted; see latex}
 
   and indeed we have:
 

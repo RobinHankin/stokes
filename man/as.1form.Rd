@@ -18,10 +18,10 @@ grad(v)
 \details{
 
 The exterior derivative of a \mjseqn{k}-form \mjeqn{\phi}{phi} is a
-\mjseqn{(k+1)}-form \mjeqn{\mathbf{d}\phi}{d phi} given by
+\mjseqn{(k+1)}-form \mjeqn{\mathrm{d}\phi}{d phi} given by
 
 \mjdeqn{
-  \mathbf{d}\phi
+  \mathrm{d}\phi
   \left(
   P_\mathbf{x}\left(\mathbf{v}_i,\ldots,\mathbf{v}_{k+1}\right)
   \right)
@@ -33,27 +33,29 @@ The exterior derivative of a \mjseqn{k}-form \mjeqn{\phi}{phi} is a
   We can use the facts that
 
   \mjdeqn{
-    \mathbf{d}\left(f\,dx_{i_1}\wedge\cdots\wedge dx_{i_k}\right)=
-    \mathbf{d}f\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k}
+    \mathrm{d}\left(f\,\mathrm{d}x_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}\right)=
+    \mathrm{d}f\wedge\mathrm{d}x_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}
   }{omitted; see latex}
 
   and
   \mjdeqn{
-    \mathbf{d}f=\sum_{j=1}^n\left(D_j f\right)\,dx_j
+    \mathrm{d}f=\sum_{j=1}^n\left(D_j f\right)\,\mathrm{d}x_j
   }{omitted; see latex}
   
   to calculate differentials  of general \mjseqn{k}-forms. Specifically, if
 
   \mjdeqn{
     \phi=\sum_{1\leq i_i < \cdots < i_k\leq n} a_{i_1\ldots
-      i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}
+      i_k}\mathrm{d}x_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}
   }{omitted; see latex}
 
   then
   \mjdeqn{
-    \mathbf{d}\phi=
+    \mathrm{d}\phi=
     \sum_{1\leq i_i < \cdots < i_k\leq n}
-    [\sum_{j=1}^nD_ja_{i_1\ldots i_k}dx_j]\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k.}
+    [\sum_{j=1}^nD_ja_{i_1\ldots
+      i_k}\mathrm{d}x_j]\wedge\mathrm{d}x_{i_1}\wedge
+    \cdots\wedge\mathrm{d}x_{i_k.}
   }{omitted; see latex}
 
 The entry in square brackets is given by \code{grad()}.  See the

@@ -36,8 +36,8 @@ people would call a plain old scalar.  Such forms are created by a
 couple of constructions in the package, specifically \code{scalar()},
 \code{kform_general(1,0)} and \code{contract()}.  These functions take a
 \code{lose} argument that behaves much like the \code{drop} argument in
-base extraction.  Functions `0form()` and `0tensor()` are wrappers for
-`scalar()`.
+base extraction.  Functions \code{0form()} and \code{0tensor()} are
+wrappers for \code{scalar()}.
 
 Function \code{lose()} takes an object of class \code{ktensor} or
 \code{kform} and, if of arity zero, returns the coefficient.
