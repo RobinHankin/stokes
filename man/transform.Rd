@@ -28,28 +28,28 @@ stretch(K,d)
   Suppose we are given a two-form
 
   \mjdeqn{
-    \omega=\sum_{i < j}a_{ij}dx_i\wedge dx_j}{omitted: see latex}
+    \omega=\sum_{i < j}a_{ij}\mathrm{d}x_i\wedge\mathrm{d}x_j}{omitted: see latex}
 
   and relationships
 
-  \mjdeqn{dx_i=\sum_rM_{ir}dy_r}{omitted: see latex}
+  \mjdeqn{\mathrm{d}x_i=\sum_rM_{ir}\mathrm{d}y_r}{omitted: see latex}
 
   then we would have
 
   \mjdeqn{\omega =
     \sum_{i < j}
-    a_{ij}\left(\sum_rM_{ir}dy_r\right)\wedge\left(\sum_rM_{jr}dy_r\right).
+    a_{ij}\left(\sum_rM_{ir}\mathrm{d}y_r\right)\wedge\left(\sum_rM_{jr}\mathrm{d}y_r\right).
   }{omitted: see latex}
 
   The general situation would be  a \mjseqn{k}-form where we would have
   \mjdeqn{
-    \omega=\sum_{i_1 < \cdots < i_k}a_{i_1\ldots i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}}{omitted: see latex}
+    \omega=\sum_{i_1 < \cdots < i_k}a_{i_1\ldots i_k}\mathrm{d}x_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}}{omitted: see latex}
 
   giving
 
   \mjdeqn{\omega =
     \sum_{i_1 < \cdots < i_k}\left[
-    a_{i_1,\ldots, i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right].
+    a_{i_1,\ldots, i_k}\left(\sum_rM_{i_1r}\mathrm{d}y_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}\mathrm{d}y_r\right)\right].
   }{omitted: see latex}
 
 The \code{transform()} function does all this but it is slow.  I am not

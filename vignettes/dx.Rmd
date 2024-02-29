@@ -41,11 +41,11 @@ corresponding to elementary differential forms, are discussed here
 
 If $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is differentiable,
 then $Df(p)\in\Lambda^1(\mathbb{R}^n)$.  By a minor modification we
-therefore obtain a $1$-form $df$, defined by
+therefore obtain a $1$-form $\mathrm{d}f$, defined by
 
-$$df(p)(v_p)=Df(p)(v).$$
+$$\mathrm{d}f(p)(v_p)=Df(p)(v).$$
 
-Let us consider in particular the $1$-forms $d\pi^i$ ^[Spivak
+Let us consider in particular the $1$-forms $\mathrm{d}\pi^i$ ^[Spivak
 introduces the $\pi^i$ notation on page 11: "if
 $\pi\colon\mathbb{R}^n\longrightarrow\mathbb{R}^n$ is the identity
 function, $\pi(x)=x$, then [its components are] $\pi^i(x)=x^i$; the
@@ -53,9 +53,9 @@ function $\pi^i$ is called the $i^\mathrm{th}$ *projection
 function*"].  It is customary to let $x^i$ denote the _function_
 $\pi^i$ (on $\mathbb{R}^3$ we often denote $x^1$, $x^2$, and $x^3$ by
 $x$, $y$, and $z$) $\ldots$ Since
-$dx^i(p)(v_p)=d\pi^i(p)(v_p)=D\pi^i(p)(v)=v^i$, we see that
-$dx^1(p),\ldots,dx^n(p)$ is just the dual basis to $(e_1)_p,\ldots,
-(e_n)_p$.
+$\mathrm{d}x^i(p)(v_p)=\mathrm{d}\pi^i(p)(v_p)=D\pi^i(p)(v)=v^i$, we
+see that $\mathrm{d}x^1(p),\ldots,\mathrm{d}x^n(p)$ is just the dual
+basis to $(e_1)_p,\ldots, (e_n)_p$.
 
 </p>
 <p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Page 89</i>
@@ -65,48 +65,53 @@ $dx^1(p),\ldots,dx^n(p)$ is just the dual basis to $(e_1)_p,\ldots,
 
 Spivak goes on to observe that every $k$-form $\omega$ can be written
 $\omega=\sum_{i_1 < \cdots < i_k}\omega_{i_1,\ldots
-i_k}dx^{i_1}\wedge\cdots\wedge dx^{i_k}$.  If working in
-$\mathbb{R}^3$, we have three elementary forms $dx$, $dy$, and $dz$;
-in the package we have the pre-defined objects `dx`, `dy`, and `dz`.
-These are convenient for reproducing textbook results.  We start with
-some illustrations of the package print method.
+i_k}\mathrm{d}x^{i_1}\wedge\cdots\wedge\mathrm{d}x^{i_k}$.  If working
+in $\mathbb{R}^3$, we have three elementary forms $\mathrm{d}x$,
+$\mathrm{d}y$, and $\mathrm{d}z$; in the package we have the
+pre-defined objects `dx`, `dy`, and `dz`.  These are convenient for
+reproducing textbook results.  We start with some illustrations of the
+package print method.
 
 ```{r label=showdx}
 dx
 ```
 
 This is somewhat opaque and difficult to understand.  It is easier to
-start with a more complicated example: take $dx\wedge dy -7dx\wedge dz
-+ 3dy\wedge dz$:
+start with a more complicated example: take
+$\mathrm{d}x\wedge\mathrm{d}y -7\mathrm{d}x\wedge\mathrm{d}z
++ 3\mathrm{d}y\wedge\mathrm{d}z$:
 
 ```{r label=morecomplicatedcombination}
 dx^dy -7*dx^dz + 3*dy^dz
 ```
 
 We see three rows for the three elementary components.  Taking the row
-with coefficient $-7$ [which would be $-7dx\wedge dz$], this maps
+with coefficient $-7$ [which would be
+$-7\mathrm{d}x\wedge\mathrm{d}z$], this maps
 $\left(\mathbb{R}^3\right)^2$ to $\mathbb{R}$ and we have
 
-$$(-7dx\wedge dz)\left(\begin{pmatrix} u_1\\u_2\\u_3\end{pmatrix},
+$$(-7\mathrm{d}x\wedge\mathrm{d}z)\left(\begin{pmatrix}
+u_1\\u_2\\u_3\end{pmatrix},
 \begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}\right)=
 -7\det\begin{pmatrix}u_1&v_1\\u_3&v_3\end{pmatrix}$$
 
 Armed with this familiar fact, we can interpret $dx$ as a map from
 $\left(\mathbb{R}^3\right)^1$ to $\mathbb{R}$ with
 
-$$dx\left(\begin{pmatrix} u_1\\u_2\\u_3\end{pmatrix}
+$$\mathrm{d}x\left(\begin{pmatrix} u_1\\u_2\\u_3\end{pmatrix}
 \right)=
 \det\begin{pmatrix}u_1\end{pmatrix}=u_1$$
 
-or, in other words, $dx$ picks out the first component of its vector
-(as the print method gives, albeit obscurely).  This is easily shown
-in the package:
+or, in other words, $\mathrm{d}x$ picks out the first component of its
+vector (as the print method gives, albeit obscurely).  This is easily
+shown in the package:
 
 ```{r coercedxtoafunction}
 as.function(dx)(c(113,3,6))
 ```
 
-We might want to verify that $dx\wedge dy=-dy\wedge dx$:
+We might want to verify that
+$\mathrm{d}x\wedge\mathrm{d}y=-\mathrm{d}y\wedge\mathrm{d}x$:
 
 ```{r dxdyequalsminusdydx}
 dx ^ dy == -dy ^ dx
@@ -129,8 +134,8 @@ dx
 dx^dy + 56*dy^dz
 ```
 
-However, this setting can be confusing if we work with $dx^i,i>3$, for
-the print method runs out of alphabet:
+However, this setting can be confusing if we work with
+$\mathrm{d}x^i,i>3$, for the print method runs out of alphabet:
 
 ```{r runsoutofalphabet}
 rform()

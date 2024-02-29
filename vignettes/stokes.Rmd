@@ -295,14 +295,14 @@ which are discussed next.
 This section follows the exposition of Hubbard and Hubbard, who
 introduce the exterior calculus starting with a discussion of
 elementary forms, which are alternating forms with a particularly
-simple structure.  An example of an elementary
-form would be $dx_1\wedge dx_3$ [treated as an indivisible entity],
+simple structure.  An example of an elementary form would be
+$\mathrm{d}x_1\wedge\mathrm{d}x_3$ [treated as an indivisible entity],
 which is an alternating multilinear map from
 $\mathbb{R}^n\times\mathbb{R}^n$ to $\mathbb{R}$ with
 
 \[
 \left(
-dx_1\wedge dx_3
+\mathrm{d}x_1\wedge\mathrm{d}x_3
 \right)\left(
 \begin{pmatrix}a_1\\a_2\\a_3\\ \vdots\\ a_n\end{pmatrix},
 \begin{pmatrix}b_1\\b_3\\b_3\\ \vdots\\ b_n\end{pmatrix}
@@ -312,16 +312,17 @@ dx_1\wedge dx_3
 \]
 
 That this is alternating follows from the properties of the
-determinant.  In general of course, $dx_i\wedge dx_j\left(
-\begin{pmatrix}a_1\\ \vdots\\ a_n\end{pmatrix}, \begin{pmatrix}b_1\\
-\vdots\\ b_n\end{pmatrix} \right)=\mathrm{det} \begin{pmatrix} a_i &
-b_i \\ a_j & b_j\end{pmatrix}$.  Because such objects are linear, it
-is possible to consider sums of elementary forms, such as $dx_1\wedge
-dx_2 + 3 dx_2\wedge dx_3$ with
+determinant.  In general of course,
+$\mathrm{d}x_i\wedge\mathrm{d}x_j\left( \begin{pmatrix}a_1\\ \vdots\\
+a_n\end{pmatrix}, \begin{pmatrix}b_1\\ \vdots\\ b_n\end{pmatrix}
+\right)=\mathrm{det} \begin{pmatrix} a_i & b_i \\ a_j &
+b_j\end{pmatrix}$.  Because such objects are linear, it is possible to
+consider sums of elementary forms, such as $d\mathrm{x}_1\wedge\mathrm{d}x_2 + 3
+\mathrm{d}x_2\wedge\mathrm{d}x_3$ with
 
 \[
 \left(
-dx_1\wedge dx_2 + 3dx_2\wedge dx_3
+\mathrm{d}x_1\wedge\mathrm{d}x_2 + 3\mathrm{d}x_2\wedge\mathrm{d}x_3
 \right)\left(
 \begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
 \begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix}
@@ -331,14 +332,14 @@ dx_1\wedge dx_2 + 3dx_2\wedge dx_3
 \begin{pmatrix} a_2 & b_2\\ a_3 & b_3\end{pmatrix}
 \]
 
-or even $K=dx_1\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4$
+or even $K=\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_3 +5\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_4$
 which would be a linear map from $\left(\mathbb{R}^n\right)^3$ to
 $\mathbb{R}$ with
 
 
 \[
 \left(
-dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
+\mathrm{d}x_4\wedge\mathrm{d}x_2\wedge\mathrm{d}x_3 +5\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_4
 \right)\left(
 \begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
 \begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix},
@@ -377,17 +378,17 @@ STL map class of C++.
 
 ## Formal definition of dx
 
-In the previous section we defined objects such as "$dx_1\wedge dx_6$"
-as a single entity.  Here I define the elementary form $dx_i$ formally
+In the previous section we defined objects such as "$\mathrm{d}x_1\wedge\mathrm{d}x_6$"
+as a single entity.  Here I define the elementary form $\mathrm{d}x_i$ formally
 and in the next section discuss the wedge product $\wedge$.  The
-elementary form $dx_i$ is simply a map from $\mathbb{R}^n$ to
-$\mathbb{R}$ with $dx_i{\left(x_1,x_2,\ldots,x_n\right)}=x_i$.  Observe
-that $dx_i$ is an alternating form, even though we cannot swap
+elementary form $\mathrm{d}x_i$ is simply a map from $\mathbb{R}^n$ to
+$\mathbb{R}$ with $\mathrm{d}x_i{\left(x_1,x_2,\ldots,x_n\right)}=x_i$.  Observe
+that $\mathrm{d}x_i$ is an alternating form, even though we cannot swap
 arguments (because there is only one).  Package idiom for creating an
 elementary form appears somewhat cryptic at first sight, but is
 consistent (it is easier to understand package idiom for creating more
 complicated alternating forms, as in the next section).  Suppose we
-wish to work with $dx_3$:
+wish to work with $\mathrm{d}x_3$:
 
 ```{r dx3inmatrixform}
 dx3 <- as.kform(matrix(3,1,1),1)
@@ -397,9 +398,9 @@ dx3
 
 Interpretation of the output above is not obvious (it is easier to
 understand the output from more complicated alternating forms, as in
-the next section), but for the moment observe that $dx_3$ is indeed an
+the next section), but for the moment observe that $\mathrm{d}x_3$ is indeed an
 alternating form, mapping $\mathbb{R}^n$ to $\mathbb{R}$ with
-$dx_3{\left(x_1,x_2,\ldots,x_n\right)}=x_3$.  Thus, for example:
+$\mathrm{d}x_3{\left(x_1,x_2,\ldots,x_n\right)}=x_3$.  Thus, for example:
 
 
 ```{r showdx3beingused}
@@ -407,7 +408,7 @@ as.function(dx3)(c(14,15,16))
 as.function(dx3)(c(14,15,16,17,18))  # idiom can deal with arbitrary vectors
 ```
 
-and we see that $dx_3$ picks out the third element of a vector.  These
+and we see that $\mathrm{d}x_3$ picks out the third element of a vector.  These
 are linear in the sense that we may add and subtract these elementary
 forms:
 
@@ -439,17 +440,17 @@ K2 <- as.kform(M2,1:5)
 K2
 ```
 
-In symbolic notation, `K1` is equal to $7dx_1\wedge dx_4\wedge dx_6
--2dx_3\wedge dx_4\wedge dx_5$. and `K2` is $dx_1\wedge dx_3+
-2dx_2\wedge dx_4+ 3dx_3\wedge dx_5+ 4dx_4\wedge dx_6+ 5dx_5\wedge
-dx_7$.  Package idiom for wedge products is straightforward:
+In symbolic notation, `K1` is equal to $7\mathrm{d}x_1\wedge\mathrm{d}x_4\wedge\mathrm{d}x_6
+-2\mathrm{d}x_3\wedge\mathrm{d}x_4\wedge\mathrm{d}x_5$. and `K2` is $\mathrm{d}x_1\wedge\mathrm{d}x_3+
+2\mathrm{d}x_2\wedge\mathrm{d}x_4+ 3\mathrm{d}x_3\wedge\mathrm{d}x_5+ 4\mathrm{d}x_4\wedge\mathrm{d}x_6+ 5\mathrm{d}x_5\wedge
+\mathrm{d}x_7$.  Package idiom for wedge products is straightforward:
 
 ```{r K1wedgeK2}
 K1 ^ K2
 ```
 
-(we might write the product as $-35dx_1\wedge dx_4\wedge dx_5\wedge
-dx_6\wedge dx_7 -21dx_1\wedge dx_3\wedge dx_4\wedge dx_5\wedge dx_6$).
+(we might write the product as $-35\mathrm{d}x_1\wedge\mathrm{d}x_4\wedge\mathrm{d}x_5\wedge
+\mathrm{d}x_6\wedge\mathrm{d}x_7 -21\mathrm{d}x_1\wedge\mathrm{d}x_3\wedge\mathrm{d}x_4\wedge\mathrm{d}x_5\wedge\mathrm{d}x_6$).
 See how the wedge product eliminates rows with repeated entries,
 gathers permuted rows together (respecting the sign of the
 permutation), and expresses the result in terms of elementary forms.
@@ -483,7 +484,7 @@ Spivak observes that $\Lambda^k(V)$ is spanned by
 the $n\choose k$ wedge products of the form
 
 \[
-dx_{i_1}\wedge dx_{i_2}\wedge\ldots\wedge dx_{i_k}\qquad
+\mathrm{d}x_{i_1}\wedge\mathrm{d}x_{i_2}\wedge\ldots\wedge\mathrm{d}x_{i_k}\qquad
 1\leq i_i<i_2<\cdots <i_k\leq n
 \]
 
@@ -513,8 +514,8 @@ K2
 K1+K2
 ```
 
-In the above, note how the $dx_2\wedge dx_4$ terms combine [to give `2
-4 = 113`] and the $dx_1\wedge dx_3$ term vanishes by cancellation.
+In the above, note how the $\mathrm{d}x_2\wedge\mathrm{d}x_4$ terms combine [to give `2
+4 = 113`] and the $\mathrm{d}x_1\wedge\mathrm{d}x_3$ term vanishes by cancellation.
 
 ## Print methods
 
@@ -723,27 +724,27 @@ dy_4\wedge dy_5$.
 ## Exterior derivatives
 
 Given a $k$-form $\omega$, Spivak defines the differential of $\omega$
-to be a $(k+1)$-form $d\omega$ as follows.  If
+to be a $(k+1)$-form $\mathrm{d}\omega$ as follows.  If
 
 \[
 \omega =
 \sum_{
 i_1 < i_2 <\cdots<i_k}
 \omega_{i_1i_2\ldots i_k}
-dx^{i_1}\wedge
-dx^{i_2}\wedge\cdots\wedge dx^{i_k}
+\mathrm{d}x^{i_1}\wedge
+\mathrm{d}x^{i_2}\wedge\cdots\wedge\mathrm{d}x^{i_k}
 \]
 
 then
 
 \[
-d\omega =
+\mathrm{d}\omega =
 \sum_{
 i_1 < i_2 <\cdots<i_k}
 \sum_{\alpha=1}^n D_\alpha\left(\omega_{i_1i_2\ldots i_k}\right)
 \cdot
-dx^{i_1}\wedge
-dx^{i_2}\wedge\cdots\wedge dx^{i_k}
+\mathrm{d}x^{i_1}\wedge
+\mathrm{d}x^{i_2}\wedge\cdots\wedge\mathrm{d}x^{i_k}
 \]
 
 
@@ -770,8 +771,8 @@ without modification.
 It can be shown that
 
 \[
-    d{\left(f\,dx_{i_1}\wedge\cdots\wedge dx_{i_k}\right)}=
-    df\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k}
+    \mathrm{d}{\left(f\,dx_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}\right)}=
+    \mathrm{d}f\wedge\mathrm{d}x_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}
 \]
 
 where $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is a scalar
@@ -782,7 +783,8 @@ a vector $x_1,\ldots,x_n$ returns the one-form
 \sum_{i=1}^n x_idx_i
 \]
 
-This is useful because $df=\sum_{j=1}^n\left(D_j f\right)\,dx_j$. Thus
+This is useful because $\mathrm{d}f=\sum_{j=1}^n\left(D_j
+f\right)\,\mathrm{d}x_j$. Thus
 
 ```{r showgradinuse}
 grad(c(0.4,0.1,-3.2,1.5))
@@ -801,14 +803,13 @@ is a divergenceless velocity field in $\mathbb{R}^3$, H\&H go on to
 define [page 548, equation 6.7.16]
 
 \[
-\omega_n=
-d\frac{1}{\left(x_1^2+\ldots +x_n^2\right)^{n/2}}\sum_{i=1}^{n}(-1)^{i-1}
-x_idx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n
+\omega_{n}=\mathrm{d}\frac{1}{\left(x_1^2+\ldots +x_n^2\right)^{n/2}}\sum_{i=1}^{n}(-1)^{i-1}
+x_i\mathrm{d}x_1\wedge\cdots\wedge\widehat{\mathrm{d}x_i}\wedge\cdots\wedge\mathrm{d}x_n
 \]
 
 (where a hat indicates the absence of a term), and show analytically
-that $d\omega=0$.  Here I show this using R idiom.  The first thing is
-to define a function that implements the hat:
+that $\mathrm{d}\omega=0$.  Here I show this using R idiom.  The first
+thing is to define a function that implements the hat:
 
 
 ```{r definefofakform}
@@ -824,7 +825,7 @@ So, for example:
 f(1:5)
 ```
 
-Then we can use the `grad()` function to calculate $d\omega$,
+Then we can use the `grad()` function to calculate $\mathrm{d}\omega$,
 using the quotient law to express the derivatives analytically:
 
 ```{r definedfanduseit}
@@ -841,7 +842,8 @@ Thus
 df(1:5)
 ```
 
-Now we can use the wedge product of the two parts to show that the exterior derivative is zero:
+Now we can use the wedge product of the two parts to show that the
+exterior derivative is zero:
 
 ```{r dfevaluatedatrandompoint}
 x <- rnorm(9)
@@ -851,8 +853,8 @@ print(df(x) ^ f(x))  # should be zero
 # Differential of the differential, $d^2=0$
 
 We can use the package to verify the celebrated fact that, for any
-$k$-form $\phi$, $d\left(d\phi\right)=0$.  The first step is to define
-scalar functions `f1(), f2(), f3()`, all  $0$-forms:
+$k$-form $\phi$, $\mathrm{d}\left(\mathrm{d}\phi\right)=0$.  The first
+step is to define scalar functions `f1(), f2(), f3()`, all $0$-forms:
 
 ```{r definef1f2f3usingarith}
 f1 <- function(w,x,y,z){x + y^3 + x*y*w*z}
@@ -901,7 +903,6 @@ phi <-
 phi
 ```
 
-
 Now to evaluate first derivatives of `f1()` etc at point
 $(1,2,3,4)$, using `Deriv()` from the Deriv package:
 
@@ -918,7 +919,7 @@ So `Df1` etc are numeric vectors of length 4, for example:
 Df1
 ```
 
-To calculate `dphi`, or $d\phi$, we can use function `grad()`:
+To calculate `dphi`, or $\mathrm{d}\phi$, we can use function `grad()`:
 
 ```{r calculatedphi}
 dphi <-
@@ -974,7 +975,7 @@ as expected.
 In its most general form, Stokes's theorem states
 
 \[
-\int_{\partial X}\phi=\int_Xd\phi
+\int_{\partial X}\phi=\int_X\mathrm{d}\phi
 \]
 
 where $X\subset\mathbb{R}^n$ is a compact oriented $(k+1)$-dimensional
@@ -988,19 +989,19 @@ We will verify Stokes, following 6.9.5 of Hubbard in which
 \left(x_1-x_2^2+x_3^3-\cdots\pm x_n^n\right)
 \left(
 \sum_{i=1}^n
-dx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n
+\mathrm{d}x_1\wedge\cdots\wedge\widehat{\mathrm{d}x_i}\wedge\cdots\wedge\mathrm{d}x_n
 \right)
 \]
 
 (a hat indicates that a term is absent), and we wish to evaluate
 $\int_{\partial C_a}\phi$ where $C_a$ is the cube $0\leq x_j\leq a,
-1\leq j\leq n$.  Stokes tells us that this is equal to $\int_{C_a}
-d\phi$, which is given by
+1\leq j\leq n$.  Stokes tells us that this is equal to
+$\int_{C_a}\mathrm{d}\phi$, which is given by
 
 \[
 d\phi = \left(
 1+2x_2+\cdots + nx_n^{n-1}\right)
-dx_1\wedge\cdots\wedge dx_n
+\mathrm{d}x_1\wedge\cdots\wedge\mathrm{d}x_n
 \]
 
 and so the volume integral is just
@@ -1040,7 +1041,7 @@ E <- matrix(runif(72),9,8)   # (R^9)^8
 f(E)
 ```
 
-Further, $d\phi$ is given by
+Further, $\mathrm{d}\phi$ is given by
 
 ```{r dphiusingpowerdef}
 dphi <- function(x){
@@ -1051,7 +1052,7 @@ dphi(1:9)
 ```
 
 (observe that `dphi(1:9)` is a 9-form, with
-$d\phi_{1:9}\colon\left(\mathbb{R}^9\right)^9\longrightarrow\mathbb{R}$).
+$\mathrm{d}\phi_{1:9}\colon\left(\mathbb{R}^9\right)^9\longrightarrow\mathbb{R}$).
 Now consider Spivak's theorem 4.6 (page 82), which in this context
 states that a 9-form is proportional to the determinant of the
 $9\times 9$ matrix formed from its arguments, with constant of

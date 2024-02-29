@@ -58,9 +58,9 @@ object.
 (phi <- as.kform(1:5))
 ```
 
-Thus $k=5$ and we have $\phi=dx^1\wedge dx^2\wedge dx^3\wedge
-dx^4\wedge dx^5$.  We have that $\phi$ is a linear alternating map
-with
+Thus $k=5$ and we have $\phi=\mathrm{d}x^1\wedge\mathrm{d}x^2\wedge
+\mathrm{d}x^3\wedge\mathrm{d}x^4\wedge\mathrm{d}x^5$.  We have that
+$\phi$ is a linear alternating map with
 
 $$\phi\left(\begin{bmatrix}1\\0\\0\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\1\\0\\0\\0\end{bmatrix},

@@ -30,9 +30,9 @@ ez <- e(3,3)
 To cite the `stokes` package in publications, please use
 @hankin2022_stokes.  Convenience objects `ex`, `ey`, and `ez` are
 discussed here (related package functionality is discussed in
-`dx.Rmd`).  The dual basis to $(dx,dy,dz)$ is, depending on context,
-written $(e_x,e_y,e_z)$, or $(i,j,k)$ or sometimes
-$\left(\frac{\partial}{\partial x},\frac{\partial}{\partial
+`dx.Rmd`).  The dual basis to $(\mathrm{d}x,\mathrm{d}y,\mathrm{d}z)$
+is, depending on context, written $(e_x,e_y,e_z)$, or $(i,j,k)$ or
+sometimes $\left(\frac{\partial}{\partial x},\frac{\partial}{\partial
 x},\frac{\partial}{\partial x}\right)$.  Here they are denoted `ex`,
 `ey`, and `ez` (rather than `i`,`j`,`k` which cause problems in the
 context of R).
@@ -49,9 +49,9 @@ matrix(c(
       ),3,3)
 ```
 
-Above we see that the matrix $dx^i\frac{\partial}{\partial x^j}$ is
-the identity, showing that `ex`, `ey`, `ez` are indeed conjugate to
-$dx,dy,dz$.
+Above we see that the matrix $\mathrm{d}x^i\frac{\partial}{\partial
+x^j}$ is the identity, showing that `ex`, `ey`, `ez` are indeed
+conjugate to $\mathrm{d}x,\mathrm{d}y,\mathrm{d}z$.
 
 ### Package dataset
 
