@@ -31,13 +31,14 @@ or multivariate polynomial form
 \note{
 
   The print method asserts that its argument is a map from \mjseqn{V^k}
-  to \mjseqn{R} with \mjseqn{V=R^n}.  Here, \mjseqn{n} is the largest
-  element in the index matrix.  However, such a map naturally furnishes
-  a map from \mjseqn{(R^m)^k} to \mjseqn{R} provided that \mjeqn{m\geq
-  n}{m>=n} via the natural projection from \mjseqn{R^n} to \mjseqn{R^m}.
-  Formally this would be
-  \mjeqn{\left(x_1,\ldots,x_n\right)\mapsto\left(x_1,\ldots,x_n,0,\ldots,0\right)\in
-  R^m}{equation omitted}.  In the case of the zero \mjseqn{k}-form or
+  to \mjeqn{\mathbb{R}}{R} with \mjeqn{V=\mathbb{R}^n}{V=R^n}.  Here,
+  \mjseqn{n} is the largest element in the index matrix.  However, such
+  a map naturally furnishes a map from \mjeqn{(\mathbb{R}^m)^k}{(R^m)^k}
+  to \mjeqn{\mathbb{R}}{R}, provided that \mjeqn{m\geq n}{m>=n} via the
+  natural projection from \mjeqn{\mathbb{R}^n}{R^n} to
+  \mjeqn{\mathbb{R}^m}{R^m}.  Formally this would be
+  \mjeqn{\left(x_1,\ldots,x_n\right)\mapsto\left(x_1,\ldots,x_n,0,\ldots,0\right)\in\mathbb{R}^m}{equation
+  omitted}.  In the case of the zero \mjseqn{k}-form or
   \mjseqn{k}-tensor, \dQuote{\code{n}} is to be interpreted as
   \dQuote{any \mjeqn{n\geq 0}{n>=0}}.  See also \code{dovs()}.
   
