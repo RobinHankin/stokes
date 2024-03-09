@@ -4,14 +4,14 @@ R CMD Sweave stokes_arxiv.Rnw
 
 this will create stokes_arxiv.tex
 
-To process this with latex, you will need various auxiliary files such
-as arxiv.sty and orcid.pdf.  These are not under version control, you
-will have to find these on the web.  File stokes.png (the hex sticker)
-is in the man/figures directory.  Copy these files to this directory,
-inst/
+To process this with latex, you will need various auxiliary files, not
+under version control, to the inst/ directory:
 
-There are two distinct versions of stokes.bib [in the vignettes/ and
-the inst/ directories], which use slightly different markup.
+* arxiv.sty from https://github.com/kourgeorge/arxiv-style
+* orcid.png, from https://orcid.org/signin
+* stokes.png, the hexsticker, copied from man/figures
+* Sweave.sty, copied from the R distribution
+* stokes.bib, copied from vignettes/
 
 Then to create stokes_arxiv.pdf:
 
