@@ -13,8 +13,8 @@ rtensor(terms=9,k=3,n=7,coeffs)
 }
 \arguments{
   \item{terms}{Number of distinct terms}
-  \item{k,n}{A \mjseqn{k}-form maps \mjseqn{V^k} to \mjseqn{R}, where
-    \mjseqn{V=R^n}} 
+  \item{k,n}{A \mjseqn{k}-form maps \mjseqn{V^k} to \mjeqn{\mathbb{R}}{R}, where
+    \mjeqn{V=\mathbb{R}^n}{R^n}}n
   \item{coeffs}{The coefficients of the form; if missing use
     \code{seq_len(terms)}}
 \item{ensure}{Boolean with default \code{TRUE} meaning to ensure that
@@ -37,7 +37,7 @@ rtensor(terms=9,k=3,n=7,coeffs)
 \examples{
 
 rform()
-rform() \%^\% rform()
+rform() ^ rform()
 
 rtensor() \%X\% rtensor()
 
