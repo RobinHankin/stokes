@@ -1,6 +1,7 @@
 ---
 title: "The `kinner()` function in the `stokes` package"
 author: "Robin K. S. Hankin"
+bibliography: stokes.bib
 output:
   pdf_document:
     extra_dependencies: ["blkarray", "bigstrut"]
@@ -25,9 +26,11 @@ set.seed(1)
 kinner
 ```
 
-Given two $k$-forms $\alpha,\beta$, function `kinner()` returns an
-inner product $\left\langle\cdot,\cdot\right\rangle$ of $\alpha$ and
-$\beta$.  If $\alpha=\alpha_1\wedge\cdots\wedge\alpha_k$ and
+To cite the `stokes` package in publications, please use
+@hankin2022_stokes.  Given two $k$-forms $\alpha,\beta$, function
+`kinner()` returns an inner product
+$\left\langle\cdot,\cdot\right\rangle$ of $\alpha$ and $\beta$.  If
+$\alpha=\alpha_1\wedge\cdots\wedge\alpha_k$ and
 $\beta=\beta_1\wedge\cdots\wedge\beta_k$, and we have an inner product
 $\left\langle\alpha_i,\beta_j\right\rangle$ then
 
@@ -118,3 +121,5 @@ rm(dt,dx,dy,dz)
 ```{r reset_default_print_method, include=FALSE}
 options(kform_symbolic_print = NULL)
 ```
+
+## References {-}
