@@ -13,14 +13,14 @@ rtensor(terms=9,k=3,n=7,coeffs)
 }
 \arguments{
   \item{terms}{Number of distinct terms}
-  \item{k,n}{A \mjseqn{k}-form maps \mjseqn{V^k} to \mjeqn{\mathbb{R}}{R}, where
-    \mjeqn{V=\mathbb{R}^n}{R^n}}n
+  \item{k,n}{A \mjseqn{k}-form maps \mjseqn{V^k} to
+    \mjeqn{\mathbb{R}}{R}, where \mjeqn{V=\mathbb{R}^n}{R^n}}n
   \item{coeffs}{The coefficients of the form; if missing use
     \code{seq_len(terms)}}
-\item{ensure}{Boolean with default \code{TRUE} meaning to ensure that
-  the \code{dovs()} of the returned value is in fact equal to \code{n}.
-  If \code{FALSE}, sometimes the \code{dovs()} is strictly less than
-  \code{n} because of random sampling}
+  \item{ensure}{Boolean with default \code{TRUE} meaning to ensure that
+    the \code{dovs()} of the returned value is in fact equal to
+    \code{n}.  If \code{FALSE}, sometimes the \code{dovs()} is strictly
+    less than \code{n} because of random sampling}
 }
 \details{
   What you see is what you get, basically.
