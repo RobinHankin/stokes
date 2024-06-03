@@ -18,7 +18,7 @@ test_that("Function inner() behaves itself", {
     foo3 <- function(M,x,y){  # checks that inner(M) == function(x){x^T M x}
         LHS <- as.function(inner(M))(cbind(x,y))
         RHS <- drop(tcrossprod(y,crossprod(x,M)))
-        ## RHS should be emulator::quad.3form(M,x,y)
+        ## RHS should be quadform::quad3.form(M,x,y)
 
         expect_true(abs(LHS-RHS) < 1e-6)
     } # foo() closes

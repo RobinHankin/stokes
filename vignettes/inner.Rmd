@@ -12,7 +12,7 @@ vignette: >
 ```{r setup, include=FALSE}
 set.seed(0)
 library("stokes")
-library("emulator")    # needed for quad.3form()
+library("quadform")    # needed for quad3.form()
 knitr::opts_chunk$set(echo = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
 knit_print.function <- function(x, ...){dput(x)}
@@ -94,15 +94,15 @@ would be to use a general matrix:
 ```{r}
 M <- matrix(rnorm(49),7,7)
 f <- as.function(inner(M))
-LHS <- quad.3form(M,x,y)
+LHS <- quad3.form(M,x,y)
 RHS <- f(V)
 c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```
 
-(function `emulator::quad.3form()` evaluates matrix products
-efficiently; `quad.3form(M,x,y)` returns $x^TMy$).  Above we see
+(function `quadform::quad3.form()` evaluates matrix products
+efficiently; `quad3.form(M,x,y)` returns $x^TMy$).  Above we see
 agreement, to within numerical precision, of the dot product
-calculated two different ways: `LHS` uses `quad.3form()` and `RHS`
+calculated two different ways: `LHS` uses `quad3.form()` and `RHS`
 uses `inner()`.  Of course, we would expect `inner()` to be a
 homomorphism:
 
@@ -110,7 +110,7 @@ homomorphism:
 M1 <- matrix(rnorm(49),7,7)
 M2 <- matrix(rnorm(49),7,7)
 g <- as.function(inner(M1+M2))
-LHS <- quad.3form(M1+M2,x,y)
+LHS <- quad3.form(M1+M2,x,y)
 RHS <- g(V)
 c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
 ```

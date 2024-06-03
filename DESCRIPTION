@@ -9,7 +9,7 @@ Suggests:
     testthat,
     markdown,
     rmarkdown,
-    emulator,
+    quadform,
     magrittr,
     covr
 VignetteBuilder: knitr
