@@ -1,24 +1,24 @@
 \name{kinner}
 \alias{kinner}
 \title{Inner product of two kforms}
-\description{\loadmathjax
+\description{
 
-  Given two \mjseqn{k}-forms \mjeqn{\alpha}{a} and \mjeqn{\beta}{b},
+  Given two \eqn{k}-forms \eqn{\alpha}{a} and \eqn{\beta}{b},
   return the inner product
-  \mjeqn{\left\langle\alpha,\beta\right\rangle}{<a,b>}.  Here our
-  underlying vector space \mjseqn{V} is \mjeqn{\mathcal{R}^n}{R^n}.
+  \eqn{\left\langle\alpha,\beta\right\rangle}{<a,b>}.  Here our
+  underlying vector space \eqn{V} is \eqn{\mathcal{R}^n}{R^n}.
 
   The inner product is a symmetric bilinear form defined in two stages.
-  First, we specify its behaviour on decomposable \mjseqn{k}-forms
-  \mjeqn{\alpha=\alpha_1\wedge\cdots\wedge\alpha_k}{omitted} and
-  \mjeqn{\beta=\beta_1\wedge\cdots\wedge\beta_k}{omitted} as
+  First, we specify its behaviour on decomposable \eqn{k}-forms
+  \eqn{\alpha=\alpha_1\wedge\cdots\wedge\alpha_k}{omitted} and
+  \eqn{\beta=\beta_1\wedge\cdots\wedge\beta_k}{omitted} as
 
-  \mjdeqn{
+  \deqn{
     \left\langle\alpha,\beta\right\rangle=\det\left(
     \left\langle\alpha_i,\beta_j\right\rangle_{1\leq i,j\leq n}\right)
   }{ omitted}
 
-and secondly, we extend to the whole of \mjeqn{\Lambda^k(V)}{omitted}
+and secondly, we extend to the whole of \eqn{\Lambda^k(V)}{omitted}
 through linearity.
 }
 

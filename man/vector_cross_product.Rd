@@ -2,13 +2,13 @@
 \alias{vector_cross_product}
 \alias{vcp3}
 \title{The Vector cross product}
-\description{\loadmathjax
+\description{
 
-  The vector cross product \mjeqn{\mathbf{u}\times\mathbf{v}}{omitted}
-  for \mjeqn{\mathbf{u},\mathbf{u}\in\mathbb{R}^3}{omitted} is defined
+  The vector cross product \eqn{\mathbf{u}\times\mathbf{v}}{omitted}
+  for \eqn{\mathbf{u},\mathbf{u}\in\mathbb{R}^3}{omitted} is defined
   in elementary school as
 
-  \mjdeqn{
+  \deqn{
     \mathbf{u}\times\mathbf{v}=\left(u_2v_3-u_3v_2,u_2v_3-u_3v_2,u_2v_3-u_3v_2\right).
   }{
     u x v = (u_2 v_3 - u_3v_2, u_2 v_3 - u_3 v_2, u_2 v_3 - u_3 v_2).
@@ -16,7 +16,7 @@
 
 Function \code{vcp3()} is a convenience wrapper for this.  However, the
 vector cross product may easily be generalized to a product of
-\mjseqn{n-1}-tuples of vectors in \mjeqn{\mathbb{R}^n}{R^n}, given by
+\eqn{n-1}-tuples of vectors in \eqn{\mathbb{R}^n}{R^n}, given by
 package function \code{vector_cross_product()}.
 
 Vignette \code{vector_cross_product}, supplied with the package, gives
@@ -31,7 +31,7 @@ vcp3(u,v)
 \arguments{
   \item{M}{Matrix with one more row than column; columns are interpreted
   as vectors}
-\item{u,v}{Vectors of length 3, representing vectors in \mjeqn{\mathbb{R}^3}{R^3}}
+\item{u,v}{Vectors of length 3, representing vectors in \eqn{\mathbb{R}^3}{R^3}}
 }
 \value{Returns a vector}
 \details{

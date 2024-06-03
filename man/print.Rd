@@ -7,7 +7,7 @@
 \alias{ktensor_symbolic_print}
 \alias{polyform}
 \title{Print methods for \eqn{k}-tensors and \eqn{k}-forms}
-\description{\loadmathjax
+\description{
   Print methods for
  objects with options for printing in matrix form
 or multivariate polynomial form
@@ -17,12 +17,12 @@ or multivariate polynomial form
 \method{print}{ktensor}(x, ...)
 }
 \arguments{
-  \item{x}{\mjseqn{k}-form or \mjseqn{k}-tensor}
+  \item{x}{\eqn{k}-form or \eqn{k}-tensor}
   \item{...}{Further arguments (currently ignored)}
 }
 \details{
   The print method is designed to tell the user that an object is a
-  tensor or a \mjseqn{k}-form.  It prints a message to this effect (with
+  tensor or a \eqn{k}-form.  It prints a message to this effect (with
   special dispensation for zero tensors), then calls the \code{spray}
   print method.
 }
@@ -30,17 +30,17 @@ or multivariate polynomial form
 \author{Robin K. S. Hankin}
 \note{
 
-  The print method asserts that its argument is a map from \mjseqn{V^k}
-  to \mjeqn{\mathbb{R}}{R} with \mjeqn{V=\mathbb{R}^n}{V=R^n}.  Here,
-  \mjseqn{n} is the largest element in the index matrix.  However, such
-  a map naturally furnishes a map from \mjeqn{(\mathbb{R}^m)^k}{(R^m)^k}
-  to \mjeqn{\mathbb{R}}{R}, provided that \mjeqn{m\geq n}{m>=n} via the
-  natural projection from \mjeqn{\mathbb{R}^n}{R^n} to
-  \mjeqn{\mathbb{R}^m}{R^m}.  Formally this would be
-  \mjeqn{\left(x_1,\ldots,x_n\right)\mapsto\left(x_1,\ldots,x_n,0,\ldots,0\right)\in\mathbb{R}^m}{equation
-  omitted}.  In the case of the zero \mjseqn{k}-form or
-  \mjseqn{k}-tensor, \dQuote{\code{n}} is to be interpreted as
-  \dQuote{any \mjeqn{n\geq 0}{n>=0}}.  See also \code{dovs()}.
+  The print method asserts that its argument is a map from \eqn{V^k}
+  to \eqn{\mathbb{R}}{R} with \eqn{V=\mathbb{R}^n}{V=R^n}.  Here,
+  \eqn{n} is the largest element in the index matrix.  However, such
+  a map naturally furnishes a map from \eqn{(\mathbb{R}^m)^k}{(R^m)^k}
+  to \eqn{\mathbb{R}}{R}, provided that \eqn{m\geq n}{m>=n} via the
+  natural projection from \eqn{\mathbb{R}^n}{R^n} to
+  \eqn{\mathbb{R}^m}{R^m}.  Formally this would be
+  \eqn{\left(x_1,\ldots,x_n\right)\mapsto\left(x_1,\ldots,x_n,0,\ldots,0\right)\in\mathbb{R}^m}{equation
+  omitted}.  In the case of the zero \eqn{k}-form or
+  \eqn{k}-tensor, \dQuote{\code{n}} is to be interpreted as
+  \dQuote{any \eqn{n\geq 0}{n>=0}}.  See also \code{dovs()}.
   
 
   By default, the print method uses the \CRANpkg{spray} print methods,
@@ -53,7 +53,7 @@ or multivariate polynomial form
   It is much better to use options \code{ktensor_symbolic_print} or
   \code{kform_symbolic_print} instead.  If these options are non-null,
   the print method uses \code{as.symbolic()} to give an alternate way of
-  displaying \mjseqn{k}-tensors and \mjseqn{k}-forms.  The generic
+  displaying \eqn{k}-tensors and \eqn{k}-forms.  The generic
   non-null value would be \dQuote{\code{x}} which gives output like
   \dQuote{\code{dx1 ^ dx2}}.  However, it has two special values: set
   \code{kform_symbolic_print} to \dQuote{\code{dx}} for output like

@@ -5,7 +5,7 @@
 \title{
 \packageTitle{stokes}
 }
-\description{\loadmathjax
+\description{
 \packageDescription{stokes}
 }
 \details{
@@ -14,10 +14,10 @@ The DESCRIPTION file:
 \packageDESCRIPTION{stokes}
 \packageIndices{stokes}
 
-Generally in the package, arguments that are \mjseqn{k}-forms are
-denoted \code{K}, \mjseqn{k}-tensors by \code{U}, and spray objects by
-\code{S}.  Multilinear maps (which may be either \mjseqn{k}-forms or
-\mjseqn{k}-tensors) are denoted by \code{M}.
+Generally in the package, arguments that are \eqn{k}-forms are
+denoted \code{K}, \eqn{k}-tensors by \code{U}, and spray objects by
+\code{S}.  Multilinear maps (which may be either \eqn{k}-forms or
+\eqn{k}-tensors) are denoted by \code{M}.
 
 }
 \author{

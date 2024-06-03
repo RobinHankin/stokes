@@ -5,8 +5,8 @@
 \alias{is.zero}
 \alias{is.empty}
 \title{Zero tensors and zero forms}
-\description{\loadmathjax
-Correct idiom for generating zero \mjseqn{k}-tensors and \mjseqn{k}-forms
+\description{
+Correct idiom for generating zero \eqn{k}-tensors and \eqn{k}-forms
 }
 \usage{
 zeroform(n)
@@ -15,7 +15,7 @@ is.zero(x)
 is.empty(x)
 }
 \arguments{
-  \item{n}{Arity of the \mjseqn{k}-form or \mjseqn{k}-tensor}
+  \item{n}{Arity of the \eqn{k}-form or \eqn{k}-tensor}
   \item{x}{Object to be tested for zero}
 }
 \author{Robin K. S. Hankin}
@@ -24,9 +24,9 @@ is.empty(x)
   \code{as.kform(rep(1,5),0)} and indeed \code{as.kform(1:5,0)} is
   incorrect as the arity of the tensor is lost.
 
-  A \mjseqn{0}-form is not the same thing as a zero tensor.  A
-  \mjseqn{0}-form maps \mjseqn{V^0} to the reals; a scalar.  A zero
-  tensor maps \mjseqn{V^k} to zero.  Some discussion is given at
+  A \eqn{0}-form is not the same thing as a zero tensor.  A
+  \eqn{0}-form maps \eqn{V^0} to the reals; a scalar.  A zero
+  tensor maps \eqn{V^k} to zero.  Some discussion is given at
   \code{scalar.Rd}.
 }
 \value{Returns an object of class \code{kform} or \code{ktensor}.}

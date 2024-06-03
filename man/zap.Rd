@@ -7,7 +7,7 @@
 \alias{zap.kform}
 \alias{zap.ktensor}
 \title{Zap small values in \eqn{k}-forms and \eqn{k}-tensors}
-\description{\loadmathjax
+\description{
 Equivalent to \code{zapsmall()}}
 \usage{
 zap(X)
@@ -15,7 +15,7 @@ zap(X)
 \method{zap}{ktensor}(X)
 }
 \arguments{
-  \item{X}{Tensor or \mjseqn{k}-form to be zapped}
+  \item{X}{Tensor or \eqn{k}-form to be zapped}
 }
 \details{
 

@@ -4,8 +4,8 @@
 \alias{rtensor}
 \alias{rktensor}
 \title{Random kforms and ktensors}
-\description{\loadmathjax
-  Random \mjseqn{k}-form objects and \mjseqn{k}-tensors,
+\description{
+  Random \eqn{k}-form objects and \eqn{k}-tensors,
   intended as quick \dQuote{get you going} examples}
 \usage{
 rform(terms=9,k=3,n=7,coeffs,ensure=TRUE)
@@ -13,8 +13,8 @@ rtensor(terms=9,k=3,n=7,coeffs)
 }
 \arguments{
   \item{terms}{Number of distinct terms}
-  \item{k,n}{A \mjseqn{k}-form maps \mjseqn{V^k} to
-    \mjeqn{\mathbb{R}}{R}, where \mjeqn{V=\mathbb{R}^n}{R^n}}n
+  \item{k,n}{A \eqn{k}-form maps \eqn{V^k} to
+    \eqn{\mathbb{R}}{R}, where \eqn{V=\mathbb{R}^n}{R^n}}
   \item{coeffs}{The coefficients of the form; if missing use
     \code{seq_len(terms)}}
   \item{ensure}{Boolean with default \code{TRUE} meaning to ensure that

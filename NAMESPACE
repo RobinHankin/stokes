@@ -4,9 +4,6 @@ export("0tensor")
 export("%^%")
 export("%X%")
 
-
-import("mathjaxr")
-
 importFrom("spray","spray")
 importFrom("spray","as.spray")
 importFrom("spray","index")

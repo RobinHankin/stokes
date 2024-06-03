@@ -2,41 +2,41 @@
 \alias{contract}
 \alias{contract_elementary}
 \title{Contractions of \eqn{k}-forms}
-\description{\loadmathjax
-  A contraction is a natural linear map from \mjseqn{k}-forms to \mjseqn{k-1}-forms.
+\description{
+  A contraction is a natural linear map from \eqn{k}-forms to \eqn{k-1}-forms.
 }
 \usage{
 contract(K,v,lose=TRUE)
 contract_elementary(o,v)
 }
 \arguments{
-  \item{K}{A \mjseqn{k}-form}
+  \item{K}{A \eqn{k}-form}
   \item{o}{Integer-valued vector corresponding to one row of an index
     matrix}
   \item{lose}{Boolean, with default \code{TRUE} meaning to coerce a
-    \mjseqn{0}-form to a scalar and \code{FALSE} meaning to return the
-    formal \mjseqn{0}-form}
+    \eqn{0}-form to a scalar and \code{FALSE} meaning to return the
+    formal \eqn{0}-form}
   \item{v}{A vector; in function \code{contract()}, if a matrix,
     interpret each column as a vector to contract with}
 }
 \details{  
-  Given a \mjseqn{k}-form \mjeqn{\phi}{phi} and a vector \mjeqn{\mathbf{v}}{v},
-the \dfn{contraction} \mjeqn{\phi_\mathbf{v}}{phi_v} of \mjeqn{\phi}{phi}
-and \mjeqn{\mathbf{v}}{v} is a \mjseqn{k-1}-form with
+  Given a \eqn{k}-form \eqn{\phi}{phi} and a vector \eqn{\mathbf{v}}{v},
+the \dfn{contraction} \eqn{\phi_\mathbf{v}}{phi_v} of \eqn{\phi}{phi}
+and \eqn{\mathbf{v}}{v} is a \eqn{k-1}-form with
 
-\mjdeqn{
+\deqn{
   \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
   \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
   }{
 omitted; see PDF}
 
-provided \mjseqn{k>1}; if \mjseqn{k=1} we specify
-\mjeqn{\phi_\mathbf{v}=\phi(\mathbf{v})}{phi_v=phi(v)}.
+provided \eqn{k>1}; if \eqn{k=1} we specify
+\eqn{\phi_\mathbf{v}=\phi(\mathbf{v})}{phi_v=phi(v)}.
 
 Function \code{contract_elementary()} is a low-level helper function
-that translates elementary \mjseqn{k}-forms with coefficient 1 (in the form
+that translates elementary \eqn{k}-forms with coefficient 1 (in the form
 of an integer vector corresponding to one row of an index matrix) into
-its contraction with \mjeqn{\mathbf{v}}{v}.
+its contraction with \eqn{\mathbf{v}}{v}.
 
 There is an extensive vignette in the package,
 \code{vignette("contract")}.

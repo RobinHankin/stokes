@@ -5,9 +5,9 @@
 \alias{Ops}
 \title{Arithmetic Ops Group Methods for \code{kform} and \code{ktensor}
   objects}
-\description{\loadmathjax
-  Allows arithmetic operators to be used for \mjseqn{k}-forms and
-  \mjseqn{k}-tensors such as addition, multiplication, etc, where
+\description{
+  Allows arithmetic operators to be used for \eqn{k}-forms and
+  \eqn{k}-tensors such as addition, multiplication, etc, where
   defined.
 }
 \usage{
@@ -23,9 +23,9 @@
   \dQuote{\code{*}}, \dQuote{\code{/}} and \dQuote{\code{^}}) to the
   appropriate specialist function by coercing to \code{spray} objects.
 
-  For wedge products of \mjseqn{k}-forms, use \code{wedge()} or
+  For wedge products of \eqn{k}-forms, use \code{wedge()} or
   \code{\%^\%} or \code{^}; and for tensor products of
-  \mjseqn{k}-tensors, use \code{tensorprod()} or \code{\%X\%}.
+  \eqn{k}-tensors, use \code{tensorprod()} or \code{\%X\%}.
 }
 \value{All functions documented here return an object of class
   \code{kform} or \code{ktensor}.

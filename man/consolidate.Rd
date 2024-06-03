@@ -26,13 +26,13 @@ kform_to_ktensor(S)
     combines any rows that are identical up to a permutation, respecting
     the sign of the permutation
     \item Function \code{kill_trivial_rows()} takes a spray object and
-    deletes any rows with a repeated entry (which have \mjseqn{k}-forms
+    deletes any rows with a repeated entry (which have \eqn{k}-forms
     identically zero)
     \item Function \code{include_perms()} replaces each row of a
     \code{spray} object with all its permutations, respecting the sign
     of the permutation
-    \item Function \code{ktensor_to_kform()} coerces a \mjseqn{k}-form
-    to a \mjseqn{k}-tensor
+    \item Function \code{ktensor_to_kform()} coerces a \eqn{k}-form
+    to a \eqn{k}-tensor
   }
 }
 \value{The functions documented here all return a \code{spray} object.}

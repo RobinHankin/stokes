@@ -8,8 +8,8 @@
 \alias{lose.ktensor}
 \alias{drop}
 \title{Scalars and losing attributes}
-\description{\loadmathjax
-  Scalars: \mjseqn{0}-forms and \mjseqn{0}-tensors}
+\description{
+  Scalars: \eqn{0}-forms and \eqn{0}-tensors}
 \usage{
 scalar(s,kform=TRUE,lose=FALSE)
 is.scalar(M)
@@ -25,12 +25,12 @@ is.scalar(M)
   \item{M}{Object of class \code{ktensor} or \code{kform}}
   \item{lose}{In function \code{scalar()}, Boolean with \code{TRUE}
     meaning to return a normal scalar, and default \code{FALSE} meaning
-    to return a formal \mjseqn{0}-form or \mjseqn{0}-tensor}
+    to return a formal \eqn{0}-form or \eqn{0}-tensor}
 }
 \details{
 
-A \mjseqn{k}-tensor (including \mjseqn{k}-forms) maps \mjseqn{k} vectors
-to a scalar.  If \mjseqn{k=0}, then a \mjseqn{0}-tensor maps no vectors
+A \eqn{k}-tensor (including \eqn{k}-forms) maps \eqn{k} vectors
+to a scalar.  If \eqn{k=0}, then a \eqn{0}-tensor maps no vectors
 to a scalar, that is, mapping nothing at all to a scalar, or what normal
 people would call a plain old scalar.  Such forms are created by a
 couple of constructions in the package, specifically \code{scalar()},
@@ -45,12 +45,12 @@ Function \code{lose()} takes an object of class \code{ktensor} or
 Note that function \code{kform()} \emph{always} returns a \code{kform}
 object, it never loses attributes.
 
-There is a slight terminological problem.  A \mjseqn{k}-form maps
-\mjseqn{k} vectors to the reals: so a \mjseqn{0}-form maps \mjseqn{0}
+There is a slight terminological problem.  A \eqn{k}-form maps
+\eqn{k} vectors to the reals: so a \eqn{0}-form maps \eqn{0}
 vectors to the reals.  This is what anyone on the planet would call a
-scalar.  Similarly, a \mjseqn{0}-tensor maps \mjseqn{0} vectors to the
+scalar.  Similarly, a \eqn{0}-tensor maps \eqn{0} vectors to the
 reals, and so is a scalar.  Mathematically, there is no difference
-between \mjseqn{0}-forms and \mjseqn{0}-tensors, but the package makes a
+between \eqn{0}-forms and \eqn{0}-tensors, but the package makes a
 distinction:
 
 \preformatted{
@@ -65,9 +65,9 @@ A linear map from V^0 to R with V=R^0:
 > 
 }
 
-Compare zero tensors and zero forms.  A zero tensor maps \mjseqn{V^k} to
+Compare zero tensors and zero forms.  A zero tensor maps \eqn{V^k} to
 the real number zero, and a zero form is an alternating tensor mapping
-\mjseqn{V^k} to zero (so a zero tensor is necessarily alternating).  See
+\eqn{V^k} to zero (so a zero tensor is necessarily alternating).  See
 \code{zero.Rd}.
 
 }

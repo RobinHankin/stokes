@@ -3,17 +3,17 @@
 \alias{wedge2}
 \alias{\%^\%}
 \title{Wedge products}
-\description{\loadmathjax
-  Wedge products of \mjseqn{k}-forms}
+\description{
+  Wedge products of \eqn{k}-forms}
 \usage{
 wedge2(K1,K2)
 wedge(x, ...)
 }
 \arguments{
-  \item{K1,K2,x,...}{\mjseqn{k}-forms}
+  \item{K1,K2,x,...}{\eqn{k}-forms}
 }
 \details{
-Wedge product of \mjseqn{k}-forms.  
+Wedge product of \eqn{k}-forms.  
 }
 \value{
   The functions documented here return an object of class

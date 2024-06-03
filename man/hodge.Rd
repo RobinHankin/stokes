@@ -3,8 +3,8 @@
 \alias{Hodge}
 \alias{star}
 \title{Hodge star operator}
-\description{\loadmathjax
-  Given a \mjseqn{k}-form, return its Hodge dual}
+\description{
+  Given a \eqn{k}-form, return its Hodge dual}
 \usage{
 hodge(K, n=dovs(K), g, lose=TRUE)
 }
@@ -14,16 +14,16 @@ hodge(K, n=dovs(K), g, lose=TRUE)
     of the index}
   \item{g}{Diagonal of the metric tensor, with missing default being the
     standard metric of the identity matrix.  Currently, only entries of
-    \mjeqn{\pm 1}{+/-1} are accepted}
+    \eqn{\pm 1}{+/-1} are accepted}
   \item{lose}{Boolean, with default \code{TRUE} meaning to coerce to a
     scalar if appropriate}
 }
-\value{Given a \mjseqn{k}-form, in an \mjseqn{n}-dimensional space,
-  return a \mjseqn{(n-k)}-form.}
+\value{Given a \eqn{k}-form, in an \eqn{n}-dimensional space,
+  return a \eqn{(n-k)}-form.}
 \author{Robin K. S. Hankin}
-\note{Most authors write the Hodge dual of \mjeqn{\psi}{omitted} as
-  \mjeqn{*\psi}{omitted} or \mjeqn{\star\psi}{omitted}, but Weintraub
-  uses \mjeqn{\psi *}{omitted}.
+\note{Most authors write the Hodge dual of \eqn{\psi}{omitted} as
+  \eqn{*\psi}{omitted} or \eqn{\star\psi}{omitted}, but Weintraub
+  uses \eqn{\psi *}{omitted}.
 }
 \seealso{\code{\link{wedge}}}
 \examples{

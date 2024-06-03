@@ -5,8 +5,8 @@
 \alias{is.tensor}
 \alias{as.function.ktensor}
 \title{k-tensors}
-\description{\loadmathjax
-Functionality for \mjseqn{k}-tensors
+\description{
+Functionality for \eqn{k}-tensors
 }
 \usage{
 ktensor(S)
@@ -23,29 +23,29 @@ is.ktensor(x)
 }
 \details{
 
-A \dfn{\mjseqn{k}-tensor} object \mjseqn{S} is a map from \mjseqn{V^k}
-to the reals \mjseqn{R}, where \mjseqn{V} is a vector space (here
-\mjseqn{R^n}) that satisfies multilinearity:
+A \dfn{\eqn{k}-tensor} object \eqn{S} is a map from \eqn{V^k}
+to the reals \eqn{R}, where \eqn{V} is a vector space (here
+\eqn{R^n}) that satisfies multilinearity:
 
-\mjdeqn{S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot
+\deqn{S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot
   S\left(v_1,\ldots,v_i,\ldots,v_k\right)}{omitted; see latex}
 
 and
 
-\mjdeqn{S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
+\deqn{S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
   S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).}{omitted; see latex}
 
 Note that this is \emph{not} equivalent to linearity over
-\mjeqn{V^{nk}}{V^nk} (see examples).
+\eqn{V^{nk}}{V^nk} (see examples).
 
-In the \CRANpkg{stokes} package, \mjseqn{k}-tensors are represented as
+In the \CRANpkg{stokes} package, \eqn{k}-tensors are represented as
 sparse arrays (\code{spray} objects), but with a class of
 \code{c("ktensor", "spray")}.  This is a natural and efficient
 representation for tensors that takes advantage of sparsity using
 \CRANpkg{spray} package features.
 
-Function \code{as.ktensor()} will coerce a \mjseqn{k}-form to a
-\mjseqn{k}-tensor via \code{kform_to_ktensor()}.
+Function \code{as.ktensor()} will coerce a \eqn{k}-form to a
+\eqn{k}-tensor via \code{kform_to_ktensor()}.
 
 }
 \value{

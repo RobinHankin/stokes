@@ -3,7 +3,7 @@
 \alias{tensorprod2}
 \alias{\%X\%}
 \title{Tensor products of \eqn{k}-tensors}
-\description{\loadmathjax
+\description{
  Tensor products of \eqn{k}-tensors}
 \usage{
 tensorprod(U, ...)
@@ -15,11 +15,11 @@ tensorprod2(U1,U2)
 }
 \details{
 
-Given a \mjseqn{k}-tensor \mjseqn{S} and an \mjseqn{l}-tensor
-\mjseqn{T}, we can form the tensor product \mjeqn{S\otimes T}{S \%X\%
+Given a \eqn{k}-tensor \eqn{S} and an \eqn{l}-tensor
+\eqn{T}, we can form the tensor product \eqn{S\otimes T}{S \%X\%
 T}, defined as
 
-\mjdeqn{S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
+\deqn{S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
   S\left(v_1,\ldots v_k\right)\cdot T\left(v_{k+1},\ldots
   v_{k+l}\right).}{omitted; see latex}
 

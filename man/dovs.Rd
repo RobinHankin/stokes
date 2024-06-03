@@ -1,11 +1,11 @@
 \name{dovs}
 \alias{dovs}
 \title{Dimension of the underlying vector space}
-\description{\loadmathjax
+\description{
 
-A \mjseqn{k}-form \mjeqn{\omega\in\Lambda^k(V)}{omitted} maps
-\mjseqn{V^k} to the reals, where \mjeqn{V=\mathbb{R}^n}{V=R^n}.
-Function \code{dovs()} returns \mjseqn{n}, the dimensionality of the
+A \eqn{k}-form \eqn{\omega\in\Lambda^k(V)}{omitted} maps
+\eqn{V^k} to the reals, where \eqn{V=\mathbb{R}^n}{V=R^n}.
+Function \code{dovs()} returns \eqn{n}, the dimensionality of the
 underlying vector space.  The function itself is almost trivial,
 returning the maximum of the index matrix.
 
@@ -16,7 +16,7 @@ Vignette \code{dovs} provides more discussion.
 
 }
 \usage{dovs(K)}
-\arguments{\item{K}{A \mjseqn{k}-form or \mjseqn{k}-tensor}}
+\arguments{\item{K}{A \eqn{k}-form or \eqn{k}-tensor}}
 \value{Returns a non-negative integer}
 \author{Robin K. S. Hankin}
 \examples{
