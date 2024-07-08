@@ -9,12 +9,12 @@ on:
       - reopened
       - ready_for_review
     branches:
-      - main
+      - master
   push:
     branches:
-      - main
+      - master
 
-# This reusable workflow from insightsengineering/r.pkg.template will run once a PR to main branch is created.
+# This reusable workflow from insightsengineering/r.pkg.template will run once a PR to master branch is created.
 jobs:
   job-setup:
     name: Should we run R CMD check?
@@ -32,6 +32,6 @@ jobs:
     name: R CMD Check 🧬
     needs: job-setup
     # Call a workflow from a given GitHub repository, from a given branch (or tag).
-    uses: insightsengineering/r.pkg.template/.github/workflows/build-check-install.yaml@main
+    uses: insightsengineering/r.pkg.template/.github/workflows/build-check-install.yaml@master
     if: >
       needs.job-setup.outputs.check_out == 'true'
