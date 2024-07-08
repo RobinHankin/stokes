@@ -118,7 +118,7 @@ jobs:
         if: true
         id: tar-gz
         # Use our custom action.
-        uses: user-workshop-cicd/action-example@master
+        uses: user-workshop-cicd/action-example@main
         with:
           filename-beginning: ${{ github.event.repository.name }}
 
