@@ -37,7 +37,7 @@ jobs:
         env:
           NAME: "Robin KS Hankin"
 
-  # Second job - by default jobs will run in parallel, unless some dependencies
+  # Second job - by default, jobs will run in parallel, unless some dependencies
   # are introduced between them.
   build-and-check:
     name: Build R package
