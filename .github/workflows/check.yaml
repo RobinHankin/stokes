@@ -32,6 +32,6 @@ jobs:
     name: R CMD Check 🧬
     needs: job-setup
     # Call a workflow from a given GitHub repository, from a given branch (or tag).
-    uses: insightsengineering/r.pkg.template/.github/workflows/build-check-install.yaml@master
+    uses: insightsengineering/r.pkg.template/.github/workflows/build-check-install.yaml@main
     if: >
       needs.job-setup.outputs.check_out == 'true'
