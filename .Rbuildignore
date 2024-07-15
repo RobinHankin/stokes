@@ -8,5 +8,6 @@
 ^inst/stokes_theorem.tex$
 ^inst/stokes_theorem.Rnw$
 ^vignettes/*.html$
-^.github$
 ^.devcontainer$
+^codecov\.yml$
+^\.github$
