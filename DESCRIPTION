@@ -31,5 +31,5 @@ Description: Provides functionality for working with tensors, alternating
            <doi:10.48550/ARXIV.2210.17008>.
 License: GPL-2
 LazyData: yes
-URL: https://github.com/RobinHankin/stokes
+URL: https://github.com/RobinHankin/stokes, https://robinhankin.github.io/stokes/
 BugReports: https://github.com/RobinHankin/stokes/issues
