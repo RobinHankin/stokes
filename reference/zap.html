@@ -54,11 +54,11 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/pkg/stokes/man/zap.html" class="external-link">zap</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://robinhankin.github.io/stokes/reference/zap.html">zap</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
 <span><span class="co"># S3 method for class 'kform'</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/stokes/man/zap.html" class="external-link">zap</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://robinhankin.github.io/stokes/reference/zap.html">zap</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
 <span><span class="co"># S3 method for class 'ktensor'</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/stokes/man/zap.html" class="external-link">zap</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://robinhankin.github.io/stokes/reference/zap.html">zap</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -75,7 +75,7 @@
 <p>Given an object of class <code>ktensor</code> or <code>kform</code>, coefficients
   close to zero are ‘zapped’, i.e., replaced by ‘0’, using
   <code><a href="https://rdrr.io/r/base/zapsmall.html" class="external-link">base::zapsmall()</a></code>.</p>
-<p>Note, <code><a href="https://rdrr.io/pkg/stokes/man/zap.html" class="external-link">zap()</a></code> actually changes the numeric value, it is not just
+<p>Note, <code><a href="https://robinhankin.github.io/stokes/reference/zap.html">zap()</a></code> actually changes the numeric value, it is not just
   a print method.</p>
     </div>
     <div class="section level2">
@@ -91,7 +91,7 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="rform.html">rform</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">S</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/pkg/stokes/man/zap.html" class="external-link">zap</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">S</span> <span class="op">==</span> <span class="fu"><a href="https://robinhankin.github.io/stokes/reference/zap.html">zap</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 </code></pre></div>
     </div>

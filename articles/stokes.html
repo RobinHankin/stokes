@@ -1013,9 +1013,9 @@ nicely with magrittr pipes:</p>
 <p>Above we see many rows with values small enough for the print method
 to print an exact zero, but not sufficiently small to be eliminated by
 the <code>spray</code> internals. We can remove the small entries with
-<code><a href="https://rdrr.io/pkg/stokes/man/zap.html" class="external-link">zap()</a></code>:</p>
+<code><a href="https://robinhankin.github.io/stokes/reference/zap.html">zap()</a></code>:</p>
 <div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">o</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/transform.html">pullback</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/transform.html">pullback</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/solve.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/stokes/man/zap.html" class="external-link">zap</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">o</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/transform.html">pullback</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/transform.html">pullback</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/solve.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://robinhankin.github.io/stokes/reference/zap.html">zap</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^3 to R with V=R^5:</span></span>
 <span><span class="co">##            val</span></span>
 <span><span class="co">##  2 4 5  =    2</span></span></code></pre>
