@@ -1,0 +1,20 @@
+pandoc: 3.1.11
+pkgdown: 2.1.0
+pkgdown_sha: ~
+articles:
+  Alt: Alt.html
+  contract: contract.html
+  dovs: dovs.html
+  dx: dx.html
+  ex: ex.html
+  hodge: hodge.html
+  inner: inner.html
+  kinner: kinner.html
+  stokes: stokes.html
+  vector_cross_product: vector_cross_product.html
+  volume: volume.html
+  wedge: wedge.html
+last_built: 2024-07-16T13:49Z
+urls:
+  reference: https://robinhankin.github.io/stokes/reference
+  article: https://robinhankin.github.io/stokes/articles
