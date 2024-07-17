@@ -16,3 +16,4 @@
 ^pkgdown$
 ^inst/arxiv
 ^inst/sticker
+^.circleci/config.yml$
