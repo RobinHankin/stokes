@@ -78,10 +78,38 @@ or multivariate polynomial form</p>
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The print method is designed to tell the user that an object is a
-  tensor or a \(k\)-form.  It prints a message to this effect (with
-  special dispensation for zero tensors), then calls the <code>spray</code>
-  print method.</p>
+
+
+<p>Printing is dispatched to <code>print.ktensor()</code> and
+<code>print.kform()</code> depending on its argument.  Special dispensation is
+given for the zero object.</p>
+<p>Although \(k\)-forms are alternating tensors and thus mathematically
+are tensors, they are handled differently.</p>
+<p>The default print method uses the <a href="https://CRAN.R-project.org/package=spray" class="external-link"><span class="pkg">spray</span></a> print methods,
+  and as such respects the <code>polyform</code> option.  However, setting
+  <code>polyform</code> to <code>TRUE</code> can give misleading output, because
+  <code>spray</code> objects are interpreted as multivariate polynomials not
+  differential forms (and in particular uses the caret to signify
+  powers).</p>
+<p>It is much better to use options <code>ktensor_symbolic_print</code> or
+  <code>kform_symbolic_print</code> instead: the bespoke print methods
+  <code>print.kform()</code> and <code>print.ktensor()</code> are sensitive to these
+  options.</p>
+<p>For <code>kform</code> objects, if option <code>kform_symbolic_print</code> is
+  non-null, the print method uses <code><a href="symbolic.html">as.symbolic()</a></code> to give an
+  alternate way of displaying \(k\)-tensors and \(k\)-forms.  The
+  generic non-null value for this option would be “<code>x</code>”
+  which gives output like “<code>dx1 ^ dx2</code>”.  However, it has
+  two special values: set <code>kform_symbolic_print</code> to
+  “<code>dx</code>” for output like “<code>dx ^ dz</code>” and
+  “<code>txyz</code>” for output like “<code>dt ^ dx</code>”, useful
+  in relativistic physics with a Minkowski metric.  See the examples.</p>
+<p>For <code>ktensor</code> objects, if option <code>ktensor_symbolic_print</code> is
+  <code>TRUE</code>, an alphabetic system is used.  If we define
+  \(\phi_i(x^j)=\delta_i^j\) then the print method uses
+  \(\phi_1=a\), \(\phi_2=b\) and so on.  I am not entirely happy
+  with this and it might change in future.</p>
+<p>More detail is given at <code>symbolic.Rd</code> and the <code>dx</code> vignette.</p>
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -95,7 +123,8 @@ or multivariate polynomial form</p>
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
 
 
-<p>The print method asserts that its argument is a map from \(V^k\)
+<p>For both <code>kform</code> and <code>ktensor</code> objects,
+  the print method asserts that its argument is a map from \(V^k\)
   to \(\mathbb{R}\) with \(V=\mathbb{R}^n\).  Here,
   \(n\) is the largest element in the index matrix.  However, such
   a map naturally furnishes a map from \((\mathbb{R}^m)^k\)
@@ -106,24 +135,7 @@ or multivariate polynomial form</p>
   \(k\)-tensor, “<code>n</code>” is to be interpreted as
   “any \(n\geq 0\)”.  See also <code><a href="dovs.html">dovs()</a></code>.</p>
 
-<p>By default, the print method uses the <a href="https://CRAN.R-project.org/package=spray" class="external-link"><span class="pkg">spray</span></a> print methods,
-  and as such respects the <code>polyform</code> option.  However, setting
-  <code>polyform</code> to <code>TRUE</code> can give misleading output, because
-  <code>spray</code> objects are interpreted as multivariate polynomials not
-  differential forms (and in particular uses the caret to signify
-  powers).</p>
-<p>It is much better to use options <code>ktensor_symbolic_print</code> or
-  <code>kform_symbolic_print</code> instead.  If these options are non-null,
-  the print method uses <code><a href="symbolic.html">as.symbolic()</a></code> to give an alternate way of
-  displaying \(k\)-tensors and \(k\)-forms.  The generic
-  non-null value would be “<code>x</code>” which gives output like
-  “<code>dx1 ^ dx2</code>”.  However, it has two special values: set
-  <code>kform_symbolic_print</code> to “<code>dx</code>” for output like
-  “<code>dx ^ dz</code>” and “<code>txyz</code>” for output like
-  “<code>dt ^ dx</code>”, useful in relativistic physics with a
-  Minkowski metric.  See the examples.</p>
-<p>More detail is given at <code>symbolic.Rd</code> and the
-  <code>dx</code> vignette.</p>
+
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
