@@ -21,16 +21,51 @@ or multivariate polynomial form
   \item{...}{Further arguments (currently ignored)}
 }
 \details{
-  The print method is designed to tell the user that an object is a
-  tensor or a \eqn{k}-form.  It prints a message to this effect (with
-  special dispensation for zero tensors), then calls the \code{spray}
-  print method.
+
+Printing is dispatched to \code{print.ktensor()} and
+\code{print.kform()} depending on its argument.  Special dispensation is
+given for the zero object.
+
+Although \eqn{k}-forms are alternating tensors and thus mathematically
+are tensors, they are handled differently.
+
+  The default print method uses the \CRANpkg{spray} print methods,
+  and as such respects the \code{polyform} option.  However, setting
+  \code{polyform} to \code{TRUE} can give misleading output, because
+  \code{spray} objects are interpreted as multivariate polynomials not
+  differential forms (and in particular uses the caret to signify
+  powers).
+
+  It is much better to use options \code{ktensor_symbolic_print} or
+  \code{kform_symbolic_print} instead: the bespoke print methods
+  \code{print.kform()} and \code{print.ktensor()} are sensitive to these
+  options.
+
+  For \code{kform} objects, if option \code{kform_symbolic_print} is
+  non-null, the print method uses \code{as.symbolic()} to give an
+  alternate way of displaying \eqn{k}-tensors and \eqn{k}-forms.  The
+  generic non-null value for this option would be \dQuote{\code{x}}
+  which gives output like \dQuote{\code{dx1 ^ dx2}}.  However, it has
+  two special values: set \code{kform_symbolic_print} to
+  \dQuote{\code{dx}} for output like \dQuote{\code{dx ^ dz}} and
+  \dQuote{\code{txyz}} for output like \dQuote{\code{dt ^ dx}}, useful
+  in relativistic physics with a Minkowski metric.  See the examples.
+
+  For \code{ktensor} objects, if option \code{ktensor_symbolic_print} is
+  \code{TRUE}, an alphabetic system is used.  If we define
+  \eqn{\phi_i(x^j)=\delta_i^j} then the print method uses
+  \eqn{\phi_1=a}, \eqn{\phi_2=b} and so on.  I am not entirely happy
+  with this and it might change in future.
+
+  More detail is given at \code{symbolic.Rd} and the \code{dx} vignette.
+
 }
 \value{Returns its argument invisibly.}
 \author{Robin K. S. Hankin}
 \note{
 
-  The print method asserts that its argument is a map from \eqn{V^k}
+  For both \code{kform} and \code{ktensor} objects,
+  the print method asserts that its argument is a map from \eqn{V^k}
   to \eqn{\mathbb{R}}{R} with \eqn{V=\mathbb{R}^n}{V=R^n}.  Here,
   \eqn{n} is the largest element in the index matrix.  However, such
   a map naturally furnishes a map from \eqn{(\mathbb{R}^m)^k}{(R^m)^k}
@@ -42,27 +77,6 @@ or multivariate polynomial form
   \eqn{k}-tensor, \dQuote{\code{n}} is to be interpreted as
   \dQuote{any \eqn{n\geq 0}{n>=0}}.  See also \code{dovs()}.
   
-
-  By default, the print method uses the \CRANpkg{spray} print methods,
-  and as such respects the \code{polyform} option.  However, setting
-  \code{polyform} to \code{TRUE} can give misleading output, because
-  \code{spray} objects are interpreted as multivariate polynomials not
-  differential forms (and in particular uses the caret to signify
-  powers).
-
-  It is much better to use options \code{ktensor_symbolic_print} or
-  \code{kform_symbolic_print} instead.  If these options are non-null,
-  the print method uses \code{as.symbolic()} to give an alternate way of
-  displaying \eqn{k}-tensors and \eqn{k}-forms.  The generic
-  non-null value would be \dQuote{\code{x}} which gives output like
-  \dQuote{\code{dx1 ^ dx2}}.  However, it has two special values: set
-  \code{kform_symbolic_print} to \dQuote{\code{dx}} for output like
-  \dQuote{\code{dx ^ dz}} and \dQuote{\code{txyz}} for output like
-  \dQuote{\code{dt ^ dx}}, useful in relativistic physics with a
-  Minkowski metric.  See the examples.
-
-  More detail is given at \code{symbolic.Rd} and the
-  \code{dx} vignette.
 
 }
 \seealso{\code{\link{as.symbolic}},\code{\link{dovs}}}

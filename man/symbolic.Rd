@@ -57,7 +57,9 @@ Let us consider in particular the 1-forms
     \sum_{i_1,\ldots, i_k=1}^n a_{i_1,\ldots,i_k}\cdot
 \phi_{i_1}\otimes\cdots\otimes\phi_{i_k}.}{omitted.}
 
-and this form is used for \eqn{k}-tensors.
+and this form is used for \eqn{k}-tensors.  The print method for
+tensors, \code{print.ktensor()}, defines \eqn{a=\phi_1}, \eqn{b=\phi_2},
+and so on.
 
 }
 \value{Returns a \dQuote{noquote} character string.}
