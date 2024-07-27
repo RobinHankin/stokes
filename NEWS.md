@@ -50,7 +50,7 @@
 
 - arXiv preprint cited
 - minor documentation improvements
-- consistentifciation of the zero object
+- consistentification of the zero object
 - spray package now imported rather than attached
 - coverage increased
 - three-dimensional vector cross product redefined and discussed in vignette `vector_cross_product`

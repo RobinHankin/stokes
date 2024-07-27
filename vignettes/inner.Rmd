@@ -76,7 +76,7 @@ inner(diag(7))
 ```
 
 Note how the rows of the tensor appear in arbitrary order, as per
-`disordR` dicipline [@hankin2022_disordR].  Verify:
+`disordR` discipline [@hankin2022_disordR].  Verify:
 
 ```{r}
 x <- rnorm(7)

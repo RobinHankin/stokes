@@ -97,7 +97,7 @@ hodge(a,9)
 ```
 
 See how $\star a$ has index entries 1-9 except $2,6,7$ (from $a$).
-The (numerical) sign is negative because the permution has negative
+The (numerical) sign is negative because the permutation has negative
 (permutational) sign.  We can verify this using the `permutations`
 package:
 

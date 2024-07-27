@@ -124,7 +124,7 @@ to its evaluation, while `ty` is alternating by virtue of including
 all permutations of its arguments, with the sign of the permutation.
 
 
-We can evaluate Spivak's formula (but without the combinatorical term)
+We can evaluate Spivak's formula (but without the combinatorial term)
 for $x\wedge y$ by coercing to ktensors and using `tensorprod()`:
 
 ```{r}
