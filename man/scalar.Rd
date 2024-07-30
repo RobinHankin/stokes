@@ -45,13 +45,12 @@ Function \code{lose()} takes an object of class \code{ktensor} or
 Note that function \code{kform()} \emph{always} returns a \code{kform}
 object, it never loses attributes.
 
-There is a slight terminological problem.  A \eqn{k}-form maps
-\eqn{k} vectors to the reals: so a \eqn{0}-form maps \eqn{0}
-vectors to the reals.  This is what anyone on the planet would call a
-scalar.  Similarly, a \eqn{0}-tensor maps \eqn{0} vectors to the
-reals, and so is a scalar.  Mathematically, there is no difference
-between \eqn{0}-forms and \eqn{0}-tensors, but the package print methods
-make a distinction:
+There is a slight terminological problem.  A \eqn{k}-form maps \eqn{k}
+vectors to the reals: so a \eqn{0}-form maps \eqn{0} vectors to the
+reals.  This is what anyone on the planet would call a scalar.
+Similarly, a \eqn{0}-tensor maps \eqn{0} vectors to the reals, and so is
+a scalar.  Mathematically, there is no difference between \eqn{0}-forms
+and \eqn{0}-tensors, but the package print methods make a distinction:
 
 \preformatted{
 > scalar(5,kform=TRUE)
