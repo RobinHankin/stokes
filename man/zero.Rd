@@ -20,9 +20,11 @@ is.empty(x)
 }
 \author{Robin K. S. Hankin}
 \note{
-  Idiom such as \code{as.ktensor(rep(1,n),0)} and
-  \code{as.kform(rep(1,5),0)} and indeed \code{as.kform(1:5,0)} is
-  incorrect as the arity of the tensor is lost.
+  Idiom such as \code{as.ktensor(rep(1,5),0)} and
+  \code{as.kform(rep(1,5),0)} and indeed \code{as.kform(1:5,0)} will
+  return the zero tensor or \eqn{k}-form (in earlier versions of the
+  package, these were held to be incorrect as the arity of the tensor
+  was lost).
 
   A \eqn{0}-form is not the same thing as a zero tensor.  A
   \eqn{0}-form maps \eqn{V^0} to the reals; a scalar.  A zero
