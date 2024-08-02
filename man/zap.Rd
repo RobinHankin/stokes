@@ -32,5 +32,11 @@ zap(X)
 \examples{
 
 S <- rform(7)
-S == zap(S)
+S == zap(S)  # should be TRUE because the coeffs are integers
+
+(a <- rform())
+(b <- rform()*1e-11)
+a+b
+zap(a+b)
+
 }
