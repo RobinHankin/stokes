@@ -13,7 +13,7 @@ Suggests:
     magrittr,
     covr
 VignetteBuilder: knitr
-Imports: permutations (>= 1.1-2), partitions, methods, disordR (>= 0.9-7), spray (>= 1.0-25)
+Imports: permutations (>= 1.1-2), partitions, methods, disordR (>= 0.9-7), spray (>= 1.0-26)
 Authors@R: person(
 	   given=c("Robin", "K. S."),
 	   family="Hankin",
