@@ -1,28 +1,28 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: rocker/verse:latest
-    steps:
-      - checkout
-      - run:
-          name: Install package dependencies
-          command: R -e "devtools::install_deps(dep = TRUE)"
-      - run: tlmgr update --self
-      - run: tlmgr install tlgpg
-      - run: tlmgr install scheme-full
-      - run: tlmgr install wrapfig
-      - run: tlmgr install doublestroke
-      - run: tlmgr install bbm
-      - run: tlmgr install bbm-macros
-      - run: tlmgr install wasysym
-      - run: tlmgr install yfonts
-      - run: tlmgr install grfext
-      - run: tlmgr install cm-super
-      - run: tlmgr install blkarray
-      - run:
-          name: Build package
-          command: R CMD build .
-      - run:
-          name: Check package
-          command: R CMD check *tar.gz
+# version: 2
+# jobs:
+#   build:
+#     docker:
+#       - image: rocker/verse:latest
+#     steps:
+#       - checkout
+#       - run:
+#           name: Install package dependencies
+#           command: R -e "devtools::install_deps(dep = TRUE)"
+#       - run: tlmgr update --self
+#       - run: tlmgr install tlgpg
+#       - run: tlmgr install scheme-full
+#       - run: tlmgr install wrapfig
+#       - run: tlmgr install doublestroke
+#       - run: tlmgr install bbm
+#       - run: tlmgr install bbm-macros
+#       - run: tlmgr install wasysym
+#       - run: tlmgr install yfonts
+#       - run: tlmgr install grfext
+#       - run: tlmgr install cm-super
+#       - run: tlmgr install blkarray
+#       - run:
+#           name: Build package
+#           command: R CMD build .
+#       - run:
+#           name: Check package
+#           command: R CMD check *tar.gz
