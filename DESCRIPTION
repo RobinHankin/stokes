@@ -23,7 +23,7 @@ Authors@R: person(
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Description: Provides functionality for working with tensors, alternating
            forms, wedge products, Stokes's theorem, and related concepts
-	   from the exterior calculus.   Uses 'disordR' discipline
+	   from the exterior calculus.  Uses 'disordR' discipline
 	   (Hankin, 2022, <doi:10.48550/arXiv.2210.03856>).  The
 	   canonical reference would be M. Spivak
 	   (1965, ISBN:0-8053-9021-9) "Calculus on Manifolds".  To cite
