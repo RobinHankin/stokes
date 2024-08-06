@@ -21,7 +21,7 @@ A summary method for tensors and alternating forms, and a print method for summa
   \item{...}{Further arguments, passed to \code{head()}}
 }
 \details{
-Summary method for tensors and alternating forms.  Uses \code{spray::summary()}.
+Summary methods for tensors and alternating forms.  Uses \code{spray::summary()}.
 }
 \author{Robin K. S. Hankin}
 \examples{
