@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Objects `dx`, `dy`, and `dz` in the `stokes` package • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Objects `dx`, `dy`, and `dz` in the `stokes` package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Objects `dx`, `dy`, and `dz` in the `stokes` package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -86,12 +87,10 @@ Hankin</h4>
 <p>To cite the <code>stokes</code> package in publications, please use
 <span class="citation">Hankin (2022)</span>. Convenience objects
 <code>dx</code>, <code>dy</code>, and <code>dz</code>, corresponding to
-elementary differential forms, are discussed here (basis vectors
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>1</mn></msub><annotation encoding="application/x-tex">e_1</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>2</mn></msub><annotation encoding="application/x-tex">e_2</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>2</mn></msub><annotation encoding="application/x-tex">e_2</annotation></semantics></math>
-are discussed in <code>ex.Rmd</code>). <span class="citation">Spivak
-(1965)</span>, in a memorable passage, states:</p>
+elementary differential forms, are discussed here (basis vectors <span class="math inline">e_1</span>, <span class="math inline">e_2</span>,
+<span class="math inline">e_2</span> are discussed in
+<code>ex.Rmd</code>). <span class="citation">Spivak (1965)</span>, in a
+memorable passage, states:</p>
 <div class="warning" style="padding:0.1em; background-color:#E9D8FD; color:#69337A">
 <span>
 <p style="margin-top:1em; text-align:center">
@@ -99,52 +98,21 @@ are discussed in <code>ex.Rmd</code>). <span class="citation">Spivak
 </p>
 <p style="margin-left:1em;">
 </p>
-<p>If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">f\colon\mathbb{R}^n\longrightarrow\mathbb{R}</annotation></semantics></math>
-is differentiable, then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>Λ</mi><mn>1</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Df(p)\in\Lambda^1(\mathbb{R}^n)</annotation></semantics></math>.
-By a minor modification we therefore obtain a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}f</annotation></semantics></math>,
-defined by</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>p</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>D</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}f(p)(v_p)=Df(p)(v).</annotation></semantics></math></p>
-<p>Let us consider in particular the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>-forms
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msup><mi>π</mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">\mathrm{d}\pi^i</annotation></semantics></math><a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Spivak introduces the
-&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msup&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msup&gt;&lt;annotation encoding="application/x-tex"&gt;\pi^i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-notation on page 11: “if
-&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;ℝ&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msup&gt;&lt;mo&gt;→&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;ℝ&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;\pi\colon\mathbb{R}^n\longrightarrow\mathbb{R}^n&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-is the identity function,
-&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;mrow&gt;&lt;mo stretchy="true" form="prefix"&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy="true" form="postfix"&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;\pi(x)=x&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;,
-then [its components are]
-&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msup&gt;&lt;mrow&gt;&lt;mo stretchy="true" form="prefix"&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy="true" form="postfix"&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;\pi^i(x)=x^i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;;
-the function
-&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msup&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msup&gt;&lt;annotation encoding="application/x-tex"&gt;\pi^i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-is called the
-&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msup&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mrow&gt;&lt;mi mathvariant="normal"&gt;t&lt;/mi&gt;&lt;mi mathvariant="normal"&gt;h&lt;/mi&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;annotation encoding="application/x-tex"&gt;i^\mathrm{th}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;em&gt;projection function&lt;/em&gt;”&lt;/p&gt;'><sup>1</sup></a>. It is
-customary to let
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mi>i</mi></msup><annotation encoding="application/x-tex">x^i</annotation></semantics></math>
-denote the <em>function</em>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>π</mi><mi>i</mi></msup><annotation encoding="application/x-tex">\pi^i</annotation></semantics></math>
-(on
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>3</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^3</annotation></semantics></math>
-we often denote
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mn>1</mn></msup><annotation encoding="application/x-tex">x^1</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mn>2</mn></msup><annotation encoding="application/x-tex">x^2</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mn>3</mn></msup><annotation encoding="application/x-tex">x^3</annotation></semantics></math>
-by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>)
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\ldots</annotation></semantics></math>
-Since
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msup><mi>x</mi><mi>i</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>p</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi mathvariant="normal">d</mi><msup><mi>π</mi><mi>i</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>p</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>D</mi><msup><mi>π</mi><mi>i</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>v</mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">\mathrm{d}x^i(p)(v_p)=\mathrm{d}\pi^i(p)(v_p)=D\pi^i(p)(v)=v^i</annotation></semantics></math>,
-we see that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msup><mi>x</mi><mn>1</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mi>…</mi><mo>,</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><mi>n</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathrm{d}x^1(p),\ldots,\mathrm{d}x^n(p)</annotation></semantics></math>
-is just the dual basis to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>p</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">(e_1)_p,\ldots, (e_n)_p</annotation></semantics></math>.</p>
+<p>If <span class="math inline">f\colon\mathbb{R}^n\longrightarrow\mathbb{R}</span>
+is differentiable, then <span class="math inline">Df(p)\in\Lambda^1(\mathbb{R}^n)</span>. By a minor
+modification we therefore obtain a <span class="math inline">1</span>-form <span class="math inline">\mathrm{d}f</span>, defined by</p>
+<p><span class="math display">\mathrm{d}f(p)(v_p)=Df(p)(v).</span></p>
+<p>Let us consider in particular the <span class="math inline">1</span>-forms <span class="math inline">\mathrm{d}\pi^i</span> <a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Spivak introduces the &lt;span class="math inline"&gt;\pi^i&lt;/span&gt; notation on page 11: “if &lt;span class="math inline"&gt;\pi\colon\mathbb{R}^n\longrightarrow\mathbb{R}^n&lt;/span&gt;
+is the identity function, &lt;span class="math inline"&gt;\pi(x)=x&lt;/span&gt;,
+then [its components are] &lt;span class="math inline"&gt;\pi^i(x)=x^i&lt;/span&gt;;
+the function &lt;span class="math inline"&gt;\pi^i&lt;/span&gt; is called the &lt;span class="math inline"&gt;i^\mathrm{th}&lt;/span&gt; &lt;em&gt;projection function&lt;/em&gt;”&lt;/p&gt;'><sup>1</sup></a>. It is customary to
+let <span class="math inline">x^i</span> denote the <em>function</em>
+<span class="math inline">\pi^i</span> (on <span class="math inline">\mathbb{R}^3</span> we often denote <span class="math inline">x^1</span>, <span class="math inline">x^2</span>,
+and <span class="math inline">x^3</span> by <span class="math inline">x</span>, <span class="math inline">y</span>, and
+<span class="math inline">z</span>) <span class="math inline">\ldots</span> Since <span class="math inline">\mathrm{d}x^i(p)(v_p)=\mathrm{d}\pi^i(p)(v_p)=D\pi^i(p)(v)=v^i</span>,
+we see that <span class="math inline">\mathrm{d}x^1(p),\ldots,\mathrm{d}x^n(p)</span> is
+just the dual basis to <span class="math inline">(e_1)_p,\ldots,
+(e_n)_p</span>.</p>
 
 <p style="margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia">
 <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).
@@ -152,32 +120,23 @@ Page 89</i>
 </p>
 <p></p></span>
 </div>
-<p>Spivak goes on to observe that every
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
-can be written
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><msub><mo>∑</mo><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>k</mi></msub></mrow></msub><msub><mi>ω</mi><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><msub><mi>i</mi><mi>k</mi></msub></mrow></msub><mi mathvariant="normal">d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup></mrow><annotation encoding="application/x-tex">\omega=\sum_{i_1 &lt; \cdots &lt; i_k}\omega_{i_1,\ldots
-i_k}\mathrm{d}x^{i_1}\wedge\cdots\wedge\mathrm{d}x^{i_k}</annotation></semantics></math>.
-If working in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>3</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^3</annotation></semantics></math>,
-we have three elementary forms
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}x</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}y</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}z</annotation></semantics></math>;
-in the package we have the pre-defined objects <code>dx</code>,
-<code>dy</code>, and <code>dz</code>. These are convenient for
-reproducing textbook results. We start with some illustrations of the
-package print method.</p>
+<p>Spivak goes on to observe that every <span class="math inline">k</span>-form <span class="math inline">\omega</span> can be written <span class="math inline">\omega=\sum_{i_1 &lt; \cdots &lt;
+i_k}\omega_{i_1,\ldots
+i_k}\mathrm{d}x^{i_1}\wedge\cdots\wedge\mathrm{d}x^{i_k}</span>. If
+working in <span class="math inline">\mathbb{R}^3</span>, we have three
+elementary forms <span class="math inline">\mathrm{d}x</span>, <span class="math inline">\mathrm{d}y</span>, and <span class="math inline">\mathrm{d}z</span>; in the package we have the
+pre-defined objects <code>dx</code>, <code>dy</code>, and
+<code>dz</code>. These are convenient for reproducing textbook results.
+We start with some illustrations of the package print method.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dx</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^1 to R with V=R^1:</span></span>
 <span><span class="co">##        val</span></span>
 <span><span class="co">##  1  =    1</span></span></code></pre>
 <p>This is somewhat opaque and difficult to understand. It is easier to
-start with a more complicated example: take
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>x</mi><mo>∧</mo><mi mathvariant="normal">d</mi><mi>y</mi><mo>−</mo><mn>7</mn><mi mathvariant="normal">d</mi><mi>x</mi><mo>∧</mo><mi mathvariant="normal">d</mi><mi>z</mi><mo>+</mo><mn>3</mn><mi mathvariant="normal">d</mi><mi>y</mi><mo>∧</mo><mi mathvariant="normal">d</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}x\wedge\mathrm{d}y -7\mathrm{d}x\wedge\mathrm{d}z
-+ 3\mathrm{d}y\wedge\mathrm{d}z</annotation></semantics></math>:</p>
+start with a more complicated example: take <span class="math inline">\mathrm{d}x\wedge\mathrm{d}y
+-7\mathrm{d}x\wedge\mathrm{d}z
++ 3\mathrm{d}y\wedge\mathrm{d}z</span>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dx</span><span class="op">^</span><span class="va">dy</span> <span class="op">-</span><span class="fl">7</span><span class="op">*</span><span class="va">dx</span><span class="op">^</span><span class="va">dz</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="va">dy</span><span class="op">^</span><span class="va">dz</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^2 to R with V=R^3:</span></span>
@@ -186,38 +145,26 @@ start with a more complicated example: take
 <span><span class="co">##  2 3  =    3</span></span>
 <span><span class="co">##  1 2  =    1</span></span></code></pre>
 <p>We see three rows for the three elementary components. Taking the row
-with coefficient
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">-7</annotation></semantics></math>
-[which would be
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>7</mn><mi mathvariant="normal">d</mi><mi>x</mi><mo>∧</mo><mi mathvariant="normal">d</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">-7\mathrm{d}x\wedge\mathrm{d}z</annotation></semantics></math>],
-this maps
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><annotation encoding="application/x-tex">\left(\mathbb{R}^3\right)^2</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>
-and we have</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>7</mn><mi mathvariant="normal">d</mi><mi>x</mi><mo>∧</mo><mi mathvariant="normal">d</mi><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mn>7</mn><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>3</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(-7\mathrm{d}x\wedge\mathrm{d}z)\left(\begin{pmatrix}
+with coefficient <span class="math inline">-7</span> [which would be
+<span class="math inline">-7\mathrm{d}x\wedge\mathrm{d}z</span>], this
+maps <span class="math inline">\left(\mathbb{R}^3\right)^2</span> to
+<span class="math inline">\mathbb{R}</span> and we have</p>
+<p><span class="math display">(-7\mathrm{d}x\wedge\mathrm{d}z)\left(\begin{pmatrix}
 u_1\\u_2\\u_3\end{pmatrix},
 \begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}\right)=
--7\det\begin{pmatrix}u_1&amp;v_1\\u_3&amp;v_3\end{pmatrix}</annotation></semantics></math></p>
-<p>Armed with this familiar fact, we can interpret
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math>
-as a map from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>1</mn></msup><annotation encoding="application/x-tex">\left(\mathbb{R}^3\right)^1</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>
-with</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>x</mi><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>1</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>u</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x\left(\begin{pmatrix} u_1\\u_2\\u_3\end{pmatrix}
+-7\det\begin{pmatrix}u_1&amp;v_1\\u_3&amp;v_3\end{pmatrix}</span></p>
+<p>Armed with this familiar fact, we can interpret <span class="math inline">dx</span> as a map from <span class="math inline">\left(\mathbb{R}^3\right)^1</span> to <span class="math inline">\mathbb{R}</span> with</p>
+<p><span class="math display">\mathrm{d}x\left(\begin{pmatrix}
+u_1\\u_2\\u_3\end{pmatrix}
 \right)=
-\det\begin{pmatrix}u_1\end{pmatrix}=u_1</annotation></semantics></math></p>
-<p>or, in other words,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}x</annotation></semantics></math>
+\det\begin{pmatrix}u_1\end{pmatrix}=u_1</span></p>
+<p>or, in other words, <span class="math inline">\mathrm{d}x</span>
 picks out the first component of its vector (as the print method gives,
 albeit obscurely). This is easily shown in the package:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">)</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">113</span>,<span class="fl">3</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 113</span></span></code></pre>
-<p>We might want to verify that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>x</mi><mo>∧</mo><mi mathvariant="normal">d</mi><mi>y</mi><mo>=</mo><mo>−</mo><mi mathvariant="normal">d</mi><mi>y</mi><mo>∧</mo><mi mathvariant="normal">d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}x\wedge\mathrm{d}y=-\mathrm{d}y\wedge\mathrm{d}x</annotation></semantics></math>:</p>
+<p>We might want to verify that <span class="math inline">\mathrm{d}x\wedge\mathrm{d}y=-\mathrm{d}y\wedge\mathrm{d}x</span>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dx</span> <span class="op">^</span> <span class="va">dy</span> <span class="op">==</span> <span class="op">-</span><span class="va">dy</span> <span class="op">^</span> <span class="va">dx</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
@@ -238,9 +185,8 @@ form. For working with <code>dx dy dz</code> we may set option
 <code class="sourceCode R"><span><span class="va">dx</span><span class="op">^</span><span class="va">dy</span> <span class="op">+</span> <span class="fl">56</span><span class="op">*</span><span class="va">dy</span><span class="op">^</span><span class="va">dz</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^2 to R with V=R^3:</span></span>
 <span><span class="co">##  + dx^dy +56 dy^dz</span></span></code></pre>
-<p>However, this setting can be confusing if we work with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msup><mi>x</mi><mi>i</mi></msup><mo>,</mo><mi>i</mi><mo>&gt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\mathrm{d}x^i,i&gt;3</annotation></semantics></math>,
-for the print method runs out of alphabet:</p>
+<p>However, this setting can be confusing if we work with <span class="math inline">\mathrm{d}x^i,i&gt;3</span>, for the print method
+runs out of alphabet:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^3 to R with V=R^7:</span></span>

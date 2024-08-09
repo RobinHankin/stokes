@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>The `kinner()` function in the `stokes` package • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="The `kinner()` function in the `stokes` package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="The `kinner()` function in the `stokes` package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -106,35 +107,23 @@ Hankin</h4>
 <span><span class="co">##     }</span></span>
 <span><span class="co">##     return(out)</span></span>
 <span><span class="co">## }</span></span>
-<span><span class="co">## &lt;bytecode: 0x563aa2eade58&gt;</span></span>
+<span><span class="co">## &lt;bytecode: 0x55cdd2f5cda8&gt;</span></span>
 <span><span class="co">## &lt;environment: namespace:stokes&gt;</span></span></code></pre>
 <p>To cite the <code>stokes</code> package in publications, please use
-<span class="citation">Hankin (2022)</span>. Given two
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-forms
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>,</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\alpha,\beta</annotation></semantics></math>,
-function <code><a href="../reference/kinner.html">kinner()</a></code> returns an inner product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">⟨</mo><mo>⋅</mo><mo>,</mo><mo>⋅</mo><mo stretchy="true" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\left\langle\cdot,\cdot\right\rangle</annotation></semantics></math>
-of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>.
-If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><msub><mi>α</mi><mn>1</mn></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><msub><mi>α</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\alpha=\alpha_1\wedge\cdots\wedge\alpha_k</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><msub><mi>β</mi><mn>1</mn></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><msub><mi>β</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\beta=\beta_1\wedge\cdots\wedge\beta_k</annotation></semantics></math>,
-and we have an inner product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">⟨</mo><msub><mi>α</mi><mi>i</mi></msub><mo>,</mo><msub><mi>β</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\left\langle\alpha_i,\beta_j\right\rangle</annotation></semantics></math>
+<span class="citation">Hankin (2022)</span>. Given two <span class="math inline">k</span>-forms <span class="math inline">\alpha,\beta</span>, function <code><a href="../reference/kinner.html">kinner()</a></code>
+returns an inner product <span class="math inline">\left\langle\cdot,\cdot\right\rangle</span> of <span class="math inline">\alpha</span> and <span class="math inline">\beta</span>. If <span class="math inline">\alpha=\alpha_1\wedge\cdots\wedge\alpha_k</span> and
+<span class="math inline">\beta=\beta_1\wedge\cdots\wedge\beta_k</span>,
+and we have an inner product <span class="math inline">\left\langle\alpha_i,\beta_j\right\rangle</span>
 then</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mo>⋅</mo><mo>,</mo><mo>⋅</mo><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mrow><mo stretchy="true" form="prefix">⟨</mo><msub><mi>α</mi><mi>i</mi></msub><mo>,</mo><msub><mi>β</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">⟩</mo></mrow><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle\cdot,\cdot\right\rangle=
-\det\left(\left\langle\alpha_i,\beta_j\right\rangle_{ij}\right)</annotation></semantics></math></p>
-<p>We extend this inner product by bilinearity to the whole of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>.</p>
+<p><span class="math display">\left\langle\cdot,\cdot\right\rangle=
+\det\left(\left\langle\alpha_i,\beta_j\right\rangle_{ij}\right)</span></p>
+<p>We extend this inner product by bilinearity to the whole of <span class="math inline">\Lambda^k(V)</span>.</p>
 <div class="section level2">
 <h2 id="some-simple-examples">Some simple examples<a class="anchor" aria-label="anchor" href="#some-simple-examples"></a>
 </h2>
 <p><a href="https://www.youtube.com/watch?v=vDRfADusqYQ&amp;list=PL22w63XsKjqzQZtDZO_9s2HEMRJnaOTX7&amp;index=20&amp;ab_channel=MichaelPenn" class="external-link">Michael
 Penn</a> uses a metric of</p>
-<p><span class="math display">$$
+<p><span class="math display">
 \begin{blockarray}{crrrr}
 &amp; dt &amp; dx &amp; dy &amp; dz\\
 \begin{block}{c[rrrr]}
@@ -144,9 +133,9 @@ dy &amp;  0 &amp;  0 &amp; -1 &amp; 0 \bigstrut[b]\\
 dz &amp;  0 &amp;  0 &amp;  0 &amp;-1 \bigstrut[b]\\
 \end{block}
 \end{blockarray}
-$$</span></p>
+</span></p>
 <p>and shows that</p>
-<p><span class="math display">$$
+<p><span class="math display">
 \begin{blockarray}{crrrrrrr}
 &amp; dt\wedge dx &amp; dt\wedge dy &amp; dt\wedge dz &amp; dx\wedge dy
 &amp; dx\wedge dz&amp; dy\wedge dz\\
@@ -164,16 +153,15 @@ dy\wedge dz &amp;  0 &amp;  0 &amp;  0
 &amp;0&amp;0&amp;1&amp;\bigstrut[b]\\
 \end{block}
 \end{blockarray}
-$$</span></p>
-<p>so, for example,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>d</mi><mi>t</mi><mo>∧</mo><mi>d</mi><mi>x</mi><mo>,</mo><mi>d</mi><mi>t</mi><mo>∧</mo><mi>d</mi><mi>x</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\left\langle dt\wedge dx,dt\wedge
-dx\right\rangle=-1</annotation></semantics></math> and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>d</mi><mi>t</mi><mo>∧</mo><mi>d</mi><mi>x</mi><mo>,</mo><mi>d</mi><mi>t</mi><mo>∧</mo><mi>d</mi><mi>y</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\left\langle dt\wedge dx,dt\wedge
-dy\right\rangle=0</annotation></semantics></math>. We can reproduce this
-relatively easily in the package as follows. First we need to over-write
-the default values of <code>dx</code>, <code>dy</code>, and
-<code>dz</code> (which are defined in three dimensions) and define
-<code>dt dx dy dz</code>:</p>
+</span></p>
+<p>so, for example, <span class="math inline">\left\langle dt\wedge
+dx,dt\wedge
+dx\right\rangle=-1</span> and <span class="math inline">\left\langle
+dt\wedge dx,dt\wedge
+dy\right\rangle=0</span>. We can reproduce this relatively easily in the
+package as follows. First we need to over-write the default values of
+<code>dx</code>, <code>dy</code>, and <code>dz</code> (which are defined
+in three dimensions) and define <code>dt dx dy dz</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">d</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">dx</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">d</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>

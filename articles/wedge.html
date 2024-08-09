@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Functions `wedge()` and `wedge2()` in the `stokes` package • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Functions `wedge()` and `wedge2()` in the `stokes` package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Functions `wedge()` and `wedge2()` in the `stokes` package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -113,26 +114,12 @@ Hankin</h4>
 <span class="citation">Spivak (1965)</span> states:</p>
 <div class="warning" style="padding:0.1em; background-color:#E9D8FD; color:#69337A">
 <p><span></span></p>
-<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\ldots</annotation></semantics></math>
-we would like a theorem analogous to 4.1 [the dimensionality of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-fold
-tensor products is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>n</mi><mi>k</mi></msup><annotation encoding="application/x-tex">n^k</annotation></semantics></math>].
-Of course, if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in\Lambda^k(V)</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>∈</mo><msup><mi>Λ</mi><mi>l</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\eta\in\Lambda^l(V)</annotation></semantics></math>,
-then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>⊗</mo><mi>η</mi></mrow><annotation encoding="application/x-tex">\omega\otimes\eta</annotation></semantics></math>
-is usually not in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^{k+l}(V)</annotation></semantics></math>.
-We will therefore define a new product, the <strong>wedge</strong>
-product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∧</mo><mi>η</mi><mo>∈</mo><msup><mi>Λ</mi><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\wedge\eta\in\Lambda^{k+l}(V)</annotation></semantics></math>
-by</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∧</mo><mi>η</mi><mo>=</mo><mfrac><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mi>l</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>!</mi></mrow><mrow><mi>k</mi><mi>!</mi><mi>l</mi><mi>!</mi></mrow></mfrac><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mi>η</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mi>η</mi><mo>∈</mo><msup><mi>Λ</mi><mi>l</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p><span class="math inline">\ldots</span> we would like a theorem
+analogous to 4.1 [the dimensionality of <span class="math inline">k</span>-fold tensor products is <span class="math inline">n^k</span>]. Of course, if <span class="math inline">\omega\in\Lambda^k(V)</span> and <span class="math inline">\eta\in\Lambda^l(V)</span>, then <span class="math inline">\omega\otimes\eta</span> is usually not in <span class="math inline">\Lambda^{k+l}(V)</span>. We will therefore define a
+new product, the <strong>wedge</strong> product <span class="math inline">\omega\wedge\eta\in\Lambda^{k+l}(V)</span> by</p>
+<p><span class="math display">
 \omega\wedge\eta=\frac{\left(k+l\right)!}{k!l!}\operatorname{Alt}(\omega\otimes\eta),\qquad\omega\in\Lambda^k(V),\eta\in\Lambda^l(V)
-</annotation></semantics></math></p>
+</span></p>
 (The reason for the strange coefficient will appear later).
 
 <p style="margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia">
@@ -142,13 +129,9 @@ Page 79</i>
 <p></p>
 </div>
 <p>Function <code><a href="../reference/wedge.html">wedge()</a></code> returns the wedge product of any number
-of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-forms.
-Function <code><a href="../reference/wedge.html">wedge2()</a></code> returns the wedge product of two
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-forms,
-although the idiom is somewhat opaque, especially the “strange”
-combinatorial coefficient
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mi>l</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>!</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mi>!</mi><mi>l</mi><mi>!</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(k+l)!/(k!l!)</annotation></semantics></math>.</p>
+of <span class="math inline">k</span>-forms. Function
+<code><a href="../reference/wedge.html">wedge2()</a></code> returns the wedge product of two <span class="math inline">k</span>-forms, although the idiom is somewhat
+opaque, especially the “strange” combinatorial coefficient <span class="math inline">(k+l)!/(k!l!)</span>.</p>
 <div class="section level3">
 <h3 id="digression-function-spraycross">Digression: function <code>spraycross()</code><a class="anchor" aria-label="anchor" href="#digression-function-spraycross"></a>
 </h3>
@@ -242,9 +225,8 @@ representation of <code>ty</code>: both are alternating tensors but
 <code>ty</code> is alternating by virtue of including all permutations
 of its arguments, with the sign of the permutation.</p>
 <p>We can evaluate Spivak’s formula (but without the combinatorial term)
-for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∧</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x\wedge y</annotation></semantics></math>
-by coercing to ktensors and using <code><a href="../reference/tensorprod.html">tensorprod()</a></code>:</p>
+for <span class="math inline">x\wedge y</span> by coercing to ktensors
+and using <code><a href="../reference/tensorprod.html">tensorprod()</a></code>:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tensorprod.html">tensorprod</a></span><span class="op">(</span><span class="fu"><a href="../reference/ktensor.html">as.ktensor</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,<span class="fu"><a href="../reference/ktensor.html">as.ktensor</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^5 to R with V=R^7:</span></span>
@@ -261,32 +243,21 @@ by coercing to ktensors and using <code><a href="../reference/tensorprod.html">t
 <span><span class="co">##  1 2 3 7 4  =  -35</span></span>
 <span><span class="co">##  1 2 7 4 3  =  -35</span></span>
 <span><span class="co">##  2 1 7 4 3  =   35</span></span></code></pre>
-<p>Above, each coefficient is equal to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>35</mn></mrow><annotation encoding="application/x-tex">\pm 35</annotation></semantics></math>
-(the sign coming from the sign of the permutation), and we have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>!</mi><mn>3</mn><mi>!</mi><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">2!3!=12</annotation></semantics></math>
-rows. We can now calculate
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(z)</annotation></semantics></math>,
-which would have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>!</mi><mo>=</mo><mn>120</mn></mrow><annotation encoding="application/x-tex">5!=120</annotation></semantics></math>
-rows, one per permutation of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">[</mo><mn>5</mn><mo stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[5]</annotation></semantics></math>,
-each with coefficient
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mfrac><mrow><mn>12</mn><mo>×</mo><mn>35</mn></mrow><mrow><mn>5</mn><mi>!</mi></mrow></mfrac><mo>=</mo><mo>±</mo><mn>3.5</mn></mrow><annotation encoding="application/x-tex">\pm\frac{12\times
-35}{5!}=\pm 3.5</annotation></semantics></math>.</p>
-<p>We define
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∧</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x\wedge y</annotation></semantics></math>
-to be
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mn>5</mn><mi>!</mi></mrow><mrow><mn>3</mn><mi>!</mi><mn>2</mn><mi>!</mi></mrow></mfrac><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\frac{5!}{3!2!}\operatorname{Alt}(z)</annotation></semantics></math>,
-so each coefficient would be
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mfrac><mrow><mn>5</mn><mi>!</mi></mrow><mrow><mn>3</mn><mi>!</mi><mn>2</mn><mi>!</mi></mrow></mfrac><mo>⋅</mo><mfrac><mrow><mn>12</mn><mo>×</mo><mn>35</mn></mrow><mrow><mn>5</mn><mi>!</mi></mrow></mfrac><mo>=</mo><mn>35</mn></mrow><annotation encoding="application/x-tex">\pm\frac{5!}{3!2!}\cdot\frac{12\times
-35}{5!}=35</annotation></semantics></math>. We know that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∧</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x\wedge y</annotation></semantics></math>
-is an alternating form. So to represent it as an object of class
-<code>kform</code>, we need a <code>kform</code> object with
+<p>Above, each coefficient is equal to <span class="math inline">\pm
+35</span> (the sign coming from the sign of the permutation), and we
+have <span class="math inline">2!3!=12</span> rows. We can now calculate
+<span class="math inline">\operatorname{Alt}(z)</span>, which would have
+<span class="math inline">5!=120</span> rows, one per permutation of
+<span class="math inline">[5]</span>, each with coefficient <span class="math inline">\pm\frac{12\times
+35}{5!}=\pm 3.5</span>.</p>
+<p>We define <span class="math inline">x\wedge y</span> to be <span class="math inline">\frac{5!}{3!2!}\operatorname{Alt}(z)</span>, so each
+coefficient would be <span class="math inline">\pm\frac{5!}{3!2!}\cdot\frac{12\times
+35}{5!}=35</span>. We know that <span class="math inline">x\wedge
+y</span> is an alternating form. So to represent it as an object of
+class <code>kform</code>, we need a <code>kform</code> object with
 <em>single</em> index entry <code>1 2 3 4 7</code>. This would need
 coefficient 35, on the grounds that it is linear, alternating, and maps
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix}
+<span class="math inline">\begin{pmatrix}
 1&amp;0&amp;0&amp;0&amp;0\\
 0&amp;1&amp;0&amp;0&amp;0\\
 0&amp;0&amp;1&amp;0&amp;0\\
@@ -294,9 +265,8 @@ coefficient 35, on the grounds that it is linear, alternating, and maps
 0&amp;0&amp;0&amp;0&amp;0\\
 0&amp;0&amp;0&amp;0&amp;0\\
 0&amp;0&amp;0&amp;0&amp;1
-\end{pmatrix}</annotation></semantics></math> to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>35</mn><annotation encoding="application/x-tex">35</annotation></semantics></math>;
-and indeed this is what we see:</p>
+\end{pmatrix}</span> to <span class="math inline">35</span>; and indeed
+this is what we see:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/wedge.html">wedge</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^5 to R with V=R^7:</span></span>
@@ -309,76 +279,63 @@ is just difficult to see at first glance.</p>
 <div class="section level2">
 <h2 id="algebraic-properties">Algebraic properties<a class="anchor" aria-label="anchor" href="#algebraic-properties"></a>
 </h2>
-<p>First of all we should note that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>
-is a vector space (this is considered in the <code>kform</code>
-vignette). If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>,</mo><msub><mi>ω</mi><mi>i</mi></msub><mo>∈</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega,\omega_i\in\Lambda^k(V)</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>,</mo><msub><mi>η</mi><mi>i</mi></msub><mo>∈</mo><msup><mi>Λ</mi><mi>l</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\eta,\eta_i\in\Lambda^l(V)</annotation></semantics></math>
-then</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ω</mi><mn>1</mn></msub><mo>+</mo><msub><mi>ω</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∧</mo><mi>η</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>ω</mi><mn>1</mn></msub><mo>∧</mo><mi>η</mi><mo>+</mo><msub><mi>ω</mi><mn>2</mn></msub><mo>∧</mo><mi>η</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>ω</mi><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>η</mi><mn>1</mn></msub><mo>+</mo><msub><mi>η</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>ω</mi><mo>∧</mo><msub><mi>η</mi><mn>1</mn></msub><mo>+</mo><mi>ω</mi><mo>∧</mo><msub><mi>η</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{eqnarray}
-(\omega_1+\omega_2)\wedge\eta &amp;=&amp; \omega_1\wedge\eta+\omega_2\wedge\eta\\
-\omega\wedge(\eta_1+\eta_2) &amp;=&amp;\omega\wedge\eta_1 + \omega\wedge\eta_2\\
-\end{eqnarray}</annotation></semantics></math></p>
+<p>First of all we should note that <span class="math inline">\Lambda^k(V)</span> is a vector space (this is
+considered in the <code>kform</code> vignette). If <span class="math inline">\omega,\omega_i\in\Lambda^k(V)</span> and <span class="math inline">\eta,\eta_i\in\Lambda^l(V)</span> then</p>
+<p><span class="math display">\begin{eqnarray}
+(\omega_1+\omega_2)\wedge\eta &amp;=&amp;
+\omega_1\wedge\eta+\omega_2\wedge\eta\\
+\omega\wedge(\eta_1+\eta_2) &amp;=&amp;\omega\wedge\eta_1 +
+\omega\wedge\eta_2\\
+\end{eqnarray}</span></p>
 <p>(that is, the wedge product is left- and right- distributive); if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">a\in\mathbb{R}</annotation></semantics></math>
-then</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>ω</mi><mo>∧</mo><mi>η</mi><mo>=</mo><mi>ω</mi><mo>∧</mo><mi>a</mi><mi>η</mi><mo>=</mo><mi>a</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>∧</mo><mi>η</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\begin{equation}
+<span class="math inline">a\in\mathbb{R}</span> then</p>
+<p><span class="math display">\begin{equation}
 a\omega\wedge\eta = \omega\wedge a\eta=a(\omega\wedge\eta)
-\end{equation}</annotation></semantics></math></p>
-<p>and
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∧</mo><mi>η</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>k</mi><mi>l</mi></mrow></msup><mi>η</mi><mo>∧</mo><mi>ω</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">\begin{equation}
+\end{equation}</span></p>
+<p>and <span class="math display">\begin{equation}
 \omega\wedge\eta = (-1)^{kl}\eta\wedge\omega.
-\end{equation}</annotation></semantics></math></p>
+\end{equation}</span></p>
 <p>These rules make expansion of wedge products possible by expressing a
-general kform in terms of a basis for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>.
-<span class="citation">Spivak (1965)</span> tells us that, if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_k</annotation></semantics></math>
-is a basis for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
-then the set of all</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>∧</mo><msub><mi>ϕ</mi><msub><mi>i</mi><mn>2</mn></msub></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><msub><mi>ϕ</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mspace width="2.0em"></mspace><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>k</mi></msub><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\begin{equation}
-\phi_{i_1}\wedge\phi_{i_2}\wedge\cdots\wedge\phi_{i_k}\qquad 1\leq i_1 &lt; \cdots &lt; i_k\leq n
-\end{equation}</annotation></semantics></math></p>
-<p>is a basis for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\phi_i(v_j)=\delta_{ij}</annotation></semantics></math>.
-The package expresses a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-in terms of this basis as in the following example:</p>
+general kform in terms of a basis for <span class="math inline">\Lambda^k(V)</span>. <span class="citation">Spivak
+(1965)</span> tells us that, if <span class="math inline">v_1,\ldots,v_k</span> is a basis for <span class="math inline">V</span>, then the set of all</p>
+<p><span class="math display">\begin{equation}
+\phi_{i_1}\wedge\phi_{i_2}\wedge\cdots\wedge\phi_{i_k}\qquad 1\leq i_1
+&lt; \cdots &lt; i_k\leq n
+\end{equation}</span></p>
+<p>is a basis for <span class="math inline">\Lambda^k(V)</span> where
+<span class="math inline">\phi_i(v_j)=\delta_{ij}</span>. The package
+expresses a <span class="math inline">k</span>-form in terms of this
+basis as in the following example:</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">omega</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">8</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span>,<span class="fl">5</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^3 to R with V=R^8:</span></span>
 <span><span class="co">##            val</span></span>
 <span><span class="co">##  1 3 7  =    6</span></span>
 <span><span class="co">##  1 2 8  =    5</span></span></code></pre>
-<p>In algebraic notation, <code>omega</code> (or
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>)
-would be
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>8</mn></msub><mo>+</mo><mn>6</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>7</mn></msub></mrow><annotation encoding="application/x-tex">5\phi_1\wedge\phi_2\wedge\phi_8+6\phi_1\wedge\phi_3\wedge\phi_7</annotation></semantics></math>
-and we may write this as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mn>5</mn><msub><mi>ϕ</mi><mn>128</mn></msub><mo>+</mo><mn>6</mn><msub><mi>ϕ</mi><mn>137</mn></msub></mrow><annotation encoding="application/x-tex">\omega=5\phi_{128}+6\phi_{137}</annotation></semantics></math>.
-To take a wedge product of this with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>2</mn><msub><mi>ϕ</mi><mn>235</mn></msub><mo>+</mo><mn>3</mn><msub><mi>ϕ</mi><mn>356</mn></msub></mrow><annotation encoding="application/x-tex">\eta=2\phi_{235}+3\phi_{356}</annotation></semantics></math>
-we would write</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>ω</mi><mo>∧</mo><mi>η</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mo stretchy="true" form="prefix">(</mo><mn>5</mn><msub><mi>ϕ</mi><mn>128</mn></msub><mo>+</mo><mn>6</mn><msub><mi>ϕ</mi><mn>137</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><msub><mi>ϕ</mi><mn>235</mn></msub><mo>+</mo><mn>3</mn><msub><mi>ϕ</mi><mn>356</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>10</mn><msub><mi>ϕ</mi><mn>128</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>235</mn></msub><mo>+</mo><mn>15</mn><msub><mi>ϕ</mi><mn>128</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>356</mn></msub><mo>+</mo><mn>12</mn><msub><mi>ϕ</mi><mn>137</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>235</mn></msub><mo>+</mo><mn>18</mn><msub><mi>ϕ</mi><mn>137</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>356</mn></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>10</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>8</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>5</mn></msub><mo>+</mo><mn>15</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>8</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>5</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>6</mn></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="left" style="text-align: left"><mspace width="2.0em"></mspace><mo>+</mo><mn>12</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>7</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>5</mn></msub><mo>+</mo><mn>18</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>7</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>5</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>6</mn></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>+</mo><mn>15</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>8</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>5</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>6</mn></msub><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mo>−</mo><mn>15</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>5</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>6</mn></msub><mo>∧</mo><msub><mi>ϕ</mi><mn>8</mn></msub></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{eqnarray}
-\omega\wedge\eta &amp;=&amp; (5\phi_{128}+6\phi_{137})\wedge (2\phi_{235}+3\phi_{356})\\
-&amp;=&amp; 10\phi_{128}\wedge\phi_{235} + 15\phi_{128}\wedge\phi_{356} +
+<p>In algebraic notation, <code>omega</code> (or <span class="math inline">\omega</span>) would be <span class="math inline">5\phi_1\wedge\phi_2\wedge\phi_8+6\phi_1\wedge\phi_3\wedge\phi_7</span>
+and we may write this as <span class="math inline">\omega=5\phi_{128}+6\phi_{137}</span>. To take a
+wedge product of this with <span class="math inline">\eta=2\phi_{235}+3\phi_{356}</span> we would
+write</p>
+<p><span class="math display">\begin{eqnarray}
+\omega\wedge\eta &amp;=&amp; (5\phi_{128}+6\phi_{137})\wedge
+(2\phi_{235}+3\phi_{356})\\
+&amp;=&amp; 10\phi_{128}\wedge\phi_{235} + 15\phi_{128}\wedge\phi_{356}
++
     12\phi_{137}\wedge\phi_{235} + 18\phi_{137}\wedge\phi_{356}\\
 &amp;=&amp;
-10\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_2\wedge\phi_3\wedge\phi_5 + 
-15\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_3\wedge\phi_5\wedge\phi_6\\&amp;{}&amp;\qquad + 
+10\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_2\wedge\phi_3\wedge\phi_5 +
+15\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_3\wedge\phi_5\wedge\phi_6\\&amp;{}&amp;\qquad
++
 12\phi_1\wedge\phi_3\wedge\phi_7\wedge\phi_2\wedge\phi_3\wedge\phi_5 +
 18\phi_1\wedge\phi_3\wedge\phi_7\wedge\phi_3\wedge\phi_5\wedge\phi_6\\
-&amp;=&amp; 0+ 15\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_3\wedge\phi_5\wedge\phi_6+0+0\\
-&amp;=&amp; -15\phi_1\wedge\phi_2\wedge\phi_3\wedge\phi_5\wedge\phi_6\wedge\phi_8
-\end{eqnarray}</annotation></semantics></math></p>
+&amp;=&amp; 0+
+15\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_3\wedge\phi_5\wedge\phi_6+0+0\\
+&amp;=&amp;
+-15\phi_1\wedge\phi_2\wedge\phi_3\wedge\phi_5\wedge\phi_6\wedge\phi_8
+\end{eqnarray}</span></p>
 <p>where we have used the rules repeatedly (especially the fact that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∧</mo><mi>ω</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega\wedge\omega=0</annotation></semantics></math>
-for <em>any</em> alternating form). Package idiom would be:</p>
+<span class="math inline">\omega\wedge\omega=0</span> for <em>any</em>
+alternating form). Package idiom would be:</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">eta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/wedge.html">wedge</a></span><span class="op">(</span><span class="va">omega</span>,<span class="va">eta</span><span class="op">)</span></span></code></pre></div>

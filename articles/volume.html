@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Function `volume()` in the Stokes package • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Function `volume()` in the Stokes package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Function `volume()` in the Stokes package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -95,80 +96,38 @@ states:</p>
 </p>
 <p style="margin-left:1em;">
 </p>
-<p>The fact that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>dim</mo><msup><mi>Λ</mi><mi>n</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\operatorname{dim}\Lambda^n\left(\mathbb{R}^n\right)=1</annotation></semantics></math>
-is probably not new to you, since
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>det</mo><annotation encoding="application/x-tex">\operatorname{det}</annotation></semantics></math>
-is often defined as the unique element
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>n</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in\Lambda^n{\left(\mathbb{R}^n\right)}</annotation></semantics></math>
-such that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>e</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\omega{\left(e_1,\ldots,e_n\right)}=1</annotation></semantics></math>.
-For a general vector space
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
-there is no extra criterion of this sort to distinguish a particular
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>n</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in\Lambda^n{\left(\mathbb{R}^n\right)}</annotation></semantics></math>.
-Suppose, however, that an inner product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
-is given. If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_n</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">w_1,\ldots, w_n</annotation></semantics></math>
-are two bases which are orthonormal with respect to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>,
-and the matrix
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">A=\left(a_{ij}\right)</annotation></semantics></math>
-is defined by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>v</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">w_i=\sum_{j=1}^n a_{ij}v_j</annotation></semantics></math>,
-then</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>,</mo><msub><mi>w</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>,</mo><mi>l</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>a</mi><mrow><mi>i</mi><mi>k</mi></mrow></msub><msub><mi>a</mi><mrow><mi>j</mi><mi>l</mi></mrow></msub><mspace width="0.167em"></mspace><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>k</mi></msub><mo>,</mo><msub><mi>v</mi><mi>l</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>a</mi><mrow><mi>i</mi><mi>k</mi></mrow></msub><msub><mi>a</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">\delta_{ij}=T{\left(w_i,w_j\right)}=
+<p>The fact that <span class="math inline">\operatorname{dim}\Lambda^n\left(\mathbb{R}^n\right)=1</span>
+is probably not new to you, since <span class="math inline">\operatorname{det}</span> is often defined as the
+unique element <span class="math inline">\omega\in\Lambda^n{\left(\mathbb{R}^n\right)}</span>
+such that <span class="math inline">\omega{\left(e_1,\ldots,e_n\right)}=1</span>. For a
+general vector space <span class="math inline">V</span> there is no
+extra criterion of this sort to distinguish a particular <span class="math inline">\omega\in\Lambda^n{\left(\mathbb{R}^n\right)}</span>.
+Suppose, however, that an inner product <span class="math inline">T</span> for <span class="math inline">V</span> is
+given. If <span class="math inline">v_1,\ldots,v_n</span> and <span class="math inline">w_1,\ldots, w_n</span> are two bases which are
+orthonormal with respect to <span class="math inline">T</span>, and the
+matrix <span class="math inline">A=\left(a_{ij}\right)</span> is defined
+by <span class="math inline">w_i=\sum_{j=1}^n a_{ij}v_j</span>, then</p>
+<p><span class="math display">\delta_{ij}=T{\left(w_i,w_j\right)}=
 \sum_{k,l=1}^n a_{ik}a_{jl}\,T{\left(v_k,v_l\right)}=
-\sum_{k=1}^n a_{ik}a_{jk}.</annotation></semantics></math></p>
-In other words, if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mi>T</mi></msup><annotation encoding="application/x-tex">A^T</annotation></semantics></math>
-denotes the transpose of the matrix
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
-then we have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⋅</mo><msup><mi>A</mi><mi>T</mi></msup><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">A\cdot A^T=I</annotation></semantics></math>,
-so
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>A</mi><mo>=</mo><mo>±</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\operatorname{det}A=\pm 1</annotation></semantics></math>.
-It follows from Theorem 4-6 [see vignette <code>det.Rmd</code>] that if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>n</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in\Lambda^n(V)</annotation></semantics></math>
-satisfies
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>±</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\omega{\left(v_1,\ldots,v_n\right)}=\pm 1</annotation></semantics></math>,
-then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>±</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\omega{\left(w_1,\ldots,w_n\right)}=\pm 1</annotation></semantics></math>.
-If an orientation
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>μ</mi><annotation encoding="application/x-tex">\mu</annotation></semantics></math>
-for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
-has also been given, it follows that there is a unique
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>n</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in\Lambda^n(V)</annotation></semantics></math>
-such that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\omega\left(v_1,\ldots,v_n\right)=1</annotation></semantics></math>
-whenever
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_n</annotation></semantics></math>
-is an orthornormal basis such that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mi>μ</mi></mrow><annotation encoding="application/x-tex">\left[v_1,\ldots,v_n\right]=\mu</annotation></semantics></math>.
-This unique
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
-is called the <em>volume element</em> of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
-determined by the inner product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-and orientation
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>μ</mi><annotation encoding="application/x-tex">\mu</annotation></semantics></math>.
-Note that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>det</mo><annotation encoding="application/x-tex">\operatorname{det}</annotation></semantics></math>
-is the volume element of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math>
-determined by the usual inner product and usual orientation, and that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">|</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><annotation encoding="application/x-tex">\left|\operatorname{det}\left(v_1,\ldots,v_n\right)\right|</annotation></semantics></math>
+\sum_{k=1}^n a_{ik}a_{jk}.</span></p>
+In other words, if <span class="math inline">A^T</span> denotes the
+transpose of the matrix <span class="math inline">A</span>, then we have
+<span class="math inline">A\cdot A^T=I</span>, so <span class="math inline">\operatorname{det}A=\pm 1</span>. It follows from
+Theorem 4-6 [see vignette <code>det.Rmd</code>] that if <span class="math inline">\omega\in\Lambda^n(V)</span> satisfies <span class="math inline">\omega{\left(v_1,\ldots,v_n\right)}=\pm 1</span>,
+then <span class="math inline">\omega{\left(w_1,\ldots,w_n\right)}=\pm
+1</span>. If an orientation <span class="math inline">\mu</span> for
+<span class="math inline">V</span> has also been given, it follows that
+there is a unique <span class="math inline">\omega\in\Lambda^n(V)</span>
+such that <span class="math inline">\omega\left(v_1,\ldots,v_n\right)=1</span> whenever
+<span class="math inline">v_1,\ldots,v_n</span> is an orthornormal basis
+such that <span class="math inline">\left[v_1,\ldots,v_n\right]=\mu</span>. This unique
+<span class="math inline">\omega</span> is called the <em>volume
+element</em> of <span class="math inline">V</span>, determined by the
+inner product <span class="math inline">T</span> and orientation <span class="math inline">\mu</span>. Note that <span class="math inline">\operatorname{det}</span> is the volume element of
+<span class="math inline">\mathbb{R}^n</span> determined by the usual
+inner product and usual orientation, and that <span class="math inline">\left|\operatorname{det}\left(v_1,\ldots,v_n\right)\right|</span>
 is the volume of the parallelepiped spanned by the line segments from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
-to each of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_n</annotation></semantics></math>.
+<span class="math inline">0</span> to each of <span class="math inline">v_1,\ldots,v_n</span>.
 
 <p style="margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia">
 <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).
@@ -177,11 +136,8 @@ Page 83</i>
 <p></p></span>
 </div>
 <p>In the <code>stokes</code> package, function <code>volume(n)</code>
-returns the volume element on the usual basis, that is,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>e</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega{\left(e_1,\ldots,e_n\right)}</annotation></semantics></math>.
-We will take
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">n=7</annotation></semantics></math>
-as an example:</p>
+returns the volume element on the usual basis, that is, <span class="math inline">\omega{\left(e_1,\ldots,e_n\right)}</span>. We will
+take <span class="math inline">n=7</span> as an example:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/volume.html">volume</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^7 to R with V=R^7:</span></span>
@@ -192,12 +148,9 @@ as an example:</p>
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span>
 <span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1</span></span></code></pre>
-<p>Above, we see that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>e</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\omega{\left(e_1,\ldots,e_n\right)}=1</annotation></semantics></math>.
-To verify that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">V{\left(v_1,\ldots,v_n\right)}=\operatorname{det}(A)</annotation></semantics></math>,
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A_{ij}=\left(v_i\right)_j</annotation></semantics></math>:</p>
+<p>Above, we see that <span class="math inline">\omega{\left(e_1,\ldots,e_n\right)}=1</span>. To
+verify that <span class="math inline">V{\left(v_1,\ldots,v_n\right)}=\operatorname{det}(A)</span>,
+where <span class="math inline">A_{ij}=\left(v_i\right)_j</span>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">49</span><span class="op">)</span>,<span class="fl">7</span>,<span class="fl">7</span><span class="op">)</span></span>
 <span><span class="va">LHS</span> <span class="op">&lt;-</span> <span class="fu">f</span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span>
@@ -205,8 +158,7 @@ where
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##      LHS      RHS     diff </span></span>
 <span><span class="co">## 1.770074 1.770074 0.000000</span></span></code></pre>
-<p>Now we create
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">w_1,\ldots,w_n</annotation></semantics></math>,
+<p>Now we create <span class="math inline">w_1,\ldots,w_n</span>,
 another orthonormal set. We may verify by generating a random orthogonal
 matrix and permuting its rows:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -215,9 +167,8 @@ matrix and permuting its rows:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="va">M1</span><span class="op">)</span>,<span class="fu">f</span><span class="op">(</span><span class="va">M2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  1 -1</span></span></code></pre>
 <p>Above we see that the volume element of <code>M1</code> and
-<code>M2</code> are
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\pm1</annotation></semantics></math>
-to within numerical precision.</p>
+<code>M2</code> are <span class="math inline">\pm1</span> to within
+numerical precision.</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>

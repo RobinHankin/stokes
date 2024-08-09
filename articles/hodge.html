@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>The `hodge()` function in the `stokes` package • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="The `hodge()` function in the `stokes` package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="The `hodge()` function in the `stokes` package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -129,83 +130,38 @@ Hankin</h4>
 <span>    <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="va">newindex</span>, <span class="va">x_metric</span> <span class="op">*</span> <span class="va">x_coeffs</span> <span class="op">*</span> <span class="va">x_sign</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 <p>To cite the <code>stokes</code> package in publications, please use
-<span class="citation">Hankin (2022)</span>. Given a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>,
-function <code><a href="../reference/hodge.html">hodge()</a></code> returns its Hodge dual
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋆</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\star\beta</annotation></semantics></math>.
-Formally, if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">V={\mathbb R}^n</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>
-is the space of alternating linear maps from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mi>k</mi></msup><annotation encoding="application/x-tex">V^k</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">{\mathbb R}</annotation></semantics></math>,
-then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋆</mo><mo>:</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><msup><mi>Λ</mi><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\star\colon\Lambda^k(V)\longrightarrow\Lambda^{n-k}(V)</annotation></semantics></math>.
-To define the Hodge dual, we need an inner product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">⟨</mo><mo>⋅</mo><mo>,</mo><mo>⋅</mo><mo stretchy="true" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\left\langle\cdot,\cdot\right\rangle</annotation></semantics></math>
+<span class="citation">Hankin (2022)</span>. Given a <span class="math inline">k</span>-form <span class="math inline">\beta</span>, function <code><a href="../reference/hodge.html">hodge()</a></code> returns
+its Hodge dual <span class="math inline">\star\beta</span>. Formally, if
+<span class="math inline">V={\mathbb R}^n</span>, and <span class="math inline">\Lambda^k(V)</span> is the space of alternating
+linear maps from <span class="math inline">V^k</span> to <span class="math inline">{\mathbb R}</span>, then <span class="math inline">\star\colon\Lambda^k(V)\longrightarrow\Lambda^{n-k}(V)</span>.
+To define the Hodge dual, we need an inner product <span class="math inline">\left\langle\cdot,\cdot\right\rangle</span>
 [function <code><a href="../reference/kinner.html">kinner()</a></code> in the package] and, given this and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>∈</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\beta\in\Lambda^k(V)</annotation></semantics></math>
-we define
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋆</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\star\beta</annotation></semantics></math>
-to be the (unique)
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">n-k</annotation></semantics></math>-form
-satisfying the fundamental relation:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>⋆</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mi>ω</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
-\alpha\wedge\left(\star\beta\right)=\left\langle\alpha,\beta\right\rangle\omega,</annotation></semantics></math></p>
-<p>for every
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>∈</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\alpha\in\Lambda^k(V)</annotation></semantics></math>.
-Here
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><msub><mi>e</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\omega=e_1\wedge
-e_2\wedge\cdots\wedge e_n</annotation></semantics></math> is the unit
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-vector
-of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>n</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^n(V)</annotation></semantics></math>.
-Taking determinants of this relation shows the following. If we use
-multi-index notation so
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>I</mi></msub><mo>=</mo><msub><mi>e</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><msub><mi>e</mi><msub><mi>i</mi><mi>k</mi></msub></msub></mrow><annotation encoding="application/x-tex">e_I=e_{i_1}\wedge\cdots\wedge e_{i_k}</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><msub><mi>i</mi><mn>1</mn></msub><mo>,</mo><mi>⋯</mi><mo>,</mo><msub><mi>i</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">}</mo></mrow></mrow><annotation encoding="application/x-tex">I=\left\lbrace i_1,\cdots,i_k\right\rbrace</annotation></semantics></math>,
-then</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋆</mo><msub><mi>e</mi><mi>I</mi></msub><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>σ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>I</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup><msub><mi>e</mi><mi>J</mi></msub></mrow><annotation encoding="application/x-tex">\star e_I=(-1)^{\sigma(I)}e_J</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><msub><mi>j</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>j</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">}</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>\</mo><mrow><mo stretchy="true" form="prefix">{</mo><msub><mi>i</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>i</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">}</mo></mrow></mrow><annotation encoding="application/x-tex">J=\left\lbrace
+<span class="math inline">\beta\in\Lambda^k(V)</span> we define <span class="math inline">\star\beta</span> to be the (unique) <span class="math inline">n-k</span>-form satisfying the fundamental
+relation:</p>
+<p><span class="math display">
+\alpha\wedge\left(\star\beta\right)=\left\langle\alpha,\beta\right\rangle\omega,</span></p>
+<p>for every <span class="math inline">\alpha\in\Lambda^k(V)</span>.
+Here <span class="math inline">\omega=e_1\wedge
+e_2\wedge\cdots\wedge e_n</span> is the unit <span class="math inline">n</span>-vector of <span class="math inline">\Lambda^n(V)</span>. Taking determinants of this
+relation shows the following. If we use multi-index notation so <span class="math inline">e_I=e_{i_1}\wedge\cdots\wedge e_{i_k}</span> with
+<span class="math inline">I=\left\lbrace
+i_1,\cdots,i_k\right\rbrace</span>, then</p>
+<p><span class="math display">\star e_I=(-1)^{\sigma(I)}e_J</span></p>
+<p>where <span class="math inline">J=\left\lbrace
 j_i,\ldots,j_k\right\rbrace=[n]\setminus\left\lbrace
-i_1,\ldots,i_k\right\rbrace</annotation></semantics></math> is the
-complement of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>σ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>I</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup><annotation encoding="application/x-tex">(-1)^{\sigma(I)}</annotation></semantics></math>
-is the sign of the permutation
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>I</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>i</mi><mn>1</mn></msub><mi>⋯</mi><msub><mi>i</mi><mi>k</mi></msub><msub><mi>j</mi><mn>1</mn></msub><mi>⋯</mi><msub><mi>j</mi><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\sigma(I)=i_1\cdots
-i_kj_1\cdots j_{n-k}</annotation></semantics></math>. We extend to the
-whole of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>
-using linearity. Package idiom for calculating the Hodge dual is
-straightforward, being simply <code><a href="../reference/hodge.html">hodge()</a></code>.</p>
+i_1,\ldots,i_k\right\rbrace</span> is the complement of <span class="math inline">I</span>, and <span class="math inline">(-1)^{\sigma(I)}</span> is the sign of the
+permutation <span class="math inline">\sigma(I)=i_1\cdots
+i_kj_1\cdots j_{n-k}</span>. We extend to the whole of <span class="math inline">\Lambda^k(V)</span> using linearity. Package idiom
+for calculating the Hodge dual is straightforward, being simply
+<code><a href="../reference/hodge.html">hodge()</a></code>.</p>
 <div class="section level3">
-<h3 id="the-hodge-dual-on-basis-elements-of-lambdakv">The Hodge dual on basis elements of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math><a class="anchor" aria-label="anchor" href="#the-hodge-dual-on-basis-elements-of-lambdakv"></a>
+<h3 id="the-hodge-dual-on-basis-elements-of-lambdakv">The Hodge dual on basis elements of <span class="math inline">\Lambda^k(V)</span><a class="anchor" aria-label="anchor" href="#the-hodge-dual-on-basis-elements-of-lambdakv"></a>
 </h3>
 <p>We start by demonstrating <code><a href="../reference/hodge.html">hodge()</a></code> on basis elements of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>.
-Recall that if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>e</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\left\lbrace
-e_1,\ldots,e_n\right\rbrace</annotation></semantics></math> is a basis
-of vector space
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^n</annotation></semantics></math>,
-then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><msub><mi>ω</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>ω</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\left\lbrace\omega_1,\ldots,\omega_k\right\rbrace</annotation></semantics></math>
-is a basis of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mn>1</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^1(V)</annotation></semantics></math>,
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\omega_i(e_j)=\delta_{ij}</annotation></semantics></math>.
-A basis of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>
-is given by the set</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>⋃</mo><mrow><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>k</mi></msub><mo>≤</mo><mi>n</mi></mrow></munder><munderover><mo>⋀</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><msub><mi>ω</mi><msub><mi>i</mi><mi>j</mi></msub></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mrow><msub><mi>ω</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><msub><mi>ω</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo stretchy="true" form="postfix">|</mo></mrow><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>k</mi></msub><mo>≤</mo><mi>n</mi><mo stretchy="true" form="postfix">}</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+<span class="math inline">\Lambda^k(V)</span>. Recall that if <span class="math inline">\left\lbrace
+e_1,\ldots,e_n\right\rbrace</span> is a basis of vector space <span class="math inline">V=\mathbb{R}^n</span>, then <span class="math inline">\left\lbrace\omega_1,\ldots,\omega_k\right\rbrace</span>
+is a basis of <span class="math inline">\Lambda^1(V)</span>, where <span class="math inline">\omega_i(e_j)=\delta_{ij}</span>. A basis of <span class="math inline">\Lambda^k(V)</span> is given by the set</p>
+<p><span class="math display">
 \bigcup_{1\leqslant i_1 &lt; \cdots &lt; i_k\leqslant n}
 \bigwedge_{j=1}^k\omega_{i_j}
 =
@@ -213,13 +169,8 @@ is given by the set</p>
 \left.\omega_{i_1}\wedge\cdots\wedge\omega_{i_k}
 \right|1\leqslant i_1 &lt; \cdots &lt; i_k\leqslant n
 \right\rbrace.
-</annotation></semantics></math></p>
-<p>This means that basis elements are things like
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>ω</mi><mn>6</mn></msub><mo>∧</mo><msub><mi>ω</mi><mn>7</mn></msub></mrow><annotation encoding="application/x-tex">\omega_2\wedge\omega_6\wedge\omega_7</annotation></semantics></math>.
-f
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^9</annotation></semantics></math>,
-what is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋆</mo><msub><mi>ω</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>ω</mi><mn>6</mn></msub><mo>∧</mo><msub><mi>ω</mi><mn>7</mn></msub></mrow><annotation encoding="application/x-tex">\star\omega_2\wedge\omega_6\wedge\omega_7</annotation></semantics></math>?</p>
+</span></p>
+<p>This means that basis elements are things like <span class="math inline">\omega_2\wedge\omega_6\wedge\omega_7</span>. f <span class="math inline">V=\mathbb{R}^9</span>, what is <span class="math inline">\star\omega_2\wedge\omega_6\wedge\omega_7</span>?</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">d</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">^</span> <span class="fu"><a href="../reference/kform.html">d</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span> <span class="op">^</span> <span class="fu"><a href="../reference/kform.html">d</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^3 to R with V=R^7:</span></span>
@@ -230,15 +181,10 @@ what is
 <pre><code><span><span class="co">## An alternating linear map from V^6 to R with V=R^9:</span></span>
 <span><span class="co">##                  val</span></span>
 <span><span class="co">##  1 3 4 5 8 9  =   -1</span></span></code></pre>
-<p>See how
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋆</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">\star a</annotation></semantics></math>
-has index entries 1-9 except
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">2,6,7</annotation></semantics></math>
-(from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>).
-The (numerical) sign is negative because the permutation has negative
-(permutational) sign. We can verify this using the
-<code>permutations</code> package:</p>
+<p>See how <span class="math inline">\star a</span> has index entries
+1-9 except <span class="math inline">2,6,7</span> (from <span class="math inline">a</span>). The (numerical) sign is negative because
+the permutation has negative (permutational) sign. We can verify this
+using the <code>permutations</code> package:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">6</span>,<span class="fl">7</span>,  <span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">8</span>,<span class="fl">9</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">pw</span> <span class="op">&lt;-</span> <span class="fu">as.word</span><span class="op">(</span><span class="va">p</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -259,21 +205,15 @@ idiom would be</p>
 <span><span class="co">##                  val</span></span>
 <span><span class="co">##  1 3 4 5 8 9  =   -1</span></span></code></pre>
 <p>The second argument to <code><a href="../reference/hodge.html">hodge()</a></code> is needed if the largest
-index
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>i</mi><mi>k</mi></msub><annotation encoding="application/x-tex">i_k</annotation></semantics></math>
-of the first argument is less than
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>;
-the default value is indeed
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
-In the example above, this is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>7</mn><annotation encoding="application/x-tex">7</annotation></semantics></math>:</p>
+index <span class="math inline">i_k</span> of the first argument is less
+than <span class="math inline">n</span>; the default value is indeed
+<span class="math inline">n</span>. In the example above, this is <span class="math inline">7</span>:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="fu"><a href="../reference/kform.html">d</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^4 to R with V=R^5:</span></span>
 <span><span class="co">##              val</span></span>
 <span><span class="co">##  1 3 4 5  =   -1</span></span></code></pre>
-<p>Above we see the result if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>7</mn></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^7</annotation></semantics></math>.</p>
+<p>Above we see the result if <span class="math inline">V=\mathbb{R}^7</span>.</p>
 </div>
 <div class="section level3">
 <h3 id="more-complicated-examples">More complicated examples<a class="anchor" aria-label="anchor" href="#more-complicated-examples"></a>
@@ -325,8 +265,7 @@ formally by defining a function that returns <code>TRUE</code> if the
 left and right hand sides match</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">diff</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span><span class="op">{</span><span class="va">a</span><span class="op">^</span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span> <span class="op">==</span>  <span class="fu"><a href="../reference/kinner.html">kinner</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span><span class="op">*</span><span class="fu"><a href="../reference/volume.html">volume</a></span><span class="op">(</span><span class="fu"><a href="../reference/dovs.html">dovs</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span></code></pre></div>
-<p>and call it with random
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-forms:</p>
+<p>and call it with random <span class="math inline">k</span>-forms:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/diff.html" class="external-link">diff</a></span><span class="op">(</span><span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span><span class="op">)</span>,<span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
@@ -339,14 +278,9 @@ left and right hand sides match</p>
 <h3 id="small-dimensional-vector-spaces">Small-dimensional vector spaces<a class="anchor" aria-label="anchor" href="#small-dimensional-vector-spaces"></a>
 </h3>
 <p>We can work in three dimensions in which case we have three linearly
-independent
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>-forms:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">dz</annotation></semantics></math>.
-To work in this system it is better to use <code>dx</code> print
-method:</p>
+independent <span class="math inline">1</span>-forms: <span class="math inline">dx</span>, <span class="math inline">dy</span>, and
+<span class="math inline">dz</span>. To work in this system it is better
+to use <code>dx</code> print method:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>kform_symbolic_print <span class="op">=</span> <span class="st">"dx"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="va">dx</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
@@ -357,30 +291,33 @@ method:</p>
 <div class="section level3">
 <h3 id="vector-cross-product-identities">Vector cross product identities<a class="anchor" aria-label="anchor" href="#vector-cross-product-identities"></a>
 </h3>
-<p>The three dimensional vector cross product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>j</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>k</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i &amp; j &amp; k \\
-u_1&amp;u_2&amp;u_3\\ v_1&amp;v_2&amp;v_3 \end{pmatrix}</annotation></semantics></math>
-is a standard part of elementary vector calculus. In the package the
-idiom is as follows:</p>
+<p>The three dimensional vector cross product <span class="math inline">\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i
+&amp; j &amp; k \\
+u_1&amp;u_2&amp;u_3\\ v_1&amp;v_2&amp;v_3 \end{pmatrix}</span> is a
+standard part of elementary vector calculus. In the package the idiom is
+as follows:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vcp3</span></span></code></pre></div>
 <pre><code><span><span class="co">## function (u, v) </span></span>
 <span><span class="co">## {</span></span>
 <span><span class="co">##     hodge(as.1form(u)^as.1form(v))</span></span>
 <span><span class="co">## }</span></span></code></pre>
-<p>revealing the formal definition of cross product as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo>=</mo><mo>⋆</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>∧</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{u}\times\mathbf{v}=\star{\left(\mathbf{u}\wedge\mathbf{v}\right)}</annotation></semantics></math>.
+<p>revealing the formal definition of cross product as <span class="math inline">\mathbf{u}\times\mathbf{v}=\star{\left(\mathbf{u}\wedge\mathbf{v}\right)}</span>.
 There are several elementary identities that are satisfied by the cross
 product:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>𝐮</mi><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>×</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mi>𝐯</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo>⋅</mo><mi>𝐮</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>𝐰</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>⋅</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mi>𝐰</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mi>𝐯</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo>⋅</mo><mi>𝐮</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>𝐮</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>⋅</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>×</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐮</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo>×</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>⋅</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>⋅</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>⋅</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>⋅</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">
+<p><span class="math display">
 \begin{aligned}
-\mathbf{u}\times(\mathbf{v}\times\mathbf{w}) &amp;= \mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{w}(\mathbf{u}\cdot\mathbf{v})\\
-(\mathbf{u}\times\mathbf{v})\times\mathbf{w} &amp;= \mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{u}(\mathbf{v}\cdot\mathbf{w})\\
-(\mathbf{u}\times\mathbf{v})\times(\mathbf{u}\times\mathbf{w}) &amp;= (\mathbf{u}\cdot(\mathbf{v}\times\mathbf{w}))\mathbf{u}  \\
-(\mathbf{u}\times\mathbf{v})\cdot(\mathbf{w}\times\mathbf{x})  &amp;= (\mathbf{u}\cdot\mathbf{w})(\mathbf{v}\cdot\mathbf{x}) -
+\mathbf{u}\times(\mathbf{v}\times\mathbf{w}) &amp;=
+\mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{w}(\mathbf{u}\cdot\mathbf{v})\\
+(\mathbf{u}\times\mathbf{v})\times\mathbf{w} &amp;=
+\mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{u}(\mathbf{v}\cdot\mathbf{w})\\
+(\mathbf{u}\times\mathbf{v})\times(\mathbf{u}\times\mathbf{w}) &amp;=
+(\mathbf{u}\cdot(\mathbf{v}\times\mathbf{w}))\mathbf{u}  \\
+(\mathbf{u}\times\mathbf{v})\cdot(\mathbf{w}\times\mathbf{x})  &amp;=
+(\mathbf{u}\cdot\mathbf{w})(\mathbf{v}\cdot\mathbf{x}) -
                                                                   (\mathbf{u}\cdot\mathbf{x})(\mathbf{v}\cdot\mathbf{w})
 \end{aligned}
-</annotation></semantics></math></p>
+</span></p>
 <p>We may verify all four together:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">2</span><span class="op">)</span></span>
@@ -395,31 +332,24 @@ product:</p>
 <span><span class="op">)</span>         </span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE TRUE TRUE TRUE</span></span></code></pre>
 <p>Above, note the use of the hodge operator to define triple vector
-cross products. For example we have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>×</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>⋆</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>∧</mo><mo>⋆</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>∧</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{u}\times\left(\mathbf{v}\times\mathbf{w}\right)=
-\star\left(\mathbf{u}\wedge\star\left(\mathbf{v}\wedge\mathbf{w}\right)\right)</annotation></semantics></math>.</p>
+cross products. For example we have <span class="math inline">\mathbf{u}\times\left(\mathbf{v}\times\mathbf{w}\right)=
+\star\left(\mathbf{u}\wedge\star\left(\mathbf{v}\wedge\mathbf{w}\right)\right)</span>.</p>
 </div>
 <div class="section level2">
 <h2 id="non-positive-definite-metrics">Non positive-definite metrics<a class="anchor" aria-label="anchor" href="#non-positive-definite-metrics"></a>
 </h2>
-<p>The inner product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\left\langle\alpha,\beta\right\rangle</annotation></semantics></math>
-above may be generalized by defining it on decomposable vectors
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><msub><mi>α</mi><mn>1</mn></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><msub><mi>α</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\alpha=\alpha_1\wedge\cdots\wedge\alpha_k</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><msub><mi>β</mi><mn>1</mn></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><msub><mi>β</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\beta=\beta_1\wedge\cdots\wedge\beta_k</annotation></semantics></math>
+<p>The inner product <span class="math inline">\left\langle\alpha,\beta\right\rangle</span> above
+may be generalized by defining it on decomposable vectors <span class="math inline">\alpha=\alpha_1\wedge\cdots\wedge\alpha_k</span> and
+<span class="math inline">\beta=\beta_1\wedge\cdots\wedge\beta_k</span>
 as</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mrow><mo stretchy="true" form="prefix">⟨</mo><msub><mi>α</mi><mi>i</mi></msub><mo>,</mo><msub><mi>β</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">⟩</mo></mrow><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle\alpha,\beta\right\rangle=
-\det\left(\left\langle\alpha_i,\beta_j\right\rangle_{i,j}\right)</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><msub><mi>α</mi><mi>i</mi></msub><mo>,</mo><msub><mi>β</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mo>±</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\left\langle\alpha_i,\beta_j\right\rangle=\pm\delta_{ij}</annotation></semantics></math>
-is an inner product on
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mn>1</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^1(V)</annotation></semantics></math>
+<p><span class="math display">\left\langle\alpha,\beta\right\rangle=
+\det\left(\left\langle\alpha_i,\beta_j\right\rangle_{i,j}\right)</span></p>
+<p>where <span class="math inline">\left\langle\alpha_i,\beta_j\right\rangle=\pm\delta_{ij}</span>
+is an inner product on <span class="math inline">\Lambda^1(V)</span>
 [the inner product is given by <code><a href="../reference/kinner.html">kinner()</a></code>]. The resulting
 Hodge star operator is implemented in the package and one can specify
 the metric. For example, if we consider the Minkowski metric this would
-be
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1,1,1,1</annotation></semantics></math>.</p>
+be <span class="math inline">-1,1,1,1</span>.</p>
 <div class="section level3">
 <h3 id="print-methods-for-the-minkowski-metric">Print methods for the Minkowski metric<a class="anchor" aria-label="anchor" href="#print-methods-for-the-minkowski-metric"></a>
 </h3>
@@ -436,10 +366,8 @@ with the Minkowski metric:</p>
 <span><span class="co">##  2 3  =    3</span></span>
 <span><span class="co">##  1 3  =    2</span></span>
 <span><span class="co">##  1 2  =    1</span></span></code></pre>
-<p>Above we see an unhelpful representation. To work with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>-forms
-in relativistic physics, it is often preferable to use bespoke print
-method <code>usetxyz</code>:</p>
+<p>Above we see an unhelpful representation. To work with <span class="math inline">2</span>-forms in relativistic physics, it is often
+preferable to use bespoke print method <code>usetxyz</code>:</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>kform_symbolic_print <span class="op">=</span> <span class="st">"txyz"</span><span class="op">)</span></span>
 <span><span class="va">o</span></span></code></pre></div>

@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>The `inner()` function in the `stokes` package • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="The `inner()` function in the `stokes` package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="The `inner()` function in the `stokes` package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -94,31 +95,16 @@ states:</p>
 <p>
 </p>
 <p>The reader is already familiar with certain tensors, aside from
-members of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mo>*</mo></msup><annotation encoding="application/x-tex">V^*</annotation></semantics></math>.
-The first example is the inner product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mo>,</mo><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>∈</mo><msup><mi>𝒥</mi><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle{,}\right\rangle\in{\mathcal J}^2(\mathbb{R}^n)</annotation></semantics></math>.
-On the grounds that any good mathematical commodity is worth
-generalizing, we define an <strong>inner product</strong> on
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
-to be a 2-tensor
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-such that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-is <strong>symmetric</strong>, that is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>v</mi><mo>,</mo><mi>w</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>w</mi><mo>,</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">T(v,w)=T(w,v)</annotation></semantics></math>
-for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>,</mo><mi>w</mi><mo>∈</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">v,w\in V</annotation></semantics></math>
-and such that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-is <strong>positive-definite</strong>, that is,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>v</mi><mo>,</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T(v,v) &gt; 0</annotation></semantics></math>
-if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v\neq
-0</annotation></semantics></math>. We distinguish
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">⟨</mo><mo>,</mo><mo stretchy="true" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\left\langle{,}\right\rangle</annotation></semantics></math>
-as the <strong>usual inner product</strong> on
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math>.</p>
+members of <span class="math inline">V^*</span>. The first example is
+the inner product <span class="math inline">\left\langle{,}\right\rangle\in{\mathcal
+J}^2(\mathbb{R}^n)</span>. On the grounds that any good mathematical
+commodity is worth generalizing, we define an <strong>inner
+product</strong> on <span class="math inline">V</span> to be a 2-tensor
+<span class="math inline">T</span> such that <span class="math inline">T</span> is <strong>symmetric</strong>, that is
+<span class="math inline">T(v,w)=T(w,v)</span> for <span class="math inline">v,w\in V</span> and such that <span class="math inline">T</span> is <strong>positive-definite</strong>, that
+is, <span class="math inline">T(v,v) &gt; 0</span> if <span class="math inline">v\neq
+0</span>. We distinguish <span class="math inline">\left\langle{,}\right\rangle</span> as the
+<strong>usual inner product</strong> on <span class="math inline">\mathbb{R}^n</span>.</p>
 
 <p style="margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia">
 <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).
@@ -127,31 +113,18 @@ Page 77</i>
 <p></p></span>
 </div>
 <p>Function <code><a href="../reference/inner.html">inner()</a></code> returns the inner product corresponding
-to a matrix
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
-Spivak’s definition requires
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
-to be positive-definite, but that is not necessary in the package. The
-inner product of two vectors
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\mathbf{x}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐲</mi><annotation encoding="application/x-tex">\mathbf{y}</annotation></semantics></math>
-is usually written
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>𝐱</mi><mo>,</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\left\langle\mathbf{x},\mathbf{y}\right\rangle</annotation></semantics></math>
-or
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>⋅</mo><mi>𝐲</mi></mrow><annotation encoding="application/x-tex">\mathbf{x}\cdot\mathbf{y}</annotation></semantics></math>,
-but the most general form would be
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mi>T</mi></msup><mi>M</mi><mi>𝐲</mi></mrow><annotation encoding="application/x-tex">\mathbf{x}^TM\mathbf{y}</annotation></semantics></math>.
-Noting that inner products are multilinear, that is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>𝐱</mi><mo>,</mo><mi>a</mi><mi>𝐲</mi><mo>+</mo><mi>b</mi><mi>𝐳</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mi>a</mi><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>𝐱</mi><mo>,</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>+</mo><mi>b</mi><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>𝐱</mi><mo>,</mo><mi>𝐳</mi><mo stretchy="true" form="postfix">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle\mathbf{x},a\mathbf{y}+b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle
-+ b\left\langle\mathbf{x},\mathbf{z}\right\rangle</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>a</mi><mi>𝐱</mi><mo>+</mo><mi>b</mi><mi>𝐲</mi><mo>,</mo><mi>𝐳</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mi>a</mi><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>𝐱</mi><mo>,</mo><mi>𝐳</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>+</mo><mi>b</mi><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>𝐲</mi><mo>,</mo><mi>𝐳</mi><mo stretchy="true" form="postfix">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle
+to a matrix <span class="math inline">M</span>. Spivak’s definition
+requires <span class="math inline">M</span> to be positive-definite, but
+that is not necessary in the package. The inner product of two vectors
+<span class="math inline">\mathbf{x}</span> and <span class="math inline">\mathbf{y}</span> is usually written <span class="math inline">\left\langle\mathbf{x},\mathbf{y}\right\rangle</span>
+or <span class="math inline">\mathbf{x}\cdot\mathbf{y}</span>, but the
+most general form would be <span class="math inline">\mathbf{x}^TM\mathbf{y}</span>. Noting that inner
+products are multilinear, that is <span class="math inline">\left\langle\mathbf{x},a\mathbf{y}+b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle
++ b\left\langle\mathbf{x},\mathbf{z}\right\rangle</span> and <span class="math inline">\left\langle
 a\mathbf{x} +
 b\mathbf{y},\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{z}\right\rangle
-+ b\left\langle\mathbf{y},\mathbf{z}\right\rangle</annotation></semantics></math>
-we see that the inner product is indeed a multilinear map, that is, a
-tensor.</p>
++ b\left\langle\mathbf{y},\mathbf{z}\right\rangle</span> we see that the
+inner product is indeed a multilinear map, that is, a tensor.</p>
 <p>We can start with the simplest inner product, the identity
 matrix:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -177,11 +150,9 @@ matrix:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##      LHS      RHS     diff </span></span>
 <span><span class="co">## 5.503805 5.503805 0.000000</span></span></code></pre>
-<p>Above, we see agreement between
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>⋅</mo><mi>𝐲</mi></mrow><annotation encoding="application/x-tex">\mathbf{x}\cdot\mathbf{y}</annotation></semantics></math>
-calculated directly [<code>LHS</code>] and using <code><a href="../reference/inner.html">inner()</a></code>
-[<code>RHS</code>]. A more stringent test would be to use a general
-matrix:</p>
+<p>Above, we see agreement between <span class="math inline">\mathbf{x}\cdot\mathbf{y}</span> calculated directly
+[<code>LHS</code>] and using <code><a href="../reference/inner.html">inner()</a></code> [<code>RHS</code>]. A
+more stringent test would be to use a general matrix:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">49</span><span class="op">)</span>,<span class="fl">7</span>,<span class="fl">7</span><span class="op">)</span></span>
 <span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/inner.html">inner</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span></span>
@@ -191,13 +162,11 @@ matrix:</p>
 <pre><code><span><span class="co">##      LHS      RHS     diff </span></span>
 <span><span class="co">## -3.41066 -3.41066  0.00000</span></span></code></pre>
 <p>(function <code><a href="https://rdrr.io/pkg/quadform/man/quad.form.html" class="external-link">quadform::quad3.form()</a></code> evaluates matrix
-products efficiently; <code>quad3.form(M,x,y)</code> returns
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mi>T</mi></msup><mi>M</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">x^TMy</annotation></semantics></math>).
-Above we see agreement, to within numerical precision, of the dot
-product calculated two different ways: <code>LHS</code> uses
-<code>quad3.form()</code> and <code>RHS</code> uses
-<code><a href="../reference/inner.html">inner()</a></code>. Of course, we would expect <code><a href="../reference/inner.html">inner()</a></code> to
-be a homomorphism:</p>
+products efficiently; <code>quad3.form(M,x,y)</code> returns <span class="math inline">x^TMy</span>). Above we see agreement, to within
+numerical precision, of the dot product calculated two different ways:
+<code>LHS</code> uses <code>quad3.form()</code> and <code>RHS</code>
+uses <code><a href="../reference/inner.html">inner()</a></code>. Of course, we would expect
+<code><a href="../reference/inner.html">inner()</a></code> to be a homomorphism:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">M1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">49</span><span class="op">)</span>,<span class="fl">7</span>,<span class="fl">7</span><span class="op">)</span></span>
 <span><span class="va">M2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">49</span><span class="op">)</span>,<span class="fl">7</span>,<span class="fl">7</span><span class="op">)</span></span>
@@ -207,13 +176,11 @@ be a homomorphism:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##       LHS       RHS      diff </span></span>
 <span><span class="co">## -5.418253 -5.418253  0.000000</span></span></code></pre>
-<p>Above we see numerical verification of the fact that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>M</mi><mn>1</mn></msub><mo>+</mo><msub><mi>M</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>M</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>M</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">I(M_1+M_2)=I(M_1)+I(M_2)</annotation></semantics></math>,
-by evaluation at
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>,</mo><mi>𝐲</mi></mrow><annotation encoding="application/x-tex">\mathbf{x},\mathbf{y}</annotation></semantics></math>,
-again with <code>LHS</code> using direct matrix algebra and
-<code>RHS</code> using <code><a href="../reference/inner.html">inner()</a></code>. Now, if the matrix is
-symmetric the corresponding inner product should also be symmetric:</p>
+<p>Above we see numerical verification of the fact that <span class="math inline">I(M_1+M_2)=I(M_1)+I(M_2)</span>, by evaluation at
+<span class="math inline">\mathbf{x},\mathbf{y}</span>, again with
+<code>LHS</code> using direct matrix algebra and <code>RHS</code> using
+<code><a href="../reference/inner.html">inner()</a></code>. Now, if the matrix is symmetric the corresponding
+inner product should also be symmetric:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/inner.html">inner</a></span><span class="op">(</span><span class="va">M1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">M1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># send inner() a symmetric matrix</span></span>
 <span><span class="va">LHS</span> <span class="op">&lt;-</span> <span class="fu">h</span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span>
@@ -221,19 +188,15 @@ symmetric the corresponding inner product should also be symmetric:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##       LHS       RHS      diff </span></span>
 <span><span class="co">## -22.52436 -22.52436   0.00000</span></span></code></pre>
-<p>Above we see that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mi>T</mi></msup><mi>M</mi><mi>𝐲</mi><mo>=</mo><msup><mi>𝐲</mi><mi>T</mi></msup><mi>M</mi><mi>𝐱</mi></mrow><annotation encoding="application/x-tex">\mathbf{x}^TM\mathbf{y} = \mathbf{y}^TM\mathbf{x}</annotation></semantics></math>.
-Further, a positive-definite matrix should return a positive quadratic
-form:</p>
+<p>Above we see that <span class="math inline">\mathbf{x}^TM\mathbf{y} =
+\mathbf{y}^TM\mathbf{x}</span>. Further, a positive-definite matrix
+should return a positive quadratic form:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">M3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/crossprod.html" class="external-link">crossprod</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">56</span><span class="op">)</span>,<span class="fl">8</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span>  <span class="co"># 7x7 pos-def matrix</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/inner.html">inner</a></span><span class="op">(</span><span class="va">M3</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/kronecker.html" class="external-link">kronecker</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">&gt;</span><span class="fl">0</span>  <span class="co"># should be TRUE</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<p>Above we see the second line evaluating
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mi>T</mi></msup><mi>M</mi><mi>𝐱</mi></mrow><annotation encoding="application/x-tex">\mathbf{x}^TM\mathbf{x}</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
-positive-definite, and correctly returning a non-negative value.</p>
+<p>Above we see the second line evaluating <span class="math inline">\mathbf{x}^TM\mathbf{x}</span> with <span class="math inline">M</span> positive-definite, and correctly returning
+a non-negative value.</p>
 <div class="section level3">
 <h3 id="alternating-forms">Alternating forms<a class="anchor" aria-label="anchor" href="#alternating-forms"></a>
 </h3>
@@ -248,10 +211,8 @@ alternating:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span> </span></code></pre></div>
 <pre><code><span><span class="co">##      LHS      RHS     diff </span></span>
 <span><span class="co">## 19.50013 19.50013  0.00000</span></span></code></pre>
-<p>Above we see that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mi>T</mi></msup><mi>M</mi><mi>𝐲</mi><mo>=</mo><mo>−</mo><msup><mi>𝐲</mi><mi>T</mi></msup><mi>M</mi><mi>𝐱</mi></mrow><annotation encoding="application/x-tex">\mathbf{x}^TM\mathbf{y} = -\mathbf{y}^TM\mathbf{x}</annotation></semantics></math>
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+<p>Above we see that <span class="math inline">\mathbf{x}^TM\mathbf{y} =
+-\mathbf{y}^TM\mathbf{x}</span> where <span class="math inline">M</span>
 is antisymmetric.</p>
 </div>
 <div class="section level2">

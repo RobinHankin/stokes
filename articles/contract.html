@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Functions `contract()` and `contract_elementary()` in the `stokes` package • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Functions `contract()` and `contract_elementary()` in the `stokes` package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Functions `contract()` and `contract_elementary()` in the `stokes` package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -111,100 +112,57 @@ Hankin</h4>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 <p>To cite the <code>stokes</code> package in publications, please use
-<span class="citation">Hankin (2022)</span>. Given a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>:</mo><msup><mi>V</mi><mi>k</mi></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\phi\colon
-V^k\longrightarrow\mathbb{R}</annotation></semantics></math> and a
-vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>∈</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">\mathbf{v}\in V</annotation></semantics></math>,
-the <em>contraction</em>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mi>𝐯</mi></msub><annotation encoding="application/x-tex">\phi_\mathbf{v}</annotation></semantics></math>
-of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>
-is a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k-1</annotation></semantics></math>-form
-with</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐯</mi><mn>1</mn></msup><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>,</mo><msup><mi>𝐯</mi><mn>1</mn></msup><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<span class="citation">Hankin (2022)</span>. Given a <span class="math inline">k</span>-form <span class="math inline">\phi\colon
+V^k\longrightarrow\mathbb{R}</span> and a vector <span class="math inline">\mathbf{v}\in V</span>, the <em>contraction</em>
+<span class="math inline">\phi_\mathbf{v}</span> of <span class="math inline">\phi</span> and <span class="math inline">\mathbf{v}</span> is a <span class="math inline">k-1</span>-form with</p>
+<p><span class="math display">
   \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
   \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
-</annotation></semantics></math></p>
-<p>provided
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k&gt;1</annotation></semantics></math>;
-if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>
-we specify
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mo>=</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\phi_\mathbf{v}=\phi(\mathbf{v})</annotation></semantics></math>.
-If <span class="citation">Spivak (1965)</span> does discuss this, I have
+</span></p>
+<p>provided <span class="math inline">k&gt;1</span>; if <span class="math inline">k=1</span> we specify <span class="math inline">\phi_\mathbf{v}=\phi(\mathbf{v})</span>. If <span class="citation">Spivak (1965)</span> does discuss this, I have
 forgotten it. Function <code><a href="../reference/contract.html">contract_elementary()</a></code> is a low-level
-helper function that translates elementary
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-forms
-with coefficient 1 (in the form of an integer vector corresponding to
-one row of an index matrix) into its contraction with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>;
-function <code><a href="../reference/contract.html">contract()</a></code> is the user-friendly front end. We will
-start with some simple examples. I will use <code>phi</code> and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-to represent the same object.</p>
+helper function that translates elementary <span class="math inline">k</span>-forms with coefficient 1 (in the form of an
+integer vector corresponding to one row of an index matrix) into its
+contraction with <span class="math inline">\mathbf{v}</span>; function
+<code><a href="../reference/contract.html">contract()</a></code> is the user-friendly front end. We will start
+with some simple examples. I will use <code>phi</code> and <span class="math inline">\phi</span> to represent the same object.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^5 to R with V=R^5:</span></span>
 <span><span class="co">##                val</span></span>
 <span><span class="co">##  1 2 3 4 5  =    1</span></span></code></pre>
-<p>Thus
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">k=5</annotation></semantics></math>
-and we have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><mn>3</mn></msup><mo>∧</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><mn>4</mn></msup><mo>∧</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">\phi=\mathrm{d}x^1\wedge\mathrm{d}x^2\wedge
-\mathrm{d}x^3\wedge\mathrm{d}x^4\wedge\mathrm{d}x^5</annotation></semantics></math>.
-We have that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-is a linear alternating map with</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\phi\left(\begin{bmatrix}1\\0\\0\\0\\0\end{bmatrix},
+<p>Thus <span class="math inline">k=5</span> and we have <span class="math inline">\phi=\mathrm{d}x^1\wedge\mathrm{d}x^2\wedge
+\mathrm{d}x^3\wedge\mathrm{d}x^4\wedge\mathrm{d}x^5</span>. We have that
+<span class="math inline">\phi</span> is a linear alternating map
+with</p>
+<p><span class="math display">\phi\left(\begin{bmatrix}1\\0\\0\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\1\\0\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\0\\1\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\0\\0\\1\\0\end{bmatrix},
-\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix} \right)=1</annotation></semantics></math>.</p>
-<p>The contraction of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-with any vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>
-is thus a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>4</mn><annotation encoding="application/x-tex">4</annotation></semantics></math>-form
-mapping
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mn>4</mn></msup><annotation encoding="application/x-tex">V^4</annotation></semantics></math>
-to the reals with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐯</mi><mn>1</mn></msup><mo>,</mo><msup><mi>𝐯</mi><mn>2</mn></msup><mo>,</mo><msup><mi>𝐯</mi><mn>3</mn></msup><mo>,</mo><msup><mi>𝐯</mi><mn>4</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>,</mo><msup><mi>𝐯</mi><mn>1</mn></msup><mo>,</mo><msup><mi>𝐯</mi><mn>2</mn></msup><mo>,</mo><msup><mi>𝐯</mi><mn>3</mn></msup><mo>,</mo><msup><mi>𝐯</mi><mn>4</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\phi_\mathbf{v}\left(\mathbf{v}^1,\mathbf{v}^2,\mathbf{v}^3,\mathbf{v}^4\right)=\phi\left(\mathbf{v},\mathbf{v}^1,\mathbf{v}^2,\mathbf{v}^3,\mathbf{v}^4\right)</annotation></semantics></math>.
-Taking the simplest case first, if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{v}=(1,0,0,0,0)</annotation></semantics></math>
-then</p>
+\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix} \right)=1</span>.</p>
+<p>The contraction of <span class="math inline">\phi</span> with any
+vector <span class="math inline">\mathbf{v}</span> is thus a <span class="math inline">4</span>-form mapping <span class="math inline">V^4</span> to the reals with <span class="math inline">\phi_\mathbf{v}\left(\mathbf{v}^1,\mathbf{v}^2,\mathbf{v}^3,\mathbf{v}^4\right)=\phi\left(\mathbf{v},\mathbf{v}^1,\mathbf{v}^2,\mathbf{v}^3,\mathbf{v}^4\right)</span>.
+Taking the simplest case first, if <span class="math inline">\mathbf{v}=(1,0,0,0,0)</span> then</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">phi</span>,<span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^4 to R with V=R^5:</span></span>
 <span><span class="co">##              val</span></span>
 <span><span class="co">##  2 3 4 5  =    1</span></span></code></pre>
-<p>that is, a linear alternating map from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mn>4</mn></msup><annotation encoding="application/x-tex">V^4</annotation></semantics></math>
-to the reals with</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\phi_\mathbf{v}\left(
+<p>that is, a linear alternating map from <span class="math inline">V^4</span> to the reals with</p>
+<p><span class="math display">\phi_\mathbf{v}\left(
 \begin{bmatrix}0\\1\\0\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\0\\1\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\0\\0\\1\\0\end{bmatrix},
-\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix}\right)=1</annotation></semantics></math>.</p>
-<p>(the contraction has the first argument of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-understood to be
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{v}=(1,0,0,0,0)</annotation></semantics></math>).
-Now consider
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐰</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{w}=(0,1,0,0,0)</annotation></semantics></math>:</p>
+\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix}\right)=1</span>.</p>
+<p>(the contraction has the first argument of <span class="math inline">\phi</span> understood to be <span class="math inline">\mathbf{v}=(1,0,0,0,0)</span>). Now consider <span class="math inline">\mathbf{w}=(0,1,0,0,0)</span>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">phi</span>,<span class="va">w</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^4 to R with V=R^5:</span></span>
 <span><span class="co">##              val</span></span>
 <span><span class="co">##  1 3 4 5  =   -1</span></span></code></pre>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>𝐰</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mspace width="2.0em"></mspace><mtext mathvariant="normal">or</mtext><mspace width="2.0em"></mspace><msub><mi>ϕ</mi><mi>𝐰</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\phi_\mathbf{w}\left(
+<p><span class="math display">\phi_\mathbf{w}\left(
 \begin{bmatrix}0\\0\\1\\0\\0\end{bmatrix},
 \begin{bmatrix}1\\0\\0\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\0\\0\\1\\0\end{bmatrix},
@@ -214,7 +172,7 @@ Now consider
 \begin{bmatrix}1\\0\\0\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\0\\1\\0\\0\end{bmatrix},
 \begin{bmatrix}0\\0\\0\\1\\0\end{bmatrix},
-\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix}\right)=-1</annotation></semantics></math>.</p>
+\begin{bmatrix}0\\0\\0\\0\\1\end{bmatrix}\right)=-1</span>.</p>
 <p>Contraction is linear, so we may use more complicated vectors:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">phi</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -232,9 +190,8 @@ Now consider
 <span><span class="co">##  1 3 4 5  =   -2</span></span>
 <span><span class="co">##  1 2 3 5  =   -4</span></span></code></pre>
 <p>We can check numerically that the contraction is linear in its vector
-argument:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mrow><mi>a</mi><mi>𝐯</mi><mo>+</mo><mi>b</mi><mi>𝐰</mi></mrow></msub><mo>=</mo><mi>a</mi><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mo>+</mo><mi>b</mi><msub><mi>ϕ</mi><mi>𝐰</mi></msub></mrow><annotation encoding="application/x-tex">\phi_{a\mathbf{v}+b\mathbf{w}}=
-a\phi_\mathbf{v}+b\phi_\mathbf{w}</annotation></semantics></math>.</p>
+argument: <span class="math inline">\phi_{a\mathbf{v}+b\mathbf{w}}=
+a\phi_\mathbf{v}+b\phi_\mathbf{w}</span>.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1.23</span></span>
 <span><span class="va">b</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">0.435</span></span>
@@ -243,8 +200,8 @@ a\phi_\mathbf{v}+b\phi_\mathbf{w}</annotation></semantics></math>.</p>
 <span></span>
 <span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">phi</span>,<span class="va">a</span><span class="op">*</span><span class="va">v</span> <span class="op">+</span> <span class="va">b</span><span class="op">*</span><span class="va">w</span><span class="op">)</span> <span class="op">==</span> <span class="va">a</span><span class="op">*</span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">phi</span>,<span class="va">v</span><span class="op">)</span> <span class="op">+</span> <span class="va">b</span><span class="op">*</span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">phi</span>,<span class="va">w</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<p>We also have linearity in the alternating form:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mi>ϕ</mi><mo>+</mo><mi>b</mi><mi>ψ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐯</mi></msub><mo>=</mo><mi>a</mi><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mo>+</mo><mi>b</mi><msub><mi>ψ</mi><mi>𝐯</mi></msub></mrow><annotation encoding="application/x-tex">(a\phi+b\psi)_\mathbf{v}=a\phi_\mathbf{v} + b\psi_\mathbf{v}</annotation></semantics></math>.</p>
+<p>We also have linearity in the alternating form: <span class="math inline">(a\phi+b\psi)_\mathbf{v}=a\phi_\mathbf{v} +
+b\psi_\mathbf{v}</span>.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^5 to R with V=R^7:</span></span>
@@ -267,17 +224,11 @@ a\phi_\mathbf{v}+b\phi_\mathbf{w}</annotation></semantics></math>.</p>
 <h2 id="contraction-of-products">Contraction of products<a class="anchor" aria-label="anchor" href="#contraction-of-products"></a>
 </h2>
 <p><span class="citation">Weintraub (2014)</span> gives us the following
-theorem, for any
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>l</mi><annotation encoding="application/x-tex">l</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>ϕ</mi><mo>∧</mo><mi>ψ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐯</mi></msub><mo>=</mo><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mi>ψ</mi><mo>+</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>k</mi></msup><mi>ϕ</mi><mo>∧</mo><msub><mi>ψ</mi><mi>𝐯</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
-\left(\phi\wedge\psi\right)_\mathbf{v} = 
-\phi_\mathbf{v}\psi + (-1)^k\phi\wedge\psi_\mathbf{v}.</annotation></semantics></math></p>
-<p>We can verify this numerically with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>4</mn><mo>,</mo><mi>l</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">k=4,l=5</annotation></semantics></math>:</p>
+theorem, for any <span class="math inline">k</span>-form <span class="math inline">\phi</span> and <span class="math inline">l</span>-form <span class="math inline">\psi</span>:</p>
+<p><span class="math display">
+\left(\phi\wedge\psi\right)_\mathbf{v} =
+\phi_\mathbf{v}\psi + (-1)^k\phi\wedge\psi_\mathbf{v}.</span></p>
+<p>We can verify this numerically with <span class="math inline">k=4,l=5</span>:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span>terms<span class="op">=</span><span class="fl">5</span>,k<span class="op">=</span><span class="fl">3</span>,n<span class="op">=</span><span class="fl">9</span><span class="op">)</span></span>
 <span><span class="va">psi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span>terms<span class="op">=</span><span class="fl">9</span>,k<span class="op">=</span><span class="fl">4</span>,n<span class="op">=</span><span class="fl">9</span><span class="op">)</span></span>
@@ -306,11 +257,7 @@ quite complicated:</p>
 <span><span class="co">##  2 5 6 7 8 9  =   1605</span></span>
 <span><span class="co">##  1 2 3 6 7 9  =    355</span></span>
 <span><span class="co">##  1 2 3 6 8 9  =  -1200</span></span></code></pre>
-<p>We may also switch
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>,
-remembering to change the sign:</p>
+<p>We may also switch <span class="math inline">\phi</span> and <span class="math inline">\psi</span>, remembering to change the sign:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">psi</span><span class="op">^</span><span class="va">phi</span>,<span class="va">v</span><span class="op">)</span> <span class="op">==</span>  <span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">psi</span>,<span class="va">v</span><span class="op">)</span> <span class="op">^</span> <span class="va">phi</span> <span class="op">+</span> <span class="va">psi</span> <span class="op">^</span> <span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">phi</span>,<span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
@@ -318,18 +265,11 @@ remembering to change the sign:</p>
 <div class="section level2">
 <h2 id="repeated-contraction">Repeated contraction<a class="anchor" aria-label="anchor" href="#repeated-contraction"></a>
 </h2>
-<p>It is of course possible to contract a contraction. If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-is a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form,
-then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐰</mi></msub><annotation encoding="application/x-tex">\left(\phi_\mathbf{v}\right)_\mathbf{w}</annotation></semantics></math>
-is a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k-2</annotation></semantics></math>
-form with</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ϕ</mi><mi>𝐮</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐯</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐰</mi><mn>1</mn></msup><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi>𝐰</mi><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>,</mo><mi>𝐯</mi><mo>,</mo><msup><mi>𝐰</mi><mn>1</mn></msup><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi>𝐰</mi><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p>It is of course possible to contract a contraction. If <span class="math inline">\phi</span> is a <span class="math inline">k</span>-form, then <span class="math inline">\left(\phi_\mathbf{v}\right)_\mathbf{w}</span> is a
+<span class="math inline">k-2</span> form with</p>
+<p><span class="math display">
 \left(\phi_\mathbf{u}\right)_\mathbf{v}\left(\mathbf{w}^1,\ldots,\mathbf{w}^{k-2}\right)=\phi\left(\mathbf{u},\mathbf{v},\mathbf{w}^1,\ldots,\mathbf{w}^{k-2}\right)
-</annotation></semantics></math></p>
+</span></p>
 <p>And this is straightforward to realise in the package:</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -358,11 +298,9 @@ form with</p>
 <span><span class="co">##  1 4 6  =   -28</span></span>
 <span><span class="co">##  4 5 6  =  -122</span></span></code></pre>
 <p>But <code><a href="../reference/contract.html">contract()</a></code> allows us to perform both contractions in
-one operation: if we pass a matrix
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
-to <code><a href="../reference/contract.html">contract()</a></code> then this is interpreted as repeated
-contraction with the columns of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>:</p>
+one operation: if we pass a matrix <span class="math inline">M</span> to
+<code><a href="../reference/contract.html">contract()</a></code> then this is interpreted as repeated contraction
+with the columns of <span class="math inline">M</span>:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">u</span>,<span class="va">v</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">phi</span>,<span class="va">u</span><span class="op">)</span>,<span class="va">v</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">phi</span>,<span class="va">M</span><span class="op">)</span></span></code></pre></div>
@@ -391,28 +329,24 @@ contract with them:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">jj</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">jj</span><span class="op">)</span> <span class="co"># zero to numerical precision</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 2.775558e-16</span></span></code></pre>
 <p>and above we see agreement to within numerical precision. If we pass
-three columns to <code><a href="../reference/contract.html">contract()</a></code> the result is a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>-form:</p>
+three columns to <code><a href="../reference/contract.html">contract()</a></code> the result is a <span class="math inline">0</span>-form:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">o</span>,<span class="va">V</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] -0.4992204</span></span></code></pre>
 <p>In the above, the result is coerced to a scalar which is returned in
 the form of a <code>disord</code> object; in order to work with a formal
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>-form
-(which is represented in the package as a <code>spray</code> with a
-zero-column index matrix) we can use the <code>lost=FALSE</code>
-argument:</p>
+<span class="math inline">0</span>-form (which is represented in the
+package as a <code>spray</code> with a zero-column index matrix) we can
+use the <code>lost=FALSE</code> argument:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">o</span>,<span class="va">V</span>,lose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^0 to R with V=R^0:</span></span>
 <span><span class="co">##             val</span></span>
 <span><span class="co">##   =  -0.4992204</span></span></code></pre>
-<p>thus returning a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>-form.
-If we iteratively contract a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-dimensional
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form,
-we return the determinant, and this may be verified as follows:</p>
+<p>thus returning a <span class="math inline">0</span>-form. If we
+iteratively contract a <span class="math inline">k</span>-dimensional
+<span class="math inline">k</span>-form, we return the determinant, and
+this may be verified as follows:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">o</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">25</span><span class="op">)</span>,<span class="fl">5</span>,<span class="fl">5</span><span class="op">)</span></span>
@@ -426,115 +360,94 @@ we return the determinant, and this may be verified as follows:</p>
 <div class="section level2">
 <h2 id="contraction-from-first-principles">Contraction from first principles<a class="anchor" aria-label="anchor" href="#contraction-from-first-principles"></a>
 </h2>
-<p>Suppose we wish to contract
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup></mrow><annotation encoding="application/x-tex">\phi=dx^{i_1}\wedge\cdots\wedge dx^{i_k}</annotation></semantics></math>
-with vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><msub><mi>𝐞</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><msub><mi>𝐞</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{v}=(v_1\mathbf{e}_1,\ldots,v_k\mathbf{e}_k)</annotation></semantics></math>.
-Thus we seek
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mi>𝐯</mi></msub><annotation encoding="application/x-tex">\phi_\mathbf{v}</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\phi_\mathbf{v}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right) =
+<p>Suppose we wish to contract <span class="math inline">\phi=dx^{i_1}\wedge\cdots\wedge dx^{i_k}</span> with
+vector <span class="math inline">\mathbf{v}=(v_1\mathbf{e}_1,\ldots,v_k\mathbf{e}_k)</span>.
+Thus we seek <span class="math inline">\phi_\mathbf{v}</span> with <span class="math inline">\phi_\mathbf{v}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)
+=
 dx^{i_1}\wedge\cdots\wedge
-dx^{i_k}\left(\mathbf{v},\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)</annotation></semantics></math>.
-Writing
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>=</mo><msub><mi>v</mi><mn>1</mn></msub><msub><mi>𝐞</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>𝐞</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{v}=v_1\mathbf{e}_1+\cdots+\mathbf{e}_k</annotation></semantics></math>,
+dx^{i_k}\left(\mathbf{v},\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)</span>.
+Writing <span class="math inline">\mathbf{v}=v_1\mathbf{e}_1+\cdots+\mathbf{e}_k</span>,
 we have</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><msub><mi>𝐞</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>v</mi><mi>k</mi></msub><msub><mi>𝐞</mi><mi>k</mi></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>v</mi><mn>1</mn></msub><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐞</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>v</mi><mi>k</mi></msub><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐞</mi><mi>k</mi></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{eqnarray}
-\phi_\mathbf{v}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right) &amp;=&amp;
+<p><span class="math display">\begin{eqnarray}
+\phi_\mathbf{v}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)
+&amp;=&amp;
 dx^{i_1}\wedge\cdots\wedge
-dx^{i_k}\left(\mathbf{v},\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)\\&amp;=&amp; 
-dx^{i_1}\wedge\cdots\wedge dx^{i_k}\left(v_1\mathbf{e}_1+\cdots+v_k\mathbf{e}_k,\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)\\&amp;=&amp; 
-v_1 dx^{i_1}\wedge\cdots\wedge dx^{i_k}\left(\mathbf{e}_1,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)+\cdots+
-v_k dx^{i_1}\wedge\cdots\wedge dx^{i_k}\left(\mathbf{e}_k,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right).
-\end{eqnarray}</annotation></semantics></math></p>
+dx^{i_k}\left(\mathbf{v},\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)\\&amp;=&amp;
+dx^{i_1}\wedge\cdots\wedge
+dx^{i_k}\left(v_1\mathbf{e}_1+\cdots+v_k\mathbf{e}_k,\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)\\&amp;=&amp;
+v_1 dx^{i_1}\wedge\cdots\wedge
+dx^{i_k}\left(\mathbf{e}_1,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)+\cdots+
+v_k dx^{i_1}\wedge\cdots\wedge
+dx^{i_k}\left(\mathbf{e}_k,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right).
+\end{eqnarray}</span></p>
 <p>where we have exploited linearity. To evaluate this it is easiest and
-most efficient to express
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>⋀</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></msubsup><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>j</mi></msub></msup></mrow><annotation encoding="application/x-tex">\bigwedge_{j=1}^kdx^{i_j}</annotation></semantics></math>
-and cycle through the index
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>,
-and use various properties of wedge products:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msup><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>j</mi></msub></msup><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mover><mrow><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>j</mi></msub></msup></mrow><mo accent="true">̂</mo></mover><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mrow><mi>i</mi><mo>−</mo><mi>k</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msup><mi>k</mi><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>j</mi></msub></msup><mo>⊗</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mover><mrow><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>j</mi></msub></msup></mrow><mo accent="true">̂</mo></mover><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mrow><mi>i</mi><mo>−</mo><mi>k</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{eqnarray}
+most efficient to express <span class="math inline">\phi</span> as <span class="math inline">\bigwedge_{j=1}^kdx^{i_j}</span> and cycle through
+the index <span class="math inline">j</span>, and use various properties
+of wedge products:</p>
+<p><span class="math display">\begin{eqnarray}
 dx^{i_1}\wedge\cdots\wedge dx^{i_k} &amp;=&amp;
-(-1)^{j-1} dx^{i_j}\wedge\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{i_j}}\wedge\cdots\wedge dx^{i-k}\right)\\ &amp;=&amp;
-(-1)^{j-1} k\operatorname{Alt}\left(dx^{i_j}\otimes\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{i_j}}\wedge\cdots\wedge dx^{i-k}\right)\right)
-\end{eqnarray}</annotation></semantics></math></p>
+(-1)^{j-1}
+dx^{i_j}\wedge\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{i_j}}\wedge\cdots\wedge
+dx^{i-k}\right)\\ &amp;=&amp;
+(-1)^{j-1}
+k\operatorname{Alt}\left(dx^{i_j}\otimes\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{i_j}}\wedge\cdots\wedge
+dx^{i-k}\right)\right)
+\end{eqnarray}</span></p>
 <p>(above, a hat indicates a term’s being omitted). From this, we see
-that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>∉</mo><mi>L</mi><mo>→</mo><mi>ϕ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">l\not\in L\longrightarrow\phi=0</annotation></semantics></math>
-(where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><msub><mi>i</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><msub><mi>i</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">}</mo></mrow></mrow><annotation encoding="application/x-tex">L=\left\lbrace
-i_1,\ldots i_k\right\rbrace</annotation></semantics></math> is the index
-set of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>),
-for all the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>x</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">dx^p</annotation></semantics></math>
-terms kill
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐞</mi><mi>l</mi></msub><annotation encoding="application/x-tex">\mathbf{e}_l</annotation></semantics></math>.
-On the other hand, if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>∈</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">l\in L</annotation></semantics></math>
-we have</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>ϕ</mi><msub><mi>𝐞</mi><mi>l</mi></msub></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><msup><mi>x</mi><mi>l</mi></msup><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mover><mrow><mi>d</mi><msup><mi>x</mi><mi>l</mi></msup></mrow><mo accent="true">̂</mo></mover><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐞</mi><mi>l</mi></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>l</mi><mo>−</mo><mn>1</mn></mrow></msup><mi>k</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><msup><mi>x</mi><mi>l</mi></msup><mo>⊗</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mover><mrow><mi>d</mi><msup><mi>x</mi><mi>l</mi></msup></mrow><mo accent="true">̂</mo></mover><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐞</mi><mi>l</mi></msub><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>l</mi><mo>−</mo><mn>1</mn></mrow></msup><mi>k</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mover><mrow><mi>d</mi><msup><mi>x</mi><mi>l</mi></msup></mrow><mo accent="true">̂</mo></mover><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{eqnarray}
-\phi_{\mathbf{e}_l}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right) &amp;=&amp;
+that <span class="math inline">l\not\in L\longrightarrow\phi=0</span>
+(where <span class="math inline">L=\left\lbrace
+i_1,\ldots i_k\right\rbrace</span> is the index set of <span class="math inline">\phi</span>), for all the <span class="math inline">dx^p</span> terms kill <span class="math inline">\mathbf{e}_l</span>. On the other hand, if <span class="math inline">l\in L</span> we have</p>
+<p><span class="math display">\begin{eqnarray}
+\phi_{\mathbf{e}_l}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)
+&amp;=&amp;
 \left(dx^{l}\wedge\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
-dx^{i_k}\right)\right)\left(\mathbf{e}_l,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)\\ &amp;=&amp;
+dx^{i_k}\right)\right)\left(\mathbf{e}_l,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)\\
+&amp;=&amp;
 (-1)^{l-1}k\left(dx^{l}\otimes\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
-dx^{i_k}\right)\right)\left(\mathbf{e}_l,\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)\right)\\ &amp;=&amp;
+dx^{i_k}\right)\right)\left(\mathbf{e}_l,\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)\right)\\
+&amp;=&amp;
 (-1)^{l-1}k\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
 dx^{i_k}\right)\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)
-\end{eqnarray}</annotation></semantics></math></p>
+\end{eqnarray}</span></p>
 </div>
 <div class="section level2">
 <h2 id="worked-example-using-contract_elementary">Worked example using <code>contract_elementary()</code><a class="anchor" aria-label="anchor" href="#worked-example-using-contract_elementary"></a>
 </h2>
 <p>Function <code><a href="../reference/contract.html">contract_elementary()</a></code> is a bare-bones low-level
-no-frills helper function that returns
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mi>𝐯</mi></msub><annotation encoding="application/x-tex">\phi_\mathbf{v}</annotation></semantics></math>
-for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-an elementary form of the form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup></mrow><annotation encoding="application/x-tex">dx^{i_1}\wedge\cdots\wedge dx^{i_k}</annotation></semantics></math>.
-Suppose we wish to contract
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">\phi=dx^1\wedge dx^2\wedge dx^5</annotation></semantics></math>
-with vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>11</mn><mo>,</mo><mn>71</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">\mathbf{v}=(1,2,10,11,71)^T</annotation></semantics></math>.</p>
-<p>Thus we seek
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mi>𝐯</mi></msub><annotation encoding="application/x-tex">\phi_\mathbf{v}</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\phi_\mathbf{v}\left(\mathbf{v}_1,\mathbf{v}_2 \right)=dx^1\wedge
-dx^2\wedge dx^5\left(\mathbf{v},\mathbf{v}_1,\mathbf{v}_2\right)</annotation></semantics></math>.
-Writing
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>=</mo><msub><mi>v</mi><mn>1</mn></msub><msub><mi>𝐞</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>v</mi><mn>5</mn></msub><msub><mi>𝐞</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">\mathbf{v}=v_1\mathbf{e}_1+\cdots+v_5\mathbf{e}_5</annotation></semantics></math>
+no-frills helper function that returns <span class="math inline">\phi_\mathbf{v}</span> for <span class="math inline">\phi</span> an elementary form of the form <span class="math inline">dx^{i_1}\wedge\cdots\wedge dx^{i_k}</span>. Suppose
+we wish to contract <span class="math inline">\phi=dx^1\wedge dx^2\wedge
+dx^5</span> with vector <span class="math inline">\mathbf{v}=(1,2,10,11,71)^T</span>.</p>
+<p>Thus we seek <span class="math inline">\phi_\mathbf{v}</span> with
+<span class="math inline">\phi_\mathbf{v}\left(\mathbf{v}_1,\mathbf{v}_2
+\right)=dx^1\wedge
+dx^2\wedge dx^5\left(\mathbf{v},\mathbf{v}_1,\mathbf{v}_2\right)</span>.
+Writing <span class="math inline">\mathbf{v}=v_1\mathbf{e}_1+\cdots+v_5\mathbf{e}_5</span>
 we have</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><msub><mi>𝐞</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>v</mi><mn>5</mn></msub><msub><mi>𝐞</mi><mn>5</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>v</mi><mn>1</mn></msub><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐞</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>v</mi><mn>2</mn></msub><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐞</mi><mn>2</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="left" style="text-align: left"><mspace width="2.0em"></mspace><mo>+</mo><msub><mi>v</mi><mn>3</mn></msub><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐞</mi><mn>3</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>v</mi><mn>4</mn></msub><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐞</mi><mn>4</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="left" style="text-align: left"><mspace width="2.0em"></mspace><mspace width="2.0em"></mspace><mo>+</mo><msub><mi>v</mi><mn>5</mn></msub><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐞</mi><mn>5</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>v</mi><mn>1</mn></msub><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn><mo>+</mo><msub><mi>v</mi><mn>5</mn></msub><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐯</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{eqnarray}
-\phi_\mathbf{v}\left(\mathbf{v}_1,\mathbf{v}_2 \right)                         &amp;=&amp;
-dx^1\wedge dx^2\wedge dx^5\left(\mathbf{v},\mathbf{v}_1,\mathbf{v}_2\right)\\  &amp;=&amp;
-dx^1\wedge dx^2\wedge dx^5\left(v_1\mathbf{e}_1+\cdots+v_5\mathbf{e}_5,\mathbf{v}_1,\mathbf{v}_2\right)\\&amp;=&amp;
-v_1 dx^1\wedge dx^2\wedge dx^5\left(\mathbf{e}_1,\mathbf{v}_1,\mathbf{v}_2\right)+
-v_2 dx^1\wedge dx^2\wedge dx^5\left(\mathbf{e}_2,\mathbf{v}_1,\mathbf{v}_2\right)\\
-&amp;{}&amp;\qquad +v_3dx^1\wedge dx^2\wedge dx^5\left(\mathbf{e}_3,\mathbf{v}_1,\mathbf{v}_2\right)+
-v_4 dx^1\wedge dx^2\wedge dx^5\left(\mathbf{e}_4,\mathbf{v}_1,\mathbf{v}_2\right)\\
-&amp;{}&amp;\qquad\qquad +v_5dx^1\wedge dx^2\wedge dx^5\left(\mathbf{e}_5,\mathbf{v}_1,\mathbf{v}_2\right)\\&amp;=&amp;
+<p><span class="math display">\begin{eqnarray}
+\phi_\mathbf{v}\left(\mathbf{v}_1,\mathbf{v}_2
+\right)                         &amp;=&amp;
+dx^1\wedge dx^2\wedge
+dx^5\left(\mathbf{v},\mathbf{v}_1,\mathbf{v}_2\right)\\  &amp;=&amp;
+dx^1\wedge dx^2\wedge
+dx^5\left(v_1\mathbf{e}_1+\cdots+v_5\mathbf{e}_5,\mathbf{v}_1,\mathbf{v}_2\right)\\&amp;=&amp;
+v_1 dx^1\wedge dx^2\wedge
+dx^5\left(\mathbf{e}_1,\mathbf{v}_1,\mathbf{v}_2\right)+
+v_2 dx^1\wedge dx^2\wedge
+dx^5\left(\mathbf{e}_2,\mathbf{v}_1,\mathbf{v}_2\right)\\
+&amp;{}&amp;\qquad +v_3dx^1\wedge dx^2\wedge
+dx^5\left(\mathbf{e}_3,\mathbf{v}_1,\mathbf{v}_2\right)+
+v_4 dx^1\wedge dx^2\wedge
+dx^5\left(\mathbf{e}_4,\mathbf{v}_1,\mathbf{v}_2\right)\\
+&amp;{}&amp;\qquad\qquad +v_5dx^1\wedge dx^2\wedge
+dx^5\left(\mathbf{e}_5,\mathbf{v}_1,\mathbf{v}_2\right)\\&amp;=&amp;
 v_1 dx^2\wedge dx^5\left(\mathbf{v}_1,\mathbf{v}_2\right)-
 v_2 dx^1\wedge dx^5\left(\mathbf{v}_1,\mathbf{v}_2\right)+0+0+
 v_5 dx^1\wedge dx^2\left(\mathbf{v}_1,\mathbf{v}_2\right)
-\end{eqnarray}</annotation></semantics></math></p>
-<p>(above, the zero terms are because the vectors
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐞</mi><mn>3</mn></msub><annotation encoding="application/x-tex">\mathbf{e}_3</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐞</mi><mn>4</mn></msub><annotation encoding="application/x-tex">\mathbf{e}_4</annotation></semantics></math>
-are killed by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>∧</mo><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">dx^1\wedge dx^2\wedge dx^5</annotation></semantics></math>).
-We can see that the way to evaluate the contraction is to go through the
-terms of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-[that is,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">dx^1</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">dx^2</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>x</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">dx^5</annotation></semantics></math>]
-in turn, and sum the resulting expressions:</p>
+\end{eqnarray}</span></p>
+<p>(above, the zero terms are because the vectors <span class="math inline">\mathbf{e}_3</span> and <span class="math inline">\mathbf{e}_4</span> are killed by <span class="math inline">dx^1\wedge dx^2\wedge dx^5</span>). We can see that
+the way to evaluate the contraction is to go through the terms of <span class="math inline">\phi</span> [that is, <span class="math inline">dx^1</span>, <span class="math inline">dx^2</span>,
+and <span class="math inline">dx^5</span>] in turn, and sum the
+resulting expressions:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">o</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">10</span>,<span class="fl">11</span>,<span class="fl">71</span><span class="op">)</span></span>

@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>The `Alt()` function in the `stokes` package • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="The `Alt()` function in the `stokes` package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="The `Alt()` function in the `stokes` package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -102,53 +103,27 @@ states:</p>
 <span>
 <p>
 </p>
-<p>A
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-tensor
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><mi>𝒥</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in{\mathcal J}(V)</annotation></semantics></math>
-is called <strong>alternating</strong> if</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>j</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>j</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mrow><mrow><mtext mathvariant="normal">for all </mtext><mspace width="0.333em"></mspace></mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo>∈</mo><mi>V</mi></mrow><mtext mathvariant="normal">.</mtext></mrow></mrow><annotation encoding="application/x-tex">
- \omega(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k)=
--\omega(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k)\qquad\mbox{for all $v_1,\ldots,v_k\in V$.}
-</annotation></semantics></math></p>
-<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\ldots</annotation></semantics></math>
-The set of all alternating
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-tensors
-is clearly a subspace
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>
-of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">{\mathcal J}^k(V)</annotation></semantics></math>.
-Since it requires considerable work to produce the determinant, it is
-not surprising that alternating
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-tensors
-are difficult to write down. There is, however, a uniform way of
-expressing all of them. Recall that the sign of a permutation
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>,
-denoted
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>sgn</mo><mi>σ</mi></mrow><annotation encoding="application/x-tex">\operatorname{sgn}\sigma</annotation></semantics></math>,
-is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math>
-if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
-is even and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>
-if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
-is odd. If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>∈</mo><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">T\in{\mathcal J}^k(V)</annotation></semantics></math>,
-we define
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(T)</annotation></semantics></math>
-by</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><mi>k</mi><mi>!</mi></mrow></mfrac><munder><mo>∑</mo><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>k</mi></msub></mrow></munder><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">n</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>σ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mrow><mi>σ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mrow><mi>σ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p>A <span class="math inline">k</span>-tensor <span class="math inline">\omega\in{\mathcal J}(V)</span> is called
+<strong>alternating</strong> if</p>
+<p><span class="math display">
+\omega(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k)=
+-\omega(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k)\qquad\mbox{for all
+$v_1,\ldots,v_k\in V$.}
+</span></p>
+<p><span class="math inline">\ldots</span> The set of all alternating
+<span class="math inline">k</span>-tensors is clearly a subspace <span class="math inline">\Lambda^k(V)</span> of <span class="math inline">{\mathcal J}^k(V)</span>. Since it requires
+considerable work to produce the determinant, it is not surprising that
+alternating <span class="math inline">k</span>-tensors are difficult to
+write down. There is, however, a uniform way of expressing all of them.
+Recall that the sign of a permutation <span class="math inline">\sigma</span>, denoted <span class="math inline">\operatorname{sgn}\sigma</span>, is <span class="math inline">+1</span> if <span class="math inline">\sigma</span>
+is even and <span class="math inline">-1</span> if <span class="math inline">\sigma</span> is odd. If <span class="math inline">T\in{\mathcal J}^k(V)</span>, we define <span class="math inline">\operatorname{Alt}(T)</span> by</p>
+<p><span class="math display">
 \operatorname{Alt}(T){\left(v_1,\ldots,v_k\right)}=
     \frac{1}{k!}\sum_{\sigma\in S_k}\mathrm{sgn}(\sigma)\cdot
     T{\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)}
-</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>k</mi></msub><annotation encoding="application/x-tex">S_k</annotation></semantics></math>
-is the set of all permutations of numbers
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.</p>
+</span></p>
+<p>where <span class="math inline">S_k</span> is the set of all
+permutations of numbers <span class="math inline">1</span> to <span class="math inline">k</span>.</p>
 
 <p style="margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia">
 <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).
@@ -156,10 +131,8 @@ Page 78</i>
 </p>
 <p></p></span>
 </div>
-<p>For example, if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">k=3</annotation></semantics></math>
-we have</p>
-<p><span class="math display">$$\operatorname{Alt}(T)\left(v_1,v_2,v_3\right)=
+<p>For example, if <span class="math inline">k=3</span> we have</p>
+<p><span class="math display">\operatorname{Alt}(T)\left(v_1,v_2,v_3\right)=
       \frac{1}{6}\left(\begin{array}{cc}
       +T{\left(v_1,v_2,v_3\right)}&amp;
       -T{\left(v_1,v_3,v_2\right)}\cr
@@ -169,11 +142,9 @@ we have</p>
       -T{\left(v_3,v_2,v_1\right)}
       \end{array}
       \right)
-$$</span></p>
+</span></p>
 <p>In the <code>stokes</code> package, function <code><a href="../reference/Alt.html">Alt()</a></code>
-performs this operation on a given
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-tensor
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>.
+performs this operation on a given <span class="math inline">k</span>-tensor <span class="math inline">T</span>.
 Idiom is straightforward:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">as.ktensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">7</span>,<span class="fl">8</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">*</span><span class="fl">6</span>  <span class="co"># the "6" is to stop rounding error</span></span>
@@ -181,18 +152,10 @@ Idiom is straightforward:</p>
 <pre><code><span><span class="co">## A linear map from V^3 to R with V=R^8:</span></span>
 <span><span class="co">##            val</span></span>
 <span><span class="co">##  1 7 8  =    6</span></span></code></pre>
-<p>Above, object
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mn>6</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>7</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">S=6\phi_1\otimes\phi_7\otimes\phi_8</annotation></semantics></math>,
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo>:</mo><msup><mi>ℝ</mi><mn>8</mn></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\phi_i\colon\mathbb{R}^8\longrightarrow\mathbb{R}</annotation></semantics></math>,
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\phi_i(e_j)=\delta_{ij}</annotation></semantics></math>
-[<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mi>j</mi></msub><annotation encoding="application/x-tex">e_j</annotation></semantics></math>
-are basis vectors in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>8</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^8</annotation></semantics></math>].
-We may calculate
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>S</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(S)</annotation></semantics></math>
-in the package using <code><a href="../reference/Alt.html">Alt()</a></code>:</p>
+<p>Above, object <span class="math inline">S=6\phi_1\otimes\phi_7\otimes\phi_8</span>, where
+<span class="math inline">\phi_i\colon\mathbb{R}^8\longrightarrow\mathbb{R}</span>,
+with <span class="math inline">\phi_i(e_j)=\delta_{ij}</span> [<span class="math inline">e_j</span> are basis vectors in <span class="math inline">\mathbb{R}^8</span>]. We may calculate <span class="math inline">\operatorname{Alt}(S)</span> in the package using
+<code><a href="../reference/Alt.html">Alt()</a></code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^3 to R with V=R^8:</span></span>
@@ -203,21 +166,18 @@ in the package using <code><a href="../reference/Alt.html">Alt()</a></code>:</p>
 <span><span class="co">##  7 1 8  =   -1</span></span>
 <span><span class="co">##  1 8 7  =   -1</span></span>
 <span><span class="co">##  1 7 8  =    1</span></span></code></pre>
-<p>Above we see that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>S</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>7</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>8</mn></msub><mo>−</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>8</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>7</mn></msub><mo>±</mo><mi>⋯</mi><mo>−</mo><msub><mi>ϕ</mi><mn>8</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>7</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(S)=\phi_1\otimes\phi_7\otimes\phi_8-\phi_1\otimes\phi_8\otimes\phi_7\pm\cdots
--\phi_8\otimes\phi_7\otimes\phi_1</annotation></semantics></math>, and
-we can see the pattern clearly, observing in passing that the order of
-the rows in the R object is arbitrary (as per <code>disordR</code>
-discipline). Now, <code>Alt(S)</code> is an alternating form, which is
-easy to verify, by making it act on an odd permutation of a set of
-vectors:</p>
+<p>Above we see that <span class="math inline">\operatorname{Alt}(S)=\phi_1\otimes\phi_7\otimes\phi_8-\phi_1\otimes\phi_8\otimes\phi_7\pm\cdots
+-\phi_8\otimes\phi_7\otimes\phi_1</span>, and we can see the pattern
+clearly, observing in passing that the order of the rows in the R object
+is arbitrary (as per <code>disordR</code> discipline). Now,
+<code>Alt(S)</code> is an alternating form, which is easy to verify, by
+making it act on an odd permutation of a set of vectors:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">24</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="va">V</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="va">V</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] -0.1645455  0.1645455</span></span></code></pre>
-<p>Observing that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>Alt</mo><annotation encoding="application/x-tex">\operatorname{Alt}</annotation></semantics></math>
-is linear, we might apply it to a more complicated tensor, here with two
+<p>Observing that <span class="math inline">\operatorname{Alt}</span> is
+linear, we might apply it to a more complicated tensor, here with two
 terms:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">as.ktensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>,<span class="fl">1000</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -225,10 +185,8 @@ terms:</p>
 <span><span class="co">##             val</span></span>
 <span><span class="co">##  2 2 3  =  1000</span></span>
 <span><span class="co">##  1 2 4  =    12</span></span></code></pre>
-<p>Above we have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mn>12</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>4</mn></msub><mo>+</mo><mn>1000</mn><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">S=12\phi_1\otimes\phi_2\otimes\phi_4+1000\phi_2\otimes\phi_2\otimes\phi_3</annotation></semantics></math>.
-Calculating
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>S</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(S)</annotation></semantics></math>:</p>
+<p>Above we have <span class="math inline">S=12\phi_1\otimes\phi_2\otimes\phi_4+1000\phi_2\otimes\phi_2\otimes\phi_3</span>.
+Calculating <span class="math inline">\operatorname{Alt}(S)</span>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">S</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^3 to R with V=R^4:</span></span>
@@ -249,33 +207,26 @@ Calculating
 disappears in <code>Alt(S)</code>: the even permutations (being
 positive) cancel out the odd permutations (being negative) in pairs.
 This must be the case for an alternating map by definition. We can see
-why this cancellation occurs by considering
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">T=\phi_2\otimes\phi_2\otimes\phi_3</annotation></semantics></math>,
-a linear map corresponding to the <code>[2 2 3]</code> row of
-<code>S</code>:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">
+why this cancellation occurs by considering <span class="math inline">T=\phi_2\otimes\phi_2\otimes\phi_3</span>, a linear
+map corresponding to the <code>[2 2 3]</code> row of <code>S</code>:</p>
+<p><span class="math display">
 T(v_1,v_2,v_3) = (v_1\cdot e_2)(v_2\cdot e_2)(v_1\cdot e_3)x
-</annotation></semantics></math></p>
-<p>(where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">x\in\mathbb{R}</annotation></semantics></math>
-is any real number and
-“<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⋅</mo><annotation encoding="application/x-tex">\cdot</annotation></semantics></math>”
-denotes the dot product), and so</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>3</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>x</mi><mo>=</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
-T(v_2,v_1,v_3) = (v_2\cdot e_2)(v_1\cdot e_2)(v_3\cdot e_3)x = T(v_1,v_2,v_3).
-</annotation></semantics></math></p>
-<p>Thus if we require
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-to be alternating [that is,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">T(v_2,v_1,v_3) =
--T(v_1,v_2,v_3)</annotation></semantics></math>], we must have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>,
-which is why the <code>[2 2 3]</code> term with coefficient 1000
-vanishes (such terms are killed in the function by applying
-<code><a href="../reference/consolidate.html">kill_trivial_rows()</a></code>). We can check that terms with repeated
-entries are correctly discarded by taking the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>Alt</mo><annotation encoding="application/x-tex">\operatorname{Alt}</annotation></semantics></math>
-of a tensor all of whose entries include at least one repeat:</p>
+</span></p>
+<p>(where <span class="math inline">x\in\mathbb{R}</span> is any real
+number and “<span class="math inline">\cdot</span>” denotes the dot
+product), and so</p>
+<p><span class="math display">
+T(v_2,v_1,v_3) = (v_2\cdot e_2)(v_1\cdot e_2)(v_3\cdot e_3)x =
+T(v_1,v_2,v_3).
+</span></p>
+<p>Thus if we require <span class="math inline">T</span> to be
+alternating [that is, <span class="math inline">T(v_2,v_1,v_3) =
+-T(v_1,v_2,v_3)</span>], we must have <span class="math inline">x=0</span>, which is why the <code>[2 2 3]</code>
+term with coefficient 1000 vanishes (such terms are killed in the
+function by applying <code><a href="../reference/consolidate.html">kill_trivial_rows()</a></code>). We can check
+that terms with repeated entries are correctly discarded by taking the
+<span class="math inline">\operatorname{Alt}</span> of a tensor all of
+whose entries include at least one repeat:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">as.ktensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span><span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">1</span>,</span>
@@ -298,9 +249,8 @@ of a tensor all of whose entries include at least one repeat:</p>
 <span><span class="co">## empty sparse array with 4 columns</span></span></code></pre>
 <p>We should verify that <code><a href="../reference/Alt.html">Alt()</a></code> does indeed return an
 alternating tensor for complicated tensors (this is trivial
-algebraically because
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>⋅</mo><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(\cdot)</annotation></semantics></math>
-is linear, but it is always good to check):</p>
+algebraically because <span class="math inline">\operatorname{Alt}(\cdot)</span> is linear, but it
+is always good to check):</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rtensor</a></span><span class="op">(</span>k<span class="op">=</span><span class="fl">5</span>,n<span class="op">=</span><span class="fl">9</span><span class="op">)</span></span>
 <span><span class="va">S</span></span></code></pre></div>
@@ -318,11 +268,9 @@ is linear, but it is always good to check):</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">AS</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span>
 <span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">45</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">5</span><span class="op">)</span> <span class="co"># element of (R^9)^5</span></span></code></pre></div>
-<p>Then we swap columns of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
-using both even and odd permutations, to verify that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>S</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(S)</annotation></semantics></math>
-is in fact alternating:</p>
+<p>Then we swap columns of <span class="math inline">V</span>, using
+both even and odd permutations, to verify that <span class="math inline">\operatorname{Alt}(S)</span> is in fact
+alternating:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">V_even</span> <span class="op">&lt;-</span> <span class="va">V</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">]</span>  <span class="co"># an even permutation</span></span>
 <span><span class="va">V_odd</span>  <span class="op">&lt;-</span> <span class="va">V</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">]</span>  <span class="co"># an odd permutation</span></span>
@@ -340,22 +288,11 @@ is in fact alternating:</p>
 </h2>
 <p>In his theorem 4.3, Spivak proves the following statements:</p>
 <ul>
-<li>If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-is a tensor, then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(T)</annotation></semantics></math>
-is alternating</li>
-<li>If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
-is alternating [he writes
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in\Lambda^k(V)</annotation></semantics></math>]
-then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>ω</mi></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(\omega)=\omega</annotation></semantics></math>
+<li>If <span class="math inline">T</span> is a tensor, then <span class="math inline">\operatorname{Alt}(T)</span> is alternating</li>
+<li>If <span class="math inline">\omega</span> is alternating [he writes
+<span class="math inline">\omega\in\Lambda^k(V)</span>] then <span class="math inline">\operatorname{Alt}(\omega)=\omega</span>
 </li>
-<li>If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-is a tensor, then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(\operatorname{Alt}(T))=\operatorname{Alt}(T)</annotation></semantics></math>.</li>
+<li>If <span class="math inline">T</span> is a tensor, then <span class="math inline">\operatorname{Alt}(\operatorname{Alt}(T))=\operatorname{Alt}(T)</span>.</li>
 </ul>
 <p>We have demonstrated the first point above. For the second, we need
 to construct a tensor that is alternating, and then show that
@@ -380,13 +317,10 @@ to construct a tensor that is alternating, and then show that
 <h2 id="wedge-product">Wedge product<a class="anchor" aria-label="anchor" href="#wedge-product"></a>
 </h2>
 <p>Spivak defines the wedge product as follows. Given alternating forms
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in\Lambda^k(V)</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>∈</mo><msup><mi>Λ</mi><mi>l</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\eta\in\Lambda^l(V)</annotation></semantics></math>
-we have</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∧</mo><mi>η</mi><mo>=</mo><mfrac><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mi>l</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>!</mi></mrow><mrow><mi>k</mi><mi>!</mi><mi>l</mi><mi>!</mi></mrow></mfrac><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mi>η</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<span class="math inline">\omega\in\Lambda^k(V)</span> and <span class="math inline">\eta\in\Lambda^l(V)</span> we have</p>
+<p><span class="math display">
 \omega\wedge\eta=\frac{(k+l)!}{k!l!}\operatorname{Alt}(\omega\otimes\eta)
-</annotation></semantics></math></p>
+</span></p>
 <p>So for example:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">omega</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">as.ktensor</a></span><span class="op">(</span><span class="fl">2</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">7</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
@@ -420,10 +354,8 @@ we have</p>
 <span><span class="co">##  5 6 4  =    3</span></span></code></pre>
 <p>Above we see that <code>omega</code> is alternating by construction,
 and <code>eta</code> is alternating by virtue of <code><a href="../reference/Alt.html">Alt()</a></code>.
-Thus tensor
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∧</mo><mi>η</mi></mrow><annotation encoding="application/x-tex">\omega\wedge\eta</annotation></semantics></math>
-is defined as per Spivak’s definition, and we may calculate it
-directly:</p>
+Thus tensor <span class="math inline">\omega\wedge\eta</span> is defined
+as per Spivak’s definition, and we may calculate it directly:</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">omega</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="va">eta</span>,give_kform <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^5 to R with V=R^7:</span></span>
@@ -432,52 +364,38 @@ directly:</p>
 <span><span class="co">##  1 2 3 4 7  =  1.4</span></span></code></pre>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">omega</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="va">eta</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Observe that the tensor
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>⊗</mo><mi>η</mi></mrow><annotation encoding="application/x-tex">\omega\otimes\eta</annotation></semantics></math>
-(which would be returned if the default argument
-<code>give_kform=FALSE</code> was sent to <code><a href="../reference/Alt.html">Alt()</a></code>) is quite
-long, having
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>⋅</mo><mn>5</mn><mi>!</mi><mo>=</mo><mn>240</mn></mrow><annotation encoding="application/x-tex">2\cdot 5!=240</annotation></semantics></math>
-nonzero components, which is why it is not printed in full. We may
-verify that <code>f()</code> is alternating by evaluating it on a
-randomly chosen point in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>7</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>5</mn></msup><annotation encoding="application/x-tex">\left(\mathbb{R}^7\right)^5</annotation></semantics></math>:</p>
+<p>Observe that the tensor <span class="math inline">\omega\otimes\eta</span> (which would be returned if
+the default argument <code>give_kform=FALSE</code> was sent to
+<code><a href="../reference/Alt.html">Alt()</a></code>) is quite long, having <span class="math inline">2\cdot 5!=240</span> nonzero components, which is
+why it is not printed in full. We may verify that <code>f()</code> is
+alternating by evaluating it on a randomly chosen point in <span class="math inline">\left(\mathbb{R}^7\right)^5</span>:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">V</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">35</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="va">V</span><span class="op">)</span>,<span class="fu">f</span><span class="op">(</span><span class="va">V</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] -0.852457  0.852457</span></span></code></pre>
 <p>Above we see a verification that <code>f()</code> is fact
 alternating: writing the matrix <code>V</code> in terms of its five
-vectors as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo>,</mo><msub><mi>v</mi><mn>4</mn></msub><mo>,</mo><msub><mi>v</mi><mn>5</mn></msub><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">V=\left[v_1,v_2,v_3,v_4,v_5\right]</annotation></semantics></math>,
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mn>7</mn></msup></mrow><annotation encoding="application/x-tex">v_i\in\mathbb{R}^7</annotation></semantics></math>,
-we see that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo>,</mo><msub><mi>v</mi><mn>4</mn></msub><mo>,</mo><msub><mi>v</mi><mn>5</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo>,</mo><msub><mi>v</mi><mn>4</mn></msub><mo>,</mo><msub><mi>v</mi><mn>5</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f{\left(v_1,v_2,v_3,v_4,v_5\right)}=-f{\left(v_2,v_1,v_3,v_4,v_5\right)}</annotation></semantics></math>.</p>
+vectors as <span class="math inline">V=\left[v_1,v_2,v_3,v_4,v_5\right]</span>, where
+<span class="math inline">v_i\in\mathbb{R}^7</span>, we see that <span class="math inline">f{\left(v_1,v_2,v_3,v_4,v_5\right)}=-f{\left(v_2,v_1,v_3,v_4,v_5\right)}</span>.</p>
 <div class="section level3">
 <h3 id="further-further-properties-of-alt">Further further properties of <code>Alt()</code><a class="anchor" aria-label="anchor" href="#further-further-properties-of-alt"></a>
 </h3>
-<p>Spivak goes on to prove the following three statements. If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>,</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S,T</annotation></semantics></math>
-are tensors and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>,</mo><mi>η</mi><mo>,</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\omega,\eta,\theta</annotation></semantics></math>
-are alternating tensors of arity
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>,</mo><mi>l</mi><mo>,</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">k,l,m</annotation></semantics></math>
-respectively, then</p>
+<p>Spivak goes on to prove the following three statements. If <span class="math inline">S,T</span> are tensors and <span class="math inline">\omega,\eta,\theta</span> are alternating tensors of
+arity <span class="math inline">k,l,m</span> respectively, then</p>
 <ul>
-<li>If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>S</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(S)=0</annotation></semantics></math>,
-then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>S</mi><mo>⊗</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo>⊗</mo><mi>S</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(S\otimes T)=\operatorname{Alt}(T\otimes S)=0</annotation></semantics></math>.</li>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mi>η</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⊗</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mi>η</mi><mo>⊗</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>η</mi><mo>⊗</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(\operatorname{Alt}(\omega\otimes\eta)\otimes\theta)
+<li>If <span class="math inline">\operatorname{Alt}(S)=0</span>, then
+<span class="math inline">\operatorname{Alt}(S\otimes
+T)=\operatorname{Alt}(T\otimes S)=0</span>.</li>
+<li><span class="math inline">\operatorname{Alt}(\operatorname{Alt}(\omega\otimes\eta)\otimes\theta)
 =\operatorname{Alt}(\omega\otimes\eta\otimes\theta)=
-\operatorname{Alt}(\omega\otimes\operatorname{Alt}(\eta\otimes\theta))</annotation></semantics></math></li>
+\operatorname{Alt}(\omega\otimes\operatorname{Alt}(\eta\otimes\theta))</span></li>
 <li>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>∧</mo><mi>η</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∧</mo><mi>θ</mi><mo>=</mo><mi>ω</mi><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>η</mi><mo>∧</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mi>l</mi><mo>+</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>!</mi></mrow><mrow><mi>k</mi><mi>!</mi><mi>l</mi><mi>!</mi><mi>m</mi><mi>!</mi></mrow></mfrac><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mi>η</mi><mo>⊗</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(\omega\wedge\eta)\wedge\theta = \omega\wedge(\eta\wedge\theta) =
-\frac{(k+l+m)!}{k!l!m!}\operatorname{Alt}(\omega\otimes\eta\otimes\theta)</annotation></semantics></math>.</li>
+<span class="math inline">(\omega\wedge\eta)\wedge\theta =
+\omega\wedge(\eta\wedge\theta) =
+\frac{(k+l+m)!}{k!l!m!}\operatorname{Alt}(\omega\otimes\eta\otimes\theta)</span>.</li>
 </ul>
-<p>Taking the points in turn. Firstly
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>S</mi><mo>⊗</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo>⊗</mo><mi>S</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(S\otimes T)=\operatorname{Alt}(T\otimes S)=0</annotation></semantics></math>:</p>
+<p>Taking the points in turn. Firstly <span class="math inline">\operatorname{Alt}(S\otimes
+T)=\operatorname{Alt}(T\otimes S)=0</span>:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">as.ktensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>,<span class="fl">1000</span><span class="op">:</span><span class="fl">1001</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^4 to R with V=R^3:</span></span>
@@ -492,10 +410,9 @@ then
 <code class="sourceCode R"><span><span class="cn">T</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rtensor</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="../reference/zero.html">is.zero</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">S</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="../reference/zero.html">is.zero</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="cn">T</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="va">S</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE TRUE</span></span></code></pre>
-<p>secondly,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mi>η</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⊗</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mi>η</mi><mo>⊗</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>η</mi><mo>⊗</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(\operatorname{Alt}(\omega\otimes\eta)\otimes\theta)
+<p>secondly, <span class="math inline">\operatorname{Alt}(\operatorname{Alt}(\omega\otimes\eta)\otimes\theta)
   =\operatorname{Alt}(\omega\otimes\eta\otimes\theta)=
-  \operatorname{Alt}(\omega\otimes\operatorname{Alt}(\eta\otimes\theta))</annotation></semantics></math>:</p>
+  \operatorname{Alt}(\omega\otimes\operatorname{Alt}(\eta\otimes\theta))</span>:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">omega</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="fu"><a href="../reference/ktensor.html">as.ktensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">eta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="fu"><a href="../reference/ktensor.html">as.ktensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fl">4</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>,<span class="fl">60</span><span class="op">)</span><span class="op">)</span></span>
@@ -529,14 +446,11 @@ then
 <span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">9</span><span class="op">*</span><span class="fl">14</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">9</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">f1</span><span class="op">(</span><span class="va">V</span><span class="op">)</span>,<span class="fu">f2</span><span class="op">(</span><span class="va">V</span><span class="op">)</span>,<span class="fu">f3</span><span class="op">(</span><span class="va">V</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] -3.154794 -3.154794 -3.154794</span></span></code></pre>
-<p>Verifying the third identity
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>∧</mo><mi>η</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∧</mo><mi>θ</mi><mo>=</mo><mi>ω</mi><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>η</mi><mo>∧</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mi>l</mi><mo>+</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>!</mi></mrow><mrow><mi>k</mi><mi>!</mi><mi>l</mi><mi>!</mi><mi>m</mi><mi>!</mi></mrow></mfrac><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mi>η</mi><mo>⊗</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(\omega\wedge\eta)\wedge\theta =
+<p>Verifying the third identity <span class="math inline">(\omega\wedge\eta)\wedge\theta =
   \omega\wedge(\eta\wedge\theta) =
-  \frac{(k+l+m)!}{k!l!m!}\operatorname{Alt}(\omega\otimes\eta\otimes\theta)</annotation></semantics></math>
-needs us to coerce from a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-to a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-tensor:</p>
+  \frac{(k+l+m)!}{k!l!m!}\operatorname{Alt}(\omega\otimes\eta\otimes\theta)</span>
+needs us to coerce from a <span class="math inline">k</span>-form to a
+<span class="math inline">k</span>-tensor:</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">omega</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">19</span><span class="op">)</span></span>
 <span><span class="va">eta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">19</span><span class="op">)</span></span>

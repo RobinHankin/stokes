@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Exterior calculus with R • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Exterior calculus with R">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Exterior calculus with R">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -91,79 +92,53 @@ exterior calculus, and provide numerical verification of a number of
 theorems. Notation follows that of <span class="citation">Spivak
 (1965)</span>, and <span class="citation">Hubbard and Hubbard
 (2015)</span>.</p>
-<p>Recall that a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-tensor
-is a multilinear map
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>:</mo><msup><mi>V</mi><mi>k</mi></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">S\colon
-V^k\longrightarrow\mathbb{R}</annotation></semantics></math>, where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^n</annotation></semantics></math>
-is considered as a vector space; Spivak denotes the space of multilinear
-maps as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}^k(V)</annotation></semantics></math>.
-Formally, multilinearity means</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mi>a</mi><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>a</mi><mo>⋅</mo><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
-S{\left(v_1,\ldots,av_i,\ldots,v_k\right)} = a\cdot S{\left(v_1,\ldots,v_i,\ldots,v_k\right)}
-</annotation></semantics></math></p>
+<p>Recall that a <span class="math inline">k</span>-tensor is a
+multilinear map <span class="math inline">S\colon
+V^k\longrightarrow\mathbb{R}</span>, where <span class="math inline">V=\mathbb{R}^n</span> is considered as a vector
+space; Spivak denotes the space of multilinear maps as <span class="math inline">\mathcal{J}^k(V)</span>. Formally, multilinearity
+means</p>
+<p><span class="math display">
+S{\left(v_1,\ldots,av_i,\ldots,v_k\right)} = a\cdot
+S{\left(v_1,\ldots,v_i,\ldots,v_k\right)}
+</span></p>
 <p>and</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>i</mi></msub><mo>+</mo><msub><mi>v</mi><mi>i</mi></msub><mi>′</mi><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>v</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>i</mi></msub><mi>′</mi><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">
 S{\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)}=S{\left(v_1,\ldots,v_i,\ldots,x_v\right)}+
 S{\left(v_1,\ldots,{v_i}',\ldots,v_k\right)}.
-</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>∈</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">v_i\in V</annotation></semantics></math>.
-If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>∈</mo><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">S\in\mathcal{J}^k(V)</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>∈</mo><msup><mi>𝒥</mi><mi>l</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">T\in\mathcal{J}^l(V)</annotation></semantics></math>,
-then we may define
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>⊗</mo><mi>T</mi><mo>∈</mo><msup><mi>𝒥</mi><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">S\otimes
-T\in\mathcal{J}^{k+l}(V)</annotation></semantics></math> as</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>⊗</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo>,</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>l</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+</span></p>
+<p>where <span class="math inline">v_i\in V</span>. If <span class="math inline">S\in\mathcal{J}^k(V)</span> and <span class="math inline">T\in\mathcal{J}^l(V)</span>, then we may define
+<span class="math inline">S\otimes
+T\in\mathcal{J}^{k+l}(V)</span> as</p>
+<p><span class="math display">
 S\otimes T{\left(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l}\right)}=
 S{\left(v_1,\ldots,v_k\right)}\cdot
 T{\left(v_1,\ldots,v_l\right)}.
-</annotation></semantics></math></p>
-<p>Spivak observes that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}^k(V)</annotation></semantics></math>
-is spanned by the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>n</mi><mi>k</mi></msup><annotation encoding="application/x-tex">n^k</annotation></semantics></math>
-products of the form</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>⊗</mo><msub><mi>ϕ</mi><msub><mi>i</mi><mn>2</mn></msub></msub><mo>⊗</mo><mi>⋯</mi><mo>⊗</mo><msub><mi>ϕ</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mspace width="2.0em"></mspace><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mi>i</mi></msub><mo>,</mo><msub><mi>i</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>i</mi><mi>k</mi></msub><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">
+</span></p>
+<p>Spivak observes that <span class="math inline">\mathcal{J}^k(V)</span> is spanned by the <span class="math inline">n^k</span> products of the form</p>
+<p><span class="math display">
 \phi_{i_1}\otimes\phi_{i_2}\otimes\cdots\otimes\phi_{i_k}\qquad
 1\leq i_i,i_2,\ldots,i_k\leq n
-</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_k</annotation></semantics></math>
-is a basis for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\phi_i{\left(v_j\right)}=\delta_{ij}</annotation></semantics></math>;
-we can therefore write</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><munder><mo>∑</mo><mrow><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>i</mi><mi>k</mi></msub><mo>≤</mo><mi>n</mi></mrow></munder><msub><mi>a</mi><mrow><msub><mi>i</mi><mn>1</mn></msub><mi>…</mi><msub><mi>i</mi><mi>k</mi></msub></mrow></msub><msub><mi>ϕ</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>⊗</mo><mi>⋯</mi><mo>⊗</mo><msub><mi>ϕ</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+</span></p>
+<p>where <span class="math inline">v_1,\ldots,v_k</span> is a basis for
+<span class="math inline">V</span> and <span class="math inline">\phi_i{\left(v_j\right)}=\delta_{ij}</span>; we can
+therefore write</p>
+<p><span class="math display">
 S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k}
 \phi_{i_1}\otimes\cdots\otimes\phi_{i_k}.
-</annotation></semantics></math></p>
+</span></p>
 <p>The space spanned by such products has a natural representation in R
-as an array of dimensions
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>⋯</mi><mo>×</mo><mi>n</mi><mo>=</mo><msup><mi>n</mi><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">n\times\cdots\times n=n^k</annotation></semantics></math>.
-If <code>A</code> is such an array, then the element
-<code>A[i_1,i_2,...,i_k]</code> is the coefficient of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>⊗</mo><mi>…</mi><mo>⊗</mo><msub><mi>ϕ</mi><msub><mi>i</mi><mi>k</mi></msub></msub></mrow><annotation encoding="application/x-tex">\phi_{i_1}\otimes\ldots\otimes\phi_{i_k}</annotation></semantics></math>.
+as an array of dimensions <span class="math inline">n\times\cdots\times
+n=n^k</span>. If <code>A</code> is such an array, then the element
+<code>A[i_1,i_2,...,i_k]</code> is the coefficient of <span class="math inline">\phi_{i_1}\otimes\ldots\otimes\phi_{i_k}</span>.
 However, it is more efficient and conceptually cleaner to consider a
 <em>sparse</em> array, as implemented by the <code>spray</code> package.
-We will consider the case
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>5</mn><mo>,</mo><mi>k</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">n=5,k=4</annotation></semantics></math>,
-so we have multilinear maps from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>5</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>4</mn></msup><annotation encoding="application/x-tex">\left(\mathbb{R}^5\right)^4</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>.
-Below, we will test algebraic identities in R using the idiom furnished
-by the stokes package. For our example we will define
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mn>1.5</mn><msub><mi>ϕ</mi><mn>5</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>+</mo><mn>2.5</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>3.5</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>4</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2</annotation></semantics></math>
+We will consider the case <span class="math inline">n=5,k=4</span>, so
+we have multilinear maps from <span class="math inline">\left(\mathbb{R}^5\right)^4</span> to <span class="math inline">\mathbb{R}</span>. Below, we will test algebraic
+identities in R using the idiom furnished by the stokes package. For our
+example we will define <span class="math inline">S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2</span>
 using a matrix with three rows, one per term, and whose rows correspond
-to each term’s tensor products of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>’s.
-We first have to load the <code>stokes</code> package:</p>
+to each term’s tensor products of the <span class="math inline">\phi</span>’s. We first have to load the
+<code>stokes</code> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/RobinHankin/stokes" class="external-link">"stokes"</a></span><span class="op">)</span></span></code></pre></div>
 <p>Then the idiom is straightforward:</p>
@@ -184,21 +159,10 @@ We first have to load the <code>stokes</code> package:</p>
 <span><span class="co">##  1 3 4 2  =  3.5</span></span>
 <span><span class="co">##  1 1 2 3  =  2.5</span></span>
 <span><span class="co">##  5 1 1 1  =  1.5</span></span></code></pre>
-<p>Observe that, if stored as an array of size
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>n</mi><mi>k</mi></msup><annotation encoding="application/x-tex">n^k</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-would have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>5</mn><mn>4</mn></msup><mo>=</mo><mn>625</mn></mrow><annotation encoding="application/x-tex">5^4=625</annotation></semantics></math>
-elements, all but three of which are zero. So
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-is a 4-tensor, mapping
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mn>4</mn></msup><annotation encoding="application/x-tex">V^4</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>,
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^5</annotation></semantics></math>.
-Here we have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mn>1.5</mn><msub><mi>ϕ</mi><mn>5</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>+</mo><mn>2.5</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>3.5</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>4</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2</annotation></semantics></math>.
+<p>Observe that, if stored as an array of size <span class="math inline">n^k</span>, <span class="math inline">S</span> would
+have <span class="math inline">5^4=625</span> elements, all but three of
+which are zero. So <span class="math inline">S</span> is a 4-tensor,
+mapping <span class="math inline">V^4</span> to <span class="math inline">\mathbb{R}</span>, where <span class="math inline">V=\mathbb{R}^5</span>. Here we have <span class="math inline">S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2</span>.
 Note that in some implementations the row order of object <code>S</code>
 will differ from that of <code>M</code>; this phenomenon is due to the
 underlying <code>C</code> implementation using the <code>STL map</code>
@@ -208,11 +172,9 @@ in the <code>mvp</code> package <span class="citation">(Hankin
 <div class="section level4">
 <h4 id="package-idiom-for-evaluation-of-a-tensor">Package idiom for evaluation of a tensor<a class="anchor" aria-label="anchor" href="#package-idiom-for-evaluation-of-a-tensor"></a>
 </h4>
-<p>First, we will define
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
-to be a random point in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mi>k</mi></msup><annotation encoding="application/x-tex">V^k</annotation></semantics></math>
-in terms of a matrix:</p>
+<p>First, we will define <span class="math inline">E</span> to be a
+random point in <span class="math inline">V^k</span> in terms of a
+matrix:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">*</span><span class="va">k</span><span class="op">)</span>,<span class="va">n</span>,<span class="va">k</span><span class="op">)</span><span class="op">)</span>   <span class="co"># A random point in V^k</span></span></code></pre></div>
@@ -222,16 +184,8 @@ in terms of a matrix:</p>
 <span><span class="co">## [3,]  1.3297993 -0.294720447 -1.1476570 -0.8919211</span></span>
 <span><span class="co">## [4,]  1.2724293 -0.005767173 -0.2894616  0.4356833</span></span>
 <span><span class="co">## [5,]  0.4146414  2.404653389 -0.2992151 -1.2375384</span></span></code></pre>
-<p>Recall that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">n=5</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">k=4</annotation></semantics></math>,
-so
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>∈</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>5</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">E\in\left(\mathbb{R}^5\right)^4</annotation></semantics></math>.
-We can evaluate
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-at
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
-as follows:</p>
+<p>Recall that <span class="math inline">n=5</span>, <span class="math inline">k=4</span>, so <span class="math inline">E\in\left(\mathbb{R}^5\right)^4</span>. We can
+evaluate <span class="math inline">S</span> at <span class="math inline">E</span> as follows:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span>
 <span><span class="fu">f</span><span class="op">(</span><span class="va">E</span><span class="op">)</span></span></code></pre></div>
@@ -242,10 +196,7 @@ as follows:</p>
 </h4>
 <p>Tensors have a natural vector space structure; they may be added and
 subtracted, and multiplied by a scalar, the same as any other vector
-space. Below, we define a new tensor
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mn>1</mn></msub><annotation encoding="application/x-tex">S_1</annotation></semantics></math>
-and work with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>S</mi><mo>−</mo><mn>3</mn><msub><mi>S</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">2S-3S_1</annotation></semantics></math>:</p>
+space. Below, we define a new tensor <span class="math inline">S_1</span> and work with <span class="math inline">2S-3S_1</span>:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">S1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">as.ktensor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="fl">2</span><span class="op">*</span><span class="va">S</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">S1</span></span></code></pre></div>
@@ -272,8 +223,7 @@ and work with
 </h4>
 <p>Testing multilinearity is straightforward in the package. To do this,
 we need to define three matrices <code>E1,E2,E3</code> corresponding to
-points in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>5</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>4</mn></msup><annotation encoding="application/x-tex">\left(\mathbb{R}^5\right)^4</annotation></semantics></math>
+points in <span class="math inline">\left(\mathbb{R}^5\right)^4</span>
 which are identical except for one column. In <code>E3</code>, this
 column is a linear combination of the corresponding column in
 <code>E2</code> and <code>E3</code>:</p>
@@ -290,10 +240,8 @@ column is a linear combination of the corresponding column in
 <span><span class="va">E1</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">x1</span></span>
 <span><span class="va">E2</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">x2</span></span>
 <span><span class="va">E3</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">r1</span><span class="op">*</span><span class="va">x1</span> <span class="op">+</span> <span class="va">r2</span><span class="op">*</span><span class="va">x2</span></span></code></pre></div>
-<p>Then we can verify the multilinearity of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-by coercing to a function which is applied to
-<code>E1, E2, E3</code>:</p>
+<p>Then we can verify the multilinearity of <span class="math inline">S</span> by coercing to a function which is applied
+to <code>E1, E2, E3</code>:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span>
 <span><span class="va">LHS</span> <span class="op">&lt;-</span> <span class="va">r1</span><span class="op">*</span><span class="fu">f</span><span class="op">(</span><span class="va">E1</span><span class="op">)</span> <span class="op">+</span> <span class="va">r2</span><span class="op">*</span><span class="fu">f</span><span class="op">(</span><span class="va">E2</span><span class="op">)</span></span>
@@ -302,8 +250,7 @@ by coercing to a function which is applied to
 <pre><code><span><span class="co">##        lhs        rhs       diff </span></span>
 <span><span class="co">## -0.5640577 -0.5640577  0.0000000</span></span></code></pre>
 <p>(that is, identical up to numerical precision). Note that this is
-<em>not</em> equivalent to linearity over
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mrow><mi>n</mi><mi>k</mi></mrow></msup><annotation encoding="application/x-tex">V^{nk}</annotation></semantics></math>:</p>
+<em>not</em> equivalent to linearity over <span class="math inline">V^{nk}</span>:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">E1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">*</span><span class="va">k</span><span class="op">)</span>,<span class="va">n</span>,<span class="va">k</span><span class="op">)</span></span>
 <span><span class="va">E2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">*</span><span class="va">k</span><span class="op">)</span>,<span class="va">n</span>,<span class="va">k</span><span class="op">)</span></span>
@@ -316,16 +263,14 @@ by coercing to a function which is applied to
 <div class="section level4">
 <h4 id="tensor-product-of-general-tensors">Tensor product of general tensors<a class="anchor" aria-label="anchor" href="#tensor-product-of-general-tensors"></a>
 </h4>
-<p>Given two k-tensor objects
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>,</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S,T</annotation></semantics></math>
-we can form the tensor product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>⊗</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S\otimes T</annotation></semantics></math>,
+<p>Given two k-tensor objects <span class="math inline">S,T</span> we
+can form the tensor product <span class="math inline">S\otimes T</span>,
 defined as</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>⊗</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo>,</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>…</mi><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">
 S\otimes T{\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)}=
   S{\left(v_1,\ldots v_k\right)} \cdot T{\left(v_{k+1},\ldots
   v_{k+l}\right)}
-</annotation></semantics></math></p>
+</span></p>
 <p>We will calculate the tensor product of two tensors
 <code>S1,S2</code> defined as follows:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
@@ -341,9 +286,8 @@ S\otimes T{\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)}=
 <span><span class="co">##            val</span></span>
 <span><span class="co">##  2 4 6  =    1</span></span>
 <span><span class="co">##  1 3 5  =    1</span></span></code></pre>
-<p>The R idiom for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mn>1</mn><mo>⊗</mo><mi>S</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">S1\otimes S2</annotation></semantics></math>
-would be <code><a href="../reference/tensorprod.html">tensorprod()</a></code>, or <code>%X%</code>:</p>
+<p>The R idiom for <span class="math inline">S1\otimes S2</span> would
+be <code><a href="../reference/tensorprod.html">tensorprod()</a></code>, or <code>%X%</code>:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tensorprod.html">tensorprod</a></span><span class="op">(</span><span class="va">S1</span>,<span class="va">S2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^5 to R with V=R^6:</span></span>
@@ -368,41 +312,24 @@ would be <code><a href="../reference/tensorprod.html">tensorprod()</a></code>, o
 <div class="section level2">
 <h2 id="alternating-forms">Alternating forms<a class="anchor" aria-label="anchor" href="#alternating-forms"></a>
 </h2>
-<p>An alternating form is a multilinear map
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-satisfying</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>j</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>j</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p>An alternating form is a multilinear map <span class="math inline">T</span> satisfying</p>
+<p><span class="math display">
 T{\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)}=
     -T{\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)}
-</annotation></semantics></math></p>
-<p>(or, equivalently,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T{\left(v_1,\ldots,v_i,\ldots,v_i,\ldots,v_k\right)}= 0</annotation></semantics></math>).
-We write
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>
-for the space of all alternating multilinear maps from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mi>k</mi></msup><annotation encoding="application/x-tex">V^k</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>.
-Spivak gives
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mo>:</mo><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}\colon\mathcal{J}^k(V)\longrightarrow\Lambda^k(V)</annotation></semantics></math>
+</span></p>
+<p>(or, equivalently, <span class="math inline">T{\left(v_1,\ldots,v_i,\ldots,v_i,\ldots,v_k\right)}=
+0</span>). We write <span class="math inline">\Lambda^k(V)</span> for
+the space of all alternating multilinear maps from <span class="math inline">V^k</span> to <span class="math inline">\mathbb{R}</span>. Spivak gives <span class="math inline">\operatorname{Alt}\colon\mathcal{J}^k(V)\longrightarrow\Lambda^k(V)</span>
 defined by</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><mi>k</mi><mi>!</mi></mrow></mfrac><munder><mo>∑</mo><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>k</mi></msub></mrow></munder><mo>sgn</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>σ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mrow><mi>σ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mrow><mi>σ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
+<p><span class="math display">\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
     \frac{1}{k!}\sum_{\sigma\in S_k}\operatorname{sgn}(\sigma)\cdot
     T{\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)}
-</annotation></semantics></math></p>
-<p>where the sum ranges over all permutations of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi><mo stretchy="true" form="postfix">}</mo></mrow></mrow><annotation encoding="application/x-tex">\left[n\right]=\left\{1,2,\ldots,n\right\}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>sgn</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>σ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><mo>±</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\operatorname{sgn}(\sigma)\in\pm 1</annotation></semantics></math>
-is the sign of the permutation. If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>∈</mo><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">T\in\mathcal{J}^k(V)</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in\Lambda^k(V)</annotation></semantics></math>,
-it is straightforward to prove that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}(T)\in\Lambda^k(V)</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Alt}\left(\operatorname{Alt}\left(T\right)\right)=\operatorname{Alt}\left(T\right)</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>ω</mi></mrow><annotation encoding="application/x-tex">\operatorname{Alt}\left(\omega\right)=\omega</annotation></semantics></math>.</p>
+</span></p>
+<p>where the sum ranges over all permutations of <span class="math inline">\left[n\right]=\left\{1,2,\ldots,n\right\}</span>
+and <span class="math inline">\operatorname{sgn}(\sigma)\in\pm 1</span>
+is the sign of the permutation. If <span class="math inline">T\in\mathcal{J}^k(V)</span> and <span class="math inline">\omega\in\Lambda^k(V)</span>, it is straightforward
+to prove that <span class="math inline">\operatorname{Alt}(T)\in\Lambda^k(V)</span>, <span class="math inline">\operatorname{Alt}\left(\operatorname{Alt}\left(T\right)\right)=\operatorname{Alt}\left(T\right)</span>,
+and <span class="math inline">\operatorname{Alt}\left(\omega\right)=\omega</span>.</p>
 <p>In the stokes package, this is effected by the <code><a href="../reference/Alt.html">Alt()</a></code>
 function:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
@@ -430,14 +357,11 @@ straightforward:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">S1</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="va">E</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">S1</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="va">Erev</span><span class="op">)</span>  <span class="co"># should be zero</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0</span></span></code></pre>
 <p>However, we can see that this form for alternating tensors (here
-called
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-forms)
-is inefficient and highly redundant: in this example there is a
-<code>1 2</code> term and a <code>2 1</code> term (the coefficients are
-equal and opposite). In this example we have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k=2</annotation></semantics></math>
-but in general there would be potentially
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>!</mi></mrow><annotation encoding="application/x-tex">k!</annotation></semantics></math>
+called <span class="math inline">k</span>-forms) is inefficient and
+highly redundant: in this example there is a <code>1 2</code> term and a
+<code>2 1</code> term (the coefficients are equal and opposite). In this
+example we have <span class="math inline">k=2</span> but in general
+there would be potentially <span class="math inline">k!</span>
 essentially repeated terms which collectively require only a single
 coefficient. The package provides <code>kform</code> objects which are
 inherently alternating using a more efficient representation; they are
@@ -448,15 +372,10 @@ described using wedge products which are discussed next.</p>
 <p>This section follows the exposition of Hubbard and Hubbard, who
 introduce the exterior calculus starting with a discussion of elementary
 forms, which are alternating forms with a particularly simple structure.
-An example of an elementary form would be
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_1\wedge\mathrm{d}x_3</annotation></semantics></math>
-[treated as an indivisible entity], which is an alternating multilinear
-map from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ℝ</mi><mi>n</mi></msup><mo>×</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\mathbb{R}^n\times\mathbb{R}^n</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>
-with</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>3</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><msub><mi>b</mi><mn>3</mn></msub><mo>−</mo><msub><mi>a</mi><mn>3</mn></msub><msub><mi>b</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">
+An example of an elementary form would be <span class="math inline">\mathrm{d}x_1\wedge\mathrm{d}x_3</span> [treated as
+an indivisible entity], which is an alternating multilinear map from
+<span class="math inline">\mathbb{R}^n\times\mathbb{R}^n</span> to <span class="math inline">\mathbb{R}</span> with</p>
+<p><span class="math display">
 \left(
 \mathrm{d}x_1\wedge\mathrm{d}x_3
 \right)\left(
@@ -465,18 +384,16 @@ with</p>
 \right)=\mathrm{det}
 \begin{pmatrix} a_1 &amp; b_1 \\ a_3 &amp; b_3\end{pmatrix}
 =a_1b_3-a_3b_1
-</annotation></semantics></math></p>
+</span></p>
 <p>That this is alternating follows from the properties of the
-determinant. In general of course,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>i</mi></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>j</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mi>i</mi></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mi>i</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mi>j</mi></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mi>j</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathrm{d}x_i\wedge\mathrm{d}x_j\left( \begin{pmatrix}a_1\\ \vdots\\
+determinant. In general of course, <span class="math inline">\mathrm{d}x_i\wedge\mathrm{d}x_j\left(
+\begin{pmatrix}a_1\\ \vdots\\
 a_n\end{pmatrix}, \begin{pmatrix}b_1\\ \vdots\\ b_n\end{pmatrix}
 \right)=\mathrm{det} \begin{pmatrix} a_i &amp; b_i \\ a_j &amp;
-b_j\end{pmatrix}</annotation></semantics></math>. Because such objects
-are linear, it is possible to consider sums of elementary forms, such as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi mathvariant="normal">x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>3</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">d\mathrm{x}_1\wedge\mathrm{d}x_2 + 3
-\mathrm{d}x_2\wedge\mathrm{d}x_3</annotation></semantics></math>
-with</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>3</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>2</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>3</mn><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>3</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+b_j\end{pmatrix}</span>. Because such objects are linear, it is possible
+to consider sums of elementary forms, such as <span class="math inline">d\mathrm{x}_1\wedge\mathrm{d}x_2 + 3
+\mathrm{d}x_2\wedge\mathrm{d}x_3</span> with</p>
+<p><span class="math display">
 \left(
 \mathrm{d}x_1\wedge\mathrm{d}x_2 + 3\mathrm{d}x_2\wedge\mathrm{d}x_3
 \right)\left(
@@ -486,17 +403,14 @@ with</p>
 \begin{pmatrix} a_1 &amp; b_1\\ a_2 &amp; b_2\end{pmatrix}
 +3\mathrm{det}
 \begin{pmatrix} a_2 &amp; b_2\\ a_3 &amp; b_3\end{pmatrix}
-</annotation></semantics></math></p>
-<p>or even
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub><mo>+</mo><mn>5</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">K=\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_3 +5\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_4</annotation></semantics></math>
-which would be a linear map from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>3</mn></msup><annotation encoding="application/x-tex">\left(\mathbb{R}^n\right)^3</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>
-with</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub><mo>+</mo><mn>5</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>4</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>4</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>4</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>3</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>3</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>5</mn><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>4</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>4</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>c</mi><mn>4</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+</span></p>
+<p>or even <span class="math inline">K=\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_3
++5\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_4</span> which would
+be a linear map from <span class="math inline">\left(\mathbb{R}^n\right)^3</span> to <span class="math inline">\mathbb{R}</span> with</p>
+<p><span class="math display">
 \left(
-\mathrm{d}x_4\wedge\mathrm{d}x_2\wedge\mathrm{d}x_3 +5\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_4
+\mathrm{d}x_4\wedge\mathrm{d}x_2\wedge\mathrm{d}x_3
++5\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_4
 \right)\left(
 \begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
 \begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix},
@@ -513,11 +427,10 @@ with</p>
     a_2 &amp; b_2 &amp; c_2\\
     a_4 &amp; b_4 &amp; c_4
 \end{pmatrix}.
-</annotation></semantics></math></p>
-<p>Defining
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
-has ready R idiom in which we define a matrix whose rows correspond to
-the differentials in each term:</p>
+</span></p>
+<p>Defining <span class="math inline">K</span> has ready R idiom in
+which we define a matrix whose rows correspond to the differentials in
+each term:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">2</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">3</span>,byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">M</span></span></code></pre></div>
@@ -542,28 +455,15 @@ C++.</p>
 <div class="section level3">
 <h3 id="formal-definition-of-dx">Formal definition of dx<a class="anchor" aria-label="anchor" href="#formal-definition-of-dx"></a>
 </h3>
-<p>In the previous section we defined objects such as
-“<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>6</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_1\wedge\mathrm{d}x_6</annotation></semantics></math>”
-as a single entity. Here I define the elementary form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_i</annotation></semantics></math>
-formally and in the next section discuss the wedge product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>∧</mo><annotation encoding="application/x-tex">\wedge</annotation></semantics></math>.
-The elementary form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_i</annotation></semantics></math>
-is simply a map from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_i{\left(x_1,x_2,\ldots,x_n\right)}=x_i</annotation></semantics></math>.
-Observe that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_i</annotation></semantics></math>
-is an alternating form, even though we cannot swap arguments (because
-there is only one). Package idiom for creating an elementary form
-appears somewhat cryptic at first sight, but is consistent (it is easier
-to understand package idiom for creating more complicated alternating
-forms, as in the next section). Suppose we wish to work with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_3</annotation></semantics></math>:</p>
+<p>In the previous section we defined objects such as “<span class="math inline">\mathrm{d}x_1\wedge\mathrm{d}x_6</span>” as a single
+entity. Here I define the elementary form <span class="math inline">\mathrm{d}x_i</span> formally and in the next
+section discuss the wedge product <span class="math inline">\wedge</span>. The elementary form <span class="math inline">\mathrm{d}x_i</span> is simply a map from <span class="math inline">\mathbb{R}^n</span> to <span class="math inline">\mathbb{R}</span> with <span class="math inline">\mathrm{d}x_i{\left(x_1,x_2,\ldots,x_n\right)}=x_i</span>.
+Observe that <span class="math inline">\mathrm{d}x_i</span> is an
+alternating form, even though we cannot swap arguments (because there is
+only one). Package idiom for creating an elementary form appears
+somewhat cryptic at first sight, but is consistent (it is easier to
+understand package idiom for creating more complicated alternating
+forms, as in the next section). Suppose we wish to work with <span class="math inline">\mathrm{d}x_3</span>:</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dx3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>kform_symbolic_print <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="co"># revert to default print method</span></span>
@@ -573,14 +473,8 @@ forms, as in the next section). Suppose we wish to work with
 <span><span class="co">##  3  =    1</span></span></code></pre>
 <p>Interpretation of the output above is not obvious (it is easier to
 understand the output from more complicated alternating forms, as in the
-next section), but for the moment observe that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_3</annotation></semantics></math>
-is indeed an alternating form, mapping
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_3{\left(x_1,x_2,\ldots,x_n\right)}=x_3</annotation></semantics></math>.
+next section), but for the moment observe that <span class="math inline">\mathrm{d}x_3</span> is indeed an alternating form,
+mapping <span class="math inline">\mathbb{R}^n</span> to <span class="math inline">\mathbb{R}</span> with <span class="math inline">\mathrm{d}x_3{\left(x_1,x_2,\ldots,x_n\right)}=x_3</span>.
 Thus, for example:</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx3</span><span class="op">)</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">14</span>,<span class="fl">15</span>,<span class="fl">16</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -588,10 +482,9 @@ Thus, for example:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx3</span><span class="op">)</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">14</span>,<span class="fl">15</span>,<span class="fl">16</span>,<span class="fl">17</span>,<span class="fl">18</span><span class="op">)</span><span class="op">)</span>  <span class="co"># idiom can deal with arbitrary vectors</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 16</span></span></code></pre>
-<p>and we see that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_3</annotation></semantics></math>
-picks out the third element of a vector. These are linear in the sense
-that we may add and subtract these elementary forms:</p>
+<p>and we see that <span class="math inline">\mathrm{d}x_3</span> picks
+out the third element of a vector. These are linear in the sense that we
+may add and subtract these elementary forms:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dx5</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx3</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">dx5</span><span class="op">)</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>  <span class="co"># picks out element 3 + 2*element 5</span></span></code></pre></div>
@@ -601,16 +494,13 @@ that we may add and subtract these elementary forms:</p>
 <h3 id="formal-definition-of-wedge-product">Formal definition of wedge product<a class="anchor" aria-label="anchor" href="#formal-definition-of-wedge-product"></a>
 </h3>
 <p>The wedge product maps two alternating forms to another alternating
-form; given
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in\Lambda^k(V)</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>∈</mo><msup><mi>Λ</mi><mi>l</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\eta\in\Lambda^l(V)</annotation></semantics></math>,
-Spivak defines the wedge product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∧</mo><mi>η</mi><mo>∈</mo><msup><mi>Λ</mi><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\wedge\eta\in\Lambda^{k+l}(V)</annotation></semantics></math>
-as</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∧</mo><mi>η</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac linethickness="0"><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow><mrow><mi>k</mi><mspace width="1.0em"></mspace><mi>l</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>Alt</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ω</mi><mo>⊗</mo><mi>η</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
-\omega\wedge\eta={k+l\choose k\quad l}\operatorname{Alt}(\omega\otimes\eta)
-</annotation></semantics></math></p>
+form; given <span class="math inline">\omega\in\Lambda^k(V)</span> and
+<span class="math inline">\eta\in\Lambda^l(V)</span>, Spivak defines the
+wedge product <span class="math inline">\omega\wedge\eta\in\Lambda^{k+l}(V)</span> as</p>
+<p><span class="math display">
+\omega\wedge\eta={k+l\choose k\quad
+l}\operatorname{Alt}(\omega\otimes\eta)
+</span></p>
 <p>and this is implemented in the package by function
 <code><a href="../reference/wedge.html">wedge()</a></code>, or, more idiomatically, <code>^</code>:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
@@ -632,31 +522,29 @@ as</p>
 <span><span class="co">##  3 5  =    3</span></span>
 <span><span class="co">##  2 4  =    2</span></span>
 <span><span class="co">##  1 3  =    1</span></span></code></pre>
-<p>In symbolic notation, <code>K1</code> is equal to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>6</mn></msub><mo>−</mo><mn>2</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">7\mathrm{d}x_1\wedge\mathrm{d}x_4\wedge\mathrm{d}x_6
--2\mathrm{d}x_3\wedge\mathrm{d}x_4\wedge\mathrm{d}x_5</annotation></semantics></math>.
-and <code>K2</code> is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub><mo>+</mo><mn>2</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub><mo>+</mo><mn>3</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>5</mn></msub><mo>+</mo><mn>4</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>6</mn></msub><mo>+</mo><mn>5</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>5</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>7</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_1\wedge\mathrm{d}x_3+
-2\mathrm{d}x_2\wedge\mathrm{d}x_4+ 3\mathrm{d}x_3\wedge\mathrm{d}x_5+ 4\mathrm{d}x_4\wedge\mathrm{d}x_6+ 5\mathrm{d}x_5\wedge
-\mathrm{d}x_7</annotation></semantics></math>. Package idiom for wedge
-products is straightforward:</p>
+<p>In symbolic notation, <code>K1</code> is equal to <span class="math inline">7\mathrm{d}x_1\wedge\mathrm{d}x_4\wedge\mathrm{d}x_6
+-2\mathrm{d}x_3\wedge\mathrm{d}x_4\wedge\mathrm{d}x_5</span>. and
+<code>K2</code> is <span class="math inline">\mathrm{d}x_1\wedge\mathrm{d}x_3+
+2\mathrm{d}x_2\wedge\mathrm{d}x_4+ 3\mathrm{d}x_3\wedge\mathrm{d}x_5+
+4\mathrm{d}x_4\wedge\mathrm{d}x_6+ 5\mathrm{d}x_5\wedge
+\mathrm{d}x_7</span>. Package idiom for wedge products is
+straightforward:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">K1</span> <span class="op">^</span> <span class="va">K2</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^5 to R with V=R^7:</span></span>
 <span><span class="co">##                val</span></span>
 <span><span class="co">##  1 3 4 5 6  =  -21</span></span>
 <span><span class="co">##  1 4 5 6 7  =  -35</span></span></code></pre>
-<p>(we might write the product as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>35</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>5</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>6</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>7</mn></msub><mo>−</mo><mn>21</mn><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>5</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>6</mn></msub></mrow><annotation encoding="application/x-tex">-35\mathrm{d}x_1\wedge\mathrm{d}x_4\wedge\mathrm{d}x_5\wedge
-\mathrm{d}x_6\wedge\mathrm{d}x_7 -21\mathrm{d}x_1\wedge\mathrm{d}x_3\wedge\mathrm{d}x_4\wedge\mathrm{d}x_5\wedge\mathrm{d}x_6</annotation></semantics></math>).
+<p>(we might write the product as <span class="math inline">-35\mathrm{d}x_1\wedge\mathrm{d}x_4\wedge\mathrm{d}x_5\wedge
+\mathrm{d}x_6\wedge\mathrm{d}x_7
+-21\mathrm{d}x_1\wedge\mathrm{d}x_3\wedge\mathrm{d}x_4\wedge\mathrm{d}x_5\wedge\mathrm{d}x_6</span>).
 See how the wedge product eliminates rows with repeated entries, gathers
 permuted rows together (respecting the sign of the permutation), and
 expresses the result in terms of elementary forms. The product is a
 linear combination of two elementary forms; note that only two
-coefficients out of a possible
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac linethickness="0"><mn>7</mn><mn>5</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>21</mn></mrow><annotation encoding="application/x-tex">{7\choose 5}=21</annotation></semantics></math>
-are nonzero. Note again that the order of the rows in the product is
-arbitrary.</p>
+coefficients out of a possible <span class="math inline">{7\choose
+5}=21</span> are nonzero. Note again that the order of the rows in the
+product is arbitrary.</p>
 <p>The wedge product has formal properties such as distributivity but by
 far the most interesting one is associativity, which I will demonstrate
 below:</p>
@@ -695,25 +583,17 @@ may demonstrate by calculating their difference:</p>
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">F1</span> <span class="op">^</span> <span class="va">F2</span><span class="op">)</span> <span class="op">^</span> <span class="va">F3</span> <span class="op">-</span> <span class="va">F1</span> <span class="op">^</span> <span class="op">(</span><span class="va">F2</span> <span class="op">^</span> <span class="va">F3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## The zero alternating linear map from V^7 to R with V=R^n:</span></span>
 <span><span class="co">## empty sparse array with 7 columns</span></span></code></pre>
-<p>Spivak observes that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>
-is spanned by the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mfrac linethickness="0"><mi>n</mi><mi>k</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">n\choose k</annotation></semantics></math>
-wedge products of the form</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><msub><mi>i</mi><mn>2</mn></msub></msub><mo>∧</mo><mi>…</mi><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mspace width="2.0em"></mspace><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mi>i</mi></msub><mo>&lt;</mo><msub><mi>i</mi><mn>2</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>k</mi></msub><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">
+<p>Spivak observes that <span class="math inline">\Lambda^k(V)</span> is
+spanned by the <span class="math inline">n\choose k</span> wedge
+products of the form</p>
+<p><span class="math display">
 \mathrm{d}x_{i_1}\wedge\mathrm{d}x_{i_2}\wedge\ldots\wedge\mathrm{d}x_{i_k}\qquad
 1\leq i_i&lt;i_2&lt;\cdots &lt;i_k\leq n
-</annotation></semantics></math></p>
-<p>where these products are the elementary forms (compare
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}^k(V)</annotation></semantics></math>,
-which is spanned by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>n</mi><mi>k</mi></msup><annotation encoding="application/x-tex">n^k</annotation></semantics></math>
-elementary forms). Formally, multilinearity means every element of the
-space
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>
-is a linear combination of elementary forms, as illustrated in the
-package by function <code><a href="../reference/kform.html">kform_general()</a></code>. Consider the following
-idiom:</p>
+</span></p>
+<p>where these products are the elementary forms (compare <span class="math inline">\mathcal{J}^k(V)</span>, which is spanned by <span class="math inline">n^k</span> elementary forms). Formally,
+multilinearity means every element of the space <span class="math inline">\Lambda^k(V)</span> is a linear combination of
+elementary forms, as illustrated in the package by function
+<code><a href="../reference/kform.html">kform_general()</a></code>. Consider the following idiom:</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Krel</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">kform_general</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span>
 <span><span class="va">Krel</span></span></code></pre></div>
@@ -725,16 +605,10 @@ idiom:</p>
 <span><span class="co">##  2 3  =    3</span></span>
 <span><span class="co">##  1 3  =    2</span></span>
 <span><span class="co">##  1 2  =    1</span></span></code></pre>
-<p>Object <code>Krel</code> is a two-form, specifically a map from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>4</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><annotation encoding="application/x-tex">\left(\mathbb{R}^4\right)^2</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>.
-Observe that <code>Krel</code> has
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac linethickness="0"><mn>4</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">{4\choose 2}=6</annotation></semantics></math>
-components, which do not appear in any particular order. Addition of
-such
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-forms
-is straightforward in R idiom but algebraically nontrivial:</p>
+<p>Object <code>Krel</code> is a two-form, specifically a map from <span class="math inline">\left(\mathbb{R}^4\right)^2</span> to <span class="math inline">\mathbb{R}</span>. Observe that <code>Krel</code>
+has <span class="math inline">{4\choose 2}=6</span> components, which do
+not appear in any particular order. Addition of such <span class="math inline">k</span>-forms is straightforward in R idiom but
+algebraically nontrivial:</p>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">K1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">109</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">K2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">2</span>,byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
@@ -756,11 +630,9 @@ is straightforward in R idiom but algebraically nontrivial:</p>
 <span><span class="co">##          val</span></span>
 <span><span class="co">##  2 4  =  113</span></span>
 <span><span class="co">##  7 8  =    5</span></span></code></pre>
-<p>In the above, note how the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_2\wedge\mathrm{d}x_4</annotation></semantics></math>
-terms combine [to give <code>2 4 = 113</code>] and the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_1\wedge\mathrm{d}x_3</annotation></semantics></math>
-term vanishes by cancellation.</p>
+<p>In the above, note how the <span class="math inline">\mathrm{d}x_2\wedge\mathrm{d}x_4</span> terms
+combine [to give <code>2 4 = 113</code>] and the <span class="math inline">\mathrm{d}x_1\wedge\mathrm{d}x_3</span> term
+vanishes by cancellation.</p>
 </div>
 <div class="section level3">
 <h3 id="print-methods">Print methods<a class="anchor" aria-label="anchor" href="#print-methods"></a>
@@ -782,22 +654,10 @@ sometimes we need a more algebraic print method.</p>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/symbolic.html">as.symbolic</a></span><span class="op">(</span><span class="va">U</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  +4 d*e +3 c*d +2 b*c + a*b</span></span></code></pre>
-<p>In the above, <code>U</code> is a multilinear map from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>5</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><annotation encoding="application/x-tex">\left(\mathbb{R}^5\right)^2</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>.
-Symbolically, <code>a</code> represents the map that takes
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo>,</mo><mi>e</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(a,b,c,d,e)</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
-<code>b</code> the map that takes
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo>,</mo><mi>e</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(a,b,c,d,e)</annotation></semantics></math>
-to <code>b</code>, and so on. The asterisk <code>*</code> represents the
-tensor product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⊗</mo><annotation encoding="application/x-tex">\otimes</annotation></semantics></math>.
-Alternating forms work similarly but
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-forms
-have different defaults:</p>
+<p>In the above, <code>U</code> is a multilinear map from <span class="math inline">\left(\mathbb{R}^5\right)^2</span> to <span class="math inline">\mathbb{R}</span>. Symbolically, <code>a</code>
+represents the map that takes <span class="math inline">(a,b,c,d,e)</span> to <span class="math inline">a</span>, <code>b</code> the map that takes <span class="math inline">(a,b,c,d,e)</span> to <code>b</code>, and so on. The
+asterisk <code>*</code> represents the tensor product <span class="math inline">\otimes</span>. Alternating forms work similarly but
+<span class="math inline">k</span>-forms have different defaults:</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">K</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">kform_general</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">K</span></span></code></pre></div>
@@ -809,8 +669,7 @@ have different defaults:</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/symbolic.html">as.symbolic</a></span><span class="op">(</span><span class="va">K</span>,d<span class="op">=</span><span class="st">"d"</span>,symbols<span class="op">=</span><span class="va">letters</span><span class="op">[</span><span class="fl">23</span><span class="op">:</span><span class="fl">26</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  +3 dx^dy +2 dw^dy + dw^dx</span></span></code></pre>
-<p>Note that the wedge product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>∧</mo><annotation encoding="application/x-tex">\wedge</annotation></semantics></math>,
+<p>Note that the wedge product <span class="math inline">\wedge</span>,
 although implemented in package idiom as <code>^</code> or
 <code>%^%</code>, appears in the symbolic representation as an ascii
 caret, <code>^</code>.</p>
@@ -834,31 +693,15 @@ elementary forms:</p>
 <div class="section level3">
 <h3 id="contractions">Contractions<a class="anchor" aria-label="anchor" href="#contractions"></a>
 </h3>
-<p>Given a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>:</mo><msup><mi>V</mi><mi>k</mi></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\phi\colon V^k\longrightarrow\mathbb{R}</annotation></semantics></math>
-and a vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>∈</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">\mathbf{v}\in V</annotation></semantics></math>,
-the <em>contraction</em>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mi>𝐯</mi></msub><annotation encoding="application/x-tex">\phi_\mathbf{v}</annotation></semantics></math>
-of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>
-is a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k-1</annotation></semantics></math>-form
-with</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐯</mi><mn>1</mn></msup><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>,</mo><msup><mi>𝐯</mi><mn>1</mn></msup><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi>𝐯</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p>Given a <span class="math inline">k</span>-form <span class="math inline">\phi\colon V^k\longrightarrow\mathbb{R}</span> and a
+vector <span class="math inline">\mathbf{v}\in V</span>, the
+<em>contraction</em> <span class="math inline">\phi_\mathbf{v}</span> of
+<span class="math inline">\phi</span> and <span class="math inline">\mathbf{v}</span> is a <span class="math inline">k-1</span>-form with</p>
+<p><span class="math display">
   \phi_\mathbf{v}{\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)} =
   \phi{\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)}
-</annotation></semantics></math></p>
-<p>if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k&gt;1</annotation></semantics></math>;
-we specify
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>𝐯</mi></msub><mo>=</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\phi_\mathbf{v}=\phi(\mathbf{v})</annotation></semantics></math>
-if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>.
-Verification is straightforward:</p>
+</span></p>
+<p>if <span class="math inline">k&gt;1</span>; we specify <span class="math inline">\phi_\mathbf{v}=\phi(\mathbf{v})</span> if <span class="math inline">k=1</span>. Verification is straightforward:</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">o</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>  <span class="co"># a random 3-form</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^3 to R with V=R^7:</span></span>
@@ -879,25 +722,21 @@ Verification is straightforward:</p>
 <pre><code><span><span class="co">##          LHS          RHS         diff </span></span>
 <span><span class="co">## 4.512547e-01 4.512547e-01 1.110223e-16</span></span></code></pre>
 <p>It is possible to iterate the contraction process; if we pass a
-matrix
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
-to <code><a href="../reference/contract.html">contract()</a></code> then this is interpreted as repeated
-contraction with the columns of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>:</p>
+matrix <span class="math inline">V</span> to <code><a href="../reference/contract.html">contract()</a></code>
+then this is interpreted as repeated contraction with the columns of
+<span class="math inline">V</span>:</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">o</span>,<span class="va">V</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="va">V</span><span class="op">[</span>,<span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span>,drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.4512547</span></span></code></pre>
 <p>If we pass three columns to <code><a href="../reference/contract.html">contract()</a></code> the result is a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>-form:</p>
+<span class="math inline">0</span>-form:</p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">o</span>,<span class="va">V</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.4512547</span></span></code></pre>
 <p>In the above, the result is coerced to a scalar; in order to work
-with a formal
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>-form
-(which is represented in the package as a <code>spray</code> with a
-zero-column index matrix) we can use the <code>lose=FALSE</code>
-argument:</p>
+with a formal <span class="math inline">0</span>-form (which is
+represented in the package as a <code>spray</code> with a zero-column
+index matrix) we can use the <code>lose=FALSE</code> argument:</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">o</span>,<span class="va">V</span>,lose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^0 to R with V=R^0:</span></span>
@@ -907,39 +746,33 @@ argument:</p>
 <div class="section level3">
 <h3 id="transformations-and-pullback">Transformations and pullback<a class="anchor" aria-label="anchor" href="#transformations-and-pullback"></a>
 </h3>
-<p>Suppose we are given a two-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><msub><mo>∑</mo><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></msub><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mi>d</mi><msub><mi>x</mi><mi>i</mi></msub><mo>∧</mo><mi>d</mi><msub><mi>x</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\omega=\sum_{i&lt;j}a_{ij}dx_i\wedge
-dx_j</annotation></semantics></math> and relationships
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><msub><mo>∑</mo><mi>r</mi></msub><msub><mi>M</mi><mrow><mi>i</mi><mi>r</mi></mrow></msub><mi>d</mi><msub><mi>y</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">dx_i=\sum_rM_{ir}dy_r</annotation></semantics></math>,
-then we would have</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></munder><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><munder><mo>∑</mo><mi>r</mi></munder><msub><mi>M</mi><mrow><mi>i</mi><mi>r</mi></mrow></msub><mi>d</mi><msub><mi>y</mi><mi>r</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><munder><mo>∑</mo><mi>r</mi></munder><msub><mi>M</mi><mrow><mi>j</mi><mi>r</mi></mrow></msub><mi>d</mi><msub><mi>y</mi><mi>r</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+<p>Suppose we are given a two-form <span class="math inline">\omega=\sum_{i&lt;j}a_{ij}dx_i\wedge
+dx_j</span> and relationships <span class="math inline">dx_i=\sum_rM_{ir}dy_r</span>, then we would have</p>
+<p><span class="math display">
 \omega =
     \sum_{i&lt;j}
     a_{ij}\left(\sum_rM_{ir}dy_r\right)\wedge\left(\sum_rM_{jr}dy_r\right).
-</annotation></semantics></math></p>
-<p>The general situation would be a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-where we would have</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><munder><mo>∑</mo><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>k</mi></msub></mrow></munder><msub><mi>a</mi><mrow><msub><mi>i</mi><mn>1</mn></msub><mi>…</mi><msub><mi>i</mi><mi>k</mi></msub></mrow></msub><mi>d</mi><msub><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi>d</mi><msub><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msub></mrow><annotation encoding="application/x-tex">
-\omega=\sum_{i_1&lt;\cdots&lt;i_k}a_{i_1\ldots i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}
-</annotation></semantics></math></p>
+</span></p>
+<p>The general situation would be a <span class="math inline">k</span>-form where we would have</p>
+<p><span class="math display">
+\omega=\sum_{i_1&lt;\cdots&lt;i_k}a_{i_1\ldots
+i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}
+</span></p>
 <p>giving</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><munder><mo>∑</mo><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>k</mi></msub></mrow></munder><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>a</mi><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>k</mi></msub></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><munder><mo>∑</mo><mi>r</mi></munder><msub><mi>M</mi><mrow><msub><mi>i</mi><mn>1</mn></msub><mi>r</mi></mrow></msub><mi>d</mi><msub><mi>y</mi><mi>r</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><munder><mo>∑</mo><mi>r</mi></munder><msub><mi>M</mi><mrow><msub><mi>i</mi><mi>k</mi></msub><mi>r</mi></mrow></msub><mi>d</mi><msub><mi>y</mi><mi>r</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\omega =
+<p><span class="math display">\omega =
     \sum_{i_1&lt;\cdots &lt;i_k}\left[
-    a_{i_1&lt;\cdots &lt; i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right].
-</annotation></semantics></math></p>
-<p>So
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
-was given in terms of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mi>d</mi><msub><mi>x</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">dx_1,\ldots,dx_k</annotation></semantics></math>
-and we have expressed it in terms of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mi>d</mi><msub><mi>y</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">dy_1,\ldots,dy_k</annotation></semantics></math>.
-So for example if</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mi>d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>5</mn><mi>d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">
+    a_{i_1&lt;\cdots &lt;
+i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right].
+</span></p>
+<p>So <span class="math inline">\omega</span> was given in terms of
+<span class="math inline">dx_1,\ldots,dx_k</span> and we have expressed
+it in terms of <span class="math inline">dy_1,\ldots,dy_k</span>. So for
+example if</p>
+<p><span class="math display">
 \omega=
-  dx_1\wedge dx_2 + 5dx_1\wedge dx_3</annotation></semantics></math></p>
+  dx_1\wedge dx_2 + 5dx_1\wedge dx_3</span></p>
 <p>and</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>d</mi><msub><mi>x</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>d</mi><msub><mi>x</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>d</mi><msub><mi>x</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>4</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>7</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>5</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>8</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>9</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>d</mi><msub><mi>y</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>d</mi><msub><mi>y</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">
   \left(
   \begin{array}{l}
   dx_1\\
@@ -958,9 +791,9 @@ So for example if</p>
   dy_1\\ dy_2\\   dy_3
   \end{array}
   \right)
-</annotation></semantics></math></p>
+</span></p>
 <p>then</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>ω</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mn>4</mn><mi>d</mi><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mn>7</mn><mi>d</mi><msub><mi>y</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mn>5</mn><mi>d</mi><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mn>8</mn><mi>d</mi><msub><mi>y</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>5</mn><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mn>4</mn><mi>d</mi><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mn>7</mn><mi>d</mi><msub><mi>y</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∧</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mn>6</mn><mi>d</mi><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mn>9</mn><mi>d</mi><msub><mi>y</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>2</mn><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mn>5</mn><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><mn>5</mn><mo>⋅</mo><mn>7</mn><mo>⋅</mo><mn>6</mn><mi>d</mi><msub><mi>x</mi><mn>3</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>5</mn><mo>⋅</mo><mn>7</mn><mo>⋅</mo><mn>9</mn><mi>d</mi><msub><mi>x</mi><mn>3</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>x</mi><mn>3</mn></msub><mo>+</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><mo>−</mo><mn>33</mn><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><mn>66</mn><mi>d</mi><msub><mi>y</mi><mn>1</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>y</mi><mn>3</mn></msub><mo>−</mo><mn>33</mn><mi>d</mi><msub><mi>y</mi><mn>2</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>y</mi><mn>3</mn></msub></mtd></mtr></mtable><annotation encoding="application/x-tex">
+<p><span class="math display">
 \begin{array}{ccl}
   \omega &amp;=&amp;
 \left(1dy_1+4dy_2+7dy_3\right)\wedge
@@ -973,7 +806,7 @@ So for example if</p>
 5\cdot 7\cdot 9dx_3\wedge dx_3+\\
 &amp;=&amp; -33dy_1\wedge dy_2-66dy_1\wedge dy_3-33dy_2\wedge dy_3
 \end{array}
-</annotation></semantics></math></p>
+</span></p>
 <p>Function <code><a href="../reference/transform.html">pullback()</a></code> function does all this:</p>
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>kform_symbolic_print <span class="op">=</span> <span class="st">"dx"</span><span class="op">)</span>   <span class="co"># uses dx etc in print method</span></span>
@@ -1019,33 +852,24 @@ the <code>spray</code> internals. We can remove the small entries with
 <pre><code><span><span class="co">## An alternating linear map from V^3 to R with V=R^5:</span></span>
 <span><span class="co">##            val</span></span>
 <span><span class="co">##  2 4 5  =    2</span></span></code></pre>
-<p>See how the result is equal to the original
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>d</mi><msub><mi>y</mi><mn>2</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>y</mi><mn>4</mn></msub><mo>∧</mo><mi>d</mi><msub><mi>y</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">2dy_2\wedge
-dy_4\wedge dy_5</annotation></semantics></math>.</p>
+<p>See how the result is equal to the original <span class="math inline">k</span>-form <span class="math inline">2dy_2\wedge
+dy_4\wedge dy_5</span>.</p>
 </div>
 <div class="section level3">
 <h3 id="exterior-derivatives">Exterior derivatives<a class="anchor" aria-label="anchor" href="#exterior-derivatives"></a>
 </h3>
-<p>Given a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
-Spivak defines the differential of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
-to be a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(k+1)</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}\omega</annotation></semantics></math>
-as follows. If</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><munder><mo>∑</mo><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>i</mi><mn>2</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>k</mi></msub></mrow></munder><msub><mi>ω</mi><mrow><msub><mi>i</mi><mn>1</mn></msub><msub><mi>i</mi><mn>2</mn></msub><mi>…</mi><msub><mi>i</mi><mi>k</mi></msub></mrow></msub><mi mathvariant="normal">d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>2</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup></mrow><annotation encoding="application/x-tex">
+<p>Given a <span class="math inline">k</span>-form <span class="math inline">\omega</span>, Spivak defines the differential of
+<span class="math inline">\omega</span> to be a <span class="math inline">(k+1)</span>-form <span class="math inline">\mathrm{d}\omega</span> as follows. If</p>
+<p><span class="math display">
 \omega =
 \sum_{
 i_1 &lt; i_2 &lt;\cdots&lt;i_k}
 \omega_{i_1i_2\ldots i_k}
 \mathrm{d}x^{i_1}\wedge
 \mathrm{d}x^{i_2}\wedge\cdots\wedge\mathrm{d}x^{i_k}
-</annotation></semantics></math></p>
+</span></p>
 <p>then</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>ω</mi><mo>=</mo><munder><mo>∑</mo><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>i</mi><mn>2</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>k</mi></msub></mrow></munder><munderover><mo>∑</mo><mrow><mi>α</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>D</mi><mi>α</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ω</mi><mrow><msub><mi>i</mi><mn>1</mn></msub><msub><mi>i</mi><mn>2</mn></msub><mi>…</mi><msub><mi>i</mi><mi>k</mi></msub></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msup><mo>∧</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><msub><mi>i</mi><mn>2</mn></msub></msup><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi mathvariant="normal">d</mi><msup><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msup></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">
 \mathrm{d}\omega =
 \sum_{
 i_1 &lt; i_2 &lt;\cdots&lt;i_k}
@@ -1053,51 +877,37 @@ i_1 &lt; i_2 &lt;\cdots&lt;i_k}
 \cdot
 \mathrm{d}x^{i_1}\wedge
 \mathrm{d}x^{i_2}\wedge\cdots\wedge\mathrm{d}x^{i_k}
-</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>i</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mo>lim</mo><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></msub><mfrac><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>a</mi><mn>1</mn></msup><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi>a</mi><mi>i</mi></msup><mo>+</mo><mi>h</mi><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi>a</mi><mi>n</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>a</mi><mn>1</mn></msup><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi>a</mi><mi>i</mi></msup><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi>a</mi><mi>n</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">D_if(a)=\lim_{h\longrightarrow
-0}\frac{f(a^1,\ldots,a^i+h,\ldots,a^n)-f(a^1,\ldots,a^i,\ldots,a^n)}{h}</annotation></semantics></math>
-is the ordinary
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi></mrow></msup><annotation encoding="application/x-tex">i^\mathrm{th}</annotation></semantics></math>
-partial derivative (Spivak, p25). Hubbard and Hubbard take a
-conceptually distinct approach and define the exterior derivative
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">d\phi</annotation></semantics></math>
-(they use a bold font,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐝</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\mathbf{d}\phi</annotation></semantics></math>)
-of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-as the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(k+1)</annotation></semantics></math>-form
-given by</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munder><mo>lim</mo><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mn>1</mn><msup><mi>h</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup></mfrac><msub><mo>∫</mo><mrow><mi>∂</mi><msub><mi>P</mi><mi>x</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mi>h</mi><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">  {d}\phi
+</span></p>
+<p>where <span class="math inline">D_if(a)=\lim_{h\longrightarrow
+0}\frac{f(a^1,\ldots,a^i+h,\ldots,a^n)-f(a^1,\ldots,a^i,\ldots,a^n)}{h}</span>
+is the ordinary <span class="math inline">i^\mathrm{th}</span> partial
+derivative (Spivak, p25). Hubbard and Hubbard take a conceptually
+distinct approach and define the exterior derivative <span class="math inline">d\phi</span> (they use a bold font, <span class="math inline">\mathbf{d}\phi</span>) of the <span class="math inline">k</span>-form <span class="math inline">\phi</span>
+as the <span class="math inline">(k+1)</span>-form given by</p>
+<p><span class="math display">  {d}\phi
   \left({v}_i,\ldots,{v}_{k+1}\right)
   =
   \lim_{h\longrightarrow 0}\frac{1}{h^{k+1}}\int_{\partial
   P_{x}\left(h{v}_1,\ldots,h{v}_{k+1}\right)}\phi
-</annotation></semantics></math></p>
+</span></p>
 <p>which, by their own account, is a rather opaque mathematical idiom.
 However, the definition makes sense and it is consistent with Spivak’s
 definition above. The definition allows one to express the fundamental
 theorem of calculus in an arbitrary number of dimensions without
 modification.</p>
 <p>It can be shown that</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>f</mi><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi mathvariant="normal">d</mi><mi>f</mi><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msub></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">
     \mathrm{d}{\left(f\,dx_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}\right)}=
     \mathrm{d}f\wedge\mathrm{d}x_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}
-</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">f\colon\mathbb{R}^n\longrightarrow\mathbb{R}</annotation></semantics></math>
+</span></p>
+<p>where <span class="math inline">f\colon\mathbb{R}^n\longrightarrow\mathbb{R}</span>
 is a scalar function of position. The package provides
-<code><a href="../reference/as.1form.html">grad()</a></code> which, when given a vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_1,\ldots,x_n</annotation></semantics></math>
-returns the one-form</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mi>i</mi></msub><mi>d</mi><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">
+<code><a href="../reference/as.1form.html">grad()</a></code> which, when given a vector <span class="math inline">x_1,\ldots,x_n</span> returns the one-form</p>
+<p><span class="math display">
 \sum_{i=1}^n x_idx_i
-</annotation></semantics></math></p>
-<p>This is useful because
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>f</mi><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>D</mi><mi>j</mi></msub><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}f=\sum_{j=1}^n\left(D_j
-f\right)\,\mathrm{d}x_j</annotation></semantics></math>. Thus</p>
+</span></p>
+<p>This is useful because <span class="math inline">\mathrm{d}f=\sum_{j=1}^n\left(D_j
+f\right)\,\mathrm{d}x_j</span>. Thus</p>
 <div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/as.1form.html">grad</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.4</span>,<span class="fl">0.1</span>,<span class="op">-</span><span class="fl">3.2</span>,<span class="fl">1.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^1 to R with V=R^4:</span></span>
@@ -1106,27 +916,23 @@ f\right)\,\mathrm{d}x_j</annotation></semantics></math>. Thus</p>
 <span><span class="co">##  3  =  -3.2</span></span>
 <span><span class="co">##  2  =   0.1</span></span>
 <span><span class="co">##  1  =   0.4</span></span></code></pre>
-<p>We will use the <code><a href="../reference/as.1form.html">grad()</a></code> function to verify that, in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math>,
-a certain
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(k-1)</annotation></semantics></math>-form
-has zero work function. Motivated by the fact that</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>=</mo><mfrac><mn>1</mn><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>z</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>x</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>y</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>z</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p>We will use the <code><a href="../reference/as.1form.html">grad()</a></code> function to verify that, in <span class="math inline">\mathbb{R}^n</span>, a certain <span class="math inline">(k-1)</span>-form has zero work function. Motivated
+by the fact that</p>
+<p><span class="math display">
 F_3=\frac{1}{\left(x^2+y^2+z^2\right)^{3/2}}
 \begin{pmatrix}x\\y\\z\end{pmatrix}
-</annotation></semantics></math></p>
-<p>is a divergenceless velocity field in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>3</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^3</annotation></semantics></math>,
-H&amp;H go on to define [page 548, equation 6.7.16]</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>n</mi></msub><mo>=</mo><mi mathvariant="normal">d</mi><mfrac><mn>1</mn><msup><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><mi>…</mi><mo>+</mo><msubsup><mi>x</mi><mi>n</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>n</mi><mi>/</mi><mn>2</mn></mrow></msup></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>x</mi><mi>i</mi></msub><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mover><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>i</mi></msub></mrow><mo accent="true">̂</mo></mover><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
-\omega_{n}=\mathrm{d}\frac{1}{\left(x_1^2+\ldots +x_n^2\right)^{n/2}}\sum_{i=1}^{n}(-1)^{i-1}
+</span></p>
+<p>is a divergenceless velocity field in <span class="math inline">\mathbb{R}^3</span>, H&amp;H go on to define [page
+548, equation 6.7.16]</p>
+<p><span class="math display">
+\omega_{n}=\mathrm{d}\frac{1}{\left(x_1^2+\ldots
++x_n^2\right)^{n/2}}\sum_{i=1}^{n}(-1)^{i-1}
 x_i\mathrm{d}x_1\wedge\cdots\wedge\widehat{\mathrm{d}x_i}\wedge\cdots\wedge\mathrm{d}x_n
-</annotation></semantics></math></p>
+</span></p>
 <p>(where a hat indicates the absence of a term), and show analytically
-that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>ω</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mathrm{d}\omega=0</annotation></semantics></math>.
-Here I show this using R idiom. The first thing is to define a function
-that implements the hat:</p>
+that <span class="math inline">\mathrm{d}\omega=0</span>. Here I show
+this using R idiom. The first thing is to define a function that
+implements the hat:</p>
 <div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
 <span>    <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
@@ -1142,9 +948,8 @@ that implements the hat:</p>
 <span><span class="co">##  1 2 4 5  =    1</span></span>
 <span><span class="co">##  1 3 4 5  =    1</span></span>
 <span><span class="co">##  2 3 4 5  =    1</span></span></code></pre>
-<p>Then we can use the <code><a href="../reference/as.1form.html">grad()</a></code> function to calculate
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}\omega</annotation></semantics></math>,
-using the quotient law to express the derivatives analytically:</p>
+<p>Then we can use the <code><a href="../reference/as.1form.html">grad()</a></code> function to calculate <span class="math inline">\mathrm{d}\omega</span>, using the quotient law to
+express the derivatives analytically:</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span>  <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
 <span>    <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
@@ -1173,32 +978,24 @@ exterior derivative is zero:</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="differential-of-the-differential-d20">Differential of the differential,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>d</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d^2=0</annotation></semantics></math><a class="anchor" aria-label="anchor" href="#differential-of-the-differential-d20"></a>
+<h2 id="differential-of-the-differential-d20">Differential of the differential, <span class="math inline">d^2=0</span><a class="anchor" aria-label="anchor" href="#differential-of-the-differential-d20"></a>
 </h2>
 <p>We can use the package to verify the celebrated fact that, for any
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi mathvariant="normal">d</mi><mi>ϕ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mathrm{d}\left(\mathrm{d}\phi\right)=0</annotation></semantics></math>.
-The first step is to define scalar functions
-<code>f1(), f2(), f3()</code>, all
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>-forms:</p>
+<span class="math inline">k</span>-form <span class="math inline">\phi</span>, <span class="math inline">\mathrm{d}\left(\mathrm{d}\phi\right)=0</span>. The
+first step is to define scalar functions <code>f1(), f2(), f3()</code>,
+all <span class="math inline">0</span>-forms:</p>
 <div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">w</span>,<span class="va">x</span>,<span class="va">y</span>,<span class="va">z</span><span class="op">)</span><span class="op">{</span><span class="va">x</span> <span class="op">+</span> <span class="va">y</span><span class="op">^</span><span class="fl">3</span> <span class="op">+</span> <span class="va">x</span><span class="op">*</span><span class="va">y</span><span class="op">*</span><span class="va">w</span><span class="op">*</span><span class="va">z</span><span class="op">}</span></span>
 <span><span class="va">f2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">w</span>,<span class="va">x</span>,<span class="va">y</span>,<span class="va">z</span><span class="op">)</span><span class="op">{</span><span class="va">w</span><span class="op">^</span><span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">*</span><span class="va">y</span><span class="op">*</span><span class="va">z</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span> <span class="op">+</span> <span class="va">w</span><span class="op">+</span><span class="va">z</span><span class="op">}</span></span>
 <span><span class="va">f3</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">w</span>,<span class="va">x</span>,<span class="va">y</span>,<span class="va">z</span><span class="op">)</span><span class="op">{</span><span class="va">w</span><span class="op">*</span><span class="va">x</span><span class="op">*</span><span class="va">y</span><span class="op">*</span><span class="va">z</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span><span class="op">}</span></span></code></pre></div>
-<p>Now we need to define elementary
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>-forms:</p>
+<p>Now we need to define elementary <span class="math inline">1</span>-forms:</p>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dw</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">dx</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">dy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">dz</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div>
-<p>I will demonstrate the theorem by defining a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>-form
-which is the sum of three elementary two-forms, evaluated at a
-particular point in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>4</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^4</annotation></semantics></math>:</p>
+<p>I will demonstrate the theorem by defining a <span class="math inline">2</span>-form which is the sum of three elementary
+two-forms, evaluated at a particular point in <span class="math inline">\mathbb{R}^4</span>:</p>
 <div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">phi</span> <span class="op">&lt;-</span></span>
 <span>  <span class="op">(</span></span>
@@ -1208,9 +1005,8 @@ particular point in
 <span>  <span class="op">)</span></span></code></pre></div>
 <p>We could use slightly slicker R idiom by defining elementary forms
 <code>e1,e2,e3</code> and then defining <code>phi</code> to be a linear
-sum, weighted with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>-forms
-given by the (scalar) functions <code>f1,f2,f3</code>:</p>
+sum, weighted with <span class="math inline">0</span>-forms given by the
+(scalar) functions <code>f1,f2,f3</code>:</p>
 <div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">e1</span> <span class="op">&lt;-</span> <span class="va">dw</span> <span class="op">^</span> <span class="va">dx</span></span>
 <span><span class="va">e2</span> <span class="op">&lt;-</span> <span class="va">dw</span> <span class="op">^</span> <span class="va">dy</span></span>
@@ -1229,8 +1025,8 @@ given by the (scalar) functions <code>f1,f2,f3</code>:</p>
 <span><span class="co">##  1 2  =  53.00000</span></span>
 <span><span class="co">##  3 4  =  25.44960</span></span></code></pre>
 <p>Now to evaluate first derivatives of <code>f1()</code> etc at point
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,2,3,4)</annotation></semantics></math>,
-using <code><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv()</a></code> from the Deriv package:</p>
+<span class="math inline">(1,2,3,4)</span>, using <code><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv()</a></code>
+from the Deriv package:</p>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"Deriv"</span><span class="op">)</span></span>
 <span><span class="va">Df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv</a></span><span class="op">(</span><span class="va">f1</span><span class="op">)</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span></span>
@@ -1242,9 +1038,8 @@ example:</p>
 <code class="sourceCode R"><span><span class="va">Df1</span></span></code></pre></div>
 <pre><code><span><span class="co">##  w  x  y  z </span></span>
 <span><span class="co">## 24 13 35  6</span></span></code></pre>
-<p>To calculate <code>dphi</code>, or
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}\phi</annotation></semantics></math>,
-we can use function <code><a href="../reference/as.1form.html">grad()</a></code>:</p>
+<p>To calculate <code>dphi</code>, or <span class="math inline">\mathrm{d}\phi</span>, we can use function
+<code><a href="../reference/as.1form.html">grad()</a></code>:</p>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dphi</span> <span class="op">&lt;-</span></span>
 <span>  <span class="op">(</span></span>
@@ -1274,9 +1069,8 @@ Hessians (4x4 numeric matrices) at the same point:</p>
 <span><span class="co">## y  8  4 18 2</span></span>
 <span><span class="co">## z  6  3  2 0</span></span></code></pre>
 <p>(note the matrix is symmetric; also note carefully the nonzero
-diagonal term). But
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>d</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">dd\phi</annotation></semantics></math>
-is clearly zero as the Hessians are symmetrical:</p>
+diagonal term). But <span class="math inline">dd\phi</span> is clearly
+zero as the Hessians are symmetrical:</p>
 <div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ij</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">Hf1</span><span class="op">)</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">Hf1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1295,47 +1089,33 @@ is clearly zero as the Hessians are symmetrical:</p>
 <h3 id="stokess-theorem">Stokes’s theorem<a class="anchor" aria-label="anchor" href="#stokess-theorem"></a>
 </h3>
 <p>In its most general form, Stokes’s theorem states</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∫</mo><mrow><mi>∂</mi><mi>X</mi></mrow></msub><mi>ϕ</mi><mo>=</mo><msub><mo>∫</mo><mi>X</mi></msub><mi mathvariant="normal">d</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">
 \int_{\partial X}\phi=\int_X\mathrm{d}\phi
-</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>⊂</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">X\subset\mathbb{R}^n</annotation></semantics></math>
-is a compact oriented
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(k+1)</annotation></semantics></math>-dimensional
-manifold with boundary
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">\partial X</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-is a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
-defined on a neighborhood of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.</p>
+</span></p>
+<p>where <span class="math inline">X\subset\mathbb{R}^n</span> is a
+compact oriented <span class="math inline">(k+1)</span>-dimensional
+manifold with boundary <span class="math inline">\partial X</span> and
+<span class="math inline">\phi</span> is a <span class="math inline">k</span>-form defined on a neighborhood of <span class="math inline">X</span>.</p>
 <p>We will verify Stokes, following 6.9.5 of Hubbard in which</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msubsup><mi>x</mi><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>x</mi><mn>3</mn><mn>3</mn></msubsup><mo>−</mo><mi>⋯</mi><mo>±</mo><msubsup><mi>x</mi><mi>n</mi><mi>n</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mover><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>i</mi></msub></mrow><mo accent="true">̂</mo></mover><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">
 \phi=
 \left(x_1-x_2^2+x_3^3-\cdots\pm x_n^n\right)
 \left(
 \sum_{i=1}^n
 \mathrm{d}x_1\wedge\cdots\wedge\widehat{\mathrm{d}x_i}\wedge\cdots\wedge\mathrm{d}x_n
 \right)
-</annotation></semantics></math></p>
+</span></p>
 <p>(a hat indicates that a term is absent), and we wish to evaluate
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∫</mo><mrow><mi>∂</mi><msub><mi>C</mi><mi>a</mi></msub></mrow></msub><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\int_{\partial C_a}\phi</annotation></semantics></math>
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>a</mi></msub><annotation encoding="application/x-tex">C_a</annotation></semantics></math>
-is the cube
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>x</mi><mi>j</mi></msub><mo>≤</mo><mi>a</mi><mo>,</mo><mn>1</mn><mo>≤</mo><mi>j</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">0\leq x_j\leq a,
-1\leq j\leq n</annotation></semantics></math>. Stokes tells us that this
-is equal to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∫</mo><msub><mi>C</mi><mi>a</mi></msub></msub><mi mathvariant="normal">d</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\int_{C_a}\mathrm{d}\phi</annotation></semantics></math>,
-which is given by</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>ϕ</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mn>2</mn><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><mi>n</mi><msubsup><mi>x</mi><mi>n</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>1</mn></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+<span class="math inline">\int_{\partial C_a}\phi</span> where <span class="math inline">C_a</span> is the cube <span class="math inline">0\leq x_j\leq a,
+1\leq j\leq n</span>. Stokes tells us that this is equal to <span class="math inline">\int_{C_a}\mathrm{d}\phi</span>, which is given
+by</p>
+<p><span class="math display">
 d\phi = \left(
 1+2x_2+\cdots + nx_n^{n-1}\right)
 \mathrm{d}x_1\wedge\cdots\wedge\mathrm{d}x_n
-</annotation></semantics></math></p>
+</span></p>
 <p>and so the volume integral is just</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msubsup><mo>∫</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow><mi>a</mi></msubsup><msubsup><mo>∫</mo><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mrow><mi>a</mi></msubsup><mi>⋯</mi><msubsup><mo>∫</mo><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><mi>a</mi></msubsup><mi>j</mi><msubsup><mi>x</mi><mi>j</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mi>d</mi><msub><mi>x</mi><mn>1</mn></msub><mi>d</mi><msub><mi>x</mi><mn>2</mn></msub><mi>…</mi><mi>d</mi><msub><mi>x</mi><mi>n</mi></msub><mo>=</mo><msup><mi>a</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>+</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mi>⋯</mi><mo>+</mo><msup><mi>a</mi><mi>n</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">
 \sum_{j=1}^n
 \int_{x_1=0}^a
 \int_{x_2=0}^a
@@ -1344,10 +1124,9 @@ d\phi = \left(
 jx_j^{j-1}
 dx_1 dx_2\ldots dx_n=
 a^{n-1}\left(a+a^2+\cdots+a^n\right).
-</annotation></semantics></math></p>
+</span></p>
 <p>Stokes’s theorem, being trivial, is not amenable to direct numerical
-verification but the package does allow slick creation of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>:</p>
+verification but the package does allow slick creation of <span class="math inline">\phi</span>:</p>
 <div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
 <span>    <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
@@ -1365,24 +1144,18 @@ verification but the package does allow slick creation of
 <span><span class="co">##  1 2 3 5 6 7 8 9  =  371423053</span></span>
 <span><span class="co">##  1 2 3 4 5 6 8 9  =  371423053</span></span>
 <span><span class="co">##  1 2 3 4 5 6 7 8  =  371423053</span></span></code></pre>
-<p>(recall that <code>phi</code> is a function that maps
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>9</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^9</annotation></semantics></math>
-to 8-forms. Here we choose
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>9</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>ℝ</mi><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">\left(1,2,\ldots,9\right)\in\mathbb{R}^9</annotation></semantics></math>
-and <code>phi(1:9)</code> as shown above is the resulting 8-form. Thus,
-if we write
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mrow><mn>1</mn><mo>:</mo><mn>9</mn></mrow></msub><annotation encoding="application/x-tex">\phi_{1:9}</annotation></semantics></math>
-for <code>phi(1:9)</code> we would have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mrow><mn>1</mn><mo>:</mo><mn>9</mn></mrow></msub><mo>:</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>9</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>8</mn></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\phi_{1:9}\colon\left(\mathbb{R}^9\right)^8\longrightarrow\mathbb{R}</annotation></semantics></math>,
+<p>(recall that <code>phi</code> is a function that maps <span class="math inline">\mathbb{R}^9</span> to 8-forms. Here we choose <span class="math inline">\left(1,2,\ldots,9\right)\in\mathbb{R}^9</span> and
+<code>phi(1:9)</code> as shown above is the resulting 8-form. Thus, if
+we write <span class="math inline">\phi_{1:9}</span> for
+<code>phi(1:9)</code> we would have <span class="math inline">\phi_{1:9}\colon\left(\mathbb{R}^9\right)^8\longrightarrow\mathbb{R}</span>,
 with package idiom as follows:</p>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu">phi</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">72</span><span class="op">)</span>,<span class="fl">9</span>,<span class="fl">8</span><span class="op">)</span>   <span class="co"># (R^9)^8</span></span>
 <span><span class="fu">f</span><span class="op">(</span><span class="va">E</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] -26620528</span></span></code></pre>
-<p>Further,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}\phi</annotation></semantics></math>
-is given by</p>
+<p>Further, <span class="math inline">\mathrm{d}\phi</span> is given
+by</p>
 <div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dphi</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
 <span>    <span class="va">nn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
@@ -1392,24 +1165,14 @@ is given by</p>
 <pre><code><span><span class="co">## An alternating linear map from V^9 to R with V=R^9:</span></span>
 <span><span class="co">##                              val</span></span>
 <span><span class="co">##  1 2 3 4 5 6 7 8 9  =  405071317</span></span></code></pre>
-<p>(observe that <code>dphi(1:9)</code> is a 9-form, with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>ϕ</mi><mrow><mn>1</mn><mo>:</mo><mn>9</mn></mrow></msub><mo>:</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>9</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>9</mn></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}\phi_{1:9}\colon\left(\mathbb{R}^9\right)^9\longrightarrow\mathbb{R}</annotation></semantics></math>).
+<p>(observe that <code>dphi(1:9)</code> is a 9-form, with <span class="math inline">\mathrm{d}\phi_{1:9}\colon\left(\mathbb{R}^9\right)^9\longrightarrow\mathbb{R}</span>).
 Now consider Spivak’s theorem 4.6 (page 82), which in this context
-states that a 9-form is proportional to the determinant of the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>×</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">9\times 9</annotation></semantics></math>
-matrix formed from its arguments, with constant of proportionality equal
-to the form evaluated on the identity matrix
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>9</mn></msub><annotation encoding="application/x-tex">I_9</annotation></semantics></math>
-[formally and more generally, if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_n</annotation></semantics></math>
-is a basis for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><msup><mi>Λ</mi><mi>n</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\in\Lambda^n(V)</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><mo>∑</mo><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>v</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">w_i=\sum a_{ij}v_j</annotation></semantics></math>
-then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><msub><mi>v</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\left(w_1,\ldots,w_n\right) =
-\det\left(a_{ij}\right)\cdot\omega\left(v_1,\ldots v_n\right)</annotation></semantics></math>].
+states that a 9-form is proportional to the determinant of the <span class="math inline">9\times 9</span> matrix formed from its arguments,
+with constant of proportionality equal to the form evaluated on the
+identity matrix <span class="math inline">I_9</span> [formally and more
+generally, if <span class="math inline">v_1,\ldots,v_n</span> is a basis
+for <span class="math inline">V</span>, <span class="math inline">\omega\in\Lambda^n(V)</span> and <span class="math inline">w_i=\sum a_{ij}v_j</span> then <span class="math inline">\omega\left(w_1,\ldots,w_n\right) =
+\det\left(a_{ij}\right)\cdot\omega\left(v_1,\ldots v_n\right)</span>].
 Numerically:</p>
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu">dphi</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>

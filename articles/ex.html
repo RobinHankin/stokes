@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Objects `ex`, `ey`, and `ez` in the `stokes` package • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Objects `ex`, `ey`, and `ez` in the `stokes` package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Objects `ex`, `ey`, and `ez` in the `stokes` package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -87,17 +88,11 @@ Hankin</h4>
 <span class="citation">Hankin (2022)</span>. Convenience objects
 <code>ex</code>, <code>ey</code>, and <code>ez</code> are discussed here
 (related package functionality is discussed in <code>dx.Rmd</code>). The
-dual basis to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi mathvariant="normal">d</mi><mi>x</mi><mo>,</mo><mi mathvariant="normal">d</mi><mi>y</mi><mo>,</mo><mi mathvariant="normal">d</mi><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\mathrm{d}x,\mathrm{d}y,\mathrm{d}z)</annotation></semantics></math>
-is, depending on context, written
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>x</mi></msub><mo>,</mo><msub><mi>e</mi><mi>y</mi></msub><mo>,</mo><msub><mi>e</mi><mi>z</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(e_x,e_y,e_z)</annotation></semantics></math>,
-or
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>,</mo><mi>k</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(i,j,k)</annotation></semantics></math>
-or sometimes
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>,</mo><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>,</mo><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\left(\frac{\partial}{\partial x},\frac{\partial}{\partial
-x},\frac{\partial}{\partial x}\right)</annotation></semantics></math>.
-Here they are denoted <code>ex</code>, <code>ey</code>, and
-<code>ez</code> (rather than
+dual basis to <span class="math inline">(\mathrm{d}x,\mathrm{d}y,\mathrm{d}z)</span> is,
+depending on context, written <span class="math inline">(e_x,e_y,e_z)</span>, or <span class="math inline">(i,j,k)</span> or sometimes <span class="math inline">\left(\frac{\partial}{\partial
+x},\frac{\partial}{\partial
+x},\frac{\partial}{\partial x}\right)</span>. Here they are denoted
+<code>ex</code>, <code>ey</code>, and <code>ez</code> (rather than
 <code>i</code>,<code>j</code>,<code>k</code> which cause problems in the
 context of R).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -113,12 +108,9 @@ context of R).</p>
 <span><span class="co">## [1,]    1    0    0</span></span>
 <span><span class="co">## [2,]    0    1    0</span></span>
 <span><span class="co">## [3,]    0    0    1</span></span></code></pre>
-<p>Above we see that the matrix
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msup><mi>x</mi><mi>i</mi></msup><mfrac><mi>∂</mi><mrow><mi>∂</mi><msup><mi>x</mi><mi>j</mi></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\mathrm{d}x^i\frac{\partial}{\partial
-x^j}</annotation></semantics></math> is the identity, showing that
-<code>ex</code>, <code>ey</code>, <code>ez</code> are indeed conjugate
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>x</mi><mo>,</mo><mi mathvariant="normal">d</mi><mi>y</mi><mo>,</mo><mi mathvariant="normal">d</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}x,\mathrm{d}y,\mathrm{d}z</annotation></semantics></math>.</p>
+<p>Above we see that the matrix <span class="math inline">\mathrm{d}x^i\frac{\partial}{\partial
+x^j}</span> is the identity, showing that <code>ex</code>,
+<code>ey</code>, <code>ez</code> are indeed conjugate to <span class="math inline">\mathrm{d}x,\mathrm{d}y,\mathrm{d}z</span>.</p>
 <div class="section level4">
 <h4 id="package-dataset">Package dataset<a class="anchor" aria-label="anchor" href="#package-dataset"></a>
 </h4>

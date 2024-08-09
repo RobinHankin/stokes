@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Functions `vector_cross_product()` and `vcp3()` in the `stokes` package • stokes</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Functions `vector_cross_product()` and `vcp3()` in the `stokes` package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Functions `vector_cross_product()` and `vcp3()` in the `stokes` package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -95,60 +96,35 @@ Hankin</h4>
 <pre><code><span><span class="kw">function</span><span class="op">(</span><span class="va">u</span>,<span class="va">v</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="fu"><a href="../reference/as.1form.html">as.1form</a></span><span class="op">(</span><span class="va">u</span><span class="op">)</span><span class="op">^</span><span class="fu"><a href="../reference/as.1form.html">as.1form</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span></code></pre>
 <p>To cite the <code>stokes</code> package in publications, please use
 <span class="citation">Hankin (2022b)</span>. The <em>vector cross
-product</em> of two vectors
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>,</mo><mi>𝐯</mi><mo>∈</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">\mathbf{u},\mathbf{v}\in\mathbb{R}^3</annotation></semantics></math>,
-denoted
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi></mrow><annotation encoding="application/x-tex">\mathbf{u}\times\mathbf{v}</annotation></semantics></math>,
-is defined in elementary mechanics as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐮</mi><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>𝐧</mi></mrow><annotation encoding="application/x-tex">|\mathbf{u}||\mathbf{v}|\sin(\theta)\,\mathbf{n}</annotation></semantics></math>,
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-is the angle between
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐮</mi><annotation encoding="application/x-tex">\mathbf{u}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>,
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐧</mi><annotation encoding="application/x-tex">\mathbf{n}</annotation></semantics></math>
-is the unit vector perpendicular to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐮</mi><annotation encoding="application/x-tex">\mathbf{u}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>
-such that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>,</mo><mi>𝐯</mi><mo>,</mo><mi>𝐧</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\mathbf{u},\mathbf{v},\mathbf{n})</annotation></semantics></math>
-is positively oriented. Vector cross products find wide applications in
+product</em> of two vectors <span class="math inline">\mathbf{u},\mathbf{v}\in\mathbb{R}^3</span>, denoted
+<span class="math inline">\mathbf{u}\times\mathbf{v}</span>, is defined
+in elementary mechanics as <span class="math inline">|\mathbf{u}||\mathbf{v}|\sin(\theta)\,\mathbf{n}</span>,
+where <span class="math inline">\theta</span> is the angle between <span class="math inline">\mathbf{u}</span> and <span class="math inline">\mathbf{v}</span>, and <span class="math inline">\mathbf{n}</span> is the unit vector perpendicular
+to <span class="math inline">\mathbf{u}</span> and <span class="math inline">\mathbf{v}</span> such that <span class="math inline">(\mathbf{u},\mathbf{v},\mathbf{n})</span> is
+positively oriented. Vector cross products find wide applications in
 physics, engineering, and computer science. <span class="citation">Spivak (1965)</span> considers the standard vector
-cross product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>j</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>k</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i
-&amp; j &amp; k \\ u_1&amp;u_2&amp;u_3\\ v_1&amp;v_2&amp;v_3 \end{pmatrix}</annotation></semantics></math>
-and places it in a more general and rigorous context. In a memorable
-passage, he states:</p>
+cross product <span class="math inline">\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i
+&amp; j &amp; k \\ u_1&amp;u_2&amp;u_3\\ v_1&amp;v_2&amp;v_3
+\end{pmatrix}</span> and places it in a more general and rigorous
+context. In a memorable passage, he states:</p>
 <div class="warning" style="padding:0.1em; background-color:#E9D8FD; color:#69337A">
 <p><span></span></p>
 <p>
 </p>
-<p>If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>∈</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_{n-1}\in\mathbb{R}^n</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-is defined by</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>w</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>w</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
-\phi(w)=\det\left(\begin{array}{c}v_1\\ \vdots\\ v_{n-1}\\w\end{array}\right)
-</annotation></semantics></math></p>
-<p>then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>∈</mo><msup><mi>Λ</mi><mn>1</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\phi\in\Lambda^1\left(\mathbb{R}^n\right)</annotation></semantics></math>;
-therefore there is a unique
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">z\in\mathbb{R}^n</annotation></semantics></math>
-such that</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>w</mi><mo>,</mo><mi>z</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>w</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>w</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+<p>If <span class="math inline">v_1,\ldots,v_{n-1}\in\mathbb{R}^n</span>
+and <span class="math inline">\phi</span> is defined by</p>
+<p><span class="math display">
+\phi(w)=\det\left(\begin{array}{c}v_1\\ \vdots\\
+v_{n-1}\\w\end{array}\right)
+</span></p>
+<p>then <span class="math inline">\phi\in\Lambda^1\left(\mathbb{R}^n\right)</span>;
+therefore there is a unique <span class="math inline">z\in\mathbb{R}^n</span> such that</p>
+<p><span class="math display">
 \left\langle w,z\right\rangle=\phi(w)=
 \det\left(\begin{array}{c}v_1\\ \vdots\\ v_{n-1}\\w\end{array}\right).
-</annotation></semantics></math></p>
-<p>This
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
-is denoted
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>v</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">v_1\times\cdots\times v_{n-1}</annotation></semantics></math>
-and is called the <em>cross product</em> of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_{n-1}</annotation></semantics></math>.</p>
+</span></p>
+<p>This <span class="math inline">z</span> is denoted <span class="math inline">v_1\times\cdots\times v_{n-1}</span> and is called
+the <em>cross product</em> of <span class="math inline">v_1,\ldots,v_{n-1}</span>.</p>
 
 <p style="margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia">
 </p>
@@ -157,19 +133,13 @@ books). Pages 83-84</i></p>
 
 <p></p>
 </div>
-<p>The reason for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐰</mi><annotation encoding="application/x-tex">\mathbf{w}</annotation></semantics></math>
-being at the bottom rather than the top is to ensure that the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-tuple
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\mathbf{v}_1,\ldots,\mathbf{v}_{n-1},\mathbf{w})</annotation></semantics></math>
+<p>The reason for <span class="math inline">\mathbf{w}</span> being at
+the bottom rather than the top is to ensure that the <span class="math inline">n</span>-tuple <span class="math inline">(\mathbf{v}_1,\ldots,\mathbf{v}_{n-1},\mathbf{w})</span>
 has positive orientation with respect to the standard basis vectors of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math>.
-In
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>3</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^3</annotation></semantics></math>
-we get the standard elementary mnemonic for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>u</mi><mn>1</mn></msub><mo>,</mo><msub><mi>u</mi><mn>2</mn></msub><mo>,</mo><msub><mi>u</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{u}=(u_1,u_2,u_3)</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{v}=(v_1,v_2,v_3)</annotation></semantics></math>:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>j</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>k</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+<span class="math inline">\mathbb{R}^n</span>. In <span class="math inline">\mathbb{R}^3</span> we get the standard elementary
+mnemonic for <span class="math inline">\mathbf{u}=(u_1,u_2,u_3)</span>,
+<span class="math inline">\mathbf{v}=(v_1,v_2,v_3)</span>:</p>
+<p><span class="math display">
 \mathbf{u}\times\mathbf{v}=
 \mathrm{det}
 \begin{pmatrix}
@@ -177,13 +147,12 @@ i&amp;j&amp;k\\
 u_1&amp;u_2&amp;u_3\\
 v_1&amp;v_2&amp;v_3
 \end{pmatrix}.
-</annotation></semantics></math></p>
+</span></p>
 <p>This is (universal) shorthand for the formal definition of the cross
 product, although sometimes it is better to return to Spivak’s
-formulation and, writing
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐰</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><msub><mi>w</mi><mn>2</mn></msub><mo>,</mo><msub><mi>w</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{w}=(w_1,w_2,w_3)</annotation></semantics></math>,
-use the definition directly obtaining</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi>𝐰</mi><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>w</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>w</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>w</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>u</mi><mn>3</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+formulation and, writing <span class="math inline">\mathbf{w}=(w_1,w_2,w_3)</span>, use the definition
+directly obtaining</p>
+<p><span class="math display">
 (\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}=
 \mathrm{det}
 \begin{pmatrix}
@@ -191,23 +160,16 @@ w_1&amp;w_2&amp;w_3\\
 u_1&amp;u_2&amp;u_3\\
 v_1&amp;v_2&amp;v_3
 \end{pmatrix}.
-</annotation></semantics></math></p>
+</span></p>
 <div class="section level3">
 <h3 class="unnumbered" id="r-implementation">R implementation<a class="anchor" aria-label="anchor" href="#r-implementation"></a>
 </h3>
 <p>In the <code>stokes</code> package <span class="citation">(Hankin
 2022b)</span>, R function <code><a href="../reference/vector_cross_product.html">vector_cross_product()</a></code> takes a
-matrix with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-rows and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math>
-columns: the transpose of the work above. This is because
-<code>stokes</code> (and <code>R</code>) convention is to interpret
-<em>columns</em> of a matrix as vectors. If we wanted to take the cross
-product of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>5</mn><mo>,</mo><mo>−</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{u}=(5,-2,1)</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{v}=(1,2,0)</annotation></semantics></math>:</p>
+matrix with <span class="math inline">n</span> rows and <span class="math inline">n-1</span> columns: the transpose of the work above.
+This is because <code>stokes</code> (and <code>R</code>) convention is
+to interpret <em>columns</em> of a matrix as vectors. If we wanted to
+take the cross product of <span class="math inline">\mathbf{u}=(5,-2,1)</span> with <span class="math inline">\mathbf{v}=(1,2,0)</span>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="op">-</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##      [,1] [,2]</span></span>
@@ -221,15 +183,10 @@ with
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/vector_cross_product.html">vector_cross_product</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>,<span class="fl">6</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]   4.715354  -1.003152 -12.051733   3.459023 -12.902338  -6.943296</span></span></code></pre>
-<p>In the case
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math>
-the vector cross product becomes a unary operator of a <em>single</em>
-vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\left(u,v\right)\in\mathbb{R}^2</annotation></semantics></math>,
-returning its argument rotated counterclockwise by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>;
-this case is discussed at the end, along with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math>.</p>
+<p>In the case <span class="math inline">n=2</span> the vector cross
+product becomes a unary operator of a <em>single</em> vector <span class="math inline">\left(u,v\right)\in\mathbb{R}^2</span>, returning
+its argument rotated counterclockwise by <span class="math inline">\pi/2</span>; this case is discussed at the end,
+along with <span class="math inline">n=1</span>.</p>
 </div>
 <div class="section level2">
 <h2 id="verification">Verification<a class="anchor" aria-label="anchor" href="#verification"></a>
@@ -238,8 +195,7 @@ this case is discussed at the end, along with
 <h3 id="orientation">Orientation<a class="anchor" aria-label="anchor" href="#orientation"></a>
 </h3>
 <p>We can demonstrate that the function has the correct orientation. We
-need to ensure that the vectors
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mi>n</mi></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{v}_1,\ldots,\mathbf{v}_n,\mathbf{v}_1\times\cdots\times\mathbf{v}_n</annotation></semantics></math>
+need to ensure that the vectors <span class="math inline">\mathbf{v}_1,\ldots,\mathbf{v}_n,\mathbf{v}_1\times\cdots\times\mathbf{v}_n</span>
 constitute a right-handed basis:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/det.html" class="external-link">det</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">M</span>,<span class="fu"><a href="../reference/vector_cross_product.html">vector_cross_product</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">&gt;</span><span class="fl">0</span></span></code></pre></div>
@@ -267,25 +223,22 @@ taking a dot product as follows:</p>
 <span><span class="co">## [4,] -3.330669e-15</span></span>
 <span><span class="co">## [5,]  1.332268e-15</span></span>
 <span><span class="co">## [6,] -5.440093e-15</span></span></code></pre>
-<p>Writing
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mn>6</mn></msub><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">M=[v_1,\ldots,v_6]</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mn>7</mn></msup></mrow><annotation encoding="application/x-tex">v_i\in\mathbb{R}^7</annotation></semantics></math>,
-we see that the dot product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>⋅</mo><msub><mi>v</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>v</mi><mn>6</mn></msub></mrow><annotation encoding="application/x-tex">v_i\cdot v_1\times\cdots\times v_6</annotation></semantics></math>
-as implemented by <code><a href="https://rdrr.io/r/base/crossprod.html" class="external-link">crossprod()</a></code> vanishes (up to numerical
-precision), as the determinants in question have two identical
+<p>Writing <span class="math inline">M=[v_1,\ldots,v_6]</span>, <span class="math inline">v_i\in\mathbb{R}^7</span>, we see that the dot
+product <span class="math inline">v_i\cdot v_1\times\cdots\times
+v_6</span> as implemented by <code><a href="https://rdrr.io/r/base/crossprod.html" class="external-link">crossprod()</a></code> vanishes (up to
+numerical precision), as the determinants in question have two identical
 columns.</p>
 </div>
 <div class="section level3">
 <h3 id="immediate-properties">Immediate properties<a class="anchor" aria-label="anchor" href="#immediate-properties"></a>
 </h3>
 <p>Spivak gives the following properties:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mrow><mi>σ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mrow><mi>σ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mo>=</mo><mo>sgn</mo><mi>σ</mi><mo>⋅</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">
 \mathbf{v}_{\sigma(1)}\times\cdots\times\mathbf{v}_{\sigma(n)} =
 \operatorname{sgn}\sigma\cdot
 \mathbf{v}_{1}\times\cdots\times\mathbf{v}_{n}
-</annotation></semantics></math></p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><mi>a</mi><msub><mi>𝐯</mi><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub><mo>=</mo><mi>a</mi><mo>⋅</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+</span></p>
+<p><span class="math display">
 \mathbf{v}_{1}
 \times\cdots\times
 a\mathbf{v}_i
@@ -297,8 +250,8 @@ a\cdot
 \mathbf{v}_i
 \times\cdots\times
 \mathbf{v}_{n}
-</annotation></semantics></math></p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mi>i</mi></msub><mo>+</mo><msub><mrow><mi>𝐯</mi><mi>′</mi></mrow><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub><mo>=</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub><mo>+</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mrow><mi>𝐯</mi><mi>′</mi></mrow><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+</span></p>
+<p><span class="math display">
 \mathbf{v}_{1}
 \times\cdots\times
 \left(\mathbf{v}_i+{\mathbf{v}'}_i\right)
@@ -315,11 +268,10 @@ a\cdot
 {\mathbf{v}'}_i
 \times\cdots\times
 \mathbf{v}_{n}
-</annotation></semantics></math></p>
+</span></p>
 <p>For the first we use a permutation <code>sigma</code> from the
 <code>permutations</code> package <span class="citation">(Hankin
-2020)</span> with a sign of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>:</p>
+2020)</span> with a sign of <span class="math inline">-1</span>:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>,<span class="fl">6</span>,<span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu">as.cycle</span><span class="op">(</span><span class="st">"(12)(345)"</span><span class="op">)</span></span>
@@ -339,10 +291,8 @@ odd permutation. For the second:</p>
 <span><span class="fu"><a href="../reference/vector_cross_product.html">vector_cross_product</a></span><span class="op">(</span><span class="va">Mdash</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="../reference/vector_cross_product.html">vector_cross_product</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span> <span class="op">*</span> <span class="va">pi</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  1.065814e-14 -8.881784e-16 -3.552714e-15  7.105427e-15 -1.776357e-15</span></span>
 <span><span class="co">## [6]  0.000000e+00</span></span></code></pre>
-<p>Above we see that the second product is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>
-times the first (to numerical precision), by linearity of the vector
-cross product. For the third:</p>
+<p>Above we see that the second product is <span class="math inline">\pi</span> times the first (to numerical precision),
+by linearity of the vector cross product. For the third:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">M1</span> <span class="op">&lt;-</span> <span class="va">M</span></span>
 <span><span class="va">M2</span> <span class="op">&lt;-</span> <span class="va">M</span></span>
@@ -363,13 +313,11 @@ vector cross product.</p>
 <h3 id="vector-products-and-the-hodge-star-operator">Vector products and the Hodge star operator<a class="anchor" aria-label="anchor" href="#vector-products-and-the-hodge-star-operator"></a>
 </h3>
 <p>The cross product has a coordinate-free definition as the Hodge
-conjugate of the wedge product of its arguments. In
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
-dimensions:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mrow><mi>d</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mo>⋆</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>∧</mo><mi>⋯</mi><mo>∧</mo><msub><mi>𝐯</mi><mrow><mi>d</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+conjugate of the wedge product of its arguments. In <span class="math inline">d</span> dimensions:</p>
+<p><span class="math display">
 \mathbf{v}_1\times\cdots\times\mathbf{v}_{d-1}={\star}\left(
 \mathbf{v}_1\wedge\cdots\wedge\mathbf{v}_{d-1}\right).
-</annotation></semantics></math></p>
+</span></p>
 <p>This is not used in function <code><a href="../reference/vector_cross_product.html">vector_cross_product()</a></code>
 because it is computationally inefficient and (I think) prone to
 numerical roundoff errors. We may verify that the definitions agree,
@@ -444,20 +392,12 @@ within numerical precision.</p>
 <h3 id="vector-cross-products-in-3-dimensions">Vector cross products in 3 dimensions<a class="anchor" aria-label="anchor" href="#vector-cross-products-in-3-dimensions"></a>
 </h3>
 <p>Taking Spivak’s definition at face value, we could define the vector
-cross product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi></mrow><annotation encoding="application/x-tex">\mathbf{u}\times\mathbf{v}</annotation></semantics></math>
-of three-vectors
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐮</mi><annotation encoding="application/x-tex">\mathbf{u}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>
-as a map from the tangent space to the reals, with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi>𝐰</mi><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>I</mi><mi>𝐮</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐯</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\mathbf{u}\times\mathbf{v}\right)(\mathbf{w})=
+cross product <span class="math inline">\mathbf{u}\times\mathbf{v}</span> of three-vectors
+<span class="math inline">\mathbf{u}</span> and <span class="math inline">\mathbf{v}</span> as a map from the tangent space to
+the reals, with <span class="math inline">\left(\mathbf{u}\times\mathbf{v}\right)(\mathbf{w})=
 \left(\mathbf{u}\times\mathbf{v}\right)\cdot\mathbf{w}
-=\left(I_\mathbf{u}\right)_\mathbf{v}(\mathbf{w})</annotation></semantics></math>,
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
-is the 3-volume element and subscripts refer to contraction. Package
-idiom for this would be:</p>
+=\left(I_\mathbf{u}\right)_\mathbf{v}(\mathbf{w})</span>, where <span class="math inline">I</span> is the 3-volume element and subscripts
+refer to contraction. Package idiom for this would be:</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">function</span><span class="op">(</span><span class="va">u</span>,<span class="va">v</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="fu"><a href="../reference/volume.html">volume</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">u</span>,<span class="va">v</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span></code></pre></div>
 <p>However, note that 3D vector cross products are implemented in the
@@ -466,10 +406,7 @@ package as function <code><a href="../reference/vector_cross_product.html">vcp3(
 <code class="sourceCode R"><span><span class="va">vcp3</span></span></code></pre></div>
 <pre><code><span><span class="co">## function(u,v){hodge(as.1form(u)^as.1form(v))}</span></span></code></pre>
 <p>This is preferable on the grounds that coercion to a 1-form is
-explicit. Suppose we wish to take the vector cross product of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">\mathbf{u}=\left(1,4,2\right)^T</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>5</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">\mathbf{v}=\left(2,1,5\right)^T</annotation></semantics></math>:</p>
+explicit. Suppose we wish to take the vector cross product of <span class="math inline">\mathbf{u}=\left(1,4,2\right)^T</span> and <span class="math inline">\mathbf{v}=\left(2,1,5\right)^T</span>:</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">5</span><span class="op">)</span></span>
@@ -483,46 +420,41 @@ and
 <code>disordR</code> discipline <span class="citation">(Hankin
 2022a)</span>, but the form itself should agree with basis vector
 evaluation given below. Object <code>p</code> is the vector cross
-product of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐮</mi><annotation encoding="application/x-tex">\mathbf{u}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>,
-but is given as a one-form. We can see the mnemonic in operation by
-coercing <code>p</code> to a function and then evaluating this on the
-three basis vectors of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>3</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^3</annotation></semantics></math>:</p>
+product of <span class="math inline">\mathbf{u}</span> and <span class="math inline">\mathbf{v}</span>, but is given as a one-form. We
+can see the mnemonic in operation by coercing <code>p</code> to a
+function and then evaluating this on the three basis vectors of <span class="math inline">\mathbb{R}^3</span>:</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ucv</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>i<span class="op">=</span><span class="fu">ucv</span><span class="op">(</span><span class="va">ex</span><span class="op">)</span>, j<span class="op">=</span><span class="fu">ucv</span><span class="op">(</span><span class="va">ey</span><span class="op">)</span>, k<span class="op">=</span><span class="fu">ucv</span><span class="op">(</span><span class="va">ez</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  i  j  k </span></span>
 <span><span class="co">## 18 -1 -7</span></span></code></pre>
-<p>and we see agreement with the mnemonic
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>j</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>k</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>4</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>5</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det\begin{pmatrix}i&amp;j&amp;k\\1&amp;4&amp;2\\2&amp;1&amp;5\end{pmatrix}</annotation></semantics></math>.
-Further, we may evaluate the triple cross product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi>𝐰</mi></mrow><annotation encoding="application/x-tex">(\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}</annotation></semantics></math>
-by evaluating <code>ucv()</code> at
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐰</mi><annotation encoding="application/x-tex">\mathbf{w}</annotation></semantics></math>.</p>
+<p>and we see agreement with the mnemonic <span class="math inline">\det\begin{pmatrix}i&amp;j&amp;k\\1&amp;4&amp;2\\2&amp;1&amp;5\end{pmatrix}</span>.
+Further, we may evaluate the triple cross product <span class="math inline">(\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}</span>
+by evaluating <code>ucv()</code> at <span class="math inline">\mathbf{w}</span>.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu">ucv</span><span class="op">(</span><span class="va">w</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 7</span></span></code></pre>
-<p>This shows agreement with the elementary mnemonic
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>4</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>5</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">\det\begin{pmatrix}1&amp;-3&amp;2\\1&amp;4&amp;2\\2&amp;1&amp;5\end{pmatrix}=7</annotation></semantics></math>,
+<p>This shows agreement with the elementary mnemonic <span class="math inline">\det\begin{pmatrix}1&amp;-3&amp;2\\1&amp;4&amp;2\\2&amp;1&amp;5\end{pmatrix}=7</span>,
 as expected from linearity.</p>
 </div>
 <div class="section level3">
 <h3 id="vector-cross-product-identities">Vector cross product identities<a class="anchor" aria-label="anchor" href="#vector-cross-product-identities"></a>
 </h3>
 <p>The following identities are standard results:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>𝐮</mi><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>×</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mi>𝐯</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo>⋅</mo><mi>𝐮</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>𝐰</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>⋅</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mi>𝐰</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mi>𝐯</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo>⋅</mo><mi>𝐮</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>𝐮</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>⋅</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>×</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐮</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>×</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo>×</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>⋅</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>⋅</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐮</mi><mo>⋅</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>⋅</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">
+<p><span class="math display">
 \begin{aligned}
-\mathbf{u}\times(\mathbf{v}\times\mathbf{w}) &amp;= \mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{w}(\mathbf{u}\cdot\mathbf{v})\\
-(\mathbf{u}\times\mathbf{v})\times\mathbf{w} &amp;= \mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{u}(\mathbf{v}\cdot\mathbf{w})\\
-(\mathbf{u}\times\mathbf{v})\times(\mathbf{u}\times\mathbf{w}) &amp;= (\mathbf{u}\cdot(\mathbf{v}\times\mathbf{w}))\mathbf{u}  \\
-(\mathbf{u}\times\mathbf{v})\cdot(\mathbf{w}\times\mathbf{x})  &amp;= (\mathbf{u}\cdot\mathbf{w})(\mathbf{v}\cdot\mathbf{x}) -
+\mathbf{u}\times(\mathbf{v}\times\mathbf{w}) &amp;=
+\mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{w}(\mathbf{u}\cdot\mathbf{v})\\
+(\mathbf{u}\times\mathbf{v})\times\mathbf{w} &amp;=
+\mathbf{v}(\mathbf{w}\cdot\mathbf{u})-\mathbf{u}(\mathbf{v}\cdot\mathbf{w})\\
+(\mathbf{u}\times\mathbf{v})\times(\mathbf{u}\times\mathbf{w}) &amp;=
+(\mathbf{u}\cdot(\mathbf{v}\times\mathbf{w}))\mathbf{u}  \\
+(\mathbf{u}\times\mathbf{v})\cdot(\mathbf{w}\times\mathbf{x})  &amp;=
+(\mathbf{u}\cdot\mathbf{w})(\mathbf{v}\cdot\mathbf{x}) -
                                                                   (\mathbf{u}\cdot\mathbf{x})(\mathbf{v}\cdot\mathbf{w})
 \end{aligned}
-</annotation></semantics></math></p>
+</span></p>
 <p>We may verify all four together:</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">6</span>,<span class="fl">5</span>,<span class="fl">7</span><span class="op">)</span>  <span class="co"># u,v,w as before</span></span>
@@ -538,77 +470,39 @@ as expected from linearity.</p>
 <h3 id="edge-cases">Edge-cases<a class="anchor" aria-label="anchor" href="#edge-cases"></a>
 </h3>
 <p>Function <code><a href="../reference/vector_cross_product.html">vector_cross_product()</a></code> takes a matrix with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-rows and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math>
-columns. Here I consider the cases
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math>.
-Firstly,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math>.
-Going back to Spivak’s definition, we see that the cross product is a
-unary operation which takes a single vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>∈</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\mathbf{v}\in\mathbb{R}^2</annotation></semantics></math>;
-we might write
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">{\times}(\mathbf{v})={\times}(v_1,v_2)</annotation></semantics></math>.
+<span class="math inline">n</span> rows and <span class="math inline">n-1</span> columns. Here I consider the cases <span class="math inline">n=2</span> and <span class="math inline">n=1</span>.
+Firstly, <span class="math inline">n=2</span>. Going back to Spivak’s
+definition, we see that the cross product is a unary operation which
+takes a single vector <span class="math inline">\mathbf{v}\in\mathbb{R}^2</span>; we might write
+<span class="math inline">{\times}(\mathbf{v})={\times}(v_1,v_2)</span>.
 Formally we define</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>w</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>w</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>w</mi><mn>2</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">
 \phi(w)=
 \mathrm{det}
 \begin{pmatrix}
 v_1&amp;v_2\\
 w_1&amp;w_2
 \end{pmatrix}
-</annotation></semantics></math></p>
-<p>and seek a vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐳</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>z</mi><mn>1</mn></msub><mo>,</mo><msub><mi>z</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\mathbf{z}=(z_1,z_2)\in\mathbb{R}^2</annotation></semantics></math>
-such that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>𝐰</mi><mo>,</mo><mi>𝐳</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle\mathbf{w},\mathbf{z}\right\rangle=\phi(\mathbf{w})</annotation></semantics></math>.
-Thus
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>v</mi><mn>1</mn></msub><msub><mi>w</mi><mn>2</mn></msub><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub><msub><mi>w</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\phi(\mathbf{w})=v_1w_2-v_2w_1</annotation></semantics></math>
-and we see
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐳</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{z}=(-v_2,v_1)</annotation></semantics></math>.
+</span></p>
+<p>and seek a vector <span class="math inline">\mathbf{z}=(z_1,z_2)\in\mathbb{R}^2</span> such that
+<span class="math inline">\left\langle\mathbf{w},\mathbf{z}\right\rangle=\phi(\mathbf{w})</span>.
+Thus <span class="math inline">\phi(\mathbf{w})=v_1w_2-v_2w_1</span> and
+we see <span class="math inline">\mathbf{z}=(-v_2,v_1)</span>.
 Numerically:</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/vector_cross_product.html">vector_cross_product</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] -7  4</span></span></code></pre>
-<p>We see that the vector cross product of a single vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>∈</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\mathbf{v}\in\mathbb{R}^2</annotation></semantics></math>
-is vector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>
-rotated by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\pi/2</annotation></semantics></math>
-counterclockwise; the dot product of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">{\times}{\left(\mathbf{v}\right)}</annotation></semantics></math>
-is zero.</p>
-<p>Now we try the even more peculiar case
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math>,
-corresponding to a matrix with one row and <em>zero</em> columns.
-Formally, the cross product is a <em>nullary</em> operation which takes
-zero vectors
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>∈</mo><msup><mi>ℝ</mi><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">\mathbf{v}\in\mathbb{R}^1</annotation></semantics></math>
-and returns a “vector”
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐳</mi><mo>∈</mo><msup><mi>ℝ</mi><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">\mathbf{z}\in\mathbb{R}^1</annotation></semantics></math>.
-The vector cross product in the case
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math>
-is thus a scalar. Again following Spivak we see that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
-is a map from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^1</annotation></semantics></math>
-to the reals, with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>w</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\phi(w_1)=\det(w_1)=w_1</annotation></semantics></math>;
-we then seek
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>1</mn></msub><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">z_1\in\mathbb{R}</annotation></semantics></math>
-such that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">⟨</mo><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><msub><mi>z</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">⟩</mo></mrow></mrow><annotation encoding="application/x-tex">\phi(w_1)=\left\langle w_1,z_1\right\rangle</annotation></semantics></math>;
-so
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><msub><mi>z</mi><mn>1</mn></msub><mo>=</mo><msub><mi>w</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">w_1z_1=w_1</annotation></semantics></math>
-and then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">z_1=1</annotation></semantics></math>.
-Matrices with zero columns and one row are easily created in R:</p>
+<p>We see that the vector cross product of a single vector <span class="math inline">\mathbf{v}\in\mathbb{R}^2</span> is vector <span class="math inline">\mathbf{v}</span> rotated by <span class="math inline">\pi/2</span> counterclockwise; the dot product of
+<span class="math inline">\mathbf{v}</span> with <span class="math inline">{\times}{\left(\mathbf{v}\right)}</span> is
+zero.</p>
+<p>Now we try the even more peculiar case <span class="math inline">n=1</span>, corresponding to a matrix with one row
+and <em>zero</em> columns. Formally, the cross product is a
+<em>nullary</em> operation which takes zero vectors <span class="math inline">\mathbf{v}\in\mathbb{R}^1</span> and returns a
+“vector” <span class="math inline">\mathbf{z}\in\mathbb{R}^1</span>. The
+vector cross product in the case <span class="math inline">n=1</span> is
+thus a scalar. Again following Spivak we see that <span class="math inline">\phi</span> is a map from <span class="math inline">\mathbb{R}^1</span> to the reals, with <span class="math inline">\phi(w_1)=\det(w_1)=w_1</span>; we then seek <span class="math inline">z_1\in\mathbb{R}</span> such that <span class="math inline">\phi(w_1)=\left\langle w_1,z_1\right\rangle</span>;
+so <span class="math inline">w_1z_1=w_1</span> and then <span class="math inline">z_1=1</span>. Matrices with zero columns and one row
+are easily created in R:</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span>data<span class="op">=</span><span class="cn">NA</span>,nrow<span class="op">=</span><span class="fl">1</span>,ncol<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="va">M</span></span></code></pre></div>
@@ -629,10 +523,9 @@ that the function boils down to returning the determinant of</p>
 <code class="sourceCode R"><span><span class="va">M</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>,,drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">]</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;0 x 0 matrix&gt;</span></span></code></pre>
 <p>The determinant of a zero-by-zero matrix is equal to 1 [any zero by
-zero matrix maps
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mn>0</mn><mo stretchy="true" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\left\lbrace 0\right\rbrace</annotation></semantics></math>
-to itself and is thus the identity map, which has by definition a
-determinant of 1]. Numerically:</p>
+zero matrix maps <span class="math inline">\left\lbrace
+0\right\rbrace</span> to itself and is thus the identity map, which has
+by definition a determinant of 1]. Numerically:</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/det.html" class="external-link">det</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1</span></span></code></pre>
