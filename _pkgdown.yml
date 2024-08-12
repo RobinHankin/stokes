@@ -1,4 +1,3 @@
 url: https://robinhankin.github.io/stokes/
 template:
-  bootstrap: 5
-
+  math-rendering: katex
