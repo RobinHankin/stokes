@@ -219,8 +219,9 @@ Alt(Alt(P))==Alt(P)   # should be TRUE
 
 # Wedge product
 
-Spivak defines the wedge product as follows.  Given alternating forms
-$\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$ we have
+(Main article: [wedge product](wedge.html)).  Spivak defines the wedge
+product as follows.  Given alternating forms $\omega\in\Lambda^k(V)$
+and $\eta\in\Lambda^l(V)$ we have
 
 \[
 \omega\wedge\eta=\frac{(k+l)!}{k!l!}\operatorname{Alt}(\omega\otimes\eta)
