@@ -254,14 +254,14 @@ with vector $\mathbf{v}=(v_1\mathbf{e}_1,\ldots,v_k\mathbf{e}_k)$.
 Thus we seek $\phi_\mathbf{v}$ with
 $\phi_\mathbf{v}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right) =
 dx^{i_1}\wedge\cdots\wedge
-dx^{i_k}\left(\mathbf{v},\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)$.
+dx^{i_k}\left(\mathbf{v},\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)$.
 Writing $\mathbf{v}=v_1\mathbf{e}_1+\cdots+\mathbf{e}_k$, we have
 
 \begin{eqnarray}
 \phi_\mathbf{v}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right) &=&
 dx^{i_1}\wedge\cdots\wedge
-dx^{i_k}\left(\mathbf{v},\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)\\&=& 
-dx^{i_1}\wedge\cdots\wedge dx^{i_k}\left(v_1\mathbf{e}_1+\cdots+v_k\mathbf{e}_k,\mathbf{v}_1,\ldots\mathbf{v}_{k-1}\right)\\&=& 
+dx^{i_k}\left(\mathbf{v},\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)\\&=& 
+dx^{i_1}\wedge\cdots\wedge dx^{i_k}\left(v_1\mathbf{e}_1+\cdots+v_k\mathbf{e}_k,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)\\&=& 
 v_1 dx^{i_1}\wedge\cdots\wedge dx^{i_k}\left(\mathbf{e}_1,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)+\cdots+
 v_k dx^{i_1}\wedge\cdots\wedge dx^{i_k}\left(\mathbf{e}_k,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right).
 \end{eqnarray}
