@@ -87,7 +87,7 @@ $\Lambda^k(V)$ is given by the set
 \]
 
 This means that basis elements are things like
-$\omega_2\wedge\omega_6\wedge\omega_7$.  f $V=\mathbb{R}^9$, what is
+$\omega_2\wedge\omega_6\wedge\omega_7$.  If $V=\mathbb{R}^9$, what is
 $\star\omega_2\wedge\omega_6\wedge\omega_7$?
 
 
