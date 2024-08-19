@@ -184,17 +184,17 @@ a diagonal matrix.  It is much faster than <code>transform()</code>.</p>
 <span class="r-in"><span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">25</span><span class="op">)</span>,<span class="fl">5</span>,<span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">pullback</span><span class="op">(</span><span class="fu"><a href="kform.html">as.kform</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span>,<span class="va">M</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^2 to R with V=R^5:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 val</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5  =  -0.9831194</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2  =  -0.3699093</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 4  =  -0.2072993</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 5  =  -0.5493748</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 5  =   0.9650675</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4  =   0.2702702</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5  =   0.0605190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 4  =   0.0948104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3  =  -0.9423322</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 3  =   0.9132611</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  val</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5  =  -0.98311942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2  =  -0.36990935</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 4  =  -0.20729935</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 5  =  -0.54937477</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 5  =   0.96506752</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4  =   0.27027023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5  =   0.06051901</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 4  =   0.09481045</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3  =  -0.94233222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 3  =   0.91326109</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Numerical verification:</span></span></span>
 <span class="r-in"><span><span class="va">o</span> <span class="op">&lt;-</span> <span class="fu"><a href="volume.html">volume</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></span>

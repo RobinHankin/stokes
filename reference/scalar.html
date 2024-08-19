@@ -142,13 +142,12 @@ wrappers for <code>scalar()</code>.</p>
 <code>kform</code> and, if of arity zero, returns the coefficient.</p>
 <p>Note that function <code><a href="kform.html">kform()</a></code> <em>always</em> returns a <code>kform</code>
 object, it never loses attributes.</p>
-<p>There is a slight terminological problem.  A \(k\)-form maps
-\(k\) vectors to the reals: so a \(0\)-form maps \(0\)
-vectors to the reals.  This is what anyone on the planet would call a
-scalar.  Similarly, a \(0\)-tensor maps \(0\) vectors to the
-reals, and so is a scalar.  Mathematically, there is no difference
-between \(0\)-forms and \(0\)-tensors, but the package makes a
-distinction:</p>
+<p>There is a slight terminological problem.  A \(k\)-form maps \(k\)
+vectors to the reals: so a \(0\)-form maps \(0\) vectors to the
+reals.  This is what anyone on the planet would call a scalar.
+Similarly, a \(0\)-tensor maps \(0\) vectors to the reals, and so is
+a scalar.  Mathematically, there is no difference between \(0\)-forms
+and \(0\)-tensors, but the package print methods make a distinction:</p>
 <div class="sourceCode"><pre><code>
 &gt; scalar(5,kform=TRUE)
 An alternating linear map from V^0 to R with V=R^0:

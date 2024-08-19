@@ -217,12 +217,12 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">as.kform</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^2 to R with V=R^6:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 val</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5 6  =   0.5444861</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5  =  -1.0890789</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4  =   1.2160401</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3  =   0.3283649</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2  =   0.0958810</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  val</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5 6  =   0.54448610</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5  =  -1.08907888</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4  =   1.21604011</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3  =   0.32836490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2  =   0.09588097</span>
 <span class="r-in"><span><span class="fu">kform_general</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,<span class="fl">2</span>,coeffs<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>  <span class="co"># used in electromagnetism</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^2 to R with V=R^4:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          val</span>
@@ -237,29 +237,29 @@
 <span class="r-in"><span><span class="va">K2</span> <span class="op">&lt;-</span> <span class="fu">kform_general</span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">8</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">K1</span><span class="op">^</span><span class="va">K2</span>  <span class="co"># or wedge(K1,K2)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^4 to R with V=R^8:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     val</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 5 6  =  -0.6919527</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 6 8  =   2.3063637</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 6 7  =  -2.0758580</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5 7 8  =   0.0413158</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 7 8  =  -8.9265907</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 7 8  =   2.7676364</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 6 8  =  -3.4597634</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 6 7  =   1.3838182</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 5 8  =  -2.7678107</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5 6  =  -1.4877651</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 5 7  =  -1.3839054</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5 7  =  -2.9755302</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 6 7  =  -4.4632953</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 5 6  =   0.4612727</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 5 8  =   1.8450909</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5 6 7  =   0.0206579</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5 6 7 8  =  -0.9240797</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 5 7  =   0.9225455</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 7 8  =  -4.1517161</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5 6 8  =   0.0344298</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 6 8  =  -7.4388255</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5 8  =  -5.9510604</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      val</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 5 6  =  -0.69195268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 6 8  =   2.30636367</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 6 7  =  -2.07585805</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5 7 8  =   0.04131579</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 7 8  =  -8.92659065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 7 8  =   2.76763641</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 6 8  =  -3.45976341</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 6 7  =   1.38381820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 5 8  =  -2.76781073</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5 6  =  -1.48776511</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 5 7  =  -1.38390536</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5 7  =  -2.97553022</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 6 7  =  -4.46329533</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 5 6  =   0.46127273</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 5 8  =   1.84509094</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5 6 7  =   0.02065789</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5 6 7 8  =  -0.92407972</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 5 7  =   0.92254547</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 7 8  =  -4.15171609</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5 6 8  =   0.03442982</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 6 8  =  -7.43882554</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5 8  =  -5.95106044</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">d</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^3 to R with V=R^3:</span>
