@@ -13,5 +13,6 @@ coverage:
         threshold: 1%
         informational: true
 
-CODECOV_TOKEN=9dc8a9d7-1276-4247-939a-3f80a0522a05
+
+codecov: CODECOV_TOKEN=9dc8a9d7-1276-4247-939a-3f80a0522a05
 
