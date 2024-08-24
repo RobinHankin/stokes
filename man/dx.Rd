@@ -21,7 +21,7 @@ which is documented at \code{print.Rd}.
 
 }
 \usage{data(dx)}
-\details{See vignettes \code{dx} and \code{exeyez} for an extended
+\details{See vignettes \code{dx} and \code{ex} for an extended
   discussion; a use-case is given in \code{vector_cross_product}.}
 \references{
   \itemize{\item M. Spivak 1971. \emph{Calculus on manifolds},
