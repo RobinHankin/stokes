@@ -42,7 +42,7 @@ A joint function profile for \code{vector_cross_product()} and
 
 }
 \author{Robin K. S. Hankin}
-\seealso{\code{\link{cross}}}
+\seealso{\code{\link{wedge}}}
 \examples{
 
 vector_cross_product(matrix(1:6,3,2))
