@@ -56,9 +56,10 @@ $$
 </div>
 
 Function `wedge()` returns the wedge product of any number of
-$k$-forms.  Function `wedge2()` returns the wedge product of two
-$k$-forms, although the idiom is somewhat opaque, especially the
-"strange" combinatorial coefficient $(k+l)!/(k!l!)$.
+$k$-forms; function `wedge2()` returns the wedge product of two
+$k$-forms.  The idiom of `wedge2()` is somewhat opaque, especially the
+"strange" combinatorial coefficient $(k+l)!/(k!l!)$, which is
+discussed in detail below.
 
 
 ## Digression: function `spraycross()`

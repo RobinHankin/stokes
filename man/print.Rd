@@ -52,10 +52,11 @@ are tensors, they are handled differently.
   in relativistic physics with a Minkowski metric.  See the examples.
 
   For \code{ktensor} objects, if option \code{ktensor_symbolic_print} is
-  \code{TRUE}, an alphabetic system is used.  If we define
-  \eqn{\phi_i(x^j)=\delta_i^j} then the print method uses
-  \eqn{\phi_1=a}, \eqn{\phi_2=b} and so on.  I am not entirely happy
-  with this and it might change in future.
+  \code{TRUE}, a different system is used.  Given a tensor
+  \eqn{3\phi_4\otimes\phi_1 -5\phi_2\otimes\phi_2}, for example (where
+  \eqn{\phi_i(x^j)=\delta_i^j}), the method will give output that looks
+  like \dQuote{\code{+3 d4*d1 -5 d2*d2}}.  I am not entirely happy with
+  this and it might change in future.
 
   More detail is given at \code{symbolic.Rd} and the \code{dx} vignette.
 
