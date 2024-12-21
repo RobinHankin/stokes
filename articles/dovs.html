@@ -123,7 +123,7 @@ Hankin</h4>
 
     
     
-<p><img src="../../../_temp/Library/stokes/help/figures/stokes.png" width="20%" style="float:right; padding:10px"></p>
+<p><img src="..%2F..%2F..%2F_temp%2FLibrary%2Fstokes%2Fhelp%2Ffigures%2Fstokes.png" width="20%" style="float:right; padding:10px"></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dovs</span></span></code></pre></div>
 <pre><code><span><span class="kw">function</span> <span class="op">(</span><span class="va">K</span><span class="op">)</span> </span>
@@ -136,15 +136,15 @@ Hankin</h4>
 <span>    <span class="op">}</span></span>
 <span><span class="op">}</span></span></code></pre>
 <p>To cite the <code>stokes</code> package in publications, please use
-<span class="citation">Hankin (2022)</span>. Function
+<span class="citation">Hankin (<a href="#ref-hankin2022_stokes">2022</a>)</span>. Function
 <code><a href="../reference/dovs.html">dovs()</a></code> returns the dimensionality of the underlying vector
 space of a <span class="math inline">k</span>-form. Recall that a <span class="math inline">k</span>-form is an alternating linear map from
-<span class="math inline">V^k</span> to <span class="math inline">\mathbb{R}</span>, where <span class="math inline">V=\mathbb{R}^n</span> <span class="citation">(Spivak
-1965)</span>. Function <code><a href="../reference/dovs.html">dovs()</a></code> returns <span class="math inline">n</span> [compare <code>arity()</code>, which
-returns <span class="math inline">k</span>]. As seen above, the function
-is very simple, essentially being <code>max(index(K))</code>, but its
-use is not entirely straightforward in the context of
-<code>stokes</code> idiom. Consider the following:</p>
+<span class="math inline">V^k</span> to <span class="math inline">\mathbb{R}</span>, where <span class="math inline">V=\mathbb{R}^n</span> <span class="citation">(<a href="#ref-spivak1965">Spivak 1965</a>)</span>. Function
+<code><a href="../reference/dovs.html">dovs()</a></code> returns <span class="math inline">n</span> [compare
+<code>arity()</code>, which returns <span class="math inline">k</span>].
+As seen above, the function is very simple, essentially being
+<code>max(index(K))</code>, but its use is not entirely straightforward
+in the context of <code>stokes</code> idiom. Consider the following:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">4</span>,k<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
@@ -275,7 +275,7 @@ Spivak, M. 1965. <em>Calculus on Manifolds</em>. Addison-Wesley.
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>

@@ -124,7 +124,7 @@ Hankin</h4>
 
     
     
-<p><img src="../../../_temp/Library/stokes/help/figures/stokes.png" width="20%" style="float:right; padding:10px"></p>
+<p><img src="..%2F..%2F..%2F_temp%2FLibrary%2Fstokes%2Fhelp%2Ffigures%2Fstokes.png" width="20%" style="float:right; padding:10px"></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">contract</span></span></code></pre></div>
 <pre><code><span><span class="kw">function</span> <span class="op">(</span><span class="va">K</span>, <span class="va">v</span>, <span class="va">lose</span> <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span>
@@ -143,7 +143,7 @@ Hankin</h4>
 <span>    <span class="kw">if</span> <span class="op">(</span><span class="va">lose</span><span class="op">)</span> <span class="op">{</span></span>
 <span>        <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scalar.html">lose</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu">disordR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/disordR/man/drop.html" class="external-link">drop</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu">disordR</span><span class="fu">::</span><span class="fu"><a href="https://robinhankin.github.io/disordR/reference/drop.html" class="external-link">drop</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">contract_elementary</span></span></code></pre></div>
@@ -157,20 +157,22 @@ Hankin</h4>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 <p>To cite the <code>stokes</code> package in publications, please use
-<span class="citation">Hankin (2022)</span>. Given a <span class="math inline">k</span>-form <span class="math inline">\phi\colon
+<span class="citation">Hankin (<a href="#ref-hankin2022_stokes">2022</a>)</span>. Given a <span class="math inline">k</span>-form <span class="math inline">\phi\colon
 V^k\longrightarrow\mathbb{R}</span> and a vector <span class="math inline">\mathbf{v}\in V</span>, the <em>contraction</em>
 <span class="math inline">\phi_\mathbf{v}</span> of <span class="math inline">\phi</span> and <span class="math inline">\mathbf{v}</span> is a <span class="math inline">k-1</span>-form with</p>
 <p><span class="math display">
   \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
   \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
 </span></p>
-<p>provided <span class="math inline">k&gt;1</span>; if <span class="math inline">k=1</span> we specify <span class="math inline">\phi_\mathbf{v}=\phi(\mathbf{v})</span>. If <span class="citation">Spivak (1965)</span> does discuss this, I have
-forgotten it. Function <code><a href="../reference/contract.html">contract_elementary()</a></code> is a low-level
-helper function that translates elementary <span class="math inline">k</span>-forms with coefficient 1 (in the form of an
-integer vector corresponding to one row of an index matrix) into its
-contraction with <span class="math inline">\mathbf{v}</span>; function
-<code><a href="../reference/contract.html">contract()</a></code> is the user-friendly front end. We will start
-with some simple examples. I will use <code>phi</code> and <span class="math inline">\phi</span> to represent the same object.</p>
+<p>provided <span class="math inline">k&gt;1</span>; if <span class="math inline">k=1</span> we specify <span class="math inline">\phi_\mathbf{v}=\phi(\mathbf{v})</span>. If <span class="citation">Spivak (<a href="#ref-spivak1965">1965</a>)</span> does
+discuss this, I have forgotten it. Function
+<code><a href="../reference/contract.html">contract_elementary()</a></code> is a low-level helper function that
+translates elementary <span class="math inline">k</span>-forms with
+coefficient 1 (in the form of an integer vector corresponding to one row
+of an index matrix) into its contraction with <span class="math inline">\mathbf{v}</span>; function <code><a href="../reference/contract.html">contract()</a></code>
+is the user-friendly front end. We will start with some simple examples.
+I will use <code>phi</code> and <span class="math inline">\phi</span> to
+represent the same object.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^5 to R with V=R^5:</span></span>
@@ -268,7 +270,7 @@ b\psi_\mathbf{v}</span>.</p>
 <div class="section level2">
 <h2 id="contraction-of-products">Contraction of products<a class="anchor" aria-label="anchor" href="#contraction-of-products"></a>
 </h2>
-<p><span class="citation">Weintraub (2014)</span> gives us the following
+<p><span class="citation">Weintraub (<a href="#ref-weintraub2014">2014</a>)</span> gives us the following
 theorem, for any <span class="math inline">k</span>-form <span class="math inline">\phi</span> and <span class="math inline">l</span>-form <span class="math inline">\psi</span>:</p>
 <p><span class="math display">
 \left(\phi\wedge\psi\right)_\mathbf{v} =
@@ -637,7 +639,7 @@ Elsevier.
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>

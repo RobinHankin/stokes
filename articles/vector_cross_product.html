@@ -123,7 +123,7 @@ Hankin</h4>
 
     
     
-<p><img src="../../../_temp/Library/stokes/help/figures/stokes.png" width="20%" style="float:right; padding:10px"></p>
+<p><img src="..%2F..%2F..%2F_temp%2FLibrary%2Fstokes%2Fhelp%2Ffigures%2Fstokes.png" width="20%" style="float:right; padding:10px"></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vector_cross_product</span></span></code></pre></div>
 <pre><code><span><span class="kw">function</span> <span class="op">(</span><span class="va">M</span><span class="op">)</span> </span>
@@ -139,15 +139,15 @@ Hankin</h4>
 <code class="sourceCode R"><span><span class="va">vcp3</span></span></code></pre></div>
 <pre><code><span><span class="kw">function</span><span class="op">(</span><span class="va">u</span>,<span class="va">v</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="fu"><a href="../reference/as.1form.html">as.1form</a></span><span class="op">(</span><span class="va">u</span><span class="op">)</span><span class="op">^</span><span class="fu"><a href="../reference/as.1form.html">as.1form</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span></code></pre>
 <p>To cite the <code>stokes</code> package in publications, please use
-<span class="citation">Hankin (2022b)</span>. The <em>vector cross
+<span class="citation">Hankin (<a href="#ref-hankin2022_stokes">2022b</a>)</span>. The <em>vector cross
 product</em> of two vectors <span class="math inline">\mathbf{u},\mathbf{v}\in\mathbb{R}^3</span>, denoted
 <span class="math inline">\mathbf{u}\times\mathbf{v}</span>, is defined
 in elementary mechanics as <span class="math inline">|\mathbf{u}||\mathbf{v}|\sin(\theta)\,\mathbf{n}</span>,
 where <span class="math inline">\theta</span> is the angle between <span class="math inline">\mathbf{u}</span> and <span class="math inline">\mathbf{v}</span>, and <span class="math inline">\mathbf{n}</span> is the unit vector perpendicular
 to <span class="math inline">\mathbf{u}</span> and <span class="math inline">\mathbf{v}</span> such that <span class="math inline">(\mathbf{u},\mathbf{v},\mathbf{n})</span> is
 positively oriented. Vector cross products find wide applications in
-physics, engineering, and computer science. <span class="citation">Spivak (1965)</span> considers the standard vector
-cross product <span class="math inline">\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i
+physics, engineering, and computer science. <span class="citation">Spivak (<a href="#ref-spivak1965">1965</a>)</span>
+considers the standard vector cross product <span class="math inline">\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i
 &amp; j &amp; k \\ u_1&amp;u_2&amp;u_3\\ v_1&amp;v_2&amp;v_3
 \end{pmatrix}</span> and places it in a more general and rigorous
 context. In a memorable passage, he states:</p>
@@ -208,9 +208,8 @@ v_1&amp;v_2&amp;v_3
 <div class="section level3">
 <h3 class="unnumbered" id="r-implementation">R implementation<a class="anchor" aria-label="anchor" href="#r-implementation"></a>
 </h3>
-<p>In the <code>stokes</code> package <span class="citation">(Hankin
-2022b)</span>, R function <code><a href="../reference/vector_cross_product.html">vector_cross_product()</a></code> takes a
-matrix with <span class="math inline">n</span> rows and <span class="math inline">n-1</span> columns: the transpose of the work above.
+<p>In the <code>stokes</code> package <span class="citation">(<a href="#ref-hankin2022_stokes">Hankin 2022b</a>)</span>, R function
+<code><a href="../reference/vector_cross_product.html">vector_cross_product()</a></code> takes a matrix with <span class="math inline">n</span> rows and <span class="math inline">n-1</span> columns: the transpose of the work above.
 This is because <code>stokes</code> (and <code>R</code>) convention is
 to interpret <em>columns</em> of a matrix as vectors. If we wanted to
 take the cross product of <span class="math inline">\mathbf{u}=(5,-2,1)</span> with <span class="math inline">\mathbf{v}=(1,2,0)</span>:</p>
@@ -314,8 +313,7 @@ a\cdot
 \mathbf{v}_{n}
 </span></p>
 <p>For the first we use a permutation <code>sigma</code> from the
-<code>permutations</code> package <span class="citation">(Hankin
-2020)</span> with a sign of <span class="math inline">-1</span>:</p>
+<code>permutations</code> package <span class="citation">(<a href="#ref-hankin2020">Hankin 2020</a>)</span> with a sign of <span class="math inline">-1</span>:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>,<span class="fl">6</span>,<span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu">as.cycle</span><span class="op">(</span><span class="st">"(12)(345)"</span><span class="op">)</span></span>
@@ -461,10 +459,9 @@ explicit. Suppose we wish to take the vector cross product of <span class="math 
 <span><span class="co">##  2  =   -1</span></span>
 <span><span class="co">##  3  =   -7</span></span></code></pre>
 <p>Above, note the order of the lines is implementation-specific as per
-<code>disordR</code> discipline <span class="citation">(Hankin
-2022a)</span>, but the form itself should agree with basis vector
-evaluation given below. Object <code>p</code> is the vector cross
-product of <span class="math inline">\mathbf{u}</span> and <span class="math inline">\mathbf{v}</span>, but is given as a one-form. We
+<code>disordR</code> discipline <span class="citation">(<a href="#ref-hankin2022_disordR">Hankin 2022a</a>)</span>, but the form
+itself should agree with basis vector evaluation given below. Object
+<code>p</code> is the vector cross product of <span class="math inline">\mathbf{u}</span> and <span class="math inline">\mathbf{v}</span>, but is given as a one-form. We
 can see the mnemonic in operation by coercing <code>p</code> to a
 function and then evaluating this on the three basis vectors of <span class="math inline">\mathbb{R}^3</span>:</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
@@ -612,7 +609,7 @@ Spivak, M. 1965. <em>Calculus on Manifolds</em>. Addison-Wesley.
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
