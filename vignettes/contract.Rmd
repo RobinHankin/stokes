@@ -3,6 +3,7 @@ title: "Functions `contract()` and `contract_elementary()` in the `stokes` packa
 author: "Robin K. S. Hankin"
 output: html_vignette
 bibliography: stokes.bib
+link-citations: true
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{contract}

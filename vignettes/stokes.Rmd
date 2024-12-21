@@ -3,6 +3,7 @@ title: "Exterior calculus with R"
 author: "Robin K. S. Hankin"
 output: html_vignette
 bibliography: stokes.bib
+link-citations: true
 vignette: >
   %\VignetteIndexEntry{The exterior calculus}
   %\VignetteEngine{knitr::rmarkdown}

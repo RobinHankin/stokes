@@ -3,6 +3,7 @@ title: "Functions `vector_cross_product()` and `vcp3()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
 bibliography: stokes.bib
+link-citations: true
 vignette: >
   %\VignetteIndexEntry{vector cross product}
   %\VignetteEngine{knitr::rmarkdown}

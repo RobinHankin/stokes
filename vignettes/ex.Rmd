@@ -3,6 +3,7 @@ title: "Objects `ex`, `ey`, and `ez` in the `stokes` package"
 author: "Robin K. S. Hankin"
 bibliography: stokes.bib
 output: html_vignette
+link-citations: true
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{basis}

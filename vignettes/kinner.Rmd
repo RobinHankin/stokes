@@ -2,6 +2,7 @@
 title: "The `kinner()` function in the `stokes` package"
 author: "Robin K. S. Hankin"
 bibliography: stokes.bib
+link-citations: true
 output:
   pdf_document:
     extra_dependencies: ["blkarray", "bigstrut"]
