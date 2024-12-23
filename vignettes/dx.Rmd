@@ -65,7 +65,7 @@ basis to $(e_1)_p,\ldots, (e_n)_p$.
 
 
 Spivak goes on to observe that every $k$-form $\omega$ can be written
-$\omega=\sum_{i_1 < \cdots < i_k}\omega_{i_1,\ldots
+$\omega=\sum_{i_1 < \cdots < i_k}\omega_{i_1,\ldots,
 i_k}\mathrm{d}x^{i_1}\wedge\cdots\wedge\mathrm{d}x^{i_k}$.  If working
 in $\mathbb{R}^3$, we have three elementary forms $\mathrm{d}x$,
 $\mathrm{d}y$, and $\mathrm{d}z$; in the package we have the
