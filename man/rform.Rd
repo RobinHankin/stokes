@@ -14,7 +14,7 @@ rtensor(terms=9,k=3,n=7,coeffs)
 \arguments{
   \item{terms}{Number of distinct terms}
   \item{k,n}{A \eqn{k}-form maps \eqn{V^k} to
-    \eqn{\mathbb{R}}{R}, where \eqn{V=\mathbb{R}^n}{R^n}}
+    \eqn{\mathbb{R}}{R}, where \eqn{V=\mathbb{R}^n}{V=R^n}}
   \item{coeffs}{The coefficients of the form; if missing use
     \code{seq_len(terms)}}
   \item{ensure}{Boolean with default \code{TRUE} meaning to ensure that
