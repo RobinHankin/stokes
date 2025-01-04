@@ -19,9 +19,9 @@ The inner product of two vectors \eqn{\mathbf{x}}{x} and
 \eqn{\mathbf{x}\cdot\mathbf{y}}{x.y}, but the most general form would
 be \eqn{\mathbf{x}^TM\mathbf{y}}{x'My} where \eqn{M}{M} is a matrix.
 Noting that inner products are multilinear, that is
-\eqn{\left\langle\mathbf{x},a\mathbf{y}+b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle+b\left\langle\mathbf{x},\mathbf{z}\right\rangle}{<x,ay+bz>=a<x,y>+b<y,z>}
+\eqn{\left\langle\mathbf{x},a\mathbf{y}+b\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{y}\right\rangle+b\left\langle\mathbf{x},\mathbf{z}\right\rangle}{<x,ay+bz>=a<x,y>+b<x,z>}
 and \eqn{\left\langle
-a\mathbf{x}+b\mathbf{y},\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{z}\right\rangle+b\left\langle\mathbf{y},\mathbf{z}\right\rangle}{<x,ay+bz>=a<x,y>+b<y,z>},
+a\mathbf{x}+b\mathbf{y},\mathbf{z}\right\rangle=a\left\langle\mathbf{x},\mathbf{z}\right\rangle+b\left\langle\mathbf{y},\mathbf{z}\right\rangle}{<ax+by,z>=a<x,z>+b<y,z>},
 we see that the inner product is indeed a multilinear map, that is, a
 tensor.
 
