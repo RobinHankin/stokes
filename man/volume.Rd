@@ -18,15 +18,15 @@ is.volume(K,n=dovs(K))
 Spivak phrases it well (theorem 4.6, page 82):
 
 If \eqn{V} has dimension \eqn{n}, it follows that
-\eqn{\Lambda^n(V)}{.} has dimension 1. Thus all alternating
+\eqn{\Lambda^n(V)}{omitted} has dimension 1. Thus all alternating
 \eqn{n}-tensors on \eqn{V} are multiples of any non-zero one.
 Since the determinant is an example of such a member of
-\eqn{\Lambda^n(V)}{.} it is not surprising to find it in the following
-theorem:
+\eqn{\Lambda^n(V)}{omitted} it is not surprising to find it in
+the following theorem:
 
 Let \eqn{v_1,\ldots,v_n}{v_1,...,v_n} be a basis for \eqn{V} and
-let \eqn{\omega\in\Lambda^n(V)}{.}.  If \eqn{w_i=\sum_{j=1}^n
-a_{ij}v_j}{.}  then
+let \eqn{\omega\in\Lambda^n(V)}{omitted}.  If \eqn{w_i=\sum_{j=1}^n
+a_{ij}v_j}{omitted}  then
 
 \deqn{
   \omega\left(w_1,\ldots,w_n\right)=\det\left(a_{ij}\right)\cdot\omega\left(v_1,\ldots
