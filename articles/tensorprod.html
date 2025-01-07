@@ -126,7 +126,7 @@ Hankin</h4>
 
     
     
-<p><img src="..%2F..%2F..%2F_temp%2FLibrary%2Fspray%2Fhelp%2Ffigures%2Fspray.png" width="20%" style="float:right; padding:10px"></p>
+<p><img src="..%2F..%2F..%2F_temp%2FLibrary%2Fstokes%2Fhelp%2Ffigures%2Fstokes.png" width="20%" style="float:right; padding:10px"></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tensorprod</span></span></code></pre></div>
 <pre><code><span><span class="kw">function</span> <span class="op">(</span><span class="va">U</span>, <span class="va">...</span><span class="op">)</span> </span>
@@ -205,7 +205,7 @@ i_1,\ldots,i_k\leqslant n
 </span></p>
 <p>[where <span class="math inline">\phi_i(v_j)=\delta_{ij}</span>,<span class="math inline">v_1,\ldots,v_k</span> being a basis for <span class="math inline">V</span>] is a basis for <span class="math inline">\mathcal{J}^k(V)</span>, which therefore has
 dimension <span class="math inline">n^k</span>. Function
-<code>spraycross2()</code> evaluates the tensor product and I give
+<code><a href="../reference/tensorprod.html">tensorprod()</a></code> evaluates the tensor product and I give
 examples here.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">ktensor</a></span><span class="op">(</span><span class="fu"><a href="../reference/coeffs.html">spray</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>,<span class="fl">3</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -223,7 +223,7 @@ examples here.</p>
 <p>Thus <span class="math inline">a=4\phi_1\otimes\phi_1+3\phi_1\otimes\phi_2</span>
 and <span class="math inline">b=7\phi_3\otimes\phi_5+8\phi_4\otimes\phi_4+9\phi_7\otimes\phi_3</span>.
 Now the cross product <span class="math inline">a\otimes b</span> is
-given by <code>spraycross()</code>:</p>
+given by <code><a href="../reference/tensorprod.html">tensorprod()</a></code>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tensorprod.html">tensorprod</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^4 to R with V=R^7:</span></span>
