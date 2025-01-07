@@ -11,10 +11,11 @@ articles:
   inner: inner.html
   kinner: kinner.html
   stokes: stokes.html
+  tensorprod: tensorprod.html
   vector_cross_product: vector_cross_product.html
   volume: volume.html
   wedge: wedge.html
-last_built: 2025-01-05T08:51Z
+last_built: 2025-01-07T09:01Z
 urls:
   reference: https://robinhankin.github.io/stokes/reference
   article: https://robinhankin.github.io/stokes/articles
