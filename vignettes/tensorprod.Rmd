@@ -6,7 +6,7 @@ bibliography: stokes.bib
 link-citations: true
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{spraycross}
+  %\VignetteIndexEntry{tensorprod}
   %\usepackage[utf8]{inputenc}
 ---
 
@@ -24,7 +24,7 @@ registerS3method(
 ```
 
 ```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
-knitr::include_graphics(system.file("help/figures/spray.png", package = "spray"))
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
 ```
 
 ```{r, label=showAlt,comment=""}
@@ -98,7 +98,7 @@ $$
 
 [where $\phi_i(v_j)=\delta_{ij}$,$v_1,\ldots,v_k$ being a basis for
 $V$] is a basis for $\mathcal{J}^k(V)$, which therefore has dimension
-$n^k$.  Function `spraycross2()` evaluates the tensor product and I
+$n^k$.  Function `tensorprod()` evaluates the tensor product and I
 give examples here.
 
 ```{r}
@@ -108,7 +108,7 @@ give examples here.
 
 Thus $a=4\phi_1\otimes\phi_1+3\phi_1\otimes\phi_2$ and
 $b=7\phi_3\otimes\phi_5+8\phi_4\otimes\phi_4+9\phi_7\otimes\phi_3$.
-Now the cross product $a\otimes b$ is given by `spraycross()`:
+Now the cross product $a\otimes b$ is given by `tensorprod()`:
 
 ```{r}
 tensorprod(a,b)
