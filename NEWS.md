@@ -1,3 +1,9 @@
+# stokes 1.2-2
+
+- new vignette on tensor products
+
+
+
 # stokes 1.2-1
 
 - edge-cases for `vector_cross_product()`, now works with a single 2D vector
