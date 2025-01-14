@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">stokes</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2-2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2-3</span>
       </span>
     </div>
 
@@ -57,6 +57,9 @@
     </li>
     <li>
       <a href="../articles/kinner.html">The `kinner()` function in the `stokes` package</a>
+    </li>
+    <li>
+      <a href="../articles/phi.html">Function `phi()` function in the `stokes` package</a>
     </li>
     <li>
       <a href="../articles/tensorprod.html">Function `tensorprod()` function in the `stokes` package</a>
@@ -134,36 +137,36 @@
 <span class="r-in"><span><span class="fu">summary</span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A kform object with 34 terms.  Summary of coefficients: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> a disord object with hash 4980e9a3db7bc1be348d56b5f8fa4354afbf3db5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> a disord object with hash 73bf8f9391870392001de5e560e1ef6d421978ba </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -242.00  -84.00  -36.00  -29.65   44.00  106.00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -234.00  -82.75  -36.00  -28.41   40.25  104.00 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Representative selection of index and coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^3 to R with V=R^7:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             val</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 4 5  =    37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 5 6  =    65</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5  =    84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 6 7  =  -190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 6  =  -123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 5 6  =   -36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 6 7  =   -84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4 5 6  =  -112</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 3 6  =   -43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 3 5  =   -81</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 3 5  =   -79</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>kform_symbolic_print <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">summary</span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A kform object with 34 terms.  Summary of coefficients: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> a disord object with hash 4980e9a3db7bc1be348d56b5f8fa4354afbf3db5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> a disord object with hash 73bf8f9391870392001de5e560e1ef6d421978ba </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -242.00  -84.00  -36.00  -29.65   44.00  106.00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -234.00  -82.75  -36.00  -28.41   40.25  104.00 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Representative selection of index and coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^3 to R with V=R^7:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +37 dy^dNA^dNA +65 dx^dNA^dNA +84 dy^dz^dNA -190 dx^dNA^dNA -43 dx^dz^dNA -81 dx^dz^dNA </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -123 dz^dNA^dNA -36 dx^dNA^dNA -84 dx^dNA^dNA -112 dNA^dNA^dNA -43 dx^dz^dNA -79 dx^dz^dNA </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>kform_symbolic_print <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>  <span class="co"># restore default</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>

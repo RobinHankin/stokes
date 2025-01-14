@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">stokes</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2-2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2-3</span>
       </span>
     </div>
 
@@ -57,6 +57,9 @@
     </li>
     <li>
       <a href="../articles/kinner.html">The `kinner()` function in the `stokes` package</a>
+    </li>
+    <li>
+      <a href="../articles/phi.html">Function `phi()` function in the `stokes` package</a>
     </li>
     <li>
       <a href="../articles/tensorprod.html">Function `tensorprod()` function in the `stokes` package</a>
@@ -198,8 +201,8 @@ well-defined because the tensor product is associative); it uses
 <span class="r-in"><span><span class="va">RHS</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">(</span><span class="va">Va</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">B</span><span class="op">)</span><span class="op">(</span><span class="va">Vb</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       LHS       RHS      diff </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.582478 -0.582478  0.000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           LHS           RHS          diff </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.740637e+00  2.740637e+00 -4.440892e-16 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>

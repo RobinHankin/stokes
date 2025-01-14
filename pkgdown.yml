@@ -10,12 +10,13 @@ articles:
   hodge: hodge.html
   inner: inner.html
   kinner: kinner.html
+  phi: phi.html
   stokes: stokes.html
   tensorprod: tensorprod.html
   vector_cross_product: vector_cross_product.html
   volume: volume.html
   wedge: wedge.html
-last_built: 2025-01-14T16:50Z
+last_built: 2025-01-14T21:44Z
 urls:
   reference: https://robinhankin.github.io/stokes/reference
   article: https://robinhankin.github.io/stokes/articles
