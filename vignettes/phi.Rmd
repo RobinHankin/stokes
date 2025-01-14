@@ -1,0 +1,209 @@
+---
+title: "Function `phi()` function in the `stokes` package"
+author: "Robin K. S. Hankin"
+output: html_vignette
+bibliography: stokes.bib
+link-citations: true
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{phi}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+set.seed(0)
+library("stokes")
+options(rmarkdown.html_vignette.check_title = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
+knit_print.function <- function(x, ...){dput(x)}
+registerS3method(
+  "knit_print", "function", knit_print.function,
+  envir = asNamespace("knitr")
+)
+```
+
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+```
+
+```{r, label=showAlt,comment=""}
+phi
+```
+
+To cite the `stokes` package in publications, please use
+@hankin2022_stokes.  Function `phi()` returns a tensor dual to the
+standard basis of $V=\mathbb{R}^n$.  In a memorable passage,
+@spivak1965 states (theorem 4.1):
+
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Integration on chains</b></p>
+<p style='margin-left:1em;'>
+
+Let $v_1,\ldots,v_n$ be a basis for $V$, and let
+$\phi_1,\ldots,\phi_n$ be the dual basis, $\phi_i(v_j)=\delta_{ij}$.
+Then the set of all $k$-fold tensor products
+
+\[
+\phi_{i_1}\otimes\cdots\otimes\phi_{i_k}\qquad 1\leqslant
+i_1,\ldots,i_k\leqslant n
+\]
+
+is a basis for $\mathcal{J}(V)$, which therefore has dimension $n^k$.
+
+</p>
+<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Page 75</i>
+</p></span>
+</div>
+
+
+Function `phi()` returns a very simple tensor:
+
+```{r}
+phi(4)
+```
+
+
+First we will verify the properties of `phi()`, using
+$V=\mathbb{R}^5$, specifically
+
+\[
+\phi_i(e_j) = \delta_{ij} =
+\begin{cases}
+    1,  & i=j\\
+    0   & i\neq j
+  \end{cases}
+\]
+
+As numerical verification, we will check that $\phi_3(e_4)=0$,
+$\phi_3(e_5)=1$, $\phi_3(e_6)=0$:
+
+```{r}
+f <- as.function(phi(3))
+c(f(as.matrix(e(2,5))), f(as.matrix(e(3,5))), f(as.matrix(e(4,5))))
+```
+
+A more severe test might be
+
+```{r}
+aa <- function(n){
+   outer(seq_len(n), seq_len(n),
+   Vectorize(function(i, j){as.function(phi(i))(as.matrix(e(j, n)))}))
+}
+
+aa(5)
+```
+
+Above, we see that the matrix is $I_5$, as expected.  Further:
+
+```{r}
+all(aa(9) == diag(9))
+```
+
+The objects created by `phi()` may be multiplied together using
+`tensorprod()` or its binary operator `%X%`:
+
+```{r}
+phi(4) %X% phi(3) %X% phi(5)
+```
+
+If we want to create arbitrary tensor products of $\phi$ objects the
+most natural way would be to use `tensorprod()` repeatedly:
+
+```{r}
+Reduce(`%X%`,sapply(4:8,phi))
+```
+
+However, function `phi()` simply takes a vector:
+
+```{r}
+phi(c(2,5,1))
+```
+
+This creates an element of the basis set, in this case
+$\phi_2\otimes\phi_5\otimes\phi_1$.  Verification is straightforward:
+
+```{r}
+(v <- sample(9))
+phi(v) == Reduce(`%X%`,sapply(v,phi))
+```
+
+
+We will consider an element $X$ of $\mathcal{J}^{2}(V)$ where
+$V=\mathbb{R}^3$ and construct an explicit basis for it along the
+lines of Spivak's observation above.
+
+```{r}
+(X <- ktensor(spray(matrix(c(1,2,3,2,1,1),3,2),1:3)))
+```
+
+Thus $X=\phi_1\otimes\phi_2 +2\phi_2\otimes\phi_1
++3\phi_3\otimes\phi_1$.  Spivak asserts that $\mathcal{J}^{2}(V)$ has
+dimension $n^k=3^2=9$.  
+
+```{r}
+1*phi(c(1,2)) + 2*phi(c(2,1)) + 3*phi(c(3,1))
+```
+
+With a little effort, we can create all $3^2=9$ elements of a basis as
+follows:
+
+```{r}
+apply(expand.grid(rep(list(seq_len(3)),2)),1,phi)
+```
+
+Or it might be logically better to use ellipsis constructs to pass
+multiple arguments:
+
+```{r}
+s <- function(...){phi(unlist(list(...)))}
+s(3,4,6)
+```
+
+Then we could have 
+
+```{r}
+1*s(1,2) + 2*s(2,1) + 3*s(3,1)
+1*s(1,2) + 2*s(2,1) + 3*s(3,1) == X
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Consider the following tensor
+
+
+```{r}
+(b <- ktensor(spray(matrix(c(3,4,7,5,4,3),3,2),7:9)))
+```
+
+We may express $b$ as the sum of its three terms, each with a
+coefficient:
+
+```{r}
+7 * phi(3) %X% phi(5) + 8 * phi(4) %X% phi(4) + 9 * phi(7) %X% phi(3) 
+```
+
+Above, observe that the order of the terms may differ between the two
+methods, as per `disordR` discipline [@hankin2022_disordR], but they
+are algebraically identical:
+
+```{r}
+b == 7 * phi(3) %X% phi(5) + 8 * phi(4) %X% phi(4) + 9 * phi(7) %X% phi(3) 
+```
+
+# References

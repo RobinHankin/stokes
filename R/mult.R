@@ -182,6 +182,8 @@
     return(out)
 }
 
+`phi` <- function(n){ktensor(spray(n,1))}
+
 `kform_general`  <- function(W,k,coeffs,lose=TRUE){
     if(length(W)==1){W <- seq_len(W)}
     M <-  kform_basis(length(W),k)
