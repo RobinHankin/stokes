@@ -173,14 +173,14 @@ for each <span class="math inline">i</span> with <span class="math inline">1\leq
 T\left(v_1,\ldots, v_i + {v'}_i,\ldots, v_k\right)=
 T\left(v_1,\ldots,v_i,\ldots,v_k\right)+
 T\left(v_1,\ldots,{v'}_i,\ldots,v_k\right),\\
-T\left(v_1,\ldots,av_i,\ldots,v_k\right)=aT\left(v_1,\ldots,v_i,\ldots,v_k\right)
+T\left(v_1,\ldots,av_i,\ldots,v_k\right)=aT\left(v_1,\ldots,v_i,\ldots,v_k\right).
 </span></p>
 <p>A multilinear function <span class="math inline">T\colon
-v^k\longrightarrow\mathbb{R}</span> is called a <em><span class="math inline">k</span>-tensor</em> on <span class="math inline">V</span> and the set of all <span class="math inline">k</span>-tensors, denoted by <span class="math inline">\mathcal{J}^k(V)</span>, becomes a vector space
+V^k\longrightarrow\mathbb{R}</span> is called a <em><span class="math inline">k</span>-tensor</em> on <span class="math inline">V</span> and the set of all <span class="math inline">k</span>-tensors, denoted by <span class="math inline">\mathcal{J}^k(V)</span>, becomes a vector space
 (over <span class="math inline">\mathbb{R}</span>) if for <span class="math inline">S,T\in\mathcal{J}^k(V)</span> and <span class="math inline">a\in\mathbb{R}</span> we define</p>
 <p><span class="math display">
-(S+T)(v_1,\ldots,v_k) = S(v_1,\ldots,v_k) + T(v_1,\ldots,v_k)
-(aS)(v_1,\ldots,v_k) = a\cdot S(v_1,\ldots,v_k)
+(S+T)(v_1,\ldots,v_k) = S(v_1,\ldots,v_k) + T(v_1,\ldots,v_k)\\
+(aS)(v_1,\ldots,v_k) = a\cdot S(v_1,\ldots,v_k).
 </span></p>
 <p>There is also an operation connecting the various spaces <span class="math inline">\mathcal{J}(V)</span>. If <span class="math inline">S\in\mathcal{J}^k(V)</span> and <span class="math inline">T\in\mathcal{J}^l(V)</span>, we define the
 <em>tensor product</em> <span class="math inline">S\otimes
@@ -296,6 +296,76 @@ following:</p>
 <p>The two products are algebraically identical but the terms appear in
 a different order.</p>
 </div>
+</div>
+<div class="section level3">
+<h3 id="an-explicit-basis">An explicit basis<a class="anchor" aria-label="anchor" href="#an-explicit-basis"></a>
+</h3>
+<p>We will consider an element <span class="math inline">X</span> of
+<span class="math inline">\mathcal{J}^{2}(V)</span> where <span class="math inline">V=\mathbb{R}^3</span> and construct an explicit
+basis for it along the lines of Spivak’s observation above.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">ktensor</a></span><span class="op">(</span><span class="fu"><a href="../reference/coeffs.html">spray</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## A linear map from V^2 to R with V=R^3:</span></span>
+<span><span class="co">##          val</span></span>
+<span><span class="co">##  3 1  =    3</span></span>
+<span><span class="co">##  2 1  =    2</span></span>
+<span><span class="co">##  1 2  =    1</span></span></code></pre>
+<p>Thus <span class="math inline">X=\phi_1\otimes\phi_2
++2\phi_2\otimes\phi_1
++3\phi_3\otimes\phi_1</span>. Spivak asserts that <span class="math inline">\mathcal{J}^{2}(V)</span> has dimension <span class="math inline">n^k=3^2=9</span>.</p>
+<p>In package idiom, for example, <span class="math inline">\phi_2\otimes\phi_5</span> would be constructed as
+follows:</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">phi2_x_phi5</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">ktensor</a></span><span class="op">(</span><span class="fu"><a href="../reference/coeffs.html">spray</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## A linear map from V^2 to R with V=R^3:</span></span>
+<span><span class="co">##          val</span></span>
+<span><span class="co">##  1 3  =    1</span></span></code></pre>
+<p>Using this notation we can construct a basis for <span class="math inline">\mathcal{J}^{2}(V)</span> as follows:</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="../reference/ktensor.html">ktensor</a></span><span class="op">(</span><span class="fu"><a href="../reference/coeffs.html">spray</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span>
+<span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## A linear map from V^2 to R with V=R^5:</span></span>
+<span><span class="co">##          val</span></span>
+<span><span class="co">##  2 5  =    1</span></span></code></pre>
+<p>Thus <code>f()</code> creates an element of the basis set, in this
+case <span class="math inline">\phi_2\otimes\phi_5</span>. We can
+construct <span class="math inline">X</span> line by line:</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">1</span><span class="op">*</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## A linear map from V^2 to R with V=R^3:</span></span>
+<span><span class="co">##          val</span></span>
+<span><span class="co">##  2 1  =    2</span></span>
+<span><span class="co">##  1 2  =    1</span></span>
+<span><span class="co">##  3 1  =    3</span></span></code></pre>
+<p>With a little effort, we can create all <span class="math inline">3^2=9</span> elements of a basis as follows:</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">basis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>,<span class="fl">1</span>,<span class="va">f</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">basis</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 9</span></span></code></pre>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">basis</span><span class="op">[[</span><span class="fl">6</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
+<pre><code><span><span class="co">## A linear map from V^2 to R with V=R^3:</span></span>
+<span><span class="co">##          val</span></span>
+<span><span class="co">##  3 2  =    1</span></span></code></pre>
+<p>Or it might be better to use ellipsis constructs to pass multiple
+arguments at once:</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">s</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">{</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span>
+<span><span class="fu">s</span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">6</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## A linear map from V^3 to R with V=R^6:</span></span>
+<span><span class="co">##            val</span></span>
+<span><span class="co">##  3 4 6  =    1</span></span></code></pre>
+<p>Then we could have</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">1</span><span class="op">*</span><span class="fu">s</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="fu">s</span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="fu">s</span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## A linear map from V^2 to R with V=R^3:</span></span>
+<span><span class="co">##          val</span></span>
+<span><span class="co">##  2 1  =    2</span></span>
+<span><span class="co">##  1 2  =    1</span></span>
+<span><span class="co">##  3 1  =    3</span></span></code></pre>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">1</span><span class="op">*</span><span class="fu">s</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="fu">s</span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="fu">s</span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span> <span class="op">==</span> <span class="va">X</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
