@@ -397,6 +397,10 @@ Reduce("+",.)
 
 Well it might be clearer to Hadley but frankly YMMV.
 
+```{r tidyup, include=FALSE}
+rm(phi)
+```
+
 
 ## References
 
