@@ -138,8 +138,10 @@ Hankin</h4>
 <span><span class="op">}</span></span></code></pre>
 <p>To cite the <code>stokes</code> package in publications, please use
 <span class="citation">Hankin (<a href="#ref-hankin2022_stokes">2022b</a>)</span>. Function
-<code><a href="../reference/phi.html">phi()</a></code> returns a tensor dual to the standard basis of <span class="math inline">V=\mathbb{R}^n</span>. In a memorable passage, <span class="citation">Spivak (<a href="#ref-spivak1965">1965</a>)</span>
-states (theorem 4.1):</p>
+<code><a href="../reference/phi.html">phi()</a></code> returns a tensor dual to the standard basis of <span class="math inline">V=\mathbb{R}^n</span>. Here I discuss
+<code><a href="../reference/phi.html">phi()</a></code> but there is some overlap between this vignette and
+the <code>tensorprod</code> vignette.</p>
+<p>In a memorable passage, <span class="citation">Spivak (<a href="#ref-spivak1965">1965</a>)</span> states (theorem 4.1):</p>
 <div class="warning" style="padding:0.1em; background-color:#E9D8FD; color:#69337A">
 <span>
 <p style="margin-top:1em; text-align:center">
@@ -175,10 +177,10 @@ Page 75</i>
 \phi_i(e_j) = \delta_{ij} =
 \begin{cases}
     1,  &amp; i=j\\
-    0   &amp; i\neq j
+    0   &amp; i\neq j.
   \end{cases}
 </span></p>
-<p>As numerical verification, we will check that <span class="math inline">\phi_3(e_4)=0</span>, <span class="math inline">\phi_3(e_5)=1</span>, <span class="math inline">\phi_3(e_6)=0</span>:</p>
+<p>As numerical verification, we will check that <span class="math inline">\phi_3(e_2)=0</span>, <span class="math inline">\phi_3(e_3)=1</span>, <span class="math inline">\phi_3(e_4)=0</span>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, <span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, <span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -316,8 +318,28 @@ multiple arguments:</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span><span class="op">*</span><span class="fu">s</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="fu">s</span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="fu">s</span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span> <span class="op">==</span> <span class="va">X</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<p>Consider the following tensor</p>
+<div class="section level3">
+<h3 id="distributivity">Distributivity<a class="anchor" aria-label="anchor" href="#distributivity"></a>
+</h3>
+<p>The tensor product is left- and right distributive. To illustrate
+this we can use the package to calculate, say, <span class="math inline">(2\phi_1+3\phi_2)\otimes(5\phi_3+7\phi_4)</span>:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="op">(</span><span class="fl">5</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fl">7</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## A linear map from V^2 to R with V=R^4:</span></span>
+<span><span class="co">##          val</span></span>
+<span><span class="co">##  2 4  =   21</span></span>
+<span><span class="co">##  1 4  =   14</span></span>
+<span><span class="co">##  2 3  =   15</span></span>
+<span><span class="co">##  1 3  =   10</span></span></code></pre>
+<p>Above we see package form for the result which is <span class="math inline">10\phi_1\phi_3 +
+14\phi_1\phi_4 + 15\phi_2\phi_3 + 21\phi_2\phi_4</span> in algebraic
+notation.</p>
+</div>
+<div class="section level3">
+<h3 id="reconstruction-of-a-given-tensor">Reconstruction of a given tensor<a class="anchor" aria-label="anchor" href="#reconstruction-of-a-given-tensor"></a>
+</h3>
+<p>Consider the following tensor</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">ktensor</a></span><span class="op">(</span><span class="fu"><a href="../reference/coeffs.html">spray</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">7</span>,<span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">3</span><span class="op">)</span>,<span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span>,<span class="fl">7</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^2 to R with V=R^7:</span></span>
 <span><span class="co">##          val</span></span>
@@ -326,7 +348,7 @@ multiple arguments:</p>
 <span><span class="co">##  3 5  =    7</span></span></code></pre>
 <p>We may express <span class="math inline">b</span> as the sum of its
 three terms, each with a coefficient:</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">7</span> <span class="op">*</span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op">+</span> <span class="fl">8</span> <span class="op">*</span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op">+</span> <span class="fl">9</span> <span class="op">*</span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> </span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^2 to R with V=R^7:</span></span>
 <span><span class="co">##          val</span></span>
@@ -336,9 +358,10 @@ three terms, each with a coefficient:</p>
 <p>Above, observe that the order of the terms may differ between the two
 methods, as per <code>disordR</code> discipline <span class="citation">(<a href="#ref-hankin2022_disordR">Hankin
 2022a</a>)</span>, but they are algebraically identical:</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">b</span> <span class="op">==</span> <span class="fl">7</span> <span class="op">*</span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op">+</span> <span class="fl">8</span> <span class="op">*</span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op">+</span> <span class="fl">9</span> <span class="op">*</span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> </span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
+</div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
