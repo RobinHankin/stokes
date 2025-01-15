@@ -32,8 +32,10 @@ phi
 
 To cite the `stokes` package in publications, please use
 @hankin2022_stokes.  Function `phi()` returns a tensor dual to the
-standard basis of $V=\mathbb{R}^n$.  In a memorable passage,
-@spivak1965 states (theorem 4.1):
+standard basis of $V=\mathbb{R}^n$.  Here I discuss `phi()` but there
+is some overlap between this vignette and the `tensorprod` vignette.
+
+In a memorable passage, @spivak1965 states (theorem 4.1):
 
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
@@ -171,18 +173,21 @@ Then we could have
 
 
 
+## Distributivity
 
+The tensor product is left- and right distributive.  To illustrate
+this we can use the package to calculate, say,
+$(2\phi_1+3\phi_2)\otimes(5\phi_3+7\phi_4)$:
 
+```{r}
+(2*phi(1) + 3*phi(2)) %X% (5*phi(3) + 7*phi(4) )
+```
 
+Above we see package form for the result which is $10\phi_1\phi_3 +
+14\phi_1\phi_4 + 15\phi_2\phi_3 + 21\phi_2\phi_4$ in algebraic
+notation.
 
-
-
-
-
-
-
-
-
+## Reconstruction of a given tensor
 
 Consider the following tensor
 
