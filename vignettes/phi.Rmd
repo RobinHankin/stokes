@@ -72,12 +72,12 @@ $V=\mathbb{R}^5$, specifically
 \phi_i(e_j) = \delta_{ij} =
 \begin{cases}
     1,  & i=j\\
-    0   & i\neq j
+    0   & i\neq j.
   \end{cases}
 \]
 
-As numerical verification, we will check that $\phi_3(e_4)=0$,
-$\phi_3(e_5)=1$, $\phi_3(e_6)=0$:
+As numerical verification, we will check that $\phi_3(e_2)=0$,
+$\phi_3(e_3)=1$, $\phi_3(e_4)=0$:
 
 ```{r}
 f <- as.function(phi(3))
