@@ -1,3 +1,8 @@
+# stokes 1.2-3
+
+- new vignette on phi()
+
+
 # stokes 1.2-2
 
 - new vignette on tensor products
