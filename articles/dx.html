@@ -138,8 +138,9 @@ Hankin</h4>
 <span class="citation">Hankin (<a href="#ref-hankin2022_stokes">2022</a>)</span>. Convenience objects
 <code>dx</code>, <code>dy</code>, and <code>dz</code>, corresponding to
 elementary differential forms, are discussed here (basis vectors <span class="math inline">e_1</span>, <span class="math inline">e_2</span>,
-<span class="math inline">e_2</span> are discussed in
-<code>ex.Rmd</code>). <span class="citation">Spivak (<a href="#ref-spivak1965">1965</a>)</span>, in a memorable passage,
+<span class="math inline">e_2</span> are discussed in vignette
+<code>ex.Rmd</code>).</p>
+<p><span class="citation">Spivak (<a href="#ref-spivak1965">1965</a>)</span>, in a memorable passage,
 states:</p>
 <div class="warning" style="padding:0.1em; background-color:#E9D8FD; color:#69337A">
 <span>
@@ -173,68 +174,168 @@ i_k}\mathrm{d}x^{i_1}\wedge\cdots\wedge\mathrm{d}x^{i_k}</span>. If
 working in <span class="math inline">\mathbb{R}^3</span>, we have three
 elementary forms <span class="math inline">\mathrm{d}x</span>, <span class="math inline">\mathrm{d}y</span>, and <span class="math inline">\mathrm{d}z</span>; in the package we have the
 pre-defined objects <code>dx</code>, <code>dy</code>, and
-<code>dz</code>. These are convenient for reproducing textbook results.
-We start with some illustrations of the package print method.</p>
+<code>dz</code>. These are convenient for reproducing textbook
+results.</p>
+<p>We conceptualise <code>dx</code> as “picking out” the <span class="math inline">x</span>-component of a 3-vector and similarly for
+<code>dy</code> and <code>dz</code>. Recall that <span class="math inline">\mathrm{d}x\colon\mathbb{R}^3\longrightarrow\mathbb{R}</span>
+and we have</p>
+<p><span class="math display">
+dx\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix} = u_1\qquad
+dy\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix} = u_2\qquad
+dz\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix} = u_3.
+</span></p>
+<p>Noting that <span class="math inline">1</span>-forms are a vector
+space, we have in general</p>
+<p><span class="math display">(a\cdot\mathrm{d}x + b\cdot\mathrm{d}y
++c\cdot\mathrm{d}z)
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix} = au_1+bu_2+cu_3 </span></p>
+<p>Numerically:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">7</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">)</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">+</span><span class="va">dy</span><span class="op">)</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">+</span><span class="fl">100</span><span class="op">*</span><span class="va">dz</span><span class="op">)</span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1]   2   5 702</span></span></code></pre>
+<p>As Spivak says, <code>dx</code>, <code>dy</code> and <code>dz</code>
+are conjugate to <span class="math inline">e_1,e_2,e_3</span> and these
+are defined using function <code><a href="../reference/kform.html">e()</a></code>. In this case it is safer to
+pass <code>n=3</code> to function <code><a href="../reference/kform.html">e()</a></code> in order to specify
+that we are working in <span class="math inline">\mathbb{R}^3</span>.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 1 0 0</span></span></code></pre>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0 1 0</span></span></code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0 0 1</span></span></code></pre>
+<p>We will now verify numerically that <code>dx</code>, <code>dy</code>
+and <code>dz</code> are indeed conjugate to <span class="math inline">e_1,e_2,e_3</span>, but to do this we will define an
+orthonormal set of vectors <span class="math inline">u,v,w</span>:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">)</span><span class="op">(</span><span class="va">u</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">)</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">)</span><span class="op">(</span><span class="va">w</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dy</span><span class="op">)</span><span class="op">(</span><span class="va">u</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dy</span><span class="op">)</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dy</span><span class="op">)</span><span class="op">(</span><span class="va">w</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dz</span><span class="op">)</span><span class="op">(</span><span class="va">u</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dz</span><span class="op">)</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dz</span><span class="op">)</span><span class="op">(</span><span class="va">w</span><span class="op">)</span></span>
+<span><span class="op">)</span>,<span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##      [,1] [,2] [,3]</span></span>
+<span><span class="co">## [1,]    1    0    0</span></span>
+<span><span class="co">## [2,]    0    1    0</span></span>
+<span><span class="co">## [3,]    0    0    1</span></span></code></pre>
+<p>Above we see the conjugacy clearly [obtaining <span class="math inline">I_3</span> as expected].</p>
+<div class="section level3">
+<h3 id="wedge-products">Wedge products<a class="anchor" aria-label="anchor" href="#wedge-products"></a>
+</h3>
+<p>The elementary forms may be combined with a wedge product. We note
+that <span class="math inline">\mathrm{d}x\wedge\mathrm{d}y\colon\left(\mathbb{R}^3\right)^2\longrightarrow\mathbb{R}</span>
+and, for example,</p>
+<p><span class="math display">
+(\mathrm{d}x\wedge\mathrm{d}y)\left(
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}
+\right)
+=
+\det\begin{pmatrix}u_1&amp;v_1\\u_2&amp;v_2\end{pmatrix}
+</span></p>
+<p>and</p>
+<p><span class="math display">
+(\mathrm{d}x\wedge\mathrm{d}y\wedge\mathrm{d}z)
+\left(
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix},
+\begin{pmatrix}w_1\\w_2\\w_3\end{pmatrix}
+\right)
+=
+\det\begin{pmatrix}u_1&amp;v_1&amp;w_1\\u_2&amp;v_2&amp;w_2\\u_3&amp;v_3&amp;w_3\end{pmatrix}
+</span></p>
+<p>Numerically:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span> <span class="op">^</span> <span class="va">dy</span><span class="op">)</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] -10</span></span></code></pre>
+<p>Above we see the package correctly giving <span class="math inline">\det\begin{pmatrix}2&amp;4\\3&amp;1\end{pmatrix}=2-12=-10</span>.</p>
+</div>
+<div class="section level2">
+<h2 id="the-print-method">The print method<a class="anchor" aria-label="anchor" href="#the-print-method"></a>
+</h2>
+<p>Here I give some illustrations of the package print method.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dx</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^1 to R with V=R^1:</span></span>
 <span><span class="co">##        val</span></span>
 <span><span class="co">##  1  =    1</span></span></code></pre>
 <p>This is somewhat opaque and difficult to understand. It is easier to
-start with a more complicated example: take <span class="math inline">\mathrm{d}x\wedge\mathrm{d}y
+start with a more complicated example: take <span class="math inline">X=\mathrm{d}x\wedge\mathrm{d}y
 -7\mathrm{d}x\wedge\mathrm{d}z
 + 3\mathrm{d}y\wedge\mathrm{d}z</span>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dx</span><span class="op">^</span><span class="va">dy</span> <span class="op">-</span><span class="fl">7</span><span class="op">*</span><span class="va">dx</span><span class="op">^</span><span class="va">dz</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="va">dy</span><span class="op">^</span><span class="va">dz</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">X</span> <span class="op">&lt;-</span> <span class="va">dx</span><span class="op">^</span><span class="va">dy</span> <span class="op">-</span><span class="fl">7</span><span class="op">*</span><span class="va">dx</span><span class="op">^</span><span class="va">dz</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="va">dy</span><span class="op">^</span><span class="va">dz</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^2 to R with V=R^3:</span></span>
 <span><span class="co">##          val</span></span>
 <span><span class="co">##  1 3  =   -7</span></span>
 <span><span class="co">##  2 3  =    3</span></span>
 <span><span class="co">##  1 2  =    1</span></span></code></pre>
-<p>We see three rows for the three elementary components. Taking the row
-with coefficient <span class="math inline">-7</span> [which would be
-<span class="math inline">-7\mathrm{d}x\wedge\mathrm{d}z</span>], this
-maps <span class="math inline">\left(\mathbb{R}^3\right)^2</span> to
-<span class="math inline">\mathbb{R}</span> and we have</p>
+<p>We see that <code>X</code> has three rows for the three elementary
+components. Taking the row with coefficient <span class="math inline">-7</span> [which would be <span class="math inline">-7\mathrm{d}x\wedge\mathrm{d}z</span>], this maps
+<span class="math inline">\left(\mathbb{R}^3\right)^2</span> to <span class="math inline">\mathbb{R}</span> and we have</p>
 <p><span class="math display">(-7\mathrm{d}x\wedge\mathrm{d}z)\left(\begin{pmatrix}
 u_1\\u_2\\u_3\end{pmatrix},
 \begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}\right)=
--7\det\begin{pmatrix}u_1&amp;v_1\\u_3&amp;v_3\end{pmatrix}</span></p>
-<p>Armed with this familiar fact, we can interpret <span class="math inline">dx</span> as a map from <span class="math inline">\left(\mathbb{R}^3\right)^1</span> to <span class="math inline">\mathbb{R}</span> with</p>
-<p><span class="math display">\mathrm{d}x\left(\begin{pmatrix}
-u_1\\u_2\\u_3\end{pmatrix}
-\right)=
-\det\begin{pmatrix}u_1\end{pmatrix}=u_1</span></p>
-<p>or, in other words, <span class="math inline">\mathrm{d}x</span>
-picks out the first component of its vector (as the print method gives,
-albeit obscurely). This is easily shown in the package:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">)</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">113</span>,<span class="fl">3</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 113</span></span></code></pre>
+-7\det\begin{pmatrix}u_1&amp;v_1\\u_3&amp;v_3\end{pmatrix}
+</span></p>
+<p>The other two rows would be</p>
+<p><span class="math display">(3\mathrm{d}y\wedge\mathrm{d}z)\left(
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}
+\right)
+=
+3\det\begin{pmatrix}u_2&amp;v_2\\u_3&amp;v_3\end{pmatrix}</span></p>
+<p>and</p>
+<p><span class="math display">(1\mathrm{d}x\wedge\mathrm{d}y)\left(
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}
+\right)
+=
+\det\begin{pmatrix}u_1&amp;v_1\\u_2&amp;v_2\end{pmatrix}
+</span></p>
+<p>Thus form <span class="math inline">X</span> would be, by
+linearity</p>
+<p><span class="math display">
+X\left(
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}
+\right)
+=
+-7\det\begin{pmatrix}u_1&amp;v_1\\u_3&amp;v_3\end{pmatrix}
++3\det\begin{pmatrix}u_2&amp;v_2\\u_3&amp;v_3\end{pmatrix}
++\det\begin{pmatrix}u_1&amp;v_1\\u_2&amp;v_2\end{pmatrix}.
+</span></p>
 <p>We might want to verify that <span class="math inline">\mathrm{d}x\wedge\mathrm{d}y=-\mathrm{d}y\wedge\mathrm{d}x</span>:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dx</span> <span class="op">^</span> <span class="va">dy</span> <span class="op">==</span> <span class="op">-</span><span class="va">dy</span> <span class="op">^</span> <span class="va">dx</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
+</div>
 <div class="section level2">
-<h2 id="elementary-forms-and-the-print-method">Elementary forms and the print method<a class="anchor" aria-label="anchor" href="#elementary-forms-and-the-print-method"></a>
+<h2 id="configuring-the-print-method">Configuring the print method<a class="anchor" aria-label="anchor" href="#configuring-the-print-method"></a>
 </h2>
 <p>The print method is configurable and can display kforms in symbolic
 form. For working with <code>dx dy dz</code> we may set option
 <code>kform_symbolic_print</code> to <code>dx</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>kform_symbolic_print <span class="op">=</span> <span class="st">'dx'</span><span class="op">)</span></span></code></pre></div>
 <p>Then the results of calculations are more natural:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dx</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^1 to R with V=R^1:</span></span>
 <span><span class="co">##  + dx</span></span></code></pre>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dx</span><span class="op">^</span><span class="va">dy</span> <span class="op">+</span> <span class="fl">56</span><span class="op">*</span><span class="va">dy</span><span class="op">^</span><span class="va">dz</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^2 to R with V=R^3:</span></span>
 <span><span class="co">##  + dx^dy +56 dy^dz</span></span></code></pre>
 <p>However, this setting can be confusing if we work with <span class="math inline">\mathrm{d}x^i,i&gt;3</span>, for the print method
 runs out of alphabet:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/rform.html">rform</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^3 to R with V=R^7:</span></span>
 <span><span class="co">##  +6 dy^dNA^dNA +5 dy^dNA^dNA -9 dNA^dNA^dNA +4 dx^dz^dNA +7 dx^dNA^dNA -3 dy^dz^dNA -8 dx^dNA^dNA +2 dx^dy^dNA + dx^dNA^dNA</span></span></code></pre>
@@ -244,41 +345,42 @@ symbol.</p>
 <h3 id="the-hodge-dual">The Hodge dual<a class="anchor" aria-label="anchor" href="#the-hodge-dual"></a>
 </h3>
 <p>Function <code><a href="../reference/hodge.html">hodge()</a></code> returns the Hodge dual:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="va">dx</span><span class="op">^</span><span class="va">dy</span> <span class="op">+</span> <span class="fl">13</span><span class="op">*</span><span class="va">dy</span><span class="op">^</span><span class="va">dz</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^1 to R with V=R^3:</span></span>
 <span><span class="co">##  +13 dx + dz</span></span></code></pre>
 <p>Note that calling <code>hodge(dx)</code> can be confusing:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="va">dx</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1</span></span></code></pre>
 <p>This returns a scalar because <code>dx</code> is interpreted as a
 one-form on one-dimensional space, which is a scalar form. One usually
 wants the result in three dimensions:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="va">dx</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^2 to R with V=R^3:</span></span>
 <span><span class="co">##  + dy^dz</span></span></code></pre>
 <p>This is further discussed in the <code>dovs</code> vignette.</p>
 </div>
 <div class="section level3">
-<h3 id="other-ways-to-create-the-elementary-one-forms">Other ways to create the elementary one-forms<a class="anchor" aria-label="anchor" href="#other-ways-to-create-the-elementary-one-forms"></a>
+<h3 id="creating-elementary-one-forms">Creating elementary one-forms<a class="anchor" aria-label="anchor" href="#creating-elementary-one-forms"></a>
 </h3>
-<p>It is possible to create these objects using package idiom:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/kform.html">d</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">==</span> <span class="va">dx</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-</div>
-<div class="section level3">
-<h3 id="basis-vectors">Basis vectors<a class="anchor" aria-label="anchor" href="#basis-vectors"></a>
-</h3>
+<p>Package function <code><a href="../reference/kform.html">d()</a></code> will create elementary one-forms
+but it is easier to interpret the output if we restore the default print
+method</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>kform_symbolic_print <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/kform.html">d</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## An alternating linear map from V^1 to R with V=R^8:</span></span>
+<span><span class="co">##        val</span></span>
+<span><span class="co">##  8  =    1</span></span></code></pre>
 <div class="section level4">
 <h4 id="package-dataset">Package dataset<a class="anchor" aria-label="anchor" href="#package-dataset"></a>
 </h4>
 <p>Following lines create <code>dx.rda</code>, residing in the
 <code>data/</code> directory of the package.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html" class="external-link">save</a></span><span class="op">(</span><span class="va">dx</span>,<span class="va">dy</span>,<span class="va">dz</span>,file<span class="op">=</span><span class="st">"dx.rda"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html" class="external-link">save</a></span><span class="op">(</span><span class="va">dx</span>, <span class="va">dy</span>, <span class="va">dz</span>, file<span class="op">=</span><span class="st">"dx.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 </div>
