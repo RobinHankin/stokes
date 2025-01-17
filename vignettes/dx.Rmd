@@ -21,7 +21,6 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
 ```
 
-
 ```{r label=definedxdydz}
 dx <- d(1)
 dy <- d(2)
@@ -31,7 +30,9 @@ dz <- d(3)
 To cite the `stokes` package in publications, please use
 @hankin2022_stokes.  Convenience objects `dx`, `dy`, and `dz`,
 corresponding to elementary differential forms, are discussed here
-(basis vectors $e_1$, $e_2$, $e_2$ are discussed in `ex.Rmd`).
+(basis vectors $e_1$, $e_2$, $e_2$ are discussed in vignette
+`ex.Rmd`).
+
 @spivak1965, in a memorable passage, states:
 
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
@@ -70,8 +71,101 @@ i_k}\mathrm{d}x^{i_1}\wedge\cdots\wedge\mathrm{d}x^{i_k}$.  If working
 in $\mathbb{R}^3$, we have three elementary forms $\mathrm{d}x$,
 $\mathrm{d}y$, and $\mathrm{d}z$; in the package we have the
 pre-defined objects `dx`, `dy`, and `dz`.  These are convenient for
-reproducing textbook results.  We start with some illustrations of the
-package print method.
+reproducing textbook results.  
+
+We conceptualise `dx` as "picking out" the $x$-component of a 3-vector
+and similarly for `dy` and `dz`.  Recall that
+$\mathrm{d}x\colon\mathbb{R}^3\longrightarrow\mathbb{R}$ and we have
+
+$$
+dx\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix} = u_1\qquad
+dy\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix} = u_2\qquad
+dz\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix} = u_3.
+$$
+
+
+Noting that $1$-forms are a vector space, we have in general
+
+$$(a\cdot\mathrm{d}x + b\cdot\mathrm{d}y +c\cdot\mathrm{d}z)
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix} = au_1+bu_2+cu_3 $$
+
+Numerically:
+
+
+```{r}
+v <- c(2,3,7)
+c(as.function(dx)(v),as.function(dx+dy)(v),as.function(dx+100*dz)(v))
+```
+
+As Spivak says, `dx`, `dy` and `dz` are conjugate to $e_1,e_2,e_3$ and
+these are defined using function `e()`.  In this case it is safer to
+pass `n=3` to function `e()` in order to specify that we are working
+in $\mathbb{R}^3$.
+
+```{r}
+e(1,3)
+e(2,3)
+e(3,3)
+```
+
+We will now verify numerically that `dx`, `dy` and `dz` are indeed
+conjugate to $e_1,e_2,e_3$, but to do this we will define an
+orthonormal set of vectors $u,v,w$:
+
+```{r}
+u <- e(1,3)
+v <- e(2,3)
+w <- e(3,3)
+matrix(c(
+    as.function(dx)(u), as.function(dx)(v), as.function(dx)(w),
+    as.function(dy)(u), as.function(dy)(v), as.function(dy)(w),
+    as.function(dz)(u), as.function(dz)(v), as.function(dz)(w)
+),3,3)
+```
+
+Above we see the conjugacy clearly [obtaining $I_3$ as expected].
+
+
+## Wedge products
+
+The elementary forms may be combined with a wedge product.  We note
+that
+$\mathrm{d}x\wedge\mathrm{d}y\colon\left(\mathbb{R}^3\right)^2\longrightarrow\mathbb{R}$
+and, for example,
+
+$$
+(\mathrm{d}x\wedge\mathrm{d}y)\left(
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}
+\right)
+=
+\det\begin{pmatrix}u_1&v_1\\u_2&v_2\end{pmatrix}
+$$
+
+and
+
+$$
+(\mathrm{d}x\wedge\mathrm{d}y\wedge\mathrm{d}z)
+\left(
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix},
+\begin{pmatrix}w_1\\w_2\\w_3\end{pmatrix}
+\right)
+=
+\det\begin{pmatrix}u_1&v_1&w_1\\u_2&v_2&w_2\\u_3&v_3&w_3\end{pmatrix}
+$$
+
+Numerically:
+
+```{r}
+as.function(dx ^ dy)(cbind(c(2,3,5),c(4,1,2)))
+```
+Above we see the package correctly giving
+$\det\begin{pmatrix}2&4\\3&1\end{pmatrix}=2-12=-10$.
+
+# The print method 
+
+Here I give some illustrations of the package print method.
 
 ```{r label=showdx}
 dx
@@ -79,37 +173,57 @@ dx
 
 This is somewhat opaque and difficult to understand.  It is easier to
 start with a more complicated example: take
-$\mathrm{d}x\wedge\mathrm{d}y -7\mathrm{d}x\wedge\mathrm{d}z
+$X=\mathrm{d}x\wedge\mathrm{d}y -7\mathrm{d}x\wedge\mathrm{d}z
 + 3\mathrm{d}y\wedge\mathrm{d}z$:
 
 ```{r label=morecomplicatedcombination}
-dx^dy -7*dx^dz + 3*dy^dz
+(X <- dx^dy -7*dx^dz + 3*dy^dz)
 ```
 
-We see three rows for the three elementary components.  Taking the row
-with coefficient $-7$ [which would be
+We see that `X` has three rows for the three elementary components.
+Taking the row with coefficient $-7$ [which would be
 $-7\mathrm{d}x\wedge\mathrm{d}z$], this maps
 $\left(\mathbb{R}^3\right)^2$ to $\mathbb{R}$ and we have
 
 $$(-7\mathrm{d}x\wedge\mathrm{d}z)\left(\begin{pmatrix}
 u_1\\u_2\\u_3\end{pmatrix},
 \begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}\right)=
--7\det\begin{pmatrix}u_1&v_1\\u_3&v_3\end{pmatrix}$$
+-7\det\begin{pmatrix}u_1&v_1\\u_3&v_3\end{pmatrix}
+$$
 
-Armed with this familiar fact, we can interpret $dx$ as a map from
-$\left(\mathbb{R}^3\right)^1$ to $\mathbb{R}$ with
 
-$$\mathrm{d}x\left(\begin{pmatrix} u_1\\u_2\\u_3\end{pmatrix}
-\right)=
-\det\begin{pmatrix}u_1\end{pmatrix}=u_1$$
+The other two rows would be 
 
-or, in other words, $\mathrm{d}x$ picks out the first component of its
-vector (as the print method gives, albeit obscurely).  This is easily
-shown in the package:
+$$(3\mathrm{d}y\wedge\mathrm{d}z)\left(
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}
+\right)
+=
+3\det\begin{pmatrix}u_2&v_2\\u_3&v_3\end{pmatrix}$$
 
-```{r coercedxtoafunction}
-as.function(dx)(c(113,3,6))
-```
+and 
+
+$$(1\mathrm{d}x\wedge\mathrm{d}y)\left(
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}
+\right)
+=
+\det\begin{pmatrix}u_1&v_1\\u_2&v_2\end{pmatrix}
+$$
+
+Thus form $X$ would be, by linearity
+
+$$
+X\left(
+\begin{pmatrix}u_1\\u_2\\u_3\end{pmatrix},
+\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}
+\right)
+=
+-7\det\begin{pmatrix}u_1&v_1\\u_3&v_3\end{pmatrix}
++3\det\begin{pmatrix}u_2&v_2\\u_3&v_3\end{pmatrix}
++\det\begin{pmatrix}u_1&v_1\\u_2&v_2\end{pmatrix}.
+$$
+
 
 We might want to verify that
 $\mathrm{d}x\wedge\mathrm{d}y=-\mathrm{d}y\wedge\mathrm{d}x$:
@@ -118,7 +232,7 @@ $\mathrm{d}x\wedge\mathrm{d}y=-\mathrm{d}y\wedge\mathrm{d}x$:
 dx ^ dy == -dy ^ dx
 ```
 
-# Elementary forms and the print method
+# Configuring the print method
 
 The print method is configurable and can display kforms in symbolic
 form.  For working with `dx dy dz` we may set option
@@ -169,16 +283,15 @@ hodge(dx,3)
 
 This is further discussed in the `dovs` vignette.
 
-## Other ways to create the elementary one-forms
+## Creating elementary one-forms
 
-It is possible to create these objects using package idiom:
+Package function `d()` will create elementary one-forms but it is
+easier to interpret the output if we restore the default print method
 
 ```{r}
-d(1) == dx
+options(kform_symbolic_print = NULL)
+d(8)
 ```
-
-## Basis vectors 
-
 
 ### Package dataset
 
@@ -186,7 +299,7 @@ Following lines create `dx.rda`, residing in the `data/` directory of
 the package.
 
 ```{r,label=savedxdydz}
-save(dx,dy,dz,file="dx.rda")
+save(dx, dy, dz, file="dx.rda")
 ```
 
 # References
