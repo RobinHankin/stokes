@@ -78,8 +78,9 @@ $V=\mathbb{R}^5$, specifically
   \end{cases}
 \]
 
-As numerical verification, we will check that $\phi_3(e_2)=0$,
-$\phi_3(e_3)=1$, $\phi_3(e_4)=0$:
+(package idiom is to use `e()` for basis vectors as opposed to
+Spivak's $v$).  As numerical verification, we will check that
+$\phi_3(e_2)=0$, $\phi_3(e_3)=1$, $\phi_3(e_4)=0$:
 
 ```{r}
 f <- as.function(phi(3))
@@ -200,7 +201,7 @@ We may express $b$ as the sum of its three terms, each with a
 coefficient:
 
 ```{r}
-7 * phi(3) %X% phi(5) + 8 * phi(4) %X% phi(4) + 9 * phi(7) %X% phi(3) 
+7*phi(c(3,5)) + 8*phi(c(4,4)) + 9*phi(c(7,3))
 ```
 
 Above, observe that the order of the terms may differ between the two
@@ -208,7 +209,17 @@ methods, as per `disordR` discipline [@hankin2022_disordR], but they
 are algebraically identical:
 
 ```{r}
-b == 7 * phi(3) %X% phi(5) + 8 * phi(4) %X% phi(4) + 9 * phi(7) %X% phi(3) 
+b == 7*phi(c(3,5)) + 8*phi(c(4,4)) + 9*phi(c(7,3))
+```
+
+## Function `Alt()`
+
+Function `Alt()` returns an alternating tensor as documented in the
+`Alt` vignette in the package.  It works nicely with `phi()`:
+
+```{r}
+phi(1:3)
+Alt(6*phi(1:3))
 ```
 
 # References
