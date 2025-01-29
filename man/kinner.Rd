@@ -15,7 +15,7 @@
 
   \deqn{
     \left\langle\alpha,\beta\right\rangle=\det\left(
-    \left\langle\alpha_i,\beta_j\right\rangle_{1\leq i,j\leq n}\right)
+    \left\langle\alpha_i,\beta_j\right\rangle_{1\leqslant i,j\leqslant n}\right)
   }{ omitted}
 
 and secondly, we extend to the whole of \eqn{\Lambda^k(V)}{omitted}

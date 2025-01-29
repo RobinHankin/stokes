@@ -45,14 +45,14 @@ The exterior derivative of a \eqn{k}-form \eqn{\phi}{phi} is a
   to calculate differentials  of general \eqn{k}-forms. Specifically, if
 
   \deqn{
-    \phi=\sum_{1\leq i_i < \cdots < i_k\leq n} a_{i_1\ldots
+    \phi=\sum_{1\leqslant i_i < \cdots < i_k\leqslant n} a_{i_1\ldots
       i_k}\mathrm{d}x_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}
   }{omitted; see latex}
 
   then
   \deqn{
     \mathrm{d}\phi=
-    \sum_{1\leq i_i < \cdots < i_k\leq n}
+    \sum_{1\leqslant i_i < \cdots < i_k\leqslant n}
     [\sum_{j=1}^nD_ja_{i_1\ldots
       i_k}\mathrm{d}x_j]\wedge\mathrm{d}x_{i_1}\wedge
     \cdots\wedge\mathrm{d}x_{i_k.}

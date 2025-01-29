@@ -81,7 +81,7 @@ e(i,n)
   returns a matrix whose rows constitute a basis for the vector space
   \eqn{\Lambda^k(\mathbb{R}^n)}{L^k(R^n)} of \eqn{k}-forms:
   
-  \deqn{\phi=\sum_{1\leq i_1 < \cdots < i_k\leq n} a_{i_1\ldots
+  \deqn{\phi=\sum_{1\leqslant i_1 < \cdots < i_k\leqslant n} a_{i_1\ldots
       i_k}\mathrm{d}x_{i_1}\wedge\cdots\wedge\mathrm{d}x_{i_k}}{omitted; see latex}
 
   and indeed we have:
@@ -89,7 +89,7 @@ e(i,n)
   \deqn{a_{i_1\ldots i_k}=\phi\left(\mathbf{e}_{i_1},\ldots,\mathbf{e}_{i_k}\right)
   }{omitted; see latex}
   
-  where \eqn{\mathbf{e}_j,1\leq j\leq k}{e_j,1<=j<=k} is a basis for
+  where \eqn{\mathbf{e}_j,1\leqslant j\leqslant k}{e_j,1<=j<=k} is a basis for
   \eqn{V}.
   
 }
