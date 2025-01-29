@@ -2,7 +2,7 @@ Package: stokes
 Type: Package
 Title: The Exterior Calculus
 Version: 1.2-3
-Depends: R (>= 4.1.0)
+Depends: R (>= 4.2.0)
 Suggests: 
     knitr,
     Deriv,

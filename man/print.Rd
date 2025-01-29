@@ -65,18 +65,18 @@ are tensors, they are handled differently.
 \author{Robin K. S. Hankin}
 \note{
 
-  For both \code{kform} and \code{ktensor} objects,
-  the print method asserts that its argument is a map from \eqn{V^k}
-  to \eqn{\mathbb{R}}{R} with \eqn{V=\mathbb{R}^n}{V=R^n}.  Here,
-  \eqn{n} is the largest element in the index matrix.  However, such
-  a map naturally furnishes a map from \eqn{(\mathbb{R}^m)^k}{(R^m)^k}
-  to \eqn{\mathbb{R}}{R}, provided that \eqn{m\geq n}{m>=n} via the
+  For both \code{kform} and \code{ktensor} objects, the print method
+  asserts that its argument is a map from \eqn{V^k} to
+  \eqn{\mathbb{R}}{R} with \eqn{V=\mathbb{R}^n}{V=R^n}.  Here, \eqn{n}
+  is the largest element in the index matrix.  However, such a map
+  naturally furnishes a map from \eqn{(\mathbb{R}^m)^k}{(R^m)^k} to
+  \eqn{\mathbb{R}}{R}, provided that \eqn{m\geqslant n}{m>=n} via the
   natural projection from \eqn{\mathbb{R}^n}{R^n} to
   \eqn{\mathbb{R}^m}{R^m}.  Formally this would be
   \eqn{\left(x_1,\ldots,x_n\right)\mapsto\left(x_1,\ldots,x_n,0,\ldots,0\right)\in\mathbb{R}^m}{equation
-  omitted}.  In the case of the zero \eqn{k}-form or
-  \eqn{k}-tensor, \dQuote{\code{n}} is to be interpreted as
-  \dQuote{any \eqn{n\geq 0}{n>=0}}.  See also \code{dovs()}.
+  omitted}.  In the case of the zero \eqn{k}-form or \eqn{k}-tensor,
+  \dQuote{\code{n}} is to be interpreted as \dQuote{any \eqn{n\geqslant
+  0}{n>=0}}.  See also \code{dovs()}.
   
 
 }
