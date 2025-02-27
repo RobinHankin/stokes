@@ -19,12 +19,12 @@ kform_to_ktensor(S)
   \item{S}{Object of class \code{spray}}
 }
 \details{
-  Low-level helper functions.
+  Low-level helper functions, used in \code{Alt()} and \code{kform()}. 
 
   \itemize{
     \item Function \code{consolidate()} takes a spray object, and
     combines any rows that are identical up to a permutation, respecting
-    the sign of the permutation
+    the sign of the permutation.
     \item Function \code{kill_trivial_rows()} takes a spray object and
     deletes any rows with a repeated entry (which have \eqn{k}-forms
     identically zero)
@@ -40,10 +40,10 @@ kform_to_ktensor(S)
 \seealso{\code{\link{ktensor}},\code{\link{kform}},\code{\link{Alt}}}
 \examples{
 
-(S <- spray(matrix(c(1,1,2,2,1,3,3,1,3,5),ncol=2,byrow=TRUE),1:5))
+(S <- spray(matrix(c(1,1,2,2,1,3,3,1,3,5),ncol=2,byrow=TRUE),5:1))
 
-kill_trivial_rows(S)  # (rows 1 and 3 killed, repeated entries)
-consolidate(S)        # (merges rows 2 and 4)
-include_perms(S)      # returns a spray object, not alternating tensor.
+kill_trivial_rows(S)  # (rows "1 1; 5" and  and "2 2; 4" killed - identically zero)
+consolidate(S)        # (merges rows "1 3; 3" and "3 1; 2")
+include_perms(S)      # returns a spray object, not an alternating tensor.
 
 }
