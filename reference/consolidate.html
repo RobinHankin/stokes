@@ -119,10 +119,10 @@
 </dl></div>
     <div id="details">
     <h2>Details</h2>
-    <p>Low-level helper functions.</p>
+    <p>Low-level helper functions, used in <code><a href="Alt.html">Alt()</a></code> and <code><a href="kform.html">kform()</a></code>.</p>
 <p></p><ul><li><p>Function <code>consolidate()</code> takes a spray object, and
     combines any rows that are identical up to a permutation, respecting
-    the sign of the permutation</p></li>
+    the sign of the permutation.</p></li>
 <li><p>Function <code>kill_trivial_rows()</code> takes a spray object and
     deletes any rows with a repeated entry (which have \(k\)-forms
     identically zero)</p></li>
@@ -148,31 +148,31 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">(</span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="coeffs.html">spray</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">2</span>,byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="coeffs.html">spray</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">2</span>,byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>,<span class="fl">5</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          val</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5  =    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 1  =    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5  =    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 1  =    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 3  =    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 2  =    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 1  =    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 2  =    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 1  =    5</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">kill_trivial_rows</span><span class="op">(</span><span class="va">S</span><span class="op">)</span>  <span class="co"># (rows 1 and 3 killed, repeated entries)</span></span></span>
+<span class="r-in"><span><span class="fu">kill_trivial_rows</span><span class="op">(</span><span class="va">S</span><span class="op">)</span>  <span class="co"># (rows "1 1; 5" and  and "2 2; 4" killed - identically zero)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 3  =    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 1  =    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5  =    5</span>
-<span class="r-in"><span><span class="fu">consolidate</span><span class="op">(</span><span class="va">S</span><span class="op">)</span>        <span class="co"># (merges rows 2 and 4)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 1  =    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5  =    1</span>
+<span class="r-in"><span><span class="fu">consolidate</span><span class="op">(</span><span class="va">S</span><span class="op">)</span>        <span class="co"># (merges rows "1 3; 3" and "3 1; 2")</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          val</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 1  =    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 2  =    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 3  =   -1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5  =    5</span>
-<span class="r-in"><span><span class="fu">include_perms</span><span class="op">(</span><span class="va">S</span><span class="op">)</span>      <span class="co"># returns a spray object, not alternating tensor.</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 1  =    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 2  =    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 3  =    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5  =    1</span>
+<span class="r-in"><span><span class="fu">include_perms</span><span class="op">(</span><span class="va">S</span><span class="op">)</span>      <span class="co"># returns a spray object, not an alternating tensor.</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          val</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5 3  =   -5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5  =    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 1  =    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 3  =   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5 3  =   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5  =    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 1  =   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 3  =    1</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -161,7 +161,7 @@ Hankin</h4>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">o</span><span class="op">]</span></span>
 <span>    <span class="op">}</span></span>
 <span>    <span class="va">f2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="fu">permutations</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/permutations/man/sgn.html" class="external-link">sgn</a></span><span class="op">(</span><span class="fu">permutations</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/permutations/man/permutation.html" class="external-link">as.word</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span>        <span class="fu">permutations</span><span class="fu">::</span><span class="fu"><a href="https://robinhankin.github.io/permutations/reference/sgn.html" class="external-link">sgn</a></span><span class="op">(</span><span class="fu">permutations</span><span class="fu">::</span><span class="fu"><a href="https://robinhankin.github.io/permutations/reference/permutation.html" class="external-link">as.word</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
 <span>    <span class="va">f3</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">{</span></span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/prod.html" class="external-link">prod</a></span><span class="op">(</span><span class="va">g</span><span class="op">[</span><span class="va">v</span><span class="op">]</span><span class="op">)</span></span>
@@ -310,10 +310,9 @@ inspection:</p>
 <span><span class="co">##                    val</span></span>
 <span><span class="co">##  1 2 3 4 5 6 7  =  285</span></span></code></pre>
 <p>showing agreement (above, we use function <code><a href="../reference/volume.html">volume()</a></code> in
-lieu of calculating the permutation’s sign explicitly. See the
-<code>volume</code> vignette for more details). We may work more
-formally by defining a function that returns <code>TRUE</code> if the
-left and right hand sides match</p>
+lieu of calculating the permutation’s sign explicitly. See the <a href="volume.html">volume</a> vignette for more details). We may work
+more formally by defining a function that returns <code>TRUE</code> if
+the left and right hand sides match</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">diff</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span><span class="op">{</span><span class="va">a</span><span class="op">^</span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span> <span class="op">==</span>  <span class="fu"><a href="../reference/kinner.html">kinner</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span><span class="op">*</span><span class="fu"><a href="../reference/volume.html">volume</a></span><span class="op">(</span><span class="fu"><a href="../reference/dovs.html">dovs</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span></code></pre></div>
 <p>and call it with random <span class="math inline">k</span>-forms:</p>
@@ -337,7 +336,8 @@ to use <code>dx</code> print method:</p>
 <span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="va">dx</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^2 to R with V=R^3:</span></span>
 <span><span class="co">##  + dy^dz</span></span></code></pre>
-<p>This is further discussed in the <code>dovs</code> vignette.</p>
+<p>This is further discussed in the <a href="dovs.html">dovs</a>
+vignette.</p>
 </div>
 <div class="section level3">
 <h3 id="vector-cross-product-identities">Vector cross product identities<a class="anchor" aria-label="anchor" href="#vector-cross-product-identities"></a>
