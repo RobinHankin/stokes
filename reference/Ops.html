@@ -143,33 +143,34 @@
 
 
 <p>A plain asterisk, “<code>*</code>” behaves differently for ktensors
-  and kforms.  Given two ktensors <code>T1</code>, <code>T2</code>, then
-  “<code>T1*T2</code>” will return the their tensor product.  This on
-  the grounds that the idiom has only one natural interpretation.  But
-  its use is discouraged (use <code>%X%</code> or <code><a href="tensorprod.html">tensorprod()</a></code>
-  instead).  An asterisk can also be used to multiply a tensor by a
-  scalar, as in <code>T1*5</code>.</p>
-<p>An asterisk cannot be used to multiply two kforms <code>K1</code>,
-  <code>K2</code>, as in <code>K1*K2</code>, which will always return an error.
-  This on the grounds that it has no sensible interpretation in general
-  and you probably meant to use a wedge product, <code>K1^K2</code>.  Note
-  that multiplication by scalars is acceptable, as in <code>K1*6</code>.
-  Further note that <code>K1*K2</code> returns an error even if one or both is
-  a 0-form (or scalar), as in <code>K1*scalar(3)</code>.  This behaviour may
-  change in the future.</p>
-<p>In the package the caret (“<code>^</code>”) evaluates the wedge
-  product; note that <code>%^%</code> is also acceptable.  Powers simply do
-  not make sense for alternating forms: <code>S %^% S = S^S</code> is zero
-  identically.  Here the caret is interpreted consistently as a wedge
-  product, and if one of the factors is numeric it is interpreted as a
-  zero-form (that is, a scalar).  Thus <code>S^2 = wedge(S,2) = 2^S =
-  S*2 = S+S</code>, and indeed <code>S^n==S*n</code>.  Caveat emptor!  If <code>S</code>
-  is a <code>kform</code> object, it is very tempting [but incorrect] to
-  interpret “<code>S^3</code>” as something like “<code>S</code> to
-  the power 3”.  See also the note at <code>Ops.clifford</code> in the
+  and kforms.</p>
+<p>Given two <strong>ktensors</strong> <code>T1</code> and <code>T2</code>, then
+  “<code>T1*T2</code>” will return their tensor product,
+  <code>tensorprod(T1,T2)</code>.  This on the grounds that the idiom has only
+  one natural interpretation.  But its use is discouraged (use
+  <code>%X%</code> or <code><a href="tensorprod.html">tensorprod()</a></code> instead).  An asterisk can also be
+  used to multiply a tensor by a scalar, as in <code>T1*5</code>, in which the
+  scalar is interpreted as a \(0\)-tensor.</p>
+<p>Given two <strong>kforms</strong> <code>K1</code> and <code>K2</code>, asterisks behave
+  differently.  An asterisk cannot be used to multiply <code>K1</code> and
+  <code>K2</code>: <code>K1*K2</code> will return an error.  Multiplication by
+  scalars is OK, as in <code>K1*6</code>.</p>
+<p>Powers simply do not make sense for alternating forms: if we wish to
+  calculate \(S^2\) (that is, the square of \(S\)), then the only
+  natural interpretation of this is \(S^S\), but <code>S %^% S =
+  S^S</code> is zero identically.  In the package, therefore, the caret
+  (“<code>^</code>”) evaluates the wedge product; note that
+  <code>%^%</code> is also acceptable.</p>
+<p>Here the caret is interpreted consistently as a wedge product, and if
+  one of the factors is numeric it is interpreted as a zero-form (that
+  is, a scalar).  Thus <code>S^2 = wedge(S,2) = 2^S = S*2 = S+S</code>, and
+  indeed <code>S^n==S*n</code>.  Caveat emptor!  If <code>S</code> is a <code>kform</code>
+  object, it is very tempting [but incorrect] to interpret
+  “<code>S^3</code>” as something like “<code>S</code> to the power
+  3”.  See also the note at <code>Ops.clifford</code> in the
   <a href="https://CRAN.R-project.org/package=clifford" class="external-link"><span class="pkg">clifford</span></a> package.</p>
 <p>Powers are not implemented for ktensors on the grounds that a ktensor
-  to the power zero is not defined.</p>
+  to the power zero is ot defined.</p>
 <p>Note that one has to take care with order of operations if we mix
   <code>^</code> with <code>*</code>.  For example, <code>dx ^ (6*dy)</code> is perfectly
   acceptable; but <code>(dx ^ 6)*dy)</code> will return an error, as will the
