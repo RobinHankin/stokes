@@ -34,36 +34,39 @@
 \note{
 
   A plain asterisk, \dQuote{\code{*}} behaves differently for ktensors
-  and kforms.  Given two ktensors \code{T1}, \code{T2}, then
-  \dQuote{\code{T1*T2}} will return the their tensor product.  This on
-  the grounds that the idiom has only one natural interpretation.  But
-  its use is discouraged (use \code{\%X\%} or \code{tensorprod()}
-  instead).  An asterisk can also be used to multiply a tensor by a
-  scalar, as in \code{T1*5}.
+  and kforms.
 
-  An asterisk cannot be used to multiply two kforms \code{K1},
-  \code{K2}, as in \code{K1*K2}, which will always return an error.
-  This on the grounds that it has no sensible interpretation in general
-  and you probably meant to use a wedge product, \code{K1^K2}.  Note
-  that multiplication by scalars is acceptable, as in \code{K1*6}.
-  Further note that \code{K1*K2} returns an error even if one or both is
-  a 0-form (or scalar), as in \code{K1*scalar(3)}.  This behaviour may
-  change in the future.
+  Given two \strong{ktensors} \code{T1} and \code{T2}, then
+  \dQuote{\code{T1*T2}} will return their tensor product,
+  \code{tensorprod(T1,T2)}.  This on the grounds that the idiom has only
+  one natural interpretation.  But its use is discouraged (use
+  \code{\%X\%} or \code{tensorprod()} instead).  An asterisk can also be
+  used to multiply a tensor by a scalar, as in \code{T1*5}, in which the
+  scalar is interpreted as a \eqn{0}-tensor.
 
-  In the package the caret (\dQuote{\code{^}}) evaluates the wedge
-  product; note that \code{\%^\%} is also acceptable.  Powers simply do
-  not make sense for alternating forms: \code{S \%^\% S = S^S} is zero
-  identically.  Here the caret is interpreted consistently as a wedge
-  product, and if one of the factors is numeric it is interpreted as a
-  zero-form (that is, a scalar).  Thus \code{S^2 = wedge(S,2) = 2^S =
-  S*2 = S+S}, and indeed \code{S^n==S*n}.  Caveat emptor!  If \code{S}
-  is a \code{kform} object, it is very tempting [but incorrect] to
-  interpret \dQuote{\code{S^3}} as something like \dQuote{\code{S} to
-  the power 3}.  See also the note at \code{Ops.clifford} in the
+  Given two \strong{kforms} \code{K1} and \code{K2}, asterisks behave
+  differently.  An asterisk cannot be used to multiply \code{K1} and
+  \code{K2}: \code{K1*K2} will return an error.  Multiplication by
+  scalars is OK, as in \code{K1*6}.
+
+  Powers simply do not make sense for alternating forms: if we wish to
+  calculate \eqn{S^2} (that is, the square of \eqn{S}), then the only
+  natural interpretation of this is \eqn{S^S}, but \code{S \%^\% S =
+  S^S} is zero identically.  In the package, therefore, the caret
+  (\dQuote{\code{^}}) evaluates the wedge product; note that
+  \code{\%^\%} is also acceptable.
+
+  Here the caret is interpreted consistently as a wedge product, and if
+  one of the factors is numeric it is interpreted as a zero-form (that
+  is, a scalar).  Thus \code{S^2 = wedge(S,2) = 2^S = S*2 = S+S}, and
+  indeed \code{S^n==S*n}.  Caveat emptor!  If \code{S} is a \code{kform}
+  object, it is very tempting [but incorrect] to interpret
+  \dQuote{\code{S^3}} as something like \dQuote{\code{S} to the power
+  3}.  See also the note at \code{Ops.clifford} in the
   \CRANpkg{clifford} package.
 
   Powers are not implemented for ktensors on the grounds that a ktensor
-  to the power zero is not defined.
+  to the power zero is ot defined.
 
   Note that one has to take care with order of operations if we mix
   \code{^} with \code{*}.  For example, \code{dx ^ (6*dy)} is perfectly
