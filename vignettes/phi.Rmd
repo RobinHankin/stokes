@@ -33,7 +33,8 @@ phi
 To cite the `stokes` package in publications, please use
 @hankin2022_stokes.  Function `phi()` returns a tensor dual to the
 standard basis of $V=\mathbb{R}^n$.  Here I discuss `phi()` but there
-is some overlap between this vignette and the `tensorprod` vignette.
+is some overlap between this vignette and the
+[tensorprod](tensorprod.html) vignette.
 
 In a memorable passage, @spivak1965 states (theorem 4.1):
 
@@ -215,7 +216,7 @@ b == 7*phi(c(3,5)) + 8*phi(c(4,4)) + 9*phi(c(7,3))
 ## Function `Alt()`
 
 Function `Alt()` returns an alternating tensor as documented in the
-`Alt` vignette in the package.  It works nicely with `phi()`:
+[Alt](Alt.hmtl) vignette in the package.  It works nicely with `phi()`:
 
 ```{r}
 phi(1:3)

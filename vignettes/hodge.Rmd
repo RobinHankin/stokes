@@ -144,9 +144,10 @@ kinner(o,o)*volume(dovs(o))
 ```
 
 showing agreement (above, we use function `volume()` in lieu of
-calculating the permutation's sign explicitly.  See the `volume`
-vignette for more details).  We may work more formally by defining a
-function that returns `TRUE` if the left and right hand sides match
+calculating the permutation's sign explicitly.  See the
+[volume](volume.html) vignette for more details).  We may work more
+formally by defining a function that returns `TRUE` if the left and
+right hand sides match
 
 ```{r defdif}
 diff <- function(a,b){a^hodge(b) ==  kinner(a,b)*volume(dovs(a))}
@@ -175,7 +176,7 @@ options(kform_symbolic_print = "dx")
 hodge(dx,3)
 ```
 
-This is further discussed in the `dovs` vignette.
+This is further discussed in the [dovs](dovs.html) vignette.
 
 ## Vector cross product identities
 

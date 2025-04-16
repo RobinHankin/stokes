@@ -31,7 +31,7 @@ To cite the `stokes` package in publications, please use
 @hankin2022_stokes.  Convenience objects `dx`, `dy`, and `dz`,
 corresponding to elementary differential forms, are discussed here
 (basis vectors $e_1$, $e_2$, $e_2$ are discussed in vignette
-`ex.Rmd`).
+[ex](ex.html)).
 
 @spivak1965, in a memorable passage, states:
 
@@ -281,7 +281,7 @@ result in three dimensions:
 hodge(dx,3)
 ```
 
-This is further discussed in the `dovs` vignette.
+This is further discussed in the [dovs](dovs.html) vignette.
 
 ## Creating elementary one-forms
 

@@ -165,7 +165,7 @@ is just difficult to see at first glance.
 # Algebraic properties
 
 First of all we should note that $\Lambda^k(V)$ is a vector space
-(this is considered in the `kform` vignette).  If
+(this is considered in the [kform](kform.html) vignette).  If
 $\omega,\omega_i\in\Lambda^k(V)$ and $\eta,\eta_i\in\Lambda^l(V)$ then
 
 \begin{eqnarray}

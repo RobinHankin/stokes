@@ -57,7 +57,7 @@ $$\delta_{ij}=T{\left(w_i,w_j\right)}=
 
 \noindent In other words, if $A^T$ denotes the transpose of the matrix
 $A$, then we have $A\cdot A^T=I$, so $\operatorname{det}A=\pm 1$.  It
-follows from Theorem 4-6 [see vignette `det.Rmd`] that if
+follows from Theorem 4-6 that if
 $\omega\in\Lambda^n(V)$ satisfies
 $\omega{\left(v_1,\ldots,v_n\right)}=\pm 1$, then
 $\omega{\left(w_1,\ldots,w_n\right)}=\pm 1$.  If an orientation $\mu$
