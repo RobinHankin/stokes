@@ -31,7 +31,7 @@ ez <- e(3,3)
 To cite the `stokes` package in publications, please use
 @hankin2022_stokes.  Convenience objects `ex`, `ey`, and `ez` are
 discussed here (related package functionality is discussed in
-`dx.Rmd`).  The dual basis to $(\mathrm{d}x,\mathrm{d}y,\mathrm{d}z)$
+[dx](dx.html)).  The dual basis to $(\mathrm{d}x,\mathrm{d}y,\mathrm{d}z)$
 is, depending on context, written $(e_x,e_y,e_z)$, or $(i,j,k)$ or
 sometimes $\left(\frac{\partial}{\partial x},\frac{\partial}{\partial
 x},\frac{\partial}{\partial x}\right)$.  Here they are denoted `ex`,
