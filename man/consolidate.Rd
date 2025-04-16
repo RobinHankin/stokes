@@ -46,4 +46,7 @@ kill_trivial_rows(S)  # (rows "1 1; 5" and  and "2 2; 4" killed - identically ze
 consolidate(S)        # (merges rows "1 3; 3" and "3 1; 2")
 include_perms(S)      # returns a spray object, not an alternating tensor.
 
+include_perms(spray(t(matrix(1:4))))
+
+
 }
