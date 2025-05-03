@@ -27,7 +27,7 @@ registerS3method(
 )
 ```
 
-```{r, label=showfunc1,comment=""}
+```{r, label=showvectorcrossproduct, comment=""}
 vector_cross_product
 ```
 

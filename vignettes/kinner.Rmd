@@ -22,7 +22,7 @@ set.seed(1)
 \hfill![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
 
 
-```{r}
+```{r, label=showkinner}
 kinner
 ```
 

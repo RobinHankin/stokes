@@ -27,7 +27,7 @@ registerS3method(
 knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
 ```
 
-```{r, label=showAlt,comment=""}
+```{r, label=showtensorprod, comment=""}
 tensorprod
 tensorprod2
 ```
