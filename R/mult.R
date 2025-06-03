@@ -211,12 +211,12 @@
   kform(spray(ind,coeffs,addrepeats=TRUE))
 }
 
-`rformm` <- function(terms=30, k=7, n=20, ...){
-    rform(terms=terms, k=k, n=n, ...)
+`rformm` <- function(terms=30, k=7, n=20, coeffs, ensure=TRUE){
+    rform(terms=terms, k=k, n=n, coeffs=coeffs, ensure=ensure)
 }
 
-`rformmm` <- function(terms=90, k=15, n=30, ...){
-    rform(terms=terms, k=k, n=n, ...)
+`rformmm` <- function(terms=90, k=15, n=30, coeffs, ensure=TRUE){
+    rform(terms=terms, k=k, n=n, coeffs=coeffs, ensure=ensure)
 }
 
 `rtensor` <- function(terms=9, k=3, n=7, coeffs){

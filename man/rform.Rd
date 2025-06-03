@@ -10,14 +10,14 @@
   Random \eqn{k}-form objects and \eqn{k}-tensors,
   intended as quick \dQuote{get you going} examples}
 \usage{
-rform(terms=9,k=3,n=7,coeffs,ensure=TRUE)
-rformm(terms=30, k=7, n=20, coeffs, ensure)
-rformmm(terms=90, k=15, n=30, coeffs, ensure)
+rform(terms=9, k=3, n=7, coeffs, ensure=TRUE)
+rformm(terms=30, k=7, n=20, coeffs, ensure=TRUE)
+rformmm(terms=90, k=15, n=30, coeffs, ensure=TRUE)
 rtensor(terms=9,k=3,n=7,coeffs)
 }
 \arguments{
   \item{terms}{Number of distinct terms}
-  \item{k,n}{A \eqn{k}-form maps \eqn{V^k} to
+  \item{k, n}{A \eqn{k}-form maps \eqn{V^k} to
     \eqn{\mathbb{R}}{R}, where \eqn{V=\mathbb{R}^n}{V=R^n}}
   \item{coeffs}{The coefficients of the form; if missing use
     \code{seq_len(terms)}}
