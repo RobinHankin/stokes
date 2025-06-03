@@ -1,5 +1,7 @@
 \name{rform}
 \alias{rform}
+\alias{rformm}
+\alias{rformmm}
 \alias{rkform}
 \alias{rtensor}
 \alias{rktensor}
@@ -9,6 +11,8 @@
   intended as quick \dQuote{get you going} examples}
 \usage{
 rform(terms=9,k=3,n=7,coeffs,ensure=TRUE)
+rformm(terms=30, k=7, n=20, coeffs, ensure)
+rformmm(terms=90, k=15, n=30, coeffs, ensure)
 rtensor(terms=9,k=3,n=7,coeffs)
 }
 \arguments{
@@ -23,7 +27,11 @@ rtensor(terms=9,k=3,n=7,coeffs)
     less than \code{n} because of random sampling}
 }
 \details{
-  Random \eqn{k}-form objects and \eqn{k}-tensors, of moderate complexity.
+  Random \eqn{k}-form objects and \eqn{k}-tensors.
+
+  By default, function \code{rform()} returns a simple \eqn{k}-form;
+  \code{rformm()} and \code{rformmm()} return successively more
+  complicated objects.
 
   Note that argument \code{terms} is an upper bound, as the index matrix
   might contain repeats which are combined.

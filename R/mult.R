@@ -211,7 +211,15 @@
   kform(spray(ind,coeffs,addrepeats=TRUE))
 }
 
-`rtensor` <- function(terms=9,k=3, n=7, coeffs){
+`rformm` <- function(terms=30, k=7, n=20, ...){
+    rform(terms=terms, k=k, n=n, ...)
+}
+
+`rformmm` <- function(terms=90, k=15, n=30, ...){
+    rform(terms=terms, k=k, n=n, ...)
+}
+
+`rtensor` <- function(terms=9, k=3, n=7, coeffs){
     if(missing(coeffs)){coeffs <- seq_len(terms)}
     M <- matrix(sample(seq_len(n),terms*k,replace=TRUE),terms,k)
     ktensor(spray(M,seq_len(terms),addrepeats=TRUE))
