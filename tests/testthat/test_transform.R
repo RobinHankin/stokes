@@ -25,7 +25,7 @@ test_that("Function pullback() behaves itself", {
     } # foo() closes
 
     for(i in 1:3){
-        o <-  rform(terms=3,k=2,n=5,coeffs=rnorm(3))
+        o <-  rform(terms=3, k=2, n=5, integer=FALSE)
         randmat <- expression(matrix(rnorm(25),5,5))
         isbigdet <- function(x,min_det = 0.01){abs(det(x)) > min_det}
         M <- getgood(randmat, isbigdet, default=diag(5), min_det=0.1)

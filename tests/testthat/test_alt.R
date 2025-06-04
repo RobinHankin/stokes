@@ -27,7 +27,7 @@ test_that("Function Alt() behaves itself", {
         terms <- sample(2:4,1)
         k <- sample(3:4,1)
         n <- sample(2:4,1)
-        S <- rtensor(terms,k,n,rnorm(terms))
+        S <- rtensor(terms,k,n,integer=FALSE)
         foo(S)
         V <- matrix(rnorm(k*n),ncol=k)
         bar(S,V)

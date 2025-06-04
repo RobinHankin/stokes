@@ -39,9 +39,9 @@ test_that("Tensor product is distributive and associative", {
       terms <- rpois(1,20)
       k <- sample(3:10,1)
       n <- k+sample(3:10,1)
-      T1 <- rtensor(terms,k,n,rnorm(terms))
-      T2 <- rtensor(terms+1,k,n,rnorm(terms+1))
-      T3 <- rtensor(terms+2,k,n,rnorm(terms+2))
+      T1 <- rtensor(terms,k,n,integer=FALSE)
+      T2 <- rtensor(terms+1,k,n,integer=FALSE)
+      T3 <- rtensor(terms+2,k,n,integer=FALSE)
       foo3(T1,T2,T3)
     }
 })
@@ -65,8 +65,8 @@ test_that("tensorprod() is in fact a tensor product", {
       terms <- rpois(1,20)
       k <- sample(3:10,1)
       n <- k+sample(3:10,1)
-      T1 <- rtensor(terms,k,n,rnorm(terms))
-      T2 <- rtensor(terms+1,k,n,rnorm(terms+1))
+      T1 <- rtensor(terms,k,n,integer=FALSE)
+      T2 <- rtensor(terms+1,k,n,integer=FALSE)
       foo2(T1,T2)
     }
 })
@@ -100,7 +100,7 @@ test_that("ktensors are multilinear", {
        terms <- rpois(1,20)
        k <- sample(3:10,1)
        n <- k+sample(3:10,1)
-       TT <- rtensor(terms,k,n,rnorm(terms))
+       TT <- rtensor(terms,k,n,integer=FALSE)
        foo1(TT)
      }
 

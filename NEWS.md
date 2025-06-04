@@ -1,5 +1,6 @@
 # stokes 1.2-3
 
+- consistentification of rform() and rtensor()
 - new vignette on phi()
 
 

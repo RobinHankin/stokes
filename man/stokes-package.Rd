@@ -54,7 +54,7 @@ U1 \%X\% U2
 ## A k-form is an alternating k-tensor:
 K1 <- as.kform(cbind(1:5,2:6),rnorm(5))
 K2 <- kform_general(3:6,2,1:6)
-K3 <- rform(9,3,9,runif(9))
+K3 <- rform(9,3,9)
 
 ## The distributive law is true
 

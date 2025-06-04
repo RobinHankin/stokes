@@ -204,25 +204,33 @@
     })
 }
 
-`rform` <- function(terms=9, k=3, n=7, coeffs, ensure=TRUE){
-  if(missing(coeffs)){coeffs <- seq_len(terms)}
+`rform` <- function(terms=9, k=3, n=7, ensure=TRUE, integer=TRUE){
   ind <- t(replicate(terms,sample(seq_len(n),k)))
   if(ensure & all(ind)<n){ind[sample(which(ind==max(ind)),1)] <- n}
-  kform(spray(ind,coeffs,addrepeats=TRUE))
+  if(integer){
+      coeffs <- seq_len(terms)
+  } else {
+      coeffs <- runif(terms)
+  }
+  kform(spray(ind, coeffs, addrepeats=TRUE))
 }
 
-`rformm` <- function(terms=30, k=7, n=20, coeffs, ensure=TRUE){
-    rform(terms=terms, k=k, n=n, coeffs=coeffs, ensure=ensure)
+`rformm` <- function(terms=30, k=7, n=20, ensure=TRUE, integer=TRUE){
+    rform(terms=terms, k=k, n=n, ensure=ensure)
 }
 
-`rformmm` <- function(terms=90, k=15, n=30, coeffs, ensure=TRUE){
-    rform(terms=terms, k=k, n=n, coeffs=coeffs, ensure=ensure)
+`rformmm` <- function(terms=90, k=15, n=30, ensure=TRUE, integer=TRUE){
+    rform(terms=terms, k=k, n=n, ensure=ensure)
 }
 
-`rtensor` <- function(terms=9, k=3, n=7, coeffs){
-    if(missing(coeffs)){coeffs <- seq_len(terms)}
-    M <- matrix(sample(seq_len(n),terms*k,replace=TRUE),terms,k)
-    ktensor(spray(M,seq_len(terms),addrepeats=TRUE))
+`rtensor` <- function(terms=9, k=3, n=7, integer=TRUE){
+    M <- matrix(sample(seq_len(n), terms*k, replace=TRUE), terms, k)
+    if(integer){
+        coeffs <- seq_len(terms)
+    } else {
+        coeffs <- runif(terms)
+    }
+    ktensor(spray(M, coeffs, addrepeats=TRUE))
 }
     
 `as.1form` <- function(v){

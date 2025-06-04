@@ -18,7 +18,7 @@ test_that("Cross product Ops behave", {
     terms <- rpois(1,20)
     k <- sample(3:10,1)
     n <- k+sample(3:10,1)
-    S <- rform(terms,k,n,sample(terms))
+    S <- rform(terms,k,n)
     foo1(S)
   }
   
@@ -26,8 +26,8 @@ test_that("Cross product Ops behave", {
     terms <- rpois(1,20)
     k <- sample(3:10,1)
     n <- k+sample(3:10,1)
-    S1 <- rform(terms,k,n,sample(terms))
-    S2 <- rform(terms,k,n,sample(terms))
+    S1 <- rform(terms,k,n)
+    S2 <- rform(terms,k,n)
     foo2(S1,S2)
   }
   
@@ -39,7 +39,7 @@ test_that("Wedge product Ops behave", {
     terms <- rpois(1,20)
     k <- sample(3:10,1)
     n <- k+sample(3:10,1)
-    K <- rform(terms,k,n,sample(terms))
+    K <- rform(terms,k,n)
     foo1(K)
   }
   
@@ -47,8 +47,8 @@ test_that("Wedge product Ops behave", {
     terms <- rpois(1,20)
     k <- sample(3:10,1)
     n <- k+sample(3:10,1)
-    K1 <- rform(terms,k,n,sample(terms))
-    K2 <- rform(terms,k,n,sample(terms))
+    K1 <- rform(terms,k,n)
+    K2 <- rform(terms,k,n)
     foo2(K1,K2)
   }
 })

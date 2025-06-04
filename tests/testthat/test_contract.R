@@ -18,7 +18,7 @@ test_that("Function contract() behaves itself", {
 
 
     for(i in 1:2){
-        o <- rform(2,k=5,n=9,coeffs=runif(2))
+        o <- rform(2, k=5, n=9, integer=FALSE)
         V <- matrix(rnorm(45),ncol=5)
         foo(o,V)
     }
