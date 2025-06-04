@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.1.2
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   Alt: Alt.html
@@ -16,7 +16,7 @@ articles:
   vector_cross_product: vector_cross_product.html
   volume: volume.html
   wedge: wedge.html
-last_built: 2025-05-03T16:57Z
+last_built: 2025-06-04T10:09Z
 urls:
   reference: https://robinhankin.github.io/stokes/reference
   article: https://robinhankin.github.io/stokes/articles
