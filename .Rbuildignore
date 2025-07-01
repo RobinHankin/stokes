@@ -19,3 +19,4 @@
 ^.circleci/config.yml$
 ^CODE_OF_CONDUCT.md$
 ^CONTRIBUTING.md$
+^news.html$
