@@ -196,20 +196,18 @@ are tensors, they are handled differently.</p>
 <span class="r-in"><span><span class="va">a</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^3 to R with V=R^7:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            val</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 7  =   -7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 4 6  =   -6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 6  =    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 6 7  =    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 3  =   -3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 4  =   -2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 5 6  =    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5  =    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 4 5  =   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 3 4  =    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 7  =   -2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5  =    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 6 7  =    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5 6  =   -8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 4 7  =    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 7  =   -1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>kform_symbolic_print <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">a</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^3 to R with V=R^7:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -7 dx3^dx4^dx7 -6 dx1^dx4^dx6 +4 dx1^dx2^dx6 +9 dx2^dx6^dx7 -3 dx1^dx2^dx3 -2 dx2^dx3^dx4 +5 dx1^dx5^dx6 +8 dx2^dx3^dx5 - dx2^dx4^dx5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +5 dx1^dx3^dx4 -2 dx2^dx3^dx7 +2 dx2^dx3^dx5 +3 dx2^dx6^dx7 -8 dx3^dx5^dx6 +6 dx1^dx4^dx7 - dx3^dx4^dx7 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>kform_symbolic_print <span class="op">=</span> <span class="st">"dx"</span><span class="op">)</span></span></span>
@@ -233,15 +231,13 @@ are tensors, they are handled differently.</p>
 <span class="r-in"><span><span class="va">a</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^3 to R with V=R^7:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            val</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 7  =   -7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 4 6  =   -6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 6  =    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 6 7  =    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 3  =   -3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 4  =   -2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 5 6  =    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5  =    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 4 5  =   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 3 4  =    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 7  =   -2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 3 5  =    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2 6 7  =    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 5 6  =   -8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 4 7  =    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 7  =   -1</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

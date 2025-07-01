@@ -103,13 +103,13 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tensorprod</span><span class="op">(</span><span class="va">U</span>, <span class="va">...</span><span class="op">)</span></span>
-<span><span class="fu">tensorprod2</span><span class="op">(</span><span class="va">U1</span>,<span class="va">U2</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">tensorprod2</span><span class="op">(</span><span class="va">U1</span>, <span class="va">U2</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <p></p>
-<dl><dt id="arg-u-u-u-">U,U1,U2<a class="anchor" aria-label="anchor" href="#arg-u-u-u-"></a></dt>
+<dl><dt id="arg-u-u-u-">U, U1, U2<a class="anchor" aria-label="anchor" href="#arg-u-u-u-"></a></dt>
 <dd><p>Object of class <code>ktensor</code></p></dd>
 
   <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -133,7 +133,7 @@ well-defined because the tensor product is associative); it uses
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>The functions documented here all return a <code>spray</code> object.</p>
+    <p>The functions documented here all return a <code>ktensor</code> object.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -143,6 +143,7 @@ well-defined because the tensor product is associative); it uses
     <h2>Note</h2>
     <p>The binary form <code>%X%</code> uses uppercase X to avoid clashing with
 <code>%x%</code> which is the Kronecker product in base <span style="R">R</span>.</p>
+<p>Taking a tensor product of a \(k\)-form will return an error.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -201,8 +202,8 @@ well-defined because the tensor product is associative); it uses
 <span class="r-in"><span><span class="va">RHS</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">(</span><span class="va">Va</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">B</span><span class="op">)</span><span class="op">(</span><span class="va">Vb</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       LHS       RHS      diff </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.582478 -0.582478  0.000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           LHS           RHS          diff </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3.868659e-02 -3.868659e-02 -2.081668e-17 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
