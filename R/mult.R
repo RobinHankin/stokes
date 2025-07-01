@@ -122,6 +122,7 @@
 }
 
 `tensorprod2` <- function(U1,U2){  # returns U1\otimes U2
+    stopifnot(is.ktensor(U1) & is.ktensor(U2))
     if(is.empty(U1) | is.empty(U2)){
       return(as.ktensor(cbind(index(U1)[0,],index(U2)[0,])))
     }

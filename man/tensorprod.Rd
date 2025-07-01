@@ -7,10 +7,10 @@
  Tensor products of \eqn{k}-tensors}
 \usage{
 tensorprod(U, ...)
-tensorprod2(U1,U2)
+tensorprod2(U1, U2)
 }
 \arguments{
-  \item{U,U1,U2}{Object of class \code{ktensor}}
+  \item{U, U1, U2}{Object of class \code{ktensor}}
   \item{...}{Further arguments, currently ignored}
 }
 \details{
@@ -30,11 +30,14 @@ well-defined because the tensor product is associative); it uses
 \code{tensorprod2()} as a low-level helper function.
 
 }
-\value{The functions documented here all return a \code{spray} object.}
+\value{The functions documented here all return a \code{ktensor} object.}
 \references{Spivak 1961}
 \note{
 The binary form \code{\%X\%} uses uppercase X to avoid clashing with
 \code{\%x\%} which is the Kronecker product in base \R.
+
+Taking a tensor product of a \eqn{k}-form will return an error.
+
 }
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{ktensor}}
