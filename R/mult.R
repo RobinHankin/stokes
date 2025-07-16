@@ -1,8 +1,7 @@
 `ktensor` <- function(S){
   stopifnot(is.spray(S))
   stopifnot(all(index(S)>0))
-  class(S) <- c("ktensor","spray")  # This is the only place class ktensor is set
-  return(S)
+  return(structure(S, class = c("ktensor","spray")))
 }
 
 `as.ktensor` <- function(M,coeffs){
@@ -163,8 +162,7 @@
     stopifnot(is.spray(S))
     stopifnot(all(index(S)>0))
     S <- consolidate(kill_trivial_rows(S))
-    class(S) <- c("kform", "spray")   # This is the only class setter for kform objects
-    return(S)
+    return(structure(S, class = c("kform", "spray")))
 }
 
 `as.kform` <- function(M,coeffs,lose=TRUE){
@@ -519,16 +517,14 @@ setGeneric("lose",function(x){standardGeneric("lose")})
   class(object) <- "spray"
   out <- spray::summary(object)
   out[[3]] <- nterms(object)
-  class(out) <- "summary.kform"
-  return(out)
+  return(structure(out, class = "summary.kform"))
 }
 
 `summary.ktensor` <- function(object, ...){
   class(object) <- "spray"
   out <- spray::summary(object)
   out[[3]] <- nterms(object)
-  class(out) <- "summary.ktensor"
-  return(out)
+  return(structure(out, class = "summary.ktensor"))
 }
 
 `print.summary.kform` <- function(x,...){
