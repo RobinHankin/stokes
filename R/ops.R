@@ -1,3 +1,4 @@
+#' @export
 "Ops.kform" <-
     function (e1, e2 = NULL) 
 {
@@ -60,6 +61,7 @@
     }
 }
     
+#' @export
 "Ops.ktensor" <- function (e1, e2 = NULL){
     unary <- nargs() == 1
     lclass <- nchar(.Method[1]) > 0

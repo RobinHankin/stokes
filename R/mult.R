@@ -1,9 +1,38 @@
+#' @importFrom spray coeffs<-
+#' @importFrom spray is.spray
+#' @importFrom spray arity
+#' @importFrom spray is.zero
+#' @importFrom spray spraycross
+#' @importFrom spray zero
+#' @importFrom spray index
+
+#' @importFrom partitions blockparts
+
+#' @importFrom permutations allperms
+#' @importFrom permutations sgn
+#' @importFrom permutations word
+#' @importFrom permutations as.word
+#' @importFrom permutations is.id
+
+#' @importFrom methods new
+
+#' @importFrom disordR elements
+#' @importFrom disordR is.disord
+#' @importFrom disordR hash
+#' @importFrom disordR consistent
+#' @importFrom disordR drop
+
+#' @importFrom stats runif
+
+
+#' @export
 `ktensor` <- function(S){
   stopifnot(is.spray(S))
   stopifnot(all(index(S)>0))
   return(structure(S, class = c("ktensor","spray")))
 }
 
+#' @export
 `as.ktensor` <- function(M,coeffs){
     if(is.kform(M)){
         return(kform_to_ktensor(M))
@@ -14,22 +43,39 @@
     }
 }
 
+#' @export
 `is.ktensor` <- function(x){inherits(x,"ktensor")}
+
+#' @export
 `is.kform` <- function(x){inherits(x,"kform")}
 
+#' @export
 `spray` <- function(M,x,addrepeats=FALSE){spray::spray(M,x,addrepeats=addrepeats)}
+
+#' @export
 `as.spray` <- function(arg1, arg2, addrepeats=FALSE, offbyone=FALSE){
     spray::as.spray(arg1, arg2, addrepeats=FALSE, offbyone=FALSE)
 }
+
+#' @export
 `is.zero` <- function(x){spray::is.zero(x)}
+
+#' @export
 `is.empty` <- function(x){spray::is.empty(x)}
+
+#' @export
 `nterms` <- function(x){spray::nterms(x)}
+
+#' @export
 `coeffs` <- function(x){spray::coeffs(x)}
 
+#' @export
 `coeffs<-` <- function(S,value){UseMethod("coeffs<-")}
-`coeffs<-.spray` <- function(S,value){spray::`coeffs<-`(S,value)}
-#`zero` <- function(n){spray::spray(matrix(0,0,n),numeric(0))}
 
+#' @export
+`coeffs<-.spray` <- function(S,value){spray::`coeffs<-`(S,value)}
+
+#' @export
 `as.function.ktensor` <- function(x, ...){
     stopifnot(is.ktensor(x))
     if(is.zero(x)){return(function(E){0})}
@@ -42,6 +88,7 @@
     }
 }
 
+#' @export
 `kill_trivial_rows` <- function(S){
     
     I <- index(S)
@@ -54,6 +101,7 @@
     return(out)
 }
 
+#' @export
 `consolidate` <- function(S){  # S is a spray object corresponding to an alternating form
     I <- index(S)
     if(length(I)==0){return(S)}
@@ -78,6 +126,7 @@
     return(out)     
 }
 
+#' @export
 `include_perms` <- function(S){ # S is a spray object
     S <- kill_trivial_rows(S) # not strictly necessary (trivial rows get killed below); here for efficiency
     k <- ncol(index(S))
@@ -93,7 +142,8 @@
 
     return(spray(outmat,outvec,addrepeats=TRUE))  # should be  alternating
 }
-    
+
+#' @export
 `Alt` <- function(S,give_kform=FALSE){ # Returns Alt(S), an alternating multilinear
                       # function (mathematically equivalent to a form,
                       # but including redundancy)
@@ -112,6 +162,7 @@
     ktensor(include_perms(consolidate(out))/factorial(ncol(index(out))))
 }
 
+#' @export
 `tensorprod` <- function(U, ...) {
    if(nargs()<3){
      tensorprod2(U, ...)
@@ -120,6 +171,7 @@
    }
 }
 
+#' @export
 `tensorprod2` <- function(U1,U2){  # returns U1\otimes U2
     stopifnot(is.ktensor(U1) & is.ktensor(U2))
     if(is.empty(U1) | is.empty(U2)){
@@ -128,8 +180,10 @@
     return(ktensor(spraycross(U1,U2)))
 }
 
+#' @export
 `%X%` <- function(x,y){tensorprod2(x,y)}
 
+#' @export
 `wedge` <- function(x, ...) {
    if(nargs()<3){
      wedge2(x,...)
@@ -138,6 +192,7 @@
    }
 }
 
+#' @export
 `wedge2` <- function(K1,K2){
   if(missing(K2)){return(K1)}
   if(is.ktensor(K1) | is.ktensor(K2)){stop("wedge product only defined for kforms")}
@@ -150,14 +205,17 @@
   kform(spraycross(K1,K2)) # the meat
 }
 
+#' @export
 `%^%` <- function(x,y){wedge(x,y)}
 
+#' @export
 `kform_basis` <- function(n,k){  # just a matrix (a low-level helper function)
     if(k==1){return(as.matrix(seq_len(n)))}
     f <- function(x){which(x>0)}
     t(apply(blockparts(rep(1,n),k),2,f))
 }
 
+#' @export
 `kform` <- function(S){
     stopifnot(is.spray(S))
     stopifnot(all(index(S)>0))
@@ -165,6 +223,7 @@
     return(structure(S, class = c("kform", "spray")))
 }
 
+#' @export
 `as.kform` <- function(M,coeffs,lose=TRUE){
     if(is.spray(M)){return(kform(M))}
     if(length(c(M))==0){M <- matrix(1,1,0)} # kludge
@@ -173,16 +232,20 @@
     return(out)
 }
 
+#' @export
 `d` <- function(i){as.kform(i)}
 
+#' @export
 `e` <- function(i,n=i){
     out <- numeric(n)
     out[i] <- 1
     return(out)
 }
 
+#' @export
 `phi` <- function(n){ktensor(spray(n,1))}
 
+#' @export
 `kform_general`  <- function(W,k,coeffs,lose=TRUE){
     if(length(W)==1){W <- seq_len(W)}
     M <-  kform_basis(length(W),k)
@@ -190,6 +253,7 @@
     as.kform(M,coeffs,lose=lose)
 }
 
+#' @export
 `as.function.kform` <- function(x, ...){
     M <- index(x)
     coeffs <- elements(coeffs(x))
@@ -203,6 +267,7 @@
     })
 }
 
+#' @export
 `rform` <- function(terms=9, k=3, n=7, ensure=TRUE, integer=TRUE){
   ind <- t(replicate(terms,sample(seq_len(n),k)))
   if(ensure & all(ind)<n){ind[sample(which(ind==max(ind)),1)] <- n}
@@ -214,14 +279,17 @@
   kform(spray(ind, coeffs, addrepeats=TRUE))
 }
 
+#' @export
 `rformm` <- function(terms=30, k=7, n=20, ensure=TRUE, integer=TRUE){
     rform(terms=terms, k=k, n=n, ensure=ensure)
 }
 
+#' @export
 `rformmm` <- function(terms=90, k=15, n=30, ensure=TRUE, integer=TRUE){
     rform(terms=terms, k=k, n=n, ensure=ensure)
 }
 
+#' @export
 `rtensor` <- function(terms=9, k=3, n=7, integer=TRUE){
     M <- matrix(sample(seq_len(n), terms*k, replace=TRUE), terms, k)
     if(integer){
@@ -231,17 +299,22 @@
     }
     ktensor(spray(M, coeffs, addrepeats=TRUE))
 }
-    
+
+#' @export
 `as.1form` <- function(v){
     kform(spray(cbind(seq_along(v)),v))
 }
+
+#' @export
 `grad` <- as.1form
+
 
 `.putw` <- function(v,symbols,prodsymb,d){  # eg v=(1,3,4,7)
   out <- paste(paste(d,symbols[v],sep=""),prodsymb,sep="",collapse="")
   return(substr(out, 1, nchar(out)-1) )
 }
 
+#' @export
 `as.symbolic` <- function(M,symbols=letters,d=""){
   if(is.kform(M)){
     prodsymb <- "^"
@@ -272,6 +345,7 @@
   return(noquote(out))
 }
 
+#' @export
 `hodge` <- function(K, n=dovs(K), g, lose=TRUE){
     if(missing(g)){g <- rep(1,n)}
 
@@ -313,10 +387,12 @@
     as.kform(newindex,x_metric*x_coeffs*x_sign)
 }
 
+#' @export
 `inner` <- function(M){
     ktensor(spray(expand.grid(seq_len(nrow(M)),seq_len(ncol(M))),c(M)))
 }
 
+#' @export
 `pullback` <- function(K,M)
 {
     if(is.zero(K)){return(K)}
@@ -328,6 +404,7 @@
                                       as.1form))*elements(coeffs(K))[i]},simplify=FALSE))
 }
 
+#' @export
 `issmall` <- function(M,tol=1e-8){  # tests for a kform being either zero or "small"
     if(is.zero(M)){
         return(TRUE)
@@ -341,29 +418,35 @@
     }
 }  # issmall() closes
 
-
+#' @export
 `stretch` <- function(K,d){
   M <- index(K)
   d <- d[seq_len(max(M))]
   M[] <- d[M]  # the meat
   as.kform(index(K),elements(coeffs(K))*apply(M,1,prod))
 }
-  
+
+#' @export  
 `keep` <- function(K,yes){
     jj <- rep(0L,dovs(K))
     jj[yes] <- 1
     stretch(K,jj)
 }
 
+#' @export
 `discard` <- function(K,no){
     jj <- rep(1L,dovs(K))
     jj[no] <- 0L
     stretch(K,jj)
 }
 
+#' @export
 `zerotensor` <- function(n){as.ktensor(rep(1,n))*0}
+
+#' @export
 `zeroform` <- function(n){0*as.kform(seq_len(n),lose=FALSE)}
 
+#' @export
 `contract_elementary` <- function(o,v){
   out <- zeroform(length(o)-1)
   for(i in seq_along(o)){
@@ -372,6 +455,7 @@
   return(out)
 }
 
+#' @export
 `contract` <- function(K,v,lose=TRUE){
     if(is.vector(v)){
         out <- Reduce("+",Map("*", apply(index(K),1,contract_elementary,v),elements(coeffs(K))))
@@ -386,6 +470,7 @@
     return(disordR::drop(out))
 }
 
+#' @export
 `scalar` <- function(s,kform=TRUE,lose=FALSE){
     if(lose){
         stopifnot(length(s)==1)
@@ -399,9 +484,13 @@
     }
 }
     
+#' @export
 `0form` <- function(s=1,lose=FALSE){scalar(s,kform=TRUE,lose=lose)}
+
+#' @export
 `0tensor` <- function(s=1,lose=FALSE){scalar(s,kform=FALSE,lose=lose)}
 
+#' @export
 `is.scalar` <- function(M){
   return(
       is.zero(M)                                   || 
@@ -411,8 +500,10 @@
   )
 }
 
+#' @export
 `volume` <- function(n){as.kform(seq_len(n))}
 
+#' @export
 `is.volume` <- function(K,n=dovs(K)){
   return(
   (nterms(K) == 1)      &&
@@ -425,7 +516,10 @@
 
 setGeneric("lose",function(x){standardGeneric("lose")})
 
+#' @export
 `lose` <- function(M){UseMethod("lose",M)}
+
+#' @export
 `lose.kform` <- function(M){
     if(arity(M)==0){
         return(coeffs(M))
@@ -434,12 +528,19 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     }
 }
 
+#' @export
 `lose.ktensor` <- lose.kform 
 
+#' @export
 `zap` <- function(X){UseMethod("zap",X)}
+
+#' @export
 `zap.kform` <- function(X){kform(spray::zap(X))}
+
+#' @export
 `zap.ktensor` <- function(X){ktensor(spray::zap(X))}
 
+#' @export
 `kform_to_ktensor` <- function(S){
     stopifnot(is.kform(S))
     if(is.zero(S)){
@@ -449,6 +550,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     }
 }
 
+#' @export
 `coeffs<-.kform` <- function(S,value){
     jj <- coeffs(S)
     if(is.disord(value)){
@@ -460,6 +562,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     return(kform(spray(index(S),elements(jj))))
 }
 
+#' @export
 `coeffs<-.ktensor` <- function(S,value){
     jj <- coeffs(S)
     if(is.disord(value)){
@@ -471,6 +574,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     return(ktensor(spray(index(S),elements(jj))))
 }
 
+#' @export
 `vector_cross_product` <- function(M){
     stopifnot(is.matrix(M))
     n <- nrow(M)
@@ -478,8 +582,10 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     (-1)^n*sapply(seq_len(n),function(i){(-1)^i*det(M[-i,,drop=FALSE])})
 }
 
+#' @export
 `vcp3` <- function(u,v){hodge(as.1form(u) ^ as.1form(v))}
 
+#' @export
 `kinner` <- function(o1,o2,M){
     stopifnot(arity(o1) == arity(o2))
     k <- arity(o1)
@@ -504,6 +610,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     return(out)
 }
 
+#' @export
 `dovs` <- function(K){
     if(is.zero(K) || is.scalar(K)){
         return(0)
@@ -512,7 +619,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
     }
 }
 
-
+#' @export
 `summary.kform` <- function(object, ...){
   class(object) <- "spray"
   out <- spray::summary(object)
@@ -520,6 +627,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
   return(structure(out, class = "summary.kform"))
 }
 
+#' @export
 `summary.ktensor` <- function(object, ...){
   class(object) <- "spray"
   out <- spray::summary(object)
@@ -527,6 +635,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
   return(structure(out, class = "summary.ktensor"))
 }
 
+#' @export
 `print.summary.kform` <- function(x,...){
   cat(paste("A kform object with ", x[[3]], " terms.  Summary of coefficients: \n\n",sep=""))
   print(x[[1]])
@@ -534,6 +643,7 @@ setGeneric("lose",function(x){standardGeneric("lose")})
   print(kform(x[[2]]))
 }
 
+#' @export
 `print.summary.ktensor` <- function(x,...){
   cat(paste("A ktensor object with ", x[[3]], " terms.  Summary of coefficients: \n\n",sep=""))
   print(x[[1]])

@@ -1,3 +1,4 @@
+#' @export
 `print.ktensor` <- function(x,...){
     m <- max(0,index(x))
     if(is.zero(x)){
@@ -14,6 +15,7 @@
     return(invisible(x))
 }
 
+#' @export
 `print.kform` <- function(x,...){
     m <- max(0,index(x))
     if(is.zero(x)){

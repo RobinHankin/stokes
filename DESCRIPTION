@@ -33,3 +33,4 @@ License: GPL-2
 LazyData: yes
 URL: https://github.com/RobinHankin/stokes, https://robinhankin.github.io/stokes/
 BugReports: https://github.com/RobinHankin/stokes/issues
+RoxygenNote: 7.3.2

@@ -1,3 +1,9 @@
+# stokes 1.2-4
+
+- roxygen2 used for NAMESPACE
+- minor documentation improvements
+- selective inclusion of vignettes for CRAN submission
+
 # stokes 1.2-3
 
 - consistentification of rform() and rtensor()
@@ -7,7 +13,6 @@
 # stokes 1.2-2
 
 - new vignette on tensor products
-
 
 
 # stokes 1.2-1
