@@ -4,7 +4,7 @@ options(warn=999)
 test_that("Function hodge() behaves itself", {
     expect_true(TRUE)
 
-    foo1 <- function(x){  # checks that ***x == x, also positivity
+    foo1 <- function(x){  # checks that ****x == x, also positivity
 
         n <- max(index(x))
         discrepancy <- x |> hodge(n) |> hodge(n) |> hodge(n) |> hodge(n) - x
