@@ -10,7 +10,7 @@
   Random \eqn{k}-form objects and \eqn{k}-tensors,
   intended as quick \dQuote{get you going} examples}
 \usage{
-rform(terms=9, k=3, n=7,  ensure=TRUE, integer=TRUE)
+rform(terms=9, k=3, n=7, ensure=TRUE, integer=TRUE)
 rformm(terms=30, k=7, n=20, ensure=TRUE, integer=TRUE)
 rformmm(terms=90, k=15, n=30, ensure=TRUE, integer=TRUE)
 rtensor(terms=9, k=3, n=7, integer=TRUE)
@@ -31,11 +31,10 @@ rtensor(terms=9, k=3, n=7, integer=TRUE)
 
   By default, function \code{rform()} returns a simple \eqn{k}-form;
   \code{rformm()} and \code{rformmm()} return successively more
-  complicated objects.
+  complicated objects.  Note that argument \code{terms} is an upper
+  bound, as the index matrix might contain repeats which are combined.
 
-  Note that argument \code{terms} is an upper bound, as the index matrix
-  might contain repeats which are combined.
-
+  Function \code{rtensor()} returns a random tensor.
 }
 \value{
   All functions documented here return an object of class \code{kform} or
@@ -54,7 +53,5 @@ a ^ dx ^ dy
 
 (x <- rtensor())
 x \%X\% x
-
-
 
 }
