@@ -104,7 +104,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rform</span><span class="op">(</span>terms<span class="op">=</span><span class="fl">9</span>, k<span class="op">=</span><span class="fl">3</span>, n<span class="op">=</span><span class="fl">7</span>,  ensure<span class="op">=</span><span class="cn">TRUE</span>, integer<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rform</span><span class="op">(</span>terms<span class="op">=</span><span class="fl">9</span>, k<span class="op">=</span><span class="fl">3</span>, n<span class="op">=</span><span class="fl">7</span>, ensure<span class="op">=</span><span class="cn">TRUE</span>, integer<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu">rformm</span><span class="op">(</span>terms<span class="op">=</span><span class="fl">30</span>, k<span class="op">=</span><span class="fl">7</span>, n<span class="op">=</span><span class="fl">20</span>, ensure<span class="op">=</span><span class="cn">TRUE</span>, integer<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu">rformmm</span><span class="op">(</span>terms<span class="op">=</span><span class="fl">90</span>, k<span class="op">=</span><span class="fl">15</span>, n<span class="op">=</span><span class="fl">30</span>, ensure<span class="op">=</span><span class="cn">TRUE</span>, integer<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu">rtensor</span><span class="op">(</span>terms<span class="op">=</span><span class="fl">9</span>, k<span class="op">=</span><span class="fl">3</span>, n<span class="op">=</span><span class="fl">7</span>, integer<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
@@ -136,9 +136,9 @@
     <p>Random \(k\)-form objects and \(k\)-tensors.</p>
 <p>By default, function <code>rform()</code> returns a simple \(k\)-form;
   <code>rformm()</code> and <code>rformmm()</code> return successively more
-  complicated objects.</p>
-<p>Note that argument <code>terms</code> is an upper bound, as the index matrix
-  might contain repeats which are combined.</p>
+  complicated objects.  Note that argument <code>terms</code> is an upper
+  bound, as the index matrix might contain repeats which are combined.</p>
+<p>Function <code>rtensor()</code> returns a random tensor.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
@@ -304,8 +304,6 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2 4 5 6 3 2  =   18</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  6 2 3 6 7 5  =   20</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  6 2 3 6 3 2  =   12</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
