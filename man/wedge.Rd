@@ -6,11 +6,11 @@
 \description{
   Wedge products of \eqn{k}-forms}
 \usage{
-wedge2(K1,K2)
+wedge2(K1, K2)
 wedge(x, ...)
 }
 \arguments{
-  \item{K1,K2,x,...}{\eqn{k}-forms}
+  \item{K1, K2, x, ...}{\eqn{k}-forms}
 }
 \details{
 Wedge product of \eqn{k}-forms.  
