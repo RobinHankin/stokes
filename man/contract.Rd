@@ -6,8 +6,8 @@
   A contraction is a natural linear map from \eqn{k}-forms to \eqn{k-1}-forms.
 }
 \usage{
-contract(K,v,lose=TRUE)
-contract_elementary(o,v)
+contract(K, v, lose=TRUE)
+contract_elementary(o, v)
 }
 \arguments{
   \item{K}{A \eqn{k}-form}
@@ -51,12 +51,12 @@ practice}, Elsevier (Definition 2.2.23, chapter 2, page 77).
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{wedge}},\code{\link{lose}}}
 \examples{
-contract(as.kform(1:5),1:8)
-contract(as.kform(1),3)   # 0-form
+contract(as.kform(1:5), 1:8)
+contract(as.kform(1), 3)   # 0-form
 
 
 
-contract_elementary(c(1,2,5),c(1,2,10,11,71))
+contract_elementary(c(1,2,5), c(1,2,10,11,71))
 
 
 ## Now some verification [takes ~10s to run]:

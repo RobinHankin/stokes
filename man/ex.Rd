@@ -25,8 +25,8 @@ resides in the \code{data/} directory.
 
 as.function(dx)(ex)
 
-(X <- as.kform(matrix(1:12,nrow=4),c(1,2,7,11)))
-as.function(X)(cbind(e(2,12),e(6,12),e(10,12)))
+(X <- as.kform(matrix(1:12, nrow=4), c(1,2,7,11)))
+as.function(X)(cbind(e(2,12), e(6,12), e(10,12)))
 
 }
 \keyword{datasets}

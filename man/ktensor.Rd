@@ -10,13 +10,13 @@ Functionality for \eqn{k}-tensors
 }
 \usage{
 ktensor(S)
-as.ktensor(M,coeffs)
+as.ktensor(M, coeffs)
 is.ktensor(x)
-\method{as.function}{ktensor}(x,...)
+\method{as.function}{ktensor}(x, ...)
 }
 \arguments{
   \item{M,coeffs}{Matrix of indices and coefficients, as in
-    \code{spray(M,coeffs)}}
+    \code{spray(M, coeffs)}}
   \item{S}{Object of class \code{spray}}
   \item{x}{Object of class \code{ktensor}}
   \item{...}{Further arguments, currently ignored}

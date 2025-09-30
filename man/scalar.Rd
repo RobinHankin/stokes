@@ -11,10 +11,10 @@
 \description{
   Scalars: \eqn{0}-forms and \eqn{0}-tensors}
 \usage{
-scalar(s,kform=TRUE,lose=FALSE)
+scalar(s, kform=TRUE, lose=FALSE)
 is.scalar(M)
-`0form`(s=1,lose=FALSE)
-`0tensor`(s=1,lose=FALSE)
+`0form`(s=1, lose=FALSE)
+`0tensor`(s=1, lose=FALSE)
 \method{lose}{kform}(M)
 \method{lose}{ktensor}(M)
 }
