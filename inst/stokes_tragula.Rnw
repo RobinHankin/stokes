@@ -1,0 +1,1190 @@
+% -*- mode: noweb; noweb-default-code-mode: R-mode; -*-
+\documentclass[article]{tragula}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+% Feel free to use other standard packages here if needed
+
+\newcommand{\tragula}{\textsf{Tragula}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% declarations for tragula.cls
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% just as usual
+\author{Robin K. S. Hankin\\University of Stirling}
+
+
+\title{Stokes's theorem in \proglang{R}}
+
+%% for pretty printing and a nice hypersummary also set:
+\Plainauthor{Robin K. S. Hankin}
+\Plaintitle{Stokes's theorem in R}
+\Shorttitle{Stokes's theorem in \proglang{R}}
+
+%% an abstract and keywords
+
+\Abstract{
+  In this short article I introduce the {\tt stokes} package which
+  provides functionality for working with tensors, alternating forms,
+  wedge products, and related concepts from the exterior calculus.
+  Notation and spirit follow \citeauthor{spivak1965}.  Stokes's generalized integral
+  theorem, viz $\int_{\partial X}\phi=\int_Xd\phi$, is demonstrated
+  here using the package; it is available on CRAN at\\
+  \url{https://CRAN.R-project.org/package=stokes}.
+}
+   
+\Keywords{Stokes's theorem, exterior calculus, differential forms, \proglang{R}}
+\Plainkeywords{Stokes's theorem, exterior calculus, differential forms, R}
+
+%% publication information
+%% NOTE: This needs to filled out ONLY IF THE PAPER WAS ACCEPTED.
+%% If it was not (yet) accepted, leave them commented.
+ \Volume{0}
+ \Issue{0}
+%% \Month{MONTH}
+ \Year{0000}
+ \Submitdate{0000-00-00}
+ \Acceptdate{0000-00-00}
+ \Repository{https://github.com/RobinHankin/stokes}
+
+%% The address of (at least) one author should be given
+%% in the following format:
+\Address{
+  Robin K. S. Hankin\orcid{https://orcid.org/0000-0001-5982-0415}\\
+  University of Stirling\\
+  Scotland\\
+  E-mail: \email{hankin.robin@gmail.com}\\
+  URL: \url{https://www.aut.ac.nz/profiles/robin-hankin}\\
+}
+
+
+\begin{document}
+\SweaveOpts{}
+
+
+
+\textbf{This document has not been peer-reviewed and is not an
+  accepted \textsf{Tragula} publication.  It is intended as an example
+  of the style and substance appropriate for submission to
+  \textsf{Tragula}.}
+
+\section{Introduction}
+
+\setlength{\intextsep}{0pt}
+\begin{wrapfigure}{r}{0.2\textwidth}
+  \begin{center}
+\includegraphics[width=1in]{stokes.png}
+  \end{center}
+\end{wrapfigure}
+Ordinary differential calculus may be formalized and generalized to
+arbitrary-dimensional oriented manifolds using the exterior calculus.
+Here I introduce the \pkg{stokes} package, written in the R computing
+language~\citep{rcore2022_tragula}, which furnishes functionality for working
+with the exterior calculus.  I give numerical verification of a number
+of theorems using the package.  Notation follows that
+of~\citet{spivak1965}.
+
+\section{Tensors}
+
+Recall that a $k$-tensor is a multilinear map $S\colon
+V^k\longrightarrow\mathbb{R}$, where $V=\mathbb{R}^n$ is considered as
+a vector space; \citeauthor{spivak1965} denotes the space of
+multilinear maps as $\mathcal{J}^k(V)$.  Formally, multilinearity
+means
+
+\begin{equation}
+S\left(v_1,\ldots,av_i,\ldots,v_k\right)=a\cdot S\left(v_1,\ldots,v_i,\ldots,v_k\right)
+\end{equation}
+
+and
+
+\begin{equation}
+S\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)=S\left(v_1,\ldots,v_i,\ldots,x_v\right)+
+S\left(v_1,\ldots,{v_i}',\ldots,v_k\right).
+\end{equation}
+
+where $v_i\in V$ and $a\in\mathbb{R}$.  If $S\in\mathcal{J}^k(V)$ and
+$T\in\mathcal{J}^l(V)$, then we may define $S\otimes
+T\in\mathcal{J}^{k+l}(V)$ as
+
+\begin{equation}
+S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l}\right)=
+S\left(v_1,\ldots,v_k\right)\cdot
+T\left(v_1,\ldots,v_l\right)
+\end{equation}
+
+
+\citeauthor{spivak1965} observes that $\mathcal{J}^k(V)$ is spanned by
+the $n^k$ products of the form
+
+\begin{equation}
+\phi_{i_1}\otimes\phi_{i_2}\otimes\cdots\otimes\phi_{i_k}\qquad
+1\leq i_i,i_2,\ldots,i_k\leq n
+\end{equation}
+
+where $v_1,\ldots,v_k$ is a basis for $V$ and
+$\phi_i\left(v_j\right)=\delta_{ij}$; we can therefore write
+
+\begin{equation}
+S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k}
+\phi_{i_1}\otimes\cdots\otimes\phi_{i_k}.
+\end{equation}
+
+The space spanned by such products has a natural representation in R
+as an array of dimensions $n\times\cdots\times n=n^k$.  If \code{A} is
+such an array, then the element \code{A[i\_1,i\_2,...,i\_k]} is the
+coefficient of $\phi_{i_1}\otimes\ldots\otimes\phi_{i\_k}$.  However,
+it is more efficient and conceptually cleaner to consider a {\em
+sparse} array, as implemented by the \pkg{spray}
+package~\citep{hankin2022_spray}.  We will consider the case
+$n=5,k=4$, so we have multilinear maps from
+$\left(\mathbb{R}^5\right)^4$ to $\mathbb{R}$.  Below, we will test
+algebraic identities in R using the idiom furnished by the \pkg{stokes} package.  For our example we will define
+$S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$
+using a matrix with three rows, one per term, and whose rows
+correspond to each term's tensor products of the $\phi$'s.  We first
+have to load the \pkg{stokes} package:
+
+<<>>=
+library("stokes")
+@ 
+
+Then the idiom is straightforward:
+
+<<>>=
+k <- 4
+n <- 5
+M <- matrix(c(5,1,1,1, 1,1,2,3, 1,3,4,2),3,4,byrow=TRUE)
+M
+S <- as.ktensor(M,coeffs= 0.5 + 1:3)
+S
+@
+
+Observe that, if stored as an array of size $n^k$, $S$ would have
+$5^4=625$ elements, all but three of which are zero.  So $S$ is a
+4-tensor, mapping $V^4$ to $\mathbb{R}$, where $V=\mathbb{R}^5$.  Here
+we have
+$S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$.
+Note that in some implementations the row order of object \code{S}
+will differ from that of \code{M}; this phenomenon is due to the
+underlying \proglang{C++} implementation using the \proglang{STL map}
+class and is discussed in more detail in the \pkg{spray} and
+\pkg{disordR}
+packages~\citep{hankin2022_disordR_tragula,hankin2022_spray_tragula}.
+
+\subsection{Package idiom for evaluation of a tensor}
+
+First, we will define $E$ to be a random point in $V^k$ in terms of a
+matrix:
+
+<<>>=
+set.seed(0)
+(E <- matrix(rnorm(n*k),n,k))   # A random point in V^k
+@ 
+
+Recall that $n=5$, $k=4$, so $E\in\left(\mathbb{R}^5\right)^4$.  We
+can evaluate $S$ at $E$ as follows:
+
+<<>>=
+f <- as.function(S)
+f(E)
+@ 
+
+\subsection{Vector space structure of tensors}
+
+Tensors have a natural vector space structure; they may be added and
+subtracted, and multiplied by a scalar, the same as any other vector
+space.  Below, we define a new tensor $S_1$ and work with $2S-3S_1$:
+
+<<>>=
+S1 <- as.ktensor(1+diag(4),1:4)
+2*S-3*S1
+@ 
+
+We may verify that tensors are linear using package idiom:
+
+<<>>=
+LHS <- as.function(2*S-3*S1)(E)
+RHS <- 2*as.function(S)(E) -3*as.function(S1)(E)
+c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
+@
+
+(that is, identical up to numerical precision).
+
+\subsection{Numerical verification of multilinearity in the package}
+
+Testing multilinearity is straightforward in the package.  To do this,
+we need to define three matrices \code{E1,E2,E3} corresponding to
+points in $\left(\mathbb{R}^5\right)^4$ which are identical except for
+one column.  In \code{E3}, this column is a linear combination of the
+corresponding column in \code{E2} and \code{E3}:
+
+
+<<>>=
+E1 <- E
+E2 <- E
+E3 <- E
+
+x1 <- rnorm(n)
+x2 <- rnorm(n)
+r1 <- rnorm(1)
+r2 <- rnorm(1)
+
+E1[,2] <- x1
+E2[,2] <- x2
+E3[,2] <- r1*x1 + r2*x2
+@ 
+
+
+Then we can verify the multilinearity of $S$ by coercing to a function
+which is applied to \code{E1, E2, E3}:
+
+<<>>=
+f <- as.function(S)
+LHS <- r1*f(E1) + r2*f(E2)
+RHS <- f(E3)
+c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
+@ 
+
+
+(that is, identical up to numerical precision).  Note that this is
+{\em not} equivalent to linearity over $V^{nk}$:
+
+
+<<>>=
+E1 <- matrix(rnorm(n*k),n,k)
+E2 <- matrix(rnorm(n*k),n,k)
+LHS <- f(r1*E1+r2*E2)
+RHS <- r1*f(E1)+r2*f(E2)
+c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
+@ 
+
+
+\subsection{Tensor product of general tensors}
+
+Given two k-tensor objects $S,T$ we can form the tensor product
+$S\otimes T$, defined as
+
+\begin{equation}\label{definition_of_tensor_cross_product}
+S\otimes T\left(v_1,\ldots,v_k,v_{k+1},\ldots, v_{k+l}\right)=
+  S\left(v_1,\ldots v_k\right)\cdot T\left(v_{k+1},\ldots
+  v_{k+l}\right)
+\end{equation}
+
+We will calculate the tensor product of two tensors \code{S1,S2}
+defined as follows:
+
+<<>>=
+(S1 <- ktensor(spray(cbind(1:3,2:4),1:3)))
+(S2 <- as.ktensor(matrix(1:6,2,3)))
+@ 
+
+
+The R idiom for $S1\otimes S2$ as per
+equation~\ref{definition_of_tensor_cross_product} would be
+\code{tensorprod()}, or \code{\%X\%}:
+
+<<>>=
+tensorprod(S1,S2)
+@ 
+
+Then, for example:
+
+<<>>=
+E <- matrix(rnorm(30),6,5)
+LHS <- as.function(tensorprod(S1,S2))(E)
+RHS <- as.function(S1)(E[,1:2]) * as.function(S2)(E[,3:5])
+c(lhs=LHS,rhs=RHS,diff=LHS-RHS)
+@ 
+
+
+(that is, identical up to numerical precision).
+
+\section{Alternating forms}
+
+An alternating form is a multilinear map $T$ satisfying
+
+\begin{equation}\label{definition_of_alternating}
+\mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k\right)=
+    -\mathrm{T}\left(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k\right)
+\end{equation}
+
+(or, equivalently,
+$\mathrm{T}\left(v_1,\ldots,v_i,\ldots,v_i,\ldots,v_k\right)= 0$).  We
+write $\Lambda^k(V)$ for the space of all alternating multilinear maps
+from $V^k$ to $\mathbb{R}$.  \citeauthor{spivak1965} gives
+$\operatorname{Alt}\colon\mathcal{J}^k(V)\longrightarrow\Lambda^k(V)$
+defined by
+
+\begin{equation}\operatorname{Alt}(T)\left(v_1,\ldots,v_k\right)=
+    \frac{1}{k!}\sum_{\sigma\in S_k}\operatorname{sgn}(\sigma)\cdot
+    T\left(v_{\sigma(1)},\ldots,v_{\sigma(k)}\right)
+\end{equation}
+
+where the sum ranges over all permutations of
+$\left[n\right]=\left\{1,2,\ldots,n\right\}$ and
+$\operatorname{sgn}(\sigma)\in\pm 1$ is the sign of the permutation.
+If $T\in\mathcal{J}^k(V)$ and $\omega\in\Lambda^k(V)$, it is
+straightforward to prove that $\operatorname{Alt}(T)\in\Lambda^k(V)$,
+$\operatorname{Alt}\left(\operatorname{Alt}\left(T\right)\right)=\operatorname{Alt}\left(T\right)$,
+and $\operatorname{Alt}\left(\omega\right)=\omega$.  In the stokes
+package, this is effected by the \code{Alt()} function:
+
+
+<<>>=
+S1
+Alt(S1)
+@ 
+
+
+Verifying that \code{Alt(S1)} is in fact alternating is
+straightforward, essentially by directly evaluating
+Equation~\ref{definition_of_alternating}:
+
+<<>>=
+E <- matrix(rnorm(8),4,2)
+Erev <- E[,2:1]
+as.function(Alt(S1))(E) + as.function(Alt(S1))(Erev)  # should be zero
+@ 
+
+
+However, we can see that this form for alternating tensors (here
+called $k$-forms) is inefficient and highly redundant: in this example
+there is a \code{1 2} term and a \code{2 1} term (the coefficients are
+equal and opposite).  In this example we have $k=2$ but in general
+there would be potentially $k!$ essentially repeated terms which
+collectively require only a single coefficient.  The package provides
+\code{kform} objects which are inherently alternating using a more
+efficient representation; they are described using wedge products
+which are discussed next.
+
+\subsection{Wedge products and the exterior calculus}
+
+This section follows the exposition of~\cite{hubbard2015}, who
+introduce the exterior calculus starting with a discussion of
+elementary forms, which are alternating forms with a particularly
+simple structure.  An example of an elementary
+form would be $dx_1\wedge dx_3$ [treated as an indivisible entity],
+which is an alternating multilinear map from
+$\mathbb{R}^n\times\mathbb{R}^n$ to $\mathbb{R}$ with
+
+\begin{equation}
+\left(
+dx_1\wedge dx_3
+\right)\left(
+\begin{pmatrix}a_1\\a_2\\a_3\\ \vdots\\ a_n\end{pmatrix},
+\begin{pmatrix}b_1\\b_3\\b_3\\ \vdots\\ b_n\end{pmatrix}
+\right)=\mathrm{det}
+\begin{pmatrix} a_1 & b_1 \\ a_3 & b_3\end{pmatrix}
+=a_1b_3-a_3b_1
+\end{equation}
+
+That this is alternating follows from the properties of the
+determinant.  In general of course, $dx_i\wedge dx_j\left(
+\begin{pmatrix}a_1\\ \vdots\\ a_n\end{pmatrix}, \begin{pmatrix}b_1\\
+\vdots\\ b_n\end{pmatrix} \right)=\mathrm{det} \begin{pmatrix} a_i &
+b_i \\ a_j & b_j\end{pmatrix}$.  Because such objects are linear, it
+is possible to consider sums of elementary forms, such as $dx_1\wedge
+dx_2 + 3 dx_2\wedge dx_3$ with
+
+\begin{equation}
+\left(
+dx_1\wedge dx_2 + 3dx_2\wedge dx_3
+\right)\left(
+\begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
+\begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix}
+\right)=\mathrm{det}
+\begin{pmatrix} a_1 & b_1\\ a_2 & b_2\end{pmatrix}
++3\mathrm{det}
+\begin{pmatrix} a_2 & b_2\\ a_3 & b_3\end{pmatrix}
+\end{equation}
+
+or even $K=dx_1\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4$
+which would be a linear map from $\left(\mathbb{R}^n\right)^3$ to
+$\mathbb{R}$ with
+
+\begin{equation}
+\left(
+dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
+\right)\left(
+\begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
+\begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix},
+\begin{pmatrix}c_1\\c_2\\ \vdots\\ c_n\end{pmatrix}
+\right)=\mathrm{det}
+\begin{pmatrix}
+	a_4 & b_4 & c_4\\
+	a_2 & b_2 & c_2\\
+	a_3 & b_3 & c_3
+\end{pmatrix}
++5\mathrm{det}
+\begin{pmatrix}
+	a_1 & b_1 & c_1\\
+	a_2 & b_2 & c_2\\
+	a_4 & b_4 & c_4
+\end{pmatrix}.
+\end{equation}
+
+
+Defining $K$ has ready R idiom in which we define a matrix whose rows
+correspond to the differentials in each term:
+
+<<>>=
+M <- matrix(c(4,2,3,1,4,2),2,3,byrow=TRUE)
+M
+K <- as.kform(M,c(1,5))
+K
+@ 
+
+
+Function \code{as.kform()} takes each row of \code{M} and places the
+elements in increasing order; the coefficient will change sign if the
+permutation is odd.  Note that the order of the rows in \code{K} is
+immaterial and indeed in some implementations will appear in a
+different order: the stokes package uses the \pkg{spray}
+package~\citep{hankin2022_spray} which in turn utilises the
+\proglang{STL} map class of \proglang{C++}; the corresponding
+\proglang{R} idiom conforms to \pkg{disordR}
+discipline~\citep{hankin2022_disordR_tragula}.
+
+\subsection{Formal definition of $dx$}
+
+In the previous section we defined objects such as ``$dx_1\wedge
+dx_6$" as a single entity.  Here I define the elementary form $dx_i$
+formally and in the next section discuss the wedge product $\wedge$.
+The elementary form $dx_i$ is simply a map from $\mathbb{R}^n$ to
+$\mathbb{R}$ with $dx_i\left(x_1,x_2,\ldots,x_n\right)=x_i$.  Observe
+that $dx_i$ is an alternating form, even though we cannot swap
+arguments (because there is only one).
+
+\subsubsection{Package idiom for creation of differential forms}
+
+Package idiom for creating an elementary differential form appears
+somewhat cryptic at first sight, but is consistent (it is easier to
+understand package idiom for creating more complicated alternating
+forms, as in the next section).  Suppose we wish to work with $dx_3$:
+
+<<>>=
+dx3 <- as.kform(matrix(3,1,1),1)
+options(kform_symbolic_print = NULL) # revert to default print method
+dx3
+@ 
+
+
+Interpretation of the output above is not obvious (it is easier to
+understand the output from more complicated alternating forms, as in
+the next section), but for the moment observe that $dx_3$ is indeed an
+alternating form, mapping $\mathbb{R}^n$ to $\mathbb{R}$ with
+$dx_3\left(x_1,x_2,\ldots,x_n\right)=x_3$.  Thus, for example:
+
+
+<<>>=
+as.function(dx3)(c(14,15,16))
+as.function(dx3)(c(14,15,16,17,18))  # idiom can deal with arbitrary vectors
+@ 
+
+and we see that $dx_3$ picks out the third element of a vector.  These
+are linear in the sense that we may add and subtract these elementary
+forms:
+
+<<>>=
+dx5 <- as.kform(matrix(5,1,1),1)
+as.function(dx3 + 2*dx5)(1:10)  # picks out element 3 + 2*element 5
+@ 
+
+\subsection{Formal definition of wedge product}
+
+The wedge product maps two alternating forms to another alternating
+form; formally we write
+$\wedge\colon\Lambda^k(V)\times\Lambda^l(V)\longrightarrow\Lambda^{k+l}(V)$.
+Given $\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^l(V)$,
+\citeauthor{spivak1965} defines the wedge product
+$\omega\wedge\eta\in\Lambda^{k+l}(V)$ as
+
+\begin{equation}\label{definition_of_wedge_product}
+\omega\wedge\eta={k+l\choose k\quad l}\operatorname{Alt}(\omega\otimes\eta)
+\end{equation}
+
+The package includes an extensive numerically-oriented discussion of
+Equation~\ref{definition_of_wedge_product} and its implementation in
+the \code{wedge} vignette.
+
+\subsubsection{Evaluation of the wedge product using package idiom}
+
+Wedge products are implemented in the package.  To illustrate this we
+define two $k$-forms, \code{K1} and \code{K2}:
+
+<<>>=
+(K1 <- as.kform(matrix(c(3,5,4, 4,6,1),2,3,byrow=TRUE),c(2,7)))
+(K2 <- as.kform(cbind(1:5,3:7),1:5))
+@ 
+
+In symbolic notation, \code{K1} is equal to $7dx_1\wedge dx_4\wedge
+dx_6 -2dx_3\wedge dx_4\wedge dx_5$. and \code{K2} is $dx_1\wedge dx_3+
+2dx_2\wedge dx_4+ 3dx_3\wedge dx_5+ 4dx_4\wedge dx_6+ 5dx_5\wedge
+dx_7$.  Package idiom for wedge products is straightforward; the caret
+(``\verb|^|") is overloaded to return the wedge product:
+
+<<>>=
+K1 ^ K2
+@ 
+
+(we might write the product as $-35dx_1\wedge dx_4\wedge dx_5\wedge
+dx_6\wedge dx_7 -21dx_1\wedge dx_3\wedge dx_4\wedge dx_5\wedge dx_6$).
+See how the wedge product eliminates rows with repeated entries,
+gathers permuted rows together (respecting the sign of the
+permutation), and expresses the result in terms of elementary forms.
+The product is a linear combination of two elementary forms; note that
+only two coefficients out of a possible ${7\choose 5}=21$ are nonzero.
+Note again that the order of the rows in the product is arbitrary, as
+per \pkg{disordR} discipline.
+
+\subsubsection{Associativity of the wedge product}
+
+The wedge product has formal properties such as distributivity but by
+far the most interesting one is associativity, which I will
+demonstrate below:
+
+<<>>=
+F1 <- as.kform(matrix(c(3,4,5, 4,6,1,3,2,1),3,3,byrow=TRUE))
+F2 <- as.kform(cbind(1:6,3:8),1:6)
+F3 <- kform_general(1:8,2)
+(F1 ^ F2) ^ F3
+F1 ^ (F2 ^ F3)
+@ 
+
+Note carefully in the above that the terms in \verb|(F1 ^ F2) ^ F3|
+and \verb|F1 ^ (F2 ^ F3)| appear in a different order.  They are
+nevertheless algebraically identical, as we may demonstrate using the
+(overloaded) \code{==} operator:
+
+<<>>=
+(F1 ^ F2) ^ F3 - F1 ^ (F2 ^ F3)
+@ 
+
+Above we see that the two forms are identical.
+
+\subsection{Multilinearity of $k$-forms}
+
+\citeauthor{spivak1965} observes that $\Lambda^k(V)$ is spanned by the
+$n\choose k$ wedge products of the form
+
+\begin{equation}
+dx_{i_1}\wedge dx_{i_2}\wedge\ldots\wedge dx_{i_k}\qquad
+1\leq i_i<i_2<\cdots <i_k\leq n
+\end{equation}
+
+where these products are the elementary forms (compare
+$\mathcal{J}^k(V)$, which is spanned by $n^k$ elementary forms).
+Formally, multilinearity means every element of the space
+$\Lambda^k(V)$ is a linear combination of elementary forms, as
+illustrated in the package by function \code{kform\_general()}.  Consider
+the following idiom:
+
+<<>>=
+Krel <- kform_general(4,2,1:6)
+Krel
+@ 
+
+
+Object \code{Krel} is a two-form, specifically a map from
+$\left(\mathbb{R}^4\right)^2$ to $\mathbb{R}$.  Observe that
+\code{Krel} has ${4\choose 2}=6$ components, which do not appear in any
+particular order.  Addition of such $k$-forms is straightforward in R
+idiom but algebraically nontrivial:
+
+<<>>=
+(K1 <- as.kform(matrix(1:4,2,2),c(1,109)))
+(K2 <- as.kform(matrix(c(1,3,7,8,2,4),ncol=2,byrow=TRUE),c(-1,5,4)))
+K1+K2
+@ 
+
+Above, note how the $dx_2\wedge dx_4$ terms combine [to give
+  \code{2 4 = 113}] and the $dx_1\wedge dx_3$ term vanishes by
+cancellation.
+
+\subsection{Print methods}
+
+Although the spray form used above is probably the most direct and natural
+representation of differential forms in  numerical work, sometimes we need
+a more algebraic print method.
+
+<<>>=
+U <- ktensor(spray(cbind(1:4,2:5),1:4))
+U
+@ 
+
+
+we can represent this more algebraically using the \code{as.symbolic()}
+function:
+
+<<>>=
+as.symbolic(U)
+@ 
+
+
+In the above, \code{U} is a multilinear map from
+$\left(\mathbb{R}^5\right)^2$ to $\mathbb{R}$.  Symbolically, \code{a}
+represents the map that takes $(a,b,c,d,e)$ to $a$, \code{b} the map that
+takes $(a,b,c,d,e)$ to \code{b}, and so on.  The asterisk \code{*} represents
+the tensor product $\otimes$.  Alternating forms work similarly but
+$k$-forms have different defaults:
+
+<<>>=
+K <- kform_general(3,2,1:3)
+K
+as.symbolic(K,d="d",symbols=letters[23:26])
+@ 
+
+
+Note that the wedge product $\wedge$, although implemented in package
+idiom as \verb|^| or \verb|%^%|, appears in the symbolic
+representation as an ascii caret, \verb|^|.
+
+We can alter the default print method with the \code{kform\_symbolic\_print}
+option, which uses \code{as.symbolic()}:
+
+<<>>=
+options(kform_symbolic_print = "d")
+K
+@ 
+
+This print option works nicely with the \code{d()} function for elementary
+forms:
+
+<<>>=
+(d(1) + d(5)) ^ (d(3)-5*d(2)) ^ d(7)
+options(kform_symbolic_print = NULL) # restore default
+@ 
+
+
+\subsection{Contractions}
+
+Given a $k$-form $\phi\colon V^k\longrightarrow\mathbb{R}$ and a
+vector $\mathbf{v}\in V$, the {\em contraction} $\phi_\mathbf{v}$ of
+$\phi$ and $\mathbf{v}$ is a $k-1$-form with
+
+\begin{equation}
+  \phi_\mathbf{v}\left(\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right) =
+  \phi\left(\mathbf{v},\mathbf{v}^1,\ldots,\mathbf{v}^{k-1}\right)
+\end{equation}
+
+if $k>1$; we specify $\phi_\mathbf{v}=\phi(\mathbf{v})$ if $k=1$.
+Verification is straightforward:
+
+<<>>=
+(o <- rform())  # a random 3-form
+V <- matrix(runif(21),ncol=3)
+LHS <- as.function(o)(V)
+RHS <- as.function(contract(o,V[,1]))(V[,-1])
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
+@ 
+
+
+It is possible to iterate the contraction process; if we pass a matrix
+$V$ to \code{contract()} then this is interpreted as repeated
+contraction with the columns of $V$:
+
+<<>>=
+as.function(contract(o,V[,1:2]))(V[,-(1:2),drop=FALSE])
+@ 
+
+
+If we pass three columns to \code{contract()} the result is a $0$-form:
+
+<<>>=
+contract(o,V)
+@ 
+
+
+In the above, the result is coerced to a scalar; in order to work with
+a formal $0$-form (which is represented in the package as a
+\code{spray} object with a zero-column index matrix) we can use the
+\code{lose=FALSE} argument:
+
+<<>>=
+contract(o,V,lose=FALSE)
+@ 
+
+
+\subsection{Transformations and pullback}
+
+Suppose we are given a two-form $\omega=\sum_{i<j}a_{ij}dx_i\wedge
+dx_j$ and relationships $dx_i=\sum_rM_{ir}dy_r$, then we would have
+
+\begin{equation}
+\omega =
+    \sum_{i<j}
+    a_{ij}\left(\sum_rM_{ir}dy_r\right)\wedge\left(\sum_rM_{jr}dy_r\right).
+\end{equation}
+
+  The general situation would be  a $k$-form where we would have
+
+\begin{equation}
+\omega=\sum_{i_1<\cdots<i_k}a_{i_1\ldots i_k}dx_{i_1}\wedge\cdots\wedge dx_{i_k}
+\end{equation}
+
+giving
+
+\begin{equation}\omega =
+    \sum_{i_1<\cdots <i_k}\left[
+    a_{i_1<\cdots < i_k}\left(\sum_rM_{i_1r}dy_r\right)\wedge\cdots\wedge\left(\sum_rM_{i_kr}dy_r\right)\right].
+\end{equation}
+
+So $\omega$ was given in terms of $dx_1,\ldots,dx_k$ and we have
+expressed it in terms of $dy_1,\ldots,dy_k$.  So for example if
+
+\begin{equation}
+\omega=
+  dx_1\wedge dx_2 + 5dx_1\wedge dx_3\end{equation}
+
+and
+
+\begin{equation}
+  \left(
+  \begin{array}{l}
+  dx_1\\
+  dx_2\\
+  dx_3
+  \end{array}
+  \right)=
+\left(
+\begin{array}{ccc}
+1 & 4 & 7\\
+2 & 5 & 8\\
+3 & 6 & 9\\
+\end{array}
+\right)  \left(
+  \begin{array}{l}
+  dy_1\\ dy_2\\   dy_3
+  \end{array}
+  \right)
+\end{equation}
+
+then
+
+\begin{equation}
+\begin{array}{ccl}
+  \omega &=&
+\left(1dy_1+4dy_2+7dy_3\right)\wedge
+\left(2dy_1+5dy_2+8dy_3\right)+
+5\left(1dy_1+4dy_2+7dy_3\right)\wedge
+\left(3dy_1+6dy_2+9dy_3\right)
+\\
+&=&2dy_1\wedge dy_1+5dy_1\wedge dy_2+\cdots+
+5\cdot 7\cdot 6dx_3\wedge dx_2+
+5\cdot 7\cdot 9dx_3\wedge dx_3+\\
+&=& -33dy_1\wedge dy_2-66dy_1\wedge dy_3-33dy_2\wedge dy_3
+\end{array}
+\end{equation}
+
+Function \code{pullback()} does all this:
+
+<<>>=
+options(kform_symbolic_print = "dx")   # uses dx etc in print method
+pullback(dx^dy+5*dx^dz, matrix(1:9,3,3))
+options(kform_symbolic_print = NULL) # revert to default
+@ 
+
+However, it is slow and I am not 100\% sure that there isn't a much
+more efficient way to do such a transformation.  There are a few tests
+in \code{tests/testthat}.  Here I show that transformations may be inverted
+using matrix inverses:
+
+<<>>=
+(o <- 2 * as.kform(2) ^ as.kform(4) ^ as.kform(5))
+M <- matrix(rnorm(25),5,5)
+@ 
+
+
+Then we will transform according to matrix \code{M} and then transform
+according to the matrix inverse; the functionality works nicely with
+magrittr pipes:
+
+<<>>=
+o |> pullback(M) |> pullback(solve(M))
+@ 
+
+Above we see many rows with values small enough for the print method
+to print an exact zero, but not sufficiently small to be eliminated by
+the \pkg{spray} internals.  We can remove the small entries with
+\code{zap()}:
+
+<<>>=
+o |> pullback(M) |> pullback(solve(M)) |> zap()
+@ 
+
+
+See how the result is equal to the original $k$-form $2dy_2\wedge
+dy_4\wedge dy_5$.
+
+\subsection{Exterior derivatives}
+
+Given a $k$-form $\omega$, \citeauthor{spivak1965} defines the
+differential of $\omega$ to be a $(k+1)$-form $d\omega$ as follows.
+If
+
+\begin{equation}
+\omega =
+\sum_{
+i_1 < i_2 <\cdots<i_k}
+\omega_{i_1i_2\ldots i_k}
+dx^{i_1}\wedge
+dx^{i_2}\wedge\cdots\wedge dx^{i_k}
+\end{equation}
+
+then
+
+\begin{equation}
+d\omega =
+\sum_{
+i_1 < i_2 <\cdots<i_k}
+\sum_{\alpha=1}^n D_\alpha\left(\omega_{i_1i_2\ldots i_k}\right)
+\cdot
+dx^{i_1}\wedge
+dx^{i_2}\wedge\cdots\wedge dx^{i_k}
+\end{equation}
+
+
+where $D_if(a)=\lim_{h\longrightarrow
+  0}\frac{f(a^1,\ldots,a^i+h,\ldots,a^n)-f(a^1,\ldots,a^i,\ldots,a^n)}{h}$
+is the ordinary $i^\mathrm{th}$ partial
+derivative~\citep[p25]{spivak1965}.  This definition allows one to
+express the fundamental theorem of calculus in an arbitrary number of
+dimensions without modification.  If
+$f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ is a scalar function of
+position, it can be shown that
+
+\begin{equation}\label{definition_of_d}
+    {d}\left(f\,dx_{i_1}\wedge\cdots\wedge dx_{i_k}\right)=
+    {d}f\wedge dx_{i_1}\wedge\cdots\wedge dx_{i_k}
+\end{equation}
+
+The package provides \code{grad()} which, when given a vector
+$x_1,\ldots,x_n$ returns the one-form
+
+\begin{equation}
+\sum_{i=1}^n x_idx_i
+\end{equation}
+
+This is useful because $df=\sum_{j=1}^n\left(D_j f\right)\,dx_j$; we
+see that $df$ is a one-form that corresponds to the gradient $\nabla
+f$ of $f$ in elementary calculus: given a vector $u$ at point $p$ the
+correspondence would be $\left(\nabla f\right)\cdot u=
+df\left(u\right)$.  Thus
+
+<<>>=
+grad(c(0.4,0.1,-3.2,1.5))
+@ 
+
+
+We will use the \code{grad()} function to verify that, in
+$\mathbb{R}^n$, a certain $(k-1)$-form has zero work function.
+Following~\citet{hubbard2015}, we observe that
+
+\begin{equation}
+F_3=\frac{1}{\left(x^2+y^2+z^2\right)^{3/2}}
+\begin{pmatrix}x\\y\\z\end{pmatrix}
+\end{equation}
+
+is a divergenceless velocity field in $\mathbb{R}^3$, and thus motivated
+define
+
+\begin{equation}
+\omega_n=
+d\frac{1}{\left(x_1^2+\ldots +x_n^2\right)^{n/2}}\sum_{i=1}^{n}(-1)^{i-1}
+x_idx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n
+\end{equation}
+
+(where a hat indicates the absence of a term).  Hubbard and Hubbard
+show analytically that $d\omega=0$.  Here I verify this reasoning
+numerically, using package idiom.  First we define a function that
+implements the wedge product
+$dx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n$:
+
+<<>>=
+hat <- function(x){
+    n <- length(x)
+    as.kform(t(apply(diag(n)<1,2,which)))
+}
+@ 
+
+
+So, for example:
+
+<<>>=
+hat(1:5)
+@ 
+
+Then we can use the \code{grad()} function to calculate $d\omega$,
+using the quotient law to express the derivatives analytically:
+
+<<>>=
+df  <- function(x){
+    n <- length(x)
+    S <- sum(x^2)
+    grad(rep(c(1,-1),length=n)*(S^(n/2) - n*x^2*S^(n/2-1))/S^n
+    )
+}
+@ 
+
+Thus
+
+<<>>=
+df(1:5)
+@ 
+
+
+Now we can use the wedge product of the two parts (as per
+equation~\ref{definition_of_d}) to show that the exterior derivative
+of $\omega_n$, evaluated at a random point in $\mathbb{R}^n$, is
+zero:
+
+<<>>=
+x <- rnorm(9)
+print(df(x) ^ hat(x))  # should be zero
+@ 
+
+
+\subsection{Differential of the differential, $d^2=0$}
+
+We can use the package to verify the celebrated fact that, for any
+$k$-form $\phi$, $d\left(d\phi\right)=0$.  The first step is to define
+scalar functions \code{f1(), f2(), f3()}, all  $0$-forms:
+
+<<>>=
+f1 <- function(w,x,y,z){x + y^3 + x*y*w*z}
+f2 <- function(w,x,y,z){w^2*x*y*z + sin(w) + w+z}
+f3 <- function(w,x,y,z){w*x*y*z + sin(x) + cos(w)}
+@ 
+
+
+Now we need to define elementary $1$-forms:
+
+<<>>=
+dw <- as.kform(1)
+dx <- as.kform(2)
+dy <- as.kform(3)
+dz <- as.kform(4)
+@ 
+
+I will demonstrate the theorem by defining a $2$-form which is the sum
+of three elementary two-forms, evaluated at a particular point in
+$\mathbb{R}^4$:
+
+<<>>=
+phi <-
+  (
+    +f1(1,2,3,4) ^ dw ^ dx
+    +f2(1,2,3,4) ^ dw ^ dy
+    +f3(1,2,3,4) ^ dy ^ dz
+  )
+@ 
+
+We could use slightly slicker R idiom by defining elementary forms
+\code{e1,e2,e3} and then defining \code{phi} to be a linear sum, weighted with
+$0$-forms given by the (scalar) functions \code{f1,f2,f3}:
+
+<<>>=
+e1 <- dw ^ dx
+e2 <- dw ^ dy
+e3 <- dy ^ dz
+
+phi <-
+  (
+    +f1(1,2,3,4) ^ e1
+    +f2(1,2,3,4) ^ e2
+    +f3(1,2,3,4) ^ e3
+  )
+phi
+@ 
+
+
+
+Now to evaluate first derivatives of \code{f1()} etc at point
+$(1,2,3,4)$, using \code{Deriv()} from the \pkg{Deriv} package:
+
+<<>>=
+library("Deriv")
+Df1 <- Deriv(f1)(1,2,3,4)
+Df2 <- Deriv(f2)(1,2,3,4)
+Df3 <- Deriv(f3)(1,2,3,4)
+@ 
+
+
+So \code{Df1} etc are numeric vectors of length 4, for example:
+
+<<>>=
+Df1
+@ 
+
+
+To calculate \code{dphi}, or $d\phi$, we can use function \code{grad()}:
+
+<<>>=
+dphi <-
+  (
+    +grad(Df1) ^ e1
+    +grad(Df2) ^ e2
+    +grad(Df3) ^ e3
+  )
+dphi
+@ 
+
+Now work on the differential of the differential.  First evaluate
+the Hessians (4x4 numeric matrices) at the same point:
+
+<<>>=
+Hf1 <- matrix(Deriv(f1,nderiv=2)(1,2,3,4),4,4)
+Hf2 <- matrix(Deriv(f2,nderiv=2)(1,2,3,4),4,4)
+Hf3 <- matrix(Deriv(f3,nderiv=2)(1,2,3,4),4,4)
+@ 
+
+
+<<>>=
+rownames(Hf1) <- c("w","x","y","z")
+colnames(Hf1) <- c("w","x","y","z")
+@ 
+
+
+For example
+
+<<>>=
+Hf1
+@ 
+
+
+(note the matrix is symmetric; also note carefully the nonzero
+diagonal term).  But $dd\phi$ is clearly zero as the Hessians are
+symmetrical:
+
+<<>>=
+ij <- expand.grid(seq_len(nrow(Hf1)),seq_len(ncol(Hf1)))
+
+ddphi <- # should be zero
+  (
+    +as.kform(ij,c(Hf1))
+    +as.kform(ij,c(Hf2))
+    +as.kform(ij,c(Hf3))
+  )
+
+ddphi
+@ 
+
+Above we see that $dd\phi$ is zero, as expected.
+
+\section{Stokes's theorem}
+
+In its most general form, Stokes's theorem states
+
+\begin{equation}
+\int_{\partial X}\phi=\int_Xd\phi
+\end{equation}
+
+where $X\subset\mathbb{R}^n$ is a compact oriented $(k+1)$-dimensional
+manifold with boundary $\partial X$ and $\phi$ is a $k$-form defined
+on a neighborhood of $X$.
+
+We will verify Stokes, following 6.9.5 of \cite{hubbard2015} in which
+
+\begin{equation}
+\phi=
+\left(x_1-x_2^2+x_3^3-\cdots\pm x_n^n\right)
+\left(
+\sum_{i=1}^n
+dx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n
+\right)
+\end{equation}
+
+(a hat indicates that a term is absent), and we wish to evaluate
+$\int_{\partial C_a}\phi$ where $C_a$ is the cube $0\leq x_j\leq a,
+1\leq j\leq n$.  Stokes tells us that this is equal to $\int_{C_a}
+d\phi$, which is given by
+
+\begin{equation}
+d\phi = \left(
+1+2x_2+\cdots + nx_n^{n-1}\right)
+dx_1\wedge\cdots\wedge dx_n
+\end{equation}
+
+and so the volume integral is just
+
+\begin{equation}
+\sum_{j=1}^n
+\int_{x_1=0}^a
+\int_{x_2=0}^a
+\cdots
+\int_{x_i=0}^a
+jx_j^{j-1}
+dx_1 dx_2\ldots dx_n=
+a^{n-1}\left(a+a^2+\cdots+a^n\right).
+\end{equation}
+
+Stokes's theorem, being trivial, is not amenable to direct numerical
+verification but the package does allow slick creation of $\phi$:
+
+<<>>=
+phi <- function(x){
+    n <- length(x)
+    sum(x^seq_len(n)*rep_len(c(1,-1),n)) * as.kform(t(apply(diag(n)<1,2,which)))
+}
+phi(1:9)
+@ 
+
+Recall that \code{phi} is a function that maps $\mathbb{R}^9$ to
+8-forms.  Here we choose $\left(1,2,\ldots,9\right)\in\mathbb{R}^9$
+and \code{phi(1:9)} as shown above is the resulting 8-form.  Thus, if
+we write $\phi_{1:9}$ for \code{phi(1:9)} we would have
+$\phi_{1:9}\colon\left(\mathbb{R}^9\right)^8\longrightarrow\mathbb{R}$,
+with package idiom as follows:
+
+<<>>=
+E <- matrix(runif(72),9,8)   # (R^9)^8
+as.function(phi(1:9))(E)
+@ 
+
+Further, $d\phi$ is given by
+
+<<>>=
+dphi <- function(x){
+    nn <- seq_along(x)
+    sum(nn*x^(nn-1)) * as.kform(seq_along(x))
+}
+dphi(1:9)
+@ 
+
+Observe that \code{dphi(1:9)} is a 9-form, with
+$d\phi_{1:9}\colon\left(\mathbb{R}^9\right)^9\longrightarrow\mathbb{R}$.
+Now consider \citeauthor{spivak1965}'s theorem 4.6 (page 82), which in
+this context states that a 9-form is proportional to the determinant
+of the $9\times 9$ matrix formed from its arguments, with constant of
+proportionality equal to the form evaluated on the identity matrix
+$I_9$ [formally and more generally, if $v_1,\ldots,v_n$ is a basis for
+  $V$, $\omega\in\Lambda^n(V)$ and $w_i=\sum a_{ij}v_j$ then
+  $\omega\left(w_1,\ldots,w_n\right) =
+  \det\left(a_{ij}\right)\cdot\omega\left(v_1,\ldots v_n\right)$].
+Numerically:
+
+<<>>=
+f <- as.function(dphi(1:9))
+E <- matrix(runif(81),9,9)
+LHS <- f(E)
+RHS <- det(E)*f(diag(9))  
+c(LHS=LHS,RHS=RHS,diff=LHS-RHS) # LHS==RHS, according to Spivak's 4.6
+@ 
+
+Above we see agreement to within numerical precision.
+
+\section{Conclusions and further work}
+
+The \pkg{stokes} package furnishes functionality for working with
+tensors, alternating forms, and related concepts from the exterior
+calculus.  Theorems including Stokes's generalized integral theorem
+were verified numerically.  Further work might include working with
+Stokes's theorem expressed in Clifford algebra
+formalism~\citep{hankin2022_clifford_tragula,hestenes1987},
+following~\citet{klausen2022}.
+
+\bibliography{stokes}
+\end{document}

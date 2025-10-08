@@ -16,6 +16,7 @@
 ^pkgdown$
 ^inst/arxiv
 ^inst/sticker
+^inst/stokes_tragula.Rnw$
 ^.circleci/config.yml$
 ^CODE_OF_CONDUCT.md$
 ^CONTRIBUTING.md$
