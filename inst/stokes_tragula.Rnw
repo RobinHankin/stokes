@@ -80,7 +80,7 @@
 \end{wrapfigure}
 Ordinary differential calculus may be formalized and generalized to
 arbitrary-dimensional oriented manifolds using the exterior calculus.
-Here I introduce the \pkg{stokes} package, written in the R computing
+Here I introduce the \pkg{stokes} package, written in the \proglang{R} computing
 language~\citep{rcore2022_tragula}, which furnishes functionality for working
 with the exterior calculus.  I give numerical verification of a number
 of theorems using the package.  Notation follows that
@@ -132,7 +132,7 @@ S=\sum_{1\leq i_1,\ldots,i_k\leq n} a_{i_1\ldots i_k}
 \phi_{i_1}\otimes\cdots\otimes\phi_{i_k}.
 \end{equation}
 
-The space spanned by such products has a natural representation in R
+The space spanned by such products has a natural representation in \proglang{R}
 as an array of dimensions $n\times\cdots\times n=n^k$.  If \code{A} is
 such an array, then the element \code{A[i\_1,i\_2,...,i\_k]} is the
 coefficient of $\phi_{i_1}\otimes\ldots\otimes\phi_{i\_k}$.  However,
@@ -141,7 +141,7 @@ sparse} array, as implemented by the \pkg{spray}
 package~\citep{hankin2022_spray}.  We will consider the case
 $n=5,k=4$, so we have multilinear maps from
 $\left(\mathbb{R}^5\right)^4$ to $\mathbb{R}$.  Below, we will test
-algebraic identities in R using the idiom furnished by the \pkg{stokes} package.  For our example we will define
+algebraic identities in \proglang{R} using the idiom furnished by the \pkg{stokes} package.  For our example we will define
 $S=1.5\phi_5\otimes\phi_1\otimes\phi_1\otimes\phi_1+2.5\phi_1\otimes\phi_1\otimes\phi_2\otimes\phi_3+3.5\phi_1\otimes\phi_3\otimes\phi_4\otimes\phi_2$
 using a matrix with three rows, one per term, and whose rows
 correspond to each term's tensor products of the $\phi$'s.  We first
@@ -282,7 +282,7 @@ defined as follows:
 @ 
 
 
-The R idiom for $S1\otimes S2$ as per
+The \proglang{R} idiom for $S1\otimes S2$ as per
 equation~\ref{definition_of_tensor_cross_product} would be
 \code{tensorprod()}, or \code{\%X\%}:
 
@@ -427,7 +427,7 @@ dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
 \end{equation}
 
 
-Defining $K$ has ready R idiom in which we define a matrix whose rows
+Defining $K$ has ready \proglang{R} idiom in which we define a matrix whose rows
 correspond to the differentials in each term:
 
 <<>>=
@@ -591,7 +591,7 @@ Krel
 Object \code{Krel} is a two-form, specifically a map from
 $\left(\mathbb{R}^4\right)^2$ to $\mathbb{R}$.  Observe that
 \code{Krel} has ${4\choose 2}=6$ components, which do not appear in any
-particular order.  Addition of such $k$-forms is straightforward in R
+particular order.  Addition of such $k$-forms is straightforward in \proglang{R}
 idiom but algebraically nontrivial:
 
 <<>>=
@@ -982,7 +982,7 @@ phi <-
   )
 @ 
 
-We could use slightly slicker R idiom by defining elementary forms
+We could use slightly slicker \proglang{R} idiom by defining elementary forms
 \code{e1,e2,e3} and then defining \code{phi} to be a linear sum, weighted with
 $0$-forms given by the (scalar) functions \code{f1,f2,f3}:
 
