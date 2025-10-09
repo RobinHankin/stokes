@@ -897,7 +897,7 @@ d\frac{1}{\left(x_1^2+\ldots +x_n^2\right)^{n/2}}\sum_{i=1}^{n}(-1)^{i-1}
 x_idx_1\wedge\cdots\wedge\widehat{dx_i}\wedge\cdots\wedge dx_n
 \end{equation}
 
-(where a hat indicates the absence of a term).  Hubbard and Hubbard
+(where a hat indicates the absence of a term).  \citeauthor{hubbard2015} 
 show analytically that $d\omega=0$.  Here I verify this reasoning
 numerically, using package idiom.  First we define a function that
 implements the wedge product
