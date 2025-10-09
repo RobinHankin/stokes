@@ -11,7 +11,7 @@
   \deqn{
     \mathbf{u}\times\mathbf{v}=\left(u_2v_3-u_3v_2,u_2v_3-u_3v_2,u_2v_3-u_3v_2\right).
   }{
-    u x v = (u_2 v_3 - u_3v_2, u_2 v_3 - u_3 v_2, u_2 v_3 - u_3 v_2).
+    u x v = (u_2 v_3 - u_3 v_2, u_2 v_3 - u_3 v_2, u_2 v_3 - u_3 v_2).
   }
 
 Function \code{vcp3()} is a convenience wrapper for this.  However, the

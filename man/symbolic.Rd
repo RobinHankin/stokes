@@ -9,7 +9,7 @@
   either option \code{kform_symbolic_print} or
   \code{ktensor_symbolic_print} is non-null.
 }
-\usage{as.symbolic(M,symbols=letters,d="")}
+\usage{as.symbolic(M, symbols=letters, d="")}
 \arguments{
   \item{M}{Object of class \code{kform} or \code{ktensor}; a map from
     \eqn{V^k}{V^k} to \eqn{\mathbb{R}}{R}, where
@@ -66,10 +66,10 @@ tensors, \code{print.ktensor()}, writes \code{d1} for \eqn{\phi_1},
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{print.stokes}},\code{\link{dx}}}
 \examples{
-(o <- kform_general(3,2,1:3))
-as.symbolic(o,d="d",symbols=letters[23:26])
+(o <- kform_general(3, 2, 1:3))
+as.symbolic(o, d="d", symbols=letters[23:26])
 
 (a <- rform(n=50))
-as.symbolic(a,symbols=state.abb)
+as.symbolic(a, symbols=state.abb)
 
 }

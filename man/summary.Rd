@@ -17,7 +17,7 @@ A summary method for tensors and alternating forms, and a print method for summa
 \method{print}{summary.ktensor}(x, ...)
 }
 \arguments{
-  \item{object,x}{Object of class \code{ktensor} or \code{kform}}
+  \item{object, x}{Object of class \code{ktensor} or \code{kform}}
   \item{...}{Further arguments, passed to \code{head()}}
 }
 \details{
