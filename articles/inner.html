@@ -208,8 +208,8 @@ more stringent test would be to use a general matrix:</p>
 <span><span class="va">LHS</span> <span class="op">&lt;-</span> <span class="fu">quad3.form</span><span class="op">(</span><span class="va">M</span>,<span class="va">x</span>,<span class="va">y</span><span class="op">)</span></span>
 <span><span class="va">RHS</span> <span class="op">&lt;-</span> <span class="fu">f</span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##      LHS      RHS     diff </span></span>
-<span><span class="co">## -3.41066 -3.41066  0.00000</span></span></code></pre>
+<pre><code><span><span class="co">##           LHS           RHS          diff </span></span>
+<span><span class="co">## -3.410660e+00 -3.410660e+00 -4.440892e-16</span></span></code></pre>
 <p>(function <code><a href="https://rdrr.io/pkg/quadform/man/quad.form.html" class="external-link">quadform::quad3.form()</a></code> evaluates matrix
 products efficiently; <code>quad3.form(M,x,y)</code> returns <span class="math inline">x^TMy</span>). Above we see agreement, to within
 numerical precision, of the dot product calculated two different ways:
@@ -223,8 +223,8 @@ uses <code><a href="../reference/inner.html">inner()</a></code>. Of course, we w
 <span><span class="va">LHS</span> <span class="op">&lt;-</span> <span class="fu">quad3.form</span><span class="op">(</span><span class="va">M1</span><span class="op">+</span><span class="va">M2</span>,<span class="va">x</span>,<span class="va">y</span><span class="op">)</span></span>
 <span><span class="va">RHS</span> <span class="op">&lt;-</span> <span class="fu">g</span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##       LHS       RHS      diff </span></span>
-<span><span class="co">## -5.418253 -5.418253  0.000000</span></span></code></pre>
+<pre><code><span><span class="co">##           LHS           RHS          diff </span></span>
+<span><span class="co">## -5.418253e+00 -5.418253e+00  8.881784e-16</span></span></code></pre>
 <p>Above we see numerical verification of the fact that <span class="math inline">I(M_1+M_2)=I(M_1)+I(M_2)</span>, by evaluation at
 <span class="math inline">\mathbf{x},\mathbf{y}</span>, again with
 <code>LHS</code> using direct matrix algebra and <code>RHS</code> using
