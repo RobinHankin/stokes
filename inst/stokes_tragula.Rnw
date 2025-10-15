@@ -13,7 +13,7 @@
 
 
 %% just as usual
-\author{Robin K. S. Hankin\\University of Stirling}
+\author{Robin K. S. Hankin}
 
 
 \title{Stokes's theorem in \proglang{R}}
@@ -52,10 +52,10 @@
 %% The address of (at least) one author should be given
 %% in the following format:
 \Address{
-  Robin K. S. Hankin\orcid{https://orcid.org/0000-0001-5982-0415}\\
+  Robin K. S. Hankin\\
   University of Stirling\\
   Scotland\\
-  E-mail: \email{hankin.robin@gmail.com}\\
+  email: \email{hankin.robin@gmail.com}\\
   URL: \url{https://www.aut.ac.nz/profiles/robin-hankin}\\
 }
 
