@@ -15,7 +15,6 @@
 %% just as usual
 \author{Robin K. S. Hankin}
 
-
 \title{Stokes's theorem in \proglang{R}}
 
 %% for pretty printing and a nice hypersummary also set:
@@ -26,13 +25,16 @@
 %% an abstract and keywords
 
 \Abstract{
-  In this short article I introduce the {\tt stokes} package which
+
+  In this short article I introduce the \pkg{stokes} package which
   provides functionality for working with tensors, alternating forms,
   wedge products, and related concepts from the exterior calculus.
-  Notation and spirit follow \citeauthor{spivak1965}.  Stokes's generalized integral
-  theorem, viz $\int_{\partial X}\phi=\int_Xd\phi$, is demonstrated
-  here using the package; it is available on CRAN at\\
-  \url{https://CRAN.R-project.org/package=stokes}.
+  Notation and spirit follow \citeauthor{spivak1965}.  Stokes's
+  generalized integral theorem, viz $\int_{\partial
+    X}\phi=\int_Xd\phi$, is demonstrated here using the package; it is
+  available on CRAN
+  at\\ \url{https://CRAN.R-project.org/package=stokes}.
+
 }
    
 \Keywords{Stokes's theorem, exterior calculus, differential forms, \proglang{R}}
@@ -56,7 +58,6 @@
   University of Stirling\\
   Scotland\\
   email: \email{hankin.robin@gmail.com}\\
-  URL: \url{https://www.aut.ac.nz/profiles/robin-hankin}\\
 }
 
 
