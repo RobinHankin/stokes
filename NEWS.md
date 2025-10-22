@@ -3,6 +3,7 @@
 - roxygen2 used for NAMESPACE
 - minor documentation improvements
 - selective inclusion of vignettes for CRAN submission
+- code neatening
 
 # stokes 1.2-3
 
