@@ -23,6 +23,9 @@
   \dQuote{\code{*}}, \dQuote{\code{/}} and \dQuote{\code{^}}) to the
   appropriate specialist function by coercing to \code{spray} objects.
 
+  Binary addition and subtraction, as in \code{x+y} or \code{x-y}, are
+  performed by \code{spray::spray_plus_spray()}.
+
   For wedge products of \eqn{k}-forms, use \code{wedge()} or
   \code{\%^\%} or \code{^}; and for tensor products of
   \eqn{k}-tensors, use \code{tensorprod()} or \code{\%X\%}.
