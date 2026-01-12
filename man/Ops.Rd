@@ -69,7 +69,7 @@
   \CRANpkg{clifford} package.
 
   Powers are not implemented for ktensors on the grounds that a ktensor
-  to the power zero is ot defined.
+  to the power zero is not defined.
 
   Note that one has to take care with order of operations if we mix
   \code{^} with \code{*}.  For example, \code{dx ^ (6*dy)} is perfectly
