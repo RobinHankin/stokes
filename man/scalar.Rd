@@ -65,11 +65,6 @@ A linear map from V^0 to R with V=R^0:
 > 
 }
 
-Compare zero tensors and zero forms.  A zero tensor maps \eqn{V^k} to
-the real number zero, and a zero form is an alternating tensor mapping
-\eqn{V^k} to zero (so a zero tensor is necessarily alternating).  See
-\code{zero.Rd}.
-
 }
 \value{
   The functions documented here return an object of class
@@ -77,6 +72,13 @@ the real number zero, and a zero form is an alternating tensor mapping
   returns a Boolean.
 }
 \author{Robin K. S. Hankin}
+\note{
+Compare zero tensors and zero forms.  These are different from
+\eqn{0}-tensors and \eqn{0}-scalars.  A zero tensor maps \eqn{V^k} to
+the real number zero, and a zero form is an alternating tensor mapping
+\eqn{V^k} to zero (so a zero tensor is necessarily alternating).  See
+\code{zero.Rd}.
+}
 \seealso{\code{\link{zeroform}}}
 
 \examples{
