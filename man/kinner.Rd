@@ -23,11 +23,11 @@ through linearity.
 }
 
 \usage{
-kinner(o1,o2,M)
+kinner(o1, o2, M)
 }
 \arguments{
-  \item{o1,o2}{Objects of class \code{kform}}
-\item{M}{Matrix}
+  \item{o1, o2}{Objects of class \code{kform}}
+  \item{M}{Matrix}
 }
 \value{Returns a real number}
 \author{Robin K. S. Hankin}
@@ -40,8 +40,8 @@ kinner(o1,o2,M)
 a <- (2*dx)^(3*dy)
 b <- (5*dx)^(7*dy)
 
-kinner(a,b)
-det(matrix(c(2*5,0,0,3*7),2,2))  # mathematically identical, slight numerical mismatch
+kinner(a, b)
+det(matrix(c(2*5,0,0,3*7), 2, 2))  # mathematically identical, slight numerical mismatch
 
 
 }
