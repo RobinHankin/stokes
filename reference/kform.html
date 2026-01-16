@@ -103,14 +103,14 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">kform</span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span>
-<span><span class="fu">as.kform</span><span class="op">(</span><span class="va">M</span>,<span class="va">coeffs</span>,lose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">as.kform</span><span class="op">(</span><span class="va">M</span>, <span class="va">coeffs</span>, lose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu">kform_basis</span><span class="op">(</span><span class="va">n</span>, <span class="va">k</span><span class="op">)</span></span>
-<span><span class="fu">kform_general</span><span class="op">(</span><span class="va">W</span>,<span class="va">k</span>,<span class="va">coeffs</span>,lose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">kform_general</span><span class="op">(</span><span class="va">W</span>, <span class="va">k</span>, <span class="va">coeffs</span>, lose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu">is.kform</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="fu">d</span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span>
-<span><span class="fu">e</span><span class="op">(</span><span class="va">i</span>,<span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu">e</span><span class="op">(</span><span class="va">i</span>, <span class="va">n</span><span class="op">)</span></span>
 <span><span class="co"># S3 method for class 'kform'</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -128,7 +128,7 @@
   <dt id="arg-w">W<a class="anchor" aria-label="anchor" href="#arg-w"></a></dt>
 <dd><p>Integer vector of dimensions</p></dd>
 
-  <dt id="arg-m-coeffs">M,coeffs<a class="anchor" aria-label="anchor" href="#arg-m-coeffs"></a></dt>
+  <dt id="arg-m-coeffs">M, coeffs<a class="anchor" aria-label="anchor" href="#arg-m-coeffs"></a></dt>
 <dd><p>Index matrix and coefficients for a \(k\)-form</p></dd>
 
   <dt id="arg-s">S<a class="anchor" aria-label="anchor" href="#arg-s"></a></dt>
@@ -221,7 +221,7 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">as.kform</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">as.kform</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^2 to R with V=R^6:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5 6  =  -0.66601844</span>
@@ -229,7 +229,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3 4  =   1.07907227</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2 3  =  -0.53258072</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 2  =  -0.05892959</span>
-<span class="r-in"><span><span class="fu">kform_general</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,<span class="fl">2</span>,coeffs<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>  <span class="co"># used in electromagnetism</span></span></span>
+<span class="r-in"><span><span class="fu">kform_general</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">2</span>, coeffs<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>  <span class="co"># used in electromagnetism</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^2 to R with V=R^4:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3 4  =    6</span>
@@ -239,9 +239,9 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 3  =    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 2  =    1</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">K1</span> <span class="op">&lt;-</span> <span class="fu">as.kform</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">K2</span> <span class="op">&lt;-</span> <span class="fu">kform_general</span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">8</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">K1</span><span class="op">^</span><span class="va">K2</span>  <span class="co"># or wedge(K1,K2)</span></span></span>
+<span class="r-in"><span><span class="va">K1</span> <span class="op">&lt;-</span> <span class="fu">as.kform</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">K2</span> <span class="op">&lt;-</span> <span class="fu">kform_general</span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">K1</span><span class="op">^</span><span class="va">K2</span>  <span class="co"># or wedge(K1, K2)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An alternating linear map from V^4 to R with V=R^8:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3 4 5 6  =   -1.1815951</span>
@@ -281,8 +281,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 2 3 4 5 6 7 8 9  =    1</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="wedge.html">wedge</a></span><span class="op">(</span><span class="va">K1</span>,<span class="va">K2</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">32</span><span class="op">)</span>,<span class="fl">8</span>,<span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="wedge.html">wedge</a></span><span class="op">(</span><span class="va">K1</span>, <span class="va">K2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">32</span><span class="op">)</span>, <span class="fl">8</span>, <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">f</span><span class="op">(</span><span class="va">E</span><span class="op">)</span> <span class="op">+</span> <span class="fu">f</span><span class="op">(</span><span class="va">E</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>  <span class="co"># should be zero by alternating property</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.065814e-14</span>
 <span class="r-in"><span></span></span>
@@ -306,7 +306,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>

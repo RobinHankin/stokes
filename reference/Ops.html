@@ -115,7 +115,7 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <p></p>
-<dl><dt id="arg-e-e-">e1,e2<a class="anchor" aria-label="anchor" href="#arg-e-e-"></a></dt>
+<dl><dt id="arg-e-e-">e1, e2<a class="anchor" aria-label="anchor" href="#arg-e-e-"></a></dt>
 <dd><p>Objects of class <code>kform</code> or <code>ktensor</code></p></dd>
 
 </dl></div>
@@ -125,6 +125,8 @@
   and binary arithmetic operators (“<code>+</code>”, “<code>-</code>”,
   “<code>*</code>”, “<code>/</code>” and “<code>^</code>”) to the
   appropriate specialist function by coercing to <code>spray</code> objects.</p>
+<p>Binary addition and subtraction, as in <code>x+y</code> or <code>x-y</code>, are
+  performed by <code><a href="https://robinhankin.github.io/spray/reference/Ops.spray.html" class="external-link">spray::spray_plus_spray()</a></code>.</p>
 <p>For wedge products of \(k\)-forms, use <code><a href="wedge.html">wedge()</a></code> or
   <code>%^%</code> or <code>^</code>; and for tensor products of
   \(k\)-tensors, use <code><a href="tensorprod.html">tensorprod()</a></code> or <code>%X%</code>.</p>
@@ -156,21 +158,22 @@
   <code>K2</code>: <code>K1*K2</code> will return an error.  Multiplication by
   scalars is OK, as in <code>K1*6</code>.</p>
 <p>Powers simply do not make sense for alternating forms: if we wish to
-  calculate \(S^2\) (that is, the square of \(S\)), then the only
-  natural interpretation of this is \(S^S\), but <code>S %^% S =
-  S^S</code> is zero identically.  In the package, therefore, the caret
-  (“<code>^</code>”) evaluates the wedge product; note that
-  <code>%^%</code> is also acceptable.</p>
+  define “\(S^2\)” (that is, the “square” of \(S\)),
+  then the only natural interpretation of this is <code>S^S</code> [that is,
+  <code>wedge(S,S)</code>], but this is zero identically.  In the package,
+  therefore, the caret (“<code>^</code>”) exclusively evaluates the
+  wedge product; note that <code>%^%</code> is also acceptable.</p>
 <p>Here the caret is interpreted consistently as a wedge product, and if
   one of the factors is numeric it is interpreted as a zero-form (that
   is, a scalar).  Thus <code>S^2 = wedge(S,2) = 2^S = S*2 = S+S</code>, and
-  indeed <code>S^n==S*n</code>.  Caveat emptor!  If <code>S</code> is a <code>kform</code>
+  indeed <code>S^n == S*n</code>.  Caveat emptor!  If <code>S</code> is a <code>kform</code>
   object, it is very tempting [but incorrect] to interpret
   “<code>S^3</code>” as something like “<code>S</code> to the power
   3”.  See also the note at <code>Ops.clifford</code> in the
   <a href="https://CRAN.R-project.org/package=clifford" class="external-link"><span class="pkg">clifford</span></a> package.</p>
-<p>Powers are not implemented for ktensors on the grounds that a ktensor
-  to the power zero is ot defined.</p>
+<p>Powers are not currently implemented for ktensors, but this might be
+  implemented in the future: a ktensor to the power zero is the 0-tensor
+  with unit coefficient.</p>
 <p>Note that one has to take care with order of operations if we mix
   <code>^</code> with <code>*</code>.  For example, <code>dx ^ (6*dy)</code> is perfectly
   acceptable; but <code>(dx ^ 6)*dy)</code> will return an error, as will the
@@ -187,15 +190,15 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 2  =    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5 6  =    6</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">k1</span> <span class="op">&lt;-</span> <span class="fu"><a href="kform.html">kform_general</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">2</span>,<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">k2</span> <span class="op">&lt;-</span> <span class="fu"><a href="kform.html">kform_general</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">2</span>,<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">k1</span> <span class="op">&lt;-</span> <span class="fu"><a href="kform.html">kform_general</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">k2</span> <span class="op">&lt;-</span> <span class="fu"><a href="kform.html">kform_general</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span>,<span class="fl">4</span>,<span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">k1</span><span class="op">+</span><span class="va">k2</span><span class="op">)</span><span class="op">(</span><span class="va">E</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span>, <span class="fl">4</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">k1</span> <span class="op">+</span> <span class="va">k2</span><span class="op">)</span><span class="op">(</span><span class="va">E</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 7.515684</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## verify linearity, here 2*k1 + 3*k2:</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">k1</span><span class="op">+</span><span class="fl">3</span><span class="op">*</span><span class="va">k2</span><span class="op">)</span><span class="op">(</span><span class="va">E</span><span class="op">)</span><span class="op">-</span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">k1</span><span class="op">)</span><span class="op">(</span><span class="va">E</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">k2</span><span class="op">)</span><span class="op">(</span><span class="va">E</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">k1</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="va">k2</span><span class="op">)</span><span class="op">(</span><span class="va">E</span><span class="op">)</span><span class="op">-</span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">k1</span><span class="op">)</span><span class="op">(</span><span class="va">E</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">k2</span><span class="op">)</span><span class="op">(</span><span class="va">E</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 7.105427e-15</span>
 <span class="r-in"><span><span class="co">## should be small</span></span></span>
 </code></pre></div>
@@ -212,7 +215,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>

@@ -131,7 +131,7 @@ Hankin</h4>
 <div class="section level2">
 <h2 id="the-stokes-package">The <code>stokes</code> package<a class="anchor" aria-label="anchor" href="#the-stokes-package"></a>
 </h2>
-<p><img src="../../../_temp/Library/stokes/help/figures/stokes.png" width="20%" style="float:right; padding:10px"></p>
+<p><img src="../../../_temp/Library/stokes/help/figures/stokes.png" class="r-plt" alt="" width="20%" style="float:right; padding:10px"></p>
 <p>To cite the <code>stokes</code> package in publications please use
 <span class="citation">(<a href="#ref-hankin2022_stokes">Hankin
 2022c</a>)</span>. Ordinary differential calculus may be formalized and
@@ -881,16 +881,16 @@ nicely with magrittr pipes:</p>
 <code class="sourceCode R"><span><span class="va">o</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/transform.html">pullback</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/transform.html">pullback</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/solve.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^3 to R with V=R^5:</span></span>
 <span><span class="co">##                      val</span></span>
-<span><span class="co">##  3 4 5  =  -2.775558e-17</span></span>
-<span><span class="co">##  1 2 3  =   3.469447e-17</span></span>
-<span><span class="co">##  2 3 5  =  -1.170938e-16</span></span>
-<span><span class="co">##  2 3 4  =   3.191891e-16</span></span>
+<span><span class="co">##  3 4 5  =   1.526557e-16</span></span>
+<span><span class="co">##  1 2 3  =  -7.632783e-17</span></span>
+<span><span class="co">##  2 3 5  =  -2.333203e-16</span></span>
+<span><span class="co">##  2 3 4  =   3.747003e-16</span></span>
 <span><span class="co">##  2 4 5  =   2.000000e+00</span></span>
 <span><span class="co">##  1 2 5  =  -2.081668e-17</span></span>
-<span><span class="co">##  1 3 4  =   1.006140e-16</span></span>
-<span><span class="co">##  1 2 4  =  -1.179612e-16</span></span>
-<span><span class="co">##  1 3 5  =   1.110223e-16</span></span>
-<span><span class="co">##  1 4 5  =   1.179612e-16</span></span></code></pre>
+<span><span class="co">##  1 3 4  =   6.938894e-18</span></span>
+<span><span class="co">##  1 2 4  =  -1.595946e-16</span></span>
+<span><span class="co">##  1 3 5  =  -2.081668e-17</span></span>
+<span><span class="co">##  1 4 5  =  -7.632783e-17</span></span></code></pre>
 <p>Above we see many rows with values small enough for the print method
 to print an exact zero, but not sufficiently small to be eliminated by
 the <code>spray</code> internals. We can remove the small entries with
@@ -1274,7 +1274,7 @@ Spivak, M. 1965. <em>Calculus on Manifolds</em>. Addison-Wesley.
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

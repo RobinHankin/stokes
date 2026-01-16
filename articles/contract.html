@@ -130,7 +130,7 @@ Hankin</h4>
 
     
     
-<p><img src="../../../_temp/Library/stokes/help/figures/stokes.png" width="20%" style="float:right; padding:10px"></p>
+<p><img src="../../../_temp/Library/stokes/help/figures/stokes.png" class="r-plt" alt="" width="20%" style="float:right; padding:10px"></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">contract</span></span></code></pre></div>
 <pre><code><span><span class="kw">function</span> <span class="op">(</span><span class="va">K</span>, <span class="va">v</span>, <span class="va">lose</span> <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span>
@@ -406,8 +406,8 @@ this may be verified as follows:</p>
 <span><span class="va">LHS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/det.html" class="external-link">det</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span>
 <span><span class="va">RHS</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/contract.html">contract</a></span><span class="op">(</span><span class="va">o</span>,<span class="va">V</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          LHS          RHS         diff </span></span>
-<span><span class="co">## 6.355108e+00 6.355108e+00 1.776357e-15</span></span></code></pre>
+<pre><code><span><span class="co">##      LHS      RHS     diff </span></span>
+<span><span class="co">## 6.355108 6.355108 0.000000</span></span></code></pre>
 <p>Above we see agreement to within numerical error.</p>
 </div>
 <div class="section level2">
@@ -645,7 +645,7 @@ Elsevier.
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>
