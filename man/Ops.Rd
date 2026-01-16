@@ -53,23 +53,24 @@
   scalars is OK, as in \code{K1*6}.
 
   Powers simply do not make sense for alternating forms: if we wish to
-  calculate \eqn{S^2} (that is, the square of \eqn{S}), then the only
-  natural interpretation of this is \eqn{S^S}, but \code{S \%^\% S =
-  S^S} is zero identically.  In the package, therefore, the caret
-  (\dQuote{\code{^}}) evaluates the wedge product; note that
-  \code{\%^\%} is also acceptable.
+  define \dQuote{\eqn{S^2}} (that is, the \dQuote{square} of \eqn{S}),
+  then the only natural interpretation of this is \code{S^S} [that is,
+  \code{wedge(S,S)}], but this is zero identically.  In the package,
+  therefore, the caret (\dQuote{\code{^}}) exclusively evaluates the
+  wedge product; note that \code{\%^\%} is also acceptable.
 
   Here the caret is interpreted consistently as a wedge product, and if
   one of the factors is numeric it is interpreted as a zero-form (that
   is, a scalar).  Thus \code{S^2 = wedge(S,2) = 2^S = S*2 = S+S}, and
-  indeed \code{S^n==S*n}.  Caveat emptor!  If \code{S} is a \code{kform}
+  indeed \code{S^n == S*n}.  Caveat emptor!  If \code{S} is a \code{kform}
   object, it is very tempting [but incorrect] to interpret
   \dQuote{\code{S^3}} as something like \dQuote{\code{S} to the power
   3}.  See also the note at \code{Ops.clifford} in the
   \CRANpkg{clifford} package.
 
-  Powers are not implemented for ktensors on the grounds that a ktensor
-  to the power zero is not defined.
+  Powers are not currently implemented for ktensors, but this might be
+  implemented in the future: a ktensor to the power zero is the 0-tensor
+  with unit coefficient.
 
   Note that one has to take care with order of operations if we mix
   \code{^} with \code{*}.  For example, \code{dx ^ (6*dy)} is perfectly
