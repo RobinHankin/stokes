@@ -35,7 +35,9 @@
   Experimental functionality for \dQuote{pure} extraction and
   replacement is provided, following \CRANpkg{spray} version 1.0-25 or
   above.  Thus idiom such as \code{a[abs(coeffs(a)) > 0.1]} or indeed
-  \code{a[coeffs(a) < 1] <- 0} should work as expected.
+  \code{a[coeffs(a) < 1] <- 0} should work as expected.  Compare the old
+  idiom which would be something like \code{coeffs(a)[coeffs(a) < 0.1]
+  <- 0}.
 
 }
 
