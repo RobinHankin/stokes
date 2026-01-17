@@ -15,13 +15,16 @@
 \method{Ops}{ktensor}(e1, e2 = NULL)
 }
 \arguments{
-  \item{e1,e2}{Objects of class \code{kform} or \code{ktensor}}
+  \item{e1, e2}{Objects of class \code{kform} or \code{ktensor}}
 }
 \details{
   The functions \code{Ops.kform()} and \code{Ops.ktensor()} pass unary
   and binary arithmetic operators (\dQuote{\code{+}}, \dQuote{\code{-}},
   \dQuote{\code{*}}, \dQuote{\code{/}} and \dQuote{\code{^}}) to the
   appropriate specialist function by coercing to \code{spray} objects.
+
+  Binary addition and subtraction, as in \code{x+y} or \code{x-y}, are
+  performed by \code{spray::spray_plus_spray()}.
 
   For wedge products of \eqn{k}-forms, use \code{wedge()} or
   \code{\%^\%} or \code{^}; and for tensor products of
@@ -50,23 +53,24 @@
   scalars is OK, as in \code{K1*6}.
 
   Powers simply do not make sense for alternating forms: if we wish to
-  calculate \eqn{S^2} (that is, the square of \eqn{S}), then the only
-  natural interpretation of this is \eqn{S^S}, but \code{S \%^\% S =
-  S^S} is zero identically.  In the package, therefore, the caret
-  (\dQuote{\code{^}}) evaluates the wedge product; note that
-  \code{\%^\%} is also acceptable.
+  define \dQuote{\eqn{S^2}} (that is, the \dQuote{square} of \eqn{S}),
+  then the only natural interpretation of this is \code{S^S} [that is,
+  \code{wedge(S,S)}], but this is zero identically.  In the package,
+  therefore, the caret (\dQuote{\code{^}}) exclusively evaluates the
+  wedge product; note that \code{\%^\%} is also acceptable.
 
   Here the caret is interpreted consistently as a wedge product, and if
   one of the factors is numeric it is interpreted as a zero-form (that
   is, a scalar).  Thus \code{S^2 = wedge(S,2) = 2^S = S*2 = S+S}, and
-  indeed \code{S^n==S*n}.  Caveat emptor!  If \code{S} is a \code{kform}
+  indeed \code{S^n == S*n}.  Caveat emptor!  If \code{S} is a \code{kform}
   object, it is very tempting [but incorrect] to interpret
   \dQuote{\code{S^3}} as something like \dQuote{\code{S} to the power
   3}.  See also the note at \code{Ops.clifford} in the
   \CRANpkg{clifford} package.
 
-  Powers are not implemented for ktensors on the grounds that a ktensor
-  to the power zero is ot defined.
+  Powers are not currently implemented for ktensors, but this might be
+  implemented in the future: a ktensor to the power zero is the 0-tensor
+  with unit coefficient.
 
   Note that one has to take care with order of operations if we mix
   \code{^} with \code{*}.  For example, \code{dx ^ (6*dy)} is perfectly
@@ -79,14 +83,14 @@
 ## dx_1 ^ dx_2 + 6dx_5 ^ dx_6:
 as.kform(1) ^ as.kform(2) + 6*as.kform(5) ^ as.kform(6)
 
-k1 <- kform_general(4,2,rnorm(6))
-k2 <- kform_general(4,2,rnorm(6))
+k1 <- kform_general(4, 2, rnorm(6))
+k2 <- kform_general(4, 2, rnorm(6))
 
-E <- matrix(rnorm(8),4,2)
-as.function(k1+k2)(E)
+E <- matrix(rnorm(8), 4, 2)
+as.function(k1 + k2)(E)
 
 ## verify linearity, here 2*k1 + 3*k2:
-as.function(2*k1+3*k2)(E)-(2*as.function(k1)(E) + 3*as.function(k2)(E))
+as.function(2*k1 + 3*k2)(E)-(2*as.function(k1)(E) + 3*as.function(k2)(E))
 ## should be small
 }
 \keyword{symbolmath}

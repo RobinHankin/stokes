@@ -7,7 +7,7 @@
 }
 \usage{
 volume(n)
-is.volume(K,n=dovs(K))
+is.volume(K, n=dovs(K))
 }
 \arguments{
   \item{n}{Dimension of the space}

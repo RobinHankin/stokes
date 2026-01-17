@@ -23,7 +23,7 @@ hodge(K, n=dovs(K), g, lose=TRUE)
 \author{Robin K. S. Hankin}
 \note{Most authors write the Hodge dual of \eqn{\psi}{omitted} as
   \eqn{*\psi}{omitted} or \eqn{\star\psi}{omitted}, but Weintraub
-  uses \eqn{\psi *}{omitted}.
+  uses \eqn{\psi *}{omitted; see latex}.
 }
 \seealso{\code{\link{wedge}}}
 \examples{

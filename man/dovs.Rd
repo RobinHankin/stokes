@@ -22,6 +22,6 @@ Vignette \code{dovs} provides more discussion.
 \examples{
 dovs(rform())
 
-table(replicate(20,dovs(rform(3))))  
+table(replicate(20, dovs(rform(3))))  
 
 }

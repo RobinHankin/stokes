@@ -15,20 +15,20 @@
 }
 \usage{
 kform(S)
-as.kform(M,coeffs,lose=TRUE)
+as.kform(M, coeffs, lose=TRUE)
 kform_basis(n, k)
-kform_general(W,k,coeffs,lose=TRUE)
+kform_general(W, k, coeffs, lose=TRUE)
 is.kform(x)
 d(i)
-e(i,n)
-\method{as.function}{kform}(x,...)
+e(i, n)
+\method{as.function}{kform}(x, ...)
 }
 \arguments{
   \item{n}{Dimension of the vector space \eqn{V=\mathbb{R}^n}{V=R^n}}
   \item{i}{Integer}
   \item{k}{A \eqn{k}-form maps \eqn{V^k}{V^k} to \eqn{\mathbb{R}}{R}}
   \item{W}{Integer vector of dimensions}
-  \item{M,coeffs}{Index matrix and coefficients for a \eqn{k}-form}
+  \item{M, coeffs}{Index matrix and coefficients for a \eqn{k}-form}
   \item{S}{Object of class \code{spray}}
   \item{lose}{Boolean, with default \code{TRUE} meaning to coerce a
     \eqn{0}-form to a scalar and \code{FALSE} meaning to return the
@@ -108,20 +108,20 @@ e(i,n)
 \seealso{\code{\link{ktensor}},\code{\link{lose}}}
 \examples{
 
-as.kform(cbind(1:5,2:6),rnorm(5))
-kform_general(1:4,2,coeffs=1:6)  # used in electromagnetism
+as.kform(cbind(1:5,2:6), rnorm(5))
+kform_general(1:4, 2, coeffs=1:6)  # used in electromagnetism
 
-K1 <- as.kform(cbind(1:5,2:6),rnorm(5))
-K2 <- kform_general(5:8,2,1:6)
-K1^K2  # or wedge(K1,K2)
+K1 <- as.kform(cbind(1:5, 2:6), rnorm(5))
+K2 <- kform_general(5:8, 2, 1:6)
+K1^K2  # or wedge(K1, K2)
 
 d(1:3)
 dx^dy^dz   # same thing
 
 d(sample(9)) # coeff is +/-1 depending on even/odd permutation of 1:9
 
-f <- as.function(wedge(K1,K2))
-E <- matrix(rnorm(32),8,4)
+f <- as.function(wedge(K1, K2))
+E <- matrix(rnorm(32), 8, 4)
 f(E) + f(E[,c(1,3,2,4)])  # should be zero by alternating property
 
 options(kform_symbolic_print = 'd')
