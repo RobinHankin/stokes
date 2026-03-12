@@ -4,11 +4,7 @@
 A \(k\)-form \(\omega\in\Lambda^k(V)\) maps
 \(V^k\) to the reals, where \(V=\mathbb{R}^n\).
 Function dovs() returns \(n\), the dimensionality of the
-underlying vector space.  The function itself is almost trivial,
-returning the maximum of the index matrix.
-Special dispensation is given for zero-forms and zero tensors, which
-return zero.
-Vignette dovs provides more discussion."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+underlying vector space."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
@@ -112,11 +108,7 @@ Vignette dovs provides more discussion."><!-- mathjax --><script src="https://cd
 <p>A \(k\)-form \(\omega\in\Lambda^k(V)\) maps
 \(V^k\) to the reals, where \(V=\mathbb{R}^n\).
 Function <code>dovs()</code> returns \(n\), the dimensionality of the
-underlying vector space.  The function itself is almost trivial,
-returning the maximum of the index matrix.</p>
-<p>Special dispensation is given for zero-forms and zero tensors, which
-return zero.</p>
-<p>Vignette <code>dovs</code> provides more discussion.</p>
+underlying vector space.</p>
     </div>
 
     <div id="ref-usage">
@@ -128,6 +120,15 @@ return zero.</p>
     <dl><dt id="arg-k">K<a class="anchor" aria-label="anchor" href="#arg-k"></a></dt>
 <dd><p>A \(k\)-form or \(k\)-tensor</p></dd>
 </dl></div>
+    <div id="details">
+    <h2>Details</h2>
+
+
+<p>The function itself is almost trivial, returning the maximum of the
+index matrix.  Special dispensation is given for zero-forms and zero
+tensors, which return zero.</p>
+<p>Vignette <code>dovs</code> provides more discussion.</p>
+    </div>
     <div id="value">
     <h2>Value</h2>
     <p>Returns a non-negative integer</p>
@@ -144,8 +145,8 @@ return zero.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fu">dovs</span><span class="op">(</span><span class="fu"><a href="rform.html">rform</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6  7 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 18 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5  7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1 19 </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
