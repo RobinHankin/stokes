@@ -7,11 +7,12 @@
 \alias{stretch}
 \title{Linear transforms of \eqn{k}-forms}
 \description{
-  Given a \eqn{k}-form, express it in terms of linear
-  combinations of the \eqn{dx_i}{dx_i}}
+  Express a \eqn{k}-form in terms of linear combinations of the
+  \eqn{dx_i}{dx_i}
+}
 \usage{
-pullback(K,M)
-stretch(K,d)
+pullback(K, M)
+stretch(K, d)
 }
 \arguments{
   \item{K}{Object of class \code{kform}}
