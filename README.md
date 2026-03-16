@@ -27,8 +27,14 @@ map
 ![S\colon V^k\longrightarrow\mathbb{R}](https://latex.codecogs.com/png.latex?S%5Ccolon%20V%5Ek%5Clongrightarrow%5Cmathbb%7BR%7D "S\colon V^k\longrightarrow\mathbb{R}"),
 where
 ![V=\mathbb{R}^n](https://latex.codecogs.com/png.latex?V%3D%5Cmathbb%7BR%7D%5En "V=\mathbb{R}^n")
-is considered as a vector space. Given two
-![k](https://latex.codecogs.com/png.latex?k "k")-tensors
+is considered as a vector space. We write
+![S(x_1,\ldots,x_k)](https://latex.codecogs.com/png.latex?S%28x_1%2C%5Cldots%2Cx_k%29 "S(x_1,\ldots,x_k)"),
+where
+![x_i\in\mathbb{R}^n](https://latex.codecogs.com/png.latex?x_i%5Cin%5Cmathbb%7BR%7D%5En "x_i\in\mathbb{R}^n"),
+to indicate the functional nature of
+![S](https://latex.codecogs.com/png.latex?S "S").
+
+Given two ![k](https://latex.codecogs.com/png.latex?k "k")-tensors
 ![S,T](https://latex.codecogs.com/png.latex?S%2CT "S,T") the package can
 calculate their outer product
 ![S\otimes T](https://latex.codecogs.com/png.latex?S%5Cotimes%20T "S\otimes T")
@@ -38,11 +44,11 @@ A ![k](https://latex.codecogs.com/png.latex?k "k")-form is an
 alternating ![k](https://latex.codecogs.com/png.latex?k "k")-tensor,
 that is a ![k](https://latex.codecogs.com/png.latex?k "k")-tensor
 ![\omega](https://latex.codecogs.com/png.latex?%5Comega "\omega") with
-the property that linear dependence of
-![x_1,\ldots,x_n](https://latex.codecogs.com/png.latex?x_1%2C%5Cldots%2Cx_n "x_1,\ldots,x_n")
-implies that
-![\omega\left(x_1,\ldots,x_n\right)=0](https://latex.codecogs.com/png.latex?%5Comega%5Cleft%28x_1%2C%5Cldots%2Cx_n%5Cright%29%3D0 "\omega\left(x_1,\ldots,x_n\right)=0").
-Given ![k](https://latex.codecogs.com/png.latex?k "k")-forms
+the property that exchanging two arguments changes the sign of the
+value: ![\omega\left(x_1,\ldots,x_i,\ldots,x_j,\ldots,x_n\right)=
+-\omega\left(x_1,\ldots,x_j,\ldots,x_i,\ldots,x_n\right)](https://latex.codecogs.com/png.latex?%5Comega%5Cleft%28x_1%2C%5Cldots%2Cx_i%2C%5Cldots%2Cx_j%2C%5Cldots%2Cx_n%5Cright%29%3D%0A-%5Comega%5Cleft%28x_1%2C%5Cldots%2Cx_j%2C%5Cldots%2Cx_i%2C%5Cldots%2Cx_n%5Cright%29 "\omega\left(x_1,\ldots,x_i,\ldots,x_j,\ldots,x_n\right)=
+-\omega\left(x_1,\ldots,x_j,\ldots,x_i,\ldots,x_n\right)"). Given
+![k](https://latex.codecogs.com/png.latex?k "k")-forms
 ![\omega,\eta](https://latex.codecogs.com/png.latex?%5Comega%2C%5Ceta "\omega,\eta"),
 the package provides R idiom for calculating their wedge product
 ![\omega\wedge\eta](https://latex.codecogs.com/png.latex?%5Comega%5Cwedge%5Ceta "\omega\wedge\eta").
