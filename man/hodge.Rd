@@ -10,7 +10,7 @@ hodge(K, n=dovs(K), g, lose=TRUE)
 }
 \arguments{
   \item{K}{Object of class \code{kform}}
-  \item{n}{Dimensionality of space, defaulting the the largest element
+  \item{n}{Dimensionality of space, defaulting to the largest element
     of the index}
   \item{g}{Diagonal of the metric tensor, with missing default being the
     standard metric of the identity matrix.  Currently, only entries of

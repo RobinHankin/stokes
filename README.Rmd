@@ -32,15 +32,19 @@ references).  A detailed vignette is provided in the package.
 
 The package deals with $k$-tensors and $k$-forms.  A $k$-tensor is a
 multilinear map $S\colon V^k\longrightarrow\mathbb{R}$, where
-$V=\mathbb{R}^n$ is considered as a vector space.  Given two
-$k$-tensors $S,T$ the package can calculate their outer product
-$S\otimes T$ using natural R idiom (see below and the vignette for
-details).
+$V=\mathbb{R}^n$ is considered as a vector space.  We write
+$S(x_1,\ldots,x_k)$, where $x_i\in\mathbb{R}^n$, to indicate the
+functional nature of $S$.
+
+Given two $k$-tensors $S,T$ the package can calculate their outer
+product $S\otimes T$ using natural R idiom (see below and the vignette
+for details).
 
 A $k$-form is an alternating $k$-tensor, that is a $k$-tensor $\omega$
-with the property that linear dependence of $x_1,\ldots,x_n$ implies
-that $\omega\left(x_1,\ldots,x_n\right)=0$.  Given $k$-forms
-$\omega,\eta$, the package provides R idiom for calculating
+with the property that exchanging two arguments changes the sign of
+the value: $\omega\left(x_1,\ldots,x_i,\ldots,x_j,\ldots,x_n\right)=
+-\omega\left(x_1,\ldots,x_j,\ldots,x_i,\ldots,x_n\right)$.  Given
+$k$-forms $\omega,\eta$, the package provides R idiom for calculating
 their wedge product $\omega\wedge\eta$.
 
 # Installation
