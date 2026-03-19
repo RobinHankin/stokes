@@ -71,10 +71,10 @@ Function `wedge()` is essentially a convenience wrapper for
 interpreted as multivariate polynomials:
 
 ```{r}
-(a <- spray(matrix(1:4,2,2),c(2,5)))
-(b <- spray(matrix(c(10,11,12,13),2,2),c(7,11)))
-spraycross(a,b)
-spraycross(b,a)
+(a <- spray(matrix(1:4,2,2), c(2,5)))
+(b <- spray(matrix(c(10,11,12,13),2,2), c(7,11)))
+spraycross(a, b)
+spraycross(b, a)
 ```
 
 Observe that `spraycross()` (and by association `wedge()`) is
