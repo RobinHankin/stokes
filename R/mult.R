@@ -22,6 +22,7 @@
 #' @importFrom disordR consistent
 #' @importFrom disordR drop
 
+#' @importFrom stats runif
 
 
 #' @export
