@@ -60,6 +60,12 @@
   email: \email{hankin.robin@gmail.com}\\
 }
 
+%% for those who use Sweave please include the following line (with % symbols):
+%% need no \usepackage{Sweave.sty}
+
+%% end of declarations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \begin{document}
 \SweaveOpts{}
