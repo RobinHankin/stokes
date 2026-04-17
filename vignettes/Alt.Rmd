@@ -1,5 +1,5 @@
 ---
-title: "The `Alt()` function in the `stokes` package"
+title: "Function `Alt()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
 bibliography: stokes.bib

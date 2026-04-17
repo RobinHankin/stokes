@@ -1,5 +1,5 @@
 ---
-title: "The `kinner()` function in the `stokes` package"
+title: "Function `kinner()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 bibliography: stokes.bib
 link-citations: true

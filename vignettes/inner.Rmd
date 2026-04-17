@@ -1,5 +1,5 @@
 ---
-title: "The `inner()` function in the `stokes` package"
+title: "Function `inner()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
 bibliography: stokes.bib

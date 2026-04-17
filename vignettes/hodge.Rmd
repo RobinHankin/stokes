@@ -1,5 +1,5 @@
 ---
-title: "The `hodge()` function in the `stokes` package"
+title: "Function `hodge()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
 bibliography: stokes.bib
