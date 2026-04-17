@@ -33,10 +33,10 @@ hodge
 ```
 
 To cite the `stokes` package in publications, please use
-@hankin2022_stokes.  Given a $k$-form $\beta$, function `hodge()`
-returns its Hodge dual $\star\beta$.  Formally, if $V={\mathbb R}^n$,
-and $\Lambda^k(V)$ is the space of alternating linear maps from $V^k$
-to ${\mathbb R}$, then
+@hankin2022_stokes; this function monograph discusses `hodge()`.
+Given a $k$-form $\beta$, function `hodge()` returns its Hodge dual
+$\star\beta$.  Formally, if $V={\mathbb R}^n$, and $\Lambda^k(V)$ is
+the space of alternating linear maps from $V^k$ to ${\mathbb R}$, then
 $\star\colon\Lambda^k(V)\longrightarrow\Lambda^{n-k}(V)$.  To define
 the Hodge dual, we need an inner product
 $\left\langle\cdot,\cdot\right\rangle$ [function `kinner()` in the

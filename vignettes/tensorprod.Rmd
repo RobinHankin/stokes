@@ -33,11 +33,11 @@ tensorprod2
 ```
 
 To cite the `stokes` package in publications, please use
-@hankin2022_stokes.  Function `tensorprod()` returns the tensor cross
-product of any number of `ktensor` objects; `tensorprod2()` is a
-lower-level helper function that returns the product of two such
-objects.  These functions use `spraycross()` from the `spray` package
-[@hankin2022_spray].
+@hankin2022_stokes; this function monograph discusses `tensorprod()`.
+Function `tensorprod()` returns the tensor cross product of any number
+of `ktensor` objects; `tensorprod2()` is a lower-level helper function
+that returns the product of two such objects.  These functions use
+`spraycross()` from the `spray` package [@hankin2022_spray].
 
 ### The tensor cross product
 

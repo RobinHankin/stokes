@@ -31,10 +31,10 @@ phi
 ```
 
 To cite the `stokes` package in publications, please use
-@hankin2022_stokes.  Function `phi()` returns a tensor dual to the
-standard basis of $V=\mathbb{R}^n$.  Here I discuss `phi()` but there
-is some overlap between this vignette and the
-[tensorprod](tensorprod.html) vignette.
+@hankin2022_stokes; this function monograph discusses `phi()`.
+Function `phi()` returns a tensor dual to the standard basis of
+$V=\mathbb{R}^n$.  Here I discuss `phi()` but there is some overlap
+between this vignette and the [tensorprod](tensorprod.html) vignette.
 
 In a memorable passage, @spivak1965 states (theorem 4.1):
 

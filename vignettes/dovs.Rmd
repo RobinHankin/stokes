@@ -1,5 +1,5 @@
 ---
-title: "Function `dovs()` function in the `stokes` package"
+title: "Function `dovs()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 output: html_vignette
 bibliography: stokes.bib
@@ -31,14 +31,14 @@ dovs
 ```
 
 To cite the `stokes` package in publications, please use
-@hankin2022_stokes.  Function `dovs()` returns the dimensionality of
-the underlying vector space of a $k$-form.  Recall that a $k$-form is
-an alternating linear map from $V^k$ to $\mathbb{R}$, where
-$V=\mathbb{R}^n$ [@spivak1965].  Function `dovs()` returns $n$
-[compare `arity()`, which returns $k$].  As seen above, the function
-is very simple, essentially being `max(index(K))`, but its use is not
-entirely straightforward in the context of `stokes` idiom.  Consider
-the following:
+@hankin2022_stokes; this function monograph discusses `dovs()`.
+Function `dovs()` returns the dimensionality of the underlying vector
+space of a $k$-form.  Recall that a $k$-form is an alternating linear
+map from $V^k$ to $\mathbb{R}$, where $V=\mathbb{R}^n$ [@spivak1965].
+Function `dovs()` returns $n$ [compare `arity()`, which returns $k$].
+As seen above, the function is very simple, essentially being
+`max(index(K))`, but its use is not entirely straightforward in the
+context of `stokes` idiom.  Consider the following:
 
 ```{r showrform}
 set.seed(0)

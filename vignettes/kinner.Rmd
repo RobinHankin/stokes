@@ -27,12 +27,12 @@ kinner
 ```
 
 To cite the `stokes` package in publications, please use
-@hankin2022_stokes.  Given two $k$-forms $\alpha,\beta$, function
-`kinner()` returns an inner product
-$\left\langle\cdot,\cdot\right\rangle$ of $\alpha$ and $\beta$.  If
-$\alpha=\alpha_1\wedge\cdots\wedge\alpha_k$ and
-$\beta=\beta_1\wedge\cdots\wedge\beta_k$, and we have an inner product
-$\left\langle\alpha_i,\beta_j\right\rangle$ then
+@hankin2022_stokes; this function monograph discusses function
+`kinner()`.  Given two $k$-forms $\alpha,\beta$, function `kinner()`
+returns an inner product $\left\langle\cdot,\cdot\right\rangle$ of
+$\alpha$ and $\beta$.  If $\alpha=\alpha_1\wedge\cdots\wedge\alpha_k$
+and $\beta=\beta_1\wedge\cdots\wedge\beta_k$, and we have an inner
+product $\left\langle\alpha_i,\beta_j\right\rangle$ then
 
 $$\left\langle\cdot,\cdot\right\rangle=
 \det\left(\left\langle\alpha_i,\beta_j\right\rangle_{ij}\right)$$

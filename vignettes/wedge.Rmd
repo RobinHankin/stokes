@@ -33,7 +33,8 @@ wedge2
 ```
 
 To cite the `stokes` package in publications, please use
-@hankin2022_stokes.  In a memorable passage, @spivak1965 states:
+@hankin2022_stokes; this function monograph discusses `wedge()`.  In a
+memorable passage, @spivak1965 states:
 
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>

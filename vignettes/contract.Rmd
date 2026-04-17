@@ -35,7 +35,8 @@ contract_elementary
 ```
 
 To cite the `stokes` package in publications, please use
-@hankin2022_stokes.  Given a $k$-form $\phi\colon
+@hankin2022_stokes; this function monograph discusses function
+`contract()`.  Given a $k$-form $\phi\colon
 V^k\longrightarrow\mathbb{R}$ and a vector $\mathbf{v}\in V$, the
 _contraction_ $\phi_\mathbf{v}$ of $\phi$ and $\mathbf{v}$ is a
 $k-1$-form with
