@@ -14,10 +14,12 @@ coverage](https://codecov.io/gh/RobinHankin/stokes/graph/badge.svg)](https://app
 
 # Overview
 
-The `stokes` package provides functionality for working with the
+The `stokes` R package provides functionality for working with the
 exterior calculus. It includes tensor products and wedge products and a
 variety of use-cases. The canonical reference would be Spivak (see
 references). A detailed vignette is provided in the package.
+
+The package is on CRAN, with tags corresponding to released versions.
 
 The package deals with
 ![k](https://latex.codecogs.com/png.latex?k "k")-tensors and
