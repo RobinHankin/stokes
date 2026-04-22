@@ -1,7 +1,7 @@
 ---
 title: "Function `hodge()` in the `stokes` package"
 author: "Robin K. S. Hankin"
-output: html_vignette
+output: bookdown::html_vignette2
 bibliography: stokes.bib
 link-citations: true
 vignette: >

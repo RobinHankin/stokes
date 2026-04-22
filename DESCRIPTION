@@ -4,7 +4,7 @@ Title: The Exterior Calculus
 Version: 1.2-4
 Depends: R (>= 4.2.0)
 Suggests: covr, Deriv, knitr, magrittr, markdown,
-	  quadform, rmarkdown, testthat
+	  quadform, rmarkdown, testthat, bookdown
 VignetteBuilder: knitr
 Imports: disordR (>= 0.9-7), methods, partitions,
          permutations (>= 1.1-2), spray (>= 1.0-26)
