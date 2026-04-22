@@ -3,9 +3,7 @@ title: "Function `kinner()` in the `stokes` package"
 author: "Robin K. S. Hankin"
 bibliography: stokes.bib
 link-citations: true
-output:
-  pdf_document:
-    extra_dependencies: ["blkarray", "bigstrut"]
+output: bookdown::html_vignette2
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{kinner}
