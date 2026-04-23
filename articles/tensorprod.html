@@ -171,29 +171,64 @@ that returns the product of two such objects. These functions use
 </p>
 <p style="margin-left:1em;">
 </p>
-<p>If <span class="math inline">V</span> is a vector space over <span class="math inline">\mathbb{R}</span>, we denote the <span class="math inline">k</span>-fold product <span class="math inline">V\times\cdots\times V</span> by <span class="math inline">V^k</span>. A function <span class="math inline">T\colon
-V^k\longrightarrow\mathbb{R}</span> is called <em>multilinear</em> if
-for each <span class="math inline">i</span> with <span class="math inline">1\leqslant i\leqslant k</span> we have</p>
-<p><span class="math display">
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+is a vector space over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>,
+we denote the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-fold
+product
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>×</mo><mi>⋯</mi><mo>×</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">V\times\cdots\times V</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mi>k</mi></msup><annotation encoding="application/x-tex">V^k</annotation></semantics></math>.
+A function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>:</mo><msup><mi>V</mi><mi>k</mi></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">T\colon
+V^k\longrightarrow\mathbb{R}</annotation></semantics></math> is called
+<em>multilinear</em> if for each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">1\leqslant i\leqslant k</annotation></semantics></math>
+we have</p>
+<p><span class="math display">$$
 T\left(v_1,\ldots, v_i + {v'}_i,\ldots, v_k\right)=
 T\left(v_1,\ldots,v_i,\ldots,v_k\right)+
 T\left(v_1,\ldots,{v'}_i,\ldots,v_k\right),\\
 T\left(v_1,\ldots,av_i,\ldots,v_k\right)=aT\left(v_1,\ldots,v_i,\ldots,v_k\right).
-</span></p>
-<p>A multilinear function <span class="math inline">T\colon
-V^k\longrightarrow\mathbb{R}</span> is called a <em><span class="math inline">k</span>-tensor</em> on <span class="math inline">V</span> and the set of all <span class="math inline">k</span>-tensors, denoted by <span class="math inline">\mathcal{J}^k(V)</span>, becomes a vector space
-(over <span class="math inline">\mathbb{R}</span>) if for <span class="math inline">S,T\in\mathcal{J}^k(V)</span> and <span class="math inline">a\in\mathbb{R}</span> we define</p>
-<p><span class="math display">
+$$</span></p>
+<p>A multilinear function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>:</mo><msup><mi>V</mi><mi>k</mi></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">T\colon V^k\longrightarrow\mathbb{R}</annotation></semantics></math>
+is called a
+<em><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-tensor</em>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+and the set of all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-tensors,
+denoted by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}^k(V)</annotation></semantics></math>,
+becomes a vector space (over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>)
+if for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>,</mo><mi>T</mi><mo>∈</mo><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">S,T\in\mathcal{J}^k(V)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">a\in\mathbb{R}</annotation></semantics></math>
+we define</p>
+<p><span class="math display">$$
 (S+T)(v_1,\ldots,v_k) = S(v_1,\ldots,v_k) + T(v_1,\ldots,v_k)\\
 (aS)(v_1,\ldots,v_k) = a\cdot S(v_1,\ldots,v_k).
-</span></p>
-<p>There is also an operation connecting the various spaces <span class="math inline">\mathcal{J}(V)</span>. If <span class="math inline">S\in\mathcal{J}^k(V)</span> and <span class="math inline">T\in\mathcal{J}^l(V)</span>, we define the
-<em>tensor product</em> <span class="math inline">S\otimes
-T\in\mathcal{J}^{k+l}(V)</span> by</p>
-<p><span class="math display">
+$$</span></p>
+<p>There is also an operation connecting the various spaces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒥</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}(V)</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>∈</mo><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">S\in\mathcal{J}^k(V)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>∈</mo><msup><mi>𝒥</mi><mi>l</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">T\in\mathcal{J}^l(V)</annotation></semantics></math>,
+we define the <em>tensor product</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>⊗</mo><mi>T</mi><mo>∈</mo><msup><mi>𝒥</mi><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">S\otimes
+T\in\mathcal{J}^{k+l}(V)</annotation></semantics></math> by</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>⊗</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo>,</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>+</mo><mi>l</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
 S\otimes T(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l})=
 S(v_1,\ldots,v_k)\cdot T(v_{k+1},\ldots,v_{k+l}).
-</span></p>
+</annotation></semantics></math></p>
 
 <p style="margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia">
 <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).
@@ -203,15 +238,22 @@ Page 75</i>
 </div>
 <p>Spivak goes on to observe that the tensor product is distributive and
 associative but not commutative. He then proves that the set of all
-<span class="math inline">k</span>-fold tensor products</p>
-<p><span class="math display">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-fold
+tensor products</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>⊗</mo><mi>⋯</mi><mo>⊗</mo><msub><mi>ϕ</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo>,</mo><mspace width="2.0em"></mspace><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>i</mi><mi>k</mi></msub><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">
 \phi_{i_1}\otimes\cdots\otimes\phi_{i_k},\qquad 1\leqslant
 i_1,\ldots,i_k\leqslant n
-</span></p>
-<p>[where <span class="math inline">\phi_i(v_j)=\delta_{ij}</span>,<span class="math inline">v_1,\ldots,v_k</span> being a basis for <span class="math inline">V</span>] is a basis for <span class="math inline">\mathcal{J}^k(V)</span>, which therefore has
-dimension <span class="math inline">n^k</span>. Function
-<code><a href="../reference/tensorprod.html">tensorprod()</a></code> evaluates the tensor product and I give
-examples here.</p>
+</annotation></semantics></math></p>
+<p>[where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\phi_i(v_j)=\delta_{ij}</annotation></semantics></math>,<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_k</annotation></semantics></math>
+being a basis for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>]
+is a basis for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}^k(V)</annotation></semantics></math>,
+which therefore has dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>n</mi><mi>k</mi></msup><annotation encoding="application/x-tex">n^k</annotation></semantics></math>.
+Function <code><a href="../reference/tensorprod.html">tensorprod()</a></code> evaluates the tensor product and I
+give examples here.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">ktensor</a></span><span class="op">(</span><span class="fu"><a href="../reference/coeffs.html">spray</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>,<span class="fl">3</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^2 to R with V=R^2:</span></span>
@@ -225,10 +267,13 @@ examples here.</p>
 <span><span class="co">##  4 4  =    8</span></span>
 <span><span class="co">##  7 3  =    9</span></span>
 <span><span class="co">##  3 5  =    7</span></span></code></pre>
-<p>Thus <span class="math inline">a=4\phi_1\otimes\phi_1+3\phi_1\otimes\phi_2</span>
-and <span class="math inline">b=7\phi_3\otimes\phi_5+8\phi_4\otimes\phi_4+9\phi_7\otimes\phi_3</span>.
-Now the cross product <span class="math inline">a\otimes b</span> is
-given by <code><a href="../reference/tensorprod.html">tensorprod()</a></code>:</p>
+<p>Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>4</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>+</mo><mn>3</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">a=4\phi_1\otimes\phi_1+3\phi_1\otimes\phi_2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>7</mn><msub><mi>ϕ</mi><mn>3</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>5</mn></msub><mo>+</mo><mn>8</mn><msub><mi>ϕ</mi><mn>4</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>4</mn></msub><mo>+</mo><mn>9</mn><msub><mi>ϕ</mi><mn>7</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">b=7\phi_3\otimes\phi_5+8\phi_4\otimes\phi_4+9\phi_7\otimes\phi_3</annotation></semantics></math>.
+Now the cross product
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>⊗</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a\otimes b</annotation></semantics></math>
+is given by <code><a href="../reference/tensorprod.html">tensorprod()</a></code>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tensorprod.html">tensorprod</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^4 to R with V=R^7:</span></span>
@@ -239,7 +284,8 @@ given by <code><a href="../reference/tensorprod.html">tensorprod()</a></code>:</
 <span><span class="co">##  1 1 3 5  =   28</span></span>
 <span><span class="co">##  1 2 4 4  =   24</span></span>
 <span><span class="co">##  1 1 4 4  =   32</span></span></code></pre>
-<p>We can see that the product includes the term <span class="math inline">21\phi_1\otimes\phi_2\otimes\phi_3\otimes\phi_5</span>
+<p>We can see that the product includes the term
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>21</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">21\phi_1\otimes\phi_2\otimes\phi_3\otimes\phi_5</annotation></semantics></math>
 and five others.</p>
 </div>
 <div class="section level3">

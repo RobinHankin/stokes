@@ -139,9 +139,10 @@ Hankin</h4>
 <p>To cite the <code>stokes</code> package in publications, please use
 <span class="citation">Hankin (<a href="#ref-hankin2022_stokes">2022b</a>)</span>; this function monograph
 discusses <code><a href="../reference/phi.html">phi()</a></code>. Function <code><a href="../reference/phi.html">phi()</a></code> returns a
-tensor dual to the standard basis of <span class="math inline">V=\mathbb{R}^n</span>. Here I discuss
-<code><a href="../reference/phi.html">phi()</a></code> but there is some overlap between this vignette and
-the <a href="tensorprod.html">tensorprod</a> vignette.</p>
+tensor dual to the standard basis of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^n</annotation></semantics></math>.
+Here I discuss <code><a href="../reference/phi.html">phi()</a></code> but there is some overlap between this
+vignette and the <a href="tensorprod.html">tensorprod</a> vignette.</p>
 <p>In a memorable passage, <span class="citation">Spivak (<a href="#ref-spivak1965">1965</a>)</span> states (theorem 4.1):</p>
 <div class="warning" style="padding:0.1em; background-color:#E9D8FD; color:#69337A">
 <span>
@@ -150,15 +151,25 @@ the <a href="tensorprod.html">tensorprod</a> vignette.</p>
 </p>
 <p style="margin-left:1em;">
 </p>
-<p>Let <span class="math inline">v_1,\ldots,v_n</span> be a basis for
-<span class="math inline">V</span>, and let <span class="math inline">\phi_1,\ldots,\phi_n</span> be the dual basis, <span class="math inline">\phi_i(v_j)=\delta_{ij}</span>. Then the set of all
-<span class="math inline">k</span>-fold tensor products</p>
-<p><span class="math display">
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_n</annotation></semantics></math>
+be a basis for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>ϕ</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\phi_1,\ldots,\phi_n</annotation></semantics></math>
+be the dual basis,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\phi_i(v_j)=\delta_{ij}</annotation></semantics></math>.
+Then the set of all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-fold
+tensor products</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>⊗</mo><mi>⋯</mi><mo>⊗</mo><msub><mi>ϕ</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mspace width="2.0em"></mspace><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>i</mi><mi>k</mi></msub><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">
 \phi_{i_1}\otimes\cdots\otimes\phi_{i_k}\qquad 1\leqslant
 i_1,\ldots,i_k\leqslant n
-</span></p>
-<p>is a basis for <span class="math inline">\mathcal{J}(V)</span>, which
-therefore has dimension <span class="math inline">n^k</span>.</p>
+</annotation></semantics></math></p>
+<p>is a basis for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒥</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}(V)</annotation></semantics></math>,
+which therefore has dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>n</mi><mi>k</mi></msup><annotation encoding="application/x-tex">n^k</annotation></semantics></math>.</p>
 
 <p style="margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia">
 <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).
@@ -173,17 +184,22 @@ Page 75</i>
 <span><span class="co">##        val</span></span>
 <span><span class="co">##  4  =    1</span></span></code></pre>
 <p>First we will verify the properties of <code><a href="../reference/phi.html">phi()</a></code>, using
-<span class="math inline">V=\mathbb{R}^5</span>, specifically</p>
-<p><span class="math display">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^5</annotation></semantics></math>,
+specifically</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>i</mi><mo>=</mo><mi>j</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>i</mi><mo>≠</mo><mi>j</mi><mi>.</mi></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
 \phi_i(e_j) = \delta_{ij} =
 \begin{cases}
     1,  &amp; i=j\\
     0   &amp; i\neq j.
   \end{cases}
-</span></p>
+</annotation></semantics></math></p>
 <p>(package idiom is to use <code><a href="../reference/kform.html">e()</a></code> for basis vectors as
-opposed to Spivak’s <span class="math inline">v</span>). As numerical
-verification, we will check that <span class="math inline">\phi_3(e_2)=0</span>, <span class="math inline">\phi_3(e_3)=1</span>, <span class="math inline">\phi_3(e_4)=0</span>:</p>
+opposed to Spivak’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>).
+As numerical verification, we will check that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>3</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi_3(e_2)=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>3</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\phi_3(e_3)=1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>3</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>4</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi_3(e_4)=0</annotation></semantics></math>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, <span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, <span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -202,7 +218,9 @@ verification, we will check that <span class="math inline">\phi_3(e_2)=0</span>,
 <span><span class="co">## [3,]    0    0    1    0    0</span></span>
 <span><span class="co">## [4,]    0    0    0    1    0</span></span>
 <span><span class="co">## [5,]    0    0    0    0    1</span></span></code></pre>
-<p>Above, we see that the matrix is <span class="math inline">I_5</span>, as expected. Further:</p>
+<p>Above, we see that the matrix is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>5</mn></msub><annotation encoding="application/x-tex">I_5</annotation></semantics></math>,
+as expected. Further:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu">aa</span><span class="op">(</span><span class="fl">9</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
@@ -214,8 +232,10 @@ using <code><a href="../reference/tensorprod.html">tensorprod()</a></code> or it
 <pre><code><span><span class="co">## A linear map from V^3 to R with V=R^5:</span></span>
 <span><span class="co">##            val</span></span>
 <span><span class="co">##  4 3 5  =    1</span></span></code></pre>
-<p>If we want to create arbitrary tensor products of <span class="math inline">\phi</span> objects the most natural way would be to
-use <code><a href="../reference/tensorprod.html">tensorprod()</a></code> repeatedly:</p>
+<p>If we want to create arbitrary tensor products of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
+objects the most natural way would be to use <code><a href="../reference/tensorprod.html">tensorprod()</a></code>
+repeatedly:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/funprog.html" class="external-link">Reduce</a></span><span class="op">(</span><span class="va">`%X%`</span>,<span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">4</span><span class="op">:</span><span class="fl">8</span>,<span class="va">phi</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^5 to R with V=R^8:</span></span>
@@ -227,7 +247,8 @@ use <code><a href="../reference/tensorprod.html">tensorprod()</a></code> repeate
 <pre><code><span><span class="co">## A linear map from V^3 to R with V=R^5:</span></span>
 <span><span class="co">##            val</span></span>
 <span><span class="co">##  2 5 1  =    1</span></span></code></pre>
-<p>This creates an element of the basis set, in this case <span class="math inline">\phi_2\otimes\phi_5\otimes\phi_1</span>.
+<p>This creates an element of the basis set, in this case
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>5</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\phi_2\otimes\phi_5\otimes\phi_1</annotation></semantics></math>.
 Verification is straightforward:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -235,9 +256,14 @@ Verification is straightforward:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/funprog.html" class="external-link">Reduce</a></span><span class="op">(</span><span class="va">`%X%`</span>,<span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">v</span>,<span class="va">phi</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<p>We will consider an element <span class="math inline">X</span> of
-<span class="math inline">\mathcal{J}^{2}(V)</span> where <span class="math inline">V=\mathbb{R}^3</span> and construct an explicit
-basis for it along the lines of Spivak’s observation above.</p>
+<p>We will consider an element
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}^{2}(V)</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^3</annotation></semantics></math>
+and construct an explicit basis for it along the lines of Spivak’s
+observation above.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ktensor.html">ktensor</a></span><span class="op">(</span><span class="fu"><a href="../reference/coeffs.html">spray</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^2 to R with V=R^3:</span></span>
@@ -245,9 +271,13 @@ basis for it along the lines of Spivak’s observation above.</p>
 <span><span class="co">##  3 1  =    3</span></span>
 <span><span class="co">##  2 1  =    2</span></span>
 <span><span class="co">##  1 2  =    1</span></span></code></pre>
-<p>Thus <span class="math inline">X=\phi_1\otimes\phi_2
-+2\phi_2\otimes\phi_1
-+3\phi_3\otimes\phi_1</span>. Spivak asserts that <span class="math inline">\mathcal{J}^{2}(V)</span> has dimension <span class="math inline">n^k=3^2=9</span>.</p>
+<p>Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>+</mo><mn>2</mn><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>+</mo><mn>3</mn><msub><mi>ϕ</mi><mn>3</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">X=\phi_1\otimes\phi_2 +2\phi_2\otimes\phi_1
++3\phi_3\otimes\phi_1</annotation></semantics></math>. Spivak asserts
+that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}^{2}(V)</annotation></semantics></math>
+has dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mi>k</mi></msup><mo>=</mo><msup><mn>3</mn><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">n^k=3^2=9</annotation></semantics></math>.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^2 to R with V=R^3:</span></span>
@@ -255,7 +285,9 @@ basis for it along the lines of Spivak’s observation above.</p>
 <span><span class="co">##  2 1  =    2</span></span>
 <span><span class="co">##  1 2  =    1</span></span>
 <span><span class="co">##  3 1  =    3</span></span></code></pre>
-<p>With a little effort, we can create all <span class="math inline">3^2=9</span> elements of a basis as follows:</p>
+<p>With a little effort, we can create all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">3^2=9</annotation></semantics></math>
+elements of a basis as follows:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>,<span class="fl">1</span>,<span class="va">phi</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [[1]]</span></span>
@@ -325,7 +357,8 @@ multiple arguments:</p>
 <h3 id="distributivity">Distributivity<a class="anchor" aria-label="anchor" href="#distributivity"></a>
 </h3>
 <p>The tensor product is left- and right distributive. To illustrate
-this we can use the package to calculate, say, <span class="math inline">(2\phi_1+3\phi_2)\otimes(5\phi_3+7\phi_4)</span>:</p>
+this we can use the package to calculate, say,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>+</mo><mn>3</mn><msub><mi>ϕ</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>⊗</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>5</mn><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>7</mn><msub><mi>ϕ</mi><mn>4</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(2\phi_1+3\phi_2)\otimes(5\phi_3+7\phi_4)</annotation></semantics></math>:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="op">(</span><span class="fl">5</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fl">7</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^2 to R with V=R^4:</span></span>
@@ -334,9 +367,10 @@ this we can use the package to calculate, say, <span class="math inline">(2\phi_
 <span><span class="co">##  1 4  =   14</span></span>
 <span><span class="co">##  2 3  =   15</span></span>
 <span><span class="co">##  1 3  =   10</span></span></code></pre>
-<p>Above we see package form for the result which is <span class="math inline">10\phi_1\phi_3 +
-14\phi_1\phi_4 + 15\phi_2\phi_3 + 21\phi_2\phi_4</span> in algebraic
-notation.</p>
+<p>Above we see package form for the result which is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><msub><mi>ϕ</mi><mn>1</mn></msub><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>14</mn><msub><mi>ϕ</mi><mn>1</mn></msub><msub><mi>ϕ</mi><mn>4</mn></msub><mo>+</mo><mn>15</mn><msub><mi>ϕ</mi><mn>2</mn></msub><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>21</mn><msub><mi>ϕ</mi><mn>2</mn></msub><msub><mi>ϕ</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">10\phi_1\phi_3 +
+14\phi_1\phi_4 + 15\phi_2\phi_3 + 21\phi_2\phi_4</annotation></semantics></math>
+in algebraic notation.</p>
 </div>
 <div class="section level3">
 <h3 id="reconstruction-of-a-given-tensor">Reconstruction of a given tensor<a class="anchor" aria-label="anchor" href="#reconstruction-of-a-given-tensor"></a>
@@ -349,8 +383,9 @@ notation.</p>
 <span><span class="co">##  4 4  =    8</span></span>
 <span><span class="co">##  7 3  =    9</span></span>
 <span><span class="co">##  3 5  =    7</span></span></code></pre>
-<p>We may express <span class="math inline">b</span> as the sum of its
-three terms, each with a coefficient:</p>
+<p>We may express
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+as the sum of its three terms, each with a coefficient:</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">7</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fl">8</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fl">9</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^2 to R with V=R^7:</span></span>
