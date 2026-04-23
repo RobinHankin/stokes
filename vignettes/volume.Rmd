@@ -34,7 +34,7 @@ To cite the `stokes` package in publications, please use
 @hankin2022_stokes; this function monograph discusses `volume()`.
 @spivak1965, in a memorable passage, states:
 
-<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A; font-weight: normal'>
 <span>
 <p style='margin-top:1em; text-align:center'>
 <b>The volume element</b></p>

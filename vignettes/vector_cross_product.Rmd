@@ -65,7 +65,7 @@ vector cross product $\mathbf{u}\times\mathbf{v}=\det\begin{pmatrix} i
 & j & k \\ u_1&u_2&u_3\\ v_1&v_2&v_3 \end{pmatrix}$ and places it in a
 more general and rigorous context. In a memorable passage, he states:
 
-::: {.warning style="padding:0.1em; background-color:#E9D8FD; color:#69337A"}
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A; font-weight: normal;'>
 <span>
 
 <p>
@@ -96,7 +96,8 @@ This $z$ is denoted $v_1\times\cdots\times v_{n-1}$ and is called the
 </p>
 
 </span>
-:::
+</div>
+
 
 The reason for $\mathbf{w}$ being at the bottom rather than the top is
 to ensure that the $n$-tuple

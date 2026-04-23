@@ -43,7 +43,7 @@ that returns the product of two such objects.  These functions use
 
 In a memorable passage, @spivak1965 states:
 
-<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A; font-weight: normal'>
 <span>
 <p style='margin-top:1em; text-align:center'>
 <b>Integration on chains</b></p>
