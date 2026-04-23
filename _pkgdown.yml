@@ -1,3 +1,4 @@
 url: https://robinhankin.github.io/stokes/
 template:
-  math-rendering: katex
+  params:
+    math-rendering: mathjax
