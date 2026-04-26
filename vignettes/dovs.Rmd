@@ -128,4 +128,60 @@ hodge(dx,3)
 options(kform_symbolic_print = NULL)
 ```
 
+
+## `keep()` and `discard()`
+
+Given a $k$-form $\omega$, we have
+$\omega(v_1,\ldots,v_k)\in\mathbb{R}$, where
+$v_1,\ldots,v_k\in\mathbb{R}^n$.  Now, _discarding_ dimension $i$ is
+equivalent to asserting (or guaranteeing) that $e_i\cdot v_j=0$ for
+$j=1,\ldots,k$.  Alternatively, we may say that
+$\omega(v_1,\ldots,v_k)$ is independent of $e_i\cdot v_j$ for
+$j=1,\ldots,k$.  If this is the case, we may ignore any row in which
+an $i$ appears.
+
+For $k$-forms, discarding (and its dual, keeping) is carried out in
+the package by functions `keep()` and `discard()`.  In these
+functions, `dovs()` is used internally, but its role is somewhat
+opaque.  Consider `keep()`:
+
+
+```{r showkeep}
+keep
+```
+
+Above we see that `dovs()` is used to create vector `jj`, which
+specifies which dimensions to keep and which to discard.  This is so
+that argument `yes` can use standard square bracket replacement idiom
+to overwrite `jj`.  Kept dimensions are then stretched (with function
+`stretch()`) by a factor of 1 and discarded dimensions are stretched
+by a factor of 0.
+
+
+Now, given the current package setup, there is no point in specifying
+whether a dimension greater than `dovs(x)` is to be kept or not---such
+things are already discarded.  As a concrete example:
+
+```{r usekeep}
+(x <- kform_general(3, 2, seq_len(choose(3, 2))))
+dovs(x)
+```
+
+Above we see a kform `x` with `dovs` of 5.  Recall that object `x` is
+a map from $V^2$ to $\mathbb{R}$, where vector space $V=\mathbb{R}^5$.
+So, for example,
+$x\left(\left(\begin{array}{c}a_1\\a_2\\a_3\end{array}\right),\left(\begin{array}{c}b_1\\b_2\\b_3\end{array}\right)\right)=a_1b_2+2a_1b_3+3a_2b_3$.
+Now, for example, I might only care about the first and third row of
+each argument [that would be the $x$- and $z$- components of a
+3-vector].  If I wished to simplify `x` I would only keep the first
+and third:
+
+```{r}
+keep(x, c(1,3))
+```
+
+Observe that there is no point asking whether to keep "the fourth
+component", for that has already been discarded by the \code{map}
+class.
+
 # References
