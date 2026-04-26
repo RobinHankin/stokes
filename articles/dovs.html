@@ -284,6 +284,90 @@ method:</p>
 <span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="va">dx</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^2 to R with V=R^3:</span></span>
 <span><span class="co">##  + dy^dz</span></span></code></pre>
+<div class="section level3">
+<h3 id="keep-and-discard">
+<code>keep()</code> and <code>discard()</code><a class="anchor" aria-label="anchor" href="#keep-and-discard"></a>
+</h3>
+<p>Given a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
+we have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\omega(v_1,\ldots,v_k)\in\mathbb{R}</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_k\in\mathbb{R}^n</annotation></semantics></math>.
+Now, <em>discarding</em> dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+is equivalent to asserting (or guaranteeing) that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>i</mi></msub><mo>⋅</mo><msub><mi>v</mi><mi>j</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">e_i\cdot v_j=0</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">j=1,\ldots,k</annotation></semantics></math>.
+Alternatively, we may say that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega(v_1,\ldots,v_k)</annotation></semantics></math>
+is independent of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>i</mi></msub><mo>⋅</mo><msub><mi>v</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">e_i\cdot v_j</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">j=1,\ldots,k</annotation></semantics></math>.
+If this is the case, we may ignore any row in which an
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+appears.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-forms,
+discarding (and its dual, keeping) is carried out in the package by
+functions <code><a href="../reference/keep.html">keep()</a></code> and <code><a href="../reference/keep.html">discard()</a></code>. In these
+functions, <code><a href="../reference/dovs.html">dovs()</a></code> is used internally, but its role is
+somewhat opaque. Consider <code><a href="../reference/keep.html">keep()</a></code>:</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">keep</span></span></code></pre></div>
+<pre><code><span><span class="co">## function (K, yes) </span></span>
+<span><span class="co">## {</span></span>
+<span><span class="co">##     jj &lt;- rep(0L, dovs(K))</span></span>
+<span><span class="co">##     jj[yes] &lt;- 1</span></span>
+<span><span class="co">##     stretch(K, jj)</span></span>
+<span><span class="co">## }</span></span></code></pre>
+<p>Above we see that <code><a href="../reference/dovs.html">dovs()</a></code> is used to create vector
+<code>jj</code>, which specifies which dimensions to keep and which to
+discard. This is so that argument <code>yes</code> can use standard
+square bracket replacement idiom to overwrite <code>jj</code>. Kept
+dimensions are then stretched (with function <code><a href="../reference/transform.html">stretch()</a></code>) by
+a factor of 1 and discarded dimensions are stretched by a factor of
+0.</p>
+<p>Now, given the current package setup, there is no point in specifying
+whether a dimension greater than <code>dovs(x)</code> is to be kept or
+not—such things are already discarded. As a concrete example:</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kform.html">kform_general</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## An alternating linear map from V^2 to R with V=R^3:</span></span>
+<span><span class="co">##          val</span></span>
+<span><span class="co">##  2 3  =    3</span></span>
+<span><span class="co">##  1 3  =    2</span></span>
+<span><span class="co">##  1 2  =    1</span></span></code></pre>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dovs.html">dovs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 3</span></span></code></pre>
+<p>Above we see a kform <code>x</code> with <code>dovs</code> of 5.
+Recall that object <code>x</code> is a map from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mn>2</mn></msup><annotation encoding="application/x-tex">V^2</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>,
+where vector space
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^5</annotation></semantics></math>.
+So, for example,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>3</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><msub><mi>b</mi><mn>2</mn></msub><mo>+</mo><mn>2</mn><msub><mi>a</mi><mn>1</mn></msub><msub><mi>b</mi><mn>3</mn></msub><mo>+</mo><mn>3</mn><msub><mi>a</mi><mn>2</mn></msub><msub><mi>b</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">x\left(\left(\begin{array}{c}a_1\\a_2\\a_3\end{array}\right),\left(\begin{array}{c}b_1\\b_2\\b_3\end{array}\right)\right)=a_1b_2+2a_1b_3+3a_2b_3</annotation></semantics></math>.
+Now, for example, I might only care about the first and third row of
+each argument [that would be the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>-
+components of a 3-vector]. If I wished to simplify <code>x</code> I
+would only keep the first and third:</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/keep.html">keep</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## An alternating linear map from V^2 to R with V=R^3:</span></span>
+<span><span class="co">##          val</span></span>
+<span><span class="co">##  1 3  =    2</span></span></code></pre>
+<p>Observe that there is no point asking whether to keep “the fourth
+component”, for that has already been discarded by the class.</p>
+</div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
