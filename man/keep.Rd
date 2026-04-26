@@ -14,9 +14,19 @@ discard(K, no)
     discard (no)}
 }
 \details{
-  Function \code{keep(omega, yes)} keeps the terms specified and
-  \code{discard(omega, no)} discards the terms specified.  It is not
-  clear to me what these functions mean from a mathematical perspective.
+
+Given a $k$-form $\omega$, we have
+$\omega(v_1,\ldots,v_k)\in\mathbb{R}$, where
+$v_1,\ldots,v_k\in\mathbb{R}^n$.  Now, _discarding_ dimension $i$ is
+equivalent to asserting (or guaranteeing) that $e_i\cdot v_j=0$ for
+$j=1,\ldots,k$.  Alternatively, we may say that $\omega(v_1,\ldots,v_k)$
+is independent of $e_i\cdot v_j$ for $j=1,\ldots,k$.  If this is the
+case, we may ignore any row in which an $i$ appears.
+
+For $k$-forms, discarding (and its dual, keeping) is carried out in
+functions \code{discard()} and \code{keep()}.  Function
+\code{keep(omega, yes)} keeps the terms specified and
+\code{discard(omega, no)} discards the terms specified.
 }
 \value{The functions documented here all return a \code{kform} object.}
 \author{Robin K. S. Hankin}
