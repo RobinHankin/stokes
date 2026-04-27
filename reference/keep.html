@@ -121,14 +121,16 @@
     <h2>Details</h2>
 
 
-<p>Given a $k$-form $$, we have
-$(v_1,...,v_k)R$, where
-$v_1,...,v_kR^n$.  Now, _discarding_ dimension $i$ is
-equivalent to asserting (or guaranteeing) that $e_i v_j=0$ for
-$j=1,...,k$.  Alternatively, we may say that $(v_1,...,v_k)$
-is independent of $e_i v_j$ for $j=1,...,k$.  If this is the
-case, we may ignore any row in which an $i$ appears.</p>
-<p>For $k$-forms, discarding (and its dual, keeping) is carried out in
+<p>Given a \(k\)-form \(\omega\), we have
+\(\omega(v_1,\ldots,v_k)\in\mathbb{R}\), where
+\(v_1,\ldots,v_k\in\mathbb{R}^n\).  Now, <dfn>discarding</dfn>
+dimension \(i\) is equivalent to asserting (or guaranteeing) that
+\(e_i\cdot v_j=0\) for \(j=1,\ldots,k\).
+Alternatively, we may say that \(\omega(v_1,\ldots,v_k)\) is
+indeapendent of \(e_i\cdot v_j\) for
+\(j=1,\ldots,k\).  If this is the case, we may ignore any
+row in which an \(i\) appears.</p>
+<p>For \(k\)-forms, discarding (and its dual, keeping) is carried out in
 functions <code>discard()</code> and <code>keep()</code>.  Function
 <code>keep(omega, yes)</code> keeps the terms specified and
 <code>discard(omega, no)</code> discards the terms specified.</p>
