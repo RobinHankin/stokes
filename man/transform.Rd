@@ -25,7 +25,6 @@ stretch(K, d)
   Function \code{pullback()} calculates the pullback of a function.  A
   vignette is provided at \file{pullback.Rmd}.
 
-
   Suppose we are given a two-form
 
   \deqn{
@@ -59,7 +58,8 @@ transformation.  There are a few tests in \code{tests/testthat} and a
 discussion in the \code{stokes} vignette.
 
 Function \code{stretch()} carries out the same operation but for \eqn{M}
-a diagonal matrix.  It is much faster than \code{transform()}.
+a diagonal matrix.  It is much faster than \code{transform()}.  It can
+take a ktensor or a kform object.
 
 }
 \value{

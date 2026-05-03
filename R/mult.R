@@ -423,7 +423,12 @@
   M <- index(K)
   d <- d[seq_len(max(M))]
   M[] <- d[M]  # the meat
-  as.kform(index(K), elements(coeffs(K))*apply(M, 1, prod))
+  jj <- elements(coeffs(K))*apply(M, 1, prod)
+  if(is.kform(K)){
+      return(as.kform(index(K), jj))
+  } else {
+      return(as.ktensor(index(K), jj))
+  }
 }
 
 #' @export  
