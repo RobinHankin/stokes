@@ -128,7 +128,6 @@
 
 <p>Function <code>pullback()</code> calculates the pullback of a function.  A
   vignette is provided at <code class="file">pullback.Rmd</code>.</p>
-
 <p>Suppose we are given a two-form</p>
 <p>$$
     \omega=\sum_{i &lt; j}a_{ij}\mathrm{d}x_i\wedge\mathrm{d}x_j$$</p>
@@ -152,7 +151,8 @@
 transformation.  There are a few tests in <code>tests/testthat</code> and a
 discussion in the <code>stokes</code> vignette.</p>
 <p>Function <code>stretch()</code> carries out the same operation but for \(M\)
-a diagonal matrix.  It is much faster than <code>transform()</code>.</p>
+a diagonal matrix.  It is much faster than <code>transform()</code>.  It can
+take a ktensor or a kform object.</p>
     </div>
     <div id="value">
     <h2>Value</h2>

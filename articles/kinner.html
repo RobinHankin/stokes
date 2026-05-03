@@ -157,7 +157,7 @@ Hankin</h4>
 <span><span class="co">##     }</span></span>
 <span><span class="co">##     return(out)</span></span>
 <span><span class="co">## }</span></span>
-<span><span class="co">## &lt;bytecode: 0x560008c099b8&gt;</span></span>
+<span><span class="co">## &lt;bytecode: 0x562e31262c60&gt;</span></span>
 <span><span class="co">## &lt;environment: namespace:stokes&gt;</span></span></code></pre>
 <p>To cite the <code>stokes</code> package in publications, please use
 <span class="citation">Hankin (<a href="#ref-hankin2022_stokes">2022</a>)</span>; this function monograph
@@ -165,7 +165,7 @@ discusses function <code><a href="../reference/kinner.html">kinner()</a></code>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-forms
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>,</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\alpha,\beta</annotation></semantics></math>,
 function <code><a href="../reference/kinner.html">kinner()</a></code> returns an inner product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">⟨</mo><mo>⋅</mo><mo>,</mo><mo>⋅</mo><mo stretchy="true" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\left\langle\cdot,\cdot\right\rangle</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>⋅</mi><mo>,</mo><mi>⋅</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\left\langle\cdot,\cdot\right\rangle</annotation></semantics></math>
 of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
 and
@@ -177,10 +177,10 @@ and
 and we have an inner product
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">⟨</mo><msub><mi>α</mi><mi>i</mi></msub><mo>,</mo><msub><mi>β</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\left\langle\alpha_i,\beta_j\right\rangle</annotation></semantics></math>
 then</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mo>⋅</mo><mo>,</mo><mo>⋅</mo><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mrow><mo stretchy="true" form="prefix">⟨</mo><msub><mi>α</mi><mi>i</mi></msub><mo>,</mo><msub><mi>β</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">⟩</mo></mrow><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle\cdot,\cdot\right\rangle=
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>⋅</mi><mo>,</mo><mi>⋅</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mrow><mi mathvariant="normal">det</mi><mo>⁡</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mrow><mo stretchy="true" form="prefix">⟨</mo><msub><mi>α</mi><mi>i</mi></msub><mo>,</mo><msub><mi>β</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">⟩</mo></mrow><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left\langle\cdot,\cdot\right\rangle=
 \det\left(\left\langle\alpha_i,\beta_j\right\rangle_{ij}\right)</annotation></semantics></math></p>
 <p>We extend this inner product by bilinearity to the whole of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Λ</mi><mi>k</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>.</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="normal">Λ</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Lambda^k(V)</annotation></semantics></math>.</p>
 <div class="section level2">
 <h2 id="some-simple-examples">Some simple examples<a class="anchor" aria-label="anchor" href="#some-simple-examples"></a>
 </h2>
@@ -218,7 +218,7 @@ dy\wedge dz &amp;  0 &amp;  0 &amp;  0
 \end{blockarray}
 $$</span></p>
 <p>so, for example,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>d</mi><mi>t</mi><mo>∧</mo><mi>d</mi><mi>x</mi><mo>,</mo><mi>d</mi><mi>t</mi><mo>∧</mo><mi>d</mi><mi>x</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\left\langle dt\wedge dx,dt\wedge
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>d</mi><mi>t</mi><mo>∧</mo><mi>d</mi><mi>x</mi><mo>,</mo><mi>d</mi><mi>t</mi><mo>∧</mo><mi>d</mi><mi>x</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">\left\langle dt\wedge dx,dt\wedge
 dx\right\rangle=-1</annotation></semantics></math> and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">⟨</mo><mi>d</mi><mi>t</mi><mo>∧</mo><mi>d</mi><mi>x</mi><mo>,</mo><mi>d</mi><mi>t</mi><mo>∧</mo><mi>d</mi><mi>y</mi><mo stretchy="true" form="postfix">⟩</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\left\langle dt\wedge dx,dt\wedge
 dy\right\rangle=0</annotation></semantics></math>. We can reproduce this
@@ -275,10 +275,10 @@ interfere with the other vignettes:</p>
 <div class="section level3">
 <h3 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-hankin2022_stokes" class="csl-entry">
-Hankin, R. K. S. 2022. <span>“Stokes’s Theorem in
-<span>R</span>.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2210.17008" class="external-link">https://doi.org/10.48550/ARXIV.2210.17008</a>.
+Hankin, R. K. S. 2022. <em>Stokes’s Theorem in <span>R</span></em>.
+arXiv. <a href="https://doi.org/10.48550/ARXIV.2210.17008" class="external-link">https://doi.org/10.48550/ARXIV.2210.17008</a>.
 </div>
 </div>
 </div>

@@ -158,7 +158,7 @@ be a basis for
 and let
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>ϕ</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\phi_1,\ldots,\phi_n</annotation></semantics></math>
 be the dual basis,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\phi_i(v_j)=\delta_{ij}</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\phi_i(v_j)=\delta_{ij}</annotation></semantics></math>.
 Then the set of all
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-fold
 tensor products</p>
@@ -167,7 +167,7 @@ tensor products</p>
 i_1,\ldots,i_k\leqslant n
 </annotation></semantics></math></p>
 <p>is a basis for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒥</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}(V)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒥</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{J}(V)</annotation></semantics></math>,
 which therefore has dimension
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>n</mi><mi>k</mi></msup><annotation encoding="application/x-tex">n^k</annotation></semantics></math>.</p>
 
@@ -186,7 +186,7 @@ Page 75</i>
 <p>First we will verify the properties of <code><a href="../reference/phi.html">phi()</a></code>, using
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^5</annotation></semantics></math>,
 specifically</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>i</mi><mo>=</mo><mi>j</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>i</mi><mo>≠</mo><mi>j</mi><mi>.</mi></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>e</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>i</mi><mo>=</mo><mi>j</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>i</mi><mo>≠</mo><mi>j</mi><mi>.</mi></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
 \phi_i(e_j) = \delta_{ij} =
 \begin{cases}
     1,  &amp; i=j\\
@@ -197,9 +197,9 @@ specifically</p>
 opposed to Spivak’s
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>).
 As numerical verification, we will check that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>3</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi_3(e_2)=0</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>3</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\phi_3(e_3)=1</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>3</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>4</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi_3(e_4)=0</annotation></semantics></math>:</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi_3(e_2)=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\phi_3(e_3)=1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>e</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi_3(e_4)=0</annotation></semantics></math>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, <span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, <span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="../reference/kform.html">e</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -259,7 +259,7 @@ Verification is straightforward:</p>
 <p>We will consider an element
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
 of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}^{2}(V)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{J}^{2}(V)</annotation></semantics></math>
 where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">V=\mathbb{R}^3</annotation></semantics></math>
 and construct an explicit basis for it along the lines of Spivak’s
@@ -275,7 +275,7 @@ observation above.</p>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>+</mo><mn>2</mn><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub><mo>+</mo><mn>3</mn><msub><mi>ϕ</mi><mn>3</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">X=\phi_1\otimes\phi_2 +2\phi_2\otimes\phi_1
 +3\phi_3\otimes\phi_1</annotation></semantics></math>. Spivak asserts
 that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal{J}^{2}(V)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{J}^{2}(V)</annotation></semantics></math>
 has dimension
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mi>k</mi></msup><mo>=</mo><msup><mn>3</mn><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">n^k=3^2=9</annotation></semantics></math>.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
@@ -358,7 +358,7 @@ multiple arguments:</p>
 </h3>
 <p>The tensor product is left- and right distributive. To illustrate
 this we can use the package to calculate, say,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>+</mo><mn>3</mn><msub><mi>ϕ</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>⊗</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>5</mn><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>7</mn><msub><mi>ϕ</mi><mn>4</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(2\phi_1+3\phi_2)\otimes(5\phi_3+7\phi_4)</annotation></semantics></math>:</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>+</mo><mn>3</mn><msub><mi>ϕ</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>⊗</mo><mo stretchy="false" form="prefix">(</mo><mn>5</mn><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>7</mn><msub><mi>ϕ</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2\phi_1+3\phi_2)\otimes(5\phi_3+7\phi_4)</annotation></semantics></math>:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="op">(</span><span class="fl">5</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fl">7</span><span class="op">*</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^2 to R with V=R^4:</span></span>
@@ -425,13 +425,14 @@ works nicely with <code><a href="../reference/phi.html">phi()</a></code>:</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-hankin2022_disordR" class="csl-entry">
-Hankin, R. K. S. 2022a. <span>“Disordered Vectors in <span>R</span>:
-Introducing the <span><code>disordR</code></span> Package.”</span> <a href="https://arxiv.org/abs/2210.03856" class="external-link uri">https://arxiv.org/abs/2210.03856</a>; arXiv. <a href="https://doi.org/10.48550/ARXIV.2210.03856" class="external-link">https://doi.org/10.48550/ARXIV.2210.03856</a>.
+Hankin, R. K. S. 2022a. <em>Disordered Vectors in <span>R</span>:
+Introducing the <span><code>disordR</code></span> Package</em>. <a href="https://arxiv.org/abs/2210.03856" class="external-link uri">Https://arxiv.org/abs/2210.03856</a>; arXiv. <a href="https://doi.org/10.48550/ARXIV.2210.03856" class="external-link">https://doi.org/10.48550/ARXIV.2210.03856</a>.
 </div>
 <div id="ref-hankin2022_stokes" class="csl-entry">
-———. 2022b. <span>“Stokes’s Theorem in <span>R</span>.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2210.17008" class="external-link">https://doi.org/10.48550/ARXIV.2210.17008</a>.
+Hankin, R. K. S. 2022b. <em>Stokes’s Theorem in <span>R</span></em>.
+arXiv. <a href="https://doi.org/10.48550/ARXIV.2210.17008" class="external-link">https://doi.org/10.48550/ARXIV.2210.17008</a>.
 </div>
 <div id="ref-spivak1965" class="csl-entry">
 Spivak, M. 1965. <em>Calculus on Manifolds</em>. Addison-Wesley.

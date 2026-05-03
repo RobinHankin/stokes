@@ -211,7 +211,7 @@ to
 we observe that row 5 is ignored:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>5</mn></msub><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">e_5=\left(0,0,0,0,1\right)^T</annotation></semantics></math>
 maps to zero in the sense that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>5</mn></msub><mo>,</mo><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐯</mi><mo>,</mo><msub><mi>e</mi><mn>5</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(e_5,\mathbf{v})=f(\mathbf{v},e_5)=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>e</mi><mn>5</mn></msub><mo>,</mo><mi>𝐯</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐯</mi><mo>,</mo><msub><mi>e</mi><mn>5</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(e_5,\mathbf{v})=f(\mathbf{v},e_5)=0</annotation></semantics></math>,
 for any
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>∈</mo><msup><mi>ℝ</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">\mathbf{v}\in\mathbb{R}^5</annotation></semantics></math>.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -252,25 +252,25 @@ but:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dovs.html">dovs</a></span><span class="op">(</span><span class="va">dx</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1</span></span></code></pre>
 <p>So according to <code>stokes</code>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>dx</mo><mo>:</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>1</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>1</mn></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\operatorname{dx}\colon\left(\mathbb{R}^1\right)^1\longrightarrow\mathbb{R}</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">dx</mi><mo>⁡</mo></mrow><mo>:</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>1</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>1</mn></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\operatorname{dx}\colon\left(\mathbb{R}^1\right)^1\longrightarrow\mathbb{R}</annotation></semantics></math>.
 This does not really matter numerically, until we consider the Hodge
 star operator. We know that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋆</mo><mo>dx</mo><mo>=</mo><mo>dy</mo><mo>∧</mo><mo>dz</mo></mrow><annotation encoding="application/x-tex">\star\operatorname{dx}=\operatorname{dy}\wedge\operatorname{dz}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>⋆</mi><mrow><mi mathvariant="normal">dx</mi><mo>⁡</mo></mrow><mo>=</mo><mrow><mi mathvariant="normal">dy</mi><mo>⁡</mo></mrow><mo>∧</mo><mi mathvariant="normal">dz</mi></mrow><annotation encoding="application/x-tex">\star\operatorname{dx}=\operatorname{dy}\wedge\operatorname{dz}</annotation></semantics></math>,
 but</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="va">dx</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1</span></span></code></pre>
 <p>Above we see the package giving, correctly, that the Hodge star of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>dx</mo><annotation encoding="application/x-tex">\operatorname{dx}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">dx</mi><annotation encoding="application/x-tex">\operatorname{dx}</annotation></semantics></math>
 is the zero-dimensional volume element (otherwise known as “1”). To get
 the answer appropriate if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>dx</mo><annotation encoding="application/x-tex">\operatorname{dx}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">dx</mi><annotation encoding="application/x-tex">\operatorname{dx}</annotation></semantics></math>
 is considered as a map from
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>1</mn></msup><annotation encoding="application/x-tex">\left(\mathbb{R}^3\right)^1</annotation></semantics></math>
 to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>
 [that is,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>dx</mo><mo>:</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>1</mn></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\operatorname{dx}\colon\left(\mathbb{R}^3\right)^1\longrightarrow\mathbb{R}</annotation></semantics></math>],
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">dx</mi><mo>⁡</mo></mrow><mo>:</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>1</mn></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\operatorname{dx}\colon\left(\mathbb{R}^3\right)^1\longrightarrow\mathbb{R}</annotation></semantics></math>],
 we need to specify <code>dovs</code> explicitly:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="va">dx</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
@@ -292,7 +292,7 @@ method:</p>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-form
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>,
 we have
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\omega(v_1,\ldots,v_k)\in\mathbb{R}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\omega(v_1,\ldots,v_k)\in\mathbb{R}</annotation></semantics></math>,
 where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">v_1,\ldots,v_k\in\mathbb{R}^n</annotation></semantics></math>.
 Now, <em>discarding</em> dimension
@@ -302,7 +302,7 @@ is equivalent to asserting (or guaranteeing) that
 for
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">j=1,\ldots,k</annotation></semantics></math>.
 Alternatively, we may say that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega(v_1,\ldots,v_k)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\omega(v_1,\ldots,v_k)</annotation></semantics></math>
 is independent of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>i</mi></msub><mo>⋅</mo><msub><mi>v</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">e_i\cdot v_j</annotation></semantics></math>
 for
@@ -371,10 +371,10 @@ component”, for that has already been discarded by the class.</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-hankin2022_stokes" class="csl-entry">
-Hankin, R. K. S. 2022. <span>“Stokes’s Theorem in
-<span>R</span>.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2210.17008" class="external-link">https://doi.org/10.48550/ARXIV.2210.17008</a>.
+Hankin, R. K. S. 2022. <em>Stokes’s Theorem in <span>R</span></em>.
+arXiv. <a href="https://doi.org/10.48550/ARXIV.2210.17008" class="external-link">https://doi.org/10.48550/ARXIV.2210.17008</a>.
 </div>
 <div id="ref-spivak1965" class="csl-entry">
 Spivak, M. 1965. <em>Calculus on Manifolds</em>. Addison-Wesley.
