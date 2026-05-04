@@ -40,7 +40,7 @@
 % Uncomment to override  the `A preprint' in the header
 %\renewcommand{\headeright}{Technical Report}
 %\renewcommand{\undertitle}{Technical Report}
-\renewcommand{\shorttitle}{Stokes's theorem in R}
+
 
 %%% Add PDF metadata to help others organize their library
 %%% Once the PDF is generated, you can check the metadata with
@@ -1174,7 +1174,7 @@ tensors, alternating forms, and related concepts from the exterior
 calculus.  Theorems including Stokes's generalized integral theorem
 were verified numerically.  Further work might include working with
 Stokes's theorem expressed in Clifford algebra
-formalism~\cite{hankin2022_clifford,hestenes1987}, following
+formalism~\cite{hankin2025_clifford,hestenes1987}, following
 Klausen~\cite{klausen2022}.
 
 \bibliographystyle{apalike}

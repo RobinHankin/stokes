@@ -15,9 +15,6 @@ under version control, to the inst/ directory:
 
 Then to create stokes_arxiv.pdf:
 
-pdflatex stokes_arxiv
-bibtex   stokes_arxiv
-pdflatex stokes_arxiv
-pdflatex stokes_arxiv
+latexmk stokes_arxiv.tex
 
 should work.
