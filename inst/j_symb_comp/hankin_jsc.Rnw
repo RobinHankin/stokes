@@ -38,6 +38,11 @@
 \tsc{DE}
 %%%
 
+\ExplSyntaxOn
+\keys_set:nn { stm / mktitle } { nologo }
+\ExplSyntaxOff
+
+
 \begin{document}
 \let\WriteBookmarks\relax
 \def\floatpagepagefraction{1}
@@ -1219,42 +1224,22 @@ in frontmatter.
 
 %\vskip3pt
 
-\bio{}
-Author biography without author photo.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-\endbio
-
-\bio{figs/cas-pic1}
-Author biography with author photo.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
+\bio{figs/IMG_9143}  # kept at AUT_hdrive/professional_photos
+Robin Hankin is a mathematician specializing in computational
+statistics.  His first degree was in pure and applied mathematics from
+Trinity College, Cambridge.  After working in the UK's Health and
+Safety Executive studying major industrial hazards, Robin returned to
+Cambridge for a PhD in fluid mechanics, studying atmospheric
+diffusion.  He then worked at The University of Auckland as a lecturer
+in environmental science, publishing in the field of industrial risk
+assessment.  After returning to Cambridge to study uncertainty in
+global climate change as a senior research associate, and becoming an
+associate professor at Auckland University of Technology, his current
+research portfolio at Stirling involves computational methods as used
+in statistics, physics, and game theory.
 \endbio
 
 \vskip3pc
-
-\bio{figs/cas-pic1}
-Author biography with author photo.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-Author biography. Author biography. Author biography.
-\endbio
-
 
 \end{document}
 
