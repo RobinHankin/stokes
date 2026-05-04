@@ -1,0 +1,24 @@
+This directory is for the manuscript for Journal of Symbolic Computation.
+
+To create hankin_jsc.pdf, first  use Sweave:
+
+R CMD Sweave hankin_jsc.Rnw
+
+this will create hankin_jsc.tex
+
+To process this with latex, you will need various auxiliary files, not
+under version control, to the inst/ directory:
+
+* stokes.png, the hexsticker, copied from man/figures
+* stokes.bib, copied from vignettes/
+* Various style files such as cas-sc.cls, cas-common.sty, cas-model2-names.bst,
+    from the JSC website
+    
+* You might need extra files in directories figs/ and thumbnails/
+
+
+Then to create hankin_jsc.pdf:
+
+latexmk hankin_jsc.tex
+
+should work.
