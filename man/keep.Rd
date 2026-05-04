@@ -21,7 +21,7 @@ Given a \eqn{k}-form \eqn{\omega}{omitted}, we have
 dimension \eqn{i} is equivalent to asserting (or guaranteeing) that
 \eqn{e_i\cdot v_j=0}{omitted} for \eqn{j=1,\ldots,k}{j=1,...,k}.
 Alternatively, we may say that \eqn{\omega(v_1,\ldots,v_k)}{omitted} is
-indeapendent of \eqn{e_i\cdot v_j}{omitted} for
+independent of \eqn{e_i\cdot v_j}{omitted} for
 \eqn{j=1,\ldots,k}{j=1,...,k}.  If this is the case, we may ignore any
 row in which an \eqn{i} appears.
 
