@@ -1221,10 +1221,9 @@ in frontmatter.
 % Loading bibliography database
 \bibliography{stokes}
 
-
 %\vskip3pt
 
-\bio{figs/IMG_9143}  # kept at AUT_hdrive/professional_photos
+\bio{figs/IMG_9143}  % kept at AUT_hdrive/professional_photos
 Robin Hankin is a mathematician specializing in computational
 statistics.  His first degree was in pure and applied mathematics from
 Trinity College, Cambridge.  After working in the UK's Health and
