@@ -83,9 +83,11 @@
 \end{graphicalabstract}
 
 \begin{highlights}
-\item Research highlights item 1
-\item Research highlights item 2
-\item Research highlights item 3
+\item The {\tt stokes} package creates and manipulates tensors and
+  alternating forms, stored using a compact array-based representation
+\item Wedge products and the Hodge star operator are implemented
+\item It is available on CRAN at
+  \url{https://CRAN.R-project.org/package=stokes}.
 \end{highlights}
 
 \begin{keywords}
