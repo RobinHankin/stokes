@@ -50,6 +50,7 @@
  \Submitdate{0000-00-00}
  \Acceptdate{0000-00-00}
  \Repository{https://github.com/RobinHankin/stokes}
+ \DOI{10.5555/12345678}  %% For tragula
 
 %% The address of (at least) one author should be given
 %% in the following format:
