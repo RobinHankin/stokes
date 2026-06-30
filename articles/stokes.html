@@ -300,13 +300,13 @@ and work with
 <span><span class="fl">2</span><span class="op">*</span><span class="va">S</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">S1</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^4 to R with V=R^5:</span></span>
 <span><span class="co">##              val</span></span>
-<span><span class="co">##  1 3 4 2  =    7</span></span>
-<span><span class="co">##  1 1 2 3  =    5</span></span>
-<span><span class="co">##  5 1 1 1  =    3</span></span>
-<span><span class="co">##  1 1 1 2  =  -12</span></span>
-<span><span class="co">##  1 1 2 1  =   -9</span></span>
+<span><span class="co">##  2 1 1 1  =   -3</span></span>
 <span><span class="co">##  1 2 1 1  =   -6</span></span>
-<span><span class="co">##  2 1 1 1  =   -3</span></span></code></pre>
+<span><span class="co">##  1 1 2 1  =   -9</span></span>
+<span><span class="co">##  1 1 1 2  =  -12</span></span>
+<span><span class="co">##  5 1 1 1  =    3</span></span>
+<span><span class="co">##  1 1 2 3  =    5</span></span>
+<span><span class="co">##  1 3 4 2  =    7</span></span></code></pre>
 <p>We may verify that tensors are linear using package idiom:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">LHS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">S</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">S1</span><span class="op">)</span><span class="op">(</span><span class="va">E</span><span class="op">)</span></span>
@@ -803,8 +803,8 @@ is straightforward in R idiom but algebraically nontrivial:</p>
 <code class="sourceCode R"><span><span class="va">K1</span><span class="op">+</span><span class="va">K2</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^2 to R with V=R^8:</span></span>
 <span><span class="co">##          val</span></span>
-<span><span class="co">##  2 4  =  113</span></span>
-<span><span class="co">##  7 8  =    5</span></span></code></pre>
+<span><span class="co">##  7 8  =    5</span></span>
+<span><span class="co">##  2 4  =  113</span></span></code></pre>
 <p>In the above, note how the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">d</mi><msub><mi>x</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">\mathrm{d}x_2\wedge\mathrm{d}x_4</annotation></semantics></math>
 terms combine [to give <code>2 4 = 113</code>] and the
@@ -1049,16 +1049,16 @@ nicely with magrittr pipes:</p>
 <code class="sourceCode R"><span><span class="va">o</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/transform.html">pullback</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/transform.html">pullback</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/solve.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## An alternating linear map from V^3 to R with V=R^5:</span></span>
 <span><span class="co">##                      val</span></span>
-<span><span class="co">##  3 4 5  =   1.526557e-16</span></span>
-<span><span class="co">##  1 2 3  =  -7.632783e-17</span></span>
-<span><span class="co">##  2 3 5  =  -2.333203e-16</span></span>
-<span><span class="co">##  2 3 4  =   3.747003e-16</span></span>
+<span><span class="co">##  3 4 5  =  -2.775558e-17</span></span>
+<span><span class="co">##  1 2 3  =   3.469447e-17</span></span>
+<span><span class="co">##  2 3 5  =  -1.170938e-16</span></span>
+<span><span class="co">##  2 3 4  =   3.191891e-16</span></span>
 <span><span class="co">##  2 4 5  =   2.000000e+00</span></span>
 <span><span class="co">##  1 2 5  =  -2.081668e-17</span></span>
-<span><span class="co">##  1 3 4  =   6.938894e-18</span></span>
-<span><span class="co">##  1 2 4  =  -1.595946e-16</span></span>
-<span><span class="co">##  1 3 5  =  -2.081668e-17</span></span>
-<span><span class="co">##  1 4 5  =  -7.632783e-17</span></span></code></pre>
+<span><span class="co">##  1 3 4  =   1.006140e-16</span></span>
+<span><span class="co">##  1 2 4  =  -1.179612e-16</span></span>
+<span><span class="co">##  1 3 5  =   1.110223e-16</span></span>
+<span><span class="co">##  1 4 5  =   1.179612e-16</span></span></code></pre>
 <p>Above we see many rows with values small enough for the print method
 to print an exact zero, but not sufficiently small to be eliminated by
 the <code>spray</code> internals. We can remove the small entries with
