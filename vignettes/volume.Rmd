@@ -65,7 +65,7 @@ $\omega{\left(w_1,\ldots,w_n\right)}=\pm 1$.  If an orientation $\mu$
 for $V$ has also been given, it follows that there is a unique
 $\omega\in\Lambda^n(V)$ such that
 $\omega\left(v_1,\ldots,v_n\right)=1$ whenever $v_1,\ldots,v_n$ is an
-orthornormal basis such that $\left[v_1,\ldots,v_n\right]=\mu$.  This
+orthonormal basis such that $\left[v_1,\ldots,v_n\right]=\mu$.  This
 unique $\omega$ is called the *volume element* of $V$, determined by
 the inner product $T$ and orientation $\mu$.  Note that
 $\operatorname{det}$ is the volume element of $\mathbb{R}^n$
