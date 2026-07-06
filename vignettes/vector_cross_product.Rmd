@@ -163,7 +163,7 @@ at the end, along with $n=1$.
 
 We can demonstrate that the function has the correct orientation. We
 need to ensure that the vectors
-$\mathbf{v}_1,\ldots,\mathbf{v}_n,\mathbf{v}_1\times\cdots\times\mathbf{v}_n$
+$\mathbf{v}_1,\ldots,\mathbf{v}_{n-1},\mathbf{v}_1\times\cdots\times\mathbf{v}_n$
 constitute a right-handed basis:
 
 ```{r label=checkrighthand}
@@ -200,9 +200,9 @@ determinants in question have two identical columns.
 Spivak gives the following properties:
 
 \[
-\mathbf{v}_{\sigma(1)}\times\cdots\times\mathbf{v}_{\sigma(n)} =
+\mathbf{v}_{\sigma(1)}\times\cdots\times\mathbf{v}_{\sigma(n-1)} =
 \operatorname{sgn}\sigma\cdot
-\mathbf{v}_{1}\times\cdots\times\mathbf{v}_{n}
+\mathbf{v}_{1}\times\cdots\times\mathbf{v}_{n-1}
 \]
 
 \[
@@ -210,13 +210,13 @@ Spivak gives the following properties:
 \times\cdots\times
 a\mathbf{v}_i
 \times\cdots\times
-\mathbf{v}_{n} =
+\mathbf{v}_{n-1} =
 a\cdot
 \mathbf{v}_{1}
 \times\cdots\times
 \mathbf{v}_i
 \times\cdots\times
-\mathbf{v}_{n}
+\mathbf{v}_{n-1}
 \]
 
 \[
@@ -224,18 +224,18 @@ a\cdot
 \times\cdots\times
 \left(\mathbf{v}_i+{\mathbf{v}'}_i\right)
 \times\cdots\times
-\mathbf{v}_{n} =
+\mathbf{v}_{n-1} =
 \mathbf{v}_{1}
 \times\cdots\times
 \mathbf{v}_i
 \times\cdots\times
-\mathbf{v}_{n}
+\mathbf{v}_{n-1}
 +
 \mathbf{v}_{1}
 \times\cdots\times
 {\mathbf{v}'}_i
 \times\cdots\times
-\mathbf{v}_{n}
+\mathbf{v}_{n-1}
 \]
 
 For the first we use a permutation `sigma` from the `permutations` package [@hankin2020] with a sign of $-1$:
