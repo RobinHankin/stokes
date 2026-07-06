@@ -97,10 +97,10 @@ v <- c(2,3,7)
 c(as.function(dx)(v),as.function(dx+dy)(v),as.function(dx+100*dz)(v))
 ```
 
-As Spivak says, `dx`, `dy` and `dz` are conjugate to $e_1,e_2,e_3$ and
-these are defined using function `e()`.  In this case it is safer to
-pass `n=3` to function `e()` in order to specify that we are working
-in $\mathbb{R}^3$.
+As Spivak says, `dx`, `dy` and `dz` is a dual basis to $e_1,e_2,e_3$
+and these are defined using function `e()`.  In this case it is safer
+to pass `n=3` to function `e()` in order to specify that we are
+working in $\mathbb{R}^3$.
 
 ```{r}
 e(1,3)
