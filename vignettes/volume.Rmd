@@ -96,7 +96,7 @@ f(diag(7))
 ```
 
 Above, we see that $\omega{\left(e_1,\ldots,e_n\right)}=1$.  To verify
-that $V{\left(v_1,\ldots,v_n\right)}=\operatorname{det}(A)$, where
+that $\omega{\left(v_1,\ldots,v_n\right)}=\operatorname{det}(A)$, where
 $A_{ij}=\left(v_i\right)_j$:
 
 ```{r}
