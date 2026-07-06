@@ -167,8 +167,8 @@ things are already discarded.  As a concrete example:
 dovs(x)
 ```
 
-Above we see a kform `x` with `dovs` of 5.  Recall that object `x` is
-a map from $V^2$ to $\mathbb{R}$, where vector space $V=\mathbb{R}^5$.
+Above we see a kform `x` with `dovs` of 3.  Recall that object `x` is
+a map from $V^2$ to $\mathbb{R}$, where vector space $V=\mathbb{R}^3$.
 So, for example,
 $x\left(\left(\begin{array}{c}a_1\\a_2\\a_3\end{array}\right),\left(\begin{array}{c}b_1\\b_2\\b_3\end{array}\right)\right)=a_1b_2+2a_1b_3+3a_2b_3$.
 Now, for example, I might only care about the first and third row of
@@ -181,7 +181,7 @@ keep(x, c(1,3))
 ```
 
 Observe that there is no point asking whether to keep "the fourth
-component", for that has already been discarded by the \code{map}
+component", for that has already been discarded by the `map`
 class.
 
 # References
