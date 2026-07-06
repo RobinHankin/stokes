@@ -252,7 +252,7 @@ options(kform_symbolic_print = NULL)  # default print method
 
 Above we see an unhelpful representation.  To work with $2$-forms in
 relativistic physics, it is often preferable to use bespoke print
-method `usetxyz`:
+method `txyz`:
 
 ```{r}
 options(kform_symbolic_print = "txyz")
