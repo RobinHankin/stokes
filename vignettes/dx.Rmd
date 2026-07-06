@@ -30,7 +30,7 @@ dz <- d(3)
 To cite the `stokes` package in publications, please use
 @hankin2022_stokes.  This function monograph discusses convenience
 objects `dx`, `dy`, and `dz`, corresponding to elementary differential
-forms (basis vectors $e_1$, $e_2$, $e_2$ are discussed in vignette
+forms (basis vectors $e_1$, $e_2$, $e_3$ are discussed in vignette
 [ex](ex.html)).
 
 @spivak1965, in a memorable passage, states:
