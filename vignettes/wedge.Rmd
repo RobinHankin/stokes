@@ -216,7 +216,7 @@ write
     12\phi_{137}\wedge\phi_{235} + 18\phi_{137}\wedge\phi_{356}\\
 &=&
 10\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_2\wedge\phi_3\wedge\phi_5 + 
-15\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_3\wedge\phi_5\wedge\phi_6\\&{}&\qquad + 
+15\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_3\wedge\phi_5\wedge\phi_6\\&{}&\qquad {}+ 
 12\phi_1\wedge\phi_3\wedge\phi_7\wedge\phi_2\wedge\phi_3\wedge\phi_5 +
 18\phi_1\wedge\phi_3\wedge\phi_7\wedge\phi_3\wedge\phi_5\wedge\phi_6\\
 &=& 0+ 15\phi_1\wedge\phi_2\wedge\phi_8\wedge\phi_3\wedge\phi_5\wedge\phi_6+0+0\\
