@@ -289,9 +289,9 @@ have
 \phi_{\mathbf{e}_l}\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right) &=&
 \left(dx^{l}\wedge\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
 dx^{i_k}\right)\right)\left(\mathbf{e}_l,\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)\\ &=&
-(-1)^{l-1}k\left(dx^{l}\otimes\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
+(-1)^{l-1}\left(dx^{l}\otimes\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
 dx^{i_k}\right)\right)\left(\mathbf{e}_l,\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)\right)\\ &=&
-(-1)^{l-1}k\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
+(-1)^{l-1}\left(dx^{i_1}\wedge\cdots\wedge\widehat{dx^{l}}\wedge\cdots\wedge
 dx^{i_k}\right)\left(\mathbf{v}_1,\ldots,\mathbf{v}_{k-1}\right)
 \end{eqnarray}
 
