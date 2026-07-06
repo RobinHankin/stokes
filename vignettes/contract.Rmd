@@ -229,10 +229,10 @@ contract(o,V)
 In the above, the result is coerced to a scalar which is returned in
 the form of a `disord` object; in order to work with a formal $0$-form
 (which is represented in the package as a `spray` with a zero-column
-index matrix) we can use the `lost=FALSE` argument:
+index matrix) we can use the `lose=FALSE` argument:
 
 ```{r doanothercontractnolose}
-contract(o,V,lose=FALSE)
+contract(o, V, lose=FALSE)
 ```
 
 thus returning a $0$-form.  If we iteratively contract a
