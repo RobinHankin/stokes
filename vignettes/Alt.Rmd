@@ -139,7 +139,7 @@ occurs by considering $T=\phi_2\otimes\phi_2\otimes\phi_3$, a linear
 map corresponding to the `[2 2 3]` row of `S`:
 
 \[
-T(v_1,v_2,v_3) = (v_1\cdot e_2)(v_2\cdot e_2)(v_1\cdot e_3)x
+T(v_1,v_2,v_3) = (v_1\cdot e_2)(v_2\cdot e_2)(v_3\cdot e_3)x
 \]
 
 (where $x\in\mathbb{R}$ is any real number and "$\cdot$" denotes the
