@@ -305,7 +305,7 @@ theta
 f1 <- as.function(Alt(Alt(omega %X% eta) %X% theta))
 f2 <- as.function(Alt(omega %X% eta %X% theta))
 f3 <- as.function(Alt(omega %X% Alt(eta %X% theta)))
-V <- matrix(rnorm(9*14),ncol=9)
+V <- matrix(rnorm(7*14),ncol=7)
 c(f1(V),f2(V),f3(V))
 ```
 
