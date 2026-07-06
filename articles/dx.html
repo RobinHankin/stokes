@@ -141,7 +141,7 @@ discusses convenience objects <code>dx</code>, <code>dy</code>, and
 vectors
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>1</mn></msub><annotation encoding="application/x-tex">e_1</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>2</mn></msub><annotation encoding="application/x-tex">e_2</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>2</mn></msub><annotation encoding="application/x-tex">e_2</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>3</mn></msub><annotation encoding="application/x-tex">e_3</annotation></semantics></math>
 are discussed in vignette <a href="ex.html">ex</a>).</p>
 <p><span class="citation">Spivak (<a href="#ref-spivak1965">1965</a>)</span>, in a memorable passage,
 states:</p>
@@ -232,7 +232,7 @@ are a vector space, we have in general</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">)</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">+</span><span class="va">dy</span><span class="op">)</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">dx</span><span class="op">+</span><span class="fl">100</span><span class="op">*</span><span class="va">dz</span><span class="op">)</span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]   2   5 702</span></span></code></pre>
 <p>As Spivak says, <code>dx</code>, <code>dy</code> and <code>dz</code>
-are conjugate to
+is a dual basis to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><msub><mi>e</mi><mn>2</mn></msub><mo>,</mo><msub><mi>e</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">e_1,e_2,e_3</annotation></semantics></math>
 and these are defined using function <code><a href="../reference/kform.html">e()</a></code>. In this case it
 is safer to pass <code>n=3</code> to function <code><a href="../reference/kform.html">e()</a></code> in order

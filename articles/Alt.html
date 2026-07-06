@@ -305,8 +305,8 @@ why this cancellation occurs by considering
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">T=\phi_2\otimes\phi_2\otimes\phi_3</annotation></semantics></math>,
 a linear map corresponding to the <code>[2 2 3]</code> row of
 <code>S</code>:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">
-T(v_1,v_2,v_3) = (v_1\cdot e_2)(v_2\cdot e_2)(v_1\cdot e_3)x
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mn>3</mn></msub><mo>⋅</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">
+T(v_1,v_2,v_3) = (v_1\cdot e_2)(v_2\cdot e_2)(v_3\cdot e_3)x
 </annotation></semantics></math></p>
 <p>(where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">x\in\mathbb{R}</annotation></semantics></math>
@@ -579,7 +579,7 @@ then
 <code class="sourceCode R"><span><span class="va">f1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">omega</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="va">eta</span><span class="op">)</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="va">theta</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">f2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">omega</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="va">eta</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="va">theta</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">f3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">omega</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">eta</span> <span class="op"><a href="../reference/tensorprod.html">%X%</a></span> <span class="va">theta</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">9</span><span class="op">*</span><span class="fl">14</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">9</span><span class="op">)</span></span>
+<span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">7</span><span class="op">*</span><span class="fl">14</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">7</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">f1</span><span class="op">(</span><span class="va">V</span><span class="op">)</span>,<span class="fu">f2</span><span class="op">(</span><span class="va">V</span><span class="op">)</span>,<span class="fu">f3</span><span class="op">(</span><span class="va">V</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] -3.154794 -3.154794 -3.154794</span></span></code></pre>
 <p>Verifying the third identity
@@ -618,45 +618,48 @@ options return identical objects:</p>
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">rand_tensor</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rform.html">rtensor</a></span><span class="op">(</span>k<span class="op">=</span><span class="fl">5</span>,n<span class="op">=</span><span class="fl">9</span><span class="op">)</span><span class="op">*</span><span class="fl">120</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## A linear map from V^5 to R with V=R^9:</span></span>
 <span><span class="co">##                 val</span></span>
-<span><span class="co">##  7 3 6 4 7  =   120</span></span>
-<span><span class="co">##  8 1 3 4 4  =   240</span></span>
-<span><span class="co">##  2 6 4 5 7  =   360</span></span>
-<span><span class="co">##  8 4 2 8 8  =   840</span></span>
-<span><span class="co">##  7 1 3 5 1  =   480</span></span>
-<span><span class="co">##  1 6 4 7 6  =   600</span></span>
-<span><span class="co">##  6 7 3 3 4  =  1080</span></span>
-<span><span class="co">##  9 2 3 5 3  =   720</span></span>
-<span><span class="co">##  6 5 6 5 4  =   960</span></span></code></pre>
+<span><span class="co">##  2 2 3 5 8  =   120</span></span>
+<span><span class="co">##  6 1 5 9 2  =  1080</span></span>
+<span><span class="co">##  1 5 6 3 6  =   240</span></span>
+<span><span class="co">##  9 1 7 7 3  =   480</span></span>
+<span><span class="co">##  5 6 4 8 1  =   600</span></span>
+<span><span class="co">##  5 4 8 2 6  =   360</span></span>
+<span><span class="co">##  8 8 3 2 6  =   720</span></span>
+<span><span class="co">##  9 1 5 7 1  =   840</span></span>
+<span><span class="co">##  4 3 2 1 6  =   960</span></span></code></pre>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">S1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">rand_tensor</span><span class="op">)</span>  <span class="co"># 120 terms, too long to print all of it</span></span>
 <span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">S1</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## A ktensor object with 120 terms.  Summary of coefficients: </span></span>
+<pre><code><span><span class="co">## A ktensor object with 480 terms.  Summary of coefficients: </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## a disord object with hash 866c13390582e2f7e562be3e046abda44be30079 </span></span>
+<span><span class="co">## a disord object with hash cc0830d6a080e1b84d1244a04d378fcfed7c373e </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">##      -3      -3       0       0       3       3 </span></span>
+<span><span class="co">##   -9.00   -5.75    0.00    0.00    5.75    9.00 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Representative selection of index and coefficients:</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## A linear map from V^5 to R with V=R^7:</span></span>
+<span><span class="co">## A linear map from V^5 to R with V=R^9:</span></span>
 <span><span class="co">##                val</span></span>
-<span><span class="co">##  7 6 5 4 2  =    3</span></span>
-<span><span class="co">##  2 6 4 7 5  =   -3</span></span>
-<span><span class="co">##  7 4 2 6 5  =    3</span></span>
-<span><span class="co">##  2 7 6 4 5  =   -3</span></span>
-<span><span class="co">##  4 6 2 5 7  =   -3</span></span>
-<span><span class="co">##  6 5 2 4 7  =   -3</span></span></code></pre>
+<span><span class="co">##  4 2 8 6 5  =   -3</span></span>
+<span><span class="co">##  5 2 6 8 4  =   -3</span></span>
+<span><span class="co">##  2 4 8 6 5  =    3</span></span>
+<span><span class="co">##  5 8 4 2 6  =   -3</span></span>
+<span><span class="co">##  6 4 2 3 1  =   -8</span></span>
+<span><span class="co">##  5 6 9 2 1  =    9</span></span></code></pre>
 <p>Above, we see that <code>S1</code> is a rather extensive object, with
 120 terms. However, if argument <code>give_kform = TRUE</code> is passed
 to <code><a href="../reference/Alt.html">Alt()</a></code> we get a <code>kform</code> object which is much
 more succinct:</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">SA1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Alt.html">Alt</a></span><span class="op">(</span><span class="va">rand_tensor</span>,give_kform<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## An alternating linear map from V^5 to R with V=R^7:</span></span>
+<pre><code><span><span class="co">## An alternating linear map from V^5 to R with V=R^9:</span></span>
 <span><span class="co">##                val</span></span>
-<span><span class="co">##  2 4 5 6 7  =    3</span></span></code></pre>
+<span><span class="co">##  1 2 3 4 6  =    8</span></span>
+<span><span class="co">##  2 4 5 6 8  =   -3</span></span>
+<span><span class="co">##  1 4 5 6 8  =    5</span></span>
+<span><span class="co">##  1 2 5 6 9  =   -9</span></span></code></pre>
 <p>Verification that objects <code>S1</code> and <code>SA1</code> are
 the same object:</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
@@ -665,7 +668,7 @@ the same object:</p>
 <span><span class="va">RHS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="va">SA1</span><span class="op">)</span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LHS<span class="op">=</span><span class="va">LHS</span>,RHS<span class="op">=</span><span class="va">RHS</span>,diff<span class="op">=</span><span class="va">LHS</span><span class="op">-</span><span class="va">RHS</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##           LHS           RHS          diff </span></span>
-<span><span class="co">##  2.386928e+01  2.386928e+01 -1.065814e-14</span></span></code></pre>
+<span><span class="co">## -2.902905e+02 -2.902905e+02 -5.684342e-14</span></span></code></pre>
 <p>Above we see agreement to within numerical error.</p>
 <div class="section level3">
 <h3 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
