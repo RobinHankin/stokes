@@ -52,7 +52,7 @@ for $v,w\in V$ and such that $T$ is
 <strong>usual inner product</strong> on $\mathbb{R}^n$.
 
 </p>
-<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Page 77</i>
+<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1965</b> <i>(Calculus on Manifolds, Perseus books).  Page 77</i>
 </p></span>
 </div>
 

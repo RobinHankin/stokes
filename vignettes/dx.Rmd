@@ -60,7 +60,7 @@ see that $\mathrm{d}x^1(p),\ldots,\mathrm{d}x^n(p)$ is just the dual
 basis to $(e_1)_p,\ldots, (e_n)_p$.
 
 </p>
-<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Page 89</i>
+<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1965</b> <i>(Calculus on Manifolds, Perseus books).  Page 89</i>
 </p></span>
 </div>
 

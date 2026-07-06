@@ -91,7 +91,7 @@ This $z$ is denoted $v_1\times\cdots\times v_{n-1}$ and is called the
 
 <p style="margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia">
 
-<b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books). Pages 83-84</i>
+<b>- Michael Spivak, 1965</b> <i>(Calculus on Manifolds, Perseus books). Pages 83-84</i>
 
 </p>
 
