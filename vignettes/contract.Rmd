@@ -176,7 +176,7 @@ contract(psi^phi,v) ==  contract(psi,v) ^ phi + psi ^ contract(phi,v)
 
 
 It is of course possible to contract a contraction.  If $\phi$ is a
-$k$-form, then $\left(\phi_\mathbf{v}\right)_\mathbf{w}$ is a $k-2$
+$k$-form, then $\left(\phi_\mathbf{u}\right)_\mathbf{v}$ is a $k-2$
 form with
 
 $$
