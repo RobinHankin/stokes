@@ -167,7 +167,7 @@ tensor products</p>
 i_1,\ldots,i_k\leqslant n
 </annotation></semantics></math></p>
 <p>is a basis for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒥</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{J}(V)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝒥</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{J}^k(V)</annotation></semantics></math>,
 which therefore has dimension
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>n</mi><mi>k</mi></msup><annotation encoding="application/x-tex">n^k</annotation></semantics></math>.</p>
 
@@ -368,8 +368,8 @@ this we can use the package to calculate, say,
 <span><span class="co">##  2 3  =   15</span></span>
 <span><span class="co">##  1 3  =   10</span></span></code></pre>
 <p>Above we see package form for the result which is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><msub><mi>ϕ</mi><mn>1</mn></msub><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>14</mn><msub><mi>ϕ</mi><mn>1</mn></msub><msub><mi>ϕ</mi><mn>4</mn></msub><mo>+</mo><mn>15</mn><msub><mi>ϕ</mi><mn>2</mn></msub><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>21</mn><msub><mi>ϕ</mi><mn>2</mn></msub><msub><mi>ϕ</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">10\phi_1\phi_3 +
-14\phi_1\phi_4 + 15\phi_2\phi_3 + 21\phi_2\phi_4</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>14</mn><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>4</mn></msub><mo>+</mo><mn>15</mn><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>3</mn></msub><mo>+</mo><mn>21</mn><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⊗</mo><msub><mi>ϕ</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">10\phi_1\otimes\phi_3 + 14\phi_1\otimes\phi_4 +
+15\phi_2\otimes\phi_3 + 21\phi_2\otimes\phi_4</annotation></semantics></math>
 in algebraic notation.</p>
 </div>
 <div class="section level3">
@@ -404,7 +404,7 @@ methods, as per <code>disordR</code> discipline <span class="citation">(<a href=
 <h3 id="function-alt">Function <code>Alt()</code><a class="anchor" aria-label="anchor" href="#function-alt"></a>
 </h3>
 <p>Function <code><a href="../reference/Alt.html">Alt()</a></code> returns an alternating tensor as
-documented in the <a href="Alt.hmtl">Alt</a> vignette in the package. It
+documented in the <a href="Alt.html">Alt</a> vignette in the package. It
 works nicely with <code><a href="../reference/phi.html">phi()</a></code>:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>

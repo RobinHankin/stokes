@@ -132,18 +132,25 @@ Hankin</h4>
 <p><img src="../../../_temp/Library/stokes/help/figures/stokes.png" class="r-plt" alt="" width="20%" style="float:right; padding:10px"></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vector_cross_product</span></span></code></pre></div>
-<pre><code><span><span class="kw">function</span> <span class="op">(</span><span class="va">M</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">is.matrix</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="va">n</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span>
-<span>    <span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">^</span><span class="va">n</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">i</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">^</span><span class="va">i</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/det.html" class="external-link">det</a></span><span class="op">(</span><span class="va">M</span><span class="op">[</span><span class="op">-</span><span class="va">i</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span><span class="op">)</span></span>
-<span>    <span class="op">}</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre>
+<pre><code>function (M) 
+{
+    stopifnot(is.matrix(M))
+    n &lt;- nrow(M)
+    stopifnot(n == ncol(M) + 1)
+    (-1)^n * sapply(seq_len(n), function(i) {
+        (-1)^i * det(M[-i, , drop = FALSE])
+    })
+}
+&lt;bytecode: 0x55c1e54974e8&gt;
+&lt;environment: namespace:stokes&gt;</code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vcp3</span></span></code></pre></div>
-<pre><code><span><span class="kw">function</span><span class="op">(</span><span class="va">u</span>,<span class="va">v</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="../reference/hodge.html">hodge</a></span><span class="op">(</span><span class="fu"><a href="../reference/as.1form.html">as.1form</a></span><span class="op">(</span><span class="va">u</span><span class="op">)</span><span class="op">^</span><span class="fu"><a href="../reference/as.1form.html">as.1form</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span></code></pre>
+<pre><code>function (u, v) 
+{
+    hodge(as.1form(u)^as.1form(v))
+}
+&lt;bytecode: 0x55c1e56b7c00&gt;
+&lt;environment: namespace:stokes&gt;</code></pre>
 <p>To cite the <code>stokes</code> package in publications, please use
 <span class="citation">Hankin (<a href="#ref-hankin2022_stokes">2022b</a>)</span>; this function monograph
 discusses <code><a href="../reference/vector_cross_product.html">vector_cross_product()</a></code>. The <em>vector cross
@@ -290,7 +297,7 @@ this case is discussed at the end, along with
 </h3>
 <p>We can demonstrate that the function has the correct orientation. We
 need to ensure that the vectors
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mi>n</mi></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{v}_1,\ldots,\mathbf{v}_n,\mathbf{v}_1\times\cdots\times\mathbf{v}_n</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐯</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{v}_1,\ldots,\mathbf{v}_{n-1},\mathbf{v}_1\times\cdots\times\mathbf{v}_n</annotation></semantics></math>
 constitute a right-handed basis:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/det.html" class="external-link">det</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">M</span>,<span class="fu"><a href="../reference/vector_cross_product.html">vector_cross_product</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">&gt;</span><span class="fl">0</span></span></code></pre></div>
@@ -331,41 +338,41 @@ columns.</p>
 <h3 id="immediate-properties">Immediate properties<a class="anchor" aria-label="anchor" href="#immediate-properties"></a>
 </h3>
 <p>Spivak gives the following properties:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mrow><mi>σ</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mrow><mi>σ</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></msub><mo>=</mo><mrow><mi mathvariant="normal">sgn</mi><mo>⁡</mo></mrow><mi>σ</mi><mo>⋅</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
-\mathbf{v}_{\sigma(1)}\times\cdots\times\mathbf{v}_{\sigma(n)} =
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mrow><mi>σ</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mrow><mi>σ</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msub><mo>=</mo><mrow><mi mathvariant="normal">sgn</mi><mo>⁡</mo></mrow><mi>σ</mi><mo>⋅</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">
+\mathbf{v}_{\sigma(1)}\times\cdots\times\mathbf{v}_{\sigma(n-1)} =
 \operatorname{sgn}\sigma\cdot
-\mathbf{v}_{1}\times\cdots\times\mathbf{v}_{n}
+\mathbf{v}_{1}\times\cdots\times\mathbf{v}_{n-1}
 </annotation></semantics></math></p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><mi>a</mi><msub><mi>𝐯</mi><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub><mo>=</mo><mi>a</mi><mo>⋅</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><mi>a</mi><msub><mi>𝐯</mi><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>a</mi><mo>⋅</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">
 \mathbf{v}_{1}
 \times\cdots\times
 a\mathbf{v}_i
 \times\cdots\times
-\mathbf{v}_{n} =
+\mathbf{v}_{n-1} =
 a\cdot
 \mathbf{v}_{1}
 \times\cdots\times
 \mathbf{v}_i
 \times\cdots\times
-\mathbf{v}_{n}
+\mathbf{v}_{n-1}
 </annotation></semantics></math></p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mi>i</mi></msub><mo>+</mo><msub><msup><mi>𝐯</mi><mo>′</mo></msup><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub><mo>=</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub><mo>+</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><msup><mi>𝐯</mi><mo>′</mo></msup><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐯</mi><mi>i</mi></msub><mo>+</mo><msub><msup><mi>𝐯</mi><mo>′</mo></msup><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>𝐯</mi><mn>1</mn></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><msup><mi>𝐯</mi><mo>′</mo></msup><mi>i</mi></msub><mo>×</mo><mi>⋯</mi><mo>×</mo><msub><mi>𝐯</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">
 \mathbf{v}_{1}
 \times\cdots\times
 \left(\mathbf{v}_i+{\mathbf{v}'}_i\right)
 \times\cdots\times
-\mathbf{v}_{n} =
+\mathbf{v}_{n-1} =
 \mathbf{v}_{1}
 \times\cdots\times
 \mathbf{v}_i
 \times\cdots\times
-\mathbf{v}_{n}
+\mathbf{v}_{n-1}
 +
 \mathbf{v}_{1}
 \times\cdots\times
 {\mathbf{v}'}_i
 \times\cdots\times
-\mathbf{v}_{n}
+\mathbf{v}_{n-1}
 </annotation></semantics></math></p>
 <p>For the first we use a permutation <code>sigma</code> from the
 <code>permutations</code> package <span class="citation">(<a href="#ref-hankin2020">Hankin 2020</a>)</span> with a sign of
@@ -514,7 +521,12 @@ idiom for this would be:</p>
 package as function <code><a href="../reference/vector_cross_product.html">vcp3()</a></code>, which uses different idiom:</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vcp3</span></span></code></pre></div>
-<pre><code><span><span class="co">## function(u,v){hodge(as.1form(u)^as.1form(v))}</span></span></code></pre>
+<pre><code><span><span class="co">## function (u, v) </span></span>
+<span><span class="co">## {</span></span>
+<span><span class="co">##     hodge(as.1form(u)^as.1form(v))</span></span>
+<span><span class="co">## }</span></span>
+<span><span class="co">## &lt;bytecode: 0x55c1e56b7c00&gt;</span></span>
+<span><span class="co">## &lt;environment: namespace:stokes&gt;</span></span></code></pre>
 <p>This is preferable on the grounds that coercion to a 1-form is
 explicit. Suppose we wish to take the vector cross product of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐮</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">\mathbf{u}=\left(1,4,2\right)^T</annotation></semantics></math>
