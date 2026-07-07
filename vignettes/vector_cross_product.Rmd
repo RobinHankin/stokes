@@ -20,34 +20,14 @@ knitr::opts_chunk$set(echo = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
 library("stokes")
 library("permutations")
-knit_print.function <- function(x, ...){dput(x)}
-registerS3method(
-  "knit_print", "function", knit_print.function,
-  envir = asNamespace("knitr")
-)
 ```
 
 ```{r, label=showvectorcrossproduct, comment=""}
 vector_cross_product
 ```
 
-```{r setup2, include=FALSE}
-knit_print.function <- function(x, ...){
-a <- capture.output(print(x))
-paste(gsub(" " ,"",a[seq(from=1,to=length(a)-2)]),collapse="")
-}
-registerS3method(
-  "knit_print", "function", knit_print.function,
-  envir = asNamespace("knitr")
-)
-```
-
 ```{r, label=showfunc2,comment=""}
 vcp3
-```
-
-```{r, resetdefaults,include=FALSE}
-
 ```
 
 To cite the `stokes` package in publications, please use
