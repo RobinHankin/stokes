@@ -332,7 +332,7 @@ consider sums of elementary forms, such as $d\mathrm{x}_1\wedge\mathrm{d}x_2 + 3
 \begin{pmatrix} a_2 & b_2\\ a_3 & b_3\end{pmatrix}
 \]
 
-or even $K=\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_3 +5\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_4$
+or even $K=\mathrm{d}x_4\wedge\mathrm{d}x_2\wedge\mathrm{d}x_3 +5\mathrm{d}x_1\wedge\mathrm{d}x_2\wedge\mathrm{d}x_4$
 which would be a linear map from $\left(\mathbb{R}^n\right)^3$ to
 $\mathbb{R}$ with
 

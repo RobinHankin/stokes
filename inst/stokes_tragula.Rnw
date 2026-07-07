@@ -409,7 +409,7 @@ dx_1\wedge dx_2 + 3dx_2\wedge dx_3
 \begin{pmatrix} a_2 & b_2\\ a_3 & b_3\end{pmatrix}
 \end{equation}
 
-or even $K=dx_1\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4$
+or even $K=dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4$
 which would be a linear map from $\left(\mathbb{R}^n\right)^3$ to
 $\mathbb{R}$ with
 
