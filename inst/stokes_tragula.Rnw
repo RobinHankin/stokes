@@ -409,13 +409,13 @@ dx_1\wedge dx_2 + 3dx_2\wedge dx_3
 \begin{pmatrix} a_2 & b_2\\ a_3 & b_3\end{pmatrix}
 \end{equation}
 
-or even $K=dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4$
+or even $K=dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_4\wedge dx_2$
 which would be a linear map from $\left(\mathbb{R}^n\right)^3$ to
 $\mathbb{R}$ with
 
 \begin{equation}
 \left(
-dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
+dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_4\wedge dx_2
 \right)\left(
 \begin{pmatrix}a_1\\a_2\\ \vdots\\ a_n\end{pmatrix},
 \begin{pmatrix}b_1\\b_2\\ \vdots\\ b_n\end{pmatrix},
@@ -429,8 +429,8 @@ dx_4\wedge dx_2\wedge dx_3 +5dx_1\wedge dx_2\wedge dx_4
 +5\mathrm{det}
 \begin{pmatrix}
 	a_1 & b_1 & c_1\\
-	a_2 & b_2 & c_2\\
-	a_4 & b_4 & c_4
+	a_4 & b_4 & c_4\\
+	a_2 & b_2 & c_2
 \end{pmatrix}.
 \end{equation}
 
@@ -439,7 +439,7 @@ Defining $K$ has ready \proglang{R} idiom in which we define a matrix whose rows
 correspond to the differentials in each term:
 
 <<>>=
-M <- matrix(c(4,2,3,1,4,2),2,3,byrow=TRUE)
+M <- matrix(c(4,2,3, 1,4,2),2,3,byrow=TRUE)
 M
 K <- as.kform(M,c(1,5))
 K
