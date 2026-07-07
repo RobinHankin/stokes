@@ -96,10 +96,10 @@ $$
 i_1,\ldots,i_k\leqslant n
 $$
 
-[where $\phi_i(v_j)=\delta_{ij}$,$v_1,\ldots,v_k$ being a basis for
-$V$] is a basis for $\mathcal{J}^k(V)$, which therefore has dimension
-$n^k$.  Function `tensorprod()` evaluates the tensor product and I
-give examples here.
+[where $\phi_i(v_j)=\delta_{ij}$ with $v_1,\ldots,v_n$ being a basis
+for $V$] is a basis for $\mathcal{J}^k(V)$, which therefore has
+dimension $n^k$.  Function `tensorprod()` evaluates the tensor product
+and I give examples here.
 
 ```{r}
 (a <- ktensor(spray(matrix(c(1,1,2,1),2,2),3:4)))
