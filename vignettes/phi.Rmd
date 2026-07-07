@@ -216,7 +216,7 @@ b == 7*phi(c(3,5)) + 8*phi(c(4,4)) + 9*phi(c(7,3))
 ## Function `Alt()`
 
 Function `Alt()` returns an alternating tensor as documented in the
-[Alt](Alt.hmtl) vignette in the package.  It works nicely with `phi()`:
+[Alt](Alt.html) vignette in the package.  It works nicely with `phi()`:
 
 ```{r}
 phi(1:3)
