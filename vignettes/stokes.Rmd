@@ -42,7 +42,7 @@ S{\left(v_1,\ldots,av_i,\ldots,v_k\right)} = a\cdot S{\left(v_1,\ldots,v_i,\ldot
 and
 
 \[
-S{\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)}=S{\left(v_1,\ldots,v_i,\ldots,x_v\right)}+
+S{\left(v_1,\ldots,v_i+{v_i}',\ldots,v_k\right)}=S{\left(v_1,\ldots,v_i,\ldots,v_k\right)}+
 S{\left(v_1,\ldots,{v_i}',\ldots,v_k\right)}.
 \]
 
