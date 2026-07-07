@@ -132,7 +132,7 @@ the $n^k$ products of the form
 1\leq i_i,i_2,\ldots,i_k\leq n
 \end{equation}
 
-where $v_1,\ldots,v_k$ is a basis for $V$ and
+where $v_1,\ldots,v_n$ is a basis for $V$ and
 $\phi_i\left(v_j\right)=\delta_{ij}$; we can therefore write
 
 \begin{equation}
