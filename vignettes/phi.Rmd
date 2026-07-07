@@ -185,9 +185,9 @@ $(2\phi_1+3\phi_2)\otimes(5\phi_3+7\phi_4)$:
 (2*phi(1) + 3*phi(2)) %X% (5*phi(3) + 7*phi(4) )
 ```
 
-Above we see package form for the result which is $10\phi_1\phi_3 +
-14\phi_1\phi_4 + 15\phi_2\phi_3 + 21\phi_2\phi_4$ in algebraic
-notation.
+Above we see package form for the result which is
+$10\phi_1\otimes\phi_3 + 14\phi_1\otimes\phi_4 +
+15\phi_2\otimes\phi_3 + 21\phi_2\otimes\phi_4$ in algebraic notation.
 
 ## Reconstruction of a given tensor
 
