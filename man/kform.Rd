@@ -63,6 +63,8 @@ e(i, n)
     \code{as.kform()}.  The idea is that \code{d(1) = dx},
     \code{d(2)=dy}, \code{d(5)=dx^5}, etc.  Also note that, for
     example, \code{d(1:3)=dx^dy^dz}, the volume form.
+    \item{\code{e()}} is a low-level helper function returning a basis
+    vector \eqn{e_i}.  A use-case is given in vignette \code{ex}.
   }
   
   Recall that a \eqn{k}-tensor is a multilinear map from \eqn{V^k}
