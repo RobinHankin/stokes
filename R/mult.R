@@ -237,6 +237,7 @@
 
 #' @export
 `e` <- function(i, n=i){
+    stopifnot(i <= n)
     out <- numeric(n)
     out[i] <- 1
     return(out)
