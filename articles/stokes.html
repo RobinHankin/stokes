@@ -1281,20 +1281,22 @@ given by the (scalar) functions <code>f1,f2,f3</code>:</p>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,2,3,4)</annotation></semantics></math>,
 using <code><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv()</a></code> from the Deriv package:</p>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"Deriv"</span><span class="op">)</span></span>
-<span><span class="va">Df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv</a></span><span class="op">(</span><span class="va">f1</span><span class="op">)</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"Deriv"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Loading required package: Rcpp</span></span></code></pre>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv</a></span><span class="op">(</span><span class="va">f1</span><span class="op">)</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">Df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv</a></span><span class="op">(</span><span class="va">f2</span><span class="op">)</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">Df3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv</a></span><span class="op">(</span><span class="va">f3</span><span class="op">)</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <p>So <code>Df1</code> etc are numeric vectors of length 4, for
 example:</p>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Df1</span></span></code></pre></div>
 <pre><code><span><span class="co">##  w  x  y  z </span></span>
 <span><span class="co">## 24 13 35  6</span></span></code></pre>
 <p>To calculate <code>dphi</code>, or
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}\phi</annotation></semantics></math>,
 we can use function <code><a href="../reference/as.1form.html">grad()</a></code>:</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dphi</span> <span class="op">&lt;-</span></span>
 <span>  <span class="op">(</span></span>
 <span>    <span class="op">+</span><span class="fu"><a href="../reference/as.1form.html">grad</a></span><span class="op">(</span><span class="va">Df1</span><span class="op">)</span> <span class="op">^</span> <span class="va">e1</span></span>
@@ -1310,12 +1312,12 @@ we can use function <code><a href="../reference/as.1form.html">grad()</a></code>
 <span><span class="co">##  2 3 4  =  11.58385</span></span></code></pre>
 <p>Now work on the differential of the differential. First evaluate the
 Hessians (4x4 numeric matrices) at the same point:</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Hf1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv</a></span><span class="op">(</span><span class="va">f1</span>,nderiv<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span>,<span class="fl">4</span>,<span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">Hf2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv</a></span><span class="op">(</span><span class="va">f2</span>,nderiv<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span>,<span class="fl">4</span>,<span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">Hf3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/Deriv/man/Deriv.html" class="external-link">Deriv</a></span><span class="op">(</span><span class="va">f3</span>,nderiv<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span>,<span class="fl">4</span>,<span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <p>For example</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Hf1</span></span></code></pre></div>
 <pre><code><span><span class="co">##    w  x  y z</span></span>
 <span><span class="co">## w  0 12  8 6</span></span>
@@ -1326,7 +1328,7 @@ Hessians (4x4 numeric matrices) at the same point:</p>
 diagonal term). But
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>d</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">dd\phi</annotation></semantics></math>
 is clearly zero as the Hessians are symmetrical:</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ij</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">Hf1</span><span class="op">)</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">Hf1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ddphi</span> <span class="op">&lt;-</span> <span class="co"># should be zero</span></span>
@@ -1397,7 +1399,7 @@ a^{n-1}\left(a+a^2+\cdots+a^n\right).
 <p>Stokes’s theorem, being trivial, is not amenable to direct numerical
 verification but the package does allow slick creation of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>:</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
 <span>    <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span><span class="op">)</span>,<span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">&lt;</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="va">which</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -1424,7 +1426,7 @@ if we write
 for <code>phi(1:9)</code> we would have
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mrow><mn>1</mn><mo>:</mo><mn>9</mn></mrow></msub><mo>:</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>ℝ</mi><mn>9</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>8</mn></msup><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\phi_{1:9}\colon\left(\mathbb{R}^9\right)^8\longrightarrow\mathbb{R}</annotation></semantics></math>,
 with package idiom as follows:</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu"><a href="../reference/phi.html">phi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">72</span><span class="op">)</span>,<span class="fl">9</span>,<span class="fl">8</span><span class="op">)</span>   <span class="co"># (R^9)^8</span></span>
 <span><span class="fu">f</span><span class="op">(</span><span class="va">E</span><span class="op">)</span></span></code></pre></div>
@@ -1432,7 +1434,7 @@ with package idiom as follows:</p>
 <p>Further,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\mathrm{d}\phi</annotation></semantics></math>
 is given by</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dphi</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
 <span>    <span class="va">nn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">nn</span><span class="op">*</span><span class="va">x</span><span class="op">^</span><span class="op">(</span><span class="va">nn</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="../reference/kform.html">as.kform</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
@@ -1460,12 +1462,12 @@ then
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mi mathvariant="normal">det</mi><mo>⁡</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><msub><mi>v</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega\left(w_1,\ldots,w_n\right) =
 \det\left(a_{ij}\right)\cdot\omega\left(v_1,\ldots v_n\right)</annotation></semantics></math>].
 Numerically:</p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function</a></span><span class="op">(</span><span class="fu">dphi</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">81</span><span class="op">)</span>,<span class="fl">9</span>,<span class="fl">9</span><span class="op">)</span></span>
 <span><span class="fu">f</span><span class="op">(</span><span class="va">E</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] -9850953</span></span></code></pre>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/det.html" class="external-link">det</a></span><span class="op">(</span><span class="va">E</span><span class="op">)</span><span class="op">*</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span>  <span class="co"># should match f(E) by Spivak's 4.6</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] -9850953</span></span></code></pre>
 </div>
@@ -1513,7 +1515,7 @@ Spivak, M. 1965. <em>Calculus on Manifolds</em>. Addison-Wesley.
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer>
