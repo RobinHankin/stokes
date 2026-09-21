@@ -4,7 +4,7 @@
 \description{
   Converts a \eqn{k}-tensor to alternating form
 }
-\usage{Alt(S,give_kform)}
+\usage{Alt(S, give_kform)}
 \arguments{
   \item{S}{A multilinear form, an object of class \code{ktensor}}
   \item{give_kform}{Boolean, with default \code{FALSE} meaning to return
@@ -60,20 +60,20 @@
 \examples{
 
 
-(X <- ktensor(spray(rbind(1:3),6)))
+(X <- ktensor(spray(rbind(1:3), 6)))
 Alt(X)
-Alt(X,give_kform=TRUE)
+Alt(X, give_kform=TRUE)
 
-S <- as.ktensor(expand.grid(1:3,1:3),rnorm(9))
+S <- as.ktensor(expand.grid(1:3,1:3), rnorm(9))
 S
 Alt(S)
 
 issmall(Alt(S) - Alt(Alt(S)))  # should be TRUE; Alt() is idempotent
 
 a <- rtensor()
-V <- matrix(rnorm(21),ncol=3)
+V <- matrix(rnorm(21), ncol=3)
 LHS <- as.function(Alt(a))(V)
-RHS <- as.function(Alt(a,give_kform=TRUE))(V)
-c(LHS=LHS,RHS=RHS,diff=LHS-RHS)
+RHS <- as.function(Alt(a, give_kform=TRUE))(V)
+c(LHS=LHS, RHS=RHS, diff=LHS-RHS)
 
 }
