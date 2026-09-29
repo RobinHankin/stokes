@@ -17,7 +17,7 @@ library("stokes")
 set.seed(1)
 ```
 
-\hfill![](`r system.file("help/figures/stokes.png", package = "stokes")`){width=10%}
+\hfill![](`r system.file("help/figures/logo.png", package = "stokes")`){width=10%}
 
 
 ```{r, label=showkinner}

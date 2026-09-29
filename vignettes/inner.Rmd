@@ -24,7 +24,7 @@ registerS3method(
 ```
 
 ```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
-knitr::include_graphics(system.file("help/figures/stokes.png", package = "stokes"))
+knitr::include_graphics(system.file("help/figures/logo.png", package = "stokes"))
 ```
 
 ```{r, label=showinner,comment=""}

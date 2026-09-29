@@ -1,3 +1,8 @@
+# stokes 1.2-5
+
+- renamed stokes.png logo.png
+
+
 # stokes 1.2-4
 
 - roxygen2 used for NAMESPACE

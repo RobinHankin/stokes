@@ -73,7 +73,7 @@ pdfkeywords={Stokes's theorem, exterior calculus, differential forms}
 \setlength{\intextsep}{0pt}
 \begin{wrapfigure}{r}{0.2\textwidth}
   \begin{center}
-\includegraphics[width=1in]{stokes.png}
+\includegraphics[width=1in]{logo.png}
   \end{center}
 \end{wrapfigure}
 Ordinary differential calculus may be formalized and generalized to

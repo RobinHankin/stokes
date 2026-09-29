@@ -36,10 +36,10 @@ if(transparent_background){
         image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+" , w  , "+1"  )) %>%
         image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+1", "+", w     )) %>%
         image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+" , w  , "+", w)) %>%
-        image_write(path = "stokes.png")
+        image_write(path = "logo.png")
 } else {
     p <- image_read("stokes_temp.png")
-    image_write(p, path = "stokes.png")
+    image_write(p, path = "logo.png")
 }
 
 
